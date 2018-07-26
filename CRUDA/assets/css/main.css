@@ -1,0 +1,60 @@
+
+/* reset */
+a:focus { outline: none; }
+
+* {
+   letter-spacing: .05em !important;
+}
+
+/* nav */
+nav {
+   margin-bottom: 0 !important;
+   padding-right: .75rem;
+}
+nav a {
+   color: hsl(0, 0%, 86%) !important;
+}
+nav a:hover {
+   background-color: black !important;
+   color: white !important;
+   text-shadow: 0 0 .5px white;
+}
+
+.center, .center-column, .top, .right, .bottom, .left{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.center-column {
+    flex-direction: column;
+}
+
+.top    { align-items:     flex-start; }
+.right  { justify-content: flex-end;   }
+.bottom { align-items:     flex-end;   }
+.left   { justify-content: flex-start; }
+
+#off-cbut {
+   margin-top: 10px;
+}
+/* end nav*/
+
+/* */
+.pad {
+   padding: .6rem;
+}
+
+.flex {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-content: flex-start;
+}
+/*
+   width = item + margin to make orphan go left
+*/
+.flex:after {
+   content: '';
+   width: 300px;
+}

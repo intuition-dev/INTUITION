@@ -1,0 +1,52 @@
+{
+   "name": "mbake",
+   "version": "3.7.58",
+   "description": "Make(bake) a declarative/pug app recursively, including any static or dynamic app binding, http://MetaBake.org",
+   "main": "mbake.js",
+   "bin": {
+      "mbake": "mbake.js",
+      "mbake-cli": "mbake.js"
+   },
+   "license": "GPL3",
+   "author": "http://MetaBake.org",
+   "bugs": "http://MetaBake.org",
+   "homepage": "http://MetaBake.org",
+   "repository": {
+      "type": "git",
+      "url": "http://MetaBake.org"
+   },
+   "keywords": [
+      "mbake",
+      "pug",
+      "static gen",
+      "cms",
+      "designer",
+      "manager"
+   ],
+   "engines": {
+      "node": ">=8.10"
+   },
+   "dependencies": {
+      "adm-zip": "^0.4.11",
+      "axios": "^0.18.0",
+      "chokidar": "^2.0.4",
+      "cli-clear": "^1.0.4",
+      "command-line-args": "^5.0.2",
+      "express": "^4.16.3",
+      "filehound": "^1.16.4",
+      "fs-extra": "^6.0.1",
+      "js-yaml": "^3.12.0",
+      "jstransformer": "^1.0.0",
+      "jstransformer-marked": "^1.0.3",
+      "probe-image-size": "^4.0.0",
+      "pug": "^2.0.3",
+      "reload": "^2.3.0",
+      "riot-compiler": "^3.5.1",
+      "tracer": "^0.8.12",
+      "uglify-es": "^3.3.9",
+      "unfluff": "^3.0.1"
+   },
+   "devDependencies": {
+      "sitemap": ">=1.13.0"
+   }
+}

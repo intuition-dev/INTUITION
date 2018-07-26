@@ -1,0 +1,15 @@
+site_name: mBake Docs
+site_url: http://MetaBake.org
+repo_url: http://MetaBake.org
+pages:
+   - Home: index.md
+   - Server-less 1/S3: servl1.md
+   - Pug 1/Intro: pug1.md
+   - Server-less 2/FireBase: servl2.md
+   - Pug 2; Dynamic Binding: pug2.md
+
+   - Gentle/Mock-ups: mock.md
+   - Resources: res.md
+   - About: about.md
+
+theme: readthedocs

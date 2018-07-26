@@ -1,0 +1,67 @@
+
+form.grid-form(autocomplete="off")
+   fieldset
+      legend Auth Fire Form
+      div(data-row-span='2')
+         div(data-field-span='1')
+            label  Email
+            input(type='text', name='email', placeholder='al@gore.org')
+         div(data-field-span='1')
+            label Password
+            input(type='text', name='pswd', placeholder='654321')
+
+.buts
+   br
+   #up.button SignUp
+   #in.button SignIn
+   #out.button SigOut
+   #rest.button Reset
+
+style.
+   .buts * {
+      margin: .5rem;
+   }
+
+script.
+   loadjs.ready('style', function () {
+
+      $('#up').click(function(){
+         let email = $('#f1 [name="email"]').val()
+         let pswd = $('#f1 [name="pswd"]').val()
+         console.log(email,pswd)
+         auth.createUserWithEmailAndPassword(email,pswd)
+            .then(function(user) {
+               sendEmailVerification()
+            })
+            .catch(function(error){
+               //show error in .message
+               console.log(error)
+            })
+      })//click
+
+      $('#in').click(function(){
+         let email = $('#f1 [name="email"]').val()
+         let pswd = $('#f1 [name="pswd"]').val()
+         console.log(email,pswd)
+         auth.signInWithEmailAndPassword(email,pswd)
+            .then(function(user) {
+               console.log(user)
+            })
+            .catch(function(error){
+               console.log(fail, error)
+            })
+      })//click
+
+      $('#out').click(function(){
+         console.log('out')
+         auth.signOut()
+      })//click
+
+      $('#rest').click(function(){
+         let email = $('#f1 [name="email"]').val()
+         console.log(email)
+         auth.sendPasswordResetEmail(email)
+      })//click
+
+   }) //on ready
+

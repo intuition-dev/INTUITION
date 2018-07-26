@@ -1,0 +1,91 @@
+# mbake docs
+
+## Meta overview
+
+To get an overview of MetaBake pillars, here are the slides and video (best to open both side by side until we produce a better version):
+
+- [MetaBake quick demo](https://youtu.be/WyCdSFTUIvM)
+- [MetaBake Slides](http://prez.metabake.org/p)
+- [Meetup Video](https://vimeo.com/280212026)
+- [MetaBake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
+
+&nbsp;
+- <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>, to support this project, please join!
+
+
+Directory of related projects are in Resources on left, and source code are here <http://git.metabake.org>.
+
+### Install
+
+```
+   npm -g i mbake
+   mbake
+   mbake -c
+   cd CRUDA
+   mbake .
+   // Start a dev HTTP server, e.g.: 'Web Server for Chrome', 'POW for FF', or better use mounted S3 as explained below.
+```
+
+### Main CLI commands
+
+* `mbake` - Get version and help.
+* `mbake .` - Bake/make current directory and Pug files recursively.
+* `mbake -t .` - Convert Pug/Riot files to useable tag/js, e.g.: data binding.
+* `mbake -i .` - Convert dat.yaml static files to JSON, for dynamic binding. More about this in B-M-SPA docs.
+
+## How to setup mbake
+
+```
+# To install mbake:
+
+   npm -g i mbake
+
+   // and run it
+   mbake
+
+# to generate a sample project:
+
+   mbake -c
+
+   cd CRUDA
+
+# To generate HTML from Pug and Yaml:
+
+   mbake .
+
+or
+
+   mbake subfoldername
+
+# To see all current mbake switches:
+
+   mbake [enter]
+```
+So you can work 'extreme serverless', we show how to use mbake with
+- Amazon Web Services (AWS) S3 HTTP hosting
+- Mounting software Webdrive so you can mount AWS S3 as a drive
+- Google Firebase
+
+## Intro - How to use mbake:
+
+(Each of these is on the menu to the left.)
+
+1. Serverless I: Setup S3 as your HTTP server and mount it.
+2. Pug I: Learn Pug and static binding; view via S3 HTTP server.
+3. Serverless II: Use Firestore for pure client-side CRUD and authentication.
+4. Pug II: Do dynamic binding via Pug (and load.js)
+
+Here is what it should look like when done with 1-4
+- [mbake part 1](https://youtu.be/-KkPfAnEXyk)
+
+
+Serverless is MetaBake Pillar 1.
+Mount is Pillar 2.
+Pug is an example of Pillar 4.
+
+
+## Or: More gentle intro
+
+Click 'Creating Mockups' (to the left). Or take a 'Train-the-Trainer' online class, linked in Resources (to the left).
+
+
