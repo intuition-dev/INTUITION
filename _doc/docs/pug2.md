@@ -1,9 +1,9 @@
-## Dynamic tags, RIOTjs
+## Pug II: Do dynamic binding via Pug (and load.js).
 
 So lets use Pug to do dynamic binding.
-So now that we have a database api(and we know Pug0, we should allow for CRUD - and that is done in Dynamic binding.
+So now that we have a database API and we know Pug, we should allow for CRUD - and that is done in dynamic binding.
 
-We will load a library, RIOTjs. Loading has to be in sequence, and using 'MUI load js' works well:
+We will load a library, RIOT.js. Loading has to be in sequence, and using 'MUI load js' works well:
 - https://github.com/muicss/loadjs
 
 # CRUDA
@@ -15,7 +15,7 @@ In the example app (mbake -a) there is examples:
 
 ## mbake -t
 
-When you 'meta -c' it has a 'riotFirst' folder, that folder shows first example of how to use RIOTjs via pug.
+When you 'mbake -c' it has a 'riotFirst' folder, that folder shows first example of how to use Riot via Pug.
 
 
    first-tag
@@ -29,13 +29,13 @@ When you 'meta -c' it has a 'riotFirst' folder, that folder shows first example 
          }
 
 
-# In Pug write RIOTjs dynamic binding
+# In Pug, write Riot dynamic binding
 
-MembersTag folder has the dynamic RIOTjs tag done in Pug.
+MembersTag folder has the dynamic Riot tag done in Pug.
 
-Also it has auth example, it is up to you to manage user access for
-the users that don't have auth.
-( In Meta admin layouts folder I use Bulma's  modal, you can use as example)
+Also it has an auth example, it is up to you to manage user access for
+the users that do not have auth.
+(In Meta admin layouts folder we use Bulma's modal, you can use as example.)
 
 
 #### That is it for mbake
