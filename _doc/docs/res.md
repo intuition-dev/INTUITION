@@ -5,7 +5,7 @@
 
 These are the 3 main project, that leverage the 10 pillars:
 
-- [mbake](http://doc.metabake.org/mbake); CLI, and foundation. Plese give it stars: '*'
+- [mbake](http://doc.metabake.org/mbake); CLI, and foundation. Please give it stars: '*'
 - [SPA](http://doc.metabake.org/SPA); eg. Brick and Mortar, examples, eg: PhoneGap v8
 - [Meta](http://doc.metabake.org/meta); Vista, Bespoke starter for Admin/Build Services and WebIDE
 
@@ -79,4 +79,4 @@ Sins to eschew:
 
 We were involved with Struts and SilverStream. We plan to make MetaBake more popular than both.
 
-- Doc version 3.7.58
+- Doc version 3.7.61
