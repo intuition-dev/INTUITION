@@ -1,6 +1,6 @@
 ## Pug II: Do dynamic binding via Pug (and load.js).
 
-So lets use Pug to do dynamic binding.
+So let's use Pug to do dynamic binding.
 So now that we have a database API and we know Pug, we should allow for CRUD - and that is done in dynamic binding.
 
 We will load the Riot library. Loading has to be in sequence, and using 'MUI load js' works well:
@@ -15,7 +15,7 @@ In the example app (mbake -a) there are examples:
 
 ## mbake -t
 
-When you 'mbake -c' the generated project has a 'riotFirst' folder that contains an example of how to use Riot via Pug.
+When you 'mbake -c', the generated project has a 'riotFirst' folder that contains an example of how to use Riot via Pug.
 
 
    first-tag
