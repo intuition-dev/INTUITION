@@ -3,19 +3,19 @@
 So lets use Pug to do dynamic binding.
 So now that we have a database API and we know Pug, we should allow for CRUD - and that is done in dynamic binding.
 
-We will load a library, RIOT.js. Loading has to be in sequence, and using 'MUI load js' works well:
+We will load the Riot library. Loading has to be in sequence, and using 'MUI load js' works well:
 - https://github.com/muicss/loadjs
 
 # CRUDA
 
-In the example app (mbake -a) there is examples:
+In the example app (mbake -a) there are examples:
 - https://github.com/metabake/_mBake/tree/master/CRUDA/screens
 
 
 
 ## mbake -t
 
-When you 'mbake -c' it has a 'riotFirst' folder, that folder shows first example of how to use Riot via Pug.
+When you 'mbake -c' the generated project has a 'riotFirst' folder that contains an example of how to use Riot via Pug.
 
 
    first-tag
@@ -42,9 +42,9 @@ the users that do not have auth.
 
 mbake also has a mbake -m, and app use for mockups, more on the menu on left.
 
-Once you are comfortable with mbake and it's 3 pillars, you can go to either:
+Once you are comfortable with mbake and its 3 pillars, you can go to the Github project
 B-M SPA, the bread and butter section, that demos 5 more pillars
-or
+or to
 MetaBake, the advanced vista section, with 2 more pillars.
 
 
