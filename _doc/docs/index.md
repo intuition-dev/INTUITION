@@ -75,7 +75,7 @@ So you can work 'extreme serverless', we show how to use mbake with
 1. Serverless I: Setup S3 as your HTTP server and mount it.
 2. Pug I: Learn Pug and static binding; view via S3 HTTP server.
 3. Serverless II: Use Firestore for pure client-side CRUD and authentication.
-4. Pug II: Do dynamic binding via Pug (and load.js)
+4. Pug II: Do dynamic binding via Pug (and load.js).
 
 Here is what it should look like when done with 1-4
 - [mbake part 1](https://youtu.be/-KkPfAnEXyk)
