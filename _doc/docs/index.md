@@ -1,8 +1,7 @@
 # mbake 
 
-10X faster WebApp development via
-Low code.
-MetaBake.org
+10 times faster web app development via low code.
+metabake.org
 Join the movement!
 
 ## Meta overview
