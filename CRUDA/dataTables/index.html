@@ -1,0 +1,94 @@
+<!DOCTYPE html><html><head><!--<script src="https://console.re/connector.js" data-channel="MY_NAME" id="consolerescript"></script>--><script>ROOT = '' //- sets global pug and .js from dat.yaml
+console.log('root','')
+let _start=Date.now()</script><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MetaBake.org</title><link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon"><!-- specific:--><script>const fconfig = {
+	apiKey: 'AIzaSyASZVGB4s1uKB4OdxPCcbJ3ebf44KUYdIE',
+	authDomain: 'mbake1-1.firebaseapp.com',
+	projectId: 'mbake1-1'
+}
+</script><!-- example use ////////////////////////////////////////////////////////////* put in header or better yet in a RIOT tag, ex:
+	link(rel='icon', href='....favicon.ico')
+	include crud
+*/
+// in FireBase set:
+// allow read, write: if request.auth.token.email_verified == true ;
+--><!-- CRUD generic ///////////////////////////////////////////////////////////////////--><script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script><script>//CRUD ver original 3.06.25
+firebase.initializeApp(fconfig)
+const auth =firebase.auth()
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+
+const db  = firebase.firestore()
+const dsettings = {/* your settings... */ timestampsInSnapshots: true}
+db.settings(dsettings)
+
+function isUserIn() { // use this to check if user is auth and valid
+	if(!auth.currentUser) return false
+	return auth.currentUser.emailVerified
+}
+
+function sendEmailVerification() {
+		if(!isUserIn()) {
+			console.log('sending', auth.currentUser)
+			auth.currentUser.sendEmailVerification()
+		}
+		else
+			console.log('no currentUser')
+}
+
+auth.onAuthStateChanged(function(user_) {
+	if (isUserIn()) {
+		console.log('CRUDauth', isUserIn())
+	}
+	else {
+		console.log('CRUDauth','bye')
+	}
+})</script><script src="https://cdn.jsdelivr.net/npm/loadjs@3.5.4/dist/loadjs.js"></script><script src="https://cdn.jsdelivr.net/npm/riot@3.10.3/riot.min.js"></script></head><style>.delayShowing { opacity: 0.01; }</style><body><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/assets/js/setup.js"></script><div class="c-offcanvas-content-wrap"><nav class="columns has-background-black has-text-white is-mobile is-gapless"><div class="column left"><div class="pad">My App</div></div><div class="column right"><a class="is-hidden-mobile navbar-item" href="/screens/auth">Auth</a><a class="is-hidden-mobile navbar-item" href="/screens/members">Crud</a><a class="is-hidden-mobile navbar-item" href="/screens/membersTag">Tag</a><a class="js-offcanvas-trigger" id="off-cbut" href="#off-canvas"><i class="icon" data-vi="menu" data-vi-size="28"></i></a></div></nav><div id="router"><div class="pad"><table class="display" id="list1" width="95%"></table><script>var data = [
+   [
+      "Tiger Nixon",
+      "System Architect",
+      "Edinburgh",
+      "5421",
+      "2011/04/25",
+      "$3,120"
+   ],
+   [
+      "Garrett Winters",
+      "Director",
+      "Edinburgh",
+      "8422",
+      "2011/07/25",
+      "$5,300"
+   ]
+]
+
+loadjs([
+   '//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css'
+   ,'//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'
+], 'dwjs')//load
+loadjs.ready('dwjs', function () {
+   loadjs([
+      '//cdn.datatables.net/select/1.2.6/js/dataTables.select.min.js'
+   ], 'dwjs2')//load
+})//ready
+loadjs.ready(['dwjs2'], function () {
+
+   datatable =  $('#list1').DataTable( {
+      //scrollY: 400,
+      paging: false,
+      //'lengthChange': false,
+      'info' : false,
+      'bFilter' : false,
+      select: true,
+      data: data,
+   } )//dt
+
+   loadjs.done('dw')// data table is defined!!! 
+
+   $('#list1 tbody').on('click', 'tr', function () {
+      var data = datatable.row( this ).data()
+      var item = data[0]
+
+      //*** clicked a row event
+      console.log( item )
+   })
+
+})//ready</script></div><!--link(href= ROOT + '/assets/css/debug.css', rel='stylesheet')--></div></div><div class="delayShowing" id="off-canvas"><nav class="has-background-black has-text-white"><div class="pad">My App</div></nav><ul class="menu-list" id="offItems"><li><a href="">Home2</a></li><li><a href="/screens/scrA">One</a></li><li><a href="/screens/scrB">Two</a></li></ul></div><link href="/assets/css/bulma.css" onload="cssLoaded()" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"><link href="/assets/css/main.css" rel="stylesheet"><!- mB vv3.7.59 on 2018-07-26T17:41:30.702Z --></body></html>

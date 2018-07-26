@@ -16,9 +16,9 @@ $(document).ready(function () {
 })
 
 loadjs([
-	'https://cdn.jsdelivr.net/npm/signals@1.0.0/dist/signals.min.js'
-	,'//cdn.jsdelivr.net/npm/intersection-observer@0.5.0/intersection-observer.js'
-	, 'https://unpkg.com/vivid-icons@1.0.3/dist/vivid-icons.min.js'
+	//'https://cdn.jsdelivr.net/npm/signals@1.0.0/dist/signals.min.js'
+	//,'//cdn.jsdelivr.net/npm/intersection-observer@0.5.0/intersection-observer.js'
+	'https://unpkg.com/vivid-icons@1.0.3/dist/vivid-icons.min.js'
 	, 'https://unpkg.com/js-offcanvas/dist/_js/js-offcanvas.pkgd.min.js'
 	, 'https://unpkg.com/js-offcanvas/dist/_css/prefixed/js-offcanvas.css'
 	, ROOT + '/assets/css/gridforms/gridforms.css'
@@ -66,35 +66,3 @@ function getUrlVars() {
 	}
 	return vars
 }
-
-function inView(el) { // is element in viewport
-	//special bonus for jQuery
-	if (typeof jQuery === "function" && el instanceof jQuery) {
-		el = el[0];
-	}
-
-	var rect = el.getBoundingClientRect()
-
-	return (
-		rect.top >= 0 &&
-		rect.left >= 0 &&
-		rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-		rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
-	)
-}
-
-// polyfills
-if (!window.Promise) {
-	/* load bundle 'promise' */
-	loadjs(['//cdn.jsdelivr.net/es6-promise-polyfill/1.2.0/promise.min.js'], 'promise', {
-		async: false //required due to loadjs bug with bundles
-	})
-}
-else loadjs.done('promise') /* we already have it */
-
-if (!window.fetch) {
-	loadjs(['//cdn.jsdelivr.net/fetch/2.0.1/fetch.min.js'], 'fetch', {
-		async: false //required due to loadjs bug with bundles
-	})
-}
-else loadjs.done('fetch')

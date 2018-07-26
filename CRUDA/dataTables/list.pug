@@ -1,0 +1,55 @@
+
+table#list1.display(width='95%')
+
+script.
+   var data = [
+      [
+         "Tiger Nixon",
+         "System Architect",
+         "Edinburgh",
+         "5421",
+         "2011/04/25",
+         "$3,120"
+      ],
+      [
+         "Garrett Winters",
+         "Director",
+         "Edinburgh",
+         "8422",
+         "2011/07/25",
+         "$5,300"
+      ]
+   ]
+
+   loadjs([
+      '//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css'
+      ,'//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'
+   ], 'dwjs')//load
+   loadjs.ready('dwjs', function () {
+      loadjs([
+         '//cdn.datatables.net/select/1.2.6/js/dataTables.select.min.js'
+      ], 'dwjs2')//load
+   })//ready
+   loadjs.ready(['dwjs2'], function () {
+
+      datatable =  $('#list1').DataTable( {
+         //scrollY: 400,
+         paging: false,
+         //'lengthChange': false,
+         'info' : false,
+         'bFilter' : false,
+         select: true,
+         data: data,
+      } )//dt
+
+      loadjs.done('dw')// data table is defined!!! 
+
+      $('#list1 tbody').on('click', 'tr', function () {
+         var data = datatable.row( this ).data()
+         var item = data[0]
+
+         //*** clicked a row event
+         console.log( item )
+      })
+
+   })//ready
