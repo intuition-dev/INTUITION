@@ -29,10 +29,12 @@ function version() {
    console.log()
    console.log(' ----------------------------------------------------------------')
    console.log(' for a starter declarative web app CRUD/Pug app: mbake -c')
-   console.log(' for an example blog|RIOT/Pug: mbake -b')
    console.log(' for a starter SPA/PhoneGap: mbake -s')
-   console.log(' for a beginner mockup up: mbake -m')
    console.log(' for a starter admin|build/Meta cloud service: mbake -a')
+
+   console.log(' for a FullPage site: mbake -f')
+   console.log(' for a beginner mockup up: mbake -m')
+   console.log(' for an example blog|RIOT/Pug: mbake -b')
    console.log(' Full docs: http://doc.MetaBake.org/mbake')
    console.log()
 
@@ -45,6 +47,7 @@ const optionDefinitions = [
    { name: 'admin', alias: 'a', type: Boolean },
    { name: 'mock', alias: 'm', type: Boolean },
    { name: 'spa', alias: 's', type: Boolean },
+   { name: 'fullPage', alias: 'f', type: Boolean },
    { name: 'crud', alias: 'c', type: Boolean },
    { name: 'items', alias: 'i', type: Boolean },
    { name: 'tag', alias: 't', type: Boolean },
@@ -68,14 +71,14 @@ function unzipA() {
    let src:string =__dirname+ '/adminEG.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an example admin|build Meta webapp')
+   console.log('extracted an starter admin|build Meta webapp')
    process.exit()
 }
 function unzipS() {
    let src:string =__dirname+ '/SPA.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an example SPA|PhoneGap app')
+   console.log('extracted an starter SPA|PhoneGap app')
    process.exit()
 }
 function unzipC() {
@@ -90,6 +93,13 @@ function unzipB() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
    console.log('extracted an example blog app')
+   process.exit()
+}
+function unzipF() {
+   let src:string =__dirname+ '/fullPage.zip'
+   let zip = new AdmZip(src)
+   zip.extractAllTo(cwd , /*overwrite*/true)
+   console.log('extracted an fullpage site starter')
    process.exit()
 }
 
@@ -151,6 +161,8 @@ else if(argsParsed.mock)
    unzipM()
 else if(argsParsed.admin)
    unzipA()
+else if(argsParsed.fullPage)
+   unzipF()
 else if(argsParsed.crud)
    unzipC()
 else if(argsParsed.blog)

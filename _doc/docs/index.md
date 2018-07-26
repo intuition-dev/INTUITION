@@ -1,12 +1,17 @@
 # mbake docs
 
+10X faster WebApp development via
+Low code.
+MetaBake.org
+Join the movement!
+
 ## Meta overview
 
 To get an overview of MetaBake pillars, here are the slides and video (best to open both side by side until we produce a better version):
 
 - [MetaBake quick demo](https://youtu.be/WyCdSFTUIvM)
-- [MetaBake Slides](http://prez.metabake.org/p)
 - [Meetup Video](https://vimeo.com/280212026)
+- [MetaBake Slides](http://prez.metabake.org/p)
 - [MetaBake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
 &nbsp;
