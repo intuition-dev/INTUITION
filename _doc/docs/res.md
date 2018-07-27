@@ -25,12 +25,12 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 
 
 #### Videos:
-
-- [MetaBake quick demo](https://youtu.be/WyCdSFTUIvM)
-- [Meetup Video](https://vimeo.com/280212026)
-- [MetaBake Slides](http://prez.metabake.org/p)
-- [mbake part 1](https://youtu.be/-KkPfAnEXyk)
+- [MetaBake Quick Demo](https://youtu.be/WyCdSFTUIvM)
+- [Meetup Video](https://vimeo.com/282034037)
+- [MetaBake Full Slides](http://prez.metabake.org/p)
 - [MetaBake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
+
+- [mbake CLI](https://youtu.be/-KkPfAnEXyk)
 
 - [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
 - [SPA](https://youtu.be/LHFjjDPlU3A)
@@ -39,7 +39,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 
 ## Meta Definitions:
 - Pug : Low Code Declarative 4GL markup. Custom 'tags' in Pug via RIOTjs
-- Server-less: No known end point. E.g.: CDN, AWS Cognito. Not server-less in Meta-talk: AWS Lambda
+- Serverless: No known end point. E.g.: CDN, AWS Cognito. Not Serverless in Meta-talk: AWS Lambda
 - Team Player: Benefits group via Cloud Dev Environment, ex: CodeAnywhere+Meta. Selfish: Local dev. environment.
 - Front End Framework: Google/search for 'Front End Framework' yields Bootstrap, Bulma, etc. We have examples with a few in Github project of same name.
 - Meta: Building software that builds software. Has more than one level of meaning.
@@ -72,11 +72,11 @@ Sins to eschew:
 - [Prepros.io](https://prepros.io/help/autoprefixer)
 - [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
 - [More examples and plugins](https://github.com/metabake/examples-plugins)
-- [High tech](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f) Server-less is low tech. As opposed to high tech.
+- [High tech](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f) Serverless is low tech. As opposed to high tech.
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 
 ### Creators of Meta
 
 We were involved with Struts and SilverStream. We plan to make MetaBake more popular than both.
 
-- Doc version 3.7.61
+- Doc version 3.7.61a
