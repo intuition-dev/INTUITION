@@ -26,7 +26,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 
 #### Videos:
 - [MetaBake Quick Demo](https://youtu.be/WyCdSFTUIvM)
-- [Meetup Video](https://vimeo.com/282034037)
+- <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
 - [MetaBake Full Slides](http://prez.metabake.org/p)
 - [MetaBake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
@@ -79,4 +79,4 @@ Sins to eschew:
 
 We were involved with Struts and SilverStream. We plan to make MetaBake more popular than both.
 
-- Doc version 3.7.61a
+- Doc version 3.7.61b

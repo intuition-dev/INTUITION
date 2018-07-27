@@ -8,7 +8,7 @@ To get an overview of MetaBake pillars:
 
 - [MetaBake Quick Demo](https://youtu.be/WyCdSFTUIvM)
 
-- [Meetup Video](https://vimeo.com/282034037)
+- <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
 
 - [MetaBake Full Slides](http://prez.metabake.org/p)
 
