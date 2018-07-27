@@ -54,6 +54,7 @@ Sins to eschew:
 ### Other:
 
 - <a href='https://www.npmjs.com/package/mbake' target='_blank'>Check for latest version of mbake</a>
+ - <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
 - [Pug](https://pug.metabake.org)
 - [RIOTjs](https://riot.js.org/)
 - [Grid Forms](http://kumailht.com/gridforms)

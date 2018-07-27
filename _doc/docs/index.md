@@ -18,7 +18,8 @@ To get an overview of MetaBake pillars:
 - <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>, to support this project, please join!
 
 
-Directory of related projects is in Resources on left, and source code is here: <http://git.metabake.org>.
+Directory of related projects is in Resources on left, and source code is here:
+- <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
 
 ### Install
 
