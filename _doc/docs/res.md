@@ -7,7 +7,7 @@ These are the 3 main project, that leverage the 10 pillars:
 
 - [mbake](http://doc.metabake.org/mbake); CLI, and foundation. Please give it stars: '*'
 - [SPA](http://doc.metabake.org/SPA); eg. Brick and Mortar, examples, eg: PhoneGap v8
-- [Meta](http://doc.metabake.org/meta); Vista, Bespoke starter for Admin/Build Services and WebIDE
+- [Meta](http://doc.metabake.org/meta); Vista, Bespoke starter for Admin/Build automatic Services and WebIDE
 
 'Train-the-Trainer' is scheduled about monthly, and it is announced in the forum. Feel free to post questions there.
 
@@ -54,7 +54,8 @@ Sins to eschew:
 ### Other:
 
 - <a href='https://www.npmjs.com/package/mbake' target='_blank'>Check for latest version of mbake</a>
- - <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
+- <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
+- [Other Static Generators](https://www.staticgen.com)
 - [Pug](https://pug.metabake.org)
 - [RIOTjs](https://riot.js.org/)
 - [Grid Forms](http://kumailht.com/gridforms)
@@ -74,10 +75,11 @@ Sins to eschew:
 - [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
 - [More examples and plugins](https://github.com/metabake/examples-plugins)
 - [High tech](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f) Serverless is low tech. As opposed to high tech.
+- [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 
 ### Creators of Meta
 
 We were involved with Struts and SilverStream. We plan to make MetaBake more popular than both.
 
-- Doc version 3.7.61b
+- Doc version 3.7.61d
