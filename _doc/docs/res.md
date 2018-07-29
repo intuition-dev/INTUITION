@@ -65,6 +65,7 @@ Sins to eschew:
 - [Vivid Icons](https://webkul.github.io/vivid/cheatsheet.html)
 - [Front End Frameworks](https://github.com/metabake/front-end-frameworks
 ); with SASS or Less
+- [pagination.js](http://pagination.js.org)
 - [Firestore](https://firebase.google.com/docs/firestore)
 - [Webmaster](https://www.google.com/webmasters); w/ real time SEO help
 - [JS-offcanvas](https://github.com/vmitsaras/js-offcanvas)
