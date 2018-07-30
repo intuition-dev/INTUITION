@@ -72,6 +72,7 @@ Sins to eschew:
 - <a href='https://github.com/metabake/B-M-SPA/tree/master/blogRiot' target='_blank'>Example of static/dynamic items: Blog</a>
 - [Resilient web design](https://resilientwebdesign.com/introduction)
 - [JS Signals](https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations)
+= [slick carousel](http://kenwheeler.github.io/slick/)
 - [Prepros.io](https://prepros.io/help/autoprefixer)
 - [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
 - [More examples and plugins](https://github.com/metabake/examples-plugins)
@@ -83,4 +84,4 @@ Sins to eschew:
 
 We were involved with Struts and SilverStream. We plan to make MetaBake more popular than both.
 
-- Doc version 3.7.61d
+- Doc version 3.7.62
