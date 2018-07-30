@@ -72,7 +72,8 @@ Sins to eschew:
 - <a href='https://github.com/metabake/B-M-SPA/tree/master/blogRiot' target='_blank'>Example of static/dynamic items: Blog</a>
 - [Resilient web design](https://resilientwebdesign.com/introduction)
 - [JS Signals](https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations)
-= [slick carousel](http://kenwheeler.github.io/slick/)
+- [slick carousel](http://kenwheeler.github.io/slick/)
+- [My Device](https://www.mydevice.io)
 - [Prepros.io](https://prepros.io/help/autoprefixer)
 - [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
 - [More examples and plugins](https://github.com/metabake/examples-plugins)
