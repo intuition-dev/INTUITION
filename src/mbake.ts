@@ -23,7 +23,7 @@ function version() {
    console.log(b.ver()) // tsc
    console.log('from '+ __dirname)
    console.log('usage: mbake .')
-   console.log(' or mbake any_dir to make(bake) a declarative/Pug app recursively')
+   console.log(' or mbake any_dir to make(bake) a declarative low code(put) app recursively')
    console.log(' to process RIOT _tag.pug tags, and also Pug : mbake -t .')
    console.log(' to process dat_i items to items.json, and also Pug mbake -i .')
    console.log()
