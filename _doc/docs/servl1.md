@@ -1,6 +1,6 @@
-## Serverless I: Setup S3 as your HTTP server and mount it
+## CLoud V2 I: Setup S3 as your HTTP server and mount it
 
-mbake is 'extreme serverless'. You do not need to install or maintain any HTTP, DB or any other server.
+mbake is no-servers. You do not need to install or maintain any HTTP, DB or any other server.
 
 Exception: when using Meta admin/build as a bespoke automation tool.
 

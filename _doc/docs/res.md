@@ -1,5 +1,12 @@
 
-# Resources
+## Awesome Low Code list of MetaBake resources
+
+
+## Join the low code movement,
+### for 10X faster web app development, with MetaBake.org
+
+-[Upcoming online class](https://www.eventbrite.com/e/join-the-low-code-movement-develop-crud-faster-with-pug-riot-firebase-and-s3-tickets-48524849130)
+
 
 # TOC:
 
@@ -14,6 +21,12 @@ These are the 3 main project, that leverage the 10 pillars:
 - <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>.
 
 Prerequisites: you should know HTML and CSS. If you need to catch up, we recommend 'Design and Build Websites' by Jon Duckett. You will also learn Pug, to get started on Pug, watch [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
+
+
+## Articles
+
+- [Pug on Medium](https://medium.com/@WolfgangGehner/using-pug-for-static-and-dynamic-data-binding-56a1cc378b81
+)
 
 
 ## Commercial hosting, services and support for MetaBake
@@ -39,7 +52,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 
 ## Meta Definitions:
 - Pug : Low Code Declarative 4GL markup. Custom 'tags' in Pug via RIOTjs
-- Serverless: No known end point. E.g.: CDN, AWS Cognito. Not Serverless in Meta-talk: AWS Lambda
+- Cloud v2: No known end point. E.g.: CDN, AWS Cognito. AWS Lambda does have a server end point, so it is not Cloud v2
 - Team Player: Benefits group via Cloud Dev Environment, ex: CodeAnywhere+Meta. Selfish: Local dev. environment.
 - Front End Framework: Google/search for 'Front End Framework' yields Bootstrap, Bulma, etc. We have examples with a few in Github project of same name.
 - Meta: Building software that builds software. Has more than one level of meaning.
@@ -77,7 +90,7 @@ Sins to eschew:
 - [Prepros.io](https://prepros.io/help/autoprefixer)
 - [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
 - [More examples and plugins](https://github.com/metabake/examples-plugins)
-- [High tech](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f) Serverless is low tech. As opposed to high tech.
+- [High tech](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f) CLoud v2 is low tech. As opposed to high tech.
 - [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 
@@ -85,4 +98,4 @@ Sins to eschew:
 
 We were involved with Struts and SilverStream. We plan to make MetaBake more popular than both.
 
-- Doc version 3.7.62
+- Doc version 3.7.63

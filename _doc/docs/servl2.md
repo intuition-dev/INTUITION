@@ -1,5 +1,5 @@
 
-# Serverless II: Use Firestore for pure client-side CRUD and authentication
+# Cloud v2 II: Use Firestore for pure client-side CRUD and authentication
 
 Firebase is well documented on the web. Read up on Firebase/Firestore to learn how to use it.
 

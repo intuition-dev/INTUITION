@@ -67,7 +67,7 @@ or
 
    mbake [enter]
 ```
-So you can work 'extreme serverless', we show how to use mbake with
+So you can work Cloud v2 (no servers), we show how to use mbake with
 - Amazon Web Services (AWS) S3 HTTP hosting
 - Mounting software Webdrive so you can mount AWS S3 as a drive
 - Google Firebase
@@ -76,16 +76,16 @@ So you can work 'extreme serverless', we show how to use mbake with
 
 (Each of these is on the menu to the left.)
 
-1. Serverless I: Setup S3 as your HTTP server and mount it.
+1. Cloud V2 I: Setup S3 as your HTTP server and mount it.
 2. Pug I: Learn Pug and static binding; view via S3 HTTP server.
-3. Serverless II: Use Firestore for pure client-side CRUD and authentication.
+3. Cloud V2 II: Use Firestore for pure client-side CRUD and authentication.
 4. Pug II: Do dynamic binding via Pug (and load.js).
 
 Here is what it should look like when done with 1-4
 - [mbake part 1](https://youtu.be/-KkPfAnEXyk)
 
 
-Serverless is MetaBake Pillar 1.
+Cloud v2 is MetaBake Pillar 1.
 Mount is Pillar 2.
 Pug is an example of Pillar 4.
 

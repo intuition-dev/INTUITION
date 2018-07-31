@@ -3,6 +3,11 @@
 - [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
 - [Chat: MetaBake.org ](http://chat.MetaBake.org)
 
+## Join the low code movement,
+### for 10X faster web app development, with MetaBake.org
+
+-[Upcoming online class](https://www.eventbrite.com/e/join-the-low-code-movement-develop-crud-faster-with-pug-riot-firebase-and-s3-tickets-48524849130)
+
 
 # About MetaBake
 

@@ -4,7 +4,7 @@
 mbake lets you rapidly create mockups.
 
 ```
-   # We recommend to 'cd' to your S3 mounted drive and work there. Also read Serverless I (see link to the left).
+   # We recommend to 'cd' to your S3 mounted drive and work there. Also read Cloud V2 I (see link to the left).
 
    mbake -m
    cd mock
