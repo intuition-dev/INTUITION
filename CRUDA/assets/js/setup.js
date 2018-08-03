@@ -44,6 +44,15 @@ loadjs.ready(['css', 'device', 'cssJs'], function () {
    loadjs.done('style')
 })
 
+
+function supportsIntersectionObserver() {
+   return (
+     'IntersectionObserver' in global &&
+     'IntersectionObserverEntry' in global &&
+     'intersectionRatio' in IntersectionObserverEntry.prototype
+   )
+ }
+
 // usage: ////////////////////////////////////////////////////////////////////
 loadjs.ready(['style'], function () {// 'show' page, ex: unhide
 
