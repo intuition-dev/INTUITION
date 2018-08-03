@@ -1,5 +1,8 @@
 ## Pug II: Do dynamic binding via Pug (and load.js).
 
+Note: before creating a tag in pug, you may first want to get it wrong as just an include pug. Then, when it works as include, make it a tag.
+
+
 So let's use Pug to do dynamic binding.
 So now that we have a database API and we know Pug, we should allow for CRUD - and that is done in dynamic binding.
 

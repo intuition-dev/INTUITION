@@ -60,8 +60,13 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 
 Sins to eschew:
 - js, prefer pug
-- local IDE dev, we use cloud
-- server side development, use client side
+- local IDE dev, use Cloud IDE
+
+
+## Examples and plugins:
+- [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
+- [Metabake Examples and plugins](https://github.com/metabake/examples-plugins)
+- [https://github.com/cunhasb/metaBakeSandbox]
 
 
 ### Other:
@@ -76,8 +81,6 @@ Sins to eschew:
 - [Loader: loadjs](https://github.com/muicss/loadjs)
 - [Debug console.re](http://console.re)
 - [Vivid Icons](https://webkul.github.io/vivid/cheatsheet.html)
-- [Front End Frameworks](https://github.com/metabake/front-end-frameworks
-); with SASS or Less
 - [pagination.js](http://pagination.js.org)
 - [Firestore](https://firebase.google.com/docs/firestore)
 - [Webmaster](https://www.google.com/webmasters); w/ real time SEO help
@@ -88,8 +91,6 @@ Sins to eschew:
 - [slick carousel](http://kenwheeler.github.io/slick/)
 - [My Device](https://www.mydevice.io)
 - [Prepros.io](https://prepros.io/help/autoprefixer)
-- [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
-- [More examples and plugins](https://github.com/metabake/examples-plugins)
 - [High tech](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f) CLoud v2 is low tech. As opposed to high tech.
 - [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
