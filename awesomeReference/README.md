@@ -29,7 +29,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 )
 
 
-## Commercial hosting, services and support for MetaBake
+## CERTIFIED by MetaBake.org: Commercial hosting, services and support for MetaBake
 
 - <http://www.metabake.net>
 - <http://voncode.com>
