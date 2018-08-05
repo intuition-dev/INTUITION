@@ -11,6 +11,7 @@ a:focus { outline: none; }
 nav {
    margin-bottom: 0 !important;
    padding-right: .75rem;
+   overflow: scroll;
 }
 nav a {
    color: hsl(0, 0%, 86%) !important;
@@ -50,7 +51,7 @@ nav a:hover {
 .truncate-ellipsis {
    display: table;
    table-layout: fixed;
-   max-width: 100%;
+   max-width: calc(100% - 1rem);
    white-space: nowrap;
 }
 .truncate-ellipsis > * {
