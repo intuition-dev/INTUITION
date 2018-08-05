@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "3.7.68",
+   "version": "3.8.1",
    "description": "Make(bake) a declarative/pug app recursively, including any static or dynamic app binding, http://MetaBake.org",
    "main": "mbake.js",
    "bin": {
@@ -48,7 +48,7 @@
    },
    "devDependencies": {
       "sitemap": ">=1.13.0",
-      "console-remote-client": "^0.4.4",
+      "console-remote-client": "^0.4.4"
 
    }
 }

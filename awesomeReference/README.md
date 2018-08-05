@@ -27,7 +27,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 
 - [Pug on Medium](https://medium.com/@WolfgangGehner/using-pug-for-static-and-dynamic-data-binding-56a1cc378b81
 )
-
+- [Riot on Medium](https://medium.com/@uptimevic/learn-riot-js-dynamic-binding-in-90-seconds-fcece5237c67)
 
 ## CERTIFIED by MetaBake.org: Commercial hosting, services and support for MetaBake
 
