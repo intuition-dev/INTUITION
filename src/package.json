@@ -47,6 +47,8 @@
       "unfluff": "^3.0.1"
    },
    "devDependencies": {
-      "sitemap": ">=1.13.0"
+      "sitemap": ">=1.13.0",
+      "console-remote-client": "^0.4.4",
+
    }
 }
