@@ -1,8 +1,11 @@
 # mbake
 
-metabake.org: 10 times faster web app development via low code. Join the movement!
+Low-code + Low-tech = 10X faster web app development.
 
-## Meta overview
+With Metabake's modern development approach, it is not about replacing your tech stack with another tech stack -- it is about eliminating it!
+
+
+## Metabake  overview
 
 To get an overview of MetaBake pillars:
 
@@ -21,7 +24,7 @@ To get an overview of MetaBake pillars:
 Directory of related projects is in Resources on left, and source code is here:
 - <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
 
-### Install
+### mbake install
 
 ```
    npm -g i mbake
@@ -32,7 +35,7 @@ Directory of related projects is in Resources on left, and source code is here:
    // Start a dev HTTP server, e.g.: 'Web Server for Chrome', 'POW for FF', or better use mounted S3 as explained below.
 ```
 
-### Main CLI commands
+### CLI commands
 
 * `mbake` - Get version and help.
 * `mbake .` - Bake/make current directory and Pug files recursively.

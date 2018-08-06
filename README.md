@@ -5,46 +5,21 @@
 
 
 ## Low-code + Low-tech = 10X faster web app development.
-### With MetaBake's modern development, it is not about replacing your tech stack with another tech stack.
-## It is about eliminating it!
-
+### With Metabake's modern development approach, it is not about replacing your tech stack with another tech stack -- it is about eliminating it!
 
 -[Upcoming online class](https://www.eventbrite.com/e/join-the-low-code-movement-develop-crud-faster-with-pug-riot-firebase-and-s3-tickets-48524849130)
-
 
 # About MetaBake
 
 MetaBake.org is a development productivity suite. It should allow you to deliver 10 times faster then legacy development stacks/methodologies. We have found that - with MetaBake.org; - the work of 6 developers over 6 months can be done by 3 developers in 3 weeks. We expect you to achieve the same productivity gains.
 
-How does open source MetaBake deliver 10X faster web app development,
-and therefore 10x cheaper? We start with Cloud 2.0, where *ALL* the
-server side and middle-ware development and operations are completely
-eliminated. A lot less work and costs, as up to 2/3 of your time and
-cost used to go. Not enough organizations are fully leveraging the new
-Cloud 2.0
+How does open source Metabake deliver 10X faster and cheaper web app development? Not enough organizations are fully leveraging the new Cloud 2.0. With Cloud 2.0 services like Firebase and S3 you get rid of **ALL** server-side and middleware development and operations. This is where up to 2/3 of your time and cost used to go. Gone!
 
-Next, on the client side (eg: browser apps or mobile app) we do
-something similar: reduce code, and reduce tech stacks and complexity.
-How? In school textbooks you learned about 1st generation language, 2nd
-generation language and our current 3rd generation languages, such as
-JavaScript, PHP and Ruby. Each time we jumped generation it lead to huge
-productivity boost. So we position Pug, used by Node/Express, as a 4th
-generation language - with equality big productivity jump. We show you
-how to build complete applications in Pug. By maximizing use of low-code
-approach, we demonstrate much faster and cheaper web app and mobile app
-development.
+On the client side (browser apps and mobile apps) Metabake does something similar: it eliminates much of the tech stack and reduces the amount of coding and complexity. How? In school textbooks you learned about 1st generation languages, 2nd generation languages and our current 3rd generation languages, such as JavaScript, PHP and Ruby. With each new generation we achieved huge productivity improvements. We consider 'Pug'--also used by Node/Express--a 4th generation language that helps gain an equally big jump in productivity. With Metabake we show you how to build complete applications in Pug. With this low-code approach we demonstrate much faster and cheaper web app and mobile app development.
 
-There are 10 pillars to Metabake's faster web app development, I'll just
-mention one more, what is called  automatic programming. You heard of
-'Statically generated' approach, where people use to generate their
-website or a blog, Ex: Hugo or Jekyll. You can in fact use a generator
-to write your web app! Another big step.
+The Metabake approach has 10 pillars that are the foundation for achieving mind-blowing development productivity gains. I'll just mention one more pillar here: automatic programming. You've probably heard of 'static site generators' like Hugo or Jekyll that people use to generate their web site or a blog. Automatic programming means using a similar generator to write your web app! This can get you to yet another level of productivity.
 
-To learn more about Metabake's approach, including all 10 pillars and
-full examples for 10 X faster web app development, go to metabake.org.
-Or, to dive in right away, start with 'mbake CLI' on github, as the
-first step into 10X faster web app development.
-
+To learn more about the Metabake approach, including all 10 pillars and full examples, go to metabake.org. Or, to dive in right away, use the 'mbake CLI' from github.com/metabake as the first step into 10X faster web app development.
 
 #### MetaBake.org productivity is based on three modules:
 
