@@ -7,15 +7,15 @@ With Metabake's modern development approach, it is not about replacing your tech
 
 ## Metabake  overview
 
-To get an overview of MetaBake pillars:
+To get an overview of Metabake pillars:
 
-- [MetaBake Quick Demo](https://youtu.be/WyCdSFTUIvM)
+- [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
 
 - <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
 
-- [MetaBake Full Slides](http://prez.metabake.org/p)
+- [Metabake Full Slides](http://prez.metabake.org/p)
 
-- [MetaBake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
+- [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
 &nbsp;
 - <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>, to support this project, please join!
@@ -88,7 +88,7 @@ Here is what it should look like when done with 1-4
 - [mbake part 1](https://youtu.be/-KkPfAnEXyk)
 
 
-Cloud v2 is MetaBake Pillar 1.
+Cloud v2 is Metabake Pillar 1.
 Mount is Pillar 2.
 Pug is an example of Pillar 4.
 

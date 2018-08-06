@@ -1,9 +1,9 @@
 
-## Awesome Low-Code, Low-Tech list of MetaBake resources
+## Awesome Low-Code, Low-Tech list of Metabake resources
 
 
 ## Low-code + Low-tech = 10X faster web app development.
-### With MetaBake's modern development, it is not about replacing your tech stack with another tech stack.
+### With Metabake's modern development, it is not about replacing your tech stack with another tech stack.
 ## It is about eliminating it!
 
 
@@ -11,12 +11,12 @@
 
 ## Meta overview
 
-To get an overview of MetaBake pillars:
+To get an overview of Metabake pillars:
 
-- [MetaBake Quick Demo](https://youtu.be/WyCdSFTUIvM)
+- [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
 - <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
-- [MetaBake Full Slides](http://prez.metabake.org/p)
-- [MetaBake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
+- [Metabake Full Slides](http://prez.metabake.org/p)
+- [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
 &nbsp;
 - <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>, to support this project, please join!
@@ -48,7 +48,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 - [Riot on Medium](https://medium.com/@uptimevic/learn-riot-js-dynamic-binding-in-90-seconds-fcece5237c67)
 - [Amazon vs. Google for Cloud v2.0 on Medium](https://medium.com/@WolfgangGehner/amazon-vs-google-for-cloud-2-0-web-apps-extreme-server-less-for-data-and-authentication-cc7fa247e853)
 
-## CERTIFIED by MetaBake.org: Commercial hosting, services and support for MetaBake
+## CERTIFIED by Metabake.org: Commercial hosting, services and support for Metabake
 
 - <http://www.metabake.net>
 - <http://voncode.com>
@@ -57,10 +57,10 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 
 
 #### Videos:
-- [MetaBake Quick Demo](https://youtu.be/WyCdSFTUIvM)
+- [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
 - <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
-- [MetaBake Full Slides](http://prez.metabake.org/p)
-- [MetaBake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
+- [Metabake Full Slides](http://prez.metabake.org/p)
+- [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
 - [mbake CLI](https://youtu.be/-KkPfAnEXyk)
 
@@ -114,7 +114,7 @@ Sins to eschew:
 - [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 
-### Message from creators of MetaBake:
+### Message from creators of Metabake:
 
-We were involved with Struts and SilverStream. We plan to make MetaBake more popular than both.
+We were involved with Struts and SilverStream. We plan to make Metabake more popular than both.
 

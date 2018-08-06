@@ -7,7 +7,7 @@ Simply said, Pug is HTML without closing tags. Pug is more powerful than Markdow
 
 Pug also has variables and import.
 
-As we went from second generation (2GL) to third (3GL), our productivity jumped. We view Pug as declarative (*_MetaBake_ pillar 4) 4th generation language. It helps achieve a huge productivity jump. We position Pug as 4GL.
+As we went from second generation (2GL) to third (3GL), our productivity jumped. We view Pug as declarative (*_Metabake_ pillar 4) 4th generation language. It helps achieve a huge productivity jump. We position Pug as 4GL.
 
 To learn, edit a Pug in the mbake CRUDA sample project, 'mbake .' and see the changed HTML in a browser (e.g. via prior S3 step).
 

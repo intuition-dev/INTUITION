@@ -1,7 +1,7 @@
 
 
 - [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
-- [Chat: MetaBake.org ](http://chat.MetaBake.org)
+- [Chat: Metabake.org ](http://chat.Metabake.org)
 
 
 ## Low-code + Low-tech = 10X faster web app development.
@@ -9,9 +9,9 @@
 
 -[Upcoming online class](https://www.eventbrite.com/e/join-the-low-code-movement-develop-crud-faster-with-pug-riot-firebase-and-s3-tickets-48524849130)
 
-# About MetaBake
+# About Metabake
 
-MetaBake.org is a development productivity suite. It should allow you to deliver 10 times faster then legacy development stacks/methodologies. We have found that - with MetaBake.org; - the work of 6 developers over 6 months can be done by 3 developers in 3 weeks. We expect you to achieve the same productivity gains.
+Metabake.org is a development productivity suite. It should allow you to deliver 10 times faster then legacy development stacks/methodologies. We have found that - with Metabake.org; - the work of 6 developers over 6 months can be done by 3 developers in 3 weeks. We expect you to achieve the same productivity gains.
 
 How does open source Metabake deliver 10X faster and cheaper web app development? Not enough organizations are fully leveraging the new Cloud 2.0. With Cloud 2.0 services like Firebase and S3 you get rid of **ALL** server-side and middleware development and operations. This is where up to 2/3 of your time and cost used to go. Gone!
 
@@ -21,7 +21,7 @@ The Metabake approach has 10 pillars that are the foundation for achieving mind-
 
 To learn more about the Metabake approach, including all 10 pillars and full examples, go to metabake.org. Or, to dive in right away, use the 'mbake CLI' from github.com/metabake as the first step into 10X faster web app development.
 
-#### MetaBake.org productivity is based on three modules:
+#### Metabake.org productivity is based on three modules:
 
 - mbake, a static site generation tool that runs locally
 - B-M-SPA, curated technologies and techniques that help you build dynamic apps and mobile apps faster
@@ -31,7 +31,7 @@ We benchmark against _LAMP_, _RAILS_, _MEAN_ and such For example, LAMP is the t
 
 So far, somehow, server-side rendered LAMP has dominated web deployments, with WordPress having some 30% of the World Wide Web. It is time to start displacing that.
 
-You can reinvest the time saved by using MetaBake into a more interactive user experience (UX). Better UX is proven to lead into higher user engagement and better user retention.
+You can reinvest the time saved by using Metabake into a more interactive user experience (UX). Better UX is proven to lead into higher user engagement and better user retention.
 
 ## About mbake
 

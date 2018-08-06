@@ -48,7 +48,7 @@ mbake also has a mbake -m, and app use for mockups, more on the menu on left.
 Once you are comfortable with mbake and its 3 pillars, you can go to the Github project
 B-M SPA, the bread and butter section, that demos 5 more pillars
 or to
-MetaBake, the advanced vista section, with 2 more pillars.
+Metabake, the advanced vista section, with 2 more pillars.
 
 
 
