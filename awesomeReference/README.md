@@ -1,14 +1,32 @@
 
-## Awesome Low Code list of MetaBake resources
+## Awesome Low-Code, Low-Tech list of MetaBake resources
 
 
-### Join the low code movement,
-#### for 10X faster web app development, with MetaBake.org
+## Low-code + Low-tech = 10X faster web app development.
+### With MetaBake's modern development, it is not about replacing your tech stack with another tech stack.
+## It is about eliminating it!
 
--[Upcoming online class](https://www.eventbrite.com/e/join-the-low-code-movement-develop-crud-faster-with-pug-riot-firebase-and-s3-tickets-48524849130)
+
+- [Upcoming online class](https://www.eventbrite.com/e/join-the-low-code-movement-develop-crud-faster-with-pug-riot-firebase-and-s3-tickets-48524849130)
+
+## Meta overview
+
+To get an overview of MetaBake pillars:
+
+- [MetaBake Quick Demo](https://youtu.be/WyCdSFTUIvM)
+- <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
+- [MetaBake Full Slides](http://prez.metabake.org/p)
+- [MetaBake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
+
+&nbsp;
+- <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>, to support this project, please join!
 
 
-# TOC:
+Directory of related projects is in Resources on left, and source code is here:
+- <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
+
+
+# Documentation TOC:
 
 These are the 3 main project, that leverage the 10 pillars:
 
@@ -96,8 +114,7 @@ Sins to eschew:
 - [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 
-### Creators of Meta
+### Message from creators of MetaBake:
 
 We were involved with Struts and SilverStream. We plan to make MetaBake more popular than both.
 
-- Doc version 3.7.63
