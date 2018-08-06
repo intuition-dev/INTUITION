@@ -113,6 +113,7 @@ Sins to eschew:
 - [High tech](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f) CLoud v2 is low tech. As opposed to high tech.
 - [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
+- [Riot Table](https://codepen.io/bchoii/pen/VeQepw)
 
 ### Message from creators of Metabake:
 
