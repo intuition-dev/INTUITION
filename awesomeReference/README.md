@@ -65,8 +65,9 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 - [mbake CLI](https://youtu.be/-KkPfAnEXyk)
 
 - [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
+- [Blog search](https://www.youtube.com/watch?v=-4i9_SYyTOo)
 - [SPA](https://youtu.be/LHFjjDPlU3A)
-- [Meta Eg 1](http://youtube.com/watch?v=c4mWhefhOoQ)
+- [Meta Automatic Programing Eg 1 ](http://youtube.com/watch?v=c4mWhefhOoQ)
 
 
 ## Meta Definitions:
@@ -99,7 +100,7 @@ Sins to eschew:
 - [Bulma CSS](https://bulma.io/documentation/components)
 - [Loader: loadjs](https://github.com/muicss/loadjs)
 - [Debug console.re](http://console.re)
-- [Vivid Icons](https://webkul.github.io/vivid/cheatsheet.html)
+- [Vivid Icons](https://webkul.github.io/vivid/cheatsheet.html) - not ie 11
 - [pagination.js](http://pagination.js.org)
 - [Firestore](https://firebase.google.com/docs/firestore)
 - [Webmaster](https://www.google.com/webmasters); w/ real time SEO help
@@ -108,12 +109,20 @@ Sins to eschew:
 - [Resilient web design](https://resilientwebdesign.com/introduction)
 - [JS Signals](https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations)
 - [slick carousel](http://kenwheeler.github.io/slick/)
-- [My Device](https://www.mydevice.io)
+- [My Device size](https://www.mydevice.io)
 - [Prepros.io](https://prepros.io/help/autoprefixer)
 - [High tech](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f) CLoud v2 is low tech. As opposed to high tech.
 - [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 - [Riot Table](https://codepen.io/bchoii/pen/VeQepw)
+
+
+## Benchmarks
+- [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
+
+### Browser support
+
+We test back to ie 11. Vivid icons is not ie 11, that is on todo to replace.
 
 ### Message from creators of Metabake:
 
