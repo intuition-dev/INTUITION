@@ -1,6 +1,6 @@
-## CLoud V2 I: Setup S3 as your HTTP server and mount it
+## Cloud V2 I: Setup S3 as your HTTP server and mount it
 
-mbake is no-servers. You do not need to install or maintain any HTTP, DB or any other server.
+mbake is serverless. You do not need to install or maintain any HTTP, DB or any other server.
 
 Exception: when using Meta admin/build as a bespoke automation tool.
 
@@ -30,9 +30,9 @@ Exception: when using Meta admin/build as a bespoke automation tool.
 
 4. Install WebDrive or similar mount software. Mount replaces FTP.
 
-4. In WebDrive, create a new Amazon S3 connection. Paste Access Key ID and Secret Access Key created in Step 1 above.
+5. In WebDrive, create a new Amazon S3 connection. Paste Access Key ID and Secret Access Key created in Step 1 above.
 
-5. In S3 (Overview/Metadata/Content-Type), fix the CSS files to be text/css.
+6. In S3 (Overview/Metadata/Content-Type), fix the CSS files to be text/css.
 
-6. Use this mounted location to store your project/application. E.g. mount -a should extract to that mounted drive.
+7. Use this mounted location to store your project/application. E.g. mount -a should extract to that mounted drive.
 Access it in browser via URL copied in Step 3 above.
