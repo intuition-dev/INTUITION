@@ -12,7 +12,7 @@ Exception: when using Meta admin/build as a bespoke automation tool.
 
 2. Create an AWS S3 'bucket' in the East (N. Virginia) region and give it a name. 
 
-3. On the bucket Properties tab, select 'Static website hosting' and 'Use this bucket to host a website'. Copy the Endpoint URL for use below. Once created, on the Detail Permissions tab, configure the access policy so that the bucket can be accessed via HTTP. Replace 'YOUR_BUCKET' with your bucket name.
+3. On the bucket Properties tab, select 'Static website hosting' and 'Use this bucket to host a website'. Copy the Endpoint URL for use below. Once created, on the Detail Permissions tab, configure the access policy so that the bucket can be accessed via HTTP. Replace 'YOUR-BUCKET' with your bucket name.
 
 	```
 	{
