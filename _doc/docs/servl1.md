@@ -10,9 +10,9 @@ Exception: when using Meta admin/build as a bespoke automation tool.
 
 1. In AWS Menu 'Account - My Security Credentials', create a new Access Key, click 'Show Access Key', and copy it for use below. (Advanced users can later use IAM instead.)
 
-2. Create an AWS S3 'bucket' and give it a name.
+2. Create an AWS S3 'bucket' in the East (N. Virginia) region and give it a name. 
 
-3. On the bucket Properties tab, select 'Static website hosting' and 'Use this bucket to host a website'. Copy the Endpoint URL for use below. Once created, on the Detail Permissions tab, configure the access policy so that the bucket can be accessed via HTTP.
+3. On the bucket Properties tab, select 'Static website hosting' and 'Use this bucket to host a website'. Copy the Endpoint URL for use below. Once created, on the Detail Permissions tab, configure the access policy so that the bucket can be accessed via HTTP. Replace 'YOUR_BUCKET' with your bucket name.
 
 	```
 	{
@@ -32,7 +32,7 @@ Exception: when using Meta admin/build as a bespoke automation tool.
 
 5. In WebDrive, create a new Amazon S3 connection. Paste Access Key ID and Secret Access Key created in Step 1 above.
 
-Use this mounted location to store your project/application. Access it in browser via the Endpoint URL copied in Step 3 above.
+Use this mounted drive to store your project/application. Access it in the browser via the Endpoint URL copied in Step 3 above.
 
 Note: If you have CSS files, set their S3 Overview/Metadata/Content-Type to text/css.
 
