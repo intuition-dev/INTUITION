@@ -116,7 +116,7 @@ Sins to eschew:
 - [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 - [Riot Table](https://codepen.io/bchoii/pen/VeQepw)
-
+- [Markdown](https://en.wikipedia.org/wiki/Markdown)
 
 ## Benchmarks
 - [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
