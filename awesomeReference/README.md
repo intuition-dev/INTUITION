@@ -57,17 +57,18 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 
 
 #### Videos:
-- [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
-- <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
-- [Metabake Full Slides](http://prez.metabake.org/p)
-- [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
+S = sales, I = Foundation, II = B&M, III = Vista
+- S <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
+- S [Metabake Full Slides](http://prez.metabake.org/p)
+- S [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
-- [mbake CLI](https://youtu.be/-KkPfAnEXyk)
+- I [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
+- I [mbake CLI](https://youtu.be/-KkPfAnEXyk)
+- I [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
 
-- [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
-- [Blog search](https://www.youtube.com/watch?v=-4i9_SYyTOo)
-- [SPA](https://youtu.be/LHFjjDPlU3A)
-- [Meta Automatic Programing Eg 1 ](http://youtube.com/watch?v=c4mWhefhOoQ)
+- II [Blog search](https://www.youtube.com/watch?v=-4i9_SYyTOo)
+- II [SPA](https://youtu.be/LHFjjDPlU3A)
+- III [Meta Automatic Programing Eg 1 ](http://youtube.com/watch?v=c4mWhefhOoQ)
 
 
 ## Meta Definitions:
