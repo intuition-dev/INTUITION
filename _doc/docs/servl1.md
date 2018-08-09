@@ -30,9 +30,9 @@ Exception: when using Meta admin/build as a bespoke automation tool.
 
 4. Install WebDrive or similar mount software. Mount replaces FTP.
 
-5. In WebDrive, create a new Amazon S3 connection. Paste Access Key ID and Secret Access Key created in Step 1 above.
+5. In WebDrive, create a new Amazon S3 connection. Paste Access Key ID and Secret Access Key created in Step 1 above. Leave Bucket name empty to map all buckets/projects to a drive (e.g. W:\).
 
-Use this mounted drive to store your project/application. Access it in the browser via the Endpoint URL copied in Step 3 above.
+Use this mounted drive to edit project/application content. Access the app in the browser via the Endpoint URL copied in Step 3 above.
 
 Note: If you have CSS files, set their S3 Overview/Metadata/Content-Type to text/css.
 
