@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "3.8.3",
+   "version": "3.8.4",
    "description": "Make(bake) a declarative/pug app recursively, including any static or dynamic app binding, http://MetaBake.org",
    "main": "mbake.js",
    "bin": {

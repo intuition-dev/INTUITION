@@ -24,7 +24,7 @@ const probe  = require('probe-image-size')
 
 export class Ver {
    ver() {
-      return "v3.8.3"
+      return "v3.8.4"
    }
 
    static slash(path) {// windowze
@@ -596,12 +596,15 @@ export class Watch {
          usePolling: true,
          binaryInterval: 100000,
          awaitWriteFinish: true,
-         interval: 310//time
+         interval: 150//time
 
          //alwaysStat: true,
          //atomic: 110
       })
+
+      this.watcher.unwatch('*.jpg')
       this.watcher.unwatch('*.html')
+      this.watcher.unwatch('*.css')
       this.watcher.unwatch('*.swpc*')
       this.watcher.unwatch('*.js')
 
@@ -614,10 +617,16 @@ export class Watch {
       })
    }//()
 
+   static refreshPending = false
    refreshBro() {
+      if(Watch.refreshPending) return  //debounce
+      Watch.refreshPending = true
       setTimeout(function () {
-         MDevSrv.reloadServer.reload()
+         console.log('reload')
          AdminSrv.reloadServer.reload()
+         MDevSrv.reloadServer.reload()
+
+         Watch.refreshPending = false
       }, 50)//time
    }
 
