@@ -35,6 +35,9 @@ Mount replaces FTP.
 
 5. In WebDrive, create a new Amazon S3 connection. Paste Access Key ID and Secret Access Key created in Step 1 above. Also the region must match and you should not mix regions.
 
+NOTE: If you don't use N. Virginia region, the 'string' the 'Url Address' in mount is not default.
+
+
 Use this mounted drive to edit project/application content. Access the app in the browser via the Endpoint URL copied in Step 3 above.
 
 Note: For your CSS files, set their S3 Overview/Metadata/Content-Type to text/css.
