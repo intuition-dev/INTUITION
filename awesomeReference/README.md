@@ -116,6 +116,7 @@ Sins to eschew:
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 - [Riot Table](https://codepen.io/bchoii/pen/VeQepw)
 - [Markdown](https://en.wikipedia.org/wiki/Markdown)
+- [Design 'pop'](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-2-430de537ba96)
 
 ## Benchmarks
 - [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)

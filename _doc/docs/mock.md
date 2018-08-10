@@ -1,4 +1,10 @@
 
+# Gentle
+
+Here is gentle intro on Medium:
+- <a href='https://medium.com/@WolfgangGehner/using-pug-for-static-and-dynamic-data-binding-56a1cc378b81'>Pug on Medium</a>
+
+
 # Creating Mockups
 
 mbake lets you rapidly create mockups.

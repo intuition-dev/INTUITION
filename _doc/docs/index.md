@@ -37,7 +37,7 @@ Directory of related projects is in Resources on left, and source code is here:
 
 ### CLI commands
 
-* `mbake` - Get version and help.
+* `mbake` - Get version and help, including  sample apps.
 * `mbake .` - Bake/make current directory and Pug files recursively.
 * `mbake -t .` - Convert Pug/Riot files to useable tag/js, e.g.: data binding.
 * `mbake -i .` - Convert dat.yaml static files to JSON, for dynamic binding. More about this in B-M-SPA docs.

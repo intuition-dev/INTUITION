@@ -7,8 +7,8 @@ pages:
    - Server-less 1/S3: servl1.md
    - Pug 1/Intro: pug1.md
    - Server-less 2/FireBase: servl2.md
-   - Pug 2; Dynamic Binding: pug2.md
-   - Gentle/Mock-ups: mock.md
+   - Pug 2/Dynamic Binding: pug2.md
+   - Gentle Into/Mock-ups: mock.md
 
    - Next Steps: next.md
    - Resources: res.md
