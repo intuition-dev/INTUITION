@@ -22,6 +22,7 @@ To get an overview of Metabake pillars:
 
 
 Directory of related projects is in Resources on left, and source code is here:
+
 - <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
 
 ### mbake install
