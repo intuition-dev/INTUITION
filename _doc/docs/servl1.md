@@ -5,6 +5,8 @@ mbake is Cloud v2.0. You do not need to install or maintain any HTTP, DB or any 
 
 ## Steps
 
+[A very detailed video of the following steps is available <a href="http://wgehnerlab1.metabake.org.s3-website-us-east-1.amazonaws.com/lab1v0.html">here</a>]
+
 0. Create an AWS account if you don't already have one.
 
 1. In AWS Menu 'Account - My Security Credentials', create a new Access Key, click 'Show Access Key', and copy it (to a file) for use below. (Advanced users can later use IAM instead.)
