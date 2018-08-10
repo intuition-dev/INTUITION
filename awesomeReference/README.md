@@ -65,6 +65,7 @@ S = sales, I = Foundation, II = B&M, III = Vista
 - I [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
 - I [mbake CLI](https://youtu.be/-KkPfAnEXyk)
 - I [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
+- I [Mount S3 to local drive](http://wgehnerlab1.metabake.org.s3-website-us-east-1.amazonaws.com/lab1v0.html)
 
 - II [Blog search](https://www.youtube.com/watch?v=-4i9_SYyTOo)
 - II [SPA](https://youtu.be/LHFjjDPlU3A)
