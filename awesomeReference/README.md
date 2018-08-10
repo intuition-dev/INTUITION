@@ -46,6 +46,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 )
 - [Riot on Medium](https://medium.com/@uptimevic/learn-riot-js-dynamic-binding-in-90-seconds-fcece5237c67)
 - [Amazon vs. Google for Cloud v2.0 on Medium](https://medium.com/@WolfgangGehner/amazon-vs-google-for-cloud-2-0-web-apps-extreme-server-less-for-data-and-authentication-cc7fa247e853)
+- [Web IDE](https://medium.com/@WolfgangGehner/three-steps-to-using-a-web-ide-to-develop-and-build-in-the-cloud-d88586255c67)
 
 ## CERTIFIED by Metabake.org: Commercial hosting, services and support for Metabake
 
