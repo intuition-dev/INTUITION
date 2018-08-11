@@ -120,8 +120,9 @@ Sins to eschew:
 - [Markdown](https://en.wikipedia.org/wiki/Markdown)
 - [Design 'pop'](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-2-430de537ba96)
 - [Navbar](https://github.com/thednp/navbar.js/)
+-[Why Axios](http://jslancer.com/blog/2017/05/10/why-i-stop-using-fetch/)
 
-## Benchmarks
+## Benchmarks and Automatic programing
 - [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
 
 ### Browser support
