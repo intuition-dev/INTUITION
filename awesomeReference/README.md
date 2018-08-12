@@ -102,7 +102,6 @@ Sins to eschew:
 - [Bulma CSS](https://bulma.io/documentation/components)
 - [Loader: loadjs](https://github.com/muicss/loadjs)
 - [Debug console.re](http://console.re)
-- [Vivid Icons](https://webkul.github.io/vivid/cheatsheet.html) - not ie 11
 - [pagination.js](http://pagination.js.org)
 - [Firestore](https://firebase.google.com/docs/firestore)
 - [Webmaster](https://www.google.com/webmasters); w/ real time SEO help
@@ -125,9 +124,6 @@ Sins to eschew:
 ## Benchmarks and Automatic programing
 - [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
 
-### Browser support
-
-We test back to ie 11. Vivid icons is not ie 11, that is on todo to replace.
 
 ### Message from creators of Metabake:
 
