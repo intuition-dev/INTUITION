@@ -20,6 +20,10 @@ loadjs([
     //,
    'https://use.fontawesome.com/releases/v5.2.0/js/solid.js'
    , 'https://use.fontawesome.com/releases/v5.2.0/js/fontawesome.js'
+
+   , 'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.6/dist/_js/js-offcanvas.pkgd.js'
+   , 'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.6/dist/_css/prefixed/js-offcanvas.css'
+
    , ROOT + '/assets/css/gridforms/gridforms.css'
 
    , 'https://cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
@@ -61,21 +65,26 @@ setInterval(function () {
 
 // usage: ////////////////////////////////////////////////////////////////////
 loadjs.ready(['style'], function () {// 'show' page, ex: unhide
-    setupUserSzSc()
+   setupUserSzSc()
 
-    $('#off-canvas').offcanvas({
-        triggerButton: '#off-cbut' // btn to open offcanvas
-    })
-    let offcanvas = $('#off-canvas').data('offcanvas-component')
-    $('#offItems').click(function () {
-        console.log('#offItems')
-        offcanvas.close()
-    })
-    $('.delayShowing').removeClass('delayShowing') // show
+   $('#navOpen').offcanvas({
+      triggerButton: '#off-cbut' // btn to open offcanvas
+   })
+   let offcanvas = $('#navOpen').data('offcanvas-component')
+   $('#off-cbut').click(function () {
+      console.log('#offItems')
+      offcanvas.open()
+   })
+   $('#navOpen').click(function () {
+      console.log('#navOpen')
+      offcanvas.close()
+   })
 
-    //loadjs(ROOT + '/assets/router/spa-router.js')
+   $('.delayShowing').removeClass('delayShowing') // show
 
-    console.log('style done', Date.now() - _start)
+   //loadjs(ROOT + '/assets/router/spa-router.js')
+
+   console.log('style done', Date.now() - _start)
 })//ready
 
 // util: /////////////////////////////////////////////////////////////////////

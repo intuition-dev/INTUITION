@@ -2,67 +2,46 @@
 /* reset */
 a:focus { outline: none; }
 
-* {
-   letter-spacing: .05em !important;
-   /*text-shadow: .05px .05px .2px #000  !important;*/
-}
+/* letter-spacing: .05em ; * /
 
-/* nav */
-
-.c-offcanvas {     transition: transform 200ms cubic-bezier(0.4, 0, 0.6, 1); }
-
-.menu-list a {    text-decoration: none; }
-
-nav {
-   margin-bottom: 0 !important;
-   padding-right: .75rem;
-}
-nav a {
-   color: hsl(0, 0%, 86%) !important;
-}
-nav a:hover {
-   background-color: transparent !important;
-   color: white !important;
-   text-shadow: 0 0 .5px white;
-}
-
-#off-cbut {
-   margin-top: 10px;
-}
-/* end nav*/
-
-/* */
-.pad {
-   padding: .6rem;
-}
-
-/* cards */
-.flex {
+/* cards, before nav */
+.flex, .listflex {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
    align-content: flex-start;
 }
-/*
-   width = item + margin to make orphan go left
-*/
-.flex:after {
-   content: '';
-   w0idth: 300px;
+
+/* nav */
+
+.c-offcanvas { transition: transform 200ms cubic-bezier(0.4, 0, 0.6, 1); }
+
+#navBar {
+   background-color: black;/* hsl(0, 0%, 88%) */
+}
+.navItem {
+   margin-left: 15px;
+   color: white;
+}
+.navItem:hover {
+   color: white;
+   text-shadow: 0 0 .5px white;
+}
+.navOpenBrand {
+   height: 3.5rem;
+}
+.navOpen-list li {
+   padding: 20px;
+}
+.navOpen-list li:hover {
+   text-shadow: 0 0 .5px white;
+   background-color: gray;
 }
 
-/* menu */
-.truncate-ellipsis {
-   display: table;
-   table-layout: fixed;
-   max-width: calc(100% - 1rem);
-   white-space: nowrap;
+.navOpen-list li a {
+   color: black;
 }
-.truncate-ellipsis > * {
-   display: table-cell;
-   overflow: hidden;
-   text-overflow: ellipsis;
-}
+
 .center, .center-column, .top, .right, .bottom, .left{
    display: flex;
    justify-content: center;
@@ -76,6 +55,22 @@ nav a:hover {
 .bottom { align-items:     flex-end;   }
 .left   { justify-content: flex-start; }
 
+.bord { /* bars */
+   outline-style: solid;
+   outline-offset: 7px;
+   outline-width: thin;
+   margin-right: 7px;
+   margin-left: 25px ;
+}
 
-/* custom ////////////////////////////////////////////////////////////// */
+/* override */
+.edge  { justify-content: space-between; }
 
+/* ////////////////////////////////////////////////////////////////////
+ *end nav*
+*/
+
+/* */
+.pad {
+   padding: .6rem;
+}
