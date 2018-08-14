@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "3.8.9",
+   "version": "3.8.10",
    "description": "Make(bake) a declarative/pug app recursively, including any static or dynamic app binding, http://MetaBake.org",
    "main": "mbake.js",
    "bin": {
@@ -44,7 +44,7 @@
       "reload": "^2.3.0",
       "riot-compiler": "^3.5.1",
       "tracer": "^0.8.12",
-      "unfluff": "^3.0.1"
+      "unfluff": "^3.2.0"
    },
    "devDependencies": {
       "sitemap": ">=1.13.0"
