@@ -1,7 +1,7 @@
 
 ## Pug I: Learn Pug and static binding; view via S3 HTTP server.
 
-Simply said, Pug is HTML without closing tags. Pug is more powerful than Markdown. If you know of Node/Express, you know Pug already.
+Simply said, Pug is HTML without closing tags. Pug is a templating language,  more powerful than Markdown. If you know of Node/Express, you know Pug already.
 
 - [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
 

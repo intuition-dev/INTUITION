@@ -41,6 +41,9 @@ the users that do not have auth.
 (In Meta admin layouts folder we use Bulma's modal, you can use as example.)
 
 
+Note: that pug is compiled into .js (3GL like). That .js is obfuscated, so it can't be read by other developers. So you can store keys - as safe as Andorid's ProGuard. 
+
+
 #### That is it for mbake
 
 mbake also has a mbake -m, and app use for mockups, more on the menu on left.

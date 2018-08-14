@@ -73,7 +73,7 @@ S = sales, I = Foundation, II = B&M, III = Vista
 
 
 ## Meta Definitions:
-- Pug : Low Code Declarative 4GL markup. Custom 'tags' in Pug via RIOTjs
+- Pug : A templating language, position as Low Code Declarative 4GL. Custom 'tags' in Pug via RIOTjs (and obfuscated as well as Andorid's ProGuard)
 - Cloud v2: No known end point. E.g.: CDN, AWS Cognito. AWS Lambda does have a server end point, so it is not Cloud v2
 - Team Player: Benefits group via Cloud Dev Environment, ex: CodeAnywhere+Meta. Selfish: Local dev. environment.
 - Front End Framework: Google/search for 'Front End Framework' yields Bootstrap, Bulma, etc. We have examples with a few in Github project of same name.
