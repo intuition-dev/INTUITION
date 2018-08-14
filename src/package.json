@@ -1,13 +1,13 @@
 {
    "name": "mbake",
-   "version": "3.8.8",
+   "version": "3.8.9",
    "description": "Make(bake) a declarative/pug app recursively, including any static or dynamic app binding, http://MetaBake.org",
    "main": "mbake.js",
    "bin": {
       "mbake": "mbake.js",
       "mbake-cli": "mbake.js"
    },
-   "license": "GPL3",
+   "license": "GPL-3.0-only",
    "author": "http://MetaBake.org",
    "bugs": "http://MetaBake.org",
    "homepage": "http://MetaBake.org",
@@ -44,7 +44,6 @@
       "reload": "^2.3.0",
       "riot-compiler": "^3.5.1",
       "tracer": "^0.8.12",
-      "uglify-es": "^3.3.9",
       "unfluff": "^3.0.1"
    },
    "devDependencies": {

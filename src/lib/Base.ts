@@ -11,7 +11,7 @@ const yaml = require('js-yaml')
 const riotc = require('riot-compiler')
 const pug = require('pug')
 const logger = require('tracer').console()
-const UglifyJS = require('uglify-es')
+const JavaScriptObfuscator = require('javascript-obfuscator')
 
 const express = require('express')
 const chokidar = require('chokidar')
@@ -24,7 +24,7 @@ const probe  = require('probe-image-size')
 
 export class Ver {
    ver() {
-      return "v3.8.8"
+      return "v3.8.9"
    }
 
    static slash(path) {// windowze
@@ -464,6 +464,13 @@ export class Tag {
       return 'ok'
    }//()
 
+   static obsOptions = {
+      identifierNamesGenerator: 'mangled' // for virus
+      , disableConsoleOutput: true
+      , target: 'browser'
+      , stringArray: true
+   }
+
    process(s:string, fn:string) {
       const r_options = {'template':'pug'}
 
@@ -484,47 +491,15 @@ export class Tag {
       let ugs
       try {
          // ugs http://npmjs.com/package/uglify-es
-         ugs = UglifyJS.minify(js, {
-            mangle : true,
-            warnings: true,
-            keep_fnames: true,
-            keep_classnames: true,
-            safari10 : true,
-            compress: {
-               arrows : false,
-               reduce_vars: true,
-               join_vars: true,
-               hoist_props: false,
-               evaluate: false,
-               collapse_vars: true,
-               side_effects: false,
-               keep_fnames: true,
-               dead_code: false,
-               drop_debugger: true,
-               drop_console: true,
-               reduce_funcs: false,
-               computed_props: false,
-               keep_classnames: true,
-               unused : false
-            },
-            output: {
-               beautify: false,
-               indent_level: 0
-            }
-         })// ugs
+         ugs = JavaScriptObfuscator.obfuscate(js, Tag.obsOptions)// ugs
+
       } catch(err) {
          logger.error('error')
          logger.error(err)
          return
       }
 
-      if(ugs.warnings) logger.trace(  ugs.warnings )
-      if(ugs.error) {
-         logger.warn( ugs.error )
-         return
-      }
-
-      fs.writeFileSync(fn+'.min.js', ugs.code)
+      fs.writeFileSync(fn+'.min.js', ugs.getObfuscatedCode())
    }
 }//class
 // Meta: //////////////////////
