@@ -81,7 +81,7 @@ S = sales, I = Foundation, II = B&M, III = Vista
 
 
 Sins to eschew:
-- js, prefer pug
+- js, prefer Pug
 - local IDE dev, use Cloud IDE
 
 
@@ -89,7 +89,7 @@ Sins to eschew:
 - [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
 - [Metabake Examples and plugins](https://github.com/metabake/examples-plugins)
 - [https://github.com/cunhasb/metaBakeSandbox]
-
+- [NavBar](https://github.com/metabake/examples-plugins/tree/master/navSite/navbarEx)
 
 ### Other:
 
