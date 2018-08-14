@@ -467,8 +467,19 @@ export class Tag {
    static obsOptions = {
       identifierNamesGenerator: 'mangled' // for virus
       , disableConsoleOutput: true
-      , target: 'browser'
+
       , stringArray: true
+      , stringArrayThreshold: 1
+      , stringArrayEncoding: 'rc4'
+
+      , selfDefending: true
+
+      , controlFlowFlattening: true
+      , controlFlowFlatteningThreshold: 1
+
+      , deadCodeInjection: true
+      , deadCodeInjectionThreshold: 0.1
+
    }
 
    process(s:string, fn:string) {
