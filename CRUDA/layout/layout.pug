@@ -24,25 +24,31 @@ html
       script(src= ROOT + '/assets/js/setup.js')
 
       .c-offcanvas-content-wrap
-         #navBar.nav.flex.edge.delayShowing
+         #topNav.flex.edge
             .left
-               .pad.has-text-white.is-size-4 My App
+               h2.pad.white.text-bold Metabake.org
             .right
-               .pad
-                  a.is-hidden-mobile.navItem(href= ROOT + '/screens/auth') Auth
-                  a.is-hidden-mobile.navItem(href= ROOT + '/screens/members') CRUD
-                  a.is-hidden-mobile.navItem(href= ROOT + '/screens/membersTag') Tag
+               #navBarCont.pad
+                  // on bar, clone element to navOpen is-hidden-touch
+                  ul#navBar.hide-lg.nav(data-function='navbar')
+                     li
+                        a(href= ROOT + '/screens/auth') Auth
+                     li
+                        a(href= ROOT + '/screens/members') CRUD
+                     li
+                        a(href= ROOT + '/screens/membersTag') Tag
+
                   a#off-cbut.js-offcanvas-trigger( href='#navOpen')
-                     #bars.bord.is-hidden-desktop(style='color:white')
-                        .bord.show-lg(style='color:white')
-                           svg.feather(width='24', height='24', viewBox='0 0 24 24')
-                              line(x1='3', y1='12', x2='21', y2='12')
-                              line(x1='3', y1='6', x2='21', y2='6')
-                              line(x1='3', y1='18', x2='21', y2='18')
+                     .show-lg(style='color:white')
+                        svg.bord.feather(width='24', height='24', viewBox='0 0 24 24')
+                           line(x1='3', y1='12', x2='21', y2='12')
+                           line(x1='3', y1='6', x2='21', y2='6')
+                           line(x1='3', y1='18', x2='21', y2='18')
 
 
          #router
             block main
+
 
       #navOpen.delayShowing
          .navOpenBrand.has-background-black.has-text-white
@@ -55,7 +61,7 @@ html
             li
               a(href= ROOT + '/screens/scrB') Two
 
-      link(href= ROOT + '/assets/css/bulma.css', onload='cssLoaded()', rel='stylesheet')
+      link(href= ROOT + '/assets/css/spectre.css', onload='cssLoaded()', rel='stylesheet')
       link(href='https://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet')
       link(href= ROOT + '/assets/css/main.css', rel='stylesheet')
       script.

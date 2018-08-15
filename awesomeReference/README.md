@@ -119,6 +119,14 @@ Sins to eschew:
 ## Benchmarks and Automatic programing
 - [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
 
+
+## NOTES:
+
+- Cannot read property 'replace' of undefined
+    at loadFile (loadjs.js:106)
+* This happens if your CSV comma is of for your loadjs command.
+
+
 # Support
 
 &nbsp;
