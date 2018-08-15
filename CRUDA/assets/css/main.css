@@ -39,6 +39,10 @@ a:focus { outline: none; }
    color: white ;
    text-decoration: none;
 }
+#navOpenHead {
+   background: black;
+   height: 70px;
+}
 
 .cAccent {
    color: #0F3557;

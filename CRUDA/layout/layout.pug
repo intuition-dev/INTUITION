@@ -18,7 +18,8 @@ html
       script(src='https://unpkg.com/axios@0.18.0/dist/axios.min.js')
 
       style.
-            .delayShowing { opacity: 0.01; }
+         .delayShowing { opacity: 0.01; }
+
    body
       script(src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js')
       script(src= ROOT + '/assets/js/setup.js')
@@ -51,8 +52,7 @@ html
 
 
       #navOpen.delayShowing
-         .navOpenBrand.has-background-black.has-text-white
-           .pad.is-size-4 My App
+         h2#navOpenHead.pad.white.text-bold Metabake.org
          ul.navOpen-list
             li
                a(href=ROOT ) Home2
