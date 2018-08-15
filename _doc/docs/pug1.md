@@ -23,6 +23,5 @@ That will render 'Oh hi', the value of bla at compile time, in the HTML. This is
 
 #### Default Front End framework
 
-The default Front End (FE) Framework used in most examples is Bulma - due to its relatively small size and ease of use.
-NOTE: Bulma CSS has been customized to remove things not needed. For example, it uses [kumailht/gridforms](http://github.com/kumailht/gridforms). You can look at the FE Frameworks Bulma folder to see SASS modules commented out.
+The default front end framework used in most examples is Spectre CSS, but you can use any of the dozens out there. Spectre has relatively small size, AMP support and ease of use.
 

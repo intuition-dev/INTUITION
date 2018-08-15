@@ -17,9 +17,6 @@ To get an overview of Metabake pillars:
 
 - [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
-&nbsp;
-- <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>, to support this project, please join!
-
 
 Directory of related projects is in Resources on left, and source code is here:
 

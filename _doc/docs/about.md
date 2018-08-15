@@ -1,7 +1,6 @@
 
 
 - [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
-- [Chat: Metabake.org ](http://chat.Metabake.org)
 
 
 ## Low-code + Low-tech = 10X faster web app development.

@@ -6,8 +6,6 @@
 ### With Metabake's modern development approach, it is not about replacing your tech stack with another tech stack -- it is about eliminating it!
 
 
-- [Upcoming online class](https://www.eventbrite.com/e/join-the-low-code-movement-develop-crud-faster-with-pug-riot-firebase-and-s3-tickets-48524849130)
-
 ## Meta overview
 
 To get an overview of Metabake pillars:
@@ -16,9 +14,6 @@ To get an overview of Metabake pillars:
 - <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
 - [Metabake Full Slides](http://prez.metabake.org/p)
 - [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
-
-&nbsp;
-- <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>, to support this project, please join!
 
 
 Directory of related projects is in Resources on left, and source code is here:
@@ -35,7 +30,6 @@ These are the 3 main project, that leverage the 10 pillars:
 
 'Train-the-Trainer' is scheduled about monthly, and it is announced in the forum. Feel free to post questions there.
 
-- <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>.
 
 Prerequisites: you should know HTML and CSS. If you need to catch up, we recommend 'Design and Build Websites' by Jon Duckett. You will also learn Pug, to get started on Pug, watch [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
 
@@ -76,7 +70,7 @@ S = sales, I = Foundation, II = B&M, III = Vista
 - Pug : A templating language, position as Low Code Declarative 4GL. Custom 'tags' in Pug via RIOTjs (and obfuscated as well as Andorid's ProGuard)
 - Cloud v2: No known end point. E.g.: CDN, AWS Cognito. AWS Lambda does have a server end point, so it is not Cloud v2
 - Team Player: Benefits group via Cloud Dev Environment, ex: CodeAnywhere+Meta. Selfish: Local dev. environment.
-- Front End Framework: Google/search for 'Front End Framework' yields Bootstrap, Bulma, etc. We have examples with a few in Github project of same name.
+- Front End Framework: Google/search for 'Front End Framework' yields Bootstrap, Bulma, Spectre, etc. We have examples with a few in Github project of same name.
 - Meta: Building software that builds software. Has more than one level of meaning.
 
 
@@ -99,7 +93,6 @@ Sins to eschew:
 - [Pug](https://pug.metabake.org)
 - [RIOTjs](https://riot.js.org/)
 - [Grid Forms](http://kumailht.com/gridforms)
-- [Bulma CSS](https://bulma.io/documentation/components)
 - [Loader: loadjs](https://github.com/muicss/loadjs)
 - [Debug console.re](http://console.re)
 - [pagination.js](http://pagination.js.org)
@@ -120,9 +113,15 @@ Sins to eschew:
 - [Design 'pop'](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-2-430de537ba96)
 - [Navbar](https://github.com/thednp/navbar.js/)
 -[Why Axios](http://jslancer.com/blog/2017/05/10/why-i-stop-using-fetch/)
+- [Spectre front end/CSS framework](https://github.com/picturepan2/spectre)
 
 ## Benchmarks and Automatic programing
 - [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
+
+# Support
+
+&nbsp;
+- <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>, to support this project, please join!
 
 
 ### Message from creators of Metabake:
