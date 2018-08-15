@@ -114,6 +114,7 @@ Sins to eschew:
 - [Navbar](https://github.com/thednp/navbar.js/)
 -[Why Axios](http://jslancer.com/blog/2017/05/10/why-i-stop-using-fetch/)
 - [Spectre front end/CSS framework](https://github.com/picturepan2/spectre)
+-[Feather SVG icons](https://feathericons.com) Just copy the SVG itself per icon
 
 ## Benchmarks and Automatic programing
 - [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
