@@ -78,9 +78,9 @@ So you can work Cloud v2 (no servers), we show how to use mbake with
 (Each of these is on the menu to the left.)
 
 1. Cloud V2 I: Setup S3 as your HTTP server and mount it.
-2. Pug I: Learn Pug and static binding; view via S3 HTTP server.
+2. Pug I: Learn Pug(hint: you already know it) and static binding; view via S3 HTTP server.
 3. Cloud V2 II: Use Firestore for pure client-side CRUD and authentication.
-4. Pug II: Do dynamic binding via Pug (and load.js).
+4. Pug II: Do dynamic binding via Pug.
 
 Here is what it should look like when done with 1-4
 - [mbake part 1](https://youtu.be/-KkPfAnEXyk)
