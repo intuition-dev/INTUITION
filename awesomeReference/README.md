@@ -112,9 +112,11 @@ Sins to eschew:
 - [Markdown](https://en.wikipedia.org/wiki/Markdown)
 - [Design 'pop'](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-2-430de537ba96)
 - [Navbar](https://github.com/thednp/navbar.js/)
--[Why Axios](http://jslancer.com/blog/2017/05/10/why-i-stop-using-fetch/)
+- [Why Axios](http://jslancer.com/blog/2017/05/10/why-i-stop-using-fetch/)
 - [Spectre front end/CSS framework](https://github.com/picturepan2/spectre)
--[Feather SVG icons](https://feathericons.com) Just copy the SVG itself per icon
+- [Feather SVG icons](https://feathericons.com) Just copy the SVG itself per icon
+- [Simple Navbar] (https://www.w3schools.com/css/css_navbar.asp)
+
 
 ## Benchmarks and Automatic programing
 - [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
