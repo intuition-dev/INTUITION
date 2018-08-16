@@ -6,7 +6,7 @@ Firebase is well documented on the web. Read up on Firebase/Firestore to learn h
 Similar to AWS Cognito, Firebase includes pure client-side user authentication.
 
 Firebase also has push and a database named Firestore.
-It can be used from the browser via JavaScript, no custom serverside code is needed. This is key to be able to develop faster.
+It can be used from the browser via JavaScript, no custom Cloud v2.0 code is needed. This is key to be able to develop faster.
 
 The CRUDA example app (mbake -c) uses Firebase.
 
