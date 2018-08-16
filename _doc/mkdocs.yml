@@ -4,11 +4,14 @@ repo_url: http://MetaBake.org
 pages:
    - Home: index.md
 
-   - Server-less 1/S3: servl1.md
-   - Pug 1/Intro: pug1.md
-   - Server-less 2/FireBase: servl2.md
-   - Pug 2/Dynamic Binding: pug2.md
+   - Cloud v2.0 I/S3: cloud1.md
    - Gentle Into/Mock-ups: mock.md
+   - Pug (you know it already) 1/Intro: pug1.md
+
+   - Cloud v2.0 part II/FireBase: cloud2.md
+   - Pug 2/Dynamic Binding: pug2.md
+
+   - Master/Detial: masterDetail.md
 
    - Next Steps: next.md
    - Resources: res.md

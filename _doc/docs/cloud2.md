@@ -12,6 +12,6 @@ The CRUDA example app (mbake -c) uses Firebase.
 
 http://github.com/metabake/_mBake/blob/master/CRUDA/layout/crud.pug
 
-FIreStore replaces MongoDB, but also ORM, REST, DevOps, Security, Failover, etc.
+FIreStore replaces MongoDB, but also ORM, REST, DevOps, Security, Failover, etc. All that complexity is now low-tech. But sadly, just like you had to learn MongoDB for example, you have to learn how to use Firestore.
 
 

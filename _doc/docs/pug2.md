@@ -1,6 +1,6 @@
 ## Pug II: Do dynamic binding via Pug (and load.js).
 
-Note: before creating a tag in pug, you may first want to get it wrong as just an include pug. Then, when it works as include, make it a tag.
+Note: before creating a tag in pug, you may first want to get it working, as just an include pug. Then, when it works as include, make it a tag.
 
 
 So let's use Pug to do dynamic binding.
@@ -41,7 +41,7 @@ the users that do not have auth.
 (In Meta admin layouts folder we use Bulma's modal, you can use as example.)
 
 
-Note: that pug is compiled into .js (3GL like). That .js is obfuscated, so it can't be read by other developers. So you can store keys - as safe as Andorid's ProGuard. 
+Note: that pug is compiled into .js (3GL like). That .js is obfuscated, so it can't be read by other developers. So you can store keys - as safe as Andorid's ProGuard.
 
 
 #### That is it for mbake
