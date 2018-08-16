@@ -115,7 +115,7 @@ Sins to eschew:
 - [Why Axios](http://jslancer.com/blog/2017/05/10/why-i-stop-using-fetch/)
 - [Spectre front end/CSS framework](https://github.com/picturepan2/spectre)
 - [Feather SVG icons](https://feathericons.com) Just copy the SVG itself per icon
-- [Simple Navbar] (https://www.w3schools.com/css/css_navbar.asp)
+- [Simple Navbar](https://www.w3schools.com/css/css_navbar.asp)
 - [Documentation.js](https://documentation.js.org) - Example of use is in autoEG/www
 
 ## Benchmarks and Automatic programing
