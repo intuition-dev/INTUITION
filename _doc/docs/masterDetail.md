@@ -19,8 +19,9 @@ You'll leverage FireStore and write RiotJS tags(components) in Pug.
 
 ### Exceptions
 
-Sometimes, but it must be very rare in Metabake, you need to write your own API. When doing this, you should *not* document your endpoints/REST server side. Instead write your client-side calls, and document how to use the API.
+Sometimes, but it must be rare in Metabake, you need to write your own API. When doing this, you should *not* document your endpoints/REST server side. Instead write your client-side calls, and document how to use the API.
 
 Check out Axios and 'Documentation js' in resources.
 
-.
+Also, rarely, you need SSR, for example required for payment processing. There is an example in examples for Stripe.
+And realistically, you should not use node.js for production. Here, we use node to build code, but not for production. Same for any server side code, node js is not secure and not for enterprise production. A modern server side language is Go, it has support for server side Pug - but likely your apps will not know about anything server side: since they are just using a  documented .js library that does the fetch for them. Maker sure your back end developers are responsible for client side access.
