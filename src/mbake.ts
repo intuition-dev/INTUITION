@@ -68,7 +68,7 @@ function unzipM() {
    process.exit()
 }
 function unzipA() {
-   let src:string =__dirname+ '/adminEG.zip'
+   let src:string =__dirname+ '/autoEG.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
    console.log('extracted an starter admin|build Meta webapp')
