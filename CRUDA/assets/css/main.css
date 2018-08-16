@@ -42,6 +42,7 @@ a:focus { outline: none; }
 #navOpenHead {
    background: black;
    height: 70px;
+   margin-bottom: 0;
 }
 
 .cAccent {
@@ -62,12 +63,19 @@ a:focus { outline: none; }
 .navOpenBrand {
    height: 3.5rem;
 }
+.navOpen-list, ul {
+   margin-top: 0;
+   padding: 0;
+}
 .navOpen-list li {
    padding: 20px;
+   list-style-type: none;
 }
 .navOpen-list li:hover {
    text-shadow: 0 0 .5px white;
    background-color: gray;
+   text-decoration: none;
+
 }
 
 .navOpen-list li a {
