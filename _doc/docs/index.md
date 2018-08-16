@@ -17,12 +17,15 @@ To get an overview of Metabake pillars:
 
 - [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
+People usually adopt Metabake by picking a few of the pillars to start with.
 
 Directory of related projects is in Resources on left, and source code is here:
 
 - <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
 
 ### mbake install
+
+mbake is a bit like grunt/gulp in some ways, or static generators; but it does do a lot more with a lot less work.
 
 ```
    npm -g i mbake
