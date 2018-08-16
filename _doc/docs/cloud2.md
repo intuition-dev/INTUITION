@@ -15,3 +15,8 @@ http://github.com/metabake/_mBake/blob/master/CRUDA/layout/crud.pug
 FIreStore replaces MongoDB, but also ORM, REST, DevOps, Security, Failover, etc. All that complexity is now low-tech. But sadly, just like you had to learn MongoDB for example, you have to learn how to use Firestore.
 
 
+## Fetch
+
+When doing fetch, you want to do it in head. So that it is done in parallel with UI.
+When data is back, ux is ready to bind - so it's not sequential.
+
