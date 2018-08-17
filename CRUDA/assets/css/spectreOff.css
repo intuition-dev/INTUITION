@@ -139,11 +139,7 @@ html { box-sizing: border-box; font-size: 20px; line-height: 1.5; -webkit-tap-hi
 
 body { background: #fff; color: #50596c; font-family: "Open Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 0.8rem; overflow-x: hidden; text-rendering: optimizeLegibility; }
 
-a { color: #5755d9; outline: none; text-decoration: none; }
-
-a:focus { box-shadow: 0 0 0 0.1rem rgba(87, 85, 217, 0.2); }
-
-a:focus, a:hover, a:active, a.active { color: #302ecd; text-decoration: underline; }
+a { color: #5755d9; outline: none; text-decoration: none; /* &:focus { @include control-shadow(); } &:focus, &:hover, &:active, &.active { color: $link-color-dark; text-decoration: underline; } */ }
 
 a:visited { color: #807fe2; }
 
