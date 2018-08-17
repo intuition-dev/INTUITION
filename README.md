@@ -42,7 +42,7 @@ _mbake_ generates static sites, but it also supports making those sites dynamic 
 
 _mbake_ helps is another example of a http://staticgen.com webapp.
 
-_mbake_ includes sample starters apps for CRUD and mock-ups. After you are comfortable with mbake, check out B-M-SPA and Meta.
+_mbake_ includes sample starters apps for CRUD. After you are comfortable with mbake, check out B-M-SPA and Meta.
 
 
 Prerequisites: you should know HTML and CSS. If you need to catch up, we recommend 'Design and Build Websites' by Jon Duckett. You will also learn Pug, to get started on Pug, watch [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)

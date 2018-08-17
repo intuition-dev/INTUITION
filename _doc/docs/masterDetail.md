@@ -3,7 +3,7 @@
 
 ### Pre-reqs
 
-You should have reviewed Pug 1 and 2, Cloud 2.0 1 and 2, Mockups and FE FW (Front end frameworks) project. You should also know basics like 'inspect/copy selector' and 'network/disable cache' in the Chrome browser.
+You should have reviewed Pug 1 and 2, Cloud 2.0 1 and 2 and FE FW (Front end frameworks) project. You should also know basics like 'inspect/copy selector' and 'network/disable cache' in the Chrome browser.
 
 Also use resources link on the left, Chat/Form/Support and check out [DataTables](http://datatables.net)
 

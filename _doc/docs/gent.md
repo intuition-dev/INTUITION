@@ -5,20 +5,11 @@ Here is gentle intro on Medium:
 - <a href='https://medium.com/@WolfgangGehner/using-pug-for-static-and-dynamic-data-binding-56a1cc378b81'>Pug on Medium</a>
 
 
-# Creating Mockups
+# Starting
 
 mbake lets you rapidly create mockups.
 
-```
-   # We recommend to 'cd' to your S3 mounted drive and work there. Also read Cloud V2 I (see link to the left).
-
-   mbake -m
-   cd mock
-   mbake .
-
-```
-
-Now you can clone a screen and add it to the layout by editing the Pug file in the layout folder.
+Just create an index.pug and dat.yaml.
 
 As you edit files, you need to run:
 ```

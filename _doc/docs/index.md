@@ -94,8 +94,5 @@ Mount is Pillar 2.
 Pug is an example of Pillar 4.
 
 
-## Or: More gentle intro
-
-Click 'Creating Mockups' (to the left). Or take a 'Train-the-Trainer' online class, linked in Resources (to the left).
 
 

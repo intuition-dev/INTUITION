@@ -1,0 +1,73 @@
+
+/* nav off */
+
+.white, .white * { color: white !important; }
+
+.padL {
+   padding-left: 15px;
+}
+
+.bord { /* icons & bars */
+   margin-top: 23px;
+   outline-style: solid;
+   outline-offset: 7px;
+   outline-width: thin;
+   margin-right: 25px;
+   margin-left: 25px ;
+}
+.feather {
+   width: 24px;
+   height: 24px;
+   stroke: currentColor;
+   stroke-width: 2;
+   stroke-linecap: round;
+   stroke-linejoin: round;
+   fill: none;
+ }
+
+/*
+ Nav */
+.flex, .center, .top, .right, .bottom, .left{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.flex {
+   align-content: flex-start;
+}
+.top    { align-items:     flex-start; }
+.right  { justify-content: flex-end;   }
+.bottom { align-items:     flex-end;   }
+.left   { justify-content: flex-start; }
+/* override */
+.edge  { justify-content: space-between;
+   flex-wrap: nowrap;
+}
+.navBarOpen {
+   width: 250px;
+}
+/* off */
+#navBarOpenHead, .navBarOpenHead {
+   background-color: black;
+   color: white !important;
+   margin: 0;
+   height: 60px;
+   padding-left: 15px;
+   line-height: 60px !important;
+}
+#navBarHead {
+   margin-top: 10px;
+}
+header, bblack {
+   background-color: black;
+   padding-left: 15px;
+   height: 60px;
+   line-height: 60px;
+}
+.nav-item a {
+   padding-left: 15px !important;
+}
+/*
+End Nav */
+
+

@@ -33,7 +33,6 @@ function version() {
    console.log(' for a starter admin|build/Meta cloud service: mbake -a')
 
    console.log(' for a FullPage site: mbake -f')
-   console.log(' for a beginner mockup up: mbake -m')
    console.log(' for an example blog|RIOT/Pug: mbake -b')
    console.log(' Full docs: http://doc.MetaBake.org/mbake')
    console.log()
@@ -45,7 +44,6 @@ function version() {
 const optionDefinitions = [
    { name: 'mbake', defaultOption: true},
    { name: 'admin', alias: 'a', type: Boolean },
-   { name: 'mock', alias: 'm', type: Boolean },
    { name: 'spa', alias: 's', type: Boolean },
    { name: 'fullPage', alias: 'f', type: Boolean },
    { name: 'crud', alias: 'c', type: Boolean },
@@ -60,13 +58,6 @@ let arg:string = argsParsed.mbake
 console.log()
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
-function unzipM() {
-   let src:string =__dirname+ '/mock.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted mock up starter, check it, bake it')
-   process.exit()
-}
 function unzipA() {
    let src:string =__dirname+ '/autoEG.zip'
    let zip = new AdmZip(src)
@@ -157,8 +148,6 @@ if(argsParsed.tag) {
 }
 else if(argsParsed.items)
    itemize(arg)
-else if(argsParsed.mock)
-   unzipM()
 else if(argsParsed.admin)
    unzipA()
 else if(argsParsed.fullPage)

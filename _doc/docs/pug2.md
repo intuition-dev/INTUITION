@@ -46,8 +46,6 @@ Note: that pug is compiled into .js (3GL like). That .js is obfuscated, so it ca
 
 #### That is it for mbake
 
-mbake also has a mbake -m, and app use for mockups, more on the menu on left.
-
 Once you are comfortable with mbake and its 3 pillars, you can go to the Github project
 B-M SPA, the bread and butter section, that demos 5 more pillars
 or to
