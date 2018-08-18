@@ -16,8 +16,8 @@ $(document).ready(function () {
 })
 
 loadjs([
-   //'https://cdn.jsdelivr.net/npm/signals@1.0.0/dist/signals.min.js'
-   'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.6/dist/_js/js-offcanvas.pkgd.js'
+   'https://cdn.jsdelivr.net/npm/signals@1.0.0/dist/signals.min.js'
+   , 'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.6/dist/_js/js-offcanvas.pkgd.js'
    , 'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.6/dist/_css/prefixed/js-offcanvas.css'
 
    , ROOT + '/assets/css/gridform.css'

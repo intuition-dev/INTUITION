@@ -11,6 +11,9 @@
 .padL {
    padding-left: 15px;
 }
+.pad {
+   padding: 15px;
+}
 
 .bord { /* icons & bars */
    margin-top: 23px;
