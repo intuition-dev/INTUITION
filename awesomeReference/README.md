@@ -117,6 +117,8 @@ Sins to eschew:
 - [Feather SVG icons](https://feathericons.com) Just copy the SVG itself per icon
 - [Simple Navbar](https://www.w3schools.com/css/css_navbar.asp)
 - [Documentation.js](https://documentation.js.org) - Example of use is in autoEG/www
+- [CSS Selectors](https://adam-marsden.co.uk/css-cheat-sheet)
+- [CSS reference](https://tympanus.net/codrops/css_reference/)
 
 ## Benchmarks and Automatic programing
 - [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
