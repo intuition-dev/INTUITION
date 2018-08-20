@@ -10,7 +10,7 @@ html
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')
       title Metabake.org
-      link(rel='shortcut icon', href= ROOT + '/assets/favicon.png', type='image/x-icon')
+      link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
       include crud
 
       script(src='https://cdn.jsdelivr.net/npm/loadjs@3.5.4/dist/loadjs.js')
@@ -22,7 +22,7 @@ html
 
    body
       script(src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js')
-      script(src= ROOT + '/assets/js/setup.js')
+      script(src= ROOT + 'assets/js/setup.js')
 
       .c-offcanvas-content-wrap
          //top
@@ -33,9 +33,9 @@ html
 
             .right.white
                .hide-lg
-                  a.btn.btn-link(href= ROOT + '/screens/auth') Auth
-                  a.btn.btn-link(href= ROOT + '/screens/members') CRUD
-                  a.btn.btn-link(href= ROOT + '/screens/membersTag') Tag
+                  a.btn.btn-link(href= ROOT + 'screens/auth') Auth
+                  a.btn.btn-link(href= ROOT + 'screens/members') CRUD
+                  a.btn.btn-link(href= ROOT + 'screens/membersTag') Tag
 
                a#off-cbut.js-offcanvas-trigger( href='#navOpen')
                   .white
@@ -60,14 +60,14 @@ html
                a(href='#') Components
 
 
-      link(href= ROOT + '/assets/css/spectreOff.css', onload='cssLoaded()', rel='stylesheet')
+      link(href= ROOT + 'assets/css/spectreOff.css', onload='cssLoaded()', rel='stylesheet')
       link(href='https://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet')
-      link(href= ROOT + '/layoutOff/nav.css', rel='stylesheet')
-      link(href= ROOT + '/assets/css/main.css', rel='stylesheet')
+      link(href= ROOT + 'layoutOff/nav.css', rel='stylesheet')
+      link(href= ROOT + 'assets/css/main.css', rel='stylesheet')
 
       script.
          function userSzSc() {
             console.log('resize|scroll')
          }
 
-   //link(href= ROOT + '/assets/css/debug.css', rel='stylesheet')
+   //link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')
