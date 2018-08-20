@@ -1,3 +1,5 @@
+import { isReturnStatement } from "babel-types";
+
 // All rights MetaBake.org | cekvenich, licensed under GPL v3
 
 declare var module: any
@@ -11,6 +13,9 @@ const yaml = require('js-yaml')
 const riotc = require('riot-compiler')
 const pug = require('pug')
 const logger = require('tracer').console()
+
+const csv2JsonV2 = require('csvtojson')
+
 const JavaScriptObfuscator = require('javascript-obfuscator')
 
 const express = require('express')
@@ -49,6 +54,9 @@ export class RetMsg {
    }
    get msg():any{
       return this
+   }
+   log() {
+      console.log(this.cmd, this.msg, this.code)
    }
 }//class
 
@@ -163,6 +171,35 @@ export class Dirs {
       return ret
    }//()
 }//class
+
+
+
+export class CSV2Json { // TODO: get to work with watcher
+   dir:string
+   constructor(dir_:string) {
+      this.dir = Ver.slash(dir_)
+   }
+
+   convert():RetMsg {
+      let fn:string = this.dir +'/items.csv'
+      if (!fs.existsSync(fn)) { //if it does not exist, go up a level
+         let r = new RetMsg('CSV2Json', -1, 'items.csv not found in ' + this.dir)
+         r.log()
+         return r
+      }
+      let r = new RetMsg('CSV2Json', 1, 'OK')
+      let thiz = this
+      csv2JsonV2({ noheader:true }).fromFile(fn)
+         .then(function(jsonO) {
+            console.log(jsonO)
+            let fj:string = thiz.dir +'/items.json'
+
+            fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
+            return r
+         })
+
+   }//()
+}
 
 export class MBake {
 
@@ -764,6 +801,6 @@ export class Scrape {
 
 module.exports = {
      Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, MetaPro, Watch, AdminSrv, MDevSrv,
-     Scrape, FileOps
+     Scrape, FileOps, CSV2Json
 }
 

@@ -8,7 +8,7 @@ declare var __dirname: any
 const AdmZip = require('adm-zip')
 const commandLineArgs = require('command-line-args')
 
-import { Ver, MBake, Scrape } from './lib/Base'
+import { Ver, MBake, CSV2Json } from './lib/Base'
 
 const clear = require("cli-clear")
 clear()
@@ -25,15 +25,18 @@ function version() {
    console.log('usage: mbake .')
    console.log(' or mbake any_dir to make(bake) a declarative low code(put) app recursively')
    console.log(' to process RIOT _tag.pug tags, and also Pug : mbake -t .')
-   console.log(' to process dat_i items to items.json, and also Pug mbake -i .')
+   console.log(' to process dat_i items to items.json, and also Pug: mbake -i .')
+   console.log(' to experimental process items.csv to items.json, mbake -j')
+
    console.log()
    console.log(' ----------------------------------------------------------------')
    console.log(' for a starter declarative web app CRUD/Pug app: mbake -c')
    console.log(' for a starter SPA/PhoneGap: mbake -s')
    console.log(' for a starter admin|build/Meta cloud service: mbake -a')
 
-   console.log(' for a FullPage site: mbake -f')
-   console.log(' for an example blog|RIOT/Pug: mbake -b')
+   console.log(' for an example Nav/Web Site: mbake -n')
+   console.log(' for a starter blog|linkBlog: mbake -b')
+
    console.log(' Full docs: http://doc.MetaBake.org/mbake')
    console.log()
 
@@ -43,13 +46,15 @@ function version() {
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
    { name: 'mbake', defaultOption: true},
-   { name: 'admin', alias: 'a', type: Boolean },
-   { name: 'spa', alias: 's', type: Boolean },
-   { name: 'fullPage', alias: 'f', type: Boolean },
-   { name: 'crud', alias: 'c', type: Boolean },
    { name: 'items', alias: 'i', type: Boolean },
    { name: 'tag', alias: 't', type: Boolean },
-   { name: 'blog', alias: 'b', type: Boolean }
+   { name: 'csv2Json', alias: 'j', type: Boolean },
+
+   { name: 'blog', alias: 'b', type: Boolean },
+   { name: 'admin', alias: 'a', type: Boolean },
+   { name: 'spa', alias: 's', type: Boolean },
+   { name: 'navSite', alias: 'n', type: Boolean },
+   { name: 'crud', alias: 'c', type: Boolean },
 
 ]
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -86,8 +91,8 @@ function unzipB() {
    console.log('extracted an example blog app')
    process.exit()
 }
-function unzipF() {
-   let src:string =__dirname+ '/fullPage.zip'
+function unzipN() {
+   let src:string =__dirname+ '/navSite.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
    console.log('extracted an fullpage site starter')
@@ -117,6 +122,10 @@ if(arg) {
    }
 }
 
+// CSV2Json: ////////////////////////////////////////////////////////////////////////////////////////////////
+function csv2Json(arg) {
+   new CSV2Json(arg).convert()
+}
 
 // pug: ////////////////////////////////////////////////////////////////////////////////////////////////
 function bake(arg) {
@@ -124,13 +133,11 @@ function bake(arg) {
    process.exit()
 }
 
-
 // itemize : /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function itemize(arg) {
    new MBake().itemizeNBake(arg)
    process.exit()
 }
-
 
 // tag:  ///////////////////////////////////////////////////////////////////////////////////////////////
 function tag(arg) {
@@ -148,10 +155,12 @@ if(argsParsed.tag) {
 }
 else if(argsParsed.items)
    itemize(arg)
+else if(argsParsed.csv2Json)
+   csv2Json(arg)
 else if(argsParsed.admin)
    unzipA()
-else if(argsParsed.fullPage)
-   unzipF()
+else if(argsParsed.navSite)
+   unzipN()
 else if(argsParsed.crud)
    unzipC()
 else if(argsParsed.blog)
