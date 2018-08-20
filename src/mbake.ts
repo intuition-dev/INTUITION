@@ -26,7 +26,7 @@ function version() {
    console.log(' or mbake any_dir to make(bake) a declarative low code(put) app recursively')
    console.log(' to process RIOT _tag.pug tags, and also Pug : mbake -t .')
    console.log(' to process dat_i items to items.json, and also Pug: mbake -i .')
-   console.log(' to experimental process items.csv to items.json, mbake -j')
+   console.log(' to process items.csv to items.json, mbake -j .')
 
    console.log()
    console.log(' ----------------------------------------------------------------')
@@ -37,7 +37,7 @@ function version() {
    console.log(' for an example Nav/Web Site: mbake -n')
    console.log(' for a starter blog|linkBlog: mbake -b')
 
-   console.log(' Full docs: http://doc.MetaBake.org/mbake')
+   console.log(' Full docs: http://www.Metabake.org and note on newer versions')
    console.log()
 
    //process.exit()
@@ -95,7 +95,7 @@ function unzipN() {
    let src:string =__dirname+ '/navSite.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an fullpage site starter')
+   console.log('extracted an Navbar site starter')
    process.exit()
 }
 
