@@ -29,7 +29,7 @@ const probe  = require('probe-image-size')
 
 export class Ver {
    ver() {
-      return "v3.8.14"
+      return "v3.8.15"
    }
 
    static slash(path) {// windowze
@@ -157,6 +157,7 @@ export class Dirs {
    }
 
    get() {
+      logger.trace(this.dir)
       const rec = FileHound.create() //recurse
          .paths(this.dir)
          .ext('yaml')
@@ -168,6 +169,7 @@ export class Dirs {
          let s:string = val.substring(0,n)
          ret.push(s)
       }
+      logger.trace(ret)
       return ret
    }//()
 }//class
@@ -253,7 +255,7 @@ export class MBake {
 
    // itemize and bake
    itemizeNBake(ppath):RetMsg {
-      logger.trace('WATCHED IB:', ppath)
+      logger.trace('ib:', ppath)
 
       try {
          const i = new Items(ppath)
@@ -377,7 +379,7 @@ export class Items {
          dir = dir.substring(0,n)
       }
 
-      logger.trace('WATCHED IB USING:', dir)
+      logger.trace(' IB :', dir)
 
       fn = dir +'/dat_i.yaml'
       if (!fs.existsSync(fn))
@@ -386,7 +388,6 @@ export class Items {
       this.dir=dir
       let d = new Dirs(dir)
       this.dirs =d.get()
-      this.dirs.pop() // dont process the root
    }
 
    _addAnItem(dn) {
