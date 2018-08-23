@@ -53,13 +53,21 @@ mbake is a bit like grunt/gulp in some ways, or static generators; but it does d
    // and run it
    mbake
 
-# to generate a sample project:
 
-   mbake -c
+## Create index.put
 
-   cd CRUDA
 
-# To generate HTML from Pug and Yaml:
+   header
+   body
+      p Hello #{key1}
+
+## Create dat.yaml
+
+
+   key1: World
+
+
+## To generate index.html from Pug and Yaml:
 
    mbake .
 
@@ -67,7 +75,15 @@ or
 
    mbake subfoldername
 
-# To see all current mbake switches:
+
+## to generate a sample project:
+
+   mbake -c
+
+   cd CRUDA
+
+
+## To see all the mbake switches:
 
    mbake [enter]
 ```

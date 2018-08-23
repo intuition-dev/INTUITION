@@ -12,6 +12,11 @@ As we went from second generation (2GL) to third (3GL), our productivity jumped.
 To learn, edit a Pug in the mbake CRUDA sample project, 'mbake .' and see the changed HTML in a browser (e.g. via prior S3 step).
 
 
+## Working with text content
+
+   include:marked text.md
+
+
 ## dat.yaml - part 1
 
 dat.yaml is used to configure Pug per folder. Also for static binding, if you have "bla: Oh hi" in dat.yaml, you can statically bind inside a .pug file at compile time via:

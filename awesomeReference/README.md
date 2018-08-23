@@ -90,7 +90,6 @@ Sins to eschew:
 -[StaticGen](https://www.staticgen.com/metabakeorg)
 - <a href='https://www.npmjs.com/package/mbake' target='_blank'>Check for latest version of mbake</a>
 - <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
-- [Other Static Generators](https://www.staticgen.com)
 - [Pug](https://pug.metabake.org)
 - [RIOTjs](https://riot.js.org/)
 - [Grid Forms](http://kumailht.com/gridforms)
