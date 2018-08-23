@@ -26,7 +26,7 @@ function version() {
    console.log(' or mbake any_dir to make(bake) a declarative low code app recursively')
    console.log(' To process Pug and RIOT _tag.pug tags: mbake -t .')
    console.log(' To process Pug and dat_i items to items.json: mbake -i .')
-   console.log(' To process items.csv to items.json, mbake -j .')
+   console.log(' To process items.csv to items.json: mbake -j .')
 
    console.log()
    console.log(' ----------------------------------------------------------------')
