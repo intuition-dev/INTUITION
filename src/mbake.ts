@@ -30,7 +30,7 @@ function version() {
 
    console.log()
    console.log(' ----------------------------------------------------------------')
-   console.log(' For a starter declarative web app with CRUD: mbake -c')
+   console.log(' For a starter declarative web app with CRUD and auth: mbake -c')
    console.log(' For a starter SPA/Phonegap app: mbake -s')
    console.log(' For a starter admin/build/Meta cloud service: mbake -a')
 
@@ -67,35 +67,35 @@ function unzipA() {
    let src:string =__dirname+ '/autoEG.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an starter admin|build Meta webapp')
+   console.log('Extracted a starter admin/build/Meta cloud service to ./autoEG')
    process.exit()
 }
 function unzipS() {
    let src:string =__dirname+ '/SPA.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an starter SPA|PhoneGap app')
+   console.log('Extracted a starter SPA/Phonegap app to ./SPA')
    process.exit()
 }
 function unzipC() {
    let src:string =__dirname+ '/CRUDA.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an example CRUD and Auth app')
+   console.log('Extracted a starter declarative web app with CRUD and auth to ./CRUDA')
    process.exit()
 }
 function unzipB() {
    let src:string =__dirname+ '/linkBlog.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an example blog app')
+   console.log('Extracted a starter blog app to ./linkBlog')
    process.exit()
 }
 function unzipN() {
    let src:string =__dirname+ '/navSite.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an Navbar site starter')
+   console.log('Extracted an example web site with navigation to ./navSite')
    process.exit()
 }
 
