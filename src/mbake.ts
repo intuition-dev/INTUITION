@@ -22,22 +22,22 @@ function version() {
    console.log('Your node is '+ process.version)
    console.log(b.ver()) // tsc
    console.log('from '+ __dirname)
-   console.log('usage: mbake .')
-   console.log(' or mbake any_dir to make(bake) a declarative low code(put) app recursively')
-   console.log(' to process RIOT _tag.pug tags, and also Pug : mbake -t .')
-   console.log(' to process dat_i items to items.json, and also Pug: mbake -i .')
-   console.log(' to process items.csv to items.json, mbake -j .')
+   console.log('Usage: mbake .')
+   console.log(' or mbake any_dir to make(bake) a declarative low code app recursively')
+   console.log(' To process Pug and RIOT _tag.pug tags: mbake -t .')
+   console.log(' To process Pug and dat_i items to items.json: mbake -i .')
+   console.log(' To process items.csv to items.json, mbake -j .')
 
    console.log()
    console.log(' ----------------------------------------------------------------')
-   console.log(' for a starter declarative web app CRUD/Pug app: mbake -c')
-   console.log(' for a starter SPA/PhoneGap: mbake -s')
-   console.log(' for a starter admin|build/Meta cloud service: mbake -a')
+   console.log(' For a starter declarative web app/CRUD/Pug app: mbake -c')
+   console.log(' For a starter SPA/Phonegap app: mbake -s')
+   console.log(' For a starter admin/build/Meta cloud service: mbake -a')
 
-   console.log(' for an example Nav/Web Site: mbake -n')
-   console.log(' for a starter blog|linkBlog: mbake -b')
+   console.log(' For an example web site with navigation: mbake -n')
+   console.log(' For a starter blog/linkBlog: mbake -b')
 
-   console.log(' Full docs: http://www.Metabake.org and note on newer versions')
+   console.log(' Full docs: http://www.metabake.org and notes on newer versions')
    console.log()
 
    //process.exit()
