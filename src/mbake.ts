@@ -22,22 +22,22 @@ function version() {
    console.log('Your node is '+ process.version)
    console.log(b.ver()) // tsc
    console.log('from '+ __dirname)
-   console.log('usage: mbake .')
-   console.log(' or mbake any_dir to make(bake) a declarative low code(put) app recursively')
-   console.log(' to process RIOT _tag.pug tags, and also Pug : mbake -t .')
-   console.log(' to process dat_i items to items.json, and also Pug: mbake -i .')
-   console.log(' to process items.csv to items.json, mbake -j .')
+   console.log('Usage: mbake .')
+   console.log(' or mbake any_dir to make(bake) a declarative low code app recursively')
+   console.log(' To process Pug and RIOT _tag.pug tags: mbake -t .')
+   console.log(' To process Pug and dat_i items to items.json: mbake -i .')
+   console.log(' To process items.csv to items.json: mbake -j .')
 
    console.log()
    console.log(' ----------------------------------------------------------------')
-   console.log(' for a starter declarative web app CRUD/Pug app: mbake -c')
-   console.log(' for a starter SPA/PhoneGap: mbake -s')
-   console.log(' for a starter admin|build/Meta cloud service: mbake -a')
+   console.log(' For a starter declarative web app with CRUD and auth: mbake -c')
+   console.log(' For a starter SPA/Phonegap app: mbake -s')
+   console.log(' For a starter admin/build/Meta cloud service: mbake -a')
 
-   console.log(' for an example Nav/Web Site: mbake -n')
-   console.log(' for a starter blog|linkBlog: mbake -b')
+   console.log(' For an example web site with navigation: mbake -n')
+   console.log(' For a starter blog/linkBlog: mbake -b')
 
-   console.log(' Full docs: http://www.Metabake.org and note on newer versions')
+   console.log(' Full docs: http://www.metabake.org and notes on newer versions')
    console.log()
 
    //process.exit()
@@ -67,35 +67,35 @@ function unzipA() {
    let src:string =__dirname+ '/autoEG.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an starter admin|build Meta webapp')
+   console.log('Extracted a starter admin/build/Meta cloud service to ./autoEG')
    process.exit()
 }
 function unzipS() {
    let src:string =__dirname+ '/SPA.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an starter SPA|PhoneGap app')
+   console.log('Extracted a starter SPA/Phonegap app to ./SPA')
    process.exit()
 }
 function unzipC() {
    let src:string =__dirname+ '/CRUDA.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an example CRUD and Auth app')
+   console.log('Extracted a starter declarative web app with CRUD and auth to ./CRUDA')
    process.exit()
 }
 function unzipB() {
    let src:string =__dirname+ '/linkBlog.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an example blog app')
+   console.log('Extracted a starter blog app to ./linkBlog')
    process.exit()
 }
 function unzipN() {
    let src:string =__dirname+ '/navSite.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('extracted an Navbar site starter')
+   console.log('Extracted an example web site with navigation to ./navSite')
    process.exit()
 }
 
