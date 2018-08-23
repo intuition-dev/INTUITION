@@ -30,7 +30,7 @@ function version() {
 
    console.log()
    console.log(' ----------------------------------------------------------------')
-   console.log(' For a starter declarative web app/CRUD/Pug app: mbake -c')
+   console.log(' For a starter declarative web app with CRUD: mbake -c')
    console.log(' For a starter SPA/Phonegap app: mbake -s')
    console.log(' For a starter admin/build/Meta cloud service: mbake -a')
 
