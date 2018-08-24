@@ -1,16 +1,14 @@
-site_name: mBake Docs
-site_url: http://MetaBake.org
-repo_url: http://MetaBake.org
+site_name: mbake Docs
+site_url: http://metabake.org
+repo_url: http://metabake.org
 pages:
    - Home: index.md
 
-   - Cloud 2.0 Part 1/S3: cloud1.md
    - Gentle Intro: gent.md
-   - Pug 1/Intro: pug1.md
-
-   - Cloud 2.0 Part II/Firestore: cloud2.md
-   - Pug 2/Dynamic Binding RO: pug2.md
-   - CRUD with Auth: crud.md
+   - T1: Setup S3 and mount: cloud1.md
+   - T2: Learn Pug: pug1.md
+   - T3: Read from Firestore: pug2.md
+   - T4: Apply Auth and Write Data: cloud2.md
 
    - Resources: res.md
    - Next Steps: next.md

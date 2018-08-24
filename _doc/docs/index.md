@@ -1,114 +1,117 @@
-# mbake
+# What is mbake?
 
-Low-code + Low-tech = 10X faster web app development.
+mbake is a modern CLI static app generation tool. Apps and site you generate with mbake are extreme serverless, allow user authentication and work with JSON and database APIs for dynamic databinding. You can use it for simple blogs or sites to the most complex web and mobile app projects.
 
-With Metabake's modern development approach, it is not about replacing your tech stack with another tech stack -- it is about eliminating it!
+mbake compares to grunt/gulp and other static generators; but it does a lot more with a lot less work.
 
+mbake is part of the Metabake&trade; approach but can be used by itself.
 
-## Metabake  overview
+## What is Metabake?
 
-To get an overview of Metabake pillars:
+Metabake a modern development approach that promises 10X faster web app development, thanks to 'low-code and low-tech'. With Metabake, it is not about replacing your tech stack with another tech stack -- it is about eliminating most of it!
 
-- [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
+Find out more about Metabake:
+
+- [Quick Demo](https://youtu.be/WyCdSFTUIvM)
 
 - <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
 
-- [Metabake Full Slides](http://prez.metabake.org/p)
+- [Slide Deck](http://prez.metabake.org/p)
 
-- [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
+- [Summary for Managers](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
-People usually adopt Metabake by picking a few of the pillars to start with.
+Metabake allows gradual adoption. Just pick a few of its pillars to get started. mbake is a good start.
 
-Directory of related projects is in Resources on left, and source code is here:
+Metabake and mbake are open source. The source code is available at [github.com/metabake](https://github.com/metabake)
 
-- <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
+See [Resources](/mbake/res/) for related projects.
 
-### mbake install
+### How to install mbake
 
-mbake is a bit like grunt/gulp in some ways, or static generators; but it does do a lot more with a lot less work.
+From a command line such as Powershell, type:
 
 ```
    npm -g i mbake
-   mbake
-   mbake -c
-   cd CRUDA
-   mbake .
-   // Start a dev HTTP server, e.g.: 'Web Server for Chrome', 'POW for FF', or better use mounted S3 as explained below.
 ```
 
-### CLI commands
+That's it! If you don't have Node with NPM installed, first go [here for Windows](https://nodejs.org/en/download/) or [here for MAC](http://blog.teamtreehouse.com/install-node-js-npm-mac) instructions.
 
-* `mbake` - Get version and help, including  sample apps.
-* `mbake .` - Bake/make current directory and Pug files recursively.
-* `mbake -t .` - Convert Pug/Riot files to useable tag/js, e.g.: data binding.
-* `mbake -i .` - Convert dat.yaml static files to JSON, for dynamic binding. More about this in B-M-SPA docs.
-
-## How to setup mbake
+### How to get mbake help
 
 ```
-# To install mbake:
-
-   npm -g i mbake
-
-   // and run it
    mbake
+```
 
+### How to create a Hello World app with mbake
 
-## Create index.put
-
-
+```
+## Create index.pug
    header
    body
       p Hello #{key1}
 
 ## Create dat.yaml
-
-
    key1: World
 
-
-## To generate index.html from Pug and Yaml:
-
+## Generate index.html from Pug and Yaml:
    mbake .
 
-or
+   or: mbake subfoldername
+```
 
-   mbake subfoldername
+### How to run an mbake app (such as Hello World)
 
+mbake apps run on any static web server. This includes low-cost cloud hosting such as Amazon S3 (we show how to work with S3 later in this doc)
 
-## to generate a sample project:
+When you develop locally, you could use 'Web Server for Chrome' to run mbake apps. To install it, open your Google Chrome web browser and install the 'Web Server for Chrome' app from [here](https://chrome.google.com/webstore/search/Web%20Server?_category=apps). Launch the app, click the 'Choose Folder' button and select the root folder of your app (e.g. where index.html of your Hello World app is). Also ensure 'Options' has 'Automatically show index.html' checked. Ensure the Web Server is STARTED, then navigate to the proposed URL (e.g. http://127.0.0.1:8887). 
 
+Even though mbake apps are installed on a static server, they are dynamic because they allow user authentication and work with JSON for dynamic rendering and and database APIs for dynamic databinding.
+
+## How to generate a sample app with mbake
+
+```
+## Run mbake help to see the list of current sample apps
+   mbake
+
+## Generate sample app, e.g.
    mbake -c
 
+## Navigate to it, e.g.
    cd CRUDA
-
-
-## To see all the mbake switches:
-
-   mbake [enter]
 ```
-So you can work Cloud v2 (no servers), we show how to use mbake with
+
+### Other popular mbake commands
+
+* `mbake -t .` - Convert Pug/Riot files to useable tag/js, e.g.: data binding.
+* `mbake -i .` - Convert dat.yaml static files to JSON, for dynamic binding. More about this in B-M-SPA docs.
+
+## How to make mbake apps extreme serverless
+
+To go extreme serverless, we show how to use mbake with
 - Amazon Web Services (AWS) S3 HTTP hosting
 - Mounting software Webdrive so you can mount AWS S3 as a drive
-- Google Firebase
+- Google Firebase/Firestore
 
-## Intro - How to use mbake:
+### Go Extreme Serverless in four steps (Tutorials):
 
-(Each of these is on the menu to the left.)
+[Tutorial 1](/mbake/cloud1/): Setup S3 as your cloud server and mount it.
+[Tutorial 2](/mbake/pug1/): Learn Pug and static binding; view via S3 HTTP server.
+[Tutorial 3](/mbake/pug2/): Read dynamic data from Firestore and bind via Pug.
+[Tutorial 4](/mbake/cloud2/): Apply authentication and write dynamic data.
 
-1. Cloud V2 I: Setup S3 as your HTTP server and mount it.
-2. Pug I: Learn Pug(hint: you already know it) and static binding; view via S3 HTTP server.
-3. Cloud V2 II: Use Firestore for pure client-side CRUD and authentication.
-4. Pug II: Do dynamic binding via Pug.
+When done, you should see [this](https://youtu.be/-KkPfAnEXyk).
 
-Here is what it should look like when done with 1-4
-- [mbake part 1](https://youtu.be/-KkPfAnEXyk)
-
-
-Cloud v2 is Metabake Pillar 1.
-Mount is Pillar 2.
-Pug is an example of Pillar 4.
+The tutorials apply some of Metabake's pillars: Serverless/Cloud V2 is pillar 1. Mount is pillar 2. Pug is an example of pillar 4.
 
 
+### tl;dr
+
+```
+   npm -g i mbake
+   mbake
+   mbake -c
+   cd CRUDA
+   mbake .
+```
 
 
