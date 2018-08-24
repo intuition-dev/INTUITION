@@ -11,7 +11,6 @@ html
       meta(name='viewport', content='width=device-width, initial-scale=1')
       title Metabake.org
       link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
-      include crud
 
       script(src='https://cdn.jsdelivr.net/npm/loadjs@3.5.4/dist/loadjs.js')
       script(src='https://cdn.jsdelivr.net/npm/riot@3.11.1/riot.min.js')
@@ -19,6 +18,8 @@ html
 
       style.
          .delayShowing { opacity: 0.01; }
+
+      block head2
 
    body
       script(src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js')
@@ -33,9 +34,7 @@ html
 
             .right.white
                .hide-lg
-                  a.btn.btn-link(href= ROOT + 'screens/auth') Auth
-                  a.btn.btn-link(href= ROOT + 'screens/members') CRUD
-                  a.btn.btn-link(href= ROOT + 'screens/membersTag') Tag
+                  a.btn.btn-link(href= ROOT + 'screens/membersROTag') Tag
 
                a#off-cbut.js-offcanvas-trigger( href='#navOpen')
                   .white
@@ -52,10 +51,6 @@ html
 
             h3#navBarOpenHead.navBarOpenHea.navbar-brand Metabake.org
 
-            li.nav-item
-               a(href='#') Elements
-            li.nav-item
-               a(href='#') Layout
             li.nav-item
                a(href='#') Components
 
