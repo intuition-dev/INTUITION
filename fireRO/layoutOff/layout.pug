@@ -3,14 +3,12 @@ html
    head
       //<script src="https://console.re/connector.js" data-channel="MY_NAME" id="consolerescript"></script>
       script.
-         ROOT = '#{ROOT}' //- sets global pug and .js from dat.yaml
-         console.log('root','#{ROOT}')
          let _start=Date.now()
       meta(charset='utf-8')
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')
       title Metabake.org
-      link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
+      link(rel='shortcut icon', href= '/assets/favicon.png', type='image/x-icon')
 
       script(src='https://cdn.jsdelivr.net/npm/loadjs@3.5.4/dist/loadjs.js')
       script(src='https://cdn.jsdelivr.net/npm/riot@3.11.1/riot.min.js')
@@ -18,12 +16,14 @@ html
 
       style.
          .delayShowing { opacity: 0.01; }
-
+      // CRUD generic ///////////////////////////////////////////////////////////////////
+      script(src='https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js')
+      script(src='https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js')
       block head2
 
    body
       script(src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js')
-      script(src= ROOT + 'assets/js/setup.js')
+      script(src= '/assets/js/setup.js')
 
       .c-offcanvas-content-wrap
          //top
@@ -34,7 +34,7 @@ html
 
             .right.white
                .hide-lg
-                  a.btn.btn-link(href= ROOT + 'screens/membersROTag') Tag
+                  a.btn.btn-link(href= '/screens/membersROTag') Read
 
                a#off-cbut.js-offcanvas-trigger( href='#navOpen')
                   .white
@@ -52,13 +52,13 @@ html
             h3#navBarOpenHead.navBarOpenHea.navbar-brand Metabake.org
 
             li.nav-item
-               a(href='#') Components
+               a(href= '/screens/membersROTag') Read
 
 
-      link(href= ROOT + 'assets/css/spectreOff.css', onload='cssLoaded()', rel='stylesheet')
+      link(href=  '/assets/css/spectreOff.css', onload='cssLoaded()', rel='stylesheet')
       link(href='https://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet')
-      link(href= ROOT + 'layoutOff/nav.css', rel='stylesheet')
-      link(href= ROOT + 'assets/css/main.css', rel='stylesheet')
+      link(href= '/layoutOff/nav.css', rel='stylesheet')
+      link(href= '/assets/css/main.css', rel='stylesheet')
 
       script.
          function userSzSc() {

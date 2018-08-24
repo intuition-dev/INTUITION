@@ -1,0 +1,27 @@
+
+// specific:
+script.
+	const fconfig = {
+		apiKey: 'AIzaSyASZVGB4'+'s'+'1uKB4OdxPCcbJ3ebf44KUYdIE',
+		authDomain: 'mbake1-1.firebaseapp.com',
+		projectId: 'mbake1-1'
+	}
+
+// example use ///////////////////////////////////////////////////////////
+	/* put in header or better yet in a RIOT tag
+	*/
+	// in FireBase set:
+	// allow read, write: if request.auth.token.email_verified == true ;
+
+script.
+	//CRUD ver original 3.06.25
+	firebase.initializeApp(fconfig)
+
+	const db  = firebase.firestore()
+	const dsettings = {/* your settings... */ timestampsInSnapshots: true}
+	db.settings(dsettings)
+
+
+
+
+

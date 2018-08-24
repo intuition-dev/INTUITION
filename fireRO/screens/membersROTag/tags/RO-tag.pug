@@ -1,6 +1,6 @@
 RO-tag
 
-   include crud
+   include tags/ro
 
    form#f2.grid-form(autocomplete="off")
       fieldset
@@ -22,22 +22,10 @@ RO-tag
    script.
       console.log('oh hi')
       loadjs.ready('style', function () {
-         console.log('auth', isUserIn()) // if not, you can gray out the page with a modal
 
          $('#data').click(function(){
             let data = $('#f2 [name="dat"]').val()
             console.log(data)
-
-            // *** We assume you setup your fire store so only auth user can access:
-            console.log('auth', isUserIn()) // if not, you can gray out the page with a modal
-
-            let newRow = {
-               col1: data,
-               col2: true,
-               col3: 3.14159265
-            }
-
-            var newPK = db.collection('table_one').doc()// make PK
 
             newPK.set(newRow)//insert
                .then(function() { // optional handling
