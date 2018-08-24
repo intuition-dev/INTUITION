@@ -25,8 +25,8 @@ riot.tag2('ro-tag', '<hr> <p>{dat}</p> <hr> <div class="buts"> <button class="bt
           tableOneRef.get().then(function(querySnapshot) {
              console.log('back')
              querySnapshot.forEach(function(doc) {
-                console.log(doc.id, " => ", doc.data());
-                thiz.update({dat: doc.data()})
+                console.log(doc.id, " => ", doc.data())
+                thiz.update({dat: doc.data().col1})
                 })
              })
 

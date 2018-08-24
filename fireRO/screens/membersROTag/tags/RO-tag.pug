@@ -29,8 +29,8 @@ RO-tag
             tableOneRef.get().then(function(querySnapshot) {
                console.log('back')
                querySnapshot.forEach(function(doc) {
-                  console.log(doc.id, " => ", doc.data());
-                  thiz.update({dat: doc.data()}) // update RIOT dom
+                  console.log(doc.id, " => ", doc.data())
+                  thiz.update({dat: doc.data().col1}) // update RIOT dom
                   })//each
                })//then
 
