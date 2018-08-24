@@ -33,7 +33,7 @@ script.
             col3: 3.14159265
          }
 
-         var newPK = db.collection('table_one').doc()// make PK
+         let newPK = db.collection('table_one').doc()// make PK
 
          newPK.set(newRow)//insert
             .then(function() { // optional handling

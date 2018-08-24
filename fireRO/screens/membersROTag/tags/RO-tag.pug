@@ -1,17 +1,13 @@
 RO-tag
 
-   include tags/ro
+   include ro
 
-   form#f2.grid-form(autocomplete="off")
-      fieldset
-         legend RiotJS Tag
-         div(data-row-span='2')
-            div(data-field-span='1')
-               label  Data
-               input(type='text', name='dat', placeholder='more data')
+   hr
+   p { dat }
+   hr
 
    .buts
-      button#data.btn(type='submit') Add data
+      button#data.btn(type='submit') Get data
 
    style.
       .buts button {
@@ -21,19 +17,25 @@ RO-tag
 
    script.
       console.log('oh hi')
-      loadjs.ready('style', function () {
+      thiz = this
+      this.on('mount', function(){
+
+         loadjs.ready('style', function () {
+         let tableOneRef = db.collection('table_one')
 
          $('#data').click(function(){
-            let data = $('#f2 [name="dat"]').val()
-            console.log(data)
+            console.log('click')
+            // https://firebase.google.com/docs/firestore/query-data/get-data?authuser=0
+            tableOneRef.get().then(function(querySnapshot) {
+               console.log('back')
+               querySnapshot.forEach(function(doc) {
+                  console.log(doc.id, " => ", doc.data());
+                  thiz.update({dat: doc.data()}) // update RIOT dom
+                  })//each
+               })//then
 
-            newPK.set(newRow)//insert
-               .then(function() { // optional handling
-                  console.log('successful')
-               })
-               .catch(function(error) {
-                  console.error('oops', error)
-               })
-         })//click
+            })//click
 
-      }) //on ready
+         }) //on ready
+
+      }) //mount
