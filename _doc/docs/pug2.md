@@ -9,11 +9,8 @@ So now that we have a database API and we know Pug, we should allow for CRUD - a
 We will load the Riot library. Loading has to be in sequence, and using 'MUI load js' works well:
 - https://github.com/muicss/loadjs
 
-# CRUDA
 
-In the example app (mbake -a) there are examples:
-- https://github.com/metabake/_mBake/tree/master/CRUDA/screens
-
+Firebase is well documented on the web. Read up on Firebase/Firestore to learn how to use it.
 
 
 ## mbake -t
@@ -36,9 +33,6 @@ When you 'mbake -c', the generated project has a 'riotFirst' folder that contain
 
 MembersTag folder has the dynamic Riot tag done in Pug.
 
-Also it has an auth example, it is up to you to manage user access for
-the users that do not have auth.
-(In Meta admin layouts folder we use Bulma's modal, you can use as example.)
 
 
 Note: that pug is compiled into .js (3GL like). That .js is obfuscated, so it can't be read by other developers. So you can store keys - as safe as Andorid's ProGuard.

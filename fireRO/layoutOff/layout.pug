@@ -1,0 +1,73 @@
+doctype html
+html
+   head
+      //<script src="https://console.re/connector.js" data-channel="MY_NAME" id="consolerescript"></script>
+      script.
+         ROOT = '#{ROOT}' //- sets global pug and .js from dat.yaml
+         console.log('root','#{ROOT}')
+         let _start=Date.now()
+      meta(charset='utf-8')
+      meta(http-equiv='X-UA-Compatible', content='IE=edge')
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      title Metabake.org
+      link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
+      include crud
+
+      script(src='https://cdn.jsdelivr.net/npm/loadjs@3.5.4/dist/loadjs.js')
+      script(src='https://cdn.jsdelivr.net/npm/riot@3.11.1/riot.min.js')
+      script(src='https://unpkg.com/axios@0.18.0/dist/axios.min.js')
+
+      style.
+         .delayShowing { opacity: 0.01; }
+
+   body
+      script(src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js')
+      script(src= ROOT + 'assets/js/setup.js')
+
+      .c-offcanvas-content-wrap
+         //top
+         header.flex.edge
+            .left.white
+               .navbar-brand.mr-2
+                  h2#navBarHead Metabake.org
+
+            .right.white
+               .hide-lg
+                  a.btn.btn-link(href= ROOT + 'screens/auth') Auth
+                  a.btn.btn-link(href= ROOT + 'screens/members') CRUD
+                  a.btn.btn-link(href= ROOT + 'screens/membersTag') Tag
+
+               a#off-cbut.js-offcanvas-trigger( href='#navOpen')
+                  .white
+                        svg.bord.feather(viewBox='0 0 24 24')
+                           line(x1='3', y1='12', x2='21', y2='12')
+                           line(x1='3', y1='6',  x2='21', y2='6')
+                           line(x1='3', y1='18', x2='21', y2='18')
+
+         #router
+            block main
+
+      #navOpen.delayShowing
+         ul.nav.navBarOpen
+
+            h3#navBarOpenHead.navBarOpenHea.navbar-brand Metabake.org
+
+            li.nav-item
+               a(href='#') Elements
+            li.nav-item
+               a(href='#') Layout
+            li.nav-item
+               a(href='#') Components
+
+
+      link(href= ROOT + 'assets/css/spectreOff.css', onload='cssLoaded()', rel='stylesheet')
+      link(href='https://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet')
+      link(href= ROOT + 'layoutOff/nav.css', rel='stylesheet')
+      link(href= ROOT + 'assets/css/main.css', rel='stylesheet')
+
+      script.
+         function userSzSc() {
+            console.log('resize|scroll')
+         }
+
+   //link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')

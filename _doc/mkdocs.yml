@@ -9,7 +9,8 @@ pages:
    - Pug 1/Intro: pug1.md
 
    - Cloud 2.0 Part II/Firestore: cloud2.md
-   - Pug 2/Dynamic Binding: pug2.md
+   - Pug 2/Dynamic Binding RO: pug2.md
+   - CRUD with Auth: crud.md
 
    - Resources: res.md
    - Next Steps: next.md

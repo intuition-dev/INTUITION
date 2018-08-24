@@ -29,7 +29,7 @@ const probe  = require('probe-image-size')
 
 export class Ver {
    ver() {
-      return "v3.8.19"
+      return "v3.8.20"
    }
 
    static slash(path) {// windowze

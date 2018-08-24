@@ -1,0 +1,59 @@
+
+// specific:
+script.
+	const fconfig = {
+		apiKey: 'AIzaSyASZVGB4'+'s'+'1uKB4OdxPCcbJ3ebf44KUYdIE',
+		authDomain: 'mbake1-1.firebaseapp.com',
+		projectId: 'mbake1-1'
+	}
+
+// example use ///////////////////////////////////////////////////////////
+	/* put in header or better yet in a RIOT tag, ex:
+		link(rel='icon', href='....favicon.ico')
+		include crud
+	*/
+	// in FireBase set:
+	// allow read, write: if request.auth.token.email_verified == true ;
+
+// CRUD generic ///////////////////////////////////////////////////////////////////
+script(src='https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js')
+script(src='https://www.gstatic.com/firebasejs/5.3.0/firebase-auth.js')
+script(src='https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js')
+
+script.
+	//CRUD ver original 3.06.25
+	firebase.initializeApp(fconfig)
+	const auth =firebase.auth()
+	auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+
+	const db  = firebase.firestore()
+	const dsettings = {/* your settings... */ timestampsInSnapshots: true}
+	db.settings(dsettings)
+
+	function isUserIn() { // use this to check if user is auth and valid
+		if(!auth.currentUser) return false
+		return auth.currentUser.emailVerified
+	}
+
+	function sendEmailVerification() {
+			if(!isUserIn()) {
+				console.log('sending', auth.currentUser)
+				auth.currentUser.sendEmailVerification()
+			}
+			else
+				console.log('no currentUser')
+	}
+
+	auth.onAuthStateChanged(function(user_) {
+		if (isUserIn()) {
+			console.log('CRUDauth', isUserIn())
+		}
+		else {
+			console.log('CRUDauth','bye')
+		}
+	})
+
+
+
+
+
