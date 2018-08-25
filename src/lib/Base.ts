@@ -27,6 +27,33 @@ const axios = require('axios')
 
 const probe  = require('probe-image-size')
 
+
+const markdownItAttrs = require('markdown-it-attrs')
+const sm = require('sitemap')
+
+export class Map {
+
+   tst(path) {
+      const m = yaml.load(fs.readFileSync(path+'/map.yaml'))
+      let menu = JSON.stringify(m.menu, null, 2)
+      fs.writeFileSync(path+'/menu.json', menu)
+
+      let sitemap = sm.createSitemap( {
+         hostname: m['host']
+      })
+      sitemap.add({url: '/page-1/'})
+      sitemap.add({url: '/page-2/'})
+
+      sitemap.toXML( function (err, xml) {
+         console.log(xml)
+         console.log(sitemap.toString())
+
+         process.exit()
+      })
+
+   }
+}
+
 export class Ver {
    ver() {
       return "v3.8.21"
@@ -802,6 +829,6 @@ export class Scrape {
 
 module.exports = {
      Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, MetaPro, Watch, AdminSrv, MDevSrv,
-     Scrape, FileOps, CSV2Json
+     Scrape, FileOps, CSV2Json, Map
 }
 

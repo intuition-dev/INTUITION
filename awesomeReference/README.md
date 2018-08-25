@@ -1,8 +1,8 @@
 
-## Awesome Low-Code, Low-Tech list of Metabake resources
+## Awesome Less code list of Metabake resources
 
 
-## Low-code + Low-tech = 10X faster web app development.
+## Less code = 10X faster web app development.
 ### With Metabake's modern development approach, it is not about replacing your tech stack with another tech stack -- it is about eliminating it!
 
 
@@ -67,7 +67,7 @@ S = sales, I = Foundation, II = B&M, III = Vista
 
 
 ## Meta Definitions:
-- Pug : A templating language, position as Low Code Declarative 4GL. Custom 'tags' in Pug via RIOTjs (and obfuscated as well as Andorid's ProGuard)
+- Pug : A templating language, position as Less code Declarative 4GL. Custom 'tags' in Pug via RIOTjs (and obfuscated as well as Andorid's ProGuard)
 - Cloud v2: No known end point. E.g.: CDN, AWS Cognito. AWS Lambda does have a server end point, so it is not Cloud v2
 - Team Player: Benefits group via Cloud Dev Environment, ex: CodeAnywhere+Meta. Selfish: Local dev. environment.
 - Front End Framework: Google/search for 'Front End Framework' yields Bootstrap, Bulma, Spectre, etc. We have examples with a few in Github project of same name.
@@ -105,7 +105,7 @@ Sins to eschew:
 - [slick carousel](http://kenwheeler.github.io/slick/)
 - [My Device size](https://www.mydevice.io)
 - [Prepros.io](https://prepros.io/help/autoprefixer)
-- [High tech](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f) CLoud v2 is low tech. As opposed to high tech.
+- [Backend to avoid](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f)
 - [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 - [Riot Table](https://codepen.io/bchoii/pen/VeQepw)

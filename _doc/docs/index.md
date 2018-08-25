@@ -10,7 +10,7 @@ mbake is part of the Metabake&trade; approach but can be used by itself.
 
 ## What is Metabake?
 
-Metabake a modern development approach that promises 10X faster web app development, thanks to 'low-code and low-tech'. With Metabake, it is not about replacing your tech stack with another tech stack -- it is about eliminating most of it!
+Metabake a modern development approach that promises 10X faster web app development, thanks to 'Less code'. You can pick one or few of the 10 pillars to adopt first.
 
 Find out more about Metabake:
 
@@ -59,7 +59,7 @@ That's it! If you don't have Node with NPM installed, first go [here for Windows
 
 mbake apps run on any static web server. This includes low-cost cloud hosting such as Amazon S3. We show how to work with S3 later in this doc.
 
-When you develop locally, you could use 'Web Server for Chrome' to run mbake apps. To install it, open your Google Chrome web browser and install the 'Web Server for Chrome' app from [here](https://chrome.google.com/webstore/search/Web%20Server?_category=apps). Launch the app, click the 'Choose Folder' button and select the root folder of your app (e.g. where index.html of your Hello World app is). Also ensure 'Options' has 'Automatically show index.html' checked. Ensure the Web Server is STARTED, then navigate to the proposed URL (e.g. http://127.0.0.1:8887). 
+When you develop locally, you could use 'Web Server for Chrome' to run mbake apps. To install it, open your Google Chrome web browser and install the 'Web Server for Chrome' app from [here](https://chrome.google.com/webstore/search/Web%20Server?_category=apps). Launch the app, click the 'Choose Folder' button and select the root folder of your app (e.g. where index.html of your Hello World app is). Also ensure 'Options' has 'Automatically show index.html' checked. Ensure the Web Server is STARTED, then navigate to the proposed URL (e.g. http://127.0.0.1:8887).
 
 Even though mbake apps are installed on a static server, they are dynamic because they allow user authentication and work with JSON for dynamic rendering and and database APIs for dynamic databinding.
 

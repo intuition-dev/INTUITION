@@ -8,10 +8,14 @@ declare var __dirname: any
 const AdmZip = require('adm-zip')
 const commandLineArgs = require('command-line-args')
 
-import { Ver, MBake, CSV2Json } from './lib/Base'
+import { Ver, MBake, CSV2Json, Map } from './lib/Base'
 
 const clear = require("cli-clear")
 clear()
+
+new Map().tst('/Users/uptim/Documents/GitHub/examples-plugins/navSiteS')
+
+//process.exit()
 
 // imports done /////////////////////////////////////////////
 const cwd:string = process.cwd()

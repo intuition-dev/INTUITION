@@ -1,4 +1,4 @@
 
-## Awesome Low Code list of Metabake resources
+## Awesome Less code list of Metabake resources
 
-- <a href='https://github.com/metabake/_mBake/tree/master/awesomeReference' target='_blank'>Awesome Low Code list of Metabake resources</a>
+- <a href='https://github.com/metabake/_mBake/tree/master/awesomeReference' target='_blank'>Awesome Less code list of Metabake resources</a>
