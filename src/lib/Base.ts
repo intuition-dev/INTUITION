@@ -53,19 +53,32 @@ export class Map {
          if (this.isLeaf) acc.push(x)
          return acc
       }, [])
-      // any rec?
-      
+      // any items recursively
+      let itemsRecRoot = m['itemsRecRoot']
+      if (itemsRecRoot) {
+         //visit each path
+         const d = new Dirs(this._root + itemsRecRoot)
+         leaves = leaves.concat(d.get())
+      }
+
       var arrayLength = leaves.length
-      console.log(arrayLength)
+      logger.trace(arrayLength)
       for (var i = 0; i < arrayLength; i++) {
          try {
-            const path = leaves[i]
-            let fullPath = this._root + path
+            let path = leaves[i]
+
+            if(path.includes(this._root))
+               path = path.replace(this._root,'')
+
+            let fullPath =  this._root + path
 
             let dat = new Dat(fullPath)
             let props = dat.getAll()
-            console.log(path, props)
+            logger.trace(path)//, props)
 
+            let publish = props['publish']
+            if (publish == false) //skip
+               continue
             let image = props['image']
             if(!image) {
                this._sitemap.add({
@@ -242,9 +255,11 @@ export class Dirs {
          val = Ver.slash(val)
          let n = val.lastIndexOf('/')
          let s:string = val.substring(0,n)
+         if (!fs.existsSync(s+'/dat.yaml'))
+            continue
          ret.push(s)
       }
-      logger.trace(ret)
+      //logger.trace(ret)
       return ret
    }//()
 }//class
@@ -268,7 +283,7 @@ export class CSV2Json { // TODO: get to work with watcher
       let thiz = this
       csv2JsonV2({ noheader:true }).fromFile(fn)
          .then(function(jsonO) {
-            console.log(jsonO)
+            logger.trace(jsonO)
             let fj:string = thiz.dir +'/items.json'
 
             fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
