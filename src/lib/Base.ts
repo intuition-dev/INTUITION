@@ -34,12 +34,15 @@ const traverse = require('traverse')
 
 export class Map {
    _sitemap
-
-   map(path) {
-      const m = yaml.load(fs.readFileSync(path+'/map.yaml'))
+   _root
+   constructor(root) {
+      this._root = root
+   }
+   gen() {
+      const m = yaml.load(fs.readFileSync(this._root+'/map.yaml'))
       let jmenu = JSON.stringify(m.menu, null, 2)
       //menu done
-      fs.writeFileSync(path+'/menu.json', jmenu)
+      fs.writeFileSync(this._root+'/menu.json', jmenu)
 
       this._sitemap = sm.createSitemap( {
          hostname: m['host']
@@ -50,20 +53,26 @@ export class Map {
          if (this.isLeaf) acc.push(x)
          return acc
       }, [])
-      console.dir(leaves)
       var arrayLength = leaves.length
       console.log(arrayLength)
       for (var i = 0; i < arrayLength; i++) {
+         try {
+            const path = leaves[i]
+            let fullPath = this._root + path
 
-         this._sitemap.add({
-            url: leaves[i]
-         })
+            let dat = new Dat(fullPath)
+            console.log(path,dat.getAll())
 
+            this._sitemap.add({
+               url: path
+            })
+         } catch(err) { logger.trace(err)}
       }//for
 
-      //validate
+      //validate and write
+      const thiz = this
       this._sitemap.toXML( function (err, xml) {
-         fs.writeFileSync(path+'/sitemap.xml', xml)
+         fs.writeFileSync(thiz._root+'/sitemap.xml', xml)
          console.log(' Map generated menu, sitemap and FTS index')
       })
 
