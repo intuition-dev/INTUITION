@@ -53,6 +53,8 @@ export class Map {
          if (this.isLeaf) acc.push(x)
          return acc
       }, [])
+      // any rec?
+      
       var arrayLength = leaves.length
       console.log(arrayLength)
       for (var i = 0; i < arrayLength; i++) {
@@ -61,11 +63,26 @@ export class Map {
             let fullPath = this._root + path
 
             let dat = new Dat(fullPath)
-            console.log(path,dat.getAll())
+            let props = dat.getAll()
+            console.log(path, props)
 
-            this._sitemap.add({
-               url: path
-            })
+            let image = props['image']
+            if(!image) {
+               this._sitemap.add({
+                  url: path,
+                  changefreq: m['changefreq']
+               })
+            } else {  //if it has image
+               this._sitemap.add({
+                  url: path,
+                  changefreq: m['changefreq'],
+                  img: [{
+                     url: image,
+                     title: props['title'],
+                     caption: props['title']
+                  }]
+               })
+            }
          } catch(err) { logger.trace(err)}
       }//for
 
@@ -180,10 +197,12 @@ export class Dat {
       let jso = fs.readFileSync(fn)
       Object.assign(this.props, JSON.parse(jso)) // merge
    }
+    /*
    exists():boolean {
       var count = this.props.length
       return (count>0)
    }
+
    getBase():string {
       let r:string = this.props.get('basedir')
       //all the case ./..
@@ -194,9 +213,12 @@ export class Dat {
    getTitle():string {
       return this.props.get('title')
    }
+   getImage():string {
+      return this.props.get('image')
+   }
    get(prop:string) {
       return this.props.get(prop)
-   }
+   } */
    getAll():Object {
       return this.props
    }//()
