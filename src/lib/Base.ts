@@ -1,6 +1,6 @@
 import { isReturnStatement } from "babel-types";
 
-// All rights MetaBake.org | cekvenich, licensed under GPL v3
+// All rights Metabake.org | cekvenich, licensed under GPL v3
 
 declare var module: any
 declare var require: any
@@ -28,9 +28,9 @@ const axios = require('axios')
 const probe  = require('probe-image-size')
 
 // map
-//const markdownItAttrs = require('markdown-it-attrs')
 const sm = require('sitemap')
 const traverse = require('traverse')
+const lunr = require('lunr')
 
 
 export class Ver {
@@ -42,7 +42,6 @@ export class Ver {
       return path.replace(/\\/g, '/')
    }
 }
-
 
 export class RetMsg {
    _cmd:string
@@ -104,7 +103,6 @@ export class Map {
 
             if(path.includes(this._root))
                path = path.replace(this._root,'')
-
             let fullPath =  this._root + path
 
             let dat = new Dat(fullPath)
@@ -139,10 +137,58 @@ export class Map {
       this._sitemap.toXML( function (err, xml) {
          fs.writeFileSync(thiz._root+'/sitemap.xml', xml)
          console.log(' Map generated menu, sitemap and FTS index')
-      })
+      })// to XML write
 
+      this._map2(leaves)
    }//map()
 
+   _map2(leaves) {
+      let documents = []
+
+      var arrayLength = leaves.length
+      for (var i = 0; i < arrayLength; i++) {
+         try {
+            let path = leaves[i]
+            if(path.includes(this._root))
+               path = path.replace(this._root,'')
+            let fullPath =  this._root + path
+
+            // find all md files in fullPath
+            const rec = FileHound.create() //recurse
+               .paths(fullPath)
+               .ext('md')
+               .findSync()
+
+            let text =''
+            for (let val of rec) {//clean the strings
+               val = Ver.slash(val)
+               console.log(val)
+               let txt1 = fs.readFileSync(val, "utf8")
+               text = text + ' ' + txt1
+            }//for
+            const row = {
+               id: path,
+               body: text
+            }
+            documents.push(row)
+         } catch(err) { logger.trace(err)}
+      }//for
+
+      //fts index
+      logger.trace(documents.length)
+      var idx = lunr(function () {
+         this.ref('id')
+         this.field('body')
+
+         documents.forEach(function (doc) {
+            this.add(doc)
+         }, this)
+      })//idx
+
+      const jidx = JSON.stringify(idx)
+      fs.writeFileSync(this._root+'/site.idx', jidx)
+
+   }//()
 }// class
 
 export class FileOps {
@@ -212,28 +258,7 @@ export class Dat {
       let jso = fs.readFileSync(fn)
       Object.assign(this.props, JSON.parse(jso)) // merge
    }
-    /*
-   exists():boolean {
-      var count = this.props.length
-      return (count>0)
-   }
 
-   getBase():string {
-      let r:string = this.props.get('basedir')
-      //all the case ./..
-      if(r=='.') return this.path
-
-      return r
-   }
-   getTitle():string {
-      return this.props.get('title')
-   }
-   getImage():string {
-      return this.props.get('image')
-   }
-   get(prop:string) {
-      return this.props.get(prop)
-   } */
    getAll():Object {
       return this.props
    }//()
