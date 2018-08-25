@@ -135,11 +135,14 @@ export class Map {
       //validate and write
       const thiz = this
       this._sitemap.toXML( function (err, xml) {
+
          fs.writeFileSync(thiz._root+'/sitemap.xml', xml)
-         console.log(' Map generated menu, sitemap and FTS index')
+         console.log(' Sitemap ready')
+
+         thiz._map2(leaves)
+
       })// to XML write
 
-      this._map2(leaves)
    }//map()
 
    _map2(leaves) {
@@ -186,7 +189,9 @@ export class Map {
       })//idx
 
       const jidx = JSON.stringify(idx)
-      fs.writeFileSync(this._root+'/site.idx', jidx)
+      fs.writeFileSync(this._root+'/FTS.idx', jidx)
+
+      console.log(' Map generated menu.json, sitemap.xml and FTS.idx(json) index in '+ this._root)
 
    }//()
 }// class

@@ -13,7 +13,7 @@ import { Ver, MBake, CSV2Json, Map } from './lib/Base'
 const clear = require("cli-clear")
 clear()
 
-// new Map('/Users/uptim/Documents/GitHub/examples-plugins/navSiteS').gen()
+//new Map('/Users/uptim/Documents/GitHub/examples-plugins/navSiteS').gen()
 
 //process.exit()
 
