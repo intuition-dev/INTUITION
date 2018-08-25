@@ -28,9 +28,44 @@ const axios = require('axios')
 const probe  = require('probe-image-size')
 
 // map
-const markdownItAttrs = require('markdown-it-attrs')
+//const markdownItAttrs = require('markdown-it-attrs')
 const sm = require('sitemap')
 const traverse = require('traverse')
+
+
+export class Ver {
+   ver() {
+      return "v3.8.23"
+   }
+
+   static slash(path) {// windowze
+      return path.replace(/\\/g, '/')
+   }
+}
+
+
+export class RetMsg {
+   _cmd:string
+   _code:number
+   _msg: any
+   constructor(cmd:string, code:number, msg:any) {
+      this._cmd = cmd
+      this._code = code
+      this._msg = msg
+   }//)_
+   get cmd():string {
+      return this.cmd;
+   }
+   get code():number {
+      return Math.round(this._code)
+   }
+   get msg():any{
+      return this
+   }
+   log() {
+      console.log(this.cmd, this.msg, this.code)
+   }
+}//class
 
 export class Map {
    _sitemap
@@ -109,39 +144,6 @@ export class Map {
    }//map()
 
 }// class
-
-export class Ver {
-   ver() {
-      return "v3.8.21"
-   }
-
-   static slash(path) {// windowze
-      return path.replace(/\\/g, '/')
-   }
-}
-
-export class RetMsg {
-   _cmd:string
-   _code:number
-   _msg: any
-   constructor(cmd:string, code:number, msg:any) {
-      this._cmd = cmd
-      this._code = code
-      this._msg = msg
-   }//)_
-   get cmd():string {
-      return this.cmd;
-   }
-   get code():number {
-      return Math.round(this._code)
-   }
-   get msg():any{
-      return this
-   }
-   log() {
-      console.log(this.cmd, this.msg, this.code)
-   }
-}//class
 
 export class FileOps {
    root
