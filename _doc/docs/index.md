@@ -70,10 +70,10 @@ Even though mbake apps are installed on a static server, they are dynamic becaus
    mbake
 
 ## Generate sample app, e.g.
-   mbake -c
+   mbake -r
 
 ## Navigate to it, e.g.
-   cd CRUDA
+   cd fireRO
 ```
 
 ## Other popular mbake commands
@@ -110,8 +110,8 @@ Serverless/Cloud V2, Mount and Pug are some of the pillars of Metabake.
 ```
    npm -g i mbake
    mbake
-   mbake -c
-   cd CRUDA
+   mbake -r
+   cd fireRO
    mbake .
 ```
 
