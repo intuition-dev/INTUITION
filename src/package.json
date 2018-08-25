@@ -47,6 +47,7 @@
       "riot-compiler": "^3.5.1",
       "sitemap": ">=1.13.0",
       "tracer": "^0.8.12",
+      "traverse": "^0.6.6",
       "unfluff": "^3.2.0"
    }
 }

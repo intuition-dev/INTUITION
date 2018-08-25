@@ -27,32 +27,49 @@ const axios = require('axios')
 
 const probe  = require('probe-image-size')
 
-
+// map
 const markdownItAttrs = require('markdown-it-attrs')
 const sm = require('sitemap')
+const traverse = require('traverse')
 
 export class Map {
+   _sitemap
 
-   tst(path) {
+   map(path) {
       const m = yaml.load(fs.readFileSync(path+'/map.yaml'))
-      let menu = JSON.stringify(m.menu, null, 2)
-      fs.writeFileSync(path+'/menu.json', menu)
+      let jmenu = JSON.stringify(m.menu, null, 2)
+      //menu done
+      fs.writeFileSync(path+'/menu.json', jmenu)
 
-      let sitemap = sm.createSitemap( {
+      this._sitemap = sm.createSitemap( {
          hostname: m['host']
       })
-      sitemap.add({url: '/page-1/'})
-      sitemap.add({url: '/page-2/'})
 
-      sitemap.toXML( function (err, xml) {
-         console.log(xml)
-         console.log(sitemap.toString())
+      //build sitemap
+      let leaves = traverse(m.menu).reduce(function (acc, x) {
+         if (this.isLeaf) acc.push(x)
+         return acc
+      }, [])
+      console.dir(leaves)
+      var arrayLength = leaves.length
+      console.log(arrayLength)
+      for (var i = 0; i < arrayLength; i++) {
 
-         process.exit()
+         this._sitemap.add({
+            url: leaves[i]
+         })
+
+      }//for
+
+      //validate
+      this._sitemap.toXML( function (err, xml) {
+         fs.writeFileSync(path+'/sitemap.xml', xml)
+         console.log(' Map generated menu, sitemap and FTS index')
       })
 
-   }
-}
+   }//map()
+
+}// class
 
 export class Ver {
    ver() {
