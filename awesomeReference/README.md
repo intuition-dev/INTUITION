@@ -99,10 +99,10 @@ Sins to eschew:
 - [Firestore](https://firebase.google.com/docs/firestore)
 - [Webmaster](https://www.google.com/webmasters); w/ real time SEO help
 - [JS-offcanvas](https://github.com/vmitsaras/js-offcanvas)
-- <a href='https://github.com/metabake/B-M-SPA/tree/master/blogRiot' target='_blank'>Example of static/dynamic items: Blog</a>
+
 - [Resilient web design](https://resilientwebdesign.com/introduction)
 - [JS Signals](https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations)
-- [slick carousel](http://kenwheeler.github.io/slick/)
+- [Slick carousel](http://kenwheeler.github.io/slick/)
 - [My Device size](https://www.mydevice.io)
 - [Prepros.io](https://prepros.io/help/autoprefixer)
 - [Backend to avoid](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f)
