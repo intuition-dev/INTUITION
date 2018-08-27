@@ -26,7 +26,7 @@ Metabake allows for gradual adoption. You can start by adopting just one or a fe
 
 Metabake and mbake are open source. The source code is available at [github.com/metabake](https://github.com/metabake)
 
-See [Resources](/mbake/res/) for related projects.
+See [Resources](/res/) for related projects.
 
 ## How to install mbake
 
@@ -98,10 +98,10 @@ To go extreme serverless, we show how to use mbake with
 
 ### Go extreme serverless in four steps (Tutorials):
 
-- [Tutorial 1](/mbake/cloud1/): Setup S3 as your cloud server and mount it.
-- [Tutorial 2](/mbake/pug1/): Learn Pug and static binding; view via S3 HTTP server.
-- [Tutorial 3](/mbake/pug2/): Read dynamic data from Firestore and bind via Pug.
-- [Tutorial 4](/mbake/cloud2/): Apply authentication and write dynamic data.
+- [Tutorial 1](/cloud1/): Setup S3 as your cloud server and mount it.
+- [Tutorial 2](/pug1/): Learn Pug and static binding; view via S3 HTTP server.
+- [Tutorial 3](pug2/): Read dynamic data from Firestore and bind via Pug.
+- [Tutorial 4](/cloud2/): Apply authentication and write dynamic data.
 
 When done, you should see [this](https://youtu.be/-KkPfAnEXyk).
 

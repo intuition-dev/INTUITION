@@ -1,15 +1,32 @@
 
-## Pug I: Learn Pug and static binding; view via S3 HTTP server.
+## Tutorial 2: Learn Pug and static binding; view via S3 HTTP server.
 
-Simply said, Pug is HTML without closing tags. Pug is a templating language,  more powerful than Markdown. If you know of Node/Express, you know Pug already. If you know HTML, you know Pug: just don't close the tags.
+Simply said, Pug is HTML without closing tags. Pug is a templating language,  more powerful than Markdown. If you know of Node/Express, you know Pug already. 
 
-- [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
+If you know HTML, you mostly know Pug: just don't close the tags. Pug also has variables and imports (e.g. 'include fragment.pug').
 
-Pug also has variables and import, called include.
+We see Pug as a declarative 4th generation language (4GL). As we went from second generation assembly language (2GL) to higher level third generation (3GL such as C, C#, Java and JavaScript), our productivity jumped. Pug 4GL provides another huge productivity jump. 
 
-As we went from second generation (2GL) to third (3GL), our productivity jumped. We view Pug as declarative (*_Metabake_ pillar 4) 4th generation language. It helps achieve a huge productivity jump. We position Pug as 4GL.
+1. Watch [this video](http://youtube.com/watch?v=wzAWI9h3q18) as an intro about Pug (t used to be called Jade).
 
-To learn, edit a Pug in the mbake CRUDA sample project, 'mbake .' and see the changed HTML in a browser (e.g. via prior S3 step).
+2. Generate a sample app with
+
+```
+mbake -r
+```
+
+and copy the contents of the generated fireRO folder to the bucket you mapped in [Tutorial 1](/cloud1/), e.g. W:\\wgehner-fireRO.
+
+3. Ensure that the sample app is fully built with
+
+```
+cd W:\wgehner-fireRO
+mbake .
+```
+
+4. View the app in a browser. Use the S3 URL from [Tutorial 1](/cloud1/), e.g. https://s3.us-west-1.amazonaws.com
+
+5. Edit index.pug, then `mbake .` and see the changed HTML in a browser.
 
 
 ## Working with text content
