@@ -19,13 +19,23 @@ To get an overview of Metabake pillars:
 Directory of related projects is in Resources on left, and source code is here:
 - <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
 
+
+
+# Examples and plugins:
+- [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
+- [Metabake Examples and plugins](https://github.com/metabake/examples-plugins)
+- [https://github.com/cunhasb/metaBakeSandbox]
+- [NavBar](https://github.com/metabake/examples-plugins/tree/master/navSite/navbarEx)
+
+
+
 ## Features
 
-(TODO:)
+One feature of Metabake is that it is text based, and not GUI, like Webflow for example. All the GUI tools are limited and a bit like FrontPage 2.0.
+Also, you should avoid prototyping in GUI tools - text prototyping is just as fast an fully interactive.
 
+-i # from i_dat.yaml creates items json, reading all the dat.yaml - for dynamic binding!
 -m # Will take a map.yaml and create sitemap.xml, menu.json and FTS.idx.
-
-
 
 ## Documentation TOC:
 
@@ -68,13 +78,6 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 Sins to eschew:
 - js, prefer Pug
 - local IDE dev, use Cloud IDE
-
-
-## Examples and plugins:
-- [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
-- [Metabake Examples and plugins](https://github.com/metabake/examples-plugins)
-- [https://github.com/cunhasb/metaBakeSandbox]
-- [NavBar](https://github.com/metabake/examples-plugins/tree/master/navSite/navbarEx)
 
 
 ## NOTES:
