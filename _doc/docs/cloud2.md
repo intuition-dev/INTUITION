@@ -9,13 +9,10 @@ It can be used from the browser via JavaScript, no custom Cloud v2.0 code is nee
 
 # CRUDA
 
-In the example app (mbake -a) there are examples:
-- https://github.com/metabake/_mBake/tree/master/CRUDA/screens
 
+The CRUDA example app uses FireStore.
 
-The CRUDA example app (mbake -c) uses FireStore.
-
-http://github.com/metabake/_mBake/blob/master/CRUDA/layout/crud.pug
+- [CRUD and Auth Example](https://github.com/metabake/_mBake/releases/download/3.8.1/CRUDA.zip)
 
 FireStore replaces MongoDB, but also ORM, REST, DevOps, Security, Failover, etc. But sadly, just like you had to learn MongoDB for example, you have to learn how to use FireStore.
 

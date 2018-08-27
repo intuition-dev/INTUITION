@@ -15,7 +15,7 @@ Firebase is well documented on the web. Read up on Firebase/Firestore to learn h
 
 ## mbake -t
 
-When you 'mbake -c', the generated project has a 'riotFirst' folder that contains an example of how to use Riot via Pug.
+When you 'mbake -r', the generated project has a 'riotFirst' folder that contains an example of how to use Riot via Pug.
 
 
    first-tag
