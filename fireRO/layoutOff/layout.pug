@@ -1,13 +1,13 @@
 doctype html
 html
    head
-      //<script src="https://console.re/connector.js" data-channel="MY_NAME" id="consolerescript"></script>
+      //-<script src="https://console.re/connector.js" data-channel="MY_NAME" id="consolerescript"></script>
       script.
-         let _start=Date.now()
+         var _start=Date.now()
       meta(charset='utf-8')
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')
-      title Metabake.org
+      title METABAKE.ORG
       link(rel='shortcut icon', href= '/assets/favicon.png', type='image/x-icon')
 
       script(src='https://cdn.jsdelivr.net/npm/loadjs@3.5.4/dist/loadjs.js')
@@ -16,7 +16,7 @@ html
 
       style.
          .delayShowing { opacity: 0.01; }
-      // CRUD generic ///////////////////////////////////////////////////////////////////
+      //- CRUD generic ///////////////////////////////////////////////////////////////////
       script(src='https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js')
       script(src='https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js')
       block head2
@@ -26,15 +26,14 @@ html
       script(src= '/assets/js/setup.js')
 
       .c-offcanvas-content-wrap
-         //top
+         //-top
          header.flex.edge
             .left.white
                .navbar-brand.mr-2
-                  h2#navBarHead Metabake.org
+                  h2#navBarHead METABAKE.ORG
 
             .right.white
-               .hide-lg
-                  a.btn.btn-link(href= '/screens/membersROTag') Read
+               a.btn.btn-link(href= '/screens/membersROTag') Read
 
                a#off-cbut.js-offcanvas-trigger( href='#navOpen')
                   .white
@@ -49,15 +48,15 @@ html
       #navOpen.delayShowing
          ul.nav.navBarOpen
 
-            h3#navBarOpenHead.navBarOpenHea.navbar-brand Metabake.org
+            h3#navBarOpenHead.navBarOpenHea.navbar-brand METABAKE.ORG
 
             li.nav-item
                a(href= '/screens/membersROTag') Read
 
 
-      link(href=  '/assets/css/spectre.css', onload='cssLoaded()', rel='stylesheet')
+      link(href= '/assets/css/spectre.css', onload='cssLoaded()', rel='stylesheet')
       link(href='https://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet')
-      link(href= '/layoutOff/nav.css', rel='stylesheet')
+      link(href= '/assets/css/nav.css', rel='stylesheet')
       link(href= '/assets/css/main.css', rel='stylesheet')
 
       script.
@@ -65,4 +64,4 @@ html
             console.log('resize|scroll')
          }
 
-   //link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')
+   //-link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')

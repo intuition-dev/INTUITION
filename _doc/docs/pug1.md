@@ -40,7 +40,7 @@ We see Pug as a declarative 4th generation language (4GL). As we went from secon
 
 4. View the app in a browser. Use the S3 URL from [Tutorial 1](/cloud1/), e.g. `https://s3.us-west-1.amazonaws.com`
 
-5. In the project root `dat.yaml` change 'Oh hi!' to 'Boho!', save, then `'mbake .'` and refresh the browser. Of course you could also change something in `index.pug`.
+5. In the project root, edit `dat.yaml` and change 'Oh hi!' to 'Boho!', save, then `'mbake .'` and refresh the browser. Of course you could also change something in `index.pug`.
 
 ## About dat.yaml
 mbake looks for `dat.yaml` in each folder and uses it for static binding. If you have `bla: Oh hi` in `dat.yaml`, you can use the value inside a `.pug` file at compile time via:
