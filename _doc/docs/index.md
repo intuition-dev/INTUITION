@@ -10,7 +10,7 @@ mbake is part of the Metabake&trade; approach but can be used by itself.
 
 ## What is Metabake?
 
-Metabake&trade; is a modern development approach that promises 10X faster web app development with less coding.
+Metabake&trade; is a modern development approach that promises 10X faster web app development with less coding. Metabake&trade; has 10 pillars.
 
 Find out more about Metabake:
 
@@ -22,7 +22,7 @@ Find out more about Metabake:
 
 - [Summary for Managers](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
-Metabake allows for gradual adoption. mbake is a good start.
+Metabake allows for gradual adoption. You can start by adopting just one or a few of its pillars. mbake is a good start.
 
 Metabake and mbake are open source. The source code is available at [github.com/metabake](https://github.com/metabake)
 
