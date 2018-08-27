@@ -24,6 +24,7 @@ Directory of related projects is in Resources on left, and source code is here:
 # Additional examples and plugins:
 In addition to the examples in mbake CLI:
 
+- [CRUD and Auth Example](https://github.com/metabake/_mBake/releases/download/3.8.1/CRUDA.zip)
 - [WebSite](https://github.com/metabake/examples-plugins/releases/download/3.8.1/webSite.zip)
 - [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
 - [Metabake Examples and plugins](https://github.com/metabake/examples-plugins)
