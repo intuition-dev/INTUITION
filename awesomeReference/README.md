@@ -36,6 +36,8 @@ Also, you should avoid prototyping in GUI tools - text prototyping is just as fa
 
 -i # from i_dat.yaml creates items json, reading all the dat.yaml - for dynamic binding!
 -m # Will take a map.yaml and create sitemap.xml, menu.json and FTS.idx.
+-j # list.csv to list.json
+
 
 ## Documentation TOC:
 

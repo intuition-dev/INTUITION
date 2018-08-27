@@ -34,7 +34,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v3.8.27"
+      return "v3.8.30"
    }
 
    static slash(path) {// windowze
@@ -302,9 +302,9 @@ export class CSV2Json { // TODO: get to work with watcher
    }
 
    convert():RetMsg {
-      let fn:string = this.dir +'/items.csv'
+      let fn:string = this.dir +'/list.csv'
       if (!fs.existsSync(fn)) { //if it does not exist, go up a level
-         let r = new RetMsg('CSV2Json', -1, 'items.csv not found in ' + this.dir)
+         let r = new RetMsg('CSV2Json', -1, 'list.csv not found in ' + this.dir)
          r.log()
          return r
       }
@@ -313,7 +313,7 @@ export class CSV2Json { // TODO: get to work with watcher
       csv2JsonV2({ noheader:true }).fromFile(fn)
          .then(function(jsonO) {
             logger.trace(jsonO)
-            let fj:string = thiz.dir +'/items.json'
+            let fj:string = thiz.dir +'/list.json'
 
             fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
             return r

@@ -23,27 +23,26 @@ const cwd:string = process.cwd()
 function version() {
    let b = new Ver()
    console.log()
-   console.log('Your node is '+ process.version)
-   console.log(' mbake CLI version: '+b.ver()) // tsc
+   console.log('mbake CLI version: '+b.ver()) // tsc
+   console.log('  your node version is '+ process.version)
    console.log('  from '+ __dirname)
    console.log('Usage: ')
    console.log('  mbake .')
-   console.log('  or mbake any_dir to make(bake) a declarative low code app recursively')
-   console.log('  To process Pug and RIOT _tag.pug tags: mbake -t . # . is path')
+   console.log('  or process any_dir to make(bake) a declarative low code app recursively')
+   console.log('  To process Pug and RIOT *-tag.pug tags: mbake -t . # . is path')
    console.log('  To process Pug and dat_i items to items.json: mbake -i . # where path is folder containing dat_i.yaml')
-   console.log('  To process items.csv to items.json: mbake -j .')
+   console.log('  To process list.csv to list.json: mbake -j .')
 
    console.log()
    console.log(' ----------------------------------------------------------------')
-   console.log(' Declarative examples:')
+   console.log(' Declarative low code examples:')
    console.log('  For an example dynamic web app with RO Database: mbake -r')
-   console.log('  For a starter CRUD and auth: mbake -c')
+   console.log('  For a starter blog/linkBlog: mbake -b')
+   console.log('  For a starter Dash web app: mbake -d')
    console.log('  For a starter SPA/Phonegap app: mbake -s')
    console.log('  For a starter admin/build/Meta cloud service: mbake -a')
 
-   console.log('  For a starter blog/linkBlog: mbake -b')
-
-   console.log(' Full docs: http://www.metabake.org and notes on newer versions')
+   console.log(' Full docs: http://www.metabake.org , more examples and notes on newer versions')
    console.log()
 
    //process.exit()
@@ -58,8 +57,9 @@ const optionDefinitions = [
 
    { name: 'RO', alias: 'r', type: Boolean },
    { name: 'blog', alias: 'b', type: Boolean },
-   { name: 'admin', alias: 'a', type: Boolean },
+   { name: 'dash', alias: 'd', type: Boolean },
    { name: 'spa', alias: 's', type: Boolean },
+   { name: 'admin', alias: 'a', type: Boolean },
 
 ]
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -96,11 +96,11 @@ function unzipB() {
    console.log('Extracted a starter blog app to ./linkBlog')
    process.exit()
 }
-function unzipN() {
-   let src:string =__dirname+ '/navSite.zip'
+function unzipD() {
+   let src:string =__dirname+ '/dash.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted an example web site with navigation to ./navSite')
+   console.log('Extracted an starter Dash web app to ./dash')
    process.exit()
 }
 
