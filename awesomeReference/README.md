@@ -28,7 +28,7 @@ In addition to the examples in mbake CLI:
 - [WebSite](https://github.com/metabake/examples-plugins/releases/download/3.8.1/webSite.zip)
 - [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
 - [Metabake Examples and plugins](https://github.com/metabake/examples-plugins)
-- [https://github.com/cunhasb/metaBakeSandbox]
+- [cunhasb/metaBakeSandbox](https://github.com/cunhasb/metaBakeSandbox)
 
 
 
