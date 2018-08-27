@@ -1,16 +1,16 @@
 # What is mbake?
 
-mbake is a modern CLI static app generation tool. Apps and site you generate with mbake are extreme serverless, allow user authentication and work with JSON and database APIs for dynamic databinding. You can use it for simple blogs or sites to the most complex web and mobile app projects.
+mbake is a modern CLI static app generation tool. Apps and sites you generate with mbake are extreme serverless, allow user authentication and work with JSON and database APIs for dynamic databinding. You can use mbake for simple blogs or sites to the most complex web and mobile app projects.
 
-If you don't have time, se tl;dr at the bottom of this page.
+If you don't have time, see [tl;dr](#tldr) at the bottom of this page.
 
-mbake compares to grunt/gulp and other static generators; but it does a lot more with a lot less work.
+mbake compares to other static generators and grunt/gulp; but it does a lot more with a lot less coding.
 
 mbake is part of the Metabake&trade; approach but can be used by itself.
 
 ## What is Metabake?
 
-Metabake a modern development approach that promises 10X faster web app development, thanks to 'Less code'. You can pick one or few of the 10 pillars to adopt first.
+Metabake&trade; is a modern development approach that promises 10X faster web app development, thanks to 'less coding'.
 
 Find out more about Metabake:
 
@@ -22,7 +22,7 @@ Find out more about Metabake:
 
 - [Summary for Managers](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
-Metabake allows gradual adoption. Just pick a few of its pillars to get started. mbake is a good start.
+Metabake allows for gradual adoption. mbake is a good start.
 
 Metabake and mbake are open source. The source code is available at [github.com/metabake](https://github.com/metabake)
 
@@ -36,7 +36,7 @@ From a command line such as Powershell, type:
    npm -g i mbake
 ```
 
-That's it! If you don't have Node with NPM installed, first go [here for Windows](https://nodejs.org/en/download/) or [here for MAC](http://blog.teamtreehouse.com/install-node-js-npm-mac) instructions.
+That's it! If you don't have Node with NPM installed, first go [here for Windows](https://nodejs.org/en/download/) or [here for MAC](http://blog.teamtreehouse.com/install-node-js-npm-mac).
 
 ## How to create a Hello World app with mbake
 
