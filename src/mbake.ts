@@ -41,7 +41,6 @@ function version() {
    console.log('  For a starter SPA/Phonegap app: mbake -s')
    console.log('  For a starter admin/build/Meta cloud service: mbake -a')
 
-   console.log('  For an example web site with navigation: mbake -n')
    console.log('  For a starter blog/linkBlog: mbake -b')
 
    console.log(' Full docs: http://www.metabake.org and notes on newer versions')
@@ -57,12 +56,10 @@ const optionDefinitions = [
    { name: 'tag', alias: 't', type: Boolean },
    { name: 'csv2Json', alias: 'j', type: Boolean },
 
-   { name: 'crud', alias: 'c', type: Boolean },
    { name: 'RO', alias: 'r', type: Boolean },
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'admin', alias: 'a', type: Boolean },
    { name: 'spa', alias: 's', type: Boolean },
-   { name: 'navSite', alias: 'n', type: Boolean }
 
 ]
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -83,13 +80,6 @@ function unzipS() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
    console.log('Extracted a starter SPA/Phonegap app to ./SPA')
-   process.exit()
-}
-function unzipC() {
-   let src:string =__dirname+ '/CRUDA.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted a starter web app with CRUD and auth to ./CRUDA')
    process.exit()
 }
 function unzipR() {
@@ -113,7 +103,6 @@ function unzipN() {
    console.log('Extracted an example web site with navigation to ./navSite')
    process.exit()
 }
-
 
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
 if(arg) {
@@ -174,10 +163,6 @@ else if(argsParsed.csv2Json)
    csv2Json(arg)
 else if(argsParsed.admin)
    unzipA()
-else if(argsParsed.navSite)
-   unzipN()
-else if(argsParsed.crud)
-   unzipC()
 else if(argsParsed.RO)
    unzipR()
 else if(argsParsed.blog)

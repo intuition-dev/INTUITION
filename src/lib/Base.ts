@@ -32,10 +32,9 @@ const sm = require('sitemap')
 const traverse = require('traverse')
 const lunr = require('lunr')
 
-
 export class Ver {
    ver() {
-      return "v3.8.24"
+      return "v3.8.25"
    }
 
    static slash(path) {// windowze
@@ -296,8 +295,6 @@ export class Dirs {
    }//()
 }//class
 
-
-
 export class CSV2Json { // TODO: get to work with watcher
    dir:string
    constructor(dir_:string) {
@@ -492,7 +489,6 @@ export class Items {
    feed //rss
    constructor(dir_:string) {
       let dir = Ver.slash(dir_)
-
 
       let fn:string = dir +'/dat_i.yaml'
       if (!fs.existsSync(fn)) { //if it does not exist, go up a level
@@ -921,9 +917,7 @@ export class Scrape {
 
 }//class
 
-
 module.exports = {
      Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, MetaPro, Watch, AdminSrv, MDevSrv,
      Scrape, FileOps, CSV2Json, Map
 }
-

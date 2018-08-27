@@ -19,8 +19,15 @@ To get an overview of Metabake pillars:
 Directory of related projects is in Resources on left, and source code is here:
 - <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
 
+## Features
 
-# Documentation TOC:
+(TODO:)
+
+-m # Will take a map.yaml and create sitemap.xml, menu.json and FTS.idx.
+
+
+
+## Documentation TOC:
 
 These are the 3 main project, that leverage the 10 pillars:
 
@@ -50,22 +57,6 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 - <http://fabianocunha.io>
 
 
-#### Videos:
-S = sales, I = Foundation, II = B&M, III = Vista
-- S <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
-- S [Metabake Full Slides](http://prez.metabake.org/p)
-- S [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
-
-- I [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
-- I [mbake CLI](https://youtu.be/-KkPfAnEXyk)
-- I [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
-- I [Mount S3 to local drive](http://wgehnerlab1.metabake.org.s3-website-us-east-1.amazonaws.com/lab1v0.html)
-
-- II [Blog search](https://www.youtube.com/watch?v=-4i9_SYyTOo)
-- II [SPA](https://youtu.be/LHFjjDPlU3A)
-- III [Meta Automatic Programing Eg 1 ](http://youtube.com/watch?v=c4mWhefhOoQ)
-
-
 ## Meta Definitions:
 - Pug : A templating language, position as Less code Declarative 4GL. Custom 'tags' in Pug via RIOTjs (and obfuscated as well as Andorid's ProGuard)
 - Cloud v2: No known end point. E.g.: CDN, AWS Cognito. AWS Lambda does have a server end point, so it is not Cloud v2
@@ -84,46 +75,6 @@ Sins to eschew:
 - [Metabake Examples and plugins](https://github.com/metabake/examples-plugins)
 - [https://github.com/cunhasb/metaBakeSandbox]
 - [NavBar](https://github.com/metabake/examples-plugins/tree/master/navSite/navbarEx)
-
-### Other:
-
--[StaticGen](https://www.staticgen.com/metabakeorg)
-- <a href='https://www.npmjs.com/package/mbake' target='_blank'>Check for latest version of mbake</a>
-- <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
-- [Pug](https://pug.metabake.org)
-- [RIOTjs](https://riot.js.org/)
-- [Grid Forms](http://kumailht.com/gridforms)
-- [Loader: loadjs](https://github.com/muicss/loadjs)
-- [Debug console.re](http://console.re)
-- [pagination.js](http://pagination.js.org)
-- [Firestore](https://firebase.google.com/docs/firestore)
-- [Webmaster](https://www.google.com/webmasters); w/ real time SEO help
-- [JS-offcanvas](https://github.com/vmitsaras/js-offcanvas)
-
-- [Resilient web design](https://resilientwebdesign.com/introduction)
-- [JS Signals](https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations)
-- [Slick carousel](http://kenwheeler.github.io/slick/)
-- [My Device size](https://www.mydevice.io)
-- [Prepros.io](https://prepros.io/help/autoprefixer)
-- [Backend to avoid](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f)
-- [Haroopad MD editor](http://pad.haroopress.com/user)
-- [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
-- [Riot Table](https://codepen.io/bchoii/pen/VeQepw)
-- [Markdown](https://en.wikipedia.org/wiki/Markdown)
-- [Design 'pop'](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-2-430de537ba96)
-- [Navbar](https://github.com/thednp/navbar.js/)
-- [Why Axios](http://jslancer.com/blog/2017/05/10/why-i-stop-using-fetch/)
-- [Spectre front end/CSS framework](https://github.com/picturepan2/spectre)
-- [Feather SVG icons](https://feathericons.com) Just copy the SVG itself per icon
-- [Simple Navbar](https://www.w3schools.com/css/css_navbar.asp)
-- [Documentation.js](https://documentation.js.org) - Example of use is in autoEG/www
-- [CSS Selectors](https://adam-marsden.co.uk/css-cheat-sheet)
-- [CSS reference](https://tympanus.net/codrops/css_reference/)
-- [Improved npm: pnpm](https://pnpm.js.org/docs/en/installation.html)
-- [HTML Components](https://www.youtube.com/watch?v=yCArIyY907Q)
-
-## Benchmarks and Automatic programing
-- [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
 
 
 ## NOTES:
