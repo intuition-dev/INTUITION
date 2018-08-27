@@ -55,6 +55,8 @@ That's it! If you don't have Node with NPM installed, first go [here for Windows
    or: mbake subfoldername
 ```
 
+If you install the Metabake META server (see META doc), you don't even have to do the 'mbake .'. META has a watcher that triggers 'mbake' when you save a file.
+
 ## How to run an mbake app (such as Hello World)
 
 mbake apps run on any static web server. This includes low-cost cloud hosting such as Amazon S3. We show how to work with S3 later in this doc.
