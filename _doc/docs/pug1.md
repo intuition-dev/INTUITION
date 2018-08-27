@@ -1,9 +1,9 @@
 
 ## Tutorial 2: Learn Pug and static binding; view via S3 HTTP server.
 
-Simply said, Pug is HTML without closing tags. Pug is a templating language,  more powerful than Markdown. If you know Node/Express, you know Pug already. 
+Simply said, Pug is HTML without closing tags. Pug is a templating language,  more powerful than Markdown. If you know Node/Express, you know Pug already.
 
-If you know HTML, you mostly know Pug: just don't close the tags. Pug also has variables (e.g. `#{key1}`) and imports (e.g. `include fragment.pug`).
+If you know HTML, you also mostly know Pug: just don't close the tags. Pug also has variables (e.g. `#{key1}`) and imports (e.g. `include fragment.pug`).
 
 This Pug:
 ```
@@ -21,7 +21,7 @@ becomes this HTML:
    <p> Hello World</p>
 </body>
 ```
-Pug is more concise, more powerful and easier to read and write than HTML. Unlike Markdown, it also retains all capabilities of HTML.
+Pug is more concise, more powerful and easier to read and write than HTML. Unlike [Markdown](https://en.wikipedia.org/wiki/Markdown), it also retains all capabilities of HTML. Because Markdown can be useful to integrate larger bodies of text into HTML, mbake also supports `include:markdown-it mytext.md` in Pug.
 
 We see Pug as a declarative 4th generation language (4GL). As we went from second generation assembly language (2GL) to higher level third generation (3GL, like C, C#, Java and JavaScript), our productivity jumped. Pug 4GL provides another huge productivity jump. 
 
@@ -40,20 +40,16 @@ We see Pug as a declarative 4th generation language (4GL). As we went from secon
 
 4. View the app in a browser. Use the S3 URL from [Tutorial 1](/cloud1/), e.g. `https://s3.us-west-1.amazonaws.com`
 
-5. In `dat.yaml` change 'Oh hi!' to 'Boho!', save, then `'mbake .'` and see the changed HTML in a browser. You could also change something in `index.pug`.
+5. In `dat.yaml` change 'Oh hi!' to 'Boho!', save, then `'mbake .'` and see the changed HTML in a browser. Of course you could also change something in `index.pug`.
 
 ## About dat.yaml
 mbake looks for `dat.yaml` in each folder and uses it for static binding. If you have `bla: Oh hi` in `dat.yaml`, you can use the value inside a `.pug` file at compile time via:
 
-      #{bla}
+```
+#{bla}
+```
 
 That will put`'Oh hi'`, the value of `bla` at compile time, into the HTML. This is especially useful for any SEO items that can be repetitive in the HTML source.
-
-
-## Working with text content
-
-   include:marked text.md
-
 
 ## Default front end framework
 
