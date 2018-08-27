@@ -7,7 +7,7 @@ If you know HTML, you mostly know Pug: just don't close the tags. Pug also has v
 
 We see Pug as a declarative 4th generation language (4GL). As we went from second generation assembly language (2GL) to higher level third generation (3GL such as C, C#, Java and JavaScript), our productivity jumped. Pug 4GL provides another huge productivity jump. 
 
-1. Watch [this video](http://youtube.com/watch?v=wzAWI9h3q18) as an intro about Pug (t used to be called Jade).
+1. Watch [this video](http://youtube.com/watch?v=wzAWI9h3q18) as an intro about Pug (it used to be called Jade).
 
 2. Generate a sample app with
 
