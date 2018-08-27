@@ -13,7 +13,7 @@ import { Ver, MBake, CSV2Json, Map } from './lib/Base'
 const clear = require("cli-clear")
 clear()
 
-new Map('/Users/uptim/Documents/GitHub/examples-plugins/webSiteS').gen()
+// new Map('/Users/uptim/Documents/GitHub/examples-plugins/webSite-s').gen()
 
 //process.exit()
 
@@ -83,17 +83,17 @@ function unzipS() {
    process.exit()
 }
 function unzipR() {
-   let src:string =__dirname+ '/fireRO.zip'
+   let src:string =__dirname+ '/fire-ro.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted an example dynamic app with RO DB ./fireRO')
+   console.log('Extracted an example dynamic app with RO DB ./fire-ro')
    process.exit()
 }
 function unzipB() {
-   let src:string =__dirname+ '/linkBlog.zip'
+   let src:string =__dirname+ '/blog.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted a starter blog app to ./linkBlog')
+   console.log('Extracted a starter blog app to ./blog')
    process.exit()
 }
 function unzipD() {
