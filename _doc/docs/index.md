@@ -10,7 +10,7 @@ mbake is part of the Metabake&trade; approach but can be used by itself.
 
 ## What is Metabake?
 
-Metabake&trade; is a modern development approach that promises 10X faster web app development, thanks to 'less coding'.
+Metabake&trade; is a modern development approach that promises 10X faster web app development with less coding.
 
 Find out more about Metabake:
 
