@@ -55,7 +55,7 @@ That's it! If you don't have Node with NPM installed, first go [here for Windows
    or: mbake subfoldername
 ```
 
-Auto-buid: if you install the Metabake META build server (see META doc), you don't even have to do the 'mbake .'. META has a watcher that triggers 'mbake' when you save a file. 
+Auto-build/generate: if you are using a Metabake META build server (see META doc), you don't even have to do the 'mbake .'. META has a watcher that triggers 'mbake' when you save a file. 
 
 ## How to run an mbake app (such as Hello World)
 
