@@ -36,7 +36,7 @@ We see Pug as a declarative 4th generation language (4GL). As we went from secon
       ```
       and copy the contents of the generated `fire-ro` folder to the bucket you mapped in [Tutorial 1](/cloud1/), e.g. `W:\wgehner-fire-ro`.
 
-3. In the Amazon SE browser, go to the `/assets/css folder`, check all CSS files, select "More - change metadata", and set `Content-type` to `text/css`.
+3. In the Amazon SE browser, go to the `/assets/css` folder, check all CSS files, select "More - change metadata", and set `Content-type` to `text/css`.
 
 4. View the app in a browser. Use the S3 URL from [Tutorial 1](/cloud1/), e.g. `https://s3.us-west-1.amazonaws.com`
 
