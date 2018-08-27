@@ -13,8 +13,6 @@ import { Ver, MBake, CSV2Json, Map } from './lib/Base'
 const clear = require("cli-clear")
 clear()
 
-// new Map('/Users/uptim/Documents/GitHub/examples-plugins/webSite-s').gen()
-
 //process.exit()
 
 // imports done /////////////////////////////////////////////
@@ -31,6 +29,7 @@ function version() {
    console.log('  or process any_dir to make(bake) a declarative low code app recursively')
    console.log('  To process Pug and RIOT *-tag.pug tags: mbake -t . # . is path')
    console.log('  To process Pug and dat_i items to items.json: mbake -i . # where path is folder containing dat_i.yaml')
+   console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -f .')
    console.log('  To process list.csv to list.json: mbake -j .')
 
    console.log()
@@ -53,13 +52,14 @@ const optionDefinitions = [
    { name: 'mbake', defaultOption: true},
    { name: 'items', alias: 'i', type: Boolean },
    { name: 'tag', alias: 't', type: Boolean },
+   { name: 'map', alias: 'f', type: Boolean },
    { name: 'csv2Json', alias: 'j', type: Boolean },
 
    { name: 'RO', alias: 'r', type: Boolean },
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
    { name: 'spa', alias: 's', type: Boolean },
-   { name: 'admin', alias: 'a', type: Boolean },
+   { name: 'auto', alias: 'a', type: Boolean },
 
 ]
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -131,6 +131,11 @@ function csv2Json(arg) {
    new CSV2Json(arg).convert()
 }
 
+function map(arg) {
+   new Map(arg).gen()
+
+}
+
 // pug: ////////////////////////////////////////////////////////////////////////////////////////////////
 function bake(arg) {
    new MBake().bake(arg)
@@ -161,12 +166,16 @@ else if(argsParsed.items)
    itemize(arg)
 else if(argsParsed.csv2Json)
    csv2Json(arg)
-else if(argsParsed.admin)
+else if(argsParsed.map)
+   map(arg)
+else if(argsParsed.auto)
    unzipA()
 else if(argsParsed.RO)
    unzipR()
 else if(argsParsed.blog)
    unzipB()
+else if(argsParsed.dash)
+   unzipD()
 else if(argsParsed.spa)
    unzipS()
 else if(!arg)
