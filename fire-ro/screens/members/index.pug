@@ -1,0 +1,15 @@
+extends /layoutOff/layout
+
+block head2
+   script(src='/screens/members/tags/ro-tag.js')
+
+block main
+   .pad
+      ro-tag
+      script.
+        var myDtag = riot.mount('ro-tag')[0]
+
+   //- link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')
+
+
+
