@@ -13,7 +13,7 @@
     <style>.delayShowing { opacity: 0.01; }</style>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
-    <script src="/screens/members/tags/RO-tag.js"></script>
+    <script src="/screens/members/tags/ro-tag.js"></script>
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
@@ -36,10 +36,12 @@
       </header>
       <div id="router">
         <div class="pad">
-          <RO-tag></RO-tag>
-          <script>let myDtag = riot.mount('RO-tag')[0]</script>
+          <ro-tag></ro-tag>
+          <script>
+            var myDtag = riot.mount('ro-tag')[0]
+            
+          </script>
         </div>
-        <!--link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')-->
       </div>
     </div>
     <div class="delayShowing" id="navOpen">

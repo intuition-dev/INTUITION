@@ -11,7 +11,7 @@ If you already own a domain and host a site, e.g. at `www.mydomain.com`, you may
 
 2. Register for the <a href='https://www.cdn77.com' target='_blank'>CDN77</a> 14-day free trial.
 
-3. In the CDN77 web app, go to menu item CDN and click 'ADD NEW CDN RESOURCE'. Give it a label, such as 'staging.mydomain.com' and select 'My Origin'. As domain, specify HTTP and the S3 DOMAIN you used in [Tutorial 2](/t2/) (e.g. wgehner-fire-ro.s3-website-us-west-1.amazonaws.com). Click 'CREATE CDN RESOURCE'.
+3. In the CDN77 web app, go to menu item CDN and click 'ADD NEW CDN RESOURCE'. Give it a label, such as 'staging.mydomain.com' and select 'My Origin'. As domain, specify HTTP and the S3 DOMAIN you used in [Tutorial 2](/t2/) (e.g. wgehner-firo.s3-website-us-west-1.amazonaws.com). Click 'CREATE CDN RESOURCE'.
 
 4. Choose 4-step setup with CNAME. Click 'Add new CNAME', and '+ ADD CNAMES'. Enter 'staging.mydomain.com' and Click 'ADD CNAME'. Click 'Go back to Integration'. In Step 2, copy the DOMAIN NAME (AKA HOST), e.g 1234567890.rsc.cdn77.org, then follow instructions for your hosting provider. If your domain is with namecheap.com, do the following:
 On the Namecheap dashbord, click 'Manage' for your domain, and 'Advanced DNS'. Click 'ADD NEW RECORD', select 'CNAME' and enter the following: Host: staging Value: [DOMAIN NAME from clipboard, e.g. 1234567890.rsc.cdn77.org], TTL: Automatic. Click the checkmark to save. No need to do CDN77 Step 3. One final step is to go to the CDN77 'Other Settings' tab, set 'Cache expiry' to 10 minutes, check 'HTTPS redirect' and click 'SAVE CHANGES'.

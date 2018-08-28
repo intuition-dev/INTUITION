@@ -83,10 +83,10 @@ function unzipS() {
    process.exit()
 }
 function unzipR() {
-   let src:string =__dirname+ '/fire-ro.zip'
+   let src:string =__dirname+ '/firo.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted an example dynamic app with RO DB ./fire-ro')
+   console.log('Extracted an example dynamic app with RO DB ./firo')
    process.exit()
 }
 function unzipB() {
