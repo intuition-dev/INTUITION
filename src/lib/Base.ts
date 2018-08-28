@@ -34,7 +34,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v3.8.33"
+      return "v3.8.34"
    }
 
    static slash(path) {// windowze
@@ -87,10 +87,10 @@ export class Map {
          return acc
       }, [])
       // any items recursively
-      let itemsRecRoot = m['itemsRecRoot']
-      if (itemsRecRoot) {
+      let itemsRoot = m['itemsRoot']
+      if (itemsRoot) {
          //visit each path
-         const d = new Dirs(this._root + itemsRecRoot)
+         const d = new Dirs(this._root + itemsRoot)
          leaves = leaves.concat(d.get())
       }
 
