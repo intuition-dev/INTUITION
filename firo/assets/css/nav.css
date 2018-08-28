@@ -32,7 +32,32 @@
 
 /*
  Nav */
-.flex, .center, .top, .right, .bottom, .left{
+ ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   width: 275px;
+   background-color: #f1f1f1;
+}
+
+li a {
+   display: block;
+   color: #000;
+   padding: 10px 15px;
+   text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+   background-color: #555;
+   color: white;
+}
+
+.nav-item {
+   line-height: 25px;
+}
+
+ .flex, .center, .top, .right, .bottom, .left{
    display: flex;
    justify-content: center;
    align-items: center;
@@ -48,17 +73,21 @@
 .edge  { justify-content: space-between;
    flex-wrap: nowrap;
 }
-.navBarOpen {
-   margin: 0;
-   width: 250px;
-}
 /* off */
+.c-offcanvas {
+   width: 270px !important;
+}
+.navBarOpen {
+   padding: 0;
+   margin: 0;
+   width: 275px;
+}
 #navBarOpenHead, .navBarOpenHead {
    background-color: black;
    color: white !important;
    margin: 0;
    height: 60px;
-   width: 275px;
+   width: 275;
    padding-left: 15px;
    line-height: 60px !important;
 }
@@ -74,7 +103,6 @@ header, bblack {
 .nav-item a {
    padding-left: 15px !important;
 }
+
 /*
 End Nav */
-
-
