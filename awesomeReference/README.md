@@ -39,7 +39,9 @@ One feature of Metabake is that it is text based, and not GUI, like Webflow for 
 Also, you should avoid prototyping in GUI tools - text prototyping is just as fast an fully interactive.
 
 -i # from i_dat.yaml creates items json, reading all the dat.yaml - for dynamic binding!
+
 -f # Will take a map.yaml and create sitemap.xml, menu.json and FTS.idx. You can use FTS in browser after a fetch in loading here [lunrjs.com/guides](https://lunrjs.com/guides/index_prebuilding.html#loading)
+
 -j # list.csv to list.json
 
 
