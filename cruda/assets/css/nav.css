@@ -1,0 +1,108 @@
+
+
+/* nav off */
+.c-offcanvas { transition: transform 200ms cubic-bezier(0.4, 0, 0.6, 1); }
+
+.white, .white * { color: white !important; }
+
+.padL {
+   padding-left: 15px;
+}
+.pad {
+   padding: 15px;
+}
+
+.bord { /* icons & bars */
+   margin-top: 23px;
+   outline-style: solid;
+   outline-offset: 7px;
+   outline-width: thin;
+   margin-right: 25px;
+   margin-left: 25px ;
+}
+.feather {
+   width: 24px;
+   height: 24px;
+   stroke: currentColor;
+   stroke-width: 2;
+   stroke-linecap: round;
+   stroke-linejoin: round;
+   fill: none;
+ }
+
+/*
+ Nav */
+ ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   width: 275px;
+   background-color: #f1f1f1;
+}
+
+li a {
+   display: block;
+   color: #000;
+   padding: 10px 15px;
+   text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+   background-color: #555;
+   color: white;
+}
+
+.nav-item {
+   line-height: 25px;
+}
+
+ .flex, .center, .top, .right, .bottom, .left{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.flex {
+   align-content: flex-start;
+}
+.top    { align-items:     flex-start; }
+.right  { justify-content: flex-end;   }
+.bottom { align-items:     flex-end;   }
+.left   { justify-content: flex-start; }
+/* override */
+.edge  { justify-content: space-between;
+   flex-wrap: nowrap;
+}
+/* off */
+.c-offcanvas {
+   width: 270px !important;
+}
+.navBarOpen {
+   padding: 0;
+   margin: 0;
+   width: 275px;
+}
+#navBarOpenHead, .navBarOpenHead {
+   background-color: black;
+   color: white !important;
+   margin: 0;
+   height: 60px;
+   width: 275;
+   padding-left: 15px;
+   line-height: 60px !important;
+}
+#navBarHead {
+   margin-top: 10px;
+}
+header, bblack {
+   background-color: black;
+   padding-left: 15px;
+   height: 60px;
+   line-height: 60px;
+}
+.nav-item a {
+   padding-left: 15px !important;
+}
+
+/*
+End Nav */
