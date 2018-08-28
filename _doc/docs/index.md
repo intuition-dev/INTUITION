@@ -30,7 +30,7 @@ See [Resources](/res/) for related projects.
 
 ## How to install mbake
 
-From a command line such as Powershell, type:
+From a command line such as PowerShell, type:
 
 ```
    npm -g i mbake
@@ -75,7 +75,7 @@ Even though mbake apps are installed on a static server, they are dynamic becaus
    mbake -r
 
 ## Navigate to it, e.g.
-   cd fireRO
+   cd firo
 ```
 
 ## Other popular mbake commands
@@ -114,7 +114,7 @@ Serverless/Cloud V2, Mount and Pug are some of the pillars of Metabake.
    npm -g i mbake
    mbake
    mbake -r
-   cd fire-ro
+   cd firo
    mbake .
 ```
 
