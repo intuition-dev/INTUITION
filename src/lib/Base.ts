@@ -34,7 +34,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v3.8.32"
+      return "v3.8.33"
    }
 
    static slash(path) {// windowze
@@ -111,16 +111,22 @@ export class Map {
             let publish = props['publish']
             if (publish == false) //skip
                continue
+            //priority
+            let priority = props['priority']
+            if(!priority) priority = 0.3
+
             let image = props['image']
             if(!image) {
                this._sitemap.add({
                   url: path,
-                  changefreq: m['changefreq']
+                  changefreq: m['changefreq'],
+                  priority: priority
                })
             } else {  //if it has image
                this._sitemap.add({
                   url: path,
                   changefreq: m['changefreq'],
+                  priority: priority,
                   img: [{
                      url: image,
                      title: props['title'],
