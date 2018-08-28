@@ -92,16 +92,17 @@ Even though mbake apps are installed on a static server, they are dynamic becaus
 ## How to make mbake apps serverless
 
 To go extreme serverless, we show how to use mbake with
+
 - Amazon Web Services (AWS) S3 HTTP hosting
 - Mounting software Webdrive so you can mount AWS S3 as a drive
 - Google Firebase/Firestore
 
 ### Go extreme serverless in four steps (Tutorials):
 
-- [Tutorial 1](/cloud1/): Setup S3 as your cloud server and mount it.
-- [Tutorial 2](/pug1/): Learn Pug and static binding; view via S3 HTTP server.
-- [Tutorial 3](pug2/): Read dynamic data from Firestore and bind via Pug.
-- [Tutorial 4](/cloud2/): Apply authentication and write dynamic data.
+- [Tutorial 1](/t1/): Setup S3 as your cloud server and mount it.
+- [Tutorial 2](/t2/): Learn Pug and static binding; view via S3 HTTP server.
+- [Tutorial 3](t3/): Read dynamic data from Firestore and bind via Pug.
+- [Tutorial 4](/t4/): Apply authentication and write dynamic data.
 
 When done, you should see [this](https://youtu.be/-KkPfAnEXyk).
 
@@ -113,8 +114,11 @@ Serverless/Cloud V2, Mount and Pug are some of the pillars of Metabake.
    npm -g i mbake
    mbake
    mbake -r
-   cd fireRO
+   cd fire-ro
    mbake .
 ```
+
+NEXT: Go to [Tutorial 1](/t1/).
+
 
 

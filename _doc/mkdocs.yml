@@ -4,12 +4,12 @@ repo_url: http://metabake.org
 pages:
    - Home: index.md
 
-   - Gentle Intro: gent.md
    - Tutorial 1 Setup S3 and mount: cloud1.md
    - Tutorial 2 Learn Pug: pug1.md
    - Tutorial 3 Read from Firestore: pug2.md
    - Tutorial 4 Apply Auth and Write Data: cloud2.md
 
+   - Using a CDN: cdn.md
    - Resources: res.md
    - Next Steps: next.md
    - About: about.md
