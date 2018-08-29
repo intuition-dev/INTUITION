@@ -1,7 +1,7 @@
 doctype html
 html
    head
-      //<script src="https://console.re/connector.js" data-channel="MY_NAME" id="consolerescript"></script>
+      //-<script src="https://console.re/connector.js" data-channel="MY_NAME" id="consolerescript"></script>
       script.
          ROOT = '#{ROOT}' //- sets global pug and .js from dat.yaml
          console.log('root','#{ROOT}')
@@ -9,7 +9,7 @@ html
       meta(charset='utf-8')
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')
-      title Metabake.org
+      title CRUD Theme
       link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
       include crud
 
@@ -29,7 +29,7 @@ html
          header.flex.edge
             .left.white
                .navbar-brand.mr-2
-                  h2#navBarHead Metabake.org
+                  h2#navBarHead CRUD Theme
 
             .right.white
                .hide-lg
@@ -50,15 +50,14 @@ html
       #navOpen.delayShowing
          ul.nav.navBarOpen
 
-            h3#navBarOpenHead.navBarOpenHea.navbar-brand Metabake.org
+            h3#navBarOpenHead.navBarOpenHea.navbar-brand CRUD Theme
 
             li.nav-item
-               a(href='#') Elements
+               a(href= ROOT + 'screens/auth') Auth
             li.nav-item
-               a(href='#') Layout
+               a(href= ROOT + 'screens/members') CRUD
             li.nav-item
-               a(href='#') Components
-
+               a(href= ROOT + 'screens/membersTag') Tag
 
       link(href= ROOT + 'assets/css/spectre.css', onload='cssLoaded()', rel='stylesheet')
       link(href='https://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet')
@@ -70,4 +69,4 @@ html
             console.log('resize|scroll')
          }
 
-   //link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')
+   //-link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')
