@@ -1,7 +1,7 @@
 
 form#f1.grid-form(autocomplete="off")
    fieldset
-      legend Auth Fire Form
+      legend Firestore Auth Form
       div(data-row-span='2')
          div(data-field-span='1')
             label  Email
@@ -14,7 +14,7 @@ form#f1.grid-form(autocomplete="off")
    #up.button.btn Sign Up
    #in.button.btn Sign In
    #out.button.btn Sign Out
-   #rest.button.btn Reset
+   #rest.button.btn Send Password Reset
 
 style.
    .buts * {
@@ -33,8 +33,8 @@ script.
                sendEmailVerification()
             })
             .catch(function(error){
-               //show error in .message
-               console.log(error)
+               console.log(error) //show error in .message
+               alert(error) // replace with pretty popup
             })
       })//click
 
@@ -45,9 +45,11 @@ script.
          auth.signInWithEmailAndPassword(email,pswd)
             .then(function(user) {
                console.log(user)
+               alert('Signed in successfully') //replace with pretty popup
             })
             .catch(function(error){
                console.log(fail, error)
+               alert(error) // replace with pretty popup
             })
       })//click
 

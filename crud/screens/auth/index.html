@@ -11,6 +11,7 @@ let _start=Date.now()</script><meta charset="utf-8"><meta http-equiv="X-UA-Compa
 	projectId: "test-crud1",
 	//storageBucket: "test-crud1.appspot.com",
 	//messagingSenderId: "102421225201"
+
 }
 </script><!-- example use ////////////////////////////////////////////////////////////* put in header or better yet in a RIOT tag
 */
@@ -47,7 +48,7 @@ auth.onAuthStateChanged(function(user_) {
 		console.log('CRUDauth','bye')
 	}
 })</script><script src="https://cdn.jsdelivr.net/npm/loadjs@3.5.4/dist/loadjs.js"></script><script src="https://cdn.jsdelivr.net/npm/riot@3.11.1/riot.min.js"></script><script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script><style>.delayShowing { opacity: 0.01; }
-</style></head><body><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/assets/js/setup.js"></script><div class="c-offcanvas-content-wrap"><!--top--><header class="flex edge"><div class="left white"><div class="navbar-brand mr-2"><h2 id="navBarHead">CRUD Theme</h2></div></div><div class="right white"><div class="hide-lg"><a class="btn btn-link" href="/screens/auth">Auth</a><a class="btn btn-link" href="/screens/members">CRUD</a><a class="btn btn-link" href="/screens/membersTag">Tag</a></div><a class="js-offcanvas-trigger" id="off-cbut" href="#navOpen"><div class="white"><svg class="bord feather" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div></a></div></header><div id="router"><div class="pad"><form class="grid-form" id="f1" autocomplete="off"><fieldset><legend>Auth Fire Form</legend><div data-row-span="2"><div data-field-span="1"><label> Email</label><input type="text" name="email" placeholder="al@gore.org"></div><div data-field-span="1"><label>Password</label><input type="text" name="pswd" placeholder="654321"></div></div></fieldset></form><div class="buts"><div class="button btn" id="up">Sign Up</div><div class="button btn" id="in">Sign In</div><div class="button btn" id="out">Sign Out</div><div class="button btn" id="rest">Reset</div></div><style>.buts * {
+</style></head><body><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/assets/js/setup.js"></script><div class="c-offcanvas-content-wrap"><!--top--><header class="flex edge"><div class="left white"><div class="navbar-brand mr-2"><h2 id="navBarHead">CRUD Theme</h2></div></div><div class="right white"><div class="hide-lg"><a class="btn btn-link" href="/screens/auth">Auth</a><a class="btn btn-link" href="/screens/members">CRUD</a><a class="btn btn-link" href="/screens/membersTag">Tag</a></div><a class="js-offcanvas-trigger" id="off-cbut" href="#navOpen"><div class="white"><svg class="bord feather" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div></a></div></header><div id="router"><div class="pad"><form class="grid-form" id="f1" autocomplete="off"><fieldset><legend>Firestore Auth Form</legend><div data-row-span="2"><div data-field-span="1"><label> Email</label><input type="text" name="email" placeholder="al@gore.org"></div><div data-field-span="1"><label>Password</label><input type="text" name="pswd" placeholder="654321"></div></div></fieldset></form><div class="buts"><div class="button btn" id="up">Sign Up</div><div class="button btn" id="in">Sign In</div><div class="button btn" id="out">Sign Out</div><div class="button btn" id="rest">Send Password Reset</div></div><style>.buts * {
    margin: .5rem;
 }
 </style><script>loadjs.ready('style', function () {
@@ -61,8 +62,8 @@ auth.onAuthStateChanged(function(user_) {
             sendEmailVerification()
          })
          .catch(function(error){
-            //show error in .message
-            console.log(error)
+            console.log(error) //show error in .message
+            alert(error) // replace with pretty popup
          })
    })//click
 
@@ -73,9 +74,11 @@ auth.onAuthStateChanged(function(user_) {
       auth.signInWithEmailAndPassword(email,pswd)
          .then(function(user) {
             console.log(user)
+            alert('Signed in successfully') //replace with pretty popup
          })
          .catch(function(error){
             console.log(fail, error)
+            alert(error) // replace with pretty popup
          })
    })//click
 
@@ -93,4 +96,4 @@ auth.onAuthStateChanged(function(user_) {
 }) //on ready</script></div><!--link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')--></div></div><div class="delayShowing" id="navOpen"><ul class="nav navBarOpen"><h3 class="navBarOpenHea navbar-brand" id="navBarOpenHead">CRUD Theme</h3><li class="nav-item"><a href="/screens/auth">Auth</a></li><li class="nav-item"><a href="/screens/members">CRUD</a></li><li class="nav-item"><a href="/screens/membersTag">Tag</a></li></ul></div><link href="/assets/css/spectre.css" onload="cssLoaded()" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"><link href="/assets/css/nav.css" rel="stylesheet"><link href="/assets/css/main.css" rel="stylesheet"><script>function userSzSc() {
    console.log('resize|scroll')
 }
-</script><!- mB vv3.8.36 on 2018-08-29T19:01:56.741Z --></body></html>
+</script><!- mB vv3.8.36 on 2018-08-29T21:11:42.561Z --></body></html>
