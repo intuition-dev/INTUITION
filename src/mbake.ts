@@ -36,7 +36,9 @@ function version() {
    console.log(' ----------------------------------------------------------------')
    console.log(' Declarative low code examples:')
    console.log('  For an example dynamic web app with RO Database: mbake -r')
+   console.log('  For an example dynamic web app with Auth and CRUD: mbake -c')
    console.log('  For a starter blog/linkBlog: mbake -b')
+   console.log('  For a starter website: mbake -w')
    console.log('  For a starter Dash web app: mbake -d')
    console.log('  For a starter SPA/Phonegap app: mbake -s')
    console.log('  For a starter admin/build/Meta cloud service: mbake -a')
@@ -58,8 +60,10 @@ const optionDefinitions = [
    { name: 'RO', alias: 'r', type: Boolean },
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
-   { name: 'spa', alias: 's', type: Boolean },
+   { name: 'spa',  alias: 's', type: Boolean },
    { name: 'auto', alias: 'a', type: Boolean },
+   { name: 'web',  alias: 'w', type: Boolean },
+   { name: 'crud', alias: 'c', type: Boolean },
 
 ]
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -86,7 +90,21 @@ function unzipR() {
    let src:string =__dirname+ '/firo.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted an example dynamic app with RO DB ./firo')
+   console.log('Extracted an example dynamic app with RO DB to ./firo')
+   process.exit()
+}
+function unzipC() {
+   let src:string =__dirname+ '/crud.zip'
+   let zip = new AdmZip(src)
+   zip.extractAllTo(cwd , /*overwrite*/true)
+   console.log('Extracted an example auth/crud to ./crud')
+   process.exit()
+}
+function unzipW() {
+   let src:string =__dirname+ '/website.zip'
+   let zip = new AdmZip(src)
+   zip.extractAllTo(cwd , /*overwrite*/true)
+   console.log('Extracted a starter website to ./website')
    process.exit()
 }
 function unzipB() {
@@ -178,6 +196,10 @@ else if(argsParsed.dash)
    unzipD()
 else if(argsParsed.spa)
    unzipS()
+else if(argsParsed.crud)
+   unzipC()
+else if(argsParsed.web)
+   unzipW()
 else if(!arg)
    version()
 else
