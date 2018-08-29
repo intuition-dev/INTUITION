@@ -24,9 +24,7 @@ Directory of related projects is in Resources on left, and source code is here:
 # Additional examples and plugins:
 In addition to the examples in mbake CLI:
 
-- [CRUD and Auth Example](https://github.com/metabake/_mBake/releases/download/3.8.1/cruda.zip)
-- [WebSite](https://github.com/metabake/examples-plugins/releases/download/3.8.1/website.zip)
-- [Front End Framework Examples](https://github.com/metabake/front-end-frameworks)
+- [SCSS theme Framework Examples](https://github.com/metabake/theme-scss-frameworks)
 - [Metabake Examples and plugins](https://github.com/metabake/examples-plugins)
 - [cunhasb/metaBakeSandbox](https://github.com/cunhasb/metaBakeSandbox)
 
@@ -79,7 +77,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 - Pug : A templating language, position as Less code Declarative 4GL. Custom 'tags' in Pug via RIOTjs (and obfuscated as well as Andorid's ProGuard)
 - Cloud v2: No known end point. E.g.: CDN, AWS Cognito. AWS Lambda does have a server end point, so it is not Cloud v2
 - Team Player: Benefits group via Cloud Dev Environment, ex: CodeAnywhere+Meta. Selfish: Local dev. environment.
-- Front End Framework: Google/search for 'Front End Framework' yields Bootstrap, Bulma, Spectre, etc. We have examples with a few in Github project of same name.
+- SCSS theme framework: Google/search for 'Front End Framework' yields Bootstrap, Bulma, Spectre, etc. We have examples with a few in Github project of same name.
 - Meta: Building software that builds software. Has more than one level of meaning.
 
 
