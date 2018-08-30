@@ -41,7 +41,7 @@ function version() {
    console.log('  For a starter website: mbake -w')
    console.log('  For a starter Dash web app: mbake -d')
    console.log('  For a starter SPA/Phonegap app: mbake -s')
-   console.log('  For a starter admin/build/Meta cloud service: mbake -a')
+   console.log('  For a starter auto admin/build/Meta cloud service: mbake -a')
 
    console.log(' Full docs: http://www.metabake.org , more examples and notes on newer versions')
    console.log()
