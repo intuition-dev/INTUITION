@@ -26,7 +26,7 @@ loadjs([
    , 'https://cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
    , 'https://cdn.jsdelivr.net/npm/is_js@0.9.0/is.min.js'
 
-   , 'https://cdn.rawgit.com/terrylinooo/jquery.disableAutoFill/92cb6f86/src/jquery.disableAutoFill.js'
+   , ROOT + 'assets/js/jquery.disableAutoFill.js'
 
 ], 'cssJs')
 
