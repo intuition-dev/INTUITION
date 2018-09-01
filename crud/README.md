@@ -1,4 +1,3 @@
-# mbake-firestore
 
 Read up on Firestore auth and CRUD on their web site.
 
