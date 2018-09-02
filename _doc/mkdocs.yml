@@ -9,7 +9,6 @@ pages:
    - Tutorial 3 - Read from Firestore: t3.md
    - Tutorial 4 - Apply Auth and Write Data: t4.md
 
-   - Using a CDN: cdn.md
    - Resources: res.md
    - Next Steps: next.md
    - About: about.md

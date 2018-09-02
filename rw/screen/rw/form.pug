@@ -1,0 +1,51 @@
+
+-// field names must mach table cols
+#form1.grid-form(autocomplete="off")
+   fieldset
+      legend Form
+      div(data-row-span='2')
+         div(data-field-span='1')
+            label Field 1
+            input(name='col1', type='text')
+         div(data-field-span='1')
+            label Field 2
+            input(name='col3', type='text')
+   div(hidden='', name='id')
+
+.buts
+   button#clearBut.btn Clear
+   button#addBut.btn Add data
+   button#saveBut.btn Save data
+   button#refBut.btn Refresh
+
+style.
+   .buts button {
+      margin: .5rem;
+   }
+
+script.
+
+   function onRow(row) {
+      setFields(row, '#form1')
+   }
+   dtSig.add(onRow) // handle
+
+   let form = '#form1'
+   loadjs.ready('style', function () {
+      $('#clearBut').click(function(){
+        clearFields(form)
+      })//click
+      $('#addBut').click(function(){
+         let row = getFields(form) 
+         add(row)
+      })//click
+      $('#saveBut').click(function(){
+         let row = getFields(form) 
+         update( row )
+      })//click
+      $('#refBut').click(function(){
+         read(onData1, onErr1) // table function
+      })//click
+
+   }) //on ready
+

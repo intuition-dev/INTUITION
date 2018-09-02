@@ -1,0 +1,51 @@
+preRW-tag
+
+   script.
+      // specific:
+      const fconfig = {
+         apiKey: 'AIzaSyASZVGB4'+'s'+'1uKB4OdxPCcbJ3ebf44KUYdIE', // + is to help obfuscate
+         authDomain: 'nbake1-1.firebaseapp.com',
+         projectId: 'nbake1-1'
+      }
+
+      // example use ///////////////////////////////////////////////////////////
+      /* put in header or better yet in a RIOT tag
+      */
+      // in FireBase set:
+      // allow read, write: if request.auth.token.email_verified == true ;
+
+      // you should setup your Firestore so only auth user can access:
+      // console.log('auth', isUserIn()) // if not, you can gray out the page with a modal
+
+      // RW generic ///////////////////////////////////////////////////////////////////
+      window.firebase.initializeApp(fconfig)
+      window.auth =firebase.auth()
+      auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+
+      window.db1  = window.firebase.firestore()
+      const dsettings = {/* your settings... */ timestampsInSnapshots: true}
+      db1.settings(dsettings)
+
+      // AUTH //////////////////////////////////////////////////
+      function isUserIn() { // use this to check if user is auth and valid
+         if(!auth.currentUser) return false
+         return auth.currentUser.emailVerified
+      }
+
+      auth.onAuthStateChanged(function(user_) {
+         if (isUserIn()) {
+            console.log('CRUDauth', true)
+         }
+         else {
+            console.log('CRUDauth','bye')
+         }
+      })//auth
+
+      function sendEmailVerification() {
+         if(!isUserIn()) {
+            console.log('sending', auth.currentUser)
+            auth.currentUser.sendEmailVerification()
+         }
+         else
+            console.log('no currentUser')
+      }
