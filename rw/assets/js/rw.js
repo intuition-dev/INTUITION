@@ -1,3 +1,4 @@
+// This should allow you to add/remove DB fields in DOM. Fluid?
 
 // FORM ////////////////////////////////////////////////////////////////
 function setFields(row, form) {

@@ -40,7 +40,7 @@ function version() {
    console.log('  For a starter blog/linkBlog: mbake -b')
    console.log('  For a starter website: mbake -w')
    console.log('  For a starter Dash web app: mbake -d')
-   console.log('  For a starter SPA/Phonegap app: mbake -s')
+   console.log('  For a starter Phonegap app: mbake -p')
    console.log('  For a starter auto admin/build/Meta cloud service: mbake -a')
 
    console.log(' Full docs: http://www.metabake.org , more examples and notes on newer versions')
@@ -60,7 +60,7 @@ const optionDefinitions = [
    { name: 'RO', alias: 'r', type: Boolean },
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
-   { name: 'spa',  alias: 's', type: Boolean },
+   { name: 'phonegap',  alias: 'p', type: Boolean },
    { name: 'auto', alias: 'a', type: Boolean },
    { name: 'web',  alias: 'w', type: Boolean },
    { name: 'crud', alias: 'c', type: Boolean },
@@ -79,11 +79,11 @@ function unzipA() {
    console.log('Extracted a starter admin/build/Meta cloud service to ./autoEG')
    process.exit()
 }
-function unzipS() {
-   let src:string =__dirname+ '/SPA.zip'
+function unzipP() {
+   let src:string =__dirname+ '/PG.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted a starter SPA/Phonegap app to ./SPA')
+   console.log('Extracted a starter Phonegap app to ./PG')
    process.exit()
 }
 function unzipR() {
@@ -194,8 +194,8 @@ else if(argsParsed.blog)
    unzipB()
 else if(argsParsed.dash)
    unzipD()
-else if(argsParsed.spa)
-   unzipS()
+else if(argsParsed.phonegap)
+   unzipP()
 else if(argsParsed.crud)
    unzipC()
 else if(argsParsed.web)
