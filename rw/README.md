@@ -1,5 +1,5 @@
 
-- You should know some FireStore already.
+- You should know some Firestore  already.
 - Tutorial would show datatable, form and signals ahead
 
 - Then, all together, the RW 

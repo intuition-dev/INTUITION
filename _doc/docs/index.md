@@ -95,13 +95,13 @@ To go extreme serverless, we show how to use mbake with
 
 - Amazon Web Services (AWS) S3 HTTP hosting
 - Mounting software Webdrive so you can mount AWS S3 as a drive
-- Google Firebase/Firestore
+- Google Firebase/Firestore 
 
 ### Go extreme serverless in four steps (Tutorials):
 
 - [Tutorial 1](/t1/): Setup S3 as your cloud server and mount it.
 - [Tutorial 2](/t2/): Learn Pug and static binding; view via S3 HTTP server.
-- [Tutorial 3](t3/): Read dynamic data from Firestore and bind via Pug.
+- [Tutorial 3](t3/): Read dynamic data from Firestore  and bind via Pug.
 - [Tutorial 4](/t4/): Apply authentication and write dynamic data.
 
 When done, you should see [this](https://youtu.be/-KkPfAnEXyk).
