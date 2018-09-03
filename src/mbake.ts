@@ -38,12 +38,13 @@ function version() {
    console.log('  For an example dynamic web app with RO Database: mbake -r')
    console.log('  For an example dynamic web app with Auth and CRUD: mbake -c')
    console.log('  For a starter blog/linkBlog: mbake -b')
-   console.log('  For a starter website: mbake -w')
+   // w is reserved for watch
+   console.log('  For a starter website: mbake -s')
    console.log('  For a starter Dash web app: mbake -d')
    console.log('  For a starter Phonegap app: mbake -p')
    console.log('  For a starter auto admin/build/Meta cloud service: mbake -a')
 
-   console.log(' Full docs: http://www.metabake.org , more examples and notes on newer versions')
+   console.log(' Full docs: http://www.Metabake.org , more examples and notes on newer versions')
    console.log()
 
    //process.exit()
@@ -62,7 +63,7 @@ const optionDefinitions = [
    { name: 'dash', alias: 'd', type: Boolean },
    { name: 'phonegap',  alias: 'p', type: Boolean },
    { name: 'auto', alias: 'a', type: Boolean },
-   { name: 'web',  alias: 'w', type: Boolean },
+   { name: 'website',  alias: 's', type: Boolean },
    { name: 'crud', alias: 'c', type: Boolean },
 
 ]
@@ -100,7 +101,7 @@ function unzipC() {
    console.log('Extracted an example auth/crud to ./crud')
    process.exit()
 }
-function unzipW() {
+function unzipS() {
    let src:string =__dirname+ '/website.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
@@ -198,8 +199,8 @@ else if(argsParsed.phonegap)
    unzipP()
 else if(argsParsed.crud)
    unzipC()
-else if(argsParsed.web)
-   unzipW()
+else if(argsParsed.website)
+   unzipS()
 else if(!arg)
    version()
 else

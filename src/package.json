@@ -1,19 +1,19 @@
 {
    "name": "mbake",
    "version": "3.9.1",
-   "description": "Make(bake) a declarative/pug app recursively, including any static or dynamic app binding, http://MetaBake.org",
+   "description": "Make(bake) a declarative/pug app recursively, including any static or dynamic app binding, http://Metabake.org",
    "main": "mbake.js",
    "bin": {
       "mbake": "mbake.js",
       "mbake-cli": "mbake.js"
    },
-   "license": "GPL-3.0-only",
-   "author": "http://MetaBake.org",
-   "bugs": "http://MetaBake.org",
-   "homepage": "http://MetaBake.org",
+   "license": "LGPL-2.1-only",
+   "author": "http://Metabake.org",
+   "bugs": "http://Metabake.org",
+   "homepage": "http://Metabake.org",
    "repository": {
       "type": "git",
-      "url": "http://MetaBake.org"
+      "url": "http://Metabake.org"
    },
    "keywords": [
       "mbake",
