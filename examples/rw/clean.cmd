@@ -1,1 +1,0 @@
-del /S index.html
