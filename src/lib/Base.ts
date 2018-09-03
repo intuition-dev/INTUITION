@@ -1,6 +1,6 @@
 import { isReturnStatement } from "babel-types";
 
-// All rights Metabake.org | cekvenich, licensed under GPL v3
+// All rights Metabake.org | cekvenich, licensed under LGPL 2.1
 
 declare var module: any
 declare var require: any
