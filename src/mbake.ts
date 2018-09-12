@@ -41,6 +41,8 @@ function version() {
    // w is reserved for watch
    console.log('  For a starter website: mbake -s')
    console.log('  For a starter Dash web app: mbake -d')
+   console.log('  For a example Red Write dynamic app: mbake -x')
+
    console.log('  For a starter Phonegap app: mbake -g')
    console.log('  For a starter auto admin/build/Meta cloud service: mbake -a')
 
@@ -58,6 +60,7 @@ const optionDefinitions = [
    { name: 'map', alias: 'f', type: Boolean },
    { name: 'csv2Json', alias: 'j', type: Boolean },
 
+   { name: 'RW', alias: 'x', type: Boolean },
    { name: 'RO', alias: 'r', type: Boolean },
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
@@ -78,6 +81,13 @@ function unzipA() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
    console.log('Extracted a starter admin/build/Meta cloud service to ./autoEG')
+   process.exit()
+}
+function unzipX() {
+   let src:string =__dirname+ '/rw.zip'
+   let zip = new AdmZip(src)
+   zip.extractAllTo(cwd , /*overwrite*/true)
+   console.log('Extracted example to ./rw')
    process.exit()
 }
 function unzipG() {
@@ -199,6 +209,8 @@ else if(argsParsed.phonegap)
    unzipG()
 else if(argsParsed.crud)
    unzipC()
+else if(argsParsed.RW)
+   unzipX()
 else if(argsParsed.website)
    unzipS()
 else if(!arg)
