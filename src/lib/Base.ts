@@ -1,4 +1,4 @@
-import { isReturnStatement } from "babel-types";
+//import { isReturnStatement } from "babel-types";
 
 // All rights Metabake.org | cekvenich, licensed under LGPL 2.1
 
@@ -34,7 +34,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v3.9.3"
+      return "v3.9.10"
    }
 
    static slash(path) {// windowze
