@@ -94,7 +94,7 @@ Even though mbake apps are installed on a static server, they are dynamic becaus
 To go extreme serverless, we show how to use mbake with
 
 - Amazon Web Services (AWS) S3 HTTP hosting
-- Mounting software Webdrive so you can mount AWS S3 as a drive
+- Mounting software so you can mount AWS S3 as a drive
 - Google Firebase/Firestore 
 
 ### Go extreme serverless in four steps (Tutorials):
