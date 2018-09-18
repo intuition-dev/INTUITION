@@ -34,7 +34,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v3.9.10"
+      return "v3.9.11"
    }
 
    static slash(path) {// windowze
@@ -69,6 +69,10 @@ export class Map {
    _sitemap
    _root
    constructor(root) {
+      if(!root || root.length < 1) {
+         console.log('no path arg passed')
+         return
+      }
       this._root = root
    }
    gen() {
@@ -304,6 +308,10 @@ export class Dirs {
 export class CSV2Json { // TODO: get to work with watcher
    dir:string
    constructor(dir_:string) {
+      if(!dir_ || dir_.length < 1) {
+         console.log('no path arg passed')
+         return
+      }
       this.dir = Ver.slash(dir_)
    }
 
@@ -331,6 +339,10 @@ export class CSV2Json { // TODO: get to work with watcher
 export class MBake {
 
    bake(path):RetMsg {
+      if(!path || path.length < 1) {
+         console.log('no path arg passed')
+         return
+      }
       try {
          console.log(' Baking ' + path)
 
@@ -349,6 +361,10 @@ export class MBake {
    }
 
    tag(path):RetMsg {
+      if(!path || path.length < 1) {
+         console.log('no path arg passed')
+         return
+      }
       try {
          console.log(' Tag ' + path)
 
@@ -380,6 +396,10 @@ export class MBake {
 
    // itemize and bake
    itemizeNBake(ppath):RetMsg {
+      if(!ppath || ppath.length < 1) {
+         console.log('no path arg passed')
+         return
+      }
       logger.trace('ib:', ppath)
 
       try {
