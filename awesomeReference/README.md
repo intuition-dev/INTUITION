@@ -25,10 +25,6 @@ Directory of related projects is in Resources on left, and source code is here:
 In addition to the examples in mbake CLI:
 
 - [SCSS theme Framework Examples](https://github.com/metabake/theme-scss-frameworks)
-- [Metabake Examples and plugins](https://github.com/metabake/examples-plugins)
-- [cunhasb/metaBakeSandbox](https://github.com/cunhasb/metaBakeSandbox)
-
-
 
 
 ## Features
@@ -45,7 +41,7 @@ Also, you should avoid prototyping in GUI tools - text prototyping is just as fa
 
 ## Documentation TOC:
 
-These are the 3 main project, that leverage the 10 pillars:
+These are projects, that together leverage the 10 pillars:
 
 - [mbake](http://doc.metabake.org/mbake); CLI, and foundation. Please give it stars: '*'
 - [SPA](http://doc.metabake.org/SPA); eg. Brick and Mortar, examples, eg: PhoneGap v8
@@ -68,9 +64,6 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 ## CERTIFIED by Metabake.org: Commercial hosting, advisory services and support for Metabake
 
 - <http://www.metabake.net>
-- <http://voncode.com>
-- <http://code83.com>
-- <http://fabianocunha.io>
 
 
 ## Meta Definitions:
@@ -81,16 +74,12 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 - Meta: Building software that builds software. Has more than one level of meaning.
 
 
-Sins to eschew:
-- js, prefer Pug
-- local IDE dev, use Cloud IDE
+## Advanced Reference
+-(https://github.com/metabake/Meta/tree/master/advancedReference)[github.com/metabake/Meta/advancedReference]
 
 
-## NOTES:
-
-- Cannot read property 'replace' of undefined
-    at loadFile (loadjs.js:106)
-* This happens if your CSV comma is of for your loadjs command.
+## Benchmarks and Automatic programing
+- [Job Board in days](https://medium.com/@mattia_asti/creating-a-job-board-in-a-few-days-contentful-riot-js-bulma-io-293276516301)
 
 
 # Support
