@@ -34,7 +34,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v3.9.11"
+      return "v3.9.16"
    }
 
    static slash(path) {// windowze
@@ -451,12 +451,24 @@ export class BakeWrk {
       //static data binding:
       let html = pug.renderFile(this.dir+'/index.pug', m.getAll() )
 
-      let ver = '<!- mB v' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
+      let ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
       html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
 
       let fn = this.dir + '/index.html'
       fs.writeFileSync(fn, html)
       //console.log(' processed: '+ this.dir)
+
+      //amp
+      if (!fs.existsSync(this.dir+'/m.pug'))
+        return ' '
+      //static data binding:
+      html = pug.renderFile(this.dir+'/m.pug', m.getAll() )
+
+      ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
+      html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
+
+      fn = this.dir + '/m.html'
+      fs.writeFileSync(fn, html)
 
    }//()
 

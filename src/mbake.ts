@@ -34,16 +34,18 @@ function version() {
 
    console.log()
    console.log(' ----------------------------------------------------------------')
-   console.log(' Declarative low code examples:')
+   console.log(' Code examples:')
    console.log('  For an example dynamic web app with RO Database: mbake -r')
    console.log('  For an example dynamic web app with Auth and CRUD: mbake -c')
+   console.log('  For a example Red Write dynamic app: mbake -x')
+
    console.log('  For a starter blog/linkBlog: mbake -b')
    // w is reserved for watch
    console.log('  For a starter website: mbake -s')
    console.log('  For a starter Dash web app: mbake -d')
-   console.log('  For a example Red Write dynamic app: mbake -x')
 
-   console.log('  For a starter Phonegap app: mbake -g')
+   console.log('  For a training Electorn(pre-PhoneGap) app: mbake -e')
+   console.log('  For a hybrid Phonegap app: mbake -g')
    console.log('  For a starter auto admin/build/Meta cloud service: mbake -a')
 
    console.log(' Full docs: http://www.Metabake.org , more examples and notes on newer versions')
@@ -65,6 +67,7 @@ const optionDefinitions = [
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
    { name: 'phonegap',  alias: 'g', type: Boolean },
+   { name: 'elect',  alias: 'e', type: Boolean },
    { name: 'auto', alias: 'a', type: Boolean },
    { name: 'website',  alias: 's', type: Boolean },
    { name: 'crud', alias: 'c', type: Boolean },
@@ -95,6 +98,13 @@ function unzipG() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
    console.log('Extracted a starter Phonegap app to ./PG')
+   process.exit()
+}
+function unzipE() {
+   let src:string =__dirname+ '/elect.zip'
+   let zip = new AdmZip(src)
+   zip.extractAllTo(cwd , /*overwrite*/true)
+   console.log('Extracted a starter Electron app to ./elect')
    process.exit()
 }
 function unzipR() {
@@ -204,6 +214,8 @@ else if(argsParsed.blog)
    unzipB()
 else if(argsParsed.dash)
    unzipD()
+else if(argsParsed.elect)
+   unzipE()
 else if(argsParsed.phonegap)
    unzipG()
 else if(argsParsed.crud)
