@@ -35,18 +35,16 @@ function version() {
    console.log()
    console.log(' ----------------------------------------------------------------')
    console.log(' Code examples:')
-   console.log('  For an example dynamic web app with RO Database: mbake -r')
-   console.log('  For an example dynamic web app with Auth and CRUD: mbake -c')
-   console.log('  For a example Red Write dynamic app: mbake -x')
+   console.log('  For a starter website: mbake -s')
+   console.log('  For an example dynamic web app CRUD: mbake -c')
 
    console.log('  For a starter blog/linkBlog: mbake -b')
    // w is reserved for watch
-   console.log('  For a starter website: mbake -s')
    console.log('  For a starter Dash web app: mbake -d')
 
-   console.log('  For a training Electorn(pre-PhoneGap) app: mbake -e')
+   console.log('  For a training Electron(pre-PhoneGap) app: mbake -e')
    console.log('  For a hybrid Phonegap app: mbake -g')
-   console.log('  For a starter auto admin/build/Meta cloud service: mbake -a')
+   console.log('  For an example auto admin/build/Meta cloud service: mbake -a')
 
    console.log(' Full docs: http://www.Metabake.org , more examples and notes on newer versions')
    console.log()
@@ -62,8 +60,6 @@ const optionDefinitions = [
    { name: 'map', alias: 'f', type: Boolean },
    { name: 'csv2Json', alias: 'j', type: Boolean },
 
-   { name: 'RW', alias: 'x', type: Boolean },
-   { name: 'RO', alias: 'r', type: Boolean },
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
    { name: 'phonegap',  alias: 'g', type: Boolean },
@@ -208,8 +204,6 @@ else if(argsParsed.map)
    map(arg)
 else if(argsParsed.auto)
    unzipA()
-else if(argsParsed.RO)
-   unzipR()
 else if(argsParsed.blog)
    unzipB()
 else if(argsParsed.dash)
@@ -220,8 +214,6 @@ else if(argsParsed.phonegap)
    unzipG()
 else if(argsParsed.crud)
    unzipC()
-else if(argsParsed.RW)
-   unzipX()
 else if(argsParsed.website)
    unzipS()
 else if(!arg)
