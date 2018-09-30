@@ -33,8 +33,11 @@ See [Resources](/res/) for related projects.
 From a command line such as PowerShell, type:
 
 ```
-   npm -g i mbake
+   npm i -g mbake --unsafe-perm=true --allow-root
+
 ```
+Note: The extra flags are due to installing electron used for -w #watcher
+You can also use yarn isntead of npm 
 
 That's it! If you don't have Node with NPM installed, first go [here for Windows](https://nodejs.org/en/download/) or [here for MAC](http://blog.teamtreehouse.com/install-node-js-npm-mac).
 

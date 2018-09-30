@@ -3,5 +3,5 @@
 tsc
 ts-node mbake.ts
 npm publish
-sudo npm -g i mbake
+sudo npm i -g mbake --unsafe-perm=true --allow-root
 mbake

@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.10.04",
+   "version": "4.10.06",
    "description": "Make(bake) a declarative/pug app recursively, including any static or dynamic app binding, http://Metabake.org",
    "main": "mbake.js",
    "bin": {
@@ -51,5 +51,9 @@
       "tracer": "^0.8.12",
       "traverse": "^0.6.6",
       "unfluff": "^3.2.0"
+   },
+
+   "devDependencies": {
+      "find-up": "^3.0.0"
    }
 }
