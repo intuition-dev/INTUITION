@@ -34,7 +34,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v4.10.01"
+      return "v4.10.02"
    }
 
    static slash(path) {// windowze

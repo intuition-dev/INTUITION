@@ -43,7 +43,7 @@ function version() {
    console.log('  For a starter Dash web app: mbake -d')
 
    console.log('  For a training Electron(pre-PhoneGap) app: mbake -e')
-   console.log('  For a hybrid Phonegap app: mbake -g')
+   console.log('  For a hybrid Phonegap app: mbake -p')
    console.log('  For an example auto admin/build/Meta cloud service: mbake -a')
 
    console.log(' Full docs: http://www.Metabake.org , more examples and notes on newer versions')
@@ -62,7 +62,7 @@ const optionDefinitions = [
 
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
-   { name: 'phonegap',  alias: 'g', type: Boolean },
+   { name: 'phonegap',  alias: 'p', type: Boolean },
    { name: 'elect',  alias: 'e', type: Boolean },
    { name: 'auto', alias: 'a', type: Boolean },
    { name: 'website',  alias: 's', type: Boolean },
@@ -82,13 +82,7 @@ function unzipA() {
    console.log('Extracted a starter admin/build/Meta cloud service to ./autoEG')
    process.exit()
 }
-function unzipX() {
-   let src:string =__dirname+ '/rw.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted example to ./rw')
-   process.exit()
-}
+
 function unzipG() {
    let src:string =__dirname+ '/PGap.zip'
    let zip = new AdmZip(src)
@@ -103,13 +97,7 @@ function unzipE() {
    console.log('Extracted a starter Electron app to ./elect')
    process.exit()
 }
-function unzipR() {
-   let src:string =__dirname+ '/firo.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted an example dynamic app with RO DB to ./firo')
-   process.exit()
-}
+
 function unzipC() {
    let src:string =__dirname+ '/crud.zip'
    let zip = new AdmZip(src)
