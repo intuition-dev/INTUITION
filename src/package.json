@@ -24,7 +24,7 @@
       "manager"
    ],
    "engines": {
-      "node": ">=6.12"
+      "node": ">=8.11"
    },
    "dependencies": {
       "adm-zip": "^0.4.11",
