@@ -68,6 +68,8 @@ const optionDefinitions = [
    { name: 'website',  alias: 's', type: Boolean },
    { name: 'crud', alias: 'c', type: Boolean },
 
+   { name: 'watch', alias: 'w', type: Boolean }
+
 ]
 const argsParsed = commandLineArgs(optionDefinitions)
 let arg:string = argsParsed.mbake
@@ -174,6 +176,32 @@ function itemize(arg) {
 function tag(arg) {
    new MBake().tag(arg)
 }
+// watch: /////////////////////////////////////////////////////////////////////////////////////////////////#endregion
+function watch() {
+   const path = require('path')
+   console.log('watch')
+   const electron = require('electron' )
+   const proc = require('child_process')
+
+   console.log(electron)
+   const fp = path.resolve('wApp/index.js')
+   console.log(fp)
+   const options = {
+      stdio: [ 'pipe', 'pipe', 'pipe', 'ipc' ]
+      , windowsHide: true
+      , detached: true
+    }
+   // https://medium.com/@NorbertdeLangen/communicating-between-nodejs-processes-4e68be42b917
+   const child = proc.spawn(electron,['wApp/index.js'], options )
+   console.log('here')
+   child.unref()
+   child.on('close',onWaExit)
+   child.on('exit',onWaExit) 
+
+}// watch
+function onWaExit(){
+   console.log('Child Exiting')
+}
 
 // start: /////////////////////////////////////////////////////////////////////////////////////
 if(argsParsed.tag) {
@@ -204,6 +232,8 @@ else if(argsParsed.crud)
    unzipC()
 else if(argsParsed.website)
    unzipS()
+else if(argsParsed.watch)
+   watch()
 else if(!arg)
    version()
 else
