@@ -33,13 +33,9 @@ See [Resources](/res/) for related projects.
 From a command line such as PowerShell, type:
 
 ```
-   npm i -g mbake --unsafe-perm=true --allow-root
-
+   yarn global add mbake
 ```
-Note: The extra flags are due to installing electron used for -w #watcher
-You can also use yarn isntead of npm 
-
-That's it! If you don't have Node with NPM installed, first go [here for Windows](https://nodejs.org/en/download/) or [here for MAC](http://blog.teamtreehouse.com/install-node-js-npm-mac).
+That's it! If you don't have Yarn installed, first go [here](https://yarnpkg.com/lang/en/docs/install/#windows-stable).
 
 ## How to create a Hello World app with mbake
 
@@ -75,10 +71,10 @@ Even though mbake apps are installed on a static server, they are dynamic becaus
    mbake
 
 ## Generate sample app, e.g.
-   mbake -r
+   mbake -c
 
 ## Navigate to it, e.g.
-   cd firo
+   cd crud
 ```
 
 ## Other popular mbake commands
@@ -104,8 +100,8 @@ To go extreme serverless, we show how to use mbake with
 
 - [Tutorial 1](/t1/): Setup S3 as your cloud server and mount it.
 - [Tutorial 2](/t2/): Learn Pug and static binding; view via S3 HTTP server.
-- [Tutorial 3](t3/): Read dynamic data from Firestore  and bind via Pug.
-- [Tutorial 4](/t4/): Apply authentication and write dynamic data.
+- [Tutorial 3](t3/): Generate a website that includes a router.
+- [Tutorial 4](/t4/): Generate a CRUD webapp .
 
 When done, you should see [this](https://youtu.be/-KkPfAnEXyk).
 
@@ -114,10 +110,10 @@ Serverless/Cloud V2, Mount and Pug are some of the pillars of Metabake.
 ## tl;dr
 
 ```
-   npm -g i mbake
+   yarn global add mbake
    mbake
-   mbake -r
-   cd firo
+   mbake -c
+   cd crud
    mbake .
 ```
 
