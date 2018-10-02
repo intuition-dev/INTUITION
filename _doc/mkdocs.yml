@@ -6,11 +6,12 @@ pages:
 
    - Tutorial 1 - Setup S3 and mount: t1.md
    - Tutorial 2 - Learn Templating/Pug: t2.md
-   - Tutorial 3 - Website reviewe: t3.md
-   - Tutorial 4 - CRUD: t4.md
+   - Tutorial 3 - Generate a website: t3.md
+   - Tutorial 4 - Generate a CRUD webapp: t4.md
 
    - Resources: res.md
    - Next Steps: next.md
    - About: about.md
+   - NPM: npm.md
 
 theme: readthedocs
