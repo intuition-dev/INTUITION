@@ -317,14 +317,17 @@ export class CSV2Json { // TODO: get to work with watcher
    }
 
    convert():RetMsg {
+
       let fn:string = this.dir +'/list.csv'
       if (!fs.existsSync(fn)) { //if it does not exist, go up a level
          let r = new RetMsg('CSV2Json', -1, 'list.csv not found in ' + this.dir)
-         r.log()
+         console.log('not found', r)
          return r
       }
       let r = new RetMsg('CSV2Json', 1, 'OK')
       let thiz = this
+      logger.trace('1')
+
       csv2JsonV2({ noheader:true }).fromFile(fn)
          .then(function(jsonO) {
             logger.trace(jsonO)
