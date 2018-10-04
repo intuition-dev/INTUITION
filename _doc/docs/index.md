@@ -100,8 +100,8 @@ To go extreme serverless, we show how to use mbake with
 
 - [Tutorial 1](/t1/): Setup S3 as your cloud server and mount it.
 - [Tutorial 2](/t2/): Learn Pug and static binding; view via S3 HTTP server.
-- [Tutorial 3](t3/): Generate a website that includes a router.
-- [Tutorial 4](/t4/): Generate a CRUD webapp .
+- [Tutorial 3](t3/): Learn serverless websites with dynamic data binding.
+- [Tutorial 4](/t4/): Generate a serverless CRUD webapp.
 
 When done, you should see [this](https://youtu.be/-KkPfAnEXyk).
 
