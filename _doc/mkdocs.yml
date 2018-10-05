@@ -1,7 +1,7 @@
 site_name: mbake Docs
 site_url: http://metabake.org
 repo_url: http://metabake.org
-pages:
+nav:
    - Home: index.md
 
    - Tutorial 1 - Setup S3 and mount: t1.md
