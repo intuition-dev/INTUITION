@@ -29,7 +29,7 @@ function version() {
    console.log('  or process any_dir to make(bake) a declarative low code app recursively')
    console.log('  To process Pug and RIOT *-tag.pug tags: mbake -t . # . is path')
    console.log('  To process Pug and dat_i items to items.json: mbake -i . # where path is folder containing dat_i.yaml')
-   console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -f .')
+   console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -m .')
    console.log('  To process list.csv to list.json: mbake -j .')
 
    console.log()
@@ -57,7 +57,7 @@ const optionDefinitions = [
    { name: 'mbake', defaultOption: true},
    { name: 'items', alias: 'i', type: Boolean },
    { name: 'tag', alias: 't', type: Boolean },
-   { name: 'map', alias: 'f', type: Boolean },
+   { name: 'map', alias: 'm', type: Boolean },
    { name: 'csv2Json', alias: 'j', type: Boolean },
 
    { name: 'blog', alias: 'b', type: Boolean },
@@ -183,7 +183,7 @@ function watch() {
    const electron = require('electron' )
    const proc = require('child_process')
 
-   const fp = appDir+'/wApp/index.js'
+   const fp = appDir+'/ewApp/index.js'
    console.log(fp)
    /*const options = {
       stdio: [ 'pipe', 'pipe', 'pipe', 'ipc' ]

@@ -1,7 +1,7 @@
 const {app, BrowserWindow} = require('electron')
 
 const path = require('path')
-const fp = path.resolve('wApp/eScr/index.html')
+const fp = path.resolve('ewApp/wUI/index.html')
 console.log(fp)
 
 
