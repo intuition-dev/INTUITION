@@ -382,8 +382,10 @@ export class MBake {
          //logger.trace(err)
          return new RetMsg(path + ' tag', -1, err)
       }
-      return new RetMsg(path + ' tag', 1,'ok')
+      // return new RetMsg(path + ' tag', 1,'ok')
    }
+
+
 
    itemizeOnly(path):RetMsg {
 
@@ -427,7 +429,7 @@ export class MBake {
          logger.trace(err)
          return new RetMsg(path + ' tagA', -1, err)
       }
-      return new RetMsg(path + ' tagA', 1,'ok')
+      // return new RetMsg(path + ' tagA', 1,'ok')
    }
 }
 
@@ -880,6 +882,13 @@ export class MetaPro {
    }
    itemize(dir:string):RetMsg {
       let msg:RetMsg = this.b.itemizeNBake(this.mount+ '/' +dir )
+      this.setLast(msg)
+      return msg
+   }
+   getItems(dir:string):RetMsg {
+      let s:string =  fs.readFileSync(this.mount+'/'+dir+'/items.json', 'utf8')
+      //TODO: handle not found
+      let msg:RetMsg = new RetMsg(s, 1, 'success')
       this.setLast(msg)
       return msg
    }
