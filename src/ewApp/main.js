@@ -68,8 +68,9 @@ function monitorDir(dir) {
 
    let ss = new MDevSrv2(dir, 8090)
    
-   const mp = new MetaPro2(config)
+   const mp = new MetaPro2(dir)
 
-   let ww = new Watch2(mp, config)
+   let ww = new Watch2(mp, dir)
+
 }
 

@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.10.17",
+   "version": "4.10.18",
    "description": "Template pug files recursively, including any static or dynamic binding - http://www.Metabake.org",
    "main": "mbake.js",
    "bin": {

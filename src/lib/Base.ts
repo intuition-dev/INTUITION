@@ -44,7 +44,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v4.10.17"
+      return "v4.10.18"
    }
 
    static slash(path) {// windowze
@@ -745,7 +745,7 @@ export class MDevSrv2 {
       logger.trace(dir, port)
       app.set('app port', port)
 
-      MDevSrv.reloadServer = reload(app, {verbose:false, port:9856})
+      MDevSrv2.reloadServer = reload(app, {verbose:false, port:9856})
 
       app.set('views', dir)
 
@@ -756,28 +756,6 @@ export class MDevSrv2 {
    }//()
 }//class
 
-export class MDevSrv {
-   static reloadServer
-   // http://github.com/alallier/reload
-
-   constructor(config) {
-      let dir = config['mount']
-      let port = config['mount_port']
-
-      let app = express()
-      logger.trace(dir, port)
-      app.set('app port', port)
-
-      MDevSrv.reloadServer = reload(app, {verbose:false, port:9856})
-
-      app.set('views', dir)
-
-      app.use(express.static(dir))
-      app.listen(port, function () {
-         logger.trace('dev app'+port)
-      })
-   }//()
-}//class
 export class AdminSrv { // until we write a push service
    static reloadServer
    // http://github.com/alallier/reload
@@ -805,8 +783,8 @@ export class Watch2 {
    root
    watcher
 
-   mp: MetaPro
-   constructor(mp_:MetaPro, mount) {
+   mp: MetaPro2
+   constructor(mp_:MetaPro2, mount) {
       this.mp = mp_
       this.root = mount
    }
@@ -844,14 +822,14 @@ export class Watch2 {
 
    static refreshPending = false
    refreshBro() {
-      if(Watch.refreshPending) return  //debounce
-      Watch.refreshPending = true
+      if(Watch2.refreshPending) return  //debounce
+      Watch2.refreshPending = true
       setTimeout(function () {
          console.log('reload')
          AdminSrv.reloadServer.reload()
-         MDevSrv.reloadServer.reload()
+         MDevSrv2.reloadServer.reload()
 
-         Watch.refreshPending = false
+         Watch2.refreshPending = false
       }, 50)//time
    }
 
@@ -878,87 +856,6 @@ export class Watch2 {
       }
    }
 }//class
-
-
-export class Watch {
-   root
-   watcher
-   config
-   mp: MetaPro
-   constructor(mp_:MetaPro, config_) {
-      this.mp = mp_
-      this.root = config_['mount']
-      this.config = config_
-   }
-
-   start() {
-      console.log(' watcher works best on linux, on ssh watched drives - that are S3 mounts')
-      console.log(this.root)
-      this.watcher = chokidar.watch(this.root, {
-         ignored: '*.swpc*',
-         ignoreInitial: true,
-         cwd: this.root,
-         usePolling: true,
-         binaryInterval: 100000,
-         awaitWriteFinish: true,
-         interval: 150//time
-
-         //alwaysStat: true,
-         //atomic: 110
-      })
-
-      this.watcher.unwatch('*.jpg')
-      this.watcher.unwatch('*.html')
-      this.watcher.unwatch('*.css')
-      this.watcher.unwatch('*.swpc*')
-      this.watcher.unwatch('*.js')
-
-      let thiz = this
-      this.watcher.on('add', function( path ){
-         thiz.auto(path)
-      })
-      this.watcher.on('change', function(path ){
-         thiz.auto(path)
-      })
-   }//()
-
-   static refreshPending = false
-   refreshBro() {
-      if(Watch.refreshPending) return  //debounce
-      Watch.refreshPending = true
-      setTimeout(function () {
-         console.log('reload')
-         AdminSrv.reloadServer.reload()
-         MDevSrv.reloadServer.reload()
-
-         Watch.refreshPending = false
-      }, 50)//time
-   }
-
-   auto(path_:string) {//process
-      let path = Ver.slash(path_)
-
-      let p = path.lastIndexOf('/')
-      let folder = ''
-      let fn = path
-
-      if(p>0) {
-         folder = path.substring(0,p)
-         fn = path.substr(p+1)
-      }
-
-      try {
-         logger.trace('WATCHED1:',folder + '/' + fn)
-
-         this.mp.autoBake(folder, fn)
-         this.refreshBro()
-
-      } catch(err) {
-         logger.warn(err)
-      }
-   }
-}//class
-
 
 export class MetaPro2 {
    mount:string
@@ -980,85 +877,6 @@ export class MetaPro2 {
 
    constructor(mount) {
       this.mount = mount
-      logger.trace('MetaPro', this.mount)
-   }
-
-   bake(dir:string):RetMsg {
-      let folder = this.mount + '/' +dir
-      logger.trace(folder)
-      let msg:RetMsg = this.b.bake(folder)
-      this.setLast(msg)
-      return msg
-   }
-   tagRoot():RetMsg {
-      return this.tag('/')
-   }
-   tag(dir:string):RetMsg {
-      let folder = this.mount + '/' +dir
-      logger.trace(folder)
-      let msg:RetMsg = this.b.tag(folder)
-      this.setLast(msg)
-      return msg
-   }
-   itemize(dir:string):RetMsg {
-      let msg:RetMsg = this.b.itemizeNBake(this.mount+ '/' +dir )
-      this.setLast(msg)
-      return msg
-   }
-   getItems(dir:string):RetMsg {
-      let s:string =  fs.readFileSync(this.mount+'/'+dir+'/items.json', 'utf8')
-      //TODO: handle not found
-      let msg:RetMsg = new RetMsg(s, 1, 'success')
-      this.setLast(msg)
-      return msg
-   }
-
-   // when you pass the file name, ex: watch
-   autoBake(folder__, file):RetMsg {
-      const folder = Ver.slash(folder__)
-      logger.trace('WATCHED2a:', folder)
-
-      const ext = file.split('.').pop()
-
-      if (ext =='yaml') // bake and itemize
-         return this.itemize(folder)
-
-      if (ext =='md')
-         return this.bake(folder)
-
-      if (ext =='pug') {
-         if( file.indexOf('-tag') >= 0 )
-            return this.tag(folder)
-         else
-            return this.bake(folder)
-      }
-
-      let m =  new RetMsg(folder+'-'+file,-1,'nothing to bake')
-      this.setLast(m)// maybe not set it to avoid noise?
-      return m
-   }
-}
-
-export class MetaPro {
-   mount:string
-   b = new MBake()
-   static folderProp = 'folder'
-
-   static srcProp = 'src'
-   static destProp = 'dest'
-
-   _lastMsg:RetMsg
-
-   setLast(m:RetMsg) {
-      this._lastMsg = new RetMsg(m._cmd, m.code, m.msg)
-   }
-   getLastMsg():RetMsg{
-      let m = this._lastMsg
-      return new RetMsg(m._cmd, 1, m.msg)
-   }
-
-   constructor(config) {
-      this.mount = config.mount
       logger.trace('MetaPro', this.mount)
    }
 
@@ -1168,6 +986,6 @@ export class Scrape {
 }//class
 
 module.exports = {
-   Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, MetaPro, Watch, AdminSrv, MDevSrv,
+   Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, AdminSrv,
    Scrape, FileOps, CSV2Json, Map, MDevSrv2, MetaPro2, Watch2
 }
