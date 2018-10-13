@@ -1,1 +1,23 @@
-p oh hi
+
+head 
+
+body
+    p oh hi
+
+    input#select(type='file', onchange='selectFolder(event)', webkitdirectory='', directory='', multiple='')
+
+    script.
+        require('./assets/js/setup.js')
+
+    script.
+        // http://christianengvall.se/ipcmain-and-ipcrenderer
+
+        function selectFolder(e) {
+            var theFiles = e.target.files
+            console.log(theFiles)
+            var path = theFiles[0].path
+            console.log(path)
+
+        
+
+        }

@@ -183,7 +183,7 @@ function watch() {
    const electron = require('electron' )
    const proc = require('child_process')
 
-   const fp = appDir+'/ewApp/index.js'
+   const fp = appDir+'/ewApp/main.js'
    console.log(fp)
    /*const options = {
       stdio: [ 'pipe', 'pipe', 'pipe', 'ipc' ]

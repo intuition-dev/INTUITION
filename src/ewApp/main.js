@@ -1,4 +1,5 @@
 const {app, BrowserWindow} = require('electron')
+const { ipcMain } = require('electron')
 
 const path = require('path')
 const fp = path.resolve('ewApp/wUI/index.html')
@@ -13,7 +14,7 @@ function createWindow () {
 
    mainWindow.loadFile(fp)
 
-   //mainWindow.webContents.openDevTools()
+   mainWindow.webContents.openDevTools()
    mainWindow.on('closed', function () {
       mainWindow = null
    })
@@ -33,4 +34,15 @@ app.on('window-all-closed', function () {
    //if (process.platform !== 'darwin') {
       app.quit()
    //}
+})
+
+
+// IPC
+ipcMain.on('broMsgS', (event, arg) => {
+   console.log(arg) // prints "ping"
+   event.returnValue = 'SS'
+})
+ipcMain.on('broMsgA', (event, arg) => {
+   console.log(arg) // prints "ping"
+   event.sender.send('mainMsg1', 'AA')
 })
