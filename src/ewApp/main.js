@@ -7,8 +7,7 @@ const dialog = electron.dialog
 const path = require('path')
 const fp = path.resolve('ewApp/wUI/index.html')
 
-const { Ver, MBake } =  require('../lib/Base.js')
-
+const { Ver, MBake, Watch2, MetaPro2, MDevSrv2 } =  require('../lib/Base.js')
 
 let renWindow
 function createWindow () {
@@ -50,18 +49,27 @@ ipcMain.on('broMsgA', (event, arg) => {
    console.log(arg) // prints "ping"
    event.sender.send('mainMsg1', 'AA')
 })
-ipcMain.on('FOLDER', (event, arg) => {
-   console.log(arg) // prints "ping"
-})
-
 
 
 console.log(new Ver().ver())
 
+const mbake = new MBake()
 
 exports.selectDirectory = function () {
   dialog.showOpenDialog(renWindow, {properties:['openDirectory']}, function(dn){
    console.log(dn[0])
+   monitorDir(dn[0])
   })
 
 }
+
+function monitorDir(dir) {
+   mbake.bake(dir)
+
+   let ss = new MDevSrv2(dir, 8090)
+   
+   const mp = new MetaPro2(config)
+
+   let ww = new Watch2(mp, config)
+}
+
