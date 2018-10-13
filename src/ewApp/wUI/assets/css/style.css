@@ -1,11 +1,2 @@
 
 /* selectFolder */
-input[type="file"] {
-   display: none;
-}
-.selectFolder{
-   border: 1px solid #ccc;
-   display: inline-block;
-   padding: 1px 4px 3px 4px;
-   cursor: pointer;
-}

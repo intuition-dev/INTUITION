@@ -1,29 +1,33 @@
 const {app, BrowserWindow} = require('electron')
 const { ipcMain } = require('electron')
 
+const electron = require('electron')
+const dialog = electron.dialog
+
 const path = require('path')
 const fp = path.resolve('ewApp/wUI/index.html')
-console.log(fp)
+
+const { Ver, MBake } =  require('../lib/Base.js')
 
 
-let mainWindow
+let renWindow
 function createWindow () {
-   mainWindow = new BrowserWindow({width: 800, height: 600})
-   mainWindow.setMenu(null)
-   mainWindow.setTitle('On hi')
+   renWindow = new BrowserWindow({width: 800, height: 600})
+   renWindow.setMenu(null)
+   renWindow.setTitle('On hi')
 
-   mainWindow.loadFile(fp)
+   renWindow.loadFile(fp)
 
-   mainWindow.webContents.openDevTools()
-   mainWindow.on('closed', function () {
-      mainWindow = null
+   renWindow.webContents.openDevTools()
+   renWindow.on('closed', function () {
+      renWindow = null
    })
 }
 app.on('ready', createWindow)
 app.on('activate', function () {
    // On OS X it's common to re-create a window in the app when the
    // dock icon is clicked and there are no other windows open.
-   if (mainWindow === null) {
+   if (renWindow === null) {
       createWindow()
    }
 })
@@ -50,4 +54,14 @@ ipcMain.on('FOLDER', (event, arg) => {
    console.log(arg) // prints "ping"
 })
 
-console.log('oh')
+
+
+console.log(new Ver().ver())
+
+
+exports.selectDirectory = function () {
+  dialog.showOpenDialog(renWindow, {properties:['openDirectory']}, function(dn){
+   console.log(dn[0])
+  })
+
+}

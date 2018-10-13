@@ -10,27 +10,18 @@ body
             include layout/side
          .column.col-11
 
-            <button id="selectDirectory" onclick="selectDirectory(event);" >Select Folder</button>
+            <button id="selectDirectory" >Select Folder</button>
  
       script.
          require('./assets/js/setup.js')
 
       script.
          // http://christianengvall.se/ipcmain-and-ipcrenderer
-
-         function selectFolder(e) {
-            var theFiles = e.target.files
-            console.log(theFiles)
-            var path = theFiles[0].path
-            console.log(path)
-            ipcBro.send('FOLDER', path)
-            return false
-         }
+         // http://jaketrent.com/post/select-directory-in-electron
 
          const electron = require('electron')
-         const dialog = electron.dialog
-         function selectDirectory() {
-            dialog.showOpenDialog( function (folder) {
-               console.log(folder)
-            })
-         }
+         const remote = electron.remote
+         const mainProcess = remote.require('./main')
+         document.getElementById('selectDirectory').addEventListener('click', _ => {
+            mainProcess.selectDirectory()
+         })
