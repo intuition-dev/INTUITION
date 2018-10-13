@@ -1,8 +1,8 @@
-<head><link href="./assets/css/spectre.css" rel="stylesheet"/></head><body><div class="container"><h2>Metabake<p></p><div class="columns"><div class="column col-1"><button id="butClo" type="button">Exit</button><script>var butClo = document.getElementById("butClo")
+<head><link href="./assets/css/spectre.css" rel="stylesheet"/><link href="./assets/css/style.css" rel="stylesheet"/></head><body><div class="container"><br/><h2>Metabake Local Watcher &nbsp;<button id="butClo" type="button">Exit</button></h2><script>var butClo = document.getElementById("butClo")
 butClo.addEventListener("click",function(e){
    const remote = require('electron').remote
    remote.getCurrentWindow().close()
-})</script></div><div class="column col-11"><input id="select" type="file" onchange="selectFolder(event)" webkitdirectory="" directory="" multiple=""/></div></div></h2><script>require('./assets/js/setup.js')
+})</script><p></p><div class="columns"><div class="column col-1"></div><div class="column col-11"><button id="selectDirectory" onclick="selectDirectory(event);" >Select Folder</button></div></div><script>require('./assets/js/setup.js')
 </script><script>// http://christianengvall.se/ipcmain-and-ipcrenderer
 
 function selectFolder(e) {
@@ -11,5 +11,13 @@ function selectFolder(e) {
    var path = theFiles[0].path
    console.log(path)
    ipcBro.send('FOLDER', path)
+   return false
+}
 
+const electron = require('electron')
+const dialog = electron.dialog
+function selectDirectory() {
+   dialog.showOpenDialog( function (folder) {
+      console.log(folder)
+   })
 }</script></div></body>

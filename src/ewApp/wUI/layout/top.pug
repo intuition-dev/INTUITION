@@ -1,2 +1,13 @@
 
-h2 Metabake
+br
+h2 Metabake Local Watcher &nbsp;
+    
+   button#butClo(type='button') Exit
+
+script.
+
+   var butClo = document.getElementById("butClo")
+   butClo.addEventListener("click",function(e){
+      const remote = require('electron').remote
+      remote.getCurrentWindow().close()
+   })

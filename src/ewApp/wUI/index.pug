@@ -4,14 +4,14 @@ include layout/head
 body
    .container
       include layout/top
-         p
-         .columns
-            .column.col-1
-               include layout/side
-            .column.col-11
+      p
+      .columns
+         .column.col-1
+            include layout/side
+         .column.col-11
 
-               input#select(type='file', onchange='selectFolder(event)', webkitdirectory='', directory='', multiple='')
-
+            <button id="selectDirectory" onclick="selectDirectory(event);" >Select Folder</button>
+ 
       script.
          require('./assets/js/setup.js')
 
@@ -24,5 +24,13 @@ body
             var path = theFiles[0].path
             console.log(path)
             ipcBro.send('FOLDER', path)
+            return false
+         }
 
+         const electron = require('electron')
+         const dialog = electron.dialog
+         function selectDirectory() {
+            dialog.showOpenDialog( function (folder) {
+               console.log(folder)
+            })
          }
