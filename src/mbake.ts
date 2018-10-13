@@ -190,7 +190,9 @@ function watch() {
       , windowsHide: true
     }*/
    const child = proc.spawn(electron,[fp] )
-
+   child.stdout.on('data', function(data) { // log of child to show
+      console.log(data.toString()); 
+   })
    child.on('exit',onWaExit) 
 }// watch
 function onWaExit(){

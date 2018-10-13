@@ -2,22 +2,29 @@
 head 
 
 body
-    p oh hi
+   p oh hi
 
-    input#select(type='file', onchange='selectFolder(event)', webkitdirectory='', directory='', multiple='')
+   button#butClo(type='button') Close
 
-    script.
-        require('./assets/js/setup.js')
+   input#select(type='file', onchange='selectFolder(event)', webkitdirectory='', directory='', multiple='')
 
-    script.
-        // http://christianengvall.se/ipcmain-and-ipcrenderer
+   script.
+      require('./assets/js/setup.js')
 
-        function selectFolder(e) {
-            var theFiles = e.target.files
-            console.log(theFiles)
-            var path = theFiles[0].path
-            console.log(path)
+   script.
+      // http://christianengvall.se/ipcmain-and-ipcrenderer
 
-        
+      function selectFolder(e) {
+         var theFiles = e.target.files
+         console.log(theFiles)
+         var path = theFiles[0].path
+         console.log(path)
+         ipcBro.send('FOLDER', path)
 
-        }
+      }
+
+      const remote = require('electron').remote
+      var butClo = document.getElementById("butClo")
+      butClo.addEventListener("click",function(e){
+         remote.getCurrentWindow().close()
+      })

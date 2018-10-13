@@ -46,3 +46,8 @@ ipcMain.on('broMsgA', (event, arg) => {
    console.log(arg) // prints "ping"
    event.sender.send('mainMsg1', 'AA')
 })
+ipcMain.on('FOLDER', (event, arg) => {
+   console.log(arg) // prints "ping"
+})
+
+console.log('oh')

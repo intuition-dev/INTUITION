@@ -1,13 +1,17 @@
-<head> </head><body><p>oh hi</p><input id="select" type="file" onchange="selectFolder(event)" webkitdirectory="" directory="" multiple=""/><script>require('./assets/js/setup.js')
+<head> </head><body><p>oh hi</p><button id="butClo" type="button">Close</button><input id="select" type="file" onchange="selectFolder(event)" webkitdirectory="" directory="" multiple=""/><script>require('./assets/js/setup.js')
 </script><script>// http://christianengvall.se/ipcmain-and-ipcrenderer
-// http://github.com/electron/electron/blob/master/docs/api/ipc-main.md
-// https://www.youtube.com/watch?v=rX3axskesDw
+
 function selectFolder(e) {
-    var theFiles = e.target.files
-    console.log(theFiles)
-    var path = theFiles[0].path
-    console.log(path)
+   var theFiles = e.target.files
+   console.log(theFiles)
+   var path = theFiles[0].path
+   console.log(path)
+   ipcBro.send('FOLDER', path)
 
+}
 
-
-}</script></body>
+const remote = require('electron').remote
+var butClo = document.getElementById("butClo")
+butClo.addEventListener("click",function(e){
+   remote.getCurrentWindow().close()
+})</script></body>
