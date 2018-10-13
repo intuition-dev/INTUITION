@@ -64,13 +64,12 @@ exports.selectDirectory = function () {
 }
 
 function monitorDir(dir) {
-   mbake.bake(dir)
+   //mbake.bake(dir)
 
    let ss = new MDevSrv2(dir, 8090)
    
    const mp = new MetaPro2(dir)
-
    let ww = new Watch2(mp, dir)
-
+   console.log('watching ... ')
 }
 

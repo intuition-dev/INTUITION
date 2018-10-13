@@ -11,4 +11,4 @@ ipcBro.send('broMsgA', 'A')
 
 var nodeConsole = require('console');
 var myConsole = new nodeConsole.Console(process.stdout, process.stderr);
-myConsole.log('Hello World!')
+myConsole.log('hello console from bro')
