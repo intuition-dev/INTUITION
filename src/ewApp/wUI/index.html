@@ -1,4 +1,8 @@
-<head> </head><body><p>oh hi</p><button id="butClo" type="button">Close</button><input id="select" type="file" onchange="selectFolder(event)" webkitdirectory="" directory="" multiple=""/><script>require('./assets/js/setup.js')
+<head><link href="./assets/css/spectre.css" rel="stylesheet"/></head><body><div class="container"><h2>Metabake<p></p><div class="columns"><div class="column col-1"><button id="butClo" type="button">Exit</button><script>var butClo = document.getElementById("butClo")
+butClo.addEventListener("click",function(e){
+   const remote = require('electron').remote
+   remote.getCurrentWindow().close()
+})</script></div><div class="column col-11"><input id="select" type="file" onchange="selectFolder(event)" webkitdirectory="" directory="" multiple=""/></div></div></h2><script>require('./assets/js/setup.js')
 </script><script>// http://christianengvall.se/ipcmain-and-ipcrenderer
 
 function selectFolder(e) {
@@ -8,10 +12,4 @@ function selectFolder(e) {
    console.log(path)
    ipcBro.send('FOLDER', path)
 
-}
-
-const remote = require('electron').remote
-var butClo = document.getElementById("butClo")
-butClo.addEventListener("click",function(e){
-   remote.getCurrentWindow().close()
-})</script></body>
+}</script></div></body>

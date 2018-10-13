@@ -1,30 +1,28 @@
 
-head 
+include layout/head 
 
 body
-   p oh hi
+   .container
+      include layout/top
+         p
+         .columns
+            .column.col-1
+               include layout/side
+            .column.col-11
 
-   button#butClo(type='button') Close
+               input#select(type='file', onchange='selectFolder(event)', webkitdirectory='', directory='', multiple='')
 
-   input#select(type='file', onchange='selectFolder(event)', webkitdirectory='', directory='', multiple='')
+      script.
+         require('./assets/js/setup.js')
 
-   script.
-      require('./assets/js/setup.js')
+      script.
+         // http://christianengvall.se/ipcmain-and-ipcrenderer
 
-   script.
-      // http://christianengvall.se/ipcmain-and-ipcrenderer
+         function selectFolder(e) {
+            var theFiles = e.target.files
+            console.log(theFiles)
+            var path = theFiles[0].path
+            console.log(path)
+            ipcBro.send('FOLDER', path)
 
-      function selectFolder(e) {
-         var theFiles = e.target.files
-         console.log(theFiles)
-         var path = theFiles[0].path
-         console.log(path)
-         ipcBro.send('FOLDER', path)
-
-      }
-
-      const remote = require('electron').remote
-      var butClo = document.getElementById("butClo")
-      butClo.addEventListener("click",function(e){
-         remote.getCurrentWindow().close()
-      })
+         }
