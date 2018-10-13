@@ -6,6 +6,15 @@ declare var module: any
 declare var require: any
 declare var process: any
 
+// metaMDtf
+const markdownItAttrs = require('markdown-it-attrs')
+const md = require('markdown-it')({
+   html: true,
+   typographer: true,
+   breaks: true
+})
+md.use(markdownItAttrs)
+
 const fs = require('fs')
 const fse = require('fs-extra')
 const FileHound = require('filehound')
@@ -35,7 +44,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v4.10.11"
+      return "v4.10.14"
    }
 
    static slash(path) {// windowze
@@ -444,6 +453,13 @@ export class BakeWrk {
       console.log(' processing: '+ this.dir)
    }
 
+
+   static metaMDtf(text, options) {//a custom md filter that uses a transformer
+      console.log(' ',options)
+
+      return md.render(text)
+   }
+
    bake() {
       process.chdir(this.dir)
 
@@ -454,8 +470,13 @@ export class BakeWrk {
 
       let m = new Dat(this.dir)
 
-      //static data binding:
-      let html = pug.renderFile(this.dir+'/index.pug', m.getAll() )
+      //static data binding with a custom md filter that uses a transformer
+      let options = m.getAll() 
+      options['filters'] = {
+         metaMDtf: BakeWrk.metaMDtf
+      } 
+
+      let html = pug.renderFile(this.dir+'/index.pug',options )
 
       let ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
       html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
@@ -468,7 +489,7 @@ export class BakeWrk {
       if (!fs.existsSync(this.dir+'/m.pug'))
         return ' '
       //static data binding:
-      html = pug.renderFile(this.dir+'/m.pug', m.getAll() )
+      html = pug.renderFile(this.dir+'/m.pug', options )
 
       ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
       html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
