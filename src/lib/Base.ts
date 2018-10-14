@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.10.29"
+      return "v4.10.31"
    }
 
    static slash(path) {// windowze
@@ -24,6 +24,7 @@ const md = require('markdown-it')({
 })
 md.use(markdownItAttrs)
 
+// imports ///
 const fs = require('fs')
 const fse = require('fs-extra')
 const FileHound = require('filehound')
@@ -46,6 +47,8 @@ const axios = require('axios')
 
 const httpProxy = require('http-proxy')
 const http = require('http')
+const transformerProxy = require('transformer-proxy')
+const connect = require('connect')
 
 const probe  = require('probe-image-size')
 
@@ -746,31 +749,43 @@ export class MDevSrv2 {
    constructor(dir, port) {
 
       let port2:number = parseInt(port+'') + 1
-      let app = express()
+      let app2 = express()
       logger.trace(dir, port)
-      app.set('app port', port)
+      app2.set('app port', port)
 
-      MDevSrv2.reloadServer = reload(app, {verbose:false, port:9856})
+      MDevSrv2.reloadServer = reload(app2, {verbose:false, port:9856})
 
-      app.set('views', dir)
-      //<script src="/reload/reload.js"></script>
-
-      app.use(express.static(dir))
-      app.listen(port2, function () {
-         logger.trace('dev app'+port2)
+      app2.set('views', dir)
+      app2.use(express.static(dir))
+      app2.listen(port2, function () {
+         logger.trace('dev app '+port2)
       })
 
-      const proxy = httpProxy.createProxyServer()
-      // Create your server that makes an operation that waits a while
-      http.createServer(function (req, res) {
-         let req2 = req
-         //lets change the request
+      //proxy:
+      // https://github.com/philippotto/transformer-proxy/blob/master/examples/simple.js
+      const transformerFunction = function (data, req, res) {
+         for(var prop in req) {
+            console.log(prop)
+         }
 
+         //<script src="/reload/reload.js"></script>
+         let string = new TextDecoder().decode(data)
+         console.log(string)
+         let uint8array = new TextEncoder().encode(string)
+         return uint8array 
+      }
+      const app = connect()
+      app.use(transformerProxy(transformerFunction))
+      const proxy = httpProxy.createProxyServer({target: 'http://localhost:' + port2})
+      app.use(function (req, res) {
+         const rand = Math.floor(Math.random() * 90)
          setTimeout(function () {
-               proxy.web(req2, res, { target: 'http://localhost:'+port2})
-            }, 40 )
-         }).listen(port)
-   }//()
+            proxy.web(req, res)
+         }, rand) // production cloud monkey
+      })
+      http.createServer(app).listen(port)
+
+      }//()
 }//class
 
 export class AdminSrv { // until we write a push service
