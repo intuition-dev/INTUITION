@@ -1,3 +1,5 @@
+// All rights Metabake.org | cekvenich, licensed under LGPL 2.1
+
 const {app, BrowserWindow} = require('electron')
 const { ipcMain } = require('electron')
 
@@ -7,15 +9,23 @@ const dialog = electron.dialog
 const path = require('path')
 
 const bp = require("global-modules-path").getPath("mbake")
-const fp = bp +  "/ewApp/wUI/index.html"
-console.log(fp)
-const { Ver, MBake, Watch2, MetaPro2, MDevSrv2 } =  require(bp+ '/lib/Base.js')
+const appDir = path.dirname(require.main.filename)
+
+console.log(appDir)
+console.log(bp)
+
+const fp = bp+  "/ewApp/wUI/index.html"
+const { Ver, MBake, Watch2, MetaPro2, MDevSrv2 } =  require(bp+'/lib/Base.js')
+
+console.log(new Ver().ver())
+
+// Main /////////////////////////////////////////////////////////////////////
 
 let renWindow
 function createWindow () {
-   renWindow = new BrowserWindow({width: 800, height: 600})
+   renWindow = new BrowserWindow({width: 600, height: 400})
    renWindow.setMenu(null)
-   renWindow.setTitle('On hi')
+   renWindow.setTitle('Metabake Watch')
 
    renWindow.loadFile(fp)
 
@@ -42,7 +52,7 @@ app.on('window-all-closed', function () {
 })
 
 
-// IPC
+/* IPC
 ipcMain.on('broMsgS', (event, arg) => {
    console.log(arg) // prints "ping"
    event.returnValue = 'SS'
@@ -51,9 +61,8 @@ ipcMain.on('broMsgA', (event, arg) => {
    console.log(arg) // prints "ping"
    event.sender.send('mainMsg1', 'AA')
 })
+*/
 
-
-console.log(new Ver().ver())
 
 const mbake = new MBake()
 
@@ -62,8 +71,7 @@ exports.selectDirectory = function () {
    console.log(dn[0])
    monitorDir(dn[0])
   })
-
-}
+}//()
 
 function monitorDir(dir) {
    //mbake.bake(dir)
@@ -74,6 +82,5 @@ function monitorDir(dir) {
    ww.start(false)
    console.log('watching ... ')
    require('electron').shell.openExternal("http://localhost:8090")
-
-}
+}//()
 

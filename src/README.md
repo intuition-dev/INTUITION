@@ -3,6 +3,6 @@ Docs, examples and more at:
 
 [Metabake.org](http://www.metabake.org)
 
-License of core lib is LGPL, but all examples are MIT.
+License of all examples apps are MIT - but core build lib itself(Base.*) is LGPL.
 
-Ideas is that you can use for free in anyway, but if you change the core library, you should be able to contribute back to the source of the works.
+You can use for free in any way; but if you change or use the core library directly, you must contribute back to the source of the ideas.

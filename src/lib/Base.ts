@@ -1,4 +1,3 @@
-//import { isReturnStatement } from "babel-types";
 
 // All rights Metabake.org | cekvenich, licensed under LGPL 2.1
 
@@ -9,7 +8,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.10.23"
+      return "v4.10.24"
    }
 
    static slash(path) {// windowze
@@ -53,7 +52,7 @@ const sm = require('sitemap')
 const traverse = require('traverse')
 const lunr = require('lunr')
 
-
+// code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class RetMsg {
    _cmd:string
    _code:number

@@ -182,9 +182,9 @@ function watch() {
    const appDir = path.dirname(require.main.filename)
    const electron = require('electron' )
    const proc = require('child_process')
+   console.log(appDir)
 
    const fp = appDir+'/ewApp/main.js'
-   console.log(fp)
    /*const options = {
       stdio: [ 'pipe', 'pipe', 'pipe', 'ipc' ]
       , windowsHide: true
