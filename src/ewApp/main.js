@@ -17,7 +17,7 @@ function createWindow () {
 
    renWindow.loadFile(fp)
 
-   renWindow.webContents.openDevTools()
+   //renWindow.webContents.openDevTools()
    renWindow.on('closed', function () {
       renWindow = null
    })
@@ -70,6 +70,7 @@ function monitorDir(dir) {
    
    const mp = new MetaPro2(dir)
    let ww = new Watch2(mp, dir)
+   ww.start(false)
    console.log('watching ... ')
 }
 

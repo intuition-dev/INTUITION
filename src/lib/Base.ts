@@ -44,7 +44,7 @@ const lunr = require('lunr')
 
 export class Ver {
    ver() {
-      return "v4.10.18"
+      return "v4.10.19"
    }
 
    static slash(path) {// windowze
@@ -789,20 +789,23 @@ export class Watch2 {
       this.root = mount
    }
 
-   start() {
+   start(poll_) {// true for WAN
       console.log(' watcher works best on linux, on ssh watched drives - that are S3 mounts')
       console.log(this.root)
       this.watcher = chokidar.watch(this.root, {
          ignored: '*.swpc*',
          ignoreInitial: true,
          cwd: this.root,
-         usePolling: true,
+         usePolling: poll_,
          binaryInterval: 100000,
-         awaitWriteFinish: true,
-         interval: 150//time
+         interval: 50//time
 
          //alwaysStat: true,
-         //atomic: 110
+         , atomic: 50
+         , awaitWriteFinish: {
+            stabilityThreshold: 100,
+            pollInterval: 50
+          }
       })
 
       this.watcher.unwatch('*.jpg')
@@ -826,11 +829,15 @@ export class Watch2 {
       Watch2.refreshPending = true
       setTimeout(function () {
          console.log('reload')
-         AdminSrv.reloadServer.reload()
          MDevSrv2.reloadServer.reload()
 
          Watch2.refreshPending = false
-      }, 50)//time
+
+         try {
+            AdminSrv.reloadServer.reload()
+         } catch(e) {   } // no admin server
+
+      }, 20)//time
    }
 
    auto(path_:string) {//process
