@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.10.31"
+      return "v4.10.32"
    }
 
    static slash(path) {// windowze
@@ -769,10 +769,9 @@ export class MDevSrv2 {
          }
 
          //<script src="/reload/reload.js"></script>
-         let string = new TextDecoder().decode(data)
-         console.log(string)
-         let uint8array = new TextEncoder().encode(string)
-         return uint8array 
+         let str = data.toString('utf8')
+         console.log(str)
+         return Buffer.from( str, 'utf8' )
       }
       const app = connect()
       app.use(transformerProxy(transformerFunction))
