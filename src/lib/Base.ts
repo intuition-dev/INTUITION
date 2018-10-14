@@ -6,6 +6,17 @@ declare var module: any
 declare var require: any
 declare var process: any
 
+
+export class Ver {
+   ver() {
+      return "v4.10.23"
+   }
+
+   static slash(path) {// windowze
+      return path.replace(/\\/g, '/')
+   }
+}
+
 // metaMDtf
 const markdownItAttrs = require('markdown-it-attrs')
 const md = require('markdown-it')({
@@ -42,15 +53,6 @@ const sm = require('sitemap')
 const traverse = require('traverse')
 const lunr = require('lunr')
 
-export class Ver {
-   ver() {
-      return "v4.10.19"
-   }
-
-   static slash(path) {// windowze
-      return path.replace(/\\/g, '/')
-   }
-}
 
 export class RetMsg {
    _cmd:string

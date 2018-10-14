@@ -5,9 +5,11 @@ const electron = require('electron')
 const dialog = electron.dialog
 
 const path = require('path')
-const fp = path.resolve('ewApp/wUI/index.html')
 
-const { Ver, MBake, Watch2, MetaPro2, MDevSrv2 } =  require('../lib/Base.js')
+const bp = require("global-modules-path").getPath("mbake")
+const fp = bp +  "/ewApp/wUI/index.html"
+console.log(fp)
+const { Ver, MBake, Watch2, MetaPro2, MDevSrv2 } =  require(bp+ '/lib/Base.js')
 
 let renWindow
 function createWindow () {
@@ -17,7 +19,7 @@ function createWindow () {
 
    renWindow.loadFile(fp)
 
-   //renWindow.webContents.openDevTools()
+   renWindow.webContents.openDevTools()
    renWindow.on('closed', function () {
       renWindow = null
    })
@@ -65,12 +67,13 @@ exports.selectDirectory = function () {
 
 function monitorDir(dir) {
    //mbake.bake(dir)
-
    let ss = new MDevSrv2(dir, 8090)
    
    const mp = new MetaPro2(dir)
    let ww = new Watch2(mp, dir)
    ww.start(false)
    console.log('watching ... ')
+   require('electron').shell.openExternal("http://localhost:8090")
+
 }
 
