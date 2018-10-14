@@ -12,7 +12,7 @@ body
             include layout/side
          .column.col-11
 
-            <button id="selectDirectory" >Select Folder</button>
+            button#selectDirectory Select Folder
  
       script.
          require('./assets/js/setup.js')
@@ -26,4 +26,5 @@ body
          const mainProcess = remote.require('./main')
          document.getElementById('selectDirectory').addEventListener('click', _ => {
             mainProcess.selectDirectory()
+            document.getElementById('selectDirectory').style.visibility = 'hidden'
          })

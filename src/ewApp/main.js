@@ -9,9 +9,8 @@ const dialog = electron.dialog
 const path = require('path')
 
 const bp = require("global-modules-path").getPath("mbake")
-const appDir = path.dirname(require.main.filename)
+//const appDir = path.dirname(require.main.filename)
 
-console.log(appDir)
 console.log(bp)
 
 const fp = bp+  "/ewApp/wUI/index.html"
@@ -23,13 +22,13 @@ console.log(new Ver().ver())
 
 let renWindow
 function createWindow () {
-   renWindow = new BrowserWindow({width: 600, height: 400})
+   renWindow = new BrowserWindow({width: 400, height: 200})
    renWindow.setMenu(null)
    renWindow.setTitle('Metabake Watch')
 
    renWindow.loadFile(fp)
 
-   renWindow.webContents.openDevTools()
+   //renWindow.webContents.openDevTools()
    renWindow.on('closed', function () {
       renWindow = null
    })

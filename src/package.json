@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.10.24",
+   "version": "4.10.29",
    "description": "Process pug files recursively, including any static or dynamic binding - http://www.Metabake.org",
    "main": "mbake.js",
    "bin": {
@@ -38,6 +38,7 @@
       "filehound": "^1.16.4",
       "fs-extra": "^6.0.1",
       "global-modules-path": "^2.3.0",
+      "http-proxy": "^1.17.0",
       "javascript-obfuscator": "^0.17.3",
       "js-yaml": "^3.12.0",
       "jstransformer": "^1.0.0",

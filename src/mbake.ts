@@ -31,6 +31,7 @@ function version() {
    console.log('  To process Pug and dat_i items to items.json: mbake -i . # where path is folder containing dat_i.yaml')
    console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -m .')
    console.log('  To process list.csv to list.json: mbake -j .')
+   console.log('  For local(non-cloud) watcher: mbake -w')
 
    console.log()
    console.log(' ----------------------------------------------------------------')

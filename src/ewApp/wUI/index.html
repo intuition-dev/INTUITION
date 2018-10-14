@@ -2,7 +2,7 @@
 butClo.addEventListener("click",function(e){
    const remote = require('electron').remote
    remote.getCurrentWindow().close()
-})</script><p></p><div class="columns"><div class="column col-1"></div><div class="column col-11"><button id="selectDirectory" >Select Folder</button></div></div><script>require('./assets/js/setup.js')
+})</script><p></p><div class="columns"><div class="column col-1"></div><div class="column col-11"><button id="selectDirectory">Select Folder</button></div></div><script>require('./assets/js/setup.js')
 </script><script>// http://christianengvall.se/ipcmain-and-ipcrenderer
 // http://jaketrent.com/post/select-directory-in-electron
 
@@ -11,4 +11,5 @@ const remote = electron.remote
 const mainProcess = remote.require('./main')
 document.getElementById('selectDirectory').addEventListener('click', _ => {
    mainProcess.selectDirectory()
+   document.getElementById('selectDirectory').style.visibility = 'hidden'
 })</script></div></body>

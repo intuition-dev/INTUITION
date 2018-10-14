@@ -5,10 +5,9 @@ declare var module: any
 declare var require: any
 declare var process: any
 
-
 export class Ver {
    ver() {
-      return "v4.10.24"
+      return "v4.10.29"
    }
 
    static slash(path) {// windowze
@@ -45,12 +44,16 @@ const reload = require('reload')
 const extractor = require('unfluff')//scrape
 const axios = require('axios')
 
+const httpProxy = require('http-proxy')
+const http = require('http')
+
 const probe  = require('probe-image-size')
 
 // map
 const sm = require('sitemap')
 const traverse = require('traverse')
 const lunr = require('lunr')
+
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class RetMsg {
@@ -742,6 +745,7 @@ export class MDevSrv2 {
 
    constructor(dir, port) {
 
+      let port2:number = parseInt(port+'') + 1
       let app = express()
       logger.trace(dir, port)
       app.set('app port', port)
@@ -749,11 +753,23 @@ export class MDevSrv2 {
       MDevSrv2.reloadServer = reload(app, {verbose:false, port:9856})
 
       app.set('views', dir)
+      //<script src="/reload/reload.js"></script>
 
       app.use(express.static(dir))
-      app.listen(port, function () {
-         logger.trace('dev app'+port)
+      app.listen(port2, function () {
+         logger.trace('dev app'+port2)
       })
+
+      const proxy = httpProxy.createProxyServer()
+      // Create your server that makes an operation that waits a while
+      http.createServer(function (req, res) {
+         let req2 = req
+         //lets change the request
+
+         setTimeout(function () {
+               proxy.web(req2, res, { target: 'http://localhost:'+port2})
+            }, 40 )
+         }).listen(port)
    }//()
 }//class
 
