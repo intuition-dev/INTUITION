@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prezo</title>
+    <meta charset="utf-8">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+        h1, h2, h3, h4, body {
+            font-family: 'Yanone Kaffeesatz';
+            font-weight: normal;
+        }
+        h3 {
+            font-size: 28px  !important;
+            margin: 20px  !important;
+        }
+        .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+        .pad {
+            padding-left: 40px;
+        }
+        .wr-img {
+            width: 99%  !important;
+            height: 90%  !important;
+            display: flex;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+        .img {
+            background: transparent 50% 50% no-repeat /contain;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .wr-vid {
+            width: 99%  !important;
+            height: 94%  !important;
+            display: flex;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+        video {
+            height: 80%  !important;
+            width: 90%  !important;
+        }
+    </style>
+  </head>
+  <body>
+
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        sourceUrl: 'md.md'
+      })
+    </script>
+  </body>
+</html>
