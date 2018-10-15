@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.10.33"
+      return "v4.10.34"
    }
 
    static slash(path) {// windowze
@@ -586,12 +586,14 @@ export class Items {
             return
          let y = yaml.load(fs.readFileSync(dn+'/dat.yaml'))
          if(!y) return
+         /*
          if(y.hasOwnProperty('publish')) {
             if(y.publish==false) {
                console.log('  skipped')
                return
             }
          }//outer
+         */
 
          Items.clean(y)
 
@@ -649,7 +651,6 @@ export class Items {
       delete o['basedir']
       delete o['ROOT']
       delete o['pretty']
-      delete o['publish']
    }
 
 }//class
@@ -788,8 +789,7 @@ export class MDevSrv2 {
 }//class
 
 export class AdminSrv { // until we write a push service
-   static reloadServer
-   // http://github.com/alallier/reload
+   //static reloadServer
 
    constructor(config) {
       let dir = config['admin_www']
@@ -799,7 +799,7 @@ export class AdminSrv { // until we write a push service
       logger.trace(dir,port)
       app.set('admin port', port)
 
-      AdminSrv.reloadServer = reload(app, {port:9857})
+      //AdminSrv.reloadServer = reload(app, {port:9857})
 
       app.set('views', dir)
 
@@ -863,10 +863,6 @@ export class Watch2 {
          MDevSrv2.reloadServer.reload()
 
          Watch2.refreshPending = false
-
-         try {
-            AdminSrv.reloadServer.reload()
-         } catch(e) {   } // no admin server
 
       }, 20)//time
    }
