@@ -191,7 +191,7 @@ function watch() {
       stdio: [ 'pipe', 'pipe', 'pipe', 'ipc' ]
       , windowsHide: true
     }*/
-   const child = proc.spawn(electron, [fp] )
+   const child = proc.spawn(electron, [fp, appDir] )
    child.stdout.on('data', function(data) { // log of child to show
       console.log(data.toString()); 
    })

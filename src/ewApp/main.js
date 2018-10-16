@@ -10,10 +10,11 @@ const path = require('path')
 // Main /////////////////////////////////////////////////////////////////////
 
 //const bp = require("global-modules-path").getPath("mbake")
-let appDir = path.dirname(require.main.filename)
+//let appDir = path.dirname(require.main.filename)
 
-console.log('proc')
-appDir = appDir.substring(0, appDir.lastIndexOf('/'))
+console.log('proc:')
+let appDir = process.argv[2]
+//appDir = appDir.substring(0, appDir.lastIndexOf('/'))
 console.log(appDir)
 
 const fp = appDir+  "/ewApp/wUI/index.html"
@@ -34,6 +35,7 @@ function createWindow () {
       renWindow = null
    })
 }
+
 app.on('ready', createWindow)
 app.on('activate', function () {
    // On OS X it's common to re-create a window in the app when the
