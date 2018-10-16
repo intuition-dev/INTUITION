@@ -4,6 +4,7 @@
 declare var module: any
 declare var require: any
 declare var process: any
+declare const Buffer: any
 
 export class Ver {
    ver() {
@@ -935,6 +936,11 @@ export class MetaPro2 {
    }
    itemize(dir:string):RetMsg {
       let msg:RetMsg = this.b.itemizeNBake(this.mount+ '/' +dir )
+      this.setLast(msg)
+      return msg
+   }
+   itemizeOnly(dir:string):RetMsg {
+      let msg:RetMsg = this.b.itemizeOnly(this.mount+ '/' +dir )
       this.setLast(msg)
       return msg
    }
