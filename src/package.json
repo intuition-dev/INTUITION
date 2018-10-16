@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.11.2",
+   "version": "4.11.3",
    "description": "Process pug files recursively, including any static or dynamic binding - http://www.Metabake.org",
    "main": "mbake.js",
    "scripts": {

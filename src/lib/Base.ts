@@ -4,11 +4,11 @@
 declare var module: any
 declare var require: any
 declare var process: any
-declare const Buffer: any
+//declare const Buffer: any
 
 export class Ver {
    ver() {
-      return "v4.11.2"
+      return "v4.11.3"
    }
 
    static slash(path) {// windowze
