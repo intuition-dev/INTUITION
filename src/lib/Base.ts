@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.10.42"
+      return "v4.11.1"
    }
 
    static slash(path) {// windowze
@@ -747,7 +747,7 @@ export class MDevSrv2 {
    static reloadServer
    // http://github.com/alallier/reload
 
-   constructor(dir, port) {
+   constructor(dir, port, ignore_) {// flag to ignore reload
 
       let port2:number = parseInt(port+'') + 1
       let app2 = express()
@@ -766,16 +766,18 @@ export class MDevSrv2 {
       // https://github.com/philippotto/transformer-proxy/blob/master/examples/simple.js
       const transformerFunction = function (data, req, res) {
          for(var prop in req) {
-            console.log(prop)
+           // console.log(prop)
          }
 
          //<script src="/reload/reload.js"></script>
          let str = data.toString('utf8')
-         console.log(str)
+         str.replace("</head>", "<script src='/reload/reload.js'></script></head>")
+         if(str.includes('</head>'))
+            console.log(' .')
          return Buffer.from( str, 'utf8' )
       }
       const app = connect()
-      app.use(transformerProxy(transformerFunction))
+      app.use(transformerProxy(transformerFunction), {match : /\.html([^\w]|$)/});
       const proxy = httpProxy.createProxyServer({target: 'http://localhost:' + port2})
       app.use(function (req, res) {
          const rand = Math.floor(Math.random() * 90)
