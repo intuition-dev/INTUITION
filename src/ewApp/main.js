@@ -7,18 +7,19 @@ const electron = require('electron')
 const dialog = electron.dialog
 
 const path = require('path')
+// Main /////////////////////////////////////////////////////////////////////
 
-const bp = require("global-modules-path").getPath("mbake")
-//const appDir = path.dirname(require.main.filename)
+//const bp = require("global-modules-path").getPath("mbake")
+let appDir = path.dirname(require.main.filename)
 
-console.log(bp)
+console.log('proc')
+appDir = appDir.substring(0, appDir.lastIndexOf('/'))
+console.log(appDir)
 
-const fp = bp+  "/ewApp/wUI/index.html"
-const { Ver, MBake, Watch2, MetaPro2, MDevSrv2 } =  require(bp+'/lib/Base.js')
+const fp = appDir+  "/ewApp/wUI/index.html"
+const { Ver, MBake, Watch2, MetaPro2, MDevSrv2 } =  require(appDir+'/lib/Base.js')
 
 console.log(new Ver().ver())
-
-// Main /////////////////////////////////////////////////////////////////////
 
 let renWindow
 function createWindow () {

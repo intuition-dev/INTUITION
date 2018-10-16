@@ -1,8 +1,11 @@
 {
    "name": "mbake",
-   "version": "4.10.34",
+   "version": "4.10.42",
    "description": "Process pug files recursively, including any static or dynamic binding - http://www.Metabake.org",
    "main": "mbake.js",
+   "scripts": {
+      "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, not NPM')\""
+  },
    "bin": {
       "mbake": "mbake.js",
       "mbake-cli": "mbake.js"
@@ -45,6 +48,7 @@
       "jstransformer": "^1.0.0",
       "jstransformer-markdown-it": "^2.1.0",
       "lunr": "^2.3.3",
+      "markdown-it": "^8.4.2",
       "markdown-it-attrs": "^2.3.2",
       "probe-image-size": "^4.0.0",
       "pug": "^2.0.3",

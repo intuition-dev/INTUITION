@@ -186,11 +186,12 @@ function watch() {
    console.log(appDir)
 
    const fp = appDir+'/ewApp/main.js'
+
    /*const options = {
       stdio: [ 'pipe', 'pipe', 'pipe', 'ipc' ]
       , windowsHide: true
     }*/
-   const child = proc.spawn(electron,[fp] )
+   const child = proc.spawn(electron, [fp] )
    child.stdout.on('data', function(data) { // log of child to show
       console.log(data.toString()); 
    })

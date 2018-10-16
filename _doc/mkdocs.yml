@@ -12,6 +12,5 @@ nav:
    - Resources: res.md
    - Next Steps: next.md
    - About: about.md
-   - NPM: npm.md
 
 theme: readthedocs
