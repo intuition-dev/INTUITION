@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.11.4",
+   "version": "4.11.5",
    "description": "Process pug files recursively, including any static or dynamic binding - http://www.Metabake.org",
    "main": "mbake.js",
    "scripts": {
@@ -32,6 +32,7 @@
    "dependencies": {
       "adm-zip": "^0.4.11",
       "axios": "^0.18.0",
+      "buffer-image-size": "^0.6.4",
       "chokidar": "^2.0.4",
       "cli-clear": "^1.0.4",
       "command-line-args": "^5.0.2",

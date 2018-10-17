@@ -4,11 +4,10 @@
 declare var module: any
 declare var require: any
 declare var process: any
-//declare const Buffer: any
 
 export class Ver {
    ver() {
-      return "v4.11.4"
+      return "v4.11.5"
    }
 
    static slash(path) {// windowze
@@ -52,6 +51,7 @@ const transformerProxy = require('transformer-proxy')
 const connect = require('connect')
 
 const probe  = require('probe-image-size')
+const bsz = require('buffer-image-size')
 
 // map
 const sm = require('sitemap')
@@ -1024,6 +1024,10 @@ export class Scrape {
       }
       return filterd_string
    }//()
+
+   static getBufferImageSize(buf_) {
+      return bsz(buf_)
+   }
 
 }//class
 
