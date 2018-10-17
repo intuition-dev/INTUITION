@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.11.5"
+      return "v4.11.6"
    }
 
    static slash(path) {// windowze
@@ -45,10 +45,8 @@ const reload = require('reload')
 const extractor = require('unfluff')//scrape
 const axios = require('axios')
 
-const httpProxy = require('http-proxy')
-const http = require('http')
-const transformerProxy = require('transformer-proxy')
-const connect = require('connect')
+const cheerio     = require('cheerio')
+const interceptor = require('express-interceptor')
 
 const probe  = require('probe-image-size')
 const bsz = require('buffer-image-size')
@@ -750,43 +748,51 @@ export class MDevSrv2 {
 
    constructor(dir, port, ignore_) {// flag to ignore reload
 
-      let port2:number = parseInt(port+'') + 1
-      let app2 = express()
+      let app = express()
       logger.trace(dir, port)
-      app2.set('app port', port)
+      app.set('app port', port)
+      MDevSrv2.reloadServer = reload(app, {verbose:false, port:9856})
+      app.set('views', dir)
 
-      MDevSrv2.reloadServer = reload(app2, {verbose:false, port:9856})
-
-      app2.set('views', dir)
-      app2.use(express.static(dir))
-      app2.listen(port2, function () {
-         logger.trace('dev app '+port2)
-      })
-
-      //proxy:
-      // https://github.com/philippotto/transformer-proxy/blob/master/examples/simple.js
-      const transformerFunction = function (data, req, res) {
-         for(var prop in req) {
-           // console.log(prop)
+      const bodyInterceptor = interceptor(function(req, res){
+         return {
+           // Only HTML responses will be intercepted
+           isInterceptable: function(){
+             return /text\/html/.test(res.get('Content-Type'))
+           },
+           intercept: function(body, send) {
+               console.log(' h')
+               var $document = cheerio.load(body)
+               $document('body').prepend('<script src="/reload/reload.js"></script>')
+               send($document.html())
+           }
          }
-
-         //<script src="/reload/reload.js"></script>
-         let str = data.toString('utf8')
-         str.replace("</head>", "<script src='/reload/reload.js'></script></head>")
-         if(str.includes('</head>'))
-            console.log(' .')
-         return Buffer.from( str, 'utf8' )
-      }
-      const app = connect()
-      app.use(transformerProxy(transformerFunction), {match : /\.html([^\w]|$)/});
-      const proxy = httpProxy.createProxyServer({target: 'http://localhost:' + port2})
-      app.use(function (req, res) {
-         const rand = Math.floor(Math.random() * 90)
-         setTimeout(function () {
-            proxy.web(req, res)
-         }, rand) // production cloud monkey
       })
-      http.createServer(app).listen(port)
+
+      const timeInterceptor = interceptor(function(req, res){
+         return {
+           isInterceptable: function(){
+            let js = /application\/javascript/.test(res.get('Content-Type'))
+            let cs = /text\/css/.test(res.get('Content-Type'))
+            let img = /image\/jpg/.test(res.get('Content-Type'))
+
+            return cs || js || img
+           },
+           intercept: function(body, send) {
+            setTimeout(function(){send(body) }, 
+               Math.floor(Math.random() * 200) + 50 )
+           }
+         }
+      })
+
+      app.use(bodyInterceptor)
+      app.use(timeInterceptor)
+
+      app.use(express.static(dir))
+      app.listen(port, function () {
+         logger.trace('dev srv '+port)
+      })
+
 
       }//()
 }//class

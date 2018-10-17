@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.11.5",
+   "version": "4.11.6",
    "description": "Process pug files recursively, including any static or dynamic binding - http://www.Metabake.org",
    "main": "mbake.js",
    "scripts": {
@@ -33,6 +33,7 @@
       "adm-zip": "^0.4.11",
       "axios": "^0.18.0",
       "buffer-image-size": "^0.6.4",
+      "cheerio": "^1.0.0-rc.2",
       "chokidar": "^2.0.4",
       "cli-clear": "^1.0.4",
       "command-line-args": "^5.0.2",
@@ -40,10 +41,10 @@
       "csvtojson": "^2.0.8",
       "electron": "^3.0.4",
       "express": "^4.16.4",
+      "express-interceptor": "^1.2.0",
       "filehound": "^1.16.4",
       "fs-extra": "^6.0.1",
       "global-modules-path": "^2.3.0",
-      "http-proxy": "^1.17.0",
       "javascript-obfuscator": "^0.17.3",
       "js-yaml": "^3.12.0",
       "jstransformer": "^1.0.0",
@@ -57,7 +58,6 @@
       "riot-compiler": "^3.5.1",
       "sitemap": "^2.0.1",
       "tracer": "^0.8.12",
-      "transformer-proxy": "^0.3.4",
       "traverse": "^0.6.6",
       "unfluff": "^3.2.0"
    },
