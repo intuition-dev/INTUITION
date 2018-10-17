@@ -1,11 +1,31 @@
-//import { isReturnStatement } from "babel-types";
 
 // All rights Metabake.org | cekvenich, licensed under LGPL 2.1
 
 declare var module: any
 declare var require: any
 declare var process: any
+//declare const Buffer: any
 
+export class Ver {
+   ver() {
+      return "v4.11.4"
+   }
+
+   static slash(path) {// windowze
+      return path.replace(/\\/g, '/')
+   }
+}
+
+// metaMDtf
+const markdownItAttrs = require('markdown-it-attrs')
+const md = require('markdown-it')({
+   html: true,
+   typographer: true,
+   breaks: true
+})
+md.use(markdownItAttrs)
+
+// imports ///
 const fs = require('fs')
 const fse = require('fs-extra')
 const FileHound = require('filehound')
@@ -26,24 +46,20 @@ const reload = require('reload')
 const extractor = require('unfluff')//scrape
 const axios = require('axios')
 
+const httpProxy = require('http-proxy')
+const http = require('http')
+const transformerProxy = require('transformer-proxy')
+const connect = require('connect')
+
 const probe  = require('probe-image-size')
-const bsz = require('buffer-image-size')
 
 // map
 const sm = require('sitemap')
 const traverse = require('traverse')
 const lunr = require('lunr')
 
-export class Ver {
-   ver() {
-      return "v4.10.09"
-   }
 
-   static slash(path) {// windowze
-      return path.replace(/\\/g, '/')
-   }
-}
-
+// code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class RetMsg {
    _cmd:string
    _code:number
@@ -445,6 +461,13 @@ export class BakeWrk {
       console.log(' processing: '+ this.dir)
    }
 
+
+   static metaMDtf(text, options) {//a custom md filter that uses a transformer
+      console.log(' ',options)
+
+      return md.render(text)
+   }
+
    bake() {
       process.chdir(this.dir)
 
@@ -455,8 +478,13 @@ export class BakeWrk {
 
       let m = new Dat(this.dir)
 
-      //static data binding:
-      let html = pug.renderFile(this.dir+'/index.pug', m.getAll() )
+      //static data binding with a custom md filter that uses a transformer
+      let options = m.getAll() 
+      options['filters'] = {
+         metaMDtf: BakeWrk.metaMDtf
+      } 
+
+      let html = pug.renderFile(this.dir+'/index.pug',options )
 
       let ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
       html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
@@ -469,7 +497,7 @@ export class BakeWrk {
       if (!fs.existsSync(this.dir+'/m.pug'))
         return ' '
       //static data binding:
-      html = pug.renderFile(this.dir+'/m.pug', m.getAll() )
+      html = pug.renderFile(this.dir+'/m.pug', options )
 
       ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
       html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
@@ -559,12 +587,14 @@ export class Items {
             return
          let y = yaml.load(fs.readFileSync(dn+'/dat.yaml'))
          if(!y) return
+         /*
          if(y.hasOwnProperty('publish')) {
             if(y.publish==false) {
                console.log('  skipped')
                return
             }
          }//outer
+         */
 
          Items.clean(y)
 
@@ -622,7 +652,6 @@ export class Items {
       delete o['basedir']
       delete o['ROOT']
       delete o['pretty']
-      delete o['publish']
    }
 
 }//class
@@ -715,33 +744,55 @@ export class Tag {
    }
 }//class
 // Meta: //////////////////////
-
-// class ///////////////////////////////////////
-export class MDevSrv {
+export class MDevSrv2 {
    static reloadServer
    // http://github.com/alallier/reload
 
-   constructor(config) {
-      let dir = config['mount']
-      let port = config['mount_port']
+   constructor(dir, port, ignore_) {// flag to ignore reload
 
-      let app = express()
-      logger.trace(dir,port)
-      app.set('app port', port)
+      let port2:number = parseInt(port+'') + 1
+      let app2 = express()
+      logger.trace(dir, port)
+      app2.set('app port', port)
 
-      MDevSrv.reloadServer = reload(app,{verbose:false, port:9856})
+      MDevSrv2.reloadServer = reload(app2, {verbose:false, port:9856})
 
-      app.set('views', dir)
-
-      app.use(express.static(dir))
-      app.listen(port, function () {
-         logger.trace('dev app'+port)
+      app2.set('views', dir)
+      app2.use(express.static(dir))
+      app2.listen(port2, function () {
+         logger.trace('dev app '+port2)
       })
-   }//()
+
+      //proxy:
+      // https://github.com/philippotto/transformer-proxy/blob/master/examples/simple.js
+      const transformerFunction = function (data, req, res) {
+         for(var prop in req) {
+           // console.log(prop)
+         }
+
+         //<script src="/reload/reload.js"></script>
+         let str = data.toString('utf8')
+         str.replace("</head>", "<script src='/reload/reload.js'></script></head>")
+         if(str.includes('</head>'))
+            console.log(' .')
+         return Buffer.from( str, 'utf8' )
+      }
+      const app = connect()
+      app.use(transformerProxy(transformerFunction), {match : /\.html([^\w]|$)/});
+      const proxy = httpProxy.createProxyServer({target: 'http://localhost:' + port2})
+      app.use(function (req, res) {
+         const rand = Math.floor(Math.random() * 90)
+         setTimeout(function () {
+            proxy.web(req, res)
+         }, rand) // production cloud monkey
+      })
+      http.createServer(app).listen(port)
+
+      }//()
 }//class
+
 export class AdminSrv { // until we write a push service
-   static reloadServer
-   // http://github.com/alallier/reload
+   //static reloadServer
 
    constructor(config) {
       let dir = config['admin_www']
@@ -751,7 +802,7 @@ export class AdminSrv { // until we write a push service
       logger.trace(dir,port)
       app.set('admin port', port)
 
-      AdminSrv.reloadServer = reload(app, {port:9857})
+      //AdminSrv.reloadServer = reload(app, {port:9857})
 
       app.set('views', dir)
 
@@ -762,31 +813,33 @@ export class AdminSrv { // until we write a push service
    }//()
 }//class
 
-export class Watch {
+export class Watch2 {
    root
    watcher
-   config
-   mp: MetaPro
-   constructor(mp_:MetaPro, config_) {
+
+   mp: MetaPro2
+   constructor(mp_:MetaPro2, mount) {
       this.mp = mp_
-      this.root = config_['mount']
-      this.config = config_
+      this.root = mount
    }
 
-   start() {
+   start(poll_) {// true for WAN
       console.log(' watcher works best on linux, on ssh watched drives - that are S3 mounts')
       console.log(this.root)
       this.watcher = chokidar.watch(this.root, {
          ignored: '*.swpc*',
          ignoreInitial: true,
          cwd: this.root,
-         usePolling: true,
+         usePolling: poll_,
          binaryInterval: 100000,
-         awaitWriteFinish: true,
-         interval: 150//time
+         interval: 50//time
 
          //alwaysStat: true,
-         //atomic: 110
+         , atomic: 50
+         , awaitWriteFinish: {
+            stabilityThreshold: 100,
+            pollInterval: 50
+          }
       })
 
       this.watcher.unwatch('*.jpg')
@@ -806,15 +859,15 @@ export class Watch {
 
    static refreshPending = false
    refreshBro() {
-      if(Watch.refreshPending) return  //debounce
-      Watch.refreshPending = true
+      if(Watch2.refreshPending) return  //debounce
+      Watch2.refreshPending = true
       setTimeout(function () {
          console.log('reload')
-         AdminSrv.reloadServer.reload()
-         MDevSrv.reloadServer.reload()
+         MDevSrv2.reloadServer.reload()
 
-         Watch.refreshPending = false
-      }, 50)//time
+         Watch2.refreshPending = false
+
+      }, 20)//time
    }
 
    auto(path_:string) {//process
@@ -841,7 +894,7 @@ export class Watch {
    }
 }//class
 
-export class MetaPro {
+export class MetaPro2 {
    mount:string
    b = new MBake()
    static folderProp = 'folder'
@@ -859,8 +912,8 @@ export class MetaPro {
       return new RetMsg(m._cmd, 1, m.msg)
    }
 
-   constructor(config) {
-      this.mount = config.mount
+   constructor(mount) {
+      this.mount = mount
       logger.trace('MetaPro', this.mount)
    }
 
@@ -886,7 +939,7 @@ export class MetaPro {
       this.setLast(msg)
       return msg
    }
-  itemizeOnly(dir:string):RetMsg {
+   itemizeOnly(dir:string):RetMsg {
       let msg:RetMsg = this.b.itemizeOnly(this.mount+ '/' +dir )
       this.setLast(msg)
       return msg
@@ -956,10 +1009,6 @@ export class Scrape {
       logger.trace(iurl_)
       return probe(iurl_, { timeout: 3000 })
    }
-  
-  static getBufferImageSize(buf_) {
-      return bsz(buf_)
-   }
 
    static alphaNumeric(str) {
       if(!str) return ''
@@ -979,6 +1028,6 @@ export class Scrape {
 }//class
 
 module.exports = {
-     Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, MetaPro, Watch, AdminSrv, MDevSrv,
-     Scrape, FileOps, CSV2Json, Map
+   Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, AdminSrv,
+   Scrape, FileOps, CSV2Json, Map, MDevSrv2, MetaPro2, Watch2
 }
