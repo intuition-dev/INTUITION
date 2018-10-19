@@ -6,23 +6,23 @@ class: center, middle
 ## Learn to recognize what the *low code* approach is 
  Deliver Web Apps 10X Faster with Less Coding
 
-Who moved my cheese?  O.O., F.P.
-
+Who moved my cheese?  Sun? DC. O.O., F.P.
 
 ---
 name: agenda
-Pillars
 ### 1. Agile flavor with Remote + WAH development
+1a iterative
 ### 2. Intercept / Observe
-### 3. Benchmarking
-### 4. Scripted builds, quick release
-### 5. Team player, eg: UX
-### 6. Learn quickly
-### 7. No negativity towards DRY: 
+### 3. Scripted builds, quick release
+### 4. Team player, eg: UX
+### 5. Learn quickly
+### 6. SEO
+### 7. No negativity - towards DRY
 ### 8. Coming technical apocalypse
 a. eg: mount
 b. auth
 ### 9. Security
+### 10. Benchmarking
 
 ---
 
@@ -35,7 +35,6 @@ b. auth
 ## "Developing is now fun" - Dan, after adopting Metabake
 
 ---
-
 
 <div class="wr-img">
 	<div class="img" style="background-image:url(710flash.png)"></div>
@@ -50,17 +49,6 @@ b. auth
 .center[
 ###  Engage team with users, e.g. a user video. Else: bits and bytes debates.
 ]
----
-<div class="wr-img">
-	<div class="img" style="background-image:url(500mac_child.png)"></div>
-</div>
-.center[
-### Benchmark vs others. Q: What is your relative rank? 
-]
----
-
-template: agenda
-## Next: 4
 ---
 
 <div class="wr-img">
@@ -132,9 +120,14 @@ template: agenda
 ---
 
 template: agenda
-## Next is 7 
+## Next is 6, 7 
+
 ---
 
+.center[
+## SEO. AMP.  Static
+]
+---
 
 <div class="wr-img">
 	<div class="img" style="background-image:url(420app_store.jpg)"></div>
@@ -144,7 +137,7 @@ template: agenda
 ]
 ---
 template: agenda
-## Next: 8 
+## Next: 8
 ---
 <div class="wr-img">
 	<div class="img" style="background-image:url(110cloud.png)"></div>
@@ -213,7 +206,11 @@ template: agenda
 ---
 
 template: agenda
-## Next: 9
+## Next: 9, 10
+
+---
+
+##: Chrome book, Windows PC in the Sky
 
 ---
 
@@ -221,32 +218,36 @@ template: agenda
 	<div class="img" style="background-image:url(810codeA.png)"></div>
 </div>
 .center[
-### CodeAnywhere. Dev for remote, team players. No local dev environment!
+### CodeAnywhere. Dev for remote, team players. Add to local dev environment!
 ]
 <!--- X --->
+---
+
+<div class="wr-img">
+	<div class="img" style="background-image:url(500mac_child.png)"></div>
+</div>
+.center[
+### Benchmark vs others. Q: What is your relative rank? 
+]
 ---
 
 ## tl;dr
 ### Pillars
 - Who moved my cheese?  
-
-### 1. Agile flavor with Remote + WAH development: SFT
-1a: Iterative
-### 2. Benchmarking: Relative
-### 3. Intercept / Observe
-### 4. Scripted builds, quick release: Automatic 
-
-### 5. Team player, eg: UX: Sass
-### 6. Learn quickly: Templating, Declarative,  4GL
-### 7. No negativity towards DRY: Hybrid
-
-
-### 8. Coming technical apocalypse | Serverless & Cloud 2.0, FireStore
+Pillars
+### 1. Agile flavor with Remote + WAH development
+1a iterative
+### 2. Intercept / Observe
+### 3. Scripted builds, quick release
+### 4. Team player, eg: UX
+### 5. Learn quickly: Pug
+### 6. SEO
+### 7. No negativity - towards DRY
+### 8. Coming technical apocalypse
 a. eg: mount
 b. auth
-c. team player
-
-### 9. Security: Chromebook/WebDe
+### 9. Security: Chrome 
+### 10. Benchmarking
 
 ---
 # $?
