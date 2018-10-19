@@ -1,18 +1,20 @@
 
 
 class: center, middle
-# Recognize what the low code approach is 
+# Development productivity solutions that apply best practices from a manager's point of view.
+
+## Learn to recognize what the *low code* approach is 
  Deliver Web Apps 10X Faster with Less Coding
 
-Who moved my cheese?  
+Who moved my cheese?  O.O., F.P.
 
 
 ---
 name: agenda
 Pillars
 ### 1. Agile flavor with Remote + WAH development
-### 2. Benchmarking
-### 3. Intercept / Observe
+### 2. Intercept / Observe
+### 3. Benchmarking
 ### 4. Scripted builds, quick release
 ### 5. Team player, eg: UX
 ### 6. Learn quickly
@@ -42,20 +44,18 @@ b. auth
 ###  Agile is not Agile enough: Flash teams - aims to integrate remote and WAH.
 ]
 ---
-
-<div class="wr-img">
-	<div class="img" style="background-image:url(500mac_child.png)"></div>
-</div>
-.center[
-### Benchmark vs others. Q: What is your relative rank? 
-]
----
-
 <div class="wr-img">
 	<div class="img" style="background-image:url(730inter.png)"></div>
 </div>
 .center[
 ###  Engage team with users, e.g. a user video. Else: bits and bytes debates.
+]
+---
+<div class="wr-img">
+	<div class="img" style="background-image:url(500mac_child.png)"></div>
+</div>
+.center[
+### Benchmark vs others. Q: What is your relative rank? 
 ]
 ---
 
@@ -67,7 +67,7 @@ template: agenda
 	<div class="img" style="background-image:url(910api.png)"></div>
 </div>
 .center[
-### Don't build the app! Build the 'automatic' app, that builds your app. Like SR-71.
+### Don't build the app! Build the 'automatic' app, that builds your app. Like SR-71. Node.js
 ]
 ---
 
@@ -76,7 +76,7 @@ template: agenda
 	<div class="img" style="background-image:url(310sass.webp)"></div>
 </div>
 .center[
-###  Don't use CSS and work with designers!
+###  Don't use CSS, work with team, eg: designers!
 ]
 ---
 
@@ -86,6 +86,9 @@ template: agenda
 .center[
 ###  'Google' for a Framework you can customize.
 ]
+---
+template: agenda
+## Next: Learn quick. eg Declarative
 ---
 
 <div class="wr-img">
@@ -108,7 +111,7 @@ template: agenda
 	<div class="img" style="background-image:url(640pug.png)"></div>
 </div>
 .center[
-###  Node Express uses Pug template lang. Declarative you already know!
+###  Node Express uses Pug template lang. Declarative you already know, but static.
 ]
 ---
 
@@ -129,7 +132,7 @@ template: agenda
 ---
 
 template: agenda
-## Next is 7 and 8
+## Next is 7 
 ---
 
 
@@ -140,7 +143,9 @@ template: agenda
 ###  Why SPA|Electron? (end of 7)
 ]
 ---
-
+template: agenda
+## Next: 8 
+---
 <div class="wr-img">
 	<div class="img" style="background-image:url(110cloud.png)"></div>
 </div>
@@ -226,6 +231,7 @@ template: agenda
 - Who moved my cheese?  
 
 ### 1. Agile flavor with Remote + WAH development: SFT
+1a: Iterative
 ### 2. Benchmarking: Relative
 ### 3. Intercept / Observe
 ### 4. Scripted builds, quick release: Automatic 
@@ -239,6 +245,7 @@ template: agenda
 a. eg: mount
 b. auth
 c. team player
+
 ### 9. Security: Chromebook/WebDe
 
 ---
@@ -280,7 +287,7 @@ CodeAnywhere
 
 class: center, middle
 ## Development productivity solutions that apply best practices from a manager's point of view.
-# Deliver 10X faster with Less Coding
+# Deliver 10X faster via low code
 
 ###  What 2 pillars would you want to try first?
 

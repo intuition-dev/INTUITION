@@ -32,7 +32,7 @@ function version() {
    console.log('  To process Pug and dat_i items to items.json: mbake -i . # where path is folder containing dat_i.yaml')
    console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -m .')
    console.log('  To process list.csv to list.json: mbake -j .')
-   console.log('  For local(non-cloud) watcher: mbake -w')
+   console.log('  For local(non-cloud) GUI watcher: mbake -g')
 
    console.log()
    console.log(' ----------------------------------------------------------------')
@@ -70,7 +70,7 @@ const optionDefinitions = [
    { name: 'website',  alias: 's', type: Boolean },
    { name: 'crud', alias: 'c', type: Boolean },
 
-   { name: 'watcher', alias: 'w', type: Boolean }
+   { name: 'gwatcher', alias: 'g', type: Boolean }
 
 ]
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -179,7 +179,7 @@ function tag(arg) {
    new MBake().tag(arg)
 }
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////#endregion
-function watch() {
+function gwatch() {
    const path = require('path')
    const appDir = path.dirname(require.main.filename)
    const electron = require('electron' )
@@ -231,8 +231,8 @@ else if(argsParsed.crud)
    unzipC()
 else if(argsParsed.website)
    unzipS()
-else if(argsParsed.watcher)
-   watch()
+else if(argsParsed.gwatcher)
+   gwatch()
 else if(!arg)
    version()
 else
