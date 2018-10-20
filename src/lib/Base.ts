@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.11.8"
+      return "v4.11.14"
    }
 
    static slash(path) {// windowze
@@ -21,7 +21,20 @@ const md = require('markdown-it')({
    html: true,
    typographer: true,
    breaks: true
-})
+}).use(require('markdown-it-container'), 'dynamic', {
+   validate: function() { return true; },
+   render: function(tokens, idx) {
+       var token = tokens[idx];
+
+       if (token.nesting === 1) {
+           return '<div class="' + token.info.trim() + '">';
+       } else {
+           return '</div>';
+       }
+   },
+}); // https://github.com/markdown-it/markdown-it-container/issues/23
+
+
 md.use(markdownItAttrs)
 
 // imports ///
