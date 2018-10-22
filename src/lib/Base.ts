@@ -259,6 +259,17 @@ export class FileOps {
       fs.writeFileSync(this.root+destFile, txt)
    }
 
+   remove(path) {
+      let dir_path = this.root + path
+      logger.trace('remove:' + dir_path)
+      if (fs.existsSync(dir_path)) {
+         fs.readdirSync(dir_path).forEach(function(entry) {
+            fs.unlinkSync(dir_path+'/'+entry)
+         })
+         fs.rmdirSync(dir_path)
+      }
+   }
+
 }
 
 export class Dat {
