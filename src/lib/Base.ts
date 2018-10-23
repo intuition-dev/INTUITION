@@ -986,20 +986,26 @@ export class MetaPro2 {
 		try {
 			let dir_path =  this.mount+'/'+dir+'/'+folder
 			let f = dir_path+'/dat.yaml'
-			let y = null
+			let cf = dir_path+'/content.md'
+			let y = null, content = ''
+			let mfilenames = []
 			let media = []
 
 			if (fs.existsSync(dir_path)) {
 				fs.readdirSync(dir_path).forEach(function(entry) {
 					//get media in folder, exclude featured image, index.pug, .hml, dat.yaml and content.md
 					//add as array of objects with [{filename: x}, {filename: y}]
-					if (entry!='index.pug' && entry!='index.html' && entry!='content.md'  && entry!='comment.md')
+					if (entry!='index.pug' && entry!='index.html' && entry!='comment.md')
 					{
 						if (entry=='dat.yaml')
 							y = yaml.load(fs.readFileSync(f, 'utf8'))
+						else if (entry== 'content.md' || entry=='comment.md') //comment is legacy
+						{
+							content = fs.readFileSync(cf, 'utf8')
+						}
 						else //we assume it's a media item
 						{
-							media.push({filename: entry})
+							mfilenames.push(entry)
 						}
 					}
 				})
@@ -1009,7 +1015,15 @@ export class MetaPro2 {
 			
 			if(!y) return
 			y.url = folder
+			
+			let i = 0, ilen = mfilenames.length;
+			for (i; i < ilen; i++) {
+				if (mfilenames[i] != y.image) //exclude featured image from media list
+					media.push({filename: mfilenames[i]})
+			}
 			y.media = media
+
+			y.content = content
 
 			let msg:RetMsg = new RetMsg(y, 1, 'success')
 			this.setLast(msg)
