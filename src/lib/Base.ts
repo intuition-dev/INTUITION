@@ -268,6 +268,32 @@ export class FileOps {
 			})
 			fs.rmdirSync(dir_path)
 		}
+	}	removeFile(path) {
+		let file_path = this.root + path
+		fs.unlinkSync(file_path)
+	}
+
+	getMediaFilenames(dir_path:string):String[]{ //may include Featured Image
+		try {
+			if (dir_path.indexOf('/')!=0)
+				dir_path = '/' + dir_path
+			let mfilenames = []
+			let exclude = ['index.pug','index.html','content.md', 'dat.yaml','comment.md']
+			if (fs.existsSync(this.root + dir_path)) {
+				fs.readdirSync(this.root + dir_path).forEach(function(entry) {
+					//get media in folder, exclude featured image, index.pug, .hml, dat.yaml and content.md
+					if (exclude.indexOf(entry)==-1)
+					{
+						mfilenames.push(entry)
+					}
+				})
+			}
+			return mfilenames
+
+		} catch(err) {
+			logger.trace(err)
+			return []
+		}
 	}
 
 }
