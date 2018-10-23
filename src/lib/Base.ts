@@ -1012,39 +1012,16 @@ export class MetaPro2 {
 	getItem(dir:string, folder:string):RetMsg {
 		try {
 			let dir_path =  this.mount+'/'+dir+'/'+folder
-			let f = dir_path+'/dat.yaml'
-			let cf = dir_path+'/content.md'
-			let y = null, content = ''
-			let mfilenames = []
 			let media = []
-
-			if (fs.existsSync(dir_path)) {
-				fs.readdirSync(dir_path).forEach(function(entry) {
-					//get media in folder, exclude featured image, index.pug, .hml, dat.yaml and content.md
-					//add as array of objects with [{filename: x}, {filename: y}]
-					if (entry!='index.pug' && entry!='index.html' && entry!='comment.md')
-					{
-						if (entry=='dat.yaml')
-							y = yaml.load(fs.readFileSync(f, 'utf8'))
-						else if (entry== 'content.md' || entry=='comment.md') //comment is legacy
-						{
-							content = fs.readFileSync(cf, 'utf8')
-						}
-						else //we assume it's a media item
-						{
-							mfilenames.push(entry)
-						}
-					}
-				})
-			}
-			else
-				return
+			let mfilenames = new FileOps(this.mount).getMediaFilenames('/'+dir+'/'+folder)
+			let y = yaml.load(fs.readFileSync(dir_path+'/dat.yaml', 'utf8'))
+			let content = fs.readFileSync(dir_path+'/content.md', 'utf8')
 			
 			if(!y) return
 			y.url = folder
-			
+
 			let i = 0, ilen = mfilenames.length;
-			for (i; i < ilen; i++) {
+			for (i; i < ilen; i++) { //add as array of objects with [{filename: x}, {filename: y}]
 				if (mfilenames[i] != y.image) //exclude featured image from media list
 					media.push({filename: mfilenames[i]})
 			}
