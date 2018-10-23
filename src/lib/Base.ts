@@ -1019,6 +1019,7 @@ export class MetaPro2 {
 			
 			if(!y) return
 			y.url = folder
+			Items.clean(y)
 
 			let i = 0, ilen = mfilenames.length;
 			for (i; i < ilen; i++) { //add as array of objects with [{filename: x}, {filename: y}]
