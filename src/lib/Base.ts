@@ -268,7 +268,8 @@ export class FileOps {
 			})
 			fs.rmdirSync(dir_path)
 		}
-	}	removeFile(path) {
+	}	
+	removeFile(path) {
 		let file_path = this.root + path
 		fs.unlinkSync(file_path)
 	}
