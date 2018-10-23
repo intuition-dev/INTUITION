@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.11.15"
+      return "v4.11.17"
    }
 
    static slash(path) {// windowze
