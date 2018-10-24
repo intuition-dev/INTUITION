@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.11.20",
+   "version": "4.11.21",
    "description": "Statically process pug files recursively, including any static or dynamic binding; as per low code pillars: http://www.Metabake.org",
    "main": "mbake.js",
    "scripts": {
@@ -43,9 +43,9 @@
       "express": "^4.16.4",
       "express-interceptor": "^1.2.0",
       "filehound": "^1.16.4",
-      "fs-extra": "^6.0.1",
+      "fs-extra": "^7.0.0",
       "global-modules-path": "^2.3.0",
-      "javascript-obfuscator": "^0.17.3",
+      "javascript-obfuscator": "^0.18.1",
       "js-yaml": "^3.12.0",
       "jstransformer": "^1.0.0",
       "jstransformer-markdown-it": "^2.1.0",
@@ -58,7 +58,7 @@
       "reload": "^2.3.0",
       "riot-compiler": "^3.5.1",
       "sitemap": "^2.0.1",
-      "tracer": "^0.8.12",
+      "tracer": "^0.9.1",
       "traverse": "^0.6.6",
       "unfluff": "^3.2.0"
    },
