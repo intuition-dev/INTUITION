@@ -11,15 +11,7 @@ You can use for free in any way; but if you change or use the core library direc
 
 - [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
 
----
-title: Metabake.org
-repo: metabake
-homepage: http://www.metabake.org
-language: JavaScript
-license: MIT
-templates: Pug and Markdown
-description: 10 times more productive web app development via low code such as Pug
----
+10 times more productive web app development via low code such as Pug
 
 Metabake mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging low code pillars for high development productivity.
 
