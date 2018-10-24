@@ -1,51 +1,65 @@
 
 
+Docs, examples and more at:
+
+[Metabake.org](http://www.metabake.org)
+
+License of all examples apps are MIT - but core build lib itself(Base.*) is LGPL.
+
+You can use for free in any way; but if you change or use the core library directly, you must contribute back to the source of the ideas.
+
+
 - [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
 
+---
+title: Metabake.org
+repo: metabake
+homepage: http://www.metabake.org
+language: JavaScript
+license: MIT
+templates: Pug and Markdown
+description: 10 times more productive web app development via low code such as Pug
+---
 
-## Less code = 10X faster web app development.
-### With Metabake's modern development approach, it is not about replacing your tech stack with another tech stack -- it is about eliminating it!
+Metabake mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging low code pillars for high development productivity.
 
+## Install
 
-# About Metabake
+Easy to install
 
-Metabake is a development productivity suite. It should allow you to deliver 10 times faster then legacy development stacks/methodologies. We have found that - with Metabake - the work of 6 developers over 6 months can be done by 3 developers in 3 weeks. We expect you to achieve the same productivity gains.
+```sh
+yarn global add mbake
+mbake
+```
 
-How does open source Metabake deliver 10X faster and cheaper web app development? Not enough organizations are fully leveraging the new Serverless. With Serverless services like Firestore and S3 you get rid of **ALL** server-side and middleware development and operations. This is where up to 2/3 of your time and cost used to go. Gone!
+## First Page
 
-On the client side (browser apps and mobile apps) Metabake does something similar: it eliminates much of the tech stack and reduces the amount of coding and complexity. How? In school textbooks you learned about 1st generation languages, 2nd generation languages and our current 3rd generation languages, such as JavaScript, PHP and Ruby. With each new generation we achieved huge productivity improvements. We consider 'Pug'--also used by Node/Express--a 4th generation language that helps gain an equally big jump in productivity. With Metabake we show you how to build complete applications in Pug. With this Less code approach we demonstrate much faster and cheaper web app and mobile app development.
+Create file index.pug
+```pug
+header
+body
+    p Hello #{key1}
+```
+and create file dat.yaml
+```yaml
+key1: World
+```
 
-The Metabake approach has 10 pillars that are the foundation for achieving mind-blowing development productivity gains. I'll just mention one more pillar here: automatic programming. You've probably heard of 'static site generators' like Hugo or Jekyll that people use to generate their web site or a blog. Automatic programming means using a similar generator to write your web app! This can get you to yet another level of productivity.
+### Now make with mbake
 
-To learn more about the Metabake approach, including all 10 pillars and full examples, go to metabake.org. Or, to dive in right away, use the 'mbake CLI' from github.com/metabake as the first step into 10X faster web app development.
+```sh
+mbake .
+```
 
-#### Metabake.org productivity is based on three modules:
+This will create index.html. Of course you can use regular Pug syntax to include markdown with CSS support:
+```pug
+    include:metaMDtf comment.md
+```
 
-- mbake, a static site generation tool that runs locally
-- B-M-SPA, curated technologies and techniques that help you build dynamic apps and mobile apps faster
-- Meta, a bespoke cloud-based build and admin app infrastructure that helps deliver functionality to your clients more quickly
+## Home Page
 
-We benchmark against _LAMP_, _RAILS_, _MEAN_ and such For example, LAMP is the technology WordPress was built on. Every 10 years or so technology gets 10 times better, which *forces* everyone to upgrade. Assembly was 10 times better than machine language. C/.js is 10 times better than Assembly. We believe that we found the answer on how to have a more productive team.
+There is also an admin module, a watcher module, Hybrid mobile apps, SPA, Blog, Website, CRUD, PWA, Electron, Cloud v2.0 via AWS|FireStore, RIOTjs and more. 
+Primary focus is high development productivity (via "low code") and being easy to learn. But it is also fully flexibile to build any webapp in any directory tree structure you like an use any CSS/SASS framework you like.
+Metabake supports CSS classes in markdown, plus, because it uses Pug - it can also do any HTML layout. But metabake is not static only - it fully supports and has examples and docs for dynamic apps.
 
-So far, somehow, server-side rendered LAMP has dominated web deployments, with WordPress having some 30% of the World Wide Web. It is time to start displacing that.
-
-You can reinvest the time saved by using Metabake into a more interactive user experience (UX). Better UX is proven to lead into higher user engagement and better user retention.
-
-## About mbake
-
-
-_mbake_ leverages the clarity, simplicity and productivity gained by using the declarative markup language _Pug_. We think of Pug as 4GL.
-
-_mbake_ currently compiles Pug, Markdown and Yaml to generate HTML and JSON. Using the power of JavaScript, more transformers can be added. _mbake_ runs as a small node process, either on your machine or in the cloud.
-
-_mbake_ generates static sites, but it also supports making those sites dynamic with API calls and data feeds such as from JSON.
-
-_mbake_ helps is another example of a http://staticgen.com webapp.
-
-_mbake_ includes sample starters apps for CRUD. After you are comfortable with mbake, check out B-M-SPA and Meta.
-
-
-Prerequisites: you should know HTML and CSS. If you need to catch up, we recommend 'Design and Build Websites' by Jon Duckett. You will also learn Pug, to get started on Pug, watch [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
-
-
-Best way to get started with mbake is to read the Docs, linked at he top of the page.
+[Metabake.org](http://www.metabake.org)
