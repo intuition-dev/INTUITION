@@ -141,8 +141,7 @@ export class Map {
 				let props = dat.getAll()
 				logger.trace(path)//, props)
 
-				let publish = props['publish']
-				if (publish == false) //skip
+				if (props['template']) //skip
 					continue
 				//priority
 				let priority = props['priority']
@@ -248,7 +247,7 @@ export class FileOps {
 		let p = this.root+dest
 		logger.trace(p)
 		const d = new Dat(p)
-		d.set('publish', false)
+		d.set('template', false)
 		d.write()
 		logger.trace('copy!')
 		return new RetMsg('clone',1,dest)
@@ -329,7 +328,7 @@ export class Dat {
 			fs.writeFileSync(p, y)
 		} catch(err) { logger.info(err)}
 	}
-	set(key, val) { // ex: 'publish', false
+	set(key, val) { // ex: 'title', 'My First Blog'
 		this.props[key] = val
 	}
 	_addData() {// load json for Wolfgang?
@@ -636,14 +635,10 @@ export class Items {
 				return
 			let y = yaml.load(fs.readFileSync(dn+'/dat.yaml'))
 			if(!y) return
-			/*
-			if(y.hasOwnProperty('publish')) {
-				if(y.publish==false) {
-					console.log('  skipped')
-					return
-				}
-			}//outer
-			*/
+			if(y.template) {
+				console.log('  skipped')
+				return
+			}
 
 			Items.clean(y)
 
@@ -701,6 +696,7 @@ export class Items {
 		delete o['basedir']
 		delete o['ROOT']
 		delete o['pretty']
+		delete o['template']
 	}
 
 }//class
