@@ -61,12 +61,8 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 - [Amazon vs. Google for Cloud v2.0 on Medium](https://medium.com/@WolfgangGehner/amazon-vs-google-for-cloud-2-0-web-apps-extreme-server-less-for-data-and-authentication-cc7fa247e853)
 - [Web IDE](https://medium.com/@WolfgangGehner/three-steps-to-using-a-web-ide-to-develop-and-build-in-the-cloud-d88586255c67)
 
-## CERTIFIED by Metabake.org: Commercial hosting, advisory services and support for Metabake
 
-- <http://www.metabake.net>
-
-
-## Meta Definitions:
+### Meta Definitions:
 - Pug : A templating language, position as Less code Declarative 4GL. Custom 'tags' in Pug via RIOTjs (and obfuscated as well as Andorid's ProGuard)
 - Cloud v2: No known end point. E.g.: CDN, AWS Cognito. AWS Lambda does have a server end point, so it is not Cloud v2
 - Team Player: Benefits group via Cloud Dev Environment, ex: CodeAnywhere+Meta. Selfish: Local dev. environment.
@@ -75,7 +71,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 
 
 ## Advanced Reference
--(https://github.com/metabake/Meta/tree/master/advancedReference)[github.com/metabake/Meta/advancedReference]
+-(https://github.com/metabake/Metabake-Admin/tree/master/advancedReference)[github.com/metabake/Metabake-Admin/advancedReference]
 
 
 ## Benchmarks and Automatic programing
