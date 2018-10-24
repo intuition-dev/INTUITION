@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
 	ver() {
-		return "v4.11.21"
+		return "v4.11.22"
 	}
 
 	static slash(path) {// windowze
@@ -33,11 +33,11 @@ const md = require('markdown-it')({
 		 }
 	},
 }); // https://github.com/markdown-it/markdown-it-container/issues/23
-
-
 md.use(markdownItAttrs)
 
 // imports ///
+const slugify = require('slugify')
+
 const fs = require('fs')
 const fse = require('fs-extra')
 const FileHound = require('filehound')
