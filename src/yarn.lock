@@ -2,12 +2,11 @@
 # yarn lockfile v1
 
 
-"@babel/runtime@7.0.0-beta.55":
-  version "7.0.0-beta.55"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.55.tgz#0bc33aa5a6ac0b012f37e25b9e6aaa2e489a916b"
-  integrity sha1-C8M6paasCwEvN+JbnmqqLkiakWs=
+"@babel/runtime@7.0.0-rc.1":
+  version "7.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-rc.1.tgz#42f36fc5817911c89ea75da2b874054922967616"
+  integrity sha512-Nifv2kwP/nwR39cAOasNxzjYfpeuf/ZbZNtQz5eYxWTC9yHARU9wItFnAwz1GTZ62MU+AtSjzZPMbLK5Q9hmbg==
   dependencies:
-    core-js "^2.5.7"
     regenerator-runtime "^0.12.0"
 
 "@types/babel-types@*", "@types/babel-types@^7.0.0":
@@ -687,10 +686,10 @@ command-line-args@^5.0.2:
     lodash.camelcase "^4.3.0"
     typical "^2.6.1"
 
-commander@2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.16.0.tgz#f16390593996ceb4f3eeb020b31d78528f7f8a50"
-  integrity sha512-sVXqklSaotK9at437sFlFpyOcJonxe0yST/AG9DkQKUdIE6IqGIMv4SfAQSKaJbSdVEJYItASCrBiVQHq1HQew==
+commander@2.17.1:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
+  integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
 
 commander@~2.9.0:
   version "2.9.0"
@@ -769,7 +768,7 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-core-js@^2.4.0, core-js@^2.5.7:
+core-js@^2.4.0:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
   integrity sha512-RszJCAxg/PP6uzXVXL6BsxSXx/B05oJAQ2vkJRjyjrEcNVycaqOmNb5OTxZPE3xa5gwZduqza6L9JOCenh/Ecw==
@@ -1433,10 +1432,10 @@ fs-extra@^4.0.1:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
-fs-extra@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
-  integrity sha512-GnyIkKhhzXZUWFCaJzvyDLEEgDkPfb4/TPvJCJVuS8MWZgoSsErf++QpiAlDnKFcqhRlm+tIOcencCjyJE6ZCA==
+fs-extra@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.0.tgz#8cc3f47ce07ef7b3593a11b9fb245f7e34c041d6"
+  integrity sha512-EglNDLRpmaTWiD/qraZn6HREAEAHJcJOmxNEYwq6xeMKnVMAy3GUcFB+wXt2C6k4CNvB/mP1y/U3dzvKKj5OtQ==
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
@@ -1923,16 +1922,16 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-javascript-obfuscator@^0.17.3:
-  version "0.17.3"
-  resolved "https://registry.yarnpkg.com/javascript-obfuscator/-/javascript-obfuscator-0.17.3.tgz#1bd777d53cef92cd24f2874603cc33510e3101ce"
-  integrity sha512-yzOc2ePRjtRphDt+vMaAqLjMS/W23KGbeLnyfBUFhx6NQkHZv9WjZjQoLNF/tO1dmtihFCnRkJtNL+eH62ZVwA==
+javascript-obfuscator@^0.18.1:
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/javascript-obfuscator/-/javascript-obfuscator-0.18.1.tgz#ed536645bd64998c8d284c1ab87957d6d8d8294c"
+  integrity sha512-pQ2DyRV4j0neaWdII1S7iJftCyks9H7afVkQRSE4gslkqpeqyM1DE0eapsZKHR0BnYvw3tPU+Ky+j4yhzcxRZA==
   dependencies:
-    "@babel/runtime" "7.0.0-beta.55"
+    "@babel/runtime" "7.0.0-rc.1"
     chalk "2.4.1"
     chance "1.0.16"
     class-validator "0.9.1"
-    commander "2.16.0"
+    commander "2.17.1"
     escodegen-wallaby "1.6.19"
     espree "4.0.0"
     estraverse "4.2.0"
@@ -1943,7 +1942,7 @@ javascript-obfuscator@^0.17.3:
     multimatch "2.1.0"
     opencollective "1.0.3"
     reflect-metadata "0.1.12"
-    source-map-support "0.5.6"
+    source-map-support "0.5.8"
     string-template "1.0.0"
     tslib "1.9.3"
 
@@ -3345,6 +3344,11 @@ skip-regex@^0.3.1:
   resolved "https://registry.yarnpkg.com/skip-regex/-/skip-regex-0.3.1.tgz#17919aae2ac4ce3d61d5e77eedd88206c64aa215"
   integrity sha1-F5GarirEzj1h1ed+7diCBsZKohU=
 
+slugify@^1.3.1:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.3.2.tgz#b9aac7a964b94319871cf3f6e2cd06d47ee218aa"
+  integrity sha512-RB7T2QO4+F8zc5UA+yujQb8V5GDmyiGzCW7e/x5CyKUEx0xzI9Hz5ptOS85GDBHlDx6LDooyHxw5FwKkximL5Q==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
@@ -3386,10 +3390,10 @@ source-map-resolve@^0.5.0:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.6.tgz#4435cee46b1aab62b8e8610ce60f788091c51c13"
-  integrity sha512-N4KXEz7jcKqPf2b2vZF11lQIz9W5ZMuUcIOGj243lduidkf2fjkVKJS9vNxVWn3u/uxX38AcE8U9nnH9FPcq+g==
+source-map-support@0.5.8:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.8.tgz#04f5581713a8a65612d0175fbf3a01f80a162613"
+  integrity sha512-WqAEWPdb78u25RfKzOF0swBpY0dKrNdjc4GvLwm7ScX/o9bj8Eh/YL8mcMhBHYDGl87UkkSXDOFnW4G7GhWhGg==
   dependencies:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
@@ -3713,10 +3717,10 @@ tough-cookie@~2.4.3:
     psl "^1.1.24"
     punycode "^1.4.1"
 
-tracer@^0.8.12:
-  version "0.8.15"
-  resolved "https://registry.yarnpkg.com/tracer/-/tracer-0.8.15.tgz#c4bb5b8c788ed3d7106c081288e22fd5a5abc474"
-  integrity sha512-ZQzlhd6zZFIpAhACiZkxLjl65XqVwi8t8UEBVGRIHAQN6nj55ftJWiFell+WSqWCP/vEycrIbUSuiyMwul+TFw==
+tracer@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/tracer/-/tracer-0.9.1.tgz#e24139b6d2ccc2eb3b0ef535354d77575be208c4"
+  integrity sha512-8CNhMlajAqbP4hUDWgd5j540tSO7QlP7XLFg7bkPf37yWqfx7uYE/dwTIb+3PLnt+8XIZIQKbU5va7tk45MKXw==
   dependencies:
     colors "1.2.3"
     dateformat "3.0.3"
