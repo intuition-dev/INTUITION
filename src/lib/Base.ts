@@ -69,6 +69,8 @@ const sm = require('sitemap')
 const traverse = require('traverse')
 const lunr = require('lunr')
 
+const fbAdmin = require('firebase-admin')
+
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class RetMsg {
@@ -648,13 +650,27 @@ export class Items {
 			console.log('',url)
 			y.url = url
 
-			if(!this.feed.items)
-				this.feed.items =[]
+			/*TBD if (key_) { //keyed map
+				if(!this.feed.items)
+					this.feed.items ={}
+				let key = y[key_]
+				//y.index =  this.feed.items.length
+				if (key)
+					this.feed.items[key] = y
+				else {
+					console.log('Value for key '+key_+' not found in item')
+				}
+			} else */
+			{ //array of items
+				if(!this.feed.items)
+					this.feed.items =[]
 
-			y.index =  this.feed.items.length
-			console.log('', this.feed.items.length)
+				y.index =  this.feed.items.length
+				//console.log('', this.feed.items.length)
 
-			this.feed.items.push(y)
+				this.feed.items.push(y)
+			}
+
 		} catch(err) {
 			logger.trace(err)
 		}
@@ -847,6 +863,8 @@ export class MDevSrv2 {
 export class AdminSrv { // until we write a push service
 	//static reloadServer
 
+	public fbApp = null
+		
 	constructor(config) {
 		let dir = config['admin_www']
 		let port = config['admin_port']
@@ -855,7 +873,19 @@ export class AdminSrv { // until we write a push service
 		logger.trace(dir,port)
 		app.set('admin port', port)
 
+		
+
 		//AdminSrv.reloadServer = reload(app, {port:9857})
+		let auth = config['auth']
+		if ('firebase'==auth)
+		{
+			let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config'])))
+
+			this.fbApp = fbAdmin.initializeApp({
+				credential: fbAdmin.credential.cert(fbServiceAccount)
+				/*databaseURL: 'https://<DATABASE_NAME>.firebaseio.com' unused*/
+			})
+		}
 
 		app.set('views', dir)
 
@@ -988,12 +1018,12 @@ export class MetaPro2 {
 		return msg
 	}
 	itemize(dir:string):RetMsg {
-		let msg:RetMsg = this.b.itemizeNBake(this.mount+ '/' +dir )
+		let msg:RetMsg = this.b.itemizeNBake(this.mount+ '/' +dir)
 		this.setLast(msg)
 		return msg
 	}
 	itemizeOnly(dir:string):RetMsg {
-		let msg:RetMsg = this.b.itemizeOnly(this.mount+ '/' +dir )
+		let msg:RetMsg = this.b.itemizeOnly(this.mount+ '/' +dir)
 		this.setLast(msg)
 		return msg
 	}
@@ -1034,6 +1064,41 @@ export class MetaPro2 {
 			logger.trace(err)
 			return  new RetMsg(JSON.stringify(err), 1, 'error')
 		}
+	}
+
+	getUsers(req, res, dir:string) {
+		
+		var thiz = this
+		fbAdmin.auth().listUsers()  //1000 max. See Firebase doc for paging if more
+		.then(function(listUsersResult) {
+			console.log(JSON.stringify(listUsersResult))
+
+			let s:string =  fs.readFileSync(thiz.mount+'/'+dir+'/items.json', 'utf8')
+			let items = JSON.parse(s).items, map = {}, i = 0, users = []
+			for (i; i< items.length; i++) {
+				let item = items[i]; map[item['url']] = item
+			}
+			listUsersResult.users.forEach(function(userRecord) {
+				console.log('UID:'+userRecord)
+				let user =  {uid: userRecord.uid, email: userRecord.email, displayName: 'Admin Admin', emailVerified: userRecord.emailVerified, photoURL: userRecord['photoURL']}
+				let fileItem = map[userRecord.uid]
+				if (fileItem)
+					Object.assign(user, fileItem); //merg file content into user
+				else
+					console.log('fileItem not found for '+userRecord.uid)
+				users.push(user)
+			})
+			let merged = JSON.stringify({items: users})
+			console.log(merged)
+			let msg:RetMsg = new RetMsg(merged, 1, 'success')
+			thiz.setLast(msg)
+
+			res.json(msg)
+		})
+		.catch(function(error) {
+			console.log("Error listing users:", error);
+			res.json(new RetMsg(JSON.stringify(error), 1, 'error'))
+		})
 	}
 
 
