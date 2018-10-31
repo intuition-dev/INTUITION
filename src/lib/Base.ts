@@ -1066,6 +1066,23 @@ export class MetaPro2 {
 		}
 	}
 
+	deleteAuthUser(uid:string) {
+		console.log('deleteAuthUser'+uid)
+		return fbAdmin.auth().deleteUser(uid)
+	}
+
+	getUser(dir:string, uid:string):RetMsg {
+		let s:string =  fs.readFileSync(this.mount+'/'+dir+'/items.json', 'utf8')
+		let items = JSON.parse(s).items, i = 0, user = {}
+		for (i; i< items.length; i++) {
+			user = items[i]
+			if (user['url']==uid) break;
+		}
+		let msg:RetMsg = new RetMsg(JSON.stringify(user), 1, 'success')
+		this.setLast(msg)
+		return msg
+	}
+
 	getUsers(req, res, dir:string) {
 		
 		var thiz = this
