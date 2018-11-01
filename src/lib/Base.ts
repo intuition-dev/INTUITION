@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.11.30"
+      return "v4.11.28"
    }
 
    static slash(path) {// windowze
@@ -68,6 +68,9 @@ const bsz = require('buffer-image-size')
 const sm = require('sitemap')
 const traverse = require('traverse')
 const lunr = require('lunr')
+
+const fbAdmin = require('firebase-admin')
+
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class RetMsg {
@@ -697,7 +700,6 @@ export class Items {
                console.log('Value for key '+key_+' not found in item')
             }
          } else */
-
          { //array of items
             if(!this.feed.items)
                this.feed.items =[]
@@ -913,19 +915,17 @@ export class AdminSrv { // until we write a push service
       
 
       //AdminSrv.reloadServer = reload(app, {port:9857})
-      
-      //let auth = config['auth']
-      /*
+      let auth = config['auth']
       if ('firebase'==auth)
       {
          let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config'])))
 
          this.fbApp = fbAdmin.initializeApp({
             credential: fbAdmin.credential.cert(fbServiceAccount)
-            //databaseURL: 'https://<DATABASE_NAME>.firebaseio.com' unused
+            /*databaseURL: 'https://<DATABASE_NAME>.firebaseio.com' unused*/
          })
       }
-      */
+
       app.set('views', dir)
 
       app.use(express.static(dir))
@@ -1105,7 +1105,6 @@ export class MetaPro2 {
       }
    }
 
-   /*
    deleteAuthUser(uid:string) {
       console.log('deleteAuthUser'+uid)
       return fbAdmin.auth().deleteUser(uid)
@@ -1123,8 +1122,8 @@ export class MetaPro2 {
       return msg
    }
 
-   /*
-   getUsers(req, res, dir:string) { 
+   getUsers(req, res, dir:string) {
+      
       var thiz = this
       fbAdmin.auth().listUsers()  //1000 max. See Firebase doc for paging if more
       .then(function(listUsersResult) {
@@ -1156,7 +1155,8 @@ export class MetaPro2 {
          console.log("Error listing users:", error);
          res.json(new RetMsg(JSON.stringify(error), 1, 'error'))
       })
-   }*/
+   }
+
 
    // when you pass the file name, ex: watch
    autoBake(folder__, file):RetMsg {
