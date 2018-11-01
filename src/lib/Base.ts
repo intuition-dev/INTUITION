@@ -7,7 +7,7 @@ declare var process: any
 
 export class Ver {
    ver() {
-      return "v4.11.28"
+      return "v4.11.32"
    }
 
    static slash(path) {// windowze
@@ -70,7 +70,6 @@ const traverse = require('traverse')
 const lunr = require('lunr')
 
 const fbAdmin = require('firebase-admin')
-
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class RetMsg {
