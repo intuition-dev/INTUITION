@@ -500,6 +500,7 @@ export class MBake {
    }
 }
 
+
 export class BakeWrk {
    dir:string
    static bodyHtml = '</body></html>'
@@ -521,12 +522,49 @@ export class BakeWrk {
    bake() {
       process.chdir(this.dir)
 
-      this.cli(this.dir)//process pug-cli
+      if (!fs.existsSync(this.dir+'/index.pug'))
+         return ' '
+
+      let m = new Dat(this.dir)
+      //static data binding with a custom md filter that uses a transformer
+      let options = m.getAll() 
+      options['filters'] = {
+         metaMDtf: BakeWrk.metaMDtf
+      } 
+
+      let html = pug.renderFile(this.dir+'/index.pug',options )
+
+      let ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
+      html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
+
+      let fn = this.dir + '/index.html'
+      fs.writeFileSync(fn, html)
+      //console.log(' processed: '+ this.dir)
+
+      //amp
+      if (!fs.existsSync(this.dir+'/m.pug'))
+        return ' '
+      //static data binding:
+      html = pug.renderFile(this.dir+'/m.pug', options )
+
+      ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
+      html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
+
+      fn = this.dir + '/m.html'
+      fs.writeFileSync(fn, html)
+
+   }//()
+
+   bake2(baseDat_) {// Wolfgang method
+      process.chdir(this.dir)
+
+      const baseDat = yaml.load(fs.readFileSync(baseDat_+'.yaml'))
 
       if (!fs.existsSync(this.dir+'/index.pug'))
          return ' '
 
       let m = new Dat(this.dir)
+      Object.assign(m, baseDat) // merge base into m
 
       //static data binding with a custom md filter that uses a transformer
       let options = m.getAll() 
@@ -557,7 +595,7 @@ export class BakeWrk {
 
    }//()
 
-   _cli(dir) {
+   __cli(dir) {
       //logger.trace(dir)
       const files = FileHound.create()
          .depth(0)
@@ -574,11 +612,11 @@ export class BakeWrk {
 
       //logger.trace(files)
       for (let fn of files) {
-         this.cliEach(fn, obj)
+         this.__cliEach(fn, obj)
       }
    }//()
 
-   cliEach(fn, obj) { // dynamic data binding
+   __cliEach(fn, obj) { // dynamic data binding
       let foo = this.getNameFromFileName(fn)
       console.log(' _d' ,foo)
       obj.name = foo
@@ -605,6 +643,7 @@ export class BakeWrk {
       }) + 'Bind'
     }
 }//class
+
 
 export class Items {
    dir:string
