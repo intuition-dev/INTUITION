@@ -914,16 +914,14 @@ export class AdminSrv { // until we write a push service
       
 
       //AdminSrv.reloadServer = reload(app, {port:9857})
-      let auth = config['auth']
-      if ('firebase'==auth)
-      {
-         let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config'])))
+      
+      let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config'])))
 
-         this.fbApp = fbAdmin.initializeApp({
-            credential: fbAdmin.credential.cert(fbServiceAccount)
-            /*databaseURL: 'https://<DATABASE_NAME>.firebaseio.com' unused*/
-         })
-      }
+      this.fbApp = fbAdmin.initializeApp({
+         credential: fbAdmin.credential.cert(fbServiceAccount)
+         /*databaseURL: 'https://<DATABASE_NAME>.firebaseio.com' unused*/
+      })
+      
 
       app.set('views', dir)
 
@@ -1126,7 +1124,7 @@ export class MetaPro2 {
       var thiz = this
       fbAdmin.auth().listUsers()  //1000 max. See Firebase doc for paging if more
       .then(function(listUsersResult) {
-         console.log(JSON.stringify(listUsersResult))
+         //console.log(JSON.stringify(listUsersResult))
 
          let s:string =  fs.readFileSync(thiz.mount+'/'+dir+'/items.json', 'utf8')
          let items = JSON.parse(s).items, map = {}, i = 0, users = []
@@ -1135,7 +1133,7 @@ export class MetaPro2 {
          }
          listUsersResult.users.forEach(function(userRecord) {
             console.log('UID:'+userRecord)
-            let user =  {uid: userRecord.uid, email: userRecord.email, displayName: 'Admin Admin', emailVerified: userRecord.emailVerified, photoURL: userRecord['photoURL']}
+            let user =  {uid: userRecord.uid, email: userRecord.email, displayName: userRecord.displayName||'Admin Admin', emailVerified: userRecord.emailVerified, photoURL: userRecord['photoURL']}
             let fileItem = map[userRecord.uid]
             if (fileItem)
                Object.assign(user, fileItem); //merg file content into user
@@ -1144,7 +1142,7 @@ export class MetaPro2 {
             users.push(user)
          })
          let merged = JSON.stringify({items: users})
-         console.log(merged)
+         //console.log(merged)
          let msg:RetMsg = new RetMsg(merged, 1, 'success')
          thiz.setLast(msg)
 
