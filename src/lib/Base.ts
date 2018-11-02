@@ -941,7 +941,7 @@ export class Watch2 {
 export class MetaPro2 {
    mount:string
    b = new MBake()
-   m = new Map(this.mount)
+   m
 
    static folderProp = 'folder'
 
@@ -960,6 +960,7 @@ export class MetaPro2 {
 
    constructor(mount) {
       this.mount = mount
+      this.m = new Map(this.mount)
       logger.trace('MetaPro', this.mount)
    }
 
