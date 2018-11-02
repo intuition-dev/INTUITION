@@ -1,12 +1,9 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "ES2016",
-        "lib": [
-            "es2016", "es2015", "es6", "dom"
-           ],
+        "target": "ES2017",
+
         "allowJs": false,
-        "noImplicitAny": false,
         "moduleResolution": "node",
 		  "sourceMap": false,
 		  "removeComments": true,
