@@ -105,7 +105,7 @@ export class Map {
       }
       this._root = root
    }
-   gen() {
+   gen():RetMsg {
       const m = yaml.load(fs.readFileSync(this._root+'/map.yaml'))
       let jmenu = JSON.stringify(m.menu, null, 2)
       //menu done
@@ -180,7 +180,7 @@ export class Map {
          thiz._map2(leaves)
 
       })// to XML write
-
+      return new RetMsg(thiz._root + ' map', 1,'ok')
    }//map()
 
    _map2(leaves) {
@@ -941,6 +941,8 @@ export class Watch2 {
 export class MetaPro2 {
    mount:string
    b = new MBake()
+   m = new Map(this.mount)
+
    static folderProp = 'folder'
 
    static srcProp = 'src'
@@ -975,6 +977,11 @@ export class MetaPro2 {
       let folder = this.mount + '/' +dir
       logger.trace(folder)
       let msg:RetMsg = this.b.tag(folder)
+      this.setLast(msg)
+      return msg
+   }
+   map(dir:string):RetMsg {
+      let msg:RetMsg = this.m.gen()
       this.setLast(msg)
       return msg
    }
