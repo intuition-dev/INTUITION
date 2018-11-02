@@ -941,7 +941,7 @@ export class Watch2 {
 export class MetaPro2 {
    mount:string
    b = new MBake()
-   m
+   m:Map
 
    static folderProp = 'folder'
 
