@@ -980,7 +980,7 @@ export class MetaPro2 {
       this.setLast(msg)
       return msg
    }
-   map(dir:string):RetMsg {
+   map():RetMsg {
       let msg:RetMsg = this.m.gen()
       this.setLast(msg)
       return msg
