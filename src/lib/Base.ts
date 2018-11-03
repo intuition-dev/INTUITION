@@ -720,7 +720,7 @@ export class Tag {
 
    static obsOptions = {
       identifierNamesGenerator: 'mangled' // for virus
-      , disableConsoleOutput: true
+      , disableConsoleOutput: false
 
       , stringArray: true
       , stringArrayThreshold: 1
@@ -732,8 +732,7 @@ export class Tag {
       , controlFlowFlatteningThreshold: 1
 
       , deadCodeInjection: true
-      , deadCodeInjectionThreshold: 0.1
-
+      , deadCodeInjectionThreshold: 0.2
    }
 
    process(s:string, fn:string) {
@@ -1167,7 +1166,14 @@ export class Scrape {
 
 }//class
 
+export class AdminFireUtil {
+
+
+}
+
+
+
 module.exports = {
    Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, AdminSrv,
-   Scrape, FileOps, CSV2Json, Map, MDevSrv2, MetaPro2, Watch2
+   Scrape, FileOps, CSV2Json, Map, MDevSrv2, MetaPro2, Watch2, AdminFireUtil
 }
