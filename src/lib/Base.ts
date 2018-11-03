@@ -7,7 +7,7 @@
 
 export class Ver {
    ver() {
-      return "v4.11.34"
+      return "v4.11.35"
    }
 
    static slash(path) {// windowze
