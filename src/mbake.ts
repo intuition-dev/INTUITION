@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // License} LGPL 2.1  (c) Metabake.org | Cekvenich
 
-/*declare var require: any
+/*
 declare var process: any
 declare var console: Console
 declare var __dirname: any

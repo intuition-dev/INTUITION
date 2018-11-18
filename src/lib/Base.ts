@@ -2,7 +2,7 @@
 // All rights Metabake.org | cekvenich, licensed under LGPL 2.1
 
 //declare var module: any
-//declare var require: any
+//
 //declare var process: any
 
 export class Ver {
