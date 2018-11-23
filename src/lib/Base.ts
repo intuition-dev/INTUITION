@@ -1,10 +1,6 @@
 
 // All rights Metabake.net | cekvenich, licensed under LGPL 2.1
 
-//declare var module: any
-//
-//declare var process: any
-
 export class Ver {
    ver() {
       return "v4.11.39"
@@ -34,9 +30,6 @@ const md = require('markdown-it')({
    },
 }); // https://github.com/markdown-it/markdown-it-container/issues/23
 md.use(markdownItAttrs)
-
-// imports ///
-const slugify = require('slugify')
 
 const fs = require('fs')
 const fse = require('fs-extra')
@@ -142,8 +135,6 @@ export class Map {
             let props = dat.getAll()
             logger.trace(path)//, props)
 
-            if (props['template']) //skip
-               continue
             //priority
             let priority = props['priority']
             if(!priority) priority = 0.3
@@ -248,7 +239,6 @@ export class FileOps {
       let p = this.root+dest
       logger.trace(p)
       const d = new Dat(p)
-      d.set('template', false)
       d.write()
       logger.trace('copy!')
       return new RetMsg('clone',1,dest)
@@ -273,30 +263,6 @@ export class FileOps {
       let file_path = this.root + path
       fs.unlinkSync(file_path)
    }
-
-   getMediaFilenames(dir_path:string):String[]{ //may include Featured Image
-      try {
-         if (dir_path.indexOf('/')!=0)
-            dir_path = '/' + dir_path
-         let mfilenames = []
-         let exclude = ['index.pug','index.html','content.md', 'dat.yaml','comment.md']
-         if (fs.existsSync(this.root + dir_path)) {
-            fs.readdirSync(this.root + dir_path).forEach(function(entry) {
-               //get media in folder, exclude featured image, index.pug, .hml, dat.yaml and content.md
-               if (exclude.indexOf(entry)==-1)
-               {
-                  mfilenames.push(entry)
-               }
-            })
-         }
-         return mfilenames
-
-      } catch(err) {
-         logger.trace(err)
-         return []
-      }
-   }
-
 }
 
 export class Dat {
@@ -350,6 +316,25 @@ export class Dirs {
    constructor(dir_:string) {
       let dir = Ver.slash(dir_)
       this.dir=dir
+   }
+
+   getInDir(sub) {
+
+   }
+
+   getShort() {
+      let lst = this.get()
+      let ret : string[] = [] //empty string array
+      const ll = this.dir.length
+      logger.trace(this.dir,ll)
+
+      for (let s of lst) {//clean the strings
+         //console.log(s)
+         let n = s.substr(ll)
+         //console.log(n)
+         ret.push(n)
+      }
+      return ret
    }
 
    get() {
@@ -450,8 +435,6 @@ export class MBake {
       }
       // return new RetMsg(path + ' tag', 1,'ok')
    }
-
-
 
    itemizeOnly(path):RetMsg {
 
@@ -600,10 +583,6 @@ export class Items {
             return
          let y = yaml.load(fs.readFileSync(dn+'/dat.yaml'))
          if(!y) return
-         if(y.template) {
-            console.log('  skipped')
-            return
-         }
 
          Items.clean(y)
 
@@ -663,6 +642,9 @@ export class Items {
       delete o['basedir']
       delete o['ROOT']
       delete o['pretty']
+
+      delete o['publishOn']
+
    }
 
 }//class
@@ -969,43 +951,13 @@ export class MetaA {
       this.setLast(msg)
       return msg
    }
+
    getItems(dir:string):RetMsg {
       let s:string =  fs.readFileSync(this.mount+'/'+dir+'/items.json', 'utf8')
       //TODO: handle not found
       let msg:RetMsg = new RetMsg(s, 1, 'success')
       this.setLast(msg)
       return msg
-   }
-
-   getItem(dir:string, folder:string):RetMsg {
-      try {
-         let dir_path =  this.mount+'/'+dir+'/'+folder
-         let media = []
-         let mfilenames = new FileOps(this.mount).getMediaFilenames('/'+dir+'/'+folder)
-         let y = yaml.load(fs.readFileSync(dir_path+'/dat.yaml', 'utf8'))
-         let content = fs.readFileSync(dir_path+'/content.md', 'utf8')
-         
-         if(!y) return
-         y.url = folder
-         Items.clean(y)
-
-         let i = 0, ilen = mfilenames.length;
-         for (i; i < ilen; i++) { //add as array of objects with [{filename: x}, {filename: y}]
-            if (mfilenames[i] != y.image) //exclude featured image from media list
-               media.push({filename: mfilenames[i]})
-         }
-         y.media = media
-
-         y.content = content
-
-         let msg:RetMsg = new RetMsg(y, 1, 'success')
-         this.setLast(msg)
-         return msg
-   
-      } catch(err) {
-         logger.trace(err)
-         return  new RetMsg(JSON.stringify(err), 1, 'error')
-      }
    }
 
    // when you pass the file name, ex: watch
@@ -1105,9 +1057,7 @@ export class AdminFireUtil {
       return fbAdmin.auth().deleteUser(uid)
    }
 
-
-}
-
+}//class
 
 module.exports = {
    Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, AdminSrv,

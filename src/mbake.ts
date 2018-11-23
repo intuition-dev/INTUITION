@@ -1,20 +1,18 @@
 #!/usr/bin/env node
 // License} LGPL 2.1  (c) Metabake.net | Cekvenich
 
-/*
-declare var process: any
-declare var console: Console
-declare var __dirname: any
-*/
 const AdmZip = require('adm-zip')
 const commandLineArgs = require('command-line-args')
 
-import { Ver, MBake, CSV2Json, Map } from './lib/Base'
+import { Ver, MBake, CSV2Json, Map , Dirs} from './lib/Base'
 
 const clear = require("cli-clear")
-clear()
+//clear()
 
-//process.exit()
+let d = new Dirs('/Users/code/Documents/GitHub/examples/examples')
+console.log(d.getShort() )
+
+process.exit()
 
 // imports done /////////////////////////////////////////////
 const cwd:string = process.cwd()
