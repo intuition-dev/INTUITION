@@ -9,7 +9,7 @@ License of all examples apps are MIT - but core build lib itself(Base.*) is LGPL
 You can use for free in any way; but if you change or use the core library directly, you must contribute back to the source of the ideas.
 
 
-- [Click for 'THE' mbake Docs](http://doc.metabake.net/mbake/)
+- [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
 
 
 10 times more productive web app development via low code such as Pug

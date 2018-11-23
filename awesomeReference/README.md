@@ -43,9 +43,9 @@ Also, you should avoid prototyping in GUI tools - text prototyping is just as fa
 
 These are projects, that together leverage the 10 pillars:
 
-- [mbake](http://doc.metabake.net/mbake); CLI, and foundation. Please give it stars: '*'
-- [SPA](http://doc.metabake.net/SPA); eg. Brick and Mortar, examples, eg: PhoneGap v8
-- [Meta](http://doc.metabake.net/meta); Vista, Bespoke starter for Admin/Build automatic Services and WebIDE
+- [mbake](http://doc.metabake.org/mbake); CLI, and foundation. Please give it stars: '*'
+- [SPA](http://doc.metabake.org/SPA); eg. Brick and Mortar, examples, eg: PhoneGap v8
+- [Meta](http://doc.metabake.org/meta); Vista, Bespoke starter for Admin/Build automatic Services and WebIDE
 
 'Train-the-Trainer' is scheduled about monthly, and it is announced in the forum. Feel free to post questions there.
 

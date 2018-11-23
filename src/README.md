@@ -9,7 +9,7 @@ You can use for free in any way; but if you change or use the core library direc
 
 
 
-- [Click for 'THE' mbake Docs](http://doc.metabake.net/mbake/)
+- [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
 
 10 times more productive web app development via low code such as Pug
 

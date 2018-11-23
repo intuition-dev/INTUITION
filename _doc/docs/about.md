@@ -1,6 +1,6 @@
 
 
-- [Click for 'THE' mbake Docs](http://doc.metabake.net/mbake/)
+- [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
 
 
 ## Less code = 10X faster web app development.
