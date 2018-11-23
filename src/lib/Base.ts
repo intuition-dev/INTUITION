@@ -1,5 +1,5 @@
 
-// All rights Metabake.org | cekvenich, licensed under LGPL 2.1
+// All rights Metabake.net | cekvenich, licensed under LGPL 2.1
 
 //declare var module: any
 //
@@ -7,7 +7,7 @@
 
 export class Ver {
    ver() {
-      return "v4.11.38"
+      return "v4.11.39"
    }
 
    static slash(path) {// windowze
@@ -177,13 +177,13 @@ export class Map {
          fs.writeFileSync(thiz._root+'/sitemap.xml', xml)
          console.log(' Sitemap ready')
 
-         thiz._map2(leaves)
+         thiz._map(leaves)
 
       })// to XML write
       return new RetMsg(thiz._root + ' map', 1,'ok')
    }//map()
 
-   _map2(leaves) {
+   _map(leaves) {
       let documents = []
 
       var arrayLength = leaves.length
@@ -332,7 +332,7 @@ export class Dat {
    set(key, val) { // ex: 'title', 'My First Blog'
       this.props[key] = val
    }
-   _addData() {// load json for Wolfgang?
+   _addData() {
       let jn = this.props.include
       let fn = this.path+'/'+jn
       logger.trace( fn)
@@ -613,18 +613,7 @@ export class Items {
          console.log('',url)
          y.url = url
 
-         /*TBD if (key_) { //keyed map
-            if(!this.feed.items)
-               this.feed.items ={}
-            let key = y[key_]
-            //y.index =  this.feed.items.length
-            if (key)
-               this.feed.items[key] = y
-            else {
-               console.log('Value for key '+key_+' not found in item')
-            }
-         } else */
-         { //array of items
+         //array of items
             if(!this.feed.items)
                this.feed.items =[]
 
@@ -632,7 +621,6 @@ export class Items {
             //console.log('', this.feed.items.length)
 
             this.feed.items.push(y)
-         }
 
       } catch(err) {
          logger.trace(err)
@@ -675,7 +663,6 @@ export class Items {
       delete o['basedir']
       delete o['ROOT']
       delete o['pretty']
-      delete o['template']
    }
 
 }//class
@@ -767,16 +754,16 @@ export class Tag {
    }
 }//class
 // Meta: //////////////////////
-export class MDevSrv2 {
+export class MDevSrv {
    static reloadServer
    // http://github.com/alallier/reload
 
-   constructor(dir, port, ignore_) {// flag to ignore reload
+   constructor(dir, port) {// flag to ignore reload
 
       let app = express()
       logger.trace(dir, port)
       app.set('app port', port)
-      MDevSrv2.reloadServer = reload(app, {verbose:false, port:9856})
+      MDevSrv.reloadServer = reload(app, {verbose:false, port:9856})
       app.set('views', dir)
 
       const bodyInterceptor = interceptor(function(req, res){
@@ -823,10 +810,7 @@ export class MDevSrv2 {
 }//class
 
 export class AdminSrv { // until we write a push service
-   //static reloadServer
-
-   public fbApp = null
-      
+   //static reloadServer      
    constructor(config) {
       let dir = config['admin_www']
       let port = config['admin_port']
@@ -834,18 +818,8 @@ export class AdminSrv { // until we write a push service
       let app = express()
       logger.trace(dir,port)
       app.set('admin port', port)
-
-      
-
-      //AdminSrv.reloadServer = reload(app, {port:9857})
       
       let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config'])))
-
-      this.fbApp = fbAdmin.initializeApp({
-         credential: fbAdmin.credential.cert(fbServiceAccount)
-         /*databaseURL: 'https://<DATABASE_NAME>.firebaseio.com' unused*/
-      })
-      
 
       app.set('views', dir)
 
@@ -856,12 +830,12 @@ export class AdminSrv { // until we write a push service
    }//()
 }//class
 
-export class Watch2 {
+export class Watch {
    root
    watcher
 
-   mp: MetaPro2
-   constructor(mp_:MetaPro2, mount) {
+   mp: MetaA
+   constructor(mp_:MetaA, mount) {
       this.mp = mp_
       this.root = mount
    }
@@ -902,13 +876,13 @@ export class Watch2 {
 
    static refreshPending = false
    refreshBro() {
-      if(Watch2.refreshPending) return  //debounce
-      Watch2.refreshPending = true
+      if(Watch.refreshPending) return  //debounce
+      Watch.refreshPending = true
       setTimeout(function () {
          console.log('reload')
-         MDevSrv2.reloadServer.reload()
+         MDevSrv.reloadServer.reload()
 
-         Watch2.refreshPending = false
+         Watch.refreshPending = false
 
       }, 20)//time
    }
@@ -937,7 +911,7 @@ export class Watch2 {
    }
 }//class
 
-export class MetaPro2 {
+export class MetaA {
    mount:string
    b = new MBake()
    m:Map
@@ -1034,59 +1008,6 @@ export class MetaPro2 {
       }
    }
 
-   deleteAuthUser(uid:string) {
-      console.log('deleteAuthUser'+uid)
-      return fbAdmin.auth().deleteUser(uid)
-   }
-
-   getUser(dir:string, uid:string):RetMsg {
-      let s:string =  fs.readFileSync(this.mount+'/'+dir+'/items.json', 'utf8')
-      let items = JSON.parse(s).items, i = 0, user = {}
-      for (i; i< items.length; i++) {
-         user = items[i]
-         if (user['url']==uid) break;
-      }
-      let msg:RetMsg = new RetMsg(JSON.stringify(user), 1, 'success')
-      this.setLast(msg)
-      return msg
-   }
-
-   getUsers(req, res, dir:string) {
-      
-      var thiz = this
-      fbAdmin.auth().listUsers()  //1000 max. See Firebase doc for paging if more
-      .then(function(listUsersResult) {
-         //console.log(JSON.stringify(listUsersResult))
-
-         let s:string =  fs.readFileSync(thiz.mount+'/'+dir+'/items.json', 'utf8')
-         let items = JSON.parse(s).items, map = {}, i = 0, users = []
-         for (i; i< items.length; i++) {
-            let item = items[i]; map[item['url']] = item
-         }
-         listUsersResult.users.forEach(function(userRecord) {
-            console.log('UID:'+userRecord)
-            let user =  {uid: userRecord.uid, email: userRecord.email, displayName: userRecord.displayName||'Admin Admin', emailVerified: userRecord.emailVerified, photoURL: userRecord['photoURL']}
-            let fileItem = map[userRecord.uid]
-            if (fileItem)
-               Object.assign(user, fileItem); //merg file content into user
-            else
-               console.log('fileItem not found for '+userRecord.uid)
-            users.push(user)
-         })
-         let merged = JSON.stringify({items: users})
-         //console.log(merged)
-         let msg:RetMsg = new RetMsg(merged, 1, 'success')
-         thiz.setLast(msg)
-
-         res.json(msg)
-      })
-      .catch(function(error) {
-         console.log("Error listing users:", error);
-         res.json(new RetMsg(JSON.stringify(error), 1, 'error'))
-      })
-   }
-
-
    // when you pass the file name, ex: watch
    autoBake(folder__, file):RetMsg {
       const folder = Ver.slash(folder__)
@@ -1167,13 +1088,28 @@ export class Scrape {
 }//class
 
 export class AdminFireUtil {
+   public fbApp = null
+
+   constructor(config) {
+    
+      let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config'])))
+
+      this.fbApp = fbAdmin.initializeApp({
+         credential: fbAdmin.credential.cert(fbServiceAccount)
+      })
+
+   }
+
+   deleteAuthUser(uid:string) {
+      console.log('deleteAuthUser'+uid)
+      return fbAdmin.auth().deleteUser(uid)
+   }
 
 
 }
 
 
-
 module.exports = {
    Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, AdminSrv,
-   Scrape, FileOps, CSV2Json, Map, MDevSrv2, MetaPro2, Watch2, AdminFireUtil
+   Scrape, FileOps, CSV2Json, Map, MDevSrv, MetaA, Watch, AdminFireUtil
 }

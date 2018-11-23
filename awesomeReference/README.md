@@ -12,12 +12,12 @@ To get an overview of Metabake pillars:
 
 - [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
 - <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
-- [Metabake Full Slides](http://prez.metabake.org/p)
+- [Metabake Full Slides](http://prez.metabake.net/p)
 - [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
 
 Directory of related projects is in Resources on left, and source code is here:
-- <a href='http://git.metabake.org' target='_blank'>git.metabake.org</a>
+- <a href='http://git.metabake.net' target='_blank'>git.metabake.net</a>
 
 
 
@@ -43,9 +43,9 @@ Also, you should avoid prototyping in GUI tools - text prototyping is just as fa
 
 These are projects, that together leverage the 10 pillars:
 
-- [mbake](http://doc.metabake.org/mbake); CLI, and foundation. Please give it stars: '*'
-- [SPA](http://doc.metabake.org/SPA); eg. Brick and Mortar, examples, eg: PhoneGap v8
-- [Meta](http://doc.metabake.org/meta); Vista, Bespoke starter for Admin/Build automatic Services and WebIDE
+- [mbake](http://doc.metabake.net/mbake); CLI, and foundation. Please give it stars: '*'
+- [SPA](http://doc.metabake.net/SPA); eg. Brick and Mortar, examples, eg: PhoneGap v8
+- [Meta](http://doc.metabake.net/meta); Vista, Bespoke starter for Admin/Build automatic Services and WebIDE
 
 'Train-the-Trainer' is scheduled about monthly, and it is announced in the forum. Feel free to post questions there.
 
@@ -81,7 +81,7 @@ Prerequisites: you should know HTML and CSS. If you need to catch up, we recomme
 # Support
 
 &nbsp;
-- <a href='http://chat.metabake.org' target='_blank'>Forum/Chat</a>, to support this project, please join!
+- <a href='http://chat.metabake.net' target='_blank'>Forum/Chat</a>, to support this project, please join!
 
 
 ### Message from creators of Metabake:

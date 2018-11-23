@@ -18,7 +18,7 @@ Find out more about Metabake:
 
 - <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
 
-- [Slide Deck](http://prez.metabake.org/p)
+- [Slide Deck](http://prez.metabake.net/p)
 
 - [Summary for Managers](https://www.youtube.com/watch?v=OK-cJNSkQII)
 

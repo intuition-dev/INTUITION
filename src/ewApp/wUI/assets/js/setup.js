@@ -1,5 +1,5 @@
 
-// All rights Metabake.org | cekvenich, licensed under LGPL 2.1
+// All rights Metabake.net | cekvenich, licensed under LGPL 2.1
 
 /*
 const ipcBro = require('electron').ipcRenderer

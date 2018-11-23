@@ -1,7 +1,7 @@
 {
    "name": "mbake",
-   "version": "4.11.38",
-   "description": "Statically process pug files recursively, including any static or dynamic binding; as per low code pillars: http://www.Metabake.org",
+   "version": "4.11.39",
+   "description": "Statically process pug files recursively, including any static or dynamic binding; as per low code pillars: http://www.Metabake.net",
    "main": "mbake.js",
    "scripts": {
       "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""
@@ -11,12 +11,12 @@
       "mbake-cli": "mbake.js"
    },
    "license": "LGPL-2.1-only",
-   "author": "http://www.Metabake.org",
-   "bugs": "http://www.Metabake.org",
-   "homepage": "http://www.Metabake.org",
+   "author": "http://www.Metabake.net",
+   "bugs": "http://www.Metabake.net",
+   "homepage": "http://www.Metabake.net",
    "repository": {
       "type": "git",
-      "url": "http://www.Metabake.org"
+      "url": "http://www.Metabake.net"
    },
    "keywords": [
       "mbake",
@@ -29,16 +29,15 @@
       "node": ">=10.13"
    },
    "dependencies": {
-      "adm-zip": "^0.4.13",
+      "adm-zip": ">=0.4.13",
       "axios": ">=0.18.0",
       "buffer-image-size": ">=0.6.4",
       "cheerio": ">=1.0.0-rc.2",
       "chokidar": ">=2.0.4",
       "cli-clear": ">=1.0.4",
       "command-line-args": ">=5.0.2",
-      "connect": ">=3.6.6",
       "csvtojson": ">=2.0.8",
-      "electron": "^3.0.9",
+      "electron": ">=4.0.0-beta.7",
       "express": ">=4.16.4",
       "express-interceptor": ">=1.2.0",
       "filehound": ">=1.16.4",
@@ -49,7 +48,7 @@
       "js-yaml": ">=3.12.0",
       "jstransformer": ">=1.0.0",
       "jstransformer-markdown-it": ">=2.1.0",
-      "lunr": "^2.3.5",
+      "lunr": ">=2.3.5",
       "markdown-it": ">=8.4.2",
       "markdown-it-attrs": ">=2.3.2",
       "markdown-it-container": ">=2.0.0",
@@ -58,8 +57,8 @@
       "reload": ">=2.3.1",
       "riot-compiler": ">=3.5.1",
       "sitemap": ">=2.1.0",
-      "slugify": "^1.3.3",
-      "tracer": "^0.9.6",
+      "slugify": ">=1.3.3",
+      "tracer": ">=0.9.6",
       "traverse": ">=0.6.6",
       "unfluff": ">=3.2.0"
    },

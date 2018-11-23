@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// License} LGPL 2.1  (c) Metabake.org | Cekvenich
+// License} LGPL 2.1  (c) Metabake.net | Cekvenich
 
 /*
 declare var process: any
@@ -48,7 +48,7 @@ function version() {
    console.log('  For a hybrid Phonegap app: mbake -p')
    console.log('  For an example auto admin/build/Meta cloud service: mbake -a')
 
-   console.log(' Full docs: http://www.Metabake.org , more examples and notes on newer versions')
+   console.log(' Full docs: http://www.Metabake.net , more examples and notes on newer versions')
    console.log()
 
    //process.exit()
