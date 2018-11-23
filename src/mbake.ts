@@ -7,12 +7,9 @@ const commandLineArgs = require('command-line-args')
 import { Ver, MBake, CSV2Json, Map , Dirs} from './lib/Base'
 
 const clear = require("cli-clear")
-//clear()
+clear()
 
-let d = new Dirs('/Users/code/Documents/GitHub/examples/examples')
-console.log(d.getShort() )
-
-process.exit()
+//process.exit()
 
 // imports done /////////////////////////////////////////////
 const cwd:string = process.cwd()

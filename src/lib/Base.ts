@@ -1,3 +1,4 @@
+import { notDeepEqual } from "assert";
 
 // All rights Metabake.net | cekvenich, licensed under LGPL 2.1
 
@@ -319,9 +320,28 @@ export class Dirs {
    }
 
    getInDir(sub) {
+      const rec = FileHound.create() //recurse
+         .paths(this.dir+sub)
+         .not().glob("*.js")
+         .findSync()
 
+      let ret : string[] = [] //empty string array
+      const ll = this.dir.length +sub.length
+      for (let s of rec) {//clean the strings
+         //console.log(s)
+         let n = s.substr(ll)
+         //console.log(n)
+         if(n.includes('index.html')) continue
+         if(n.includes('index.pug')) continue
+
+         ret.push(n)
+      }
+      return ret
    }
 
+   /**
+    * Get list of dirs w/o root part
+    */
    getShort() {
       let lst = this.get()
       let ret : string[] = [] //empty string array
