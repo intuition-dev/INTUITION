@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // License} LGPL 2.1  (c) Metabake.net | Cekvenich
 
-const AdmZip = require('adm-zip')
-const commandLineArgs = require('command-line-args')
+import AdmZip = require('adm-zip');
+import commandLineArgs = require('command-line-args');
 
 import { Ver, MBake, CSV2Json, Map , Dirs} from './lib/Base'
 
-const clear = require("cli-clear")
+import clear = require("cli-clear");
 clear()
 
 //process.exit()
@@ -128,13 +128,13 @@ function unzipD() {
 
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
 if(arg) {
-   arg = Ver.slash(arg)
+   arg = Dirs.slash(arg)
    if(arg.startsWith('/'))  {
       //do nothing, full path is arg
    } else if (arg.startsWith('..')) { // few  cases to test
       arg = arg.substring(2)
       let d = cwd
-      d = Ver.slash(d)
+      d = Dirs.slash(d)
       // find offset
       let n = d.lastIndexOf('/')
       d = d.substring(0,n)

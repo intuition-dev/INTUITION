@@ -6,14 +6,10 @@ export class Ver {
    ver() {
       return "v4.11.39"
    }
-
-   static slash(path) {// windowze
-      return path.replace(/\\/g, '/')
-   }
 }
 
 // metaMDtf
-const markdownItAttrs = require('markdown-it-attrs')
+import markdownItAttrs = require('markdown-it-attrs');
 const md = require('markdown-it')({
    html: true,
    typographer: true,
@@ -32,38 +28,39 @@ const md = require('markdown-it')({
 }); // https://github.com/markdown-it/markdown-it-container/issues/23
 md.use(markdownItAttrs)
 
-const fs = require('fs')
-const fse = require('fs-extra')
-const FileHound = require('filehound')
-const yaml = require('js-yaml')
+import fs = require('fs');
+import fse = require('fs-extra');
+import FileHound = require('filehound');
+import yaml = require('js-yaml');
 
-const riotc = require('riot-compiler')
-const pug = require('pug')
+import riotc = require('riot-compiler');
+import pug = require('pug');
 const logger = require('tracer').console()
 
-const csv2JsonV2 = require('csvtojson')
+import csv2JsonV2 = require('csvtojson');
 
-const JavaScriptObfuscator = require('javascript-obfuscator')
+import * as JavaScriptObfuscator from 'javascript-obfuscator'
 
-const express = require('express')
-const chokidar = require('chokidar')
-const reload = require('reload')
+import express = require('express');
+import chokidar = require('chokidar');
+import reload = require('reload');
 
-const extractor = require('unfluff')//scrape
-const axios = require('axios')
+import extractor = require('unfluff');//scrape
+import axios from 'axios'
 
-const cheerio     = require('cheerio')
-const interceptor = require('express-interceptor')
+import cheerio = require('cheerio');
+import interceptor = require('express-interceptor');
 
-const probe  = require('probe-image-size')
-const bsz = require('buffer-image-size')
+import probe = require('probe-image-size');
+import bsz = require('buffer-image-size');
 
 // map
-const sm = require('sitemap')
-const traverse = require('traverse')
-const lunr = require('lunr')
+import sm = require('sitemap');
+import traverse = require('traverse');
+import lunr = require('lunr');
 
-const fbAdmin = require('firebase-admin')
+import fbAdmin = require('firebase-admin');
+import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions";
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class RetMsg {
@@ -194,7 +191,7 @@ export class Map {
 
             let text =''
             for (let val of rec) {//clean the strings
-               val = Ver.slash(val)
+               val = Dirs.slash(val)
                console.log(val)
                let txt1 = fs.readFileSync(val, "utf8")
                text = text + ' ' + txt1
@@ -229,7 +226,7 @@ export class Map {
 export class FileOps {
    root
    constructor(root_) {
-      this.root = Ver.slash(root_)
+      this.root = Dirs.slash(root_)
    }
 
    clone(src, dest):RetMsg {
@@ -270,7 +267,7 @@ export class Dat {
    props: any
    path:string
    constructor(path_:string) {
-      let path = Ver.slash(path_)
+      let path = Dirs.slash(path_)
       //logger.trace(path)
       this.path = path
 
@@ -304,7 +301,7 @@ export class Dat {
       let fn = this.path+'/'+jn
       logger.trace( fn)
       let jso = fs.readFileSync(fn)
-      Object.assign(this.props, JSON.parse(jso)) // merge
+      Object.assign(this.props, JSON.parse(jso.toString())) // merge
    }
 
    getAll():Object {
@@ -315,10 +312,12 @@ export class Dat {
 export class Dirs {
    dir:string
    constructor(dir_:string) {
-      let dir = Ver.slash(dir_)
+      let dir = Dirs.slash(dir_)
       this.dir=dir
    }
-
+   static slash(path) {// windowze
+      return path.replace(/\\/g, '/')
+   }
    getInDir(sub) {
       const rec = FileHound.create() //recurse
          .paths(this.dir+sub)
@@ -365,7 +364,7 @@ export class Dirs {
          .findSync()
       let ret : string[] = [] //empty string array
       for (let val of rec) {//clean the strings
-         val = Ver.slash(val)
+         val = Dirs.slash(val)
          let n = val.lastIndexOf('/')
          let s:string = val.substring(0,n)
          if (!fs.existsSync(s+'/dat.yaml'))
@@ -384,7 +383,7 @@ export class CSV2Json { // TODO: get to work with watcher
          console.log('no path arg passed')
          return
       }
-      this.dir = Ver.slash(dir_)
+      this.dir = Dirs.slash(dir_)
    }
 
    convert():RetMsg {
@@ -508,7 +507,7 @@ export class BakeWrk {
    static bodyHtml = '</body></html>'
 
    constructor(dir_:string) {
-      let dir = Ver.slash(dir_)
+      let dir = Dirs.slash(dir_)
 
       this.dir=dir
       console.log(' processing: '+ this.dir)
@@ -558,7 +557,7 @@ export class BakeWrk {
    }//()
 
    getNameFromFileName(filename) {//lifted from pug cli
-      filename =  Ver.slash(filename)
+      filename =  Dirs.slash(filename)
 
       if (filename.indexOf('/')>-1) {
          let pos = filename.lastIndexOf('/')+1
@@ -577,7 +576,7 @@ export class Items {
    dirs // array
    feed //rss
    constructor(dir_:string) {
-      let dir = Ver.slash(dir_)
+      let dir = Dirs.slash(dir_)
 
       let fn:string = dir +'/dat_i.yaml'
       if (!fs.existsSync(fn)) { //if it does not exist, go up a level
@@ -673,7 +672,7 @@ export class Tag {
    dir:string
 
    constructor(dir_:string) {
-      let dir = Ver.slash(dir_)
+      let dir = Dirs.slash(dir_)
 
       this.dir=dir
    }
@@ -694,7 +693,7 @@ export class Tag {
    tag(list):string {
       console.log('Looking for tags *-tag '+ this.dir)
       for (let val of list) {//clean the strings
-         let s:string =  fs.readFileSync(val)
+         let s:string =  fs.readFileSync(val).toString()
 
          let n = val.lastIndexOf('/')
          let dir:string = val.substring(0,n)
@@ -707,7 +706,8 @@ export class Tag {
       return 'ok'
    }//()
 
-   static obsOptions = {
+   static getObsOptions ():TInputOptions { 
+      let t = {
       identifierNamesGenerator: 'mangled' // for virus
       , disableConsoleOutput: false
 
@@ -722,6 +722,8 @@ export class Tag {
 
       , deadCodeInjection: true
       , deadCodeInjectionThreshold: 0.2
+    }
+    return t as TInputOptions
    }
 
    process(s:string, fn:string) {
@@ -744,7 +746,7 @@ export class Tag {
       let ugs
       try {
          // ugs http://npmjs.com/package/uglify-es
-         ugs = JavaScriptObfuscator.obfuscate(js, Tag.obsOptions)// ugs
+         ugs = JavaScriptObfuscator.obfuscate(js, Tag.getObsOptions())// ugs
 
       } catch(err) {
          logger.error('error')
@@ -821,7 +823,7 @@ export class AdminSrv { // until we write a push service
       logger.trace(dir,port)
       app.set('admin port', port)
       
-      let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config'])))
+      let fbServiceAccount = new Object(JSON.parse( fs.readFileSync(config['firebase_config']).toString() ) )
 
       app.set('views', dir)
 
@@ -890,7 +892,7 @@ export class Watch {
    }
 
    auto(path_:string) {//process
-      let path = Ver.slash(path_)
+      let path = Dirs.slash(path_)
 
       let p = path.lastIndexOf('/')
       let folder = ''
@@ -982,7 +984,7 @@ export class MetaA {
 
    // when you pass the file name, ex: watch
    autoBake(folder__, file):RetMsg {
-      const folder = Ver.slash(folder__)
+      const folder = Dirs.slash(folder__)
       logger.trace('WATCHED2a:', folder)
 
       const ext = file.split('.').pop()
@@ -1064,7 +1066,7 @@ export class AdminFireUtil {
 
    constructor(config) {
     
-      let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config'])))
+      let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config']).toString()))
 
       this.fbApp = fbAdmin.initializeApp({
          credential: fbAdmin.credential.cert(fbServiceAccount)
