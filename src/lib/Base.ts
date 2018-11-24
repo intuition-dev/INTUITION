@@ -4,7 +4,7 @@ import { notDeepEqual } from "assert"
 
 export class Ver {
    ver() {
-      return "v4.11.50"
+      return "v4.12.02"
    }
 }
 
@@ -35,6 +35,8 @@ import yaml = require('js-yaml')
 
 import riotc = require('riot-compiler')
 import pug = require('pug')
+const minify = require('html-minifier').minify
+
 const logger = require('tracer').console()
 
 import csv2JsonV2 = require('csvtojson')
@@ -511,7 +513,7 @@ export class MBake {
 
 export class BakeWrk {
    dir:string
-   static bodyHtml = '</body></html>'
+   static ebodyHtml = '</body>'
 
    constructor(dir_:string) {
       let dir = Dirs.slash(dir_)
@@ -539,11 +541,28 @@ export class BakeWrk {
       options['filters'] = {
          metaMDtf: BakeWrk.metaMDtf
       } 
-
+      let minifyO = {
+         caseSensitive: true,
+         collapseWhitespace: true,
+         decodeEntities: true,
+         minifyCSS: true,
+         minifyJS: true,
+         quoteCharacter: "'",
+         removeAttributeQuotes: true,
+         removeComments: true,
+         removeRedundantAttributes: true,
+         removeScriptTypeAttributes: true,
+         removeStyleLinkTypeAttributes: true,
+         useShortDoctype: true,
+         sortAttributes: true,
+         sortClassName: true
+      }
       let html = pug.renderFile(this.dir+'/index.pug',options )
 
       let ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
-      html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
+      if(!m['pretty'])
+         html = minify(html, minifyO)
+      html = html.replace(BakeWrk.ebodyHtml, ver+BakeWrk.ebodyHtml)
 
       let fn = this.dir + '/index.html'
       fs.writeFileSync(fn, html)
@@ -556,7 +575,9 @@ export class BakeWrk {
       html = pug.renderFile(this.dir+'/m.pug', options )
 
       ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
-      html = html.replace(BakeWrk.bodyHtml, ver+BakeWrk.bodyHtml)
+      if(!m['pretty'])
+         html = minify(html, minifyO)
+      html = html.replace(BakeWrk.ebodyHtml, ver+BakeWrk.ebodyHtml)
 
       fn = this.dir + '/m.html'
       fs.writeFileSync(fn, html)
