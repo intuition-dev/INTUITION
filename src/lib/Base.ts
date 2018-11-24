@@ -261,52 +261,6 @@ export class FileOps {
       let file_path = this.root + path
       fs.unlinkSync(file_path)
    }
-}
-
-export class Dat {
-   props: any
-   path:string
-   constructor(path_:string) {
-      let path = Dirs.slash(path_)
-      //logger.trace(path)
-      this.path = path
-
-      let y
-      if (fs.existsSync(path+'/dat.yaml'))
-         y = yaml.load(fs.readFileSync(path+'/dat.yaml'))
-      if(!y) y= {}
-      this.props = y
-
-      let keys = Object.keys( y )
-      if(keys.includes('include')) this._addData()
-   }
-   write() {
-      try{
-         let y = yaml.dump(this.props,{
-            skipInvalid : true,
-            noRefs: true,
-            noCompatMode: true,
-            condenseFlow: true
-         })
-         let p = this.path+'/dat.yaml'
-         logger.trace(p)
-         fs.writeFileSync(p, y)
-      } catch(err) { logger.info(err)}
-   }
-   set(key, val) { // ex: 'title', 'My First Blog'
-      this.props[key] = val
-   }
-   _addData() {
-      let jn = this.props.include
-      let fn = this.path+'/'+jn
-      logger.trace( fn)
-      let jso = fs.readFileSync(fn)
-      Object.assign(this.props, JSON.parse(jso.toString())) // merge
-   }
-
-   getAll():Object {
-      return this.props
-   }//()
 }//class
 
 export class Dirs {
@@ -375,6 +329,53 @@ export class Dirs {
       return ret
    }//()
 }//class
+
+export class Dat {
+   props: any
+   path:string
+   constructor(path_:string) {
+      let path = Dirs.slash(path_)
+      //logger.trace(path)
+      this.path = path
+
+      let y
+      if (fs.existsSync(path+'/dat.yaml'))
+         y = yaml.load(fs.readFileSync(path+'/dat.yaml'))
+      if(!y) y= {}
+      this.props = y
+
+      let keys = Object.keys( y )
+      if(keys.includes('include')) this._addData()
+   }
+   write() {
+      try{
+         let y = yaml.dump(this.props,{
+            skipInvalid : true,
+            noRefs: true,
+            noCompatMode: true,
+            condenseFlow: true
+         })
+         let p = this.path+'/dat.yaml'
+         logger.trace(p)
+         fs.writeFileSync(p, y)
+      } catch(err) { logger.info(err)}
+   }
+   set(key, val) { // ex: 'title', 'My First Blog'
+      this.props[key] = val
+   }
+   _addData() {
+      let jn = this.props.include
+      let fn = this.path+'/'+jn
+      logger.trace( fn)
+      let jso = fs.readFileSync(fn)
+      Object.assign(this.props, JSON.parse(jso.toString())) // merge
+   }
+
+   getAll():Object {
+      return this.props
+   }//()
+}//class
+
 
 export class CSV2Json { // TODO: get to work with watcher
    dir:string
