@@ -4,7 +4,7 @@ import { notDeepEqual } from "assert"
 
 export class Ver {
    ver() {
-      return "v4.12.02"
+      return "v4.12.07"
    }
 }
 
@@ -36,6 +36,7 @@ import yaml = require('js-yaml')
 import riotc = require('riot-compiler')
 import pug = require('pug')
 const minify = require('html-minifier').minify
+const Terser = require("terser");
 
 const logger = require('tracer').console()
 
@@ -529,6 +530,26 @@ export class BakeWrk {
       return md.render(text)
    }
 
+   //https://github.com/kangax/html-minifier/issues/843
+   static minify_es6(text, inline) {
+      var uglifyEsOptions = { parse: { bare_returns: {}},
+         mangle: false,
+         keep_classnames: true,
+         keep_fnames: true,
+         safari10: true
+      }
+
+      var code = text.match(/^\s*\s*$/) ? '' : text
+      uglifyEsOptions.parse.bare_returns = inline
+
+      var result = Terser.minify(code, uglifyEsOptions)
+      if (result.error) {
+      console.log('Uglify-es error:', result.error)
+      return text
+      }
+      return result.code.replace(/;$/, '')
+   }
+
    bake() {
       process.chdir(this.dir)
 
@@ -546,11 +567,9 @@ export class BakeWrk {
          collapseWhitespace: true,
          decodeEntities: true,
          minifyCSS: true,
-         minifyJS: true,
+         minifyJS: BakeWrk.minify_es6,
          quoteCharacter: "'",
-         removeAttributeQuotes: true,
          removeComments: true,
-         removeRedundantAttributes: true,
          removeScriptTypeAttributes: true,
          removeStyleLinkTypeAttributes: true,
          useShortDoctype: true,
@@ -559,8 +578,8 @@ export class BakeWrk {
       }
       let html = pug.renderFile(this.dir+'/index.pug',options )
 
-      let ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
-      if(!m['pretty'])
+      const ver = '<!-- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
+      if(!options['pretty'])
          html = minify(html, minifyO)
       html = html.replace(BakeWrk.ebodyHtml, ver+BakeWrk.ebodyHtml)
 
@@ -574,8 +593,7 @@ export class BakeWrk {
       //static data binding:
       html = pug.renderFile(this.dir+'/m.pug', options )
 
-      ver = '<!- mB ' + new Ver().ver() +' on '+new Date().toISOString()+' -->'
-      if(!m['pretty'])
+      if(!options['pretty'])
          html = minify(html, minifyO)
       html = html.replace(BakeWrk.ebodyHtml, ver+BakeWrk.ebodyHtml)
 
