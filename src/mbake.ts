@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // License} LGPL 2.1  (c) Metabake.net | Cekvenich
 
-import AdmZip = require('adm-zip');
-import commandLineArgs = require('command-line-args');
+import AdmZip = require('adm-zip')
+import commandLineArgs = require('command-line-args')
 
 import { Ver, MBake, CSV2Json, Map , Dirs} from './lib/Base'
 
-import clear = require("cli-clear");
+import clear = require("cli-clear")
 clear()
 
 //process.exit()
@@ -189,7 +189,7 @@ function gwatch() {
     }*/
    const child = proc.spawn(electron, [fp, appDir] )
    child.stdout.on('data', function(data) { // log of child to show
-      console.log(data.toString()); 
+      console.log(data.toString())
    })
    child.on('exit',onWaExit) 
 }// watch

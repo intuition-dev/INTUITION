@@ -1,7 +1,7 @@
 {
    "name": "mbake",
-   "version": "4.11.39",
-   "description": "Statically process pug files recursively, including any static or dynamic binding; as per low code pillars: http://www.Metabake.net",
+   "version": "4.11.50",
+   "description": "low-code for programmers. Statically process pug files recursively, including any static or dynamic binding; as per low code pillars: http://www.Metabake.net",
    "main": "mbake.js",
    "scripts": {
       "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""

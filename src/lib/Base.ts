@@ -1,66 +1,66 @@
-import { notDeepEqual } from "assert";
+import { notDeepEqual } from "assert"
 
-// All rights Metabake.net | cekvenich, licensed under LGPL 2.1
+// All rights Metabake.net | Cekvenich, licensed under LGPL 2.1
 
 export class Ver {
    ver() {
-      return "v4.11.39"
+      return "v4.11.50"
    }
 }
 
 // metaMDtf
-import markdownItAttrs = require('markdown-it-attrs');
+import markdownItAttrs = require('markdown-it-attrs')
 const md = require('markdown-it')({
    html: true,
    typographer: true,
    breaks: true
 }).use(require('markdown-it-container'), 'dynamic', {
-   validate: function() { return true; },
+   validate: function() { return true },
    render: function(tokens, idx) {
-       var token = tokens[idx];
+       let token = tokens[idx]
 
        if (token.nesting === 1) {
-           return '<div class="' + token.info.trim() + '">';
+           return '<div class="' + token.info.trim() + '">'
        } else {
-           return '</div>';
+           return '</div>'
        }
    },
-}); // https://github.com/markdown-it/markdown-it-container/issues/23
+}) // https://github.com/markdown-it/markdown-it-container/issues/23
 md.use(markdownItAttrs)
 
-import fs = require('fs');
-import fse = require('fs-extra');
-import FileHound = require('filehound');
-import yaml = require('js-yaml');
+import fs = require('fs')
+import fse = require('fs-extra')
+import FileHound = require('filehound')
+import yaml = require('js-yaml')
 
-import riotc = require('riot-compiler');
-import pug = require('pug');
+import riotc = require('riot-compiler')
+import pug = require('pug')
 const logger = require('tracer').console()
 
-import csv2JsonV2 = require('csvtojson');
+import csv2JsonV2 = require('csvtojson')
 
 import * as JavaScriptObfuscator from 'javascript-obfuscator'
 
-import express = require('express');
-import chokidar = require('chokidar');
-import reload = require('reload');
+import express = require('express')
+import chokidar = require('chokidar')
+import reload = require('reload')
 
-import extractor = require('unfluff');//scrape
+import extractor = require('unfluff')//scrape
 import axios from 'axios'
 
-import cheerio = require('cheerio');
-import interceptor = require('express-interceptor');
+import cheerio = require('cheerio')
+import interceptor = require('express-interceptor')
 
-import probe = require('probe-image-size');
-import bsz = require('buffer-image-size');
+import probe = require('probe-image-size')
+import bsz = require('buffer-image-size')
 
 // map
-import sm = require('sitemap');
-import traverse = require('traverse');
-import lunr = require('lunr');
+import sm = require('sitemap')
+import traverse = require('traverse')
+import lunr = require('lunr')
 
-import fbAdmin = require('firebase-admin');
-import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions";
+import fbAdmin = require('firebase-admin')
+import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class RetMsg {
@@ -73,7 +73,7 @@ export class RetMsg {
       this._msg = msg
    }//)_
    get cmd():string {
-      return this.cmd;
+      return this.cmd
    }
    get code():number {
       return Math.round(this._code)
@@ -85,143 +85,6 @@ export class RetMsg {
       console.log(this.cmd, this.msg, this.code)
    }
 }//class
-
-export class Map {
-   _sitemap
-   _root
-   constructor(root) {
-      if(!root || root.length < 1) {
-         console.log('no path arg passed')
-         return
-      }
-      this._root = root
-   }
-   gen():RetMsg {
-      const m = yaml.load(fs.readFileSync(this._root+'/map.yaml'))
-      let jmenu = JSON.stringify(m.menu, null, 2)
-      //menu done
-      fs.writeFileSync(this._root+'/menu.json', jmenu)
-
-      this._sitemap = sm.createSitemap( {
-         hostname: m['host']
-      })
-
-      //build sitemap
-      let leaves = traverse(m.menu).reduce(function (acc, x) {
-         if (this.isLeaf) acc.push(x)
-         return acc
-      }, [])
-      // any items recursively
-      let itemsRoot = m['itemsRoot']
-      if (itemsRoot) {
-         //visit each path
-         const d = new Dirs(this._root + itemsRoot)
-         leaves = leaves.concat(d.get())
-      }
-
-      var arrayLength = leaves.length
-      logger.trace(arrayLength)
-      for (var i = 0; i < arrayLength; i++) {
-         try {
-            let path = leaves[i]
-
-            if(path.includes(this._root))
-               path = path.replace(this._root,'')
-            let fullPath =  this._root + path
-
-            let dat = new Dat(fullPath)
-            let props = dat.getAll()
-            logger.trace(path)//, props)
-
-            //priority
-            let priority = props['priority']
-            if(!priority) priority = 0.3
-
-            let image = props['image']
-            if(!image) {
-               this._sitemap.add({
-                  url: path,
-                  changefreq: m['changefreq'],
-                  priority: priority
-               })
-            } else {  //if it has image
-               this._sitemap.add({
-                  url: path,
-                  changefreq: m['changefreq'],
-                  priority: priority,
-                  img: [{
-                     url: image,
-                     title: props['title'],
-                     caption: props['title']
-                  }]
-               })
-            }
-         } catch(err) { logger.trace(err)}
-      }//for
-
-      //validate and write
-      const thiz = this
-      this._sitemap.toXML( function (err, xml) {
-
-         fs.writeFileSync(thiz._root+'/sitemap.xml', xml)
-         console.log(' Sitemap ready')
-
-         thiz._map(leaves)
-
-      })// to XML write
-      return new RetMsg(thiz._root + ' map', 1,'ok')
-   }//map()
-
-   _map(leaves) {
-      let documents = []
-
-      var arrayLength = leaves.length
-      for (var i = 0; i < arrayLength; i++) {
-         try {
-            let path = leaves[i]
-            if(path.includes(this._root))
-               path = path.replace(this._root,'')
-            let fullPath =  this._root + path
-
-            // find all md files in fullPath
-            const rec = FileHound.create() //recurse
-               .paths(fullPath)
-               .ext('md')
-               .findSync()
-
-            let text =''
-            for (let val of rec) {//clean the strings
-               val = Dirs.slash(val)
-               console.log(val)
-               let txt1 = fs.readFileSync(val, "utf8")
-               text = text + ' ' + txt1
-            }//for
-            const row = {
-               id: path,
-               body: text
-            }
-            documents.push(row)
-         } catch(err) { logger.trace(err)}
-      }//for
-
-      //fts index
-      logger.trace(documents.length)
-      var idx = lunr(function () {
-         this.ref('id')
-         this.field('body')
-
-         documents.forEach(function (doc) {
-            this.add(doc)
-         }, this)
-      })//idx
-
-      const jidx = JSON.stringify(idx)
-      fs.writeFileSync(this._root+'/FTS.idx', jidx)
-
-      console.log(' Map generated menu.json, sitemap.xml and FTS.idx(json) index in '+ this._root)
-
-   }//()
-}// class
 
 export class FileOps {
    root
@@ -245,6 +108,10 @@ export class FileOps {
    write(destFile, txt) {
       logger.trace(this.root+destFile)
       fs.writeFileSync(this.root+destFile, txt)
+   }
+
+   read(file):string {
+      return fs.readFileSync(this.root+file).toString()
    }
 
    remove(path) {
@@ -411,6 +278,145 @@ export class CSV2Json { // TODO: get to work with watcher
    }//()
 }
 
+
+export class Map {
+   _sitemap
+   _root
+   constructor(root) {
+      if(!root || root.length < 1) {
+         console.log('no path arg passed')
+         return
+      }
+      this._root = root
+   }
+   gen():RetMsg {
+      const m = yaml.load(fs.readFileSync(this._root+'/map.yaml'))
+      let jmenu = JSON.stringify(m.menu, null, 2)
+      //menu done
+      fs.writeFileSync(this._root+'/menu.json', jmenu)
+
+      this._sitemap = sm.createSitemap( {
+         hostname: m['host']
+      })
+
+      //build sitemap
+      let leaves = traverse(m.menu).reduce(function (acc, x) {
+         if (this.isLeaf) acc.push(x)
+         return acc
+      }, [])
+      // any items recursively
+      let itemsRoot = m['itemsRoot']
+      if (itemsRoot) {
+         //visit each path
+         const d = new Dirs(this._root + itemsRoot)
+         leaves = leaves.concat(d.get())
+      }
+
+      let arrayLength = leaves.length
+      logger.trace(arrayLength)
+      for (let i = 0; i < arrayLength; i++) {
+         try {
+            let path = leaves[i]
+
+            if(path.includes(this._root))
+               path = path.replace(this._root,'')
+            let fullPath =  this._root + path
+
+            let dat = new Dat(fullPath)
+            let props = dat.getAll()
+            logger.trace(path)//, props)
+
+            //priority
+            let priority = props['priority']
+            if(!priority) priority = 0.3
+
+            let image = props['image']
+            if(!image) {
+               this._sitemap.add({
+                  url: path,
+                  changefreq: m['changefreq'],
+                  priority: priority
+               })
+            } else {  //if it has image
+               this._sitemap.add({
+                  url: path,
+                  changefreq: m['changefreq'],
+                  priority: priority,
+                  img: [{
+                     url: image,
+                     title: props['title'],
+                     caption: props['title']
+                  }]
+               })
+            }
+         } catch(err) { logger.trace(err)}
+      }//for
+
+      //validate and write
+      const thiz = this
+      this._sitemap.toXML( function (err, xml) {
+
+         fs.writeFileSync(thiz._root+'/sitemap.xml', xml)
+         console.log(' Sitemap ready')
+
+         thiz._map(leaves)
+
+      })// to XML write
+      return new RetMsg(thiz._root + ' map', 1,'ok')
+   }//map()
+
+   _map(leaves) {
+      let documents = []
+
+      let arrayLength = leaves.length
+      for (let i = 0; i < arrayLength; i++) {
+         try {
+            let path = leaves[i]
+            if(path.includes(this._root))
+               path = path.replace(this._root,'')
+            let fullPath =  this._root + path
+
+            // find all md files in fullPath
+            const rec = FileHound.create() //recurse
+               .paths(fullPath)
+               .ext('md')
+               .findSync()
+
+            let text =''
+            for (let val of rec) {//clean the strings
+               val = Dirs.slash(val)
+               console.log(val)
+               let txt1 = fs.readFileSync(val, "utf8")
+               text = text + ' ' + txt1
+            }//for
+            const row = {
+               id: path,
+               body: text
+            }
+            documents.push(row)
+         } catch(err) { logger.trace(err)}
+      }//for
+
+      //fts index
+      logger.trace(documents.length)
+      let idx = lunr(function () {
+         this.ref('id')
+         this.field('body')
+
+         documents.forEach(function (doc) {
+            this.add(doc)
+         }, this)
+      })//idx
+
+      const jidx = JSON.stringify(idx)
+      fs.writeFileSync(this._root+'/FTS.idx', jidx)
+
+      console.log(' Map generated menu.json, sitemap.xml and FTS.idx(json) index in '+ this._root)
+
+   }//()
+}// class
+
+
 export class MBake {
 
    bake(path):RetMsg {
@@ -564,7 +570,7 @@ export class BakeWrk {
          let pos = filename.lastIndexOf('/')+1
          filename = filename.substring(pos)
       }
-      var file = filename.replace(/\.(?:pug|jade)$/, '')
+      let file = filename.replace(/\.(?:pug|jade)$/, '')
       return file.toLowerCase().replace(/[^a-z0-9]+([a-z])/g, function (_, character) {
         return character.toUpperCase()
       }) + 'Bind'
@@ -779,7 +785,7 @@ export class MDevSrv {
            },
            intercept: function(body, send) {
                console.log(' h')
-               var $document = cheerio.load(body)
+               let $document = cheerio.load(body)
                $document('body').prepend('<script src="/reload/reload.js"></script>')
                send($document.html())
            }
