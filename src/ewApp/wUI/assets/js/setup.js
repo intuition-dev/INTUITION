@@ -14,3 +14,12 @@ ipcBro.send('broMsgA', 'A')
 var nodeConsole = require('console');
 var myConsole = new nodeConsole.Console(process.stdout, process.stderr);
 myConsole.log('hello console from bro')
+
+/////////// /////////// /////////// ///////////////////// ///////////////////// ///////////////////// //////////
+function disE(evtName, msg) {
+   dispatchEvent(new CustomEvent(evtName, { detail: msg }))
+}
+// eg
+addEventListener('bla', function(evt) {
+   console.log(evt.detail)
+})
