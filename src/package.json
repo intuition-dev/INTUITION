@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.12.11",
+   "version": "4.12.12",
    "description": "low-code for programmers. Statically process pug files recursively, including any static or dynamic binding; as per low code pillars: http://www.Metabake.net",
    "main": "mbake.js",
    "scripts": {
@@ -46,7 +46,7 @@
       "express": ">=4.16.4",
       "express-interceptor": ">=1.2.0",
       "filehound": ">=1.16.4",
-      "firebase-admin": ">=6.2.0",
+      "firebase-admin": ">=6.3.0",
       "fs-extra": "^7.0.1",
       "global-modules-path": ">=2.3.0",
       "html-minifier": "^3.5.21",

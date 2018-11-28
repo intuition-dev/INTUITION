@@ -5,6 +5,8 @@ import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
 import { Ver, MBake, CSV2Json, Map , Dirs} from './lib/Base'
+import { Wa} from './lib/Wa'
+
 
 import clear = require("cli-clear")
 clear()
@@ -169,32 +171,8 @@ function itemize(arg) {
    process.exit()
 }
 
-// tag:  ///////////////////////////////////////////////////////////////////////////////////////////////
 function tag(arg) {
    new MBake().tag(arg)
-}
-// watch: /////////////////////////////////////////////////////////////////////////////////////////////////#endregion
-function gwatch() {
-   const path = require('path')
-   const appDir = path.dirname(require.main.filename)
-   const electron = require('electron' )
-   const proc = require('child_process')
-   console.log(appDir)
-
-   const fp = appDir+'/ewApp/main.js'
-
-   /*const options = {
-      stdio: [ 'pipe', 'pipe', 'pipe', 'ipc' ]
-      , windowsHide: true
-    }*/
-   const child = proc.spawn(electron, [fp, appDir] )
-   child.stdout.on('data', function(data) { // log of child to show
-      console.log(data.toString())
-   })
-   child.on('exit',onWaExit) 
-}// watch
-function onWaExit(){
-   console.log('Watcher child exited')
 }
 
 // start: /////////////////////////////////////////////////////////////////////////////////////
@@ -227,7 +205,7 @@ else if(argsParsed.crud)
 else if(argsParsed.website)
    unzipS()
 else if(argsParsed.gwatcher)
-   gwatch()
+   Wa.gwatch()
 else if(!arg)
    version()
 else
