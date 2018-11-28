@@ -4,7 +4,7 @@ import { notDeepEqual } from "assert"
 
 export class Ver {
    ver() {
-      return "v4.12.10"
+      return "v4.12.11"
    }
 }
 
