@@ -216,6 +216,49 @@ export class MetaA {
    }
 }
 
+export class FileOps {
+   root
+   constructor(root_) {
+      this.root = Dirs.slash(root_)
+   }
+
+   clone(src, dest):RetMsg {
+      logger.trace('copy?')
+
+      fse.copySync(this.root+src, this.root+dest)
+
+      let p = this.root+dest
+      logger.trace(p)
+      const d = new Dat(p)
+      d.write()
+      logger.trace('copy!')
+      return new RetMsg('clone',1,dest)
+   }//()
+
+   write(destFile, txt) {
+      logger.trace(this.root+destFile)
+      fs.writeFileSync(this.root+destFile, txt)
+   }
+
+   read(file):string {
+      return fs.readFileSync(this.root+file).toString()
+   }
+
+   remove(path) {
+      let dir_path = this.root + path
+      logger.trace('remove:' + dir_path)
+      if (fs.existsSync(dir_path)) {
+         fs.readdirSync(dir_path).forEach(function(entry) {
+            fs.unlinkSync(dir_path+'/'+entry)
+         })
+         fs.rmdirSync(dir_path)
+      }
+   }	
+   removeFile(path) {
+      let file_path = this.root + path
+      fs.unlinkSync(file_path)
+   }
+}//class
 
 // Meta: //////////////////////
 export class MDevSrv {
@@ -369,5 +412,5 @@ export class AdminFireUtil {
 }//class
 
 module.exports = {
-   Wa, AdminFireUtil, AdminSrv, Scrape, MetaA, Watch
+   Wa, AdminFireUtil, AdminSrv, Scrape, MetaA, Watch,  FileOps
 }
