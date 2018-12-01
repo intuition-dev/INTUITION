@@ -1,7 +1,9 @@
 
-import { Ver, MBake, RetMsg, Map , Dirs} from 'Base'
+import { Ver, MBake, RetMsg, Map , Dirs, Dat} from 'Base'
 import fbAdmin = require('firebase-admin')
 import fs = require('fs')
+import fse = require('fs-extra')
+
 import express = require('express')
 import probe = require('probe-image-size')
 import bsz = require('buffer-image-size')

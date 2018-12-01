@@ -29,7 +29,6 @@ const md = require('markdown-it')({
 md.use(markdownItAttrs)
 
 import fs = require('fs')
-import fse = require('fs-extra')
 import FileHound = require('filehound')
 import yaml = require('js-yaml')
 
