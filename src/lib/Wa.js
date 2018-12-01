@@ -172,6 +172,43 @@ MetaA.folderProp = 'folder';
 MetaA.srcProp = 'src';
 MetaA.destProp = 'dest';
 exports.MetaA = MetaA;
+class FileOps {
+    constructor(root_) {
+        this.root = Base_1.Dirs.slash(root_);
+    }
+    clone(src, dest) {
+        logger.trace('copy?');
+        fse.copySync(this.root + src, this.root + dest);
+        let p = this.root + dest;
+        logger.trace(p);
+        const d = new Dat(p);
+        d.write();
+        logger.trace('copy!');
+        return new Base_1.RetMsg('clone', 1, dest);
+    }
+    write(destFile, txt) {
+        logger.trace(this.root + destFile);
+        fs.writeFileSync(this.root + destFile, txt);
+    }
+    read(file) {
+        return fs.readFileSync(this.root + file).toString();
+    }
+    remove(path) {
+        let dir_path = this.root + path;
+        logger.trace('remove:' + dir_path);
+        if (fs.existsSync(dir_path)) {
+            fs.readdirSync(dir_path).forEach(function (entry) {
+                fs.unlinkSync(dir_path + '/' + entry);
+            });
+            fs.rmdirSync(dir_path);
+        }
+    }
+    removeFile(path) {
+        let file_path = this.root + path;
+        fs.unlinkSync(file_path);
+    }
+}
+exports.FileOps = FileOps;
 class MDevSrv {
     constructor(dir, port) {
         let app = express();
@@ -293,5 +330,5 @@ class AdminFireUtil {
 }
 exports.AdminFireUtil = AdminFireUtil;
 module.exports = {
-    Wa, AdminFireUtil, AdminSrv, Scrape, MetaA, Watch
+    Wa, AdminFireUtil, AdminSrv, Scrape, MetaA, Watch, FileOps
 };
