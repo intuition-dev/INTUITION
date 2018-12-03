@@ -1,14 +1,14 @@
 {
    "name": "mbake",
-   "version": "4.12.15",
-   "description": "Low-code productivity for programmers via generators for Pug, Markdown and much more; including dynamic data binding.",
+   "version": "4.12.18",
+   "description": "Metabake is a low-code productivity approach for programmers via generators for Pug, Markdown and much more; including dynamic data binding.",
    "main": "mbake.js",
    "scripts": {
       "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""
    },
    "bin": {
       "mbake": "mbake.js",
-      "mbake-cli": "mbake.js"
+      "MetabakeCLI": "mbake.js"
    },
    "license": "LGPL-2.1-only",
    "author": "http://www.Metabake.net",
