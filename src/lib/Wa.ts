@@ -1,5 +1,5 @@
 
-import { Ver, MBake, RetMsg, Map , Dirs, Dat} from 'Base'
+import { Ver, MBake, RetMsg, Map , Dirs, Dat} from './Base'
 import fbAdmin = require('firebase-admin')
 import fs = require('fs')
 import fse = require('fs-extra')

@@ -19,6 +19,12 @@ const cwd:string = process.cwd()
 function version() {
    let b = new Ver()
    console.log()
+   console.log('╔╗──╔╗╔══╗─╔══╗╔╗╔══╗╔═══╗');
+   console.log('║║──║║║╔╗║─║╔╗║║║║╔═╝║╔══╝');
+   console.log('║╚╗╔╝║║╚╝╚╗║╚╝║║╚╝║──║╚══╗');
+   console.log('║╔╗╔╗║║╔═╗║║╔╗║║╔╗║──║╔══╝');
+   console.log('║║╚╝║║║╚═╝║║║║║║║║╚═╗║╚══╗');
+   console.log('╚╝──╚╝╚═══╝╚╝╚╝╚╝╚══╝╚═══╝');
    console.log('mbake CLI version: '+b.ver()) // tsc
    console.log('  your node version is '+ process.version)
    console.log('  from '+ __dirname)
