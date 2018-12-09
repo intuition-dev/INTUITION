@@ -72,6 +72,7 @@
       "@types/node": ">=10.12.12",
       "find-up": ">=3.0.0",
       "ts-node": ">=7.0.1",
-      "typescript": ">=3.2.1"
+      "typescript": ">=3.2.1",
+      "@marp-team/marpit": "^0.4.0"
    }
 }
