@@ -1,4 +1,5 @@
-import { notDeepEqual } from "assert"
+
+//import { notDeepEqual } from "assert"
 
 // All rights Metabake.net | Cekvenich, licensed under LGPL 2.1
 
@@ -35,7 +36,7 @@ import yaml = require('js-yaml')
 import riotc = require('riot-compiler')
 import pug = require('pug')
 const minify = require('html-minifier').minify
-const Terser = require("terser");
+const Terser = require("terser")
 
 const logger = require('tracer').console()
 

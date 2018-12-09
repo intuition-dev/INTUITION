@@ -7,7 +7,6 @@ import commandLineArgs = require('command-line-args')
 import { Ver, MBake, CSV2Json, Map , Dirs} from './lib/Base'
 import { Wa} from './lib/Wa'
 
-
 import clear = require("cli-clear")
 clear()
 
@@ -19,14 +18,14 @@ const cwd:string = process.cwd()
 function version() {
    let b = new Ver()
    console.log()
-   console.log('╔╗──╔╗╔══╗─╔══╗╔╗╔══╗╔═══╗');
-   console.log('║║──║║║╔╗║─║╔╗║║║║╔═╝║╔══╝');
-   console.log('║╚╗╔╝║║╚╝╚╗║╚╝║║╚╝║──║╚══╗');
-   console.log('║╔╗╔╗║║╔═╗║║╔╗║║╔╗║──║╔══╝');
-   console.log('║║╚╝║║║╚═╝║║║║║║║║╚═╗║╚══╗');
-   console.log('╚╝──╚╝╚═══╝╚╝╚╝╚╝╚══╝╚═══╝');
+   console.log('╔╗──╔╗╔══╗─╔══╗╔╗╔══╗╔═══╗')
+   console.log('║║──║║║╔╗║─║╔╗║║║║╔═╝║╔══╝')
+   console.log('║╚╗╔╝║║╚╝╚╗║╚╝║║╚╝║──║╚══╗')
+   console.log('║╔╗╔╗║║╔═╗║║╔╗║║╔╗║──║╔══╝')
+   console.log('║║╚╝║║║╚═╝║║║║║║║║╚═╗║╚══╗')
+   console.log('╚╝──╚╝╚═══╝╚╝╚╝╚╝╚══╝╚═══╝')
    console.log('mbake CLI version: '+b.ver()) // tsc
-   console.log('  your node version is '+ process.version)
+   //console.log('  your node version is '+ process.version)
    console.log('  from '+ __dirname)
    console.log('Usage: ')
    console.log('  mbake .')

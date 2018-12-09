@@ -5,8 +5,9 @@
 
         "allowJs": false,
         "moduleResolution": "node",
-		  "sourceMap": false,
-		  "removeComments": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": false,
+        "removeComments": true,
         "outDir": ".",
         "baseUrl": ".",
         "paths": {
