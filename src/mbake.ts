@@ -82,7 +82,7 @@ console.log()
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function unzipA() {
-   let src:string =__dirname+ '/autoEG.zip'
+   let src:string =__dirname+ '/admin.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
    console.log('Extracted a starter admin/build/Meta cloud service to ./autoEG')

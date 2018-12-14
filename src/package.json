@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.12.19",
+   "version": "4.12.20",
    "description": "Metabake is a low-code productivity approach for programmers via generators for Pug, Markdown and much more; including dynamic data binding.",
    "main": "mbake.js",
    "scripts": {
@@ -46,7 +46,7 @@
       "express": ">=4.16.4",
       "express-interceptor": ">=1.2.0",
       "filehound": ">=1.16.5",
-      "firebase-admin": ">=6.3.0",
+      "firebase-admin": ">=6.4.0",
       "fs-extra": "^7.0.1",
       "global-modules-path": ">=2.3.1",
       "html-minifier": "^3.5.21",
@@ -70,9 +70,9 @@
       "@marp-team/marpit": ">=0.4.0"
    },
    "devDependencies": {
-      "@types/node": ">=10.12.12",
+      "@types/node": ">=10.12.15",
       "find-up": ">=3.0.0",
       "ts-node": ">=7.0.1",
-      "typescript": ">=3.2.1"
+      "typescript": ">=3.2.2"
    }
 }
