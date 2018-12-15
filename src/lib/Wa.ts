@@ -6,75 +6,19 @@ import fse = require('fs-extra')
 
 import express = require('express')
 import probe = require('probe-image-size')
-import bsz = require('buffer-image-size')
 
 import extractor = require('unfluff')//scrape
 import axios from 'axios'
 import chokidar = require('chokidar')
 import reload = require('reload')
 
-import Marpit = require('@marp-team/marpit')
-const marpit = new Marpit.Marpit()
-
 import cheerio = require('cheerio')
 import interceptor = require('express-interceptor')
 const logger = require('tracer').console()
 
-
-
 // slides/////////////////////////////////////////////////////////////////////////////////////////////////
 export class Slides {
-   foo() {
 
-      const theme = `
-      /* @theme example */
-      
-      section {
-        background-color: #369;
-        color: #fff;
-        font-size: 30px;
-        padding: 40px;
-      }
-      
-      h1,
-      h2 {
-        text-align: center;
-        margin: 0;
-      }
-      
-      h1 {
-        color: #8cf;
-      }
-      `
-      marpit.themeSet.default = marpit.themeSet.add(theme)
-      
-      // 3. Render markdown
-      const markdown = `
-      
-      # Hello, Marpit!
-      
-      Marpit is the skinny framework for creating slide deck from Markdown.
-      
-      ---
-      
-      ## Ready to convert into PDF!
-      
-      You can convert into PDF slide deck through Chrome.
-      
-      `
-      const { html, css } = marpit.render(markdown)
-      
-      // 4. Use output in your HTML
-      const htmlFile = `
-      <!DOCTYPE html>
-      <html><body>
-        <style>${css}</style>
-        ${html}
-      </body></html>
-      `
-      fs.writeFileSync('example123123.html', htmlFile.trim())
-
-   }
 }
 
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -423,10 +367,6 @@ export class Scrape {
       }
       return filterd_string
    }//()
-
-   static getBufferImageSize(buf_) {
-      return bsz(buf_)
-   }
 
 }//class
 

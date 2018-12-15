@@ -25,7 +25,7 @@ function version() {
    console.log('║║╚╝║║║╚═╝║║║║║║║║╚═╗║╚══╗')
    console.log('╚╝──╚╝╚═══╝╚╝╚╝╚╝╚══╝╚═══╝')
    console.log('mbake CLI version: '+b.ver()) // tsc
-   //console.log('  your node version is '+ process.version)
+   console.log('  your node version is '+ process.version)
    console.log('  from '+ __dirname)
    console.log('Usage: ')
    console.log('  mbake .')
@@ -46,12 +46,15 @@ function version() {
    // w is reserved for watch
    console.log('  For a starter Dash web app: mbake -d')
 
-   console.log('  For a training Electron(pre-PhoneGap) app: mbake -e')
+   console.log('  For a Electron(pre-PhoneGap) app: mbake -e')
    console.log('  For a hybrid Phonegap app: mbake -p')
    console.log('  For an example auto admin/build/Meta cloud service: mbake -a')
 
-   console.log(' Full docs: http://www.Metabake.net , more examples and notes on newer versions')
+   console.log(' Full docs: https://www.Metabake.net' )
    console.log()
+
+
+
 
    //process.exit()
 }
