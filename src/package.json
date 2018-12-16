@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.12.20",
+   "version": "4.12.21",
    "description": "Metabake is a low-code productivity approach for programmers via generators for Pug, Markdown and much more; including dynamic data binding.",
    "main": "mbake.js",
    "scripts": {
@@ -41,7 +41,7 @@
       "cli-clear": ">=1.0.4",
       "command-line-args": ">=5.0.2",
       "csvtojson": ">=2.0.8",
-      "electron": ">=4.0.0-beta.7",
+      "electron": ">=4.0.0-beta.8",
       "express": ">=4.16.4",
       "express-interceptor": ">=1.2.0",
       "filehound": ">=1.16.5",
