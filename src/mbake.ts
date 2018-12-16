@@ -30,18 +30,18 @@ function version() {
    console.log('  To process Pug and dat_i items to items.json: mbake -i . # where path is folder containing dat_i.yaml')
    console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -m .')
    console.log('  To process list.csv to list.json: mbake -j .')
-
-   console.log()
    console.log(' ----------------------------------------------------------------')
+   console.log()
    console.log(' Code examples:')
+   // w is reserved for watch
    console.log('  For a starter website: mbake -s')
    console.log('  For an example dynamic web app CRUD: mbake -c')
 
    console.log('  For a starter blog|items: mbake -b')
-   // w is reserved for watch
-   console.log('  For a starter Dash web app: mbake -d')
 
    console.log('  For an example admin cloud service: mbake -a')
+   console.log('  For a starter dash web app: mbake -d')
+   console.log('  For example slides markdown: mbake -l')
 
    console.log(' Full docs: https://www.Metabake.net' )
    console.log('  mbakeW has more options')
@@ -60,6 +60,7 @@ const optionDefinitions = [
 
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
+   { name: 'slides', alias: 'l', type: Boolean },
 
    { name: 'auto', alias: 'a', type: Boolean },
    { name: 'website',  alias: 's', type: Boolean },
@@ -108,7 +109,13 @@ function unzipD() {
    console.log('Extracted an starter Dash web app to ./dash')
    process.exit()
 }
-
+function unzipL() {
+   let src:string =__dirname+ '/slidesEx.zip'
+   let zip = new AdmZip(src)
+   zip.extractAllTo(cwd , /*overwrite*/true)
+   console.log('Extracted example of markdown slides to ./slidesEx')
+   process.exit()
+}
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
 if(arg) {
    arg = Dirs.slash(arg)
@@ -181,6 +188,8 @@ else if(argsParsed.crud)
    unzipC()
 else if(argsParsed.website)
    unzipS()
+else if(argsParsed.slides)
+   unzipL()
 else if(!arg)
    version()
 else

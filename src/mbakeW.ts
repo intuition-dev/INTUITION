@@ -28,9 +28,8 @@ function version() {
    console.log()
    console.log('Usage: ')
    console.log('  For local(non-cloud) GUI watcher: mbakeW -g')
-
-   console.log()
    console.log(' ----------------------------------------------------------------')
+   console.log()
    console.log(' Code examples:')
 
    console.log('  For a Electron(pre-PhoneGap) app: mbake -e')
