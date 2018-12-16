@@ -1,21 +1,20 @@
 
-//import { notDeepEqual } from "assert"
-
-// All rights Metabake.net | Cekvenich, licensed under LGPL 2.1
+// Copyright and all rights reserved for Metabake.net | Cekvenich, licensed under LGPL 2.1
 
 export class Ver {
    ver() {
-      return 'v4.12.21'
+      return 'v4.12.22'
    }
 }
 
-// metaMDtf
+// metaMD
 import markdownItAttrs = require('markdown-it-attrs')
 const md1 = require('markdown-it')({
    html: true,
    typographer: true,
    breaks: true
-}).use(require('markdown-it-container'), 'dynamic', {
+})
+/*.use(require('markdown-it-container'), 'dynamic', {
    validate: function() { return true },
    render: function(tokens, idx) {
        let token = tokens[idx]
@@ -27,7 +26,12 @@ const md1 = require('markdown-it')({
        }
    },
 }) // https://github.com/markdown-it/markdown-it-container/issues/23
+*/
 md1.use(markdownItAttrs)
+
+import Marpit = require('@marp-team/marpit')
+const marpit = new Marpit.Marpit()
+
 
 import fs = require('fs')
 import FileHound = require('filehound')
@@ -74,8 +78,6 @@ export class RetMsg {
       console.log(this.cmd, this.msg, this.code)
    }
 }//class
-
-
 
 export class Dirs {
    dir:string
@@ -468,7 +470,7 @@ export class BakeWrk {
    }
 
 
-   static metaMDtf1(text, options) {//a custom md filter that uses a transformer
+   static metaMD1(text, options) {//a custom md filter that uses a transformer
       console.log(' ',options)
 
       return md1.render(text)
@@ -504,7 +506,7 @@ export class BakeWrk {
       //static data binding with a custom md filter that uses a transformer
       let options = m.getAll() 
       options['filters'] = {
-         metaMDtf: BakeWrk.metaMDtf1
+         metaMD: BakeWrk.metaMD1
       } 
       let minifyO = {
          caseSensitive: true,

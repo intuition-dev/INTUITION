@@ -46,7 +46,7 @@ This will create index.html.
 
 Of course you can use regular Pug syntax to include other Pug files; or Markdown. Metabake Markdown flavor includes CSS support:
 ```pug
-    include:metaMDtf comment.md
+    include:metaMD comment.md
 ```
 
 ## Home Page

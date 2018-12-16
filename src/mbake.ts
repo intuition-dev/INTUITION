@@ -9,7 +9,6 @@ import clear = require("cli-clear")
 
 clear()
 
-
 // imports done /////////////////////////////////////////////
 const cwd:string = process.cwd()
 

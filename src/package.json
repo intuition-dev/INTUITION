@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.12.21",
+   "version": "4.12.22",
    "description": "Metabake is a low-code productivity approach for programmers via generators for Pug, Markdown and much more; including dynamic data binding.",
    "main": "mbake.js",
    "scripts": {
@@ -34,6 +34,7 @@
       "uglify-es": "npm:terser"
    },
    "dependencies": {
+      "@marp-team/marpit": ">=0.4.0",
       "adm-zip": ">=0.4.13",
       "axios": ">=0.18.0",
       "cheerio": ">=1.0.0-rc.2",
@@ -56,7 +57,6 @@
       "lunr": ">=2.3.5",
       "markdown-it": ">=8.4.2",
       "markdown-it-attrs": ">=2.3.2",
-      "markdown-it-container": ">=2.0.0",
       "probe-image-size": ">=4.0.0",
       "pug": ">=2.0.3",
       "reload": ">=2.4.0",
@@ -65,8 +65,7 @@
       "terser": ">=3.11.0",
       "tracer": ">=0.9.6",
       "traverse": ">=0.6.6",
-      "unfluff": ">=3.2.0",
-      "@marp-team/marpit": ">=0.4.0"
+      "unfluff": ">=3.2.0"
    },
    "devDependencies": {
       "@types/node": ">=10.12.15",
