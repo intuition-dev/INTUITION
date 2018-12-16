@@ -3,13 +3,13 @@
 
 export class Ver {
    ver() {
-      return 'v4.12.22'
+      return 'v4.12.23'
    }
 }
 
 // metaMD
 import markdownItAttrs = require('markdown-it-attrs')
-const md1 = require('markdown-it')({
+const md = require('markdown-it')({
    html: true,
    typographer: true,
    breaks: true
@@ -27,7 +27,7 @@ const md1 = require('markdown-it')({
    },
 }) // https://github.com/markdown-it/markdown-it-container/issues/23
 */
-md1.use(markdownItAttrs)
+md.use(markdownItAttrs)
 
 import Marpit = require('@marp-team/marpit')
 const marpit = new Marpit.Marpit()
@@ -470,10 +470,15 @@ export class BakeWrk {
    }
 
 
-   static metaMD1(text, options) {//a custom md filter that uses a transformer
+   static metaMD(text, options) {//a custom md filter that uses a transformer
       console.log(' ',options)
+      return md.render(text)
+   }
 
-      return md1.render(text)
+   static marpit(text, options) {//a custom md filter that uses a transformer
+      console.log(' ',options)
+      const { html, css } = marpit.render(text)
+      return html
    }
 
    //https://github.com/kangax/html-minifier/issues/843
@@ -506,7 +511,8 @@ export class BakeWrk {
       //static data binding with a custom md filter that uses a transformer
       let options = m.getAll() 
       options['filters'] = {
-         metaMD: BakeWrk.metaMD1
+         metaMD: BakeWrk.metaMD,
+         marpit: BakeWrk.marpit
       } 
       let minifyO = {
          caseSensitive: true,
