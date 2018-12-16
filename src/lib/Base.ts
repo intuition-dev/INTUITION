@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v4.12.24'
+      return 'v4.12.25'
    }
 }
 
@@ -475,7 +475,7 @@ export class BakeWrk {
       return md.render(text)
    }
 
-   static marpit(text, options) {//a custom md filter that uses a transformer
+   static marp(text, options) {//a custom md filter that uses a transformer
       console.log(' ',options)
       const { html, css } = marpit.render(text)
       return html
@@ -512,7 +512,7 @@ export class BakeWrk {
       let options = m.getAll() 
       options['filters'] = {
          metaMD: BakeWrk.metaMD,
-         marpit: BakeWrk.marpit
+         marp: BakeWrk.marp
       } 
       let minifyO = {
          caseSensitive: true,
