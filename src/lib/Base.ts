@@ -5,13 +5,13 @@
 
 export class Ver {
    ver() {
-      return "v4.12.20"
+      return 'v4.12.20'
    }
 }
 
 // metaMDtf
 import markdownItAttrs = require('markdown-it-attrs')
-const md = require('markdown-it')({
+const md1 = require('markdown-it')({
    html: true,
    typographer: true,
    breaks: true
@@ -27,7 +27,7 @@ const md = require('markdown-it')({
        }
    },
 }) // https://github.com/markdown-it/markdown-it-container/issues/23
-md.use(markdownItAttrs)
+md1.use(markdownItAttrs)
 
 import fs = require('fs')
 import FileHound = require('filehound')
@@ -468,10 +468,10 @@ export class BakeWrk {
    }
 
 
-   static metaMDtf(text, options) {//a custom md filter that uses a transformer
+   static metaMDtf1(text, options) {//a custom md filter that uses a transformer
       console.log(' ',options)
 
-      return md.render(text)
+      return md1.render(text)
    }
 
    //https://github.com/kangax/html-minifier/issues/843
@@ -504,7 +504,7 @@ export class BakeWrk {
       //static data binding with a custom md filter that uses a transformer
       let options = m.getAll() 
       options['filters'] = {
-         metaMDtf: BakeWrk.metaMDtf
+         metaMDtf: BakeWrk.metaMDtf1
       } 
       let minifyO = {
          caseSensitive: true,

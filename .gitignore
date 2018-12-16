@@ -7,5 +7,6 @@ node_modules/
 site/
 
 mbake.js
+mbakeW.js
 Base.js
 Wa.js

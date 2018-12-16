@@ -4,13 +4,11 @@
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
-import { Ver, MBake, CSV2Json, Map , Dirs} from './lib/Base'
-import { Wa} from './lib/Wa'
-
+import { Ver, MBake, CSV2Json, Map ,Dirs} from './lib/Base'
 import clear = require("cli-clear")
+
 clear()
 
-//process.exit()
 
 // imports done /////////////////////////////////////////////
 const cwd:string = process.cwd()
@@ -25,16 +23,14 @@ function version() {
    console.log('║║╚╝║║║╚═╝║║║║║║║║╚═╗║╚══╗')
    console.log('╚╝──╚╝╚═══╝╚╝╚╝╚╝╚══╝╚═══╝')
    console.log('mbake CLI version: '+b.ver()) // tsc
-   console.log('  your node version is '+ process.version)
-   console.log('  from '+ __dirname)
+   console.log()
    console.log('Usage: ')
    console.log('  mbake .')
-   console.log('  or process any_dir to make(bake) a declarative low code app recursively')
+   console.log('  or process any_dir to make(bake) a declarative low-code app recursively')
    console.log('  To process Pug and RIOT *-tag.pug tags: mbake -t . # . is path')
    console.log('  To process Pug and dat_i items to items.json: mbake -i . # where path is folder containing dat_i.yaml')
    console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -m .')
    console.log('  To process list.csv to list.json: mbake -j .')
-   console.log('  For local(non-cloud) GUI watcher: mbake -g')
 
    console.log()
    console.log(' ----------------------------------------------------------------')
@@ -42,21 +38,17 @@ function version() {
    console.log('  For a starter website: mbake -s')
    console.log('  For an example dynamic web app CRUD: mbake -c')
 
-   console.log('  For a starter blog/linkBlog: mbake -b')
+   console.log('  For a starter blog|items: mbake -b')
    // w is reserved for watch
    console.log('  For a starter Dash web app: mbake -d')
 
-   console.log('  For a Electron(pre-PhoneGap) app: mbake -e')
-   console.log('  For a hybrid Phonegap app: mbake -p')
-   console.log('  For an example auto admin/build/Meta cloud service: mbake -a')
+   console.log('  For an example admin cloud service: mbake -a')
 
    console.log(' Full docs: https://www.Metabake.net' )
+   console.log('  mbakeW has more options')
    console.log()
 
-
-
-
-   //process.exit()
+   process.exit()
 }
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,13 +61,10 @@ const optionDefinitions = [
 
    { name: 'blog', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
-   { name: 'phonegap',  alias: 'p', type: Boolean },
-   { name: 'elect',  alias: 'e', type: Boolean },
+
    { name: 'auto', alias: 'a', type: Boolean },
    { name: 'website',  alias: 's', type: Boolean },
    { name: 'crud', alias: 'c', type: Boolean },
-
-   { name: 'gwatcher', alias: 'g', type: Boolean }
 
 ]
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -89,21 +78,6 @@ function unzipA() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
    console.log('Extracted a starter admin/build/Meta cloud service to ./autoEG')
-   process.exit()
-}
-
-function unzipG() {
-   let src:string =__dirname+ '/PGap.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted a starter Phonegap app to ./PG')
-   process.exit()
-}
-function unzipE() {
-   let src:string =__dirname+ '/elect.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted a starter Electron app to ./elect')
    process.exit()
 }
 
@@ -204,16 +178,10 @@ else if(argsParsed.blog)
    unzipB()
 else if(argsParsed.dash)
    unzipD()
-else if(argsParsed.elect)
-   unzipE()
-else if(argsParsed.phonegap)
-   unzipG()
 else if(argsParsed.crud)
    unzipC()
 else if(argsParsed.website)
    unzipS()
-else if(argsParsed.gwatcher)
-   Wa.gwatch()
 else if(!arg)
    version()
 else
