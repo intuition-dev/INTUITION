@@ -18,7 +18,8 @@ let appDir = process.argv[2]
 console.log(appDir)
 
 const fp = appDir+  "/ewApp/wUI/index.html"
-const { Ver, MBake, Watch2, MetaPro2, MDevSrv2 } =  require(appDir+'/lib/Base.js')
+const { Ver, MBake } =  require(appDir+'/lib/Base.js')
+const {  Watch, MetaPro, MDevSrv } =  require(appDir+'/lib/Wa.js')
 
 console.log(new Ver().ver())
 
@@ -77,10 +78,10 @@ exports.selectDirectory = function () {
 
 function monitorDir(dir) {
    //mbake.bake(dir)
-   let ss = new MDevSrv2(dir, 8090)
+   let ss = new MDevSrv(dir, 8090)
    
-   const mp = new MetaPro2(dir)
-   let ww = new Watch2(mp, dir)
+   const mp = new MetaPro(dir)
+   let ww = new Watch(mp, dir)
    ww.start(false)
    console.log('watching ... ')
    require('electron').shell.openExternal("http://localhost:8090")

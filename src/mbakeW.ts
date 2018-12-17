@@ -10,12 +10,6 @@ import { Wa } from './lib/Wa'
 
 clear()
 
-/*
-import { Slides } from './lib/Wa'
-new Slides().foo()
-process.exit()
-*/
-
 // imports done /////////////////////////////////////////////
 const cwd:string = process.cwd()
 

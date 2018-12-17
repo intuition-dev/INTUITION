@@ -1,4 +1,6 @@
 
+// Copyright and all rights reserved for Metabake.net | Cekvenich, licensed under LGPL 2.1
+
 import { Ver, MBake, RetMsg, Map , Dirs, Dat} from './Base'
 import fbAdmin = require('firebase-admin')
 import fs = require('fs')
@@ -12,27 +14,10 @@ import axios from 'axios'
 import chokidar = require('chokidar')
 import reload = require('reload')
 
-import Marpit = require('@marp-team/marpit')
-const marpit = new Marpit.Marpit()
-
 import cheerio = require('cheerio')
 import interceptor = require('express-interceptor')
 const logger = require('tracer').console()
 
-const markdown = `## Hello
----
-# World 
-`
-
-// slides/////////////////////////////////////////////////////////////////////////////////////////////////
-export class Slides {
-   foo() {
-
-      const { html, css } = marpit.render(markdown)
-      console.log(html)
-
-   }
-}
 
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////
 export class Wa {
@@ -43,7 +28,7 @@ export class Wa {
       const proc = require('child_process')
       console.log(appDir)
 
-      const fp = appDir+'../ewApp/main.js'
+      const fp = appDir+'/ewApp/main.js'
 
       /*const options = {
          stdio: [ 'pipe', 'pipe', 'pipe', 'ipc' ]
@@ -64,8 +49,8 @@ export class Watch {
    root
    watcher
 
-   mp: MetaA
-   constructor(mp_:MetaA, mount) {
+   mp: MetaPro
+   constructor(mp_:MetaPro, mount) {
       this.mp = mp_
       this.root = mount
    }
@@ -141,7 +126,7 @@ export class Watch {
    }
 }//class
 
-export class MetaA {
+export class MetaPro {
    mount:string
    b = new MBake()
    m:Map
@@ -283,7 +268,7 @@ export class MDevSrv {
    static reloadServer
    // http://github.com/alallier/reload
 
-   constructor(dir, port) {// flag to ignore reload
+   constructor(dir, port) {
 
       let app = express()
       logger.trace(dir, port)
@@ -298,7 +283,7 @@ export class MDevSrv {
              return /text\/html/.test(res.get('Content-Type'))
            },
            intercept: function(body, send) {
-               console.log(' h')
+               console.log(' .')
                let $document = cheerio.load(body)
                $document('body').prepend('<script src="/reload/reload.js"></script>')
                send($document.html())
@@ -426,5 +411,5 @@ export class AdminFireUtil {
 }//class
 
 module.exports = {
-   Wa, AdminFireUtil, AdminSrv, Scrape, MetaA, Watch, FileOps, Slides
+   Wa, AdminFireUtil, AdminSrv, Scrape, MetaPro, Watch, FileOps, MDevSrv
 }
