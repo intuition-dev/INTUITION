@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v4.12.25'
+      return 'v4.14.1'
    }
 }
 
@@ -14,19 +14,6 @@ const md = require('markdown-it')({
    typographer: true,
    breaks: true
 })
-/*.use(require('markdown-it-container'), 'dynamic', {
-   validate: function() { return true },
-   render: function(tokens, idx) {
-       let token = tokens[idx]
-
-       if (token.nesting === 1) {
-           return '<div class="' + token.info.trim() + '">'
-       } else {
-           return '</div>'
-       }
-   },
-}) // https://github.com/markdown-it/markdown-it-container/issues/23
-*/
 md.use(markdownItAttrs)
 
 import Marpit = require('@marp-team/marpit')
