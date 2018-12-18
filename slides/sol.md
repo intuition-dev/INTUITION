@@ -45,6 +45,7 @@ Management, take a screen shot every few minutes
 
 ## Designs, mockups and prototypes done in code
 ![270%](sol/41photo-shop.png)
+Reduce # of tools
 
 ---
 
