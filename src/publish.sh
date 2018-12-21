@@ -1,5 +1,4 @@
-#cls
-#rem ma-client-services js ver, admin.yaml mounts, package-lock remove in admin, package.json 2x, zip admin
+# zip up the sample apps, update Base.js version
 ncu -a
 tsc
 ts-node mbake.ts
