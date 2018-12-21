@@ -143,16 +143,16 @@
     lodash "^4.17.5"
     protobufjs "^6.8.6"
 
-"@marp-team/marpit@>=0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@marp-team/marpit/-/marpit-0.4.0.tgz#e37e055eb30398d243c49ee885d4749c0dcff376"
-  integrity sha512-Er5ULT6tEBREJtPG1NXrfkT4w0Af9zaRkIqCGEnESERQEnZscMY+C/eacdjZXsGJ0b+iBN5eiDGR/SarDi5sEg==
+"@marp-team/marpit@>=0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@marp-team/marpit/-/marpit-0.4.1.tgz#46d311ec3bebc799841c61b80a83be9e26ca3bf4"
+  integrity sha512-AvlOADhRjoGezbumlt3RzX9Fh+DKWM8Wpp+CKa4/dmAgoyFVGqzthrP6ezLH3ZiY1Tt/308RkJgGYj6Ql/0mMw==
   dependencies:
     js-yaml "^3.12.0"
     lodash.kebabcase "^4.1.1"
     markdown-it "^8.4.2"
     markdown-it-front-matter "^0.1.2"
-    postcss "^7.0.6"
+    postcss "^7.0.7"
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
@@ -249,10 +249,15 @@
   resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
   integrity sha512-1w52Nyx4Gq47uuu0EVcsHBxZFJgurQ+rTKS3qMHxR1GY2T8c2AJYd6vZoZ9q1rupaDjU0yT+Jc2XTyXkjeMA+Q==
 
-"@types/node@*", "@types/node@>=10.12.15", "@types/node@^10.1.0":
+"@types/node@*", "@types/node@^10.1.0":
   version "10.12.15"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.15.tgz#20e85651b62fd86656e57c9c9bc771ab1570bc59"
   integrity sha512-9kROxduaN98QghwwHmxXO2Xz3MaWf+I1sLVAA6KJDF5xix+IyXVhds0MAfdNwtcpSrzhaTsNB0/jnL86fgUhqA==
+
+"@types/node@>=10.12.18":
+  version "10.12.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
+  integrity sha512-fh+pAqt4xRzPfqA6eh3Z2y6fyZavRIumvjhaCL753+TVkGKGhpPeyrJG2JftD0T9q4GF00KjefsQ+PQNDdWQaQ==
 
 "@types/node@^8.0.24", "@types/node@^8.0.53":
   version "8.10.38"
@@ -1333,10 +1338,10 @@ electron-download@^4.1.0:
     semver "^5.4.1"
     sumchecker "^2.0.2"
 
-electron@>=4.0.0-beta.8:
-  version "4.0.0-nightly.20181010"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-4.0.0-nightly.20181010.tgz#205bf4b367bc59d4ce1d14a587bd2a95267c4848"
-  integrity sha512-eOB6FPM/nSMCVZmF0BwVSyV1vD+VWJ0Ze8L5NjZieABywMCCrJeQM0cz7KLjKDbxUklV2XEmVH8oNPYwU98k+w==
+electron@>=4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-4.0.0.tgz#6ccb40cc8bf2d49954dcea73b97ae7ad12ee04b3"
+  integrity sha512-3XPG/3IXlvnT1oe1K6zEushoD0SKbP8xwdrL10EWGe6k2iOV4hSHqJ8vWnR8yZ7VbSXmBRfomEFDNAo/q/cwKw==
   dependencies:
     "@types/node" "^8.0.24"
     electron-download "^4.1.0"
@@ -3540,10 +3545,10 @@ posix-character-classes@^0.1.0:
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-postcss@^7.0.6:
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.6.tgz#6dcaa1e999cdd4a255dcd7d4d9547f4ca010cdc2"
-  integrity sha512-Nq/rNjnHFcKgCDDZYO0lNsl6YWe6U7tTy+ESN+PnLxebL8uBtYX59HZqvrj7YLK5UCyll2hqDsJOo3ndzEW8Ug==
+postcss@^7.0.7:
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.7.tgz#2754d073f77acb4ef08f1235c36c5721a7201614"
+  integrity sha512-HThWSJEPkupqew2fnuQMEI2YcTj/8gMV3n80cMdJsKxfIh5tHf7nM5JigNX6LxVMqo6zkgQNAI88hyFvBk41Pg==
   dependencies:
     chalk "^2.4.1"
     source-map "^0.6.1"
@@ -4509,10 +4514,10 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
-terser@>=3.11.0, "uglify-es@npm:terser", uglify-js@3.4.x, uglify-js@^2.6.1, "uglify-js@npm:terser":
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-3.11.0.tgz#60782893e1f4d6788acc696351f40636d0e37af0"
-  integrity sha512-5iLMdhEPIq3zFWskpmbzmKwMQixKmTYwY3Ox9pjtSklBLnHiuQ0GKJLhL1HSYtyffHM3/lDIFBnb82m9D7ewwQ==
+terser@>=3.13.1:
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-3.13.1.tgz#a02e8827fb9705fe7b609c31093d010b28cea8eb"
+  integrity sha512-ogyZye4DFqOtMzT92Y3Nxxw8OvXmL39HOALro4fc+EUYFFF9G/kk0znkvwMz6PPYgBtdKAodh3FPR70eugdaQA==
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
@@ -4713,6 +4718,15 @@ uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.5.tgz#0c65f15f815aa08b560a61ce8b4db7ffc3f45376"
   integrity sha512-JoLI4g5zv5qNyT09f4YAvEZIIV1oOjqnewYg5D38dkQljIzpPT296dbIGvKro3digYI1bkb7W6EP1y4uDlmzLg==
+
+"uglify-es@npm:terser", uglify-js@3.4.x, uglify-js@^2.6.1, "uglify-js@npm:terser":
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-3.11.0.tgz#60782893e1f4d6788acc696351f40636d0e37af0"
+  integrity sha512-5iLMdhEPIq3zFWskpmbzmKwMQixKmTYwY3Ox9pjtSklBLnHiuQ0GKJLhL1HSYtyffHM3/lDIFBnb82m9D7ewwQ==
+  dependencies:
+    commander "~2.17.1"
+    source-map "~0.6.1"
+    source-map-support "~0.5.6"
 
 unfluff@>=3.2.0:
   version "3.2.0"

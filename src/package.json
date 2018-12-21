@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "4.14.2",
+   "version": "4.14.3",
    "description": "Metabake is a low-code productivity approach for programmers via generators for Pug, Markdown and much more; including dynamic data binding.",
    "main": "mbake.js",
    "scripts": {
@@ -26,7 +26,7 @@
       "low-code"
    ],
    "engines": {
-      "node": ">=10.14.2",
+      "node": ">=10.11",
       "yarn": ">=1.12.3"
    },
    "resolutions": {
@@ -34,7 +34,7 @@
       "uglify-es": "npm:terser"
    },
    "dependencies": {
-      "@marp-team/marpit": ">=0.4.0",
+      "@marp-team/marpit": ">=0.4.1",
       "adm-zip": ">=0.4.13",
       "axios": ">=0.18.0",
       "cheerio": ">=1.0.0-rc.2",
@@ -42,7 +42,7 @@
       "cli-clear": ">=1.0.4",
       "command-line-args": ">=5.0.2",
       "csvtojson": ">=2.0.8",
-      "electron": ">=4.0.0-beta.8",
+      "electron": ">=4.0.0",
       "express": ">=4.16.4",
       "express-interceptor": ">=1.2.0",
       "filehound": ">=1.16.5",
@@ -62,13 +62,13 @@
       "reload": ">=2.4.0",
       "riot-compiler": ">=3.5.2",
       "sitemap": ">=2.1.0",
-      "terser": ">=3.11.0",
+      "terser": ">=3.13.1",
       "tracer": ">=0.9.6",
       "traverse": ">=0.6.6",
       "unfluff": ">=3.2.0"
    },
    "devDependencies": {
-      "@types/node": ">=10.12.15",
+      "@types/node": ">=10.12.18",
       "find-up": ">=3.0.0",
       "ts-node": ">=7.0.1",
       "typescript": ">=3.2.2"
