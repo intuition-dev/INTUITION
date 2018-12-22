@@ -7,7 +7,6 @@ const electron = require('electron')
 const dialog = electron.dialog
 
 const path = require('path')
-// Main /////////////////////////////////////////////////////////////////////
 
 //const bp = require("global-modules-path").getPath("mbake")
 //let appDir = path.dirname(require.main.filename)
@@ -22,6 +21,7 @@ const { Ver, MBake } =  require(appDir+'/lib/Base.js')
 const {  Watch, MetaPro, MDevSrv } =  require(appDir+'/lib/Wa.js')
 
 console.log(new Ver().ver())
+// Main /////////////////////////////////////////////////////////////////////
 
 let renWindow
 function createWindow () {

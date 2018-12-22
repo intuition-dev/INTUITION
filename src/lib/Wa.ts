@@ -1,7 +1,7 @@
 
 // Copyright and all rights reserved for Metabake.net | Cekvenich, licensed under LGPL 2.1
 
-import { Ver, MBake, RetMsg, Map , Dirs, Dat} from './Base'
+import {  MBake, RetMsg, Map , Dirs, Dat} from './Base'
 import fbAdmin = require('firebase-admin')
 import fs = require('fs')
 import fse = require('fs-extra')
@@ -18,6 +18,7 @@ import cheerio = require('cheerio')
 import interceptor = require('express-interceptor')
 const logger = require('tracer').console()
 
+// ew: {  Watch, MetaPro, MDevSrv } =  require(appDir+'/lib/Wa.js')
 
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////
 export class Wa {
@@ -219,50 +220,6 @@ export class MetaPro {
    }
 }
 
-export class FileOps {
-   root
-   constructor(root_) {
-      this.root = Dirs.slash(root_)
-   }
-
-   clone(src, dest):RetMsg {
-      logger.trace('copy?')
-
-      fse.copySync(this.root+src, this.root+dest)
-
-      let p = this.root+dest
-      logger.trace(p)
-      const d = new Dat(p)
-      d.write()
-      logger.trace('copy!')
-      return new RetMsg('clone',1,dest)
-   }//()
-
-   write(destFile, txt) {
-      logger.trace(this.root+destFile)
-      fs.writeFileSync(this.root+destFile, txt)
-   }
-
-   read(file):string {
-      return fs.readFileSync(this.root+file).toString()
-   }
-
-   remove(path) {
-      let dir_path = this.root + path
-      logger.trace('remove:' + dir_path)
-      if (fs.existsSync(dir_path)) {
-         fs.readdirSync(dir_path).forEach(function(entry) {
-            fs.unlinkSync(dir_path+'/'+entry)
-         })
-         fs.rmdirSync(dir_path)
-      }
-   }	
-   removeFile(path) {
-      let file_path = this.root + path
-      fs.unlinkSync(file_path)
-   }
-}//class
-
 // Meta: //////////////////////
 export class MDevSrv {
    static reloadServer
@@ -319,7 +276,53 @@ export class MDevSrv {
 }//class
 
 
-export class Scrape {
+export class FileOps {
+   root
+   constructor(root_) {
+      this.root = Dirs.slash(root_)
+   }
+
+   clone(src, dest):RetMsg {
+      logger.trace('copy?')
+
+      fse.copySync(this.root+src, this.root+dest)
+
+      let p = this.root+dest
+      logger.trace(p)
+      const d = new Dat(p)
+      d.write()
+      logger.trace('copy!')
+      return new RetMsg('clone',1,dest)
+   }//()
+
+   write(destFile, txt) {
+      logger.trace(this.root+destFile)
+      fs.writeFileSync(this.root+destFile, txt)
+   }
+
+   read(file):string {
+      return fs.readFileSync(this.root+file).toString()
+   }
+
+   remove(path) {
+      let dir_path = this.root + path
+      logger.trace('remove:' + dir_path)
+      if (fs.existsSync(dir_path)) {
+         fs.readdirSync(dir_path).forEach(function(entry) {
+            fs.unlinkSync(dir_path+'/'+entry)
+         })
+         fs.rmdirSync(dir_path)
+      }
+   }	
+   removeFile(path) {
+      let file_path = this.root + path
+      fs.unlinkSync(file_path)
+   }
+}//class
+
+
+// //////////////////////////////////////////////////////////////////////////////
+export class Scrape2 {
    constructor() {
       axios.defaults.responseType= 'document'
    }
@@ -335,8 +338,8 @@ export class Scrape {
             ret['content_text'] = data.description()
             ret['image'] = data.image()
 
-            ret['title'] = Scrape.alphaNumeric( ret['title'])
-            ret['content_text'] = Scrape.alphaNumeric( ret['content_text'])
+            ret['title'] = Scrape2.alphaNumeric( ret['title'])
+            ret['content_text'] = Scrape2.alphaNumeric( ret['content_text'])
             resolve(ret)
          })
       } catch(err) {
@@ -369,7 +372,7 @@ export class Scrape {
 }//class
 
 
-export class AdminSrv { // until we write a push service
+export class AdminSrv2 { // until we write a push service
    //static reloadServer      
    constructor(config) {
       let dir = config['admin_www']
@@ -390,7 +393,7 @@ export class AdminSrv { // until we write a push service
    }//()
 }//class
 
-export class AdminFireUtil {
+export class AdminFireUtil2 {
    public fbApp = null
 
    constructor(config) {
@@ -411,5 +414,6 @@ export class AdminFireUtil {
 }//class
 
 module.exports = {
-   Wa, AdminFireUtil, AdminSrv, Scrape, MetaPro, Watch, FileOps, MDevSrv
+   Wa, MetaPro, Watch, FileOps, MDevSrv,  
+   AdminFireUtil2, AdminSrv2, Scrape2
 }
