@@ -20,6 +20,37 @@ const logger = require('tracer').console()
 
 // ew: {  Watch, MetaPro, MDevSrv } =  require(appDir+'/lib/Wa.js')
 
+// sass
+import sass = require('node-sass')
+import autoprefixer = require('autoprefixer')
+import postcss      = require('postcss')
+import stripCssComments = require('strip-css-comments')
+
+
+export class Sas {
+
+   constructor(fn) {
+
+      var str = sass.renderSync({
+         file: fn
+         , options: { outputStyle: 'compact' }
+       })
+
+      postcss([ autoprefixer({ browsers: ['> 1%', 'not ie < 11'] })]).process(str).then(function (result) {
+         result.warnings().forEach(function (warn) {
+            console.warn(warn.toString())
+         })
+
+         let res:string = stripCssComments(result.css)
+
+         // write the file
+
+      })
+
+   }//()
+
+}//class
+
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////
 export class Wa {
    static gwatch() {
@@ -414,6 +445,6 @@ export class AdminFireUtil2 {
 }//class
 
 module.exports = {
-   Wa, MetaPro, Watch, FileOps, MDevSrv,  
+   Wa, MetaPro, Watch, FileOps, MDevSrv, Sas,
    AdminFireUtil2, AdminSrv2, Scrape2
 }
