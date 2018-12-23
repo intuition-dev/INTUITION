@@ -21,15 +21,16 @@ function version() {
    console.log('  from '+ __dirname)
    console.log()
    console.log('Usage: ')
-   console.log('  For local(non-cloud) GUI watcher:    mbakeW -g')
-   console.log('  Process SASS/SCSS file into css:     mbakeW -s path/filename.ext')
+   console.log('  For local(non-cloud) GUI watcher:      mbakeW -g')
+   console.log('  Process SASS/SCSS file into css:       mbakeW -s path/filename.ext')
 
    console.log(' ----------------------------------------------------------------')
    console.log()
    console.log(' Code examples:')
 
-   console.log('  For a Electron(pre-PhoneGap) app:    mbake -e')
-   console.log('  For a starter hybrid Phonegap app:   mbake -p')
+   console.log('  For a Electron(pre-PhoneGap) app:      mbake -e')
+   console.log('  For a starter hybrid Phonegap app:     mbake -p')
+   console.log('  For an example ad:                     mbake -d')
 
    console.log()
    console.log(' Full docs: https://www.Metabake.net' )
@@ -44,6 +45,7 @@ const optionDefinitions = [
 
    { name: 'phonegap',  alias: 'p', type: Boolean },
    { name: 'elect',     alias: 'e', type: Boolean },
+   { name: 'ad',        alias: 'd', type: Boolean },
 
    { name: 'gwatcher',  alias: 'g', type: Boolean },
    { name: 'css',       alias: 's', type: Boolean }
@@ -67,6 +69,14 @@ function unzipE() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd , /*overwrite*/true)
    console.log('Extracted a starter Electron app to ./elect')
+   process.exit()
+}
+
+function unzipD() {
+   let src:string =__dirname+ '/ad.zip'
+   let zip = new AdmZip(src)
+   zip.extractAllTo(cwd , /*overwrite*/true)
+   console.log('Extracted an example ad  ./ad')
    process.exit()
 }
 
@@ -97,6 +107,8 @@ if(argsParsed.elect)
    unzipE()
 else if(argsParsed.phonegap)
    unzipG()
+   else if(argsParsed.ad)
+   unzipD()
 else if(argsParsed.gwatcher) {
    Wa.gwatch()
 }

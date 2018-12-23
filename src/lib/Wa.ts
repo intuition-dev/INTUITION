@@ -1,7 +1,7 @@
 
 // Copyright and all rights reserved for Metabake.net | Cekvenich, licensed under LGPL 2.1
 
-import {  MBake, RetMsg, Map , Dirs, Dat} from './Base'
+import { Ver, MBake, RetMsg, Map , Dirs, Dat} from './Base'
 import fbAdmin = require('firebase-admin')
 import fs = require('fs')
 import fse = require('fs-extra')
@@ -30,24 +30,25 @@ import stripCssComments = require('strip-css-comments')
 export class Sas {
 
    constructor(fn) {
-
       console.log(fn)
-      
-      return
 
-      var str = sass.renderSync({
+      var css = sass.renderSync({
          file: fn
          , options: { outputStyle: 'compact' }
        })
 
-      postcss([ autoprefixer({ browsers: ['> 1%', 'not ie < 11'] })]).process(str).then(function (result) {
+      postcss([ autoprefixer({ browsers: ['> 1%', 'not ie < 11'] })]).process(css.css).then(function (result) {
          result.warnings().forEach(function (warn) {
             console.warn(warn.toString())
          })
 
          let res:string = stripCssComments(result.css)
+         console.log(res)
+
+         //add ver string
 
          // write the file
+         fs.writeFileSync('blaBla.css', res)
 
       })
    }//()
@@ -437,8 +438,7 @@ export class AdminFireUtil2 {
       this.fbApp = fbAdmin.initializeApp({
          credential: fbAdmin.credential.cert(fbServiceAccount)
       })
-
-   }
+   }//()
 
    deleteAuthUser(uid:string) {
       console.log('deleteAuthUser'+uid)
