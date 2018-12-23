@@ -6,9 +6,9 @@ import commandLineArgs = require('command-line-args')
 
 import { Ver,  Dirs} from './lib/Base'
 import clear = require("cli-clear")
-import { Wa } from './lib/Wa'
+import { Wa, Sas } from './lib/Wa'
 
-clear()
+//clear()
 
 // imports done /////////////////////////////////////////////
 const cwd:string = process.cwd()
@@ -21,14 +21,17 @@ function version() {
    console.log('  from '+ __dirname)
    console.log()
    console.log('Usage: ')
-   console.log('  For local(non-cloud) GUI watcher: mbakeW -g')
+   console.log('  For local(non-cloud) GUI watcher:    mbakeW -g')
+   console.log('  Process SASS/SCSS file into css:     mbakeW -s path/filename.ext')
+
    console.log(' ----------------------------------------------------------------')
    console.log()
    console.log(' Code examples:')
 
-   console.log('  For a Electron(pre-PhoneGap) app: mbake -e')
-   console.log('  For a starter hybrid Phonegap app: mbake -p')
+   console.log('  For a Electron(pre-PhoneGap) app:    mbake -e')
+   console.log('  For a starter hybrid Phonegap app:   mbake -p')
 
+   console.log()
    console.log(' Full docs: https://www.Metabake.net' )
    console.log()
 
@@ -37,18 +40,19 @@ function version() {
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
-   { name: 'mbake', defaultOption: true},
+   { name: 'mbakeW', defaultOption: true},
 
    { name: 'phonegap',  alias: 'p', type: Boolean },
-   { name: 'elect',  alias: 'e', type: Boolean },
+   { name: 'elect',     alias: 'e', type: Boolean },
 
-   { name: 'gwatcher', alias: 'g', type: Boolean }
+   { name: 'gwatcher',  alias: 'g', type: Boolean },
+   { name: 'css',       alias: 's', type: Boolean }
 
 ]
 const argsParsed = commandLineArgs(optionDefinitions)
-let arg:string = argsParsed.mbake
+let arg:string = argsParsed.mbakeW
 
-console.log()
+
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function unzipG() {
@@ -66,6 +70,9 @@ function unzipE() {
    process.exit()
 }
 
+function css(arg) {
+   new Sas(arg)
+}
 
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
 if(arg) {
@@ -80,11 +87,7 @@ if(arg) {
       let n = d.lastIndexOf('/')
       d = d.substring(0,n)
       arg = d + arg
-   } else if (arg.startsWith('.')) {//cur
-
-      arg = cwd //test ./dd
-
-   } else  { // just plain, dir passed
+    } else  { // just plain, dir passed
       arg = cwd + '/' + arg
    }
 }
@@ -97,5 +100,7 @@ else if(argsParsed.phonegap)
 else if(argsParsed.gwatcher) {
    Wa.gwatch()
 }
-else if(!arg)
+else if(argsParsed.css) {
+   css(arg)
+} else if(!arg)
    version()

@@ -31,6 +31,10 @@ export class Sas {
 
    constructor(fn) {
 
+      console.log(fn)
+      
+      return
+
       var str = sass.renderSync({
          file: fn
          , options: { outputStyle: 'compact' }
@@ -46,7 +50,6 @@ export class Sas {
          // write the file
 
       })
-
    }//()
 
 }//class

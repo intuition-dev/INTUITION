@@ -26,25 +26,26 @@ function version() {
    console.log('Usage: ')
    console.log('  mbake .')
    console.log('  or process any_dir to make(bake) a declarative low-code app recursively')
-   console.log('  To process Pug and RIOT *-tag.pug tags: mbake -t . # . is path')
-   console.log('  To process Pug and dat_i items to items.json: mbake -i . # where path is folder containing dat_i.yaml')
+   console.log('  To process Pug and RIOT *-tag.pug tags:                mbake -t . # . is path')
+   console.log('  To process Pug and dat_i items to items.json:          mbake -i . # where path is folder containing dat_i.yaml')
    console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -m .')
-   console.log('  To process list.csv to list.json: mbake -j .')
+   console.log('  To process list.csv to list.json:                      mbake -j .')
    console.log(' ----------------------------------------------------------------')
    console.log()
    console.log(' Code examples:')
    // w is reserved for watch
-   console.log('  For a starter website: mbake -s')
-   console.log('  For an example dynamic web app CRUD: mbake -c')
+   console.log('  For a starter website:                                 mbake -s')
+   console.log('  For an example dynamic web app CRUD:                   mbake -c')
 
-   console.log('  For a starter blog|items: mbake -b')
+   console.log('  For a starter blog|items:                              mbake -b')
 
-   console.log('  For an example admin cloud service: mbake -a')
-   console.log('  For a starter dash web app: mbake -d')
-   console.log('  For example slides markdown: mbake -l')
+   console.log('  For an example admin cloud service:                    mbake -a')
+   console.log('  For a starter dash web app:                            mbake -d')
+   console.log('  For example slides markdown:                           mbake -l')
 
-   console.log(' Full docs: https://www.Metabake.net' )
    console.log('  mbakeW has more options')
+   console.log()
+   console.log(' Full docs: https://www.Metabake.net' )
    console.log()
 
    process.exit()
@@ -53,18 +54,18 @@ function version() {
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
    { name: 'mbake', defaultOption: true},
-   { name: 'items', alias: 'i', type: Boolean },
-   { name: 'tag', alias: 't', type: Boolean },
-   { name: 'map', alias: 'm', type: Boolean },
+   { name: 'items',  alias: 'i', type: Boolean },
+   { name: 'tag',    alias: 't', type: Boolean },
+   { name: 'map',    alias: 'm', type: Boolean },
    { name: 'csv2Json', alias: 'j', type: Boolean },
 
-   { name: 'blog', alias: 'b', type: Boolean },
-   { name: 'dash', alias: 'd', type: Boolean },
+   { name: 'blog',   alias: 'b', type: Boolean },
+   { name: 'dash',   alias: 'd', type: Boolean },
    { name: 'slides', alias: 'l', type: Boolean },
 
-   { name: 'auto', alias: 'a', type: Boolean },
+   { name: 'auto',   alias: 'a', type: Boolean },
    { name: 'website',  alias: 's', type: Boolean },
-   { name: 'crud', alias: 'c', type: Boolean },
+   { name: 'crud',   alias: 'c', type: Boolean },
 
 ]
 const argsParsed = commandLineArgs(optionDefinitions)

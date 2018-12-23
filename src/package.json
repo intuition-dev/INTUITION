@@ -29,10 +29,6 @@
       "node": ">=10.11",
       "yarn": ">=1.12.3"
    },
-   "resolutions": {
-      "uglify-js": "npm:terser",
-      "uglify-es": "npm:terser"
-   },
    "dependencies": {
       "@marp-team/marpit": ">=0.4.1",
       "adm-zip": ">=0.4.13",
