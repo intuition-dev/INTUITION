@@ -33,11 +33,6 @@ const logger = require('tracer').console()
 
 import * as JavaScriptObfuscator from 'javascript-obfuscator'
 
-// map
-import sm = require('sitemap')
-import traverse = require('traverse')
-import lunr = require('lunr')
-
 import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -176,144 +171,6 @@ export class Dat {
       return this.props
    }//()
 }//class
-
-
-export class Map {
-   _sitemap
-   _root
-   constructor(root) {
-      if(!root || root.length < 1) {
-         console.log('no path arg passed')
-         return
-      }
-      this._root = root
-   }
-   gen():RetMsg {
-      const m = yaml.load(fs.readFileSync(this._root+'/map.yaml'))
-      let jmenu = JSON.stringify(m.menu, null, 2)
-      //menu done
-      fs.writeFileSync(this._root+'/menu.json', jmenu)
-
-      this._sitemap = sm.createSitemap( {
-         hostname: m['host']
-      })
-
-      //build sitemap
-      let leaves = traverse(m.menu).reduce(function (acc, x) {
-         if (this.isLeaf) acc.push(x)
-         return acc
-      }, [])
-      // any items recursively
-      let itemsRoot = m['itemsRoot']
-      if (itemsRoot) {
-         //visit each path
-         const d = new Dirs(this._root + itemsRoot)
-         leaves = leaves.concat(d.get())
-      }
-
-      let arrayLength = leaves.length
-      logger.trace(arrayLength)
-      for (let i = 0; i < arrayLength; i++) {
-         try {
-            let path = leaves[i]
-
-            if(path.includes(this._root))
-               path = path.replace(this._root,'')
-            let fullPath =  this._root + path
-
-            let dat = new Dat(fullPath)
-            let props = dat.getAll()
-            logger.trace(path)//, props)
-
-            //priority
-            let priority = props['priority']
-            if(!priority) priority = 0.3
-
-            let image = props['image']
-            if(!image) {
-               this._sitemap.add({
-                  url: path,
-                  changefreq: m['changefreq'],
-                  priority: priority
-               })
-            } else {  //if it has image
-               this._sitemap.add({
-                  url: path,
-                  changefreq: m['changefreq'],
-                  priority: priority,
-                  img: [{
-                     url: image,
-                     title: props['title'],
-                     caption: props['title']
-                  }]
-               })
-            }
-         } catch(err) { logger.trace(err)}
-      }//for
-
-      //validate and write
-      const thiz = this
-      this._sitemap.toXML( function (err, xml) {
-
-         fs.writeFileSync(thiz._root+'/sitemap.xml', xml)
-         console.log(' Sitemap ready')
-
-         thiz._map(leaves)
-
-      })// to XML write
-      return new RetMsg(thiz._root + ' map', 1,'ok')
-   }//map()
-
-   _map(leaves) {
-      let documents = []
-
-      let arrayLength = leaves.length
-      for (let i = 0; i < arrayLength; i++) {
-         try {
-            let path = leaves[i]
-            if(path.includes(this._root))
-               path = path.replace(this._root,'')
-            let fullPath =  this._root + path
-
-            // find all md files in fullPath
-            const rec = FileHound.create() //recurse
-               .paths(fullPath)
-               .ext('md')
-               .findSync()
-
-            let text =''
-            for (let val of rec) {//clean the strings
-               val = Dirs.slash(val)
-               console.log(val)
-               let txt1 = fs.readFileSync(val, "utf8")
-               text = text + ' ' + txt1
-            }//for
-            const row = {
-               id: path,
-               body: text
-            }
-            documents.push(row)
-         } catch(err) { logger.trace(err)}
-      }//for
-
-      //fts index
-      logger.trace(documents.length)
-      let idx = lunr(function () {
-         this.ref('id')
-         this.field('body')
-
-         documents.forEach(function (doc) {
-            this.add(doc)
-         }, this)
-      })//idx
-
-      const jidx = JSON.stringify(idx)
-      fs.writeFileSync(this._root+'/FTS.idx', jidx)
-
-      console.log(' Map generated menu.json, sitemap.xml and FTS.idx(json) index in '+ this._root)
-
-   }//()
-}// class
 
 
 export class MBake {
@@ -708,5 +565,5 @@ export class Tag {
 
 
 module.exports = {
-   Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, Map
+   Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg
 }

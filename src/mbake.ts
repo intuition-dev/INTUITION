@@ -4,7 +4,7 @@
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
-import { Ver, MBake, Map , Dirs} from './lib/Base'
+import { Ver, MBake,  Dirs} from './lib/Base'
 import clear = require("cli-clear")
 
 clear()
@@ -54,7 +54,6 @@ const optionDefinitions = [
    { name: 'mbake', defaultOption: true},
    { name: 'items',  alias: 'i', type: Boolean },
    { name: 'tag',    alias: 't', type: Boolean },
-   { name: 'map',    alias: 'm', type: Boolean },
 
    { name: 'blog',   alias: 'b', type: Boolean },
    { name: 'dash',   alias: 'd', type: Boolean },
@@ -136,10 +135,6 @@ if(arg) {
    }
 }
 
-function map(arg) {
-   new Map(arg).gen()
-}
-
 // pug: ////////////////////////////////////////////////////////////////////////////////////////////////
 function bake(arg) {
    new MBake().bake(arg)
@@ -167,8 +162,6 @@ if(argsParsed.tag) {
 }
 else if(argsParsed.items)
    itemize(arg)
-else if(argsParsed.map)
-   map(arg)
 else if(argsParsed.auto)
    unzipA()
 else if(argsParsed.blog)
