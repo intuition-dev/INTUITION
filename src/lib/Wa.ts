@@ -1,11 +1,10 @@
 
 // Copyright and all rights reserved for Metabake.net | Cekvenich, licensed under LGPL 2.1
 
-import { Ver, MBake, RetMsg, Dirs, Dat} from './Base'
+import { MBake, RetMsg, Dirs, Dat} from './Base'
 import fbAdmin = require('firebase-admin')
 import fs = require('fs')
 import fse = require('fs-extra')
-import path = require('path')
 import FileHound = require('filehound')
 import yaml = require('js-yaml')
 
@@ -29,45 +28,7 @@ const logger = require('tracer').console()
 // ew: {  Watch, MetaPro, MDevSrv } =  require(appDir+'/lib/Wa.js')
 import csv2JsonV2 = require('csvtojson')
 
-// sass
-import sass = require('node-sass')
-import autoprefixer = require('autoprefixer')
-import postcss      = require('postcss')
-import stripCssComments = require('strip-css-comments')
 
-export class Sas {
-
-   constructor(fn) {
-      console.log(fn)
-
-      const css = sass.renderSync({
-         file: fn
-         , outputStyle: 'compact'
-       })
-       let filename = path.basename(fn)
-       filename = filename.split('.').slice(0, -1).join('.')
-
-      postcss([ autoprefixer({ browsers: ['> 1%', 'not ie < 11'] })]).process(css.css, {from: undefined}).then(function (result) {
-         result.warnings().forEach(function (warn) {
-            console.warn(warn.toString())
-         })
-
-         let res:string = stripCssComments(result.css, {preserve: false})
-         // lf
-         res = res.replace(/(\r\n\t|\n|\r\t)/gm, '\n')
-         res = res.replace(/\n\s*\n/g, '\n')
-         res = res.trim()
-         //add ver string
-         const ver = ' /* mB ' + new Ver().ver() +' on '+new Date().toISOString()+' */'
-         res = res + ver
-
-         // write the file
-         fs.writeFileSync(filename+'.css', res)
-
-      })
-   }//()
-
-}//class
 
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////
 export class Wa {
@@ -541,7 +502,6 @@ export class Map {
    }//()
 }// class
 
-
 // //////////////////////////////////////////////////////////////////////////////
 export class Scrape2 {
    constructor() {
@@ -634,6 +594,6 @@ export class AdminFireUtil2 {
 }//class
 
 module.exports = {
-   Wa, MetaPro, Watch, FileOps, MDevSrv, Sas, CSV2Json,
+   Wa, MetaPro, Watch, FileOps, MDevSrv, CSV2Json,
    AdminFireUtil2, AdminSrv2, Scrape2
 }

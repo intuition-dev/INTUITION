@@ -5,7 +5,8 @@ import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
 import { Ver,  Dirs} from './lib/Base'
-import { Wa, Sas, CSV2Json, Map} from './lib/Wa'
+import { Wa, CSV2Json, Map} from './lib/Wa'
+import { Sas } from './lib/Sa'
 
 
 // imports done /////////////////////////////////////////////
@@ -81,7 +82,7 @@ function unzipD() {
 }
 
 function css(arg) {
-   new Sas(arg)
+   new Sas().trans(arg)
 }
 // CSV2Json: ////////////////////////////////////////////////////////////////////////////////////////////////
 function csv2Json(arg) {
