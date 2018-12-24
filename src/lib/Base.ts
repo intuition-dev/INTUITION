@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v4.14.4'
+      return 'v4.14.5'
    }
 }
 
@@ -30,8 +30,6 @@ const minify = require('html-minifier').minify
 const Terser = require("terser")
 
 const logger = require('tracer').console()
-
-import csv2JsonV2 = require('csvtojson')
 
 import * as JavaScriptObfuscator from 'javascript-obfuscator'
 
@@ -178,41 +176,6 @@ export class Dat {
       return this.props
    }//()
 }//class
-
-
-export class CSV2Json { // TODO: get to work with watcher
-   dir:string
-   constructor(dir_:string) {
-      if(!dir_ || dir_.length < 1) {
-         console.log('no path arg passed')
-         return
-      }
-      this.dir = Dirs.slash(dir_)
-   }
-
-   convert():RetMsg {
-
-      let fn:string = this.dir +'/list.csv'
-      if (!fs.existsSync(fn)) { //if it does not exist, go up a level
-         let r = new RetMsg('CSV2Json', -1, 'list.csv not found in ' + this.dir)
-         console.log('not found', r)
-         return r
-      }
-      let r = new RetMsg('CSV2Json', 1, 'OK')
-      let thiz = this
-      logger.trace('1')
-
-      csv2JsonV2({ noheader:true }).fromFile(fn)
-         .then(function(jsonO) {
-            logger.trace(jsonO)
-            let fj:string = thiz.dir +'/list.json'
-
-            fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
-            return r
-         })
-
-   }//()
-}
 
 
 export class Map {

@@ -5,8 +5,7 @@ import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
 import { Ver,  Dirs} from './lib/Base'
-import clear = require("cli-clear")
-import { Wa, Sas } from './lib/Wa'
+import { Wa, Sas, CSV2Json} from './lib/Wa'
 
 //clear()
 
@@ -23,6 +22,7 @@ function version() {
    console.log('Usage: ')
    console.log('  For local(non-cloud) GUI watcher:      mbakeW -g')
    console.log('  Process SASS/SCSS file into css:       mbakeW -s path/filename.ext')
+   console.log('  To process list.csv to list.json:      mbake -j .')
 
    console.log(' ----------------------------------------------------------------')
    console.log()
@@ -43,14 +43,15 @@ function version() {
 const optionDefinitions = [
    { name: 'mbakeW', defaultOption: true},
 
+   { name: 'csv2Json', alias: 'j', type: Boolean },
+   { name: 'gwatcher',  alias: 'g', type: Boolean },
+   { name: 'css',       alias: 's', type: Boolean },
+
    { name: 'phonegap',  alias: 'p', type: Boolean },
    { name: 'elect',     alias: 'e', type: Boolean },
-   { name: 'ad',        alias: 'd', type: Boolean },
-
-   { name: 'gwatcher',  alias: 'g', type: Boolean },
-   { name: 'css',       alias: 's', type: Boolean }
-
+   { name: 'ad',        alias: 'd', type: Boolean }
 ]
+
 const argsParsed = commandLineArgs(optionDefinitions)
 let arg:string = argsParsed.mbakeW
 
@@ -83,6 +84,10 @@ function unzipD() {
 function css(arg) {
    new Sas(arg)
 }
+// CSV2Json: ////////////////////////////////////////////////////////////////////////////////////////////////
+function csv2Json(arg) {
+   new CSV2Json(arg).convert()
+}
 
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
 if(arg) {
@@ -107,8 +112,10 @@ if(argsParsed.elect)
    unzipE()
 else if(argsParsed.phonegap)
    unzipG()
-   else if(argsParsed.ad)
+else if(argsParsed.ad)
    unzipD()
+else if(argsParsed.csv2Json)
+   csv2Json(arg)
 else if(argsParsed.gwatcher) {
    Wa.gwatch()
 }

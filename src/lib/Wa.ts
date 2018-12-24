@@ -19,6 +19,7 @@ import interceptor = require('express-interceptor')
 const logger = require('tracer').console()
 
 // ew: {  Watch, MetaPro, MDevSrv } =  require(appDir+'/lib/Wa.js')
+import csv2JsonV2 = require('csvtojson')
 
 // sass
 import sass = require('node-sass')
@@ -34,18 +35,22 @@ export class Sas {
 
       var css = sass.renderSync({
          file: fn
-         , options: { outputStyle: 'compact' }
+         , outputStyle: 'compact'
        })
 
-      postcss([ autoprefixer({ browsers: ['> 1%', 'not ie < 11'] })]).process(css.css).then(function (result) {
+      postcss([ autoprefixer({ browsers: ['> 1%', 'not ie < 11'] })]).process(css.css, {from: undefined}).then(function (result) {
          result.warnings().forEach(function (warn) {
             console.warn(warn.toString())
          })
 
-         let res:string = stripCssComments(result.css)
-         console.log(res)
-
+         let res:string = stripCssComments(result.css, {preserve: false})
+         // lf
+         res = res.replace(/(\r\n\t|\n|\r\t)/gm, '\n')
+         res = res.replace(/\n\s*\n/g, '\n')
+         res = res.trim()
          //add ver string
+         const ver = ' /* mB ' + new Ver().ver() +' on '+new Date().toISOString()+' */'
+         res = res + ver
 
          // write the file
          fs.writeFileSync('blaBla.css', res)
@@ -79,6 +84,40 @@ export class Wa {
    static onWaExit(){
       console.log('Watcher child exited')
    }
+}
+
+export class CSV2Json { // TODO: get to work with watcher
+   dir:string
+   constructor(dir_:string) {
+      if(!dir_ || dir_.length < 1) {
+         console.log('no path arg passed')
+         return
+      }
+      this.dir = Dirs.slash(dir_)
+   }
+
+   convert():RetMsg {
+
+      let fn:string = this.dir +'/list.csv'
+      if (!fs.existsSync(fn)) { //if it does not exist, go up a level
+         let r = new RetMsg('CSV2Json', -1, 'list.csv not found in ' + this.dir)
+         console.log('not found', r)
+         return r
+      }
+      let r = new RetMsg('CSV2Json', 1, 'OK')
+      let thiz = this
+      logger.trace('1')
+
+      csv2JsonV2({ noheader:true }).fromFile(fn)
+         .then(function(jsonO) {
+            logger.trace(jsonO)
+            let fj:string = thiz.dir +'/list.json'
+
+            fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
+            return r
+         })
+
+   }//()
 }
 
 export class Watch {
@@ -448,6 +487,6 @@ export class AdminFireUtil2 {
 }//class
 
 module.exports = {
-   Wa, MetaPro, Watch, FileOps, MDevSrv, Sas,
+   Wa, MetaPro, Watch, FileOps, MDevSrv, Sas, CSV2Json,
    AdminFireUtil2, AdminSrv2, Scrape2
 }
