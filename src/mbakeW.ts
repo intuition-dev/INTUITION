@@ -21,13 +21,12 @@ function version() {
    console.log()
    console.log('Usage: ')
    console.log('  For local(non-cloud) GUI watcher:      mbakeW -g')
-   console.log('  Process SASS/SCSS file into css:       mbakeW -s path/filename.ext')
+   console.log('  Process SASS/SCSS file into css:       mbakeW -c path/filename.ext')
    console.log('  To process list.csv to list.json:      mbake -j .')
-
+   console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -m . # or path')
    console.log(' ----------------------------------------------------------------')
    console.log()
    console.log(' Code examples:')
-
    console.log('  For a Electron(pre-PhoneGap) app:      mbake -e')
    console.log('  For a starter hybrid Phonegap app:     mbake -p')
    console.log('  For an example ad:                     mbake -d')
@@ -45,7 +44,7 @@ const optionDefinitions = [
 
    { name: 'csv2Json', alias: 'j', type: Boolean },
    { name: 'gwatcher',  alias: 'g', type: Boolean },
-   { name: 'css',       alias: 's', type: Boolean },
+   { name: 'css',       alias: 'c', type: Boolean },
 
    { name: 'phonegap',  alias: 'p', type: Boolean },
    { name: 'elect',     alias: 'e', type: Boolean },

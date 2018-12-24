@@ -708,6 +708,5 @@ export class Tag {
 
 
 module.exports = {
-   Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, 
-   CSV2Json, Map
+   Dat, Dirs, BakeWrk, Items, Tag, Ver, MBake, RetMsg, Map
 }

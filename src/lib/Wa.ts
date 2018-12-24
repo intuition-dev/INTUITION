@@ -5,6 +5,7 @@ import { Ver, MBake, RetMsg, Map , Dirs, Dat} from './Base'
 import fbAdmin = require('firebase-admin')
 import fs = require('fs')
 import fse = require('fs-extra')
+import path = require('path')
 
 import express = require('express')
 import probe = require('probe-image-size')
@@ -27,16 +28,17 @@ import autoprefixer = require('autoprefixer')
 import postcss      = require('postcss')
 import stripCssComments = require('strip-css-comments')
 
-
 export class Sas {
 
    constructor(fn) {
       console.log(fn)
 
-      var css = sass.renderSync({
+      const css = sass.renderSync({
          file: fn
          , outputStyle: 'compact'
        })
+       let filename = path.basename(fn)
+       filename = filename.split('.').slice(0, -1).join('.')
 
       postcss([ autoprefixer({ browsers: ['> 1%', 'not ie < 11'] })]).process(css.css, {from: undefined}).then(function (result) {
          result.warnings().forEach(function (warn) {
@@ -53,7 +55,7 @@ export class Sas {
          res = res + ver
 
          // write the file
-         fs.writeFileSync('blaBla.css', res)
+         fs.writeFileSync(filename+'.css', res)
 
       })
    }//()

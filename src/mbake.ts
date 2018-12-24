@@ -4,7 +4,7 @@
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
-import { Ver, MBake, CSV2Json, Map ,Dirs} from './lib/Base'
+import { Ver, MBake, Map , Dirs} from './lib/Base'
 import clear = require("cli-clear")
 
 clear()
@@ -29,7 +29,6 @@ function version() {
    console.log('  or process any_dir to make(bake) a declarative low-code app recursively')
    console.log('  To process Pug and RIOT *-tag.pug tags:                mbake -t . # or path, also does regular mbake of Pug')
    console.log('  To process Pug and dat_i items to items.json:          mbake -i . # where path is folder containing dat_i.yaml')
-   console.log('  To map map.yaml to menu.json, sitemap.xml and FTS.idx: mbake -m . # or path')
    console.log(' ----------------------------------------------------------------')
    console.log()
    console.log(' Code examples:')
