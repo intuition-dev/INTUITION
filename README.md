@@ -8,8 +8,7 @@ License of all examples apps are MIT - but core build lib itself(Base.*) is LGPL
 
 You can use for free in any way; but if you change or use the core library directly, you must contribute back to the source of the ideas.
 
-
-## Low-code productivity for programmers via generators for Pug, Markdown and much more; including dynamic data binding.
+#### Metabake.org is the extensible low-code productivity tool for application developers via static generation; with Pug, Markdown and more; including dynamic data binding. *Some developers implement applications faster than others.*
 
 
 Metabake mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging low-code pillars for high development productivity.
