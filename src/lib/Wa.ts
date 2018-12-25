@@ -2,7 +2,6 @@
 // Copyright and all rights reserved for Metabake.net | Cekvenich, licensed under LGPL 2.1
 
 import { MBake, RetMsg, Dirs, Dat} from './Base'
-import fbAdmin = require('firebase-admin')
 import fs = require('fs')
 import fse = require('fs-extra')
 import FileHound = require('filehound')
@@ -503,7 +502,7 @@ export class Map {
 }// class
 
 // //////////////////////////////////////////////////////////////////////////////
-export class Scrape2 {
+export class Scrape {
    constructor() {
       axios.defaults.responseType= 'document'
    }
@@ -519,8 +518,8 @@ export class Scrape2 {
             ret['content_text'] = data.description()
             ret['image'] = data.image()
 
-            ret['title'] = Scrape2.alphaNumeric( ret['title'])
-            ret['content_text'] = Scrape2.alphaNumeric( ret['content_text'])
+            ret['title'] = Scrape.alphaNumeric( ret['title'])
+            ret['content_text'] = Scrape.alphaNumeric( ret['content_text'])
             resolve(ret)
          })
       } catch(err) {
@@ -553,47 +552,8 @@ export class Scrape2 {
 }//class
 
 
-export class AdminSrv2 { // until we write a push service
-   //static reloadServer      
-   constructor(config) {
-      let dir = config['admin_www']
-      let port = config['admin_port']
-
-      let app = express()
-      logger.trace(dir,port)
-      app.set('admin port', port)
-      
-      let fbServiceAccount = new Object(JSON.parse( fs.readFileSync(config['firebase_config']).toString() ) )
-
-      app.set('views', dir)
-
-      app.use(express.static(dir))
-      app.listen(port, function () {
-         logger.trace('admin app'+port)
-      })
-   }//()
-}//class
-
-export class AdminFireUtil2 {
-   public fbApp = null
-
-   constructor(config) {
-    
-      let fbServiceAccount = new Object(JSON.parse(fs.readFileSync(config['firebase_config']).toString()))
-
-      this.fbApp = fbAdmin.initializeApp({
-         credential: fbAdmin.credential.cert(fbServiceAccount)
-      })
-   }//()
-
-   deleteAuthUser(uid:string) {
-      console.log('deleteAuthUser'+uid)
-      return fbAdmin.auth().deleteUser(uid)
-   }
-
-}//class
 
 module.exports = {
    Wa, MetaPro, Watch, FileOps, MDevSrv, CSV2Json,
-   AdminFireUtil2, AdminSrv2, Scrape2
+   Scrape
 }
