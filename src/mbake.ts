@@ -15,12 +15,15 @@ const cwd:string = process.cwd()
 function version() {
    let b = new Ver()
    console.log()
-   console.log('╔╗──╔╗╔══╗─╔══╗╔╗╔══╗╔═══╗')
-   console.log('║║──║║║╔╗║─║╔╗║║║║╔═╝║╔══╝')
-   console.log('║╚╗╔╝║║╚╝╚╗║╚╝║║╚╝║──║╚══╗')
-   console.log('║╔╗╔╗║║╔═╗║║╔╗║║╔╗║──║╔══╝')
-   console.log('║║╚╝║║║╚═╝║║║║║║║║╚═╗║╚══╗')
-   console.log('╚╝──╚╝╚═══╝╚╝╚╝╚╝╚══╝╚═══╝')
+   console.log('88b           d88  88                       88                  ');
+   console.log('888b         d888  88                       88                  ');
+   console.log('88`8b       d8\'88  88                       88                  ');
+   console.log('88 `8b     d8\' 88  88,dPPYba,   ,adPPYYba,  88   ,d8   ,adPPYba,');
+   console.log('88  `8b   d8\'  88  88P\'    "8a  ""     `Y8  88 ,a8"   a8P_____88');
+   console.log('88   `8b d8\'   88  88       d8  ,adPPPPP88  8888[     8PP"""""""');
+   console.log('88    `888\'    88  88b,   ,a8"  88,    ,88  88`"Yba,  "8b,   ,aa');
+   console.log('88     `8\'     88  8Y"Ybbd8"\'   `"8bbdP"Y8  88   `Y8a  `"Ybbd8"\'');
+   console.log();
    console.log('mbake CLI version: '+b.ver())
    console.log()
    console.log('Usage: ')
