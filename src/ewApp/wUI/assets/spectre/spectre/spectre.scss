@@ -1,45 +1,44 @@
 // Variables and mixins
 @import "variables";
-@import "mixins";
+// T @import "mixins";
 
 /*! Spectre.css v#{$version} | MIT License | github.com/picturepan2/spectre */
 // Reset and dependencies
-@import "normalize";
-@import "base";
+// T @import "normalize";
+// T @import "base";
 
 // Elements
 @import "typography";
-@import "asian";
+//@import "asian";
 @import "tables";
 @import "buttons";
-@import "forms";
+//@import "forms";
 @import "labels";
 @import "codes";
 @import "media";
 
 // Layout
-@import "layout";
-@import "hero";
-@import "navbar";
+// T @import "layout";
+//@import "navbar";
 
 // Components
-@import "accordions";
+//@import "accordions";
 @import "avatars";
 @import "badges";
-@import "breadcrumbs";
+//@import "breadcrumbs";
 @import "bars";
 @import "cards";
 @import "chips";
-@import "dropdowns";
+//@import "dropdowns";
 @import "empty";
-@import "menus";
-@import "modals";
-@import "navs";
-@import "pagination";
+//@import "menus";
+//@import "modals";
+//@import "navs";
+//@import "pagination";
 @import "panels";
 @import "popovers";
 @import "steps";
-@import "tabs";
+//@import "tabs";
 @import "tiles";
 @import "toasts";
 @import "tooltips";
