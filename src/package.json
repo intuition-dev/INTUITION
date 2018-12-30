@@ -11,12 +11,12 @@
       "mbakeW": "mbakeW.js"
    },
    "license": "LGPL-2.1-only",
-   "author": "http://www.Metabake.net",
-   "bugs": "http://www.Metabake.net",
-   "homepage": "http://www.Metabake.net",
+   "author": "http://www.MetaBake.org",
+   "bugs": "http://www.MetaBake.org",
+   "homepage": "http://www.MetaBake.org",
    "repository": {
       "type": "git",
-      "url": "http://www.Metabake.net"
+      "url": "http://www.MetaBake.org"
    },
    "keywords": [
       "mbake",

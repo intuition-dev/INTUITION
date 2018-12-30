@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// License} LGPL 2.1  (c) Metabake.net | Cekvenich
+// License} LGPL 2.1  (c) MetaBake.org | Cekvenich
 
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
@@ -45,7 +45,7 @@ function version() {
 
    console.log('  mbakeW CLI has more flags and features:                mbakeW')
    console.log()
-   console.log(' Full docs: https://www.Metabake.net' )
+   console.log(' Full docs: https://www.MetaBake.org' )
    console.log()
 
    process.exit()

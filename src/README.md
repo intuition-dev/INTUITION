@@ -1,7 +1,7 @@
 
 Docs, examples and more at:
 
-[Metabake.net](http://www.metabake.net)
+[MetaBake.org](http://www.MetaBake.org)
 [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
 
 License of all apps are MIT - but core build lib itself is LGPL:
@@ -55,5 +55,5 @@ Examples include an admin module, a watcher module, SPA, Blog, Website, Slides, 
 Primary focus is high development productivity (via "low-code") and being easy to learn. But it is also fully flexible to build any WebApp in any directory tree structure you like an use any CSS/SASS framework you like.
 Metabake supports CSS classes in Markdown, plus, because it uses Pug - it can also do any HTML layout. But Metabake is not static only - it fully supports and has examples and docs for dynamic apps.
 
-[Metabake.net](http://www.metabake.net)
+[MetaBake.org](http://www.MetaBake.org)
 

@@ -1,4 +1,4 @@
-// All rights Metabake.net | Cekvenich, licensed under LGPL 2.1
+// All rights MetaBake.org | Cekvenich, licensed under LGPL 2.1
 
 const {app, BrowserWindow} = require('electron')
 const { ipcMain } = require('electron')

@@ -1,5 +1,5 @@
 
-// Copyright and all rights reserved for Metabake.net | Cekvenich, licensed under LGPL 2.1
+// Copyright and all rights reserved for MetaBake.org | Cekvenich, licensed under LGPL 2.1
 
 export class Ver {
    ver() {
