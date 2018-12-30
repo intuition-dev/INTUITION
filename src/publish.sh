@@ -1,5 +1,5 @@
 # zip up the sample apps, update Base.js version
-ncu -a
+# ncu -a
 tsc
 ts-node mbake.ts
 npm publish
