@@ -40,7 +40,6 @@ function version() {
 
    console.log('  For a starter blog|items:                              mbake -b')
 
-   console.log('  For an example admin cloud service:                    mbake -a')
    console.log('  For a starter dash web app:                            mbake -d')
    console.log('  For example slides markdown:                           mbake -l')
 
@@ -62,7 +61,6 @@ const optionDefinitions = [
    { name: 'dash',   alias: 'd', type: Boolean },
    { name: 'slides', alias: 'l', type: Boolean },
 
-   { name: 'auto',   alias: 'a', type: Boolean },
    { name: 'website',  alias: 's', type: Boolean },
    { name: 'crud',   alias: 'c', type: Boolean },
 
@@ -73,14 +71,6 @@ let arg:string = argsParsed.mbake
 console.log()
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
-function unzipA() {
-   let src:string =__dirname+ '/admin.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd , /*overwrite*/true)
-   console.log('Extracted a starter admin/build/Meta cloud service to ./autoEG')
-   process.exit()
-}
-
 function unzipC() {
    let src:string =__dirname+ '/crud.zip'
    let zip = new AdmZip(src)
@@ -165,8 +155,6 @@ if(argsParsed.tag) {
 }
 else if(argsParsed.items)
    itemize(arg)
-else if(argsParsed.auto)
-   unzipA()
 else if(argsParsed.blog)
    unzipB()
 else if(argsParsed.dash)

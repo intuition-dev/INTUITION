@@ -27,6 +27,7 @@ function version() {
    console.log(' ----------------------------------------------------------------')
    console.log()
    console.log(' Code examples:')
+   console.log('  For a starter CMS service:                               mbake -a')
    console.log('  For a Electron(pre-PhoneGap) app:                        mbake -e')
    console.log('  For a starter hybrid Phonegap app:                       mbake -p')
    console.log('  For an example ad:                                       mbake -d')
@@ -47,6 +48,7 @@ const optionDefinitions = [
    { name: 'css',       alias: 'c', type: Boolean },
    { name: 'map',    alias: 'm', type: Boolean },
 
+   { name: 'CMS',   alias: 'a', type: Boolean },
    { name: 'phonegap',  alias: 'p', type: Boolean },
    { name: 'elect',     alias: 'e', type: Boolean },
    { name: 'ad',        alias: 'd', type: Boolean }
@@ -58,6 +60,14 @@ let arg:string = argsParsed.mbakeW
 
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
+function unzipA() {
+   let src:string =__dirname+ '/CMS.zip'
+   let zip = new AdmZip(src)
+   zip.extractAllTo(cwd , /*overwrite*/true)
+   console.log('Extracted a starter CMS in this folder')
+   process.exit()
+} 
+
 function unzipG() {
    let src:string =__dirname+ '/PGap.zip'
    let zip = new AdmZip(src)
@@ -116,6 +126,8 @@ if(argsParsed.elect)
    unzipE()
 else if(argsParsed.phonegap)
    unzipG()
+else if(argsParsed.CMS)
+   unzipA()
 else if(argsParsed.ad)
    unzipD()
 else if(argsParsed.csv2Json)

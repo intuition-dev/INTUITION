@@ -4,9 +4,11 @@ Docs, examples and more at:
 [Metabake.net](http://www.metabake.net)
 [Click for 'THE' mbake Docs](http://doc.metabake.org/mbake/)
 
-License of all examples apps are MIT - but core build lib itself is LGPL:
+License of all apps are MIT - but core build lib itself is LGPL:
 You can use for free in any way; but if you change the core library directly, you must offer to contribute back to the source of the ideas.
 
+
+### MetaBake is the open source extensible low-code productivity tool for programmers.
 
 #### Metabake.org is the extensible low-code productivity tool for application developers via static generation; with Pug, Markdown and more; including dynamic data binding. *Some developers implement applications faster than others.*
 
