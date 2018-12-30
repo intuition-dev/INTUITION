@@ -2,6 +2,8 @@
 ### Shortcut for Chrome
 
 - Option-Command-I                     # Dev tools
+- Toggle Device Mode	Command+Shift+M	Control+Shift+M
+- Disable cache in Network tools: no  shortcut
 
 ### Code anywhere shortcuts
 
