@@ -27,7 +27,7 @@ let renWindow
 function createWindow () {
    renWindow = new BrowserWindow({width: 400, height: 200})
    renWindow.setMenu(null)
-   renWindow.setTitle('Metabake Watch')
+   renWindow.setTitle('MetaBake Watch')
 
    renWindow.loadFile(fp)
 

@@ -6,7 +6,7 @@ tsc
 #ts-node mbake.ts -f /Users/uptim/Documents/GitHub/examples-plugins/website-s
 ## mbake ewApp/wUI
 node mbakeW.js -g
-#node mbakeW.js -c /Users/code/Documents/GitHub/UI-theme-Metabake/zrc/spectre.scss 
+#node mbakeW.js -c /Users/code/Documents/GitHub/UI-theme-MetaBake/zrc/spectre.scss 
 # ts-node mbake.ts -i /Users/uptim/Documents/GitHub/examples-plugins/navSite/team
 #ts-node mbakeW.ts /Users/code/Documents/GitHub/examples/examples/blog
 #ts-node mbake.ts -t
