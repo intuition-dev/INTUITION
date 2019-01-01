@@ -1,0 +1,25 @@
+
+br
+#list1.display(width='100%')
+
+//- col 'data' must match field names.
+script.
+   depp.define({
+      'modLoad': ['vModLive.js']
+   })
+   depp.require(['modLoad'], setupBinding)
+
+   var bindingTab;
+   var bindingForm;
+
+   function setupBinding() {
+      console.log('binding', Date.now() - _start)
+      bindingTab = new BindTab()
+      bindingForm = new BindForm()
+
+      bindingTab.init('list1', bindingForm) // enables form to listen to table
+
+      bindingForm.vmod = bindingTab.vmod
+
+   }
+

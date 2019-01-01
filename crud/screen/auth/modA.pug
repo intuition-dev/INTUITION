@@ -1,0 +1,71 @@
+
+form#f1.grid-form(autocomplete="off")
+   fieldset
+      legend Firestore Auth Form
+      div(data-row-span='2')
+         div(data-field-span='1')
+            label  Email
+            input(type='text', name='email', placeholder='al@gore.org')
+         div(data-field-span='1')
+            label Password
+            input(type='text', name='pswd', placeholder='654321')
+
+.buts
+   #up.button.btn Sign Up
+   #in.button.btn Sign In
+   #out.button.btn Sign Out
+   #rest.button.btn Send Password Reset
+
+style.
+   .buts * {
+      margin: .5rem;
+   }
+
+script.
+   
+   depp.require(['pre','deviceready'], setupPg)
+
+   function setupPg() {
+
+      $('#up').click(function(){
+         let email = $('#f1 [name="email"]').val()
+         let pswd = $('#f1 [name="pswd"]').val()
+         console.log(email,pswd)
+         auth.createUserWithEmailAndPassword(email,pswd)
+            .then(function(user) {
+               bAuth.sendEmailVerification()
+            })
+            .catch(function(error){
+               console.log(error) //show error in .message
+               alert(error) // replace with pretty popup
+            })
+      })//click
+
+      $('#in').click(function(){
+         let email = $('#f1 [name="email"]').val()
+         let pswd = $('#f1 [name="pswd"]').val()
+         console.log(email,pswd)
+         auth.signInWithEmailAndPassword(email,pswd)
+            .then(function(user) {
+               console.log(user)
+               alert('Signed in successfully') //replace with pretty popup
+            })
+            .catch(function(error){
+               console.log(error)
+               alert(error) // replace with pretty popup
+            })
+      })//click
+
+      $('#out').click(function(){
+         console.log('out')
+         auth.signOut()
+      })//click
+
+      $('#rest').click(function(){
+         let email = $('#f1 [name="email"]').val()
+         console.log(email)
+         auth.sendPasswordResetEmail(email)
+      })//click
+
+   }//on ready
+

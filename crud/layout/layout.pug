@@ -1,0 +1,81 @@
+doctype html
+html
+   head
+      //- Mobile only: <script src="https://console.re/connector.js" data-channel="MY_NAME" id="consolerescript"></script>
+      script.
+         ROOT = '#{ROOT}' //- Mobile only: sets global pug and .js from dat.yaml
+         console.log('ROOT','#{ROOT}')
+         let _start = Date.now()
+      meta(charset='utf-8')
+      
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
+
+      //- loading for minimal total latency and max parallel
+      //- needed for client-side data
+      script(src='https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js')
+      script(src='https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js')
+      script(src='https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js')
+      //- needed for vModel Services. Just base impl, there is no real interface
+      script(src='/assets/vModServ/vModBase.js')
+
+      //- needed to start
+      script(src='https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js')
+      script(src='https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
+      script(src= ROOT + 'assets/js/loader.js')
+      
+      //- top css layout
+      link(href='/assets/3rd/spectreTop.css', rel='stylesheet', type='text/css') 
+      style.
+         .delayShowing { opacity: 0; }
+   body
+
+      //- load tags
+      d-hide
+         script(src='/assets/tags/preRW-tag.min.js')
+         //- fb setup:
+         preRW-tag
+         script.
+            window.preRWtag = riot.mount('preRW-tag')[0]
+   
+      .c-offcanvas-content-wrap
+         //-top
+         header.flex.edge
+
+            .left.white
+               .navbar-brand.mr-2
+                  h2#navBarHead CRUD App 
+            .right.white
+               .hide-lg
+                  a.btn.btn-link(href= ROOT + 'screen/tabu') Tabu
+                  a.btn.btn-link(href= ROOT + 'screen/live') Live CRUD
+                  a.btn.btn-link(href= ROOT + 'screen/auth') Auth
+
+               a#off-cbut.js-offcanvas-trigger( href='#navOpen')
+                  .white
+                     svg.bord.featherSVG(viewBox='0 0 24 24')
+                        line(x1='3', y1='12', x2='21', y2='12')
+                        line(x1='3', y1='6',  x2='21', y2='6')
+                        line(x1='3', y1='18', x2='21', y2='18')
+
+         //-main
+         #router
+            block main
+
+      //-side
+      #navOpen.delayShowing
+         ul.nav.navBarOpen
+
+            h3#navBarOpenHead.navBarOpenHea.navbar-brand CRUD App
+
+            li.nav-item
+               a(href= ROOT + 'screen/tabu') Tabu
+               a(href= ROOT + 'screen/live') Live CRUD
+               a(href= ROOT + 'screen/auth') Auth
+
+      script.
+         function userSzSc() {
+            console.log('resize|scroll')
+         }
+
+   //-link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')

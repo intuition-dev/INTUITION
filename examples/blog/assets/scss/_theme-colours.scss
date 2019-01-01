@@ -1,0 +1,119 @@
+.theme-colours {
+	.font-family-theme1 {
+	 	font-family: 'PT Sans', sans-serif
+	}
+	.font-family2-theme1 {
+	 	font-family: 'Spinnaker', sans-serif
+	}
+	.font-size-global-theme1 {
+		font-size: 14px
+	}
+	.border-radius-theme1 {
+		border-radius: 3px
+	}
+
+	.text-color-light-theme1 {
+		background: #fff
+	}
+	.text-color-dark-theme1 {
+		background: #8d8e90
+	}
+	.text-color-dark-2-theme1 {
+		background: #1c393d
+	}
+
+	.color-theme1 {
+		background: #1ab7ea
+	}
+	.color-primary-theme1 {
+		background: #80c2fa
+	}
+	.color-secondary-theme1 {
+		background: #e65740
+	}
+
+	.button-primary-theme1 {
+		background: rgb(94, 164, 31)
+	}
+	.button-primary-theme1-color {
+		background: #fff
+	}
+	.button-primary-theme1-hover {
+		background: #5ea41f
+	}
+
+	.button-secondary-theme1 {
+		background: #eeeeee
+	}
+	.button-secondary-theme1-color {
+		background: #296d75
+	}
+	.button-secondary-theme1-hover {
+		background: #296d75
+	}
+	.button-secondary-theme1-color-hover {
+		background: #fff
+	}
+	.button-secondary-theme1-dark {
+		background: #363e3f
+	}
+
+	.background-light-theme1 {
+		background: #fff
+	}
+	.background-dark-theme1 {
+		background: #efefee
+	}
+	.background-dark2-theme1 {
+		background: #232b2c
+	}
+	.color-theme1-from {
+		background: #302f9e
+	}
+	.color-theme1-to {
+		background: rgb(122,81,205)
+	}
+	.gradient {
+		@include diagonal-gradient($color-theme1-from, $color-theme1-to);
+	}
+
+
+
+	/* styles */
+	.color {
+		width: 200px;
+		height: 50px;
+		border: 1px solid rgba(0,0,0,.2);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-shadow: 1px 0px 2px rgba(255, 255, 255, 1);
+	}
+	label {
+		display: block;
+		margin: 10px 0;
+		&.header {
+			color: $color-theme1;
+			text-transform: uppercase;
+		}
+	}
+	section {
+		margin: 1rem 0;
+		padding: 0 0 1rem 0;
+		&.border {
+			border-bottom: 1px solid rgba(0,0,0,.2);
+		}
+	}
+	.h1 {
+		text-transform: uppercase;
+		font-size: 16px;
+		color: $color-theme1;
+	}
+	.d-flex section {
+		margin: 0 10px;
+	}
+	a.btn-custom {
+		margin: 1rem auto;
+		display: table;
+	}
+}

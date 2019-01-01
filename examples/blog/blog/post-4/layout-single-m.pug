@@ -1,0 +1,23 @@
+extends /layout/layout
+
+block main
+   .container.narrow.blog.blog-single
+      .columns.d-flex
+         .column.col-9.col-lg-12
+            .img
+               amp-img.img__inside(alt='...', src='who.jpg', width='300', height='300')
+         .column.col-3.col-lg-12.post-title
+            .post-body
+               block blog-title
+                  h6.title #{title}
+            .post-footer.d-flex
+               time.date #{date}
+      .columns.post-content
+         .column.col-9.col-lg-12.col-post-content
+            .post-content__inside
+               block blog-content
+                  include:metaMD text.md
+         .column.col-3.col-lg-12.col-post-author
+            .author
+               a.link-primary.name(href='#') #{name}
+               p #{authorDesc}

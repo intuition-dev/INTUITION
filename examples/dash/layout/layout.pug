@@ -1,0 +1,61 @@
+doctype html
+html
+   head
+      script.
+         ROOT = '#{ROOT}' //- sets global pug and .js from dat.yaml
+         console.log('root','#{ROOT}')
+         let _start=Date.now()
+
+      meta(charset='utf-8')
+
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      title Dash
+      link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
+      script(src='https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
+
+      style.
+            .delayShowing { opacity: 0.01; }
+
+   body
+      script(src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js')
+      script(src='https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js')
+      script(src= ROOT + 'assets/js/setup.js')
+
+      -// http://mxb.at/blog/css-grid-admin-dashboard
+      -// http://w3schools.com/css/css_navbar.asp
+      -//top
+      #head.delayShowing.flex.edge.bblack.white.pad
+         h3#navbarBrand.left.navbar-brand.text-bold Dash
+         .right
+            button#butLogOut.btn Logout
+
+      .columns.delayShowing
+         #menu.column.bblack.white
+            ul.nav
+               li.nav-item
+                  a(href= ROOT + 'screen/chartjs') ChartJs
+                     svg.nav-ico.featherSVG(viewBox='0 0 24 24')
+                        polyline(points='22 12 18 12 15 21 9 3 6 12 2 12')
+               li.nav-item
+                  a(href= ROOT + 'screen/c3') C3
+                     svg.nav-ico.featherSVG(viewBox='0 0 24 24')
+                        polyline(points='22 12 18 12 15 21 9 3 6 12 2 12')
+               li.nav-item
+                  a(href= ROOT + 'screen/nvd3') NVD3
+                     svg.nav-ico.featherSVG(viewBox='0 0 24 24')
+                        polyline(points='22 12 18 12 15 21 9 3 6 12 2 12')
+               li.nav-item
+                  a(href= ROOT + 'screen/uvcharts') UVCharts
+                     svg.nav-ico.featherSVG(viewBox='0 0 24 24')
+                        polyline(points='22 12 18 12 15 21 9 3 6 12 2 12')
+
+
+         .column#router
+            block main
+
+      script.
+         function userSzSc() {
+            console.log('resize|scroll')
+         }
+
+   //link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')

@@ -1,0 +1,39 @@
+extends /layout/layout
+//- App Shell
+
+   // in head, $$$ get for speed
+   script.
+      axios.get('/news/list.json').then(function(resp) {
+         news = resp.data
+         console.log('n ready')
+         //loadjs.done('news')
+      })// fetch
+
+
+block top
+   script(src=ROOT+ 'news/tag/table-tag.js')
+   style.
+      .pageBack {
+         background-image: url(img.jpg);
+      }
+
+   .pageBack(data-js-menu-highlight="news")
+      include /layout/nav
+      br
+      .pad
+         H1.flex.white.fLarge.fBod The ACME Corporation
+
+
+block main
+   .pad
+      H1.cAccent.line.fBod Press Releases
+      table-tag
+
+   script.
+      const tag = riot.mount('table-tag')[0] // mount the first tag
+      //loadjs.ready('news', function() {
+            tag.render(news)
+      //})
+
+   //-link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')
+

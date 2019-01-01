@@ -1,0 +1,104 @@
+
+#butLogOut {
+   margin-right: 30px;
+}
+
+.bblack, .bblack * {
+   background-color: black;
+}
+
+.white, .white * { color: white !important; }
+
+.padL {
+   padding-left: 15px;
+}
+.pad {
+   padding: 15px;
+}
+
+.featherSVG {
+   width: 24px;
+   height: 24px;
+   stroke: currentColor;
+   stroke-width: 2;
+   stroke-linecap: round;
+   stroke-linejoin: round;
+   fill: none;
+ }
+
+/*
+ Nav */
+ ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   width: 200px;
+   background-color: #f1f1f1;
+}
+
+li a {
+   display: block;
+   color: #000;
+   padding: 10px 15px;
+   text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+   background-color: #555;
+   color: white;
+}
+
+.nav-item {
+   line-height: 25px;
+}
+.nav-ico {
+   float: left;
+   margin-right: 10px;
+}
+
+ .flex, .center, .top, .right, .bottom, .left{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.flex {
+   align-content: flex-start;
+}
+.top    { align-items:     flex-start; }
+.right  { justify-content: flex-end;   }
+.bottom { align-items:     flex-end;   }
+.left   { justify-content: flex-start; }
+/* override */
+.edge  { justify-content: space-between;
+   flex-wrap: nowrap;
+}
+
+#head {
+   background-color: black;
+   height: 60px;
+   line-height: 60px;
+   position: fixed;
+   width: 100vw;
+}
+#navbarBrand {
+   margin-top: 5px;
+}
+
+#menu{
+   overflow: hidden;
+   height: 100vh;
+   width: 200px;
+   flex-basis: 200px;
+   flex-grow: 0;
+   flex-shrink: 0;
+   position: fixed;
+   top: 0;
+   margin-top: 60px;
+}
+
+#router {
+   width: calc( 100vw - 200px);
+   margin-top: 60px;
+   margin-left: 195px;
+}

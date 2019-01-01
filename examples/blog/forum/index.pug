@@ -1,0 +1,15 @@
+extends /layout/layout
+//- App Shell
+
+block main
+
+	include module1
+
+	include:metaMD text.md
+	include:metaMD text2.md
+
+	script.
+		
+		loadjs.ready('style', function () {
+			console.log('page 1 script here');
+		});
