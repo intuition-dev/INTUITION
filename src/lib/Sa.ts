@@ -34,8 +34,14 @@ export class Sas {
          res = res.replace(/(\r\n\t|\n|\r\t)/gm, '\n')
          res = res.replace(/\n\s*\n/g, '\n')
          res = res.trim()
+         res = res.replace(/  /g, ' ')
+         res = res.replace(/; /g, ';')
+         res = res.replace(/: /g, ':')
+         res = res.replace(/ }/g, '}')
+         res = res.replace(/ { /g, '{')
+         res = res.replace(/, /g, ',')
+
          //add ver string
-         
          const ver = ' /* mB ' + new Ver().ver() +' on '+new Date().toISOString() + " */"
          res = res + ver
          // write the file
