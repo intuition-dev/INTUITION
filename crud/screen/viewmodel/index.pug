@@ -1,0 +1,27 @@
+extends /layout/layout
+
+block main
+   .pad
+      #list1.display(width='100%')
+      button.btn.btn-default.mt-1.float-right#create-new Create new row
+
+   script.
+      depp.define({
+         'modLoad': ['vmDataBinding.js']
+      })
+
+      depp.require(['pre','modLoad'], setupBinding)
+
+      var bindingTab;
+
+      function setupBinding() {
+         console.log('binding', Date.now() - _start)
+         bindingTab = new BindDataToTheTable()
+         bindingTab.init('list1')
+
+         $('#create-new').on('click', function(ev){
+            ev.preventDefault();
+            localStorage.removeItem('row');
+            window.location.replace('/screen/viewmodel/form');
+         })
+      }

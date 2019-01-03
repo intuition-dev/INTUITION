@@ -1,0 +1,4 @@
+basedir: ../../../
+ROOT: '/'
+
+pretty: false

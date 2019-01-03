@@ -1,0 +1,52 @@
+extends /layout/layout
+
+block main
+   -// field names must mach table cols
+   #form1.grid-form(autocomplete="off")
+      fieldset
+         legend Form
+         div(data-row-span='2')
+            div(data-field-span='1')
+               label Field 1
+               input(name='col1', type='text')
+            div(data-field-span='1')
+               label Field 2
+               input(name='col2', type='text')
+      input(hidden='', name='id')
+
+   .buts
+      button#clearBut.btn Clear
+      button#saveBut.btn Save data
+      button#backBut.btn Back
+
+   style.
+      .buts button {
+         margin: .5rem;
+      }
+
+   script.
+      depp.define({
+         'modLoad': ['../vmDataBinding.js']
+      })
+      depp.require(['pre','modLoad'], setupForm)
+
+      var bindingForm;
+
+      function setupForm() {
+         
+         bindingForm = new BindForm()
+         bindingForm.init('form1');
+
+         $('#clearBut').click(function(){
+            bindingForm.clearFields()
+         })//click
+         
+         $('#saveBut').click(function(){
+            let row = bindingForm.getFields()
+            bindingForm.add(row)
+         })//click
+
+         $('#backBut').click(function(){
+            window.location.replace('/screen/viewmodel')
+         })
+      } //()
