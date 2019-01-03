@@ -1,4 +1,5 @@
 declare var db1: any
+declare var _disE: any
 
 class DataOne {
 
