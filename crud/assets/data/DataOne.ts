@@ -1,6 +1,6 @@
 declare var db1: any
 
-class ViewModelDataServ {
+class DataOne {
 
    entityName: string = 'table_one2' //name of the collection in FS
    dataSourceType: string = 'real'  //real or fake
@@ -15,7 +15,7 @@ class ViewModelDataServ {
             {id:2, col1:" Bob21", col2:"Bob22"},
             {id:3, col1:" Bob31", col2:"Bob32"}
          ]
-         this._disE(rows, ctx)
+         _disE(rows, ctx)
          return
       }
 
@@ -30,14 +30,17 @@ class ViewModelDataServ {
                row['id'] = doc.id
                rows.push(row)  
             })
-            _this._disE(rows, ctx)
+            _disE(rows, ctx)
          })
       .catch(function(error) {
          console.log("Error getting documents: ", error)
          //if (reject) reject(error)
       })
    }
-   
+
+   /*
+    Use the disE in loader.js
+
    _disE(data:any, ctx):void { //So i guess, its better to keep this dispatch, as all classes will inherit from this one, and remove the one from load.js
       console.log('--_disE data: ', data);
 
@@ -53,6 +56,8 @@ class ViewModelDataServ {
       console.log('--addModListener binder: ', binder);
       addEventListener('ViewModelDataServEvent', binder._onData) //add a listener, and a callback function when the event will be dispatched
    }
+
+   */
 
    add( row, resolve, reject) {
       if(row.id) delete row.id // that should not be there on add

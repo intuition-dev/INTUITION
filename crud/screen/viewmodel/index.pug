@@ -7,17 +7,22 @@ block main
 
    script.
       depp.define({
-         'modLoad': ['vmDataBinding.js']
+         'modLoad': [
+            'Binding.js',
+            '/assets/data/DataOne.js'
+         ]
       })
 
       depp.require(['pre','modLoad'], setupBinding)
 
       var bindingTab;
+      var data 
 
       function setupBinding() {
          console.log('binding', Date.now() - _start)
+         data = new DataOne()
          bindingTab = new BindDataToTheTable()
-         bindingTab.init('list1')
+         bindingTab.init(data, 'list1')
 
          $('#create-new').on('click', function(ev){
             ev.preventDefault();
