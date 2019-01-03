@@ -1,13 +1,13 @@
 declare var db1: any
 declare var _disE: any
 
-class DataOne {
+class ServiceOne { // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in FS
    dataSourceType: string = 'real'  //real or fake
    form
 
-   read(ctx){
+   read(ctx, cb){
       console.log('--ViewModelDataServ reading...', ctx)
 
       if(this.dataSourceType=='fake') {
@@ -16,7 +16,7 @@ class DataOne {
             {id:2, col1:" Bob21", col2:"Bob22"},
             {id:3, col1:" Bob31", col2:"Bob32"}
          ]
-         _disE(rows, ctx)
+         cb(rows, ctx)
          return
       }
 
@@ -31,7 +31,7 @@ class DataOne {
                row['id'] = doc.id
                rows.push(row)  
             })
-            _disE(rows, ctx)
+            cb(rows, ctx)
          })
       .catch(function(error) {
          console.log("Error getting documents: ", error)

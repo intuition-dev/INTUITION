@@ -7,25 +7,30 @@ class BindForm {// extends ViewModelDataServ {
       this.data = typeof localStorage.getItem('row') !='undefined' && JSON.parse(localStorage.getItem('row'));
    }
    
-   init(data, divId) {
+   init(divId) {
       this.form = '#'+divId
       if( this.data !=null){
          this._onData()
       }
+   }
+
+   save() {
+      let row = {}
+      row['one'] = $(form1.one).val()
    }
    
    _onData() {
       const row = this.data
       let _this = this
 
-      depp.require(['pre'], function() { // where is the save mapping, opposite of this?
+      depp.require(['pre'], function() { 
             $(_this.form).find('input[name="col1"]').val(row['col1'])
             $(_this.form).find('input[name="col2"]').val(row['col2'])
             $(_this.form).find('input[name="id"]').val(row['id'])
       })
    }
 
-   /*
+   
    getFields() {
       let lst = {}
       //start w/ pk
@@ -41,7 +46,7 @@ class BindForm {// extends ViewModelDataServ {
       console.log('--lst',lst)
       return lst
    }//()
-   */
+
 
    clearFields(){
       localStorage.removeItem('row');
