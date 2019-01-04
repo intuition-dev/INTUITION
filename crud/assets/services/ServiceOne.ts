@@ -3,7 +3,7 @@ declare var _disE: any
 
 class ServiceOne { // testable crud and fake flag, heavy work. view-model
 
-   entityName: string = 'table_one2' //name of the collection in FS
+   entityName: string = 'table_one2' //name of the collection in DB
    dataSourceType: string = 'real'  //real or fake
    form
 
@@ -21,7 +21,6 @@ class ServiceOne { // testable crud and fake flag, heavy work. view-model
       }
 
       const ref = db1.collection(this.entityName)
-      const _this = this
       ref
          .get()
          .then(function(querySnapshot) {
@@ -35,45 +34,21 @@ class ServiceOne { // testable crud and fake flag, heavy work. view-model
          })
       .catch(function(error) {
          console.log("Error getting documents: ", error)
-         //if (reject) reject(error)
       })
-   }
+   }//()
 
-   /*
-    Use the disE in loader.js
-
-   _disE(data:any, ctx):void { //So i guess, its better to keep this dispatch, as all classes will inherit from this one, and remove the one from load.js
-      console.log('--_disE data: ', data);
-
-      const msg = {
-         data: data,
-         ctx: ctx
-      }
-
-      dispatchEvent(new CustomEvent('ViewModelDataServEvent', {detail: msg})) // so when this event dispatched, call the _onData function, from the listener
-   }
-
-   addModListener(binder):void {
-      console.log('--addModListener binder: ', binder);
-      addEventListener('ViewModelDataServEvent', binder._onData) //add a listener, and a callback function when the event will be dispatched
-   }
-
-   */
-
-   add( row, resolve, reject) {
+   add( row, cb ) { //resolve, reject) {
       if(row.id) delete row.id // that should not be there on add
 
       let newPK = db1.collection(this.entityName).doc() // make PK
       newPK.set(row) // insert
          .then(function() { 
             console.log('successful')
-            if(resolve) resolve(1)
+            cb(newPK)
          })
       .catch(function(error) {
          console.error('oops', error)
-         if(reject) reject(error)
       })
-      console.log(newPK)
-      return newPK
    }//()
+
 }

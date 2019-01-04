@@ -1,4 +1,4 @@
 basedir: ../../
 ROOT: '/'
 
-pretty: false
+pretty: true

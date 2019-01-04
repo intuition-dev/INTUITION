@@ -16,9 +16,9 @@ html
       script(src='https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js')
       script(src='https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js')
       script(src='https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js')
-      //- needed for vModel Services. Just base impl, there is no real interface
-      script(src='/assets/vModServ/vModBase.js')
-      script(src='/assets/viewModelDataServ/viewModelDataServ.js')
+
+      //- needed for 
+      script(src='/assets/services/ServiceOne.js')
 
       //- needed to start
       script(src='https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js')
@@ -49,7 +49,6 @@ html
             .right.white
                .hide-lg
                   a.btn.btn-link(href= ROOT + 'screen/tabu') Tabu
-                  a.btn.btn-link(href= ROOT + 'screen/live') Live CRUD
                   a.btn.btn-link(href= ROOT + 'screen/viewmodel') ViewModel CRUD
                   a.btn.btn-link(href= ROOT + 'screen/auth') Auth
 
@@ -73,6 +72,7 @@ html
             li.nav-item
                a(href= ROOT + 'screen/tabu') Tabu
                a(href= ROOT + 'screen/live') Live CRUD
+               a(href= ROOT + 'screen/auth') Auth
                a(href= ROOT + 'screen/auth') Auth
 
       script.

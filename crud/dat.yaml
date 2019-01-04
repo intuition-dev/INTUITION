@@ -1,3 +1,5 @@
 basedir: .
 
+pretty: true
+
 ROOT: '/'

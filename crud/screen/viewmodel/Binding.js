@@ -1,19 +1,13 @@
-class BindDataToTheTable { //extends ViewModelDataServ {
+class BindTable {
 
-   init(data, id){
+   init(data_, id){
+      this.data = data_
 
-      this.addModListener(this)// key part, adding the listener
-      this.read(this) //reading the data (real or fake)
-
-      this.bindForm = new BindForm('form1')
-
-      //Fake Data to generate the table
-      let tabledata = [
-         {id:1, col1:" Bob", col2:"Bob2"},
-      ]
+      this.data.read(this, this.onCB) //reading the data (real or fake)
 
       let _this = this
-      depp.require(['pre','tabLoaded' ], function() { 
+
+      depp.require(['tabLoaded' ], function() { 
          _this.table = new Tabulator("#"+id, {
             data:tabledata, //assign data to table
             layout:"fitColumns",      //fit columns to width of table
@@ -28,18 +22,17 @@ class BindDataToTheTable { //extends ViewModelDataServ {
                localStorage.setItem('row', JSON.stringify(row)); //save object in localStorage, to retrive it on the next page(form)
                window.location.replace('/screen/viewmodel/form');
             },
-         })
-         depp.done('tabReady') //only after table was generate and tabulator loaded, run the _onData
-      })
-   }
+         })//tab
+         depp.read('tabReady')
+      })//depp
 
-   _onData (evt) {
-      depp.require(['tabReady' ], function() { 
-         const rows = evt.detail.data
-         const ctx = evt.detail.ctx
-         ctx.table.clearData(rows)
-         ctx.table.addData(rows)
+   }//()
+
+   onCB (rows, ctx) {
+      depp.require(['tabLoaded' ], function() { 
+         ctx.table.clearData()
          ctx.table.setData(rows)
       })
-   }
-}
+   }//()
+
+}//class

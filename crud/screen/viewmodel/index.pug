@@ -7,26 +7,25 @@ block main
 
    script.
       depp.define({
-         'modLoad': [
-            'Binding.js',
-            '/assets/data/DataOne.js'
+         'bind': [
+            'Binding.js'
          ]
       })
 
-      depp.require(['pre','modLoad'], setupBinding)
+      depp.require(['pre','bind'], setupBinding)
 
-      var bindingTab;
+      var bindingTab
       var data 
 
       function setupBinding() {
          console.log('binding', Date.now() - _start)
-         data = new DataOne()
-         bindingTab = new BindDataToTheTable()
+         data = new ServiceOne()
+         bindingTab = new BindTable()
          bindingTab.init(data, 'list1')
 
          $('#create-new').on('click', function(ev){
-            ev.preventDefault();
-            localStorage.removeItem('row');
-            window.location.replace('/screen/viewmodel/form');
+            ev.preventDefault()
+            localStorage.removeItem('row')
+            window.location.replace('/screen/viewmodel/form')
          })
       }
