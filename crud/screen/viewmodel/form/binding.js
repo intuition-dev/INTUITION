@@ -4,16 +4,39 @@ class BindForm {
    constructor(){
       this.form = ''
       this.row = typeof sessionStorage.getItem('row') !='undefined' && JSON.parse(sessionStorage.getItem('row'))
+      this.data = new ServiceOne()
    }
 
-   init(data_, divId){
-      this.data = data_
+   init(divId){
+      
       this.form = '#'+divId
-      this.onCB()
+      if( this.row !=null){
+         this.onCB() //run 'onCB' only when there was a click on the row in the table, other way no data needed in the form
+      }
    }
 
    add(row) {
-     this.data.add(row)
+      let validation = this.data.valid(row) //do the validation
+      
+      if(validation=='OK')
+         this.data.add(row)
+      else  {
+         console.log('error', validation)
+      } //else
+   }
+
+   update(row) {
+      let validation = this.data.valid(row) //do the validation
+      
+      if(validation=='OK')
+         this.data.update(row)
+      else  {
+         console.log('error', validation)
+      } //else
+   }
+
+   delete(row) {
+      this.data.delete(row)
    }
    
    onCB() {
@@ -22,7 +45,6 @@ class BindForm {
       $(_this.form).find('input[name="col1"]').val(this.row['col1'])
       $(_this.form).find('input[name="col2"]').val(this.row['col2'])
       $(_this.form).find('input[name="id"]').val(this.row['id'])
-
    }
 
    

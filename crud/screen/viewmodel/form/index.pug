@@ -2,22 +2,25 @@ extends /layout/layout
 
 block main
    -// field names must mach table cols
-   #form1.grid-form(autocomplete="off")
-      fieldset
-         legend Form
-         div(data-row-span='2')
-            div(data-field-span='1')
-               label Field 1
-               input(name='col1', type='text')
-            div(data-field-span='1')
-               label Field 2
-               input(name='col2', type='text')
-      input(hidden='', name='id')
+   .pad
+      #form1.grid-form(autocomplete="off")
+         fieldset
+            legend Form
+            div(data-row-span='2')
+               div(data-field-span='1')
+                  label Field 1
+                  input(name='col1', type='text')
+               div(data-field-span='1')
+                  label Field 2
+                  input(name='col2', type='text')
+         input(hidden='', name='id')
 
-   .buts
-      button#clearBut.btn Clear
-      button#saveBut.btn Save data
-      button#backBut.btn Back
+      .buts
+         button#clearBut.btn Clear
+         button#saveBut.btn Save data
+         button#updateBut.btn Update data
+         button#deleteBut.btn Delete data
+         button#backBut.btn Back
 
    style.
       .buts button {
@@ -35,7 +38,7 @@ block main
       function setupForm() {
          
          bindingForm = new BindForm()
-         bindingForm.init(new ServiceOne(), 'form1');
+         bindingForm.init('form1');
 
          $('#clearBut').click(function(){
             bindingForm.clearFields()
@@ -43,7 +46,17 @@ block main
          
          $('#saveBut').click(function(){
             let row = bindingForm.getFields()
-            bindingForm.add(row)
+            bindingForm.add(row) //do the validation in .js
+         })//click
+
+         $('#updateBut').click(function(){
+            let row = bindingForm.getFields()
+            bindingForm.update(row)
+         })//click
+
+         $('#deleteBut').click(function(){
+            let row = bindingForm.getFields()
+            bindingForm.delete(row)
          })//click
 
          $('#backBut').click(function(){

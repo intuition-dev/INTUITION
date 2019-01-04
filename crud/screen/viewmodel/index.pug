@@ -2,8 +2,30 @@ extends /layout/layout
 
 block main
    .pad
-      #list1.display(width='100%')
-      button.btn.btn-default.mt-1.float-right#create-new Create new row
+      #list1.display(width='100%').table-custom
+      
+      .buts
+         button.btn.btn-primary.float-right#create-new Create new row
+   style.
+      .buts button {
+         margin: 1rem 0;
+      }
+
+      .table-custom {
+         border-color: #d6d6d6;
+      }
+      .table-custom .tabulator-header {
+         border-bottom: 1px solid #d6d6d6;
+      }
+      .table-custom .tabulator-header .tabulator-col {
+         background-color: #ececec;
+      }
+      .table-custom .tabulator-row {
+         border-bottom: 0;
+      }
+      .table-custom .tabulator-row.tabulator-selectable:hover {
+         background: #f3f3f3;
+      }
 
    script.
       depp.define({

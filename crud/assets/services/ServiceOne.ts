@@ -1,5 +1,6 @@
 declare var db1: any
 declare var _disE: any
+declare var validator: any
 
 class ServiceOne { // testable crud and fake flag, heavy work. view-model
 
@@ -44,11 +45,54 @@ class ServiceOne { // testable crud and fake flag, heavy work. view-model
       newPK.set(row) // insert
          .then(function() { 
             console.log('successful')
-            cb(newPK)
+            if(cb) cb(1)
          })
       .catch(function(error) {
          console.error('oops', error)
       })
    }//()
+
+   update( row, cb ) { //resolve, reject) {
+      console.log(row)
+      let id = row['id']
+      console.log(id, row)
+      delete row.id // we are not save pk in a row
+
+      let ref = db1.collection(this.entityName).doc(id)
+      ref.set(row) // save
+         .then(function() { 
+            console.log('successful')
+            if(cb) cb(1)//1 = ok
+         })
+      .catch(function(error) {
+         console.error('oops', error)
+      })
+      return id
+
+   }//()
+
+   delete(row){
+      let id = row['id']
+
+      let ref = db1.collection(this.entityName).doc(id)
+      ref.delete() // delete
+         .then(function() { 
+            console.log('successfully deleted')
+         })
+      .catch(function(error) {
+         console.error('oops', error)
+      })
+   }
+
+   valid(row) {
+      console.log(row)
+      let col1 = row['col1']
+      let col2 = row['col2']
+      if(validator.isEmpty(col1, { ignore_whitespace: true }) )
+         return 'Col1 is blank'
+      if(validator.isEmpty(col2, { ignore_whitespace: true }) )
+         return 'Col2 is blank'
+      return 'OK'
+   }
 
 }

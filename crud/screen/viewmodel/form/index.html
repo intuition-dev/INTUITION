@@ -46,26 +46,30 @@
         </div>
       </header>
       <div id="router">
-        <div class="grid-form" id="form1" autocomplete="off">
-          <fieldset>
-            <legend>Form</legend>
-            <div data-row-span="2">
-              <div data-field-span="1">
-                <label>Field 1</label>
-                <input name="col1" type="text">
+        <div class="pad">
+          <div class="grid-form" id="form1" autocomplete="off">
+            <fieldset>
+              <legend>Form</legend>
+              <div data-row-span="2">
+                <div data-field-span="1">
+                  <label>Field 1</label>
+                  <input name="col1" type="text">
+                </div>
+                <div data-field-span="1">
+                  <label>Field 2</label>
+                  <input name="col2" type="text">
+                </div>
               </div>
-              <div data-field-span="1">
-                <label>Field 2</label>
-                <input name="col2" type="text">
-              </div>
-            </div>
-          </fieldset>
-          <input hidden="" name="id">
-        </div>
-        <div class="buts">
-          <button class="btn" id="clearBut">Clear</button>
-          <button class="btn" id="saveBut">Save data</button>
-          <button class="btn" id="backBut">Back</button>
+            </fieldset>
+            <input hidden="" name="id">
+          </div>
+          <div class="buts">
+            <button class="btn" id="clearBut">Clear</button>
+            <button class="btn" id="saveBut">Save data</button>
+            <button class="btn" id="updateBut">Update data</button>
+            <button class="btn" id="deleteBut">Delete data</button>
+            <button class="btn" id="backBut">Back</button>
+          </div>
         </div>
         <style>
           .buts button {
@@ -84,7 +88,7 @@
           function setupForm() {
              
              bindingForm = new BindForm()
-             bindingForm.init(new ServiceOne(), 'form1');
+             bindingForm.init('form1');
           
              $('#clearBut').click(function(){
                 bindingForm.clearFields()
@@ -92,7 +96,17 @@
              
              $('#saveBut').click(function(){
                 let row = bindingForm.getFields()
-                bindingForm.add(row)
+                bindingForm.add(row) //do the validation in .js
+             })//click
+          
+             $('#updateBut').click(function(){
+                let row = bindingForm.getFields()
+                bindingForm.update(row)
+             })//click
+          
+             $('#deleteBut').click(function(){
+                let row = bindingForm.getFields()
+                bindingForm.delete(row)
              })//click
           
              $('#backBut').click(function(){
@@ -114,5 +128,5 @@
       }
       
     </script>
-  <!-- mB v4.14.23 on 2019-01-04T00:35:38.149Z --></body>
+  <!-- mB v4.14.23 on 2019-01-04T10:02:39.962Z --></body>
 </html>
