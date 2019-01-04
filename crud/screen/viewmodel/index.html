@@ -11,7 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
-    <script src="/assets/services/ServiceOne.js"></script>
+    <script src="/assets/models/OneModel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js"></script>
     <script src="/assets/js/loader.js"></script>
@@ -81,19 +81,19 @@
         <script>
           depp.define({
              'bindLoad': [
-                'binding.js'
+                'ViewModelView.js'
              ]
           })
           
           depp.require(['pre','bindLoad'], setupBinding)
           
-          var bindingTab
+          var tabView
           
           
           function setupBinding() {
              console.log('binding', Date.now() - _start)
-             bindingTab = new BindTable()
-             bindingTab.init(new ServiceOne(), 'list1')
+             tabView = new ViewModelView()
+             tabView.init(new OneModel(), 'list1')
           
              $('#create-new').on('click', function(ev){
                 ev.preventDefault()
@@ -116,5 +116,5 @@
       }
       
     </script>
-  <!-- mB v4.14.23 on 2019-01-04T10:13:58.037Z --></body>
+  <!-- mB v4.14.23 on 2019-01-04T16:11:52.650Z --></body>
 </html>

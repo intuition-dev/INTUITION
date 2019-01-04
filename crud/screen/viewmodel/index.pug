@@ -34,19 +34,19 @@ block main
    script.
       depp.define({
          'bindLoad': [
-            'binding.js'
+            'ViewModelView.js'
          ]
       })
 
       depp.require(['pre','bindLoad'], setupBinding)
 
-      var bindingTab
+      var tabView
 
 
       function setupBinding() {
          console.log('binding', Date.now() - _start)
-         bindingTab = new BindTable()
-         bindingTab.init(new ServiceOne(), 'list1')
+         tabView = new ViewModelView()
+         tabView.init(new OneModel(), 'list1')
 
          $('#create-new').on('click', function(ev){
             ev.preventDefault()

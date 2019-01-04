@@ -29,34 +29,34 @@ block main
 
    script.
       depp.define({
-         'bindLoad': ['binding.js']
+         'bindLoad': ['FormView.js']
       })
       depp.require(['pre','bindLoad'], setupForm)
 
-      var bindingForm;
+      var formView;
 
       function setupForm() {
          
-         bindingForm = new BindForm()
-         bindingForm.init('form1');
+         formView = new FormView()
+         formView.init('form1');
 
          $('#clearBut').click(function(){
-            bindingForm.clearFields()
+            formView.clearFields()
          })//click
          
          $('#saveBut').click(function(){
-            let row = bindingForm.getFields()
-            bindingForm.add(row) //do the validation in .js
+            let row = formView.getFields()
+            formView.add(row) //do the validation in .js
          })//click
 
          $('#updateBut').click(function(){
-            let row = bindingForm.getFields()
-            bindingForm.update(row)
+            let row = formView.getFields()
+            formView.update(row)
          })//click
 
          $('#deleteBut').click(function(){
-            let row = bindingForm.getFields()
-            bindingForm.delete(row)
+            let row = formView.getFields()
+            formView.delete(row)
          })//click
 
          $('#backBut').click(function(){

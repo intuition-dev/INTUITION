@@ -11,7 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
-    <script src="/assets/services/ServiceOne.js"></script>
+    <script src="/assets/models/OneModel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js"></script>
     <script src="/assets/js/loader.js"></script>
@@ -79,34 +79,34 @@
         </style>
         <script>
           depp.define({
-             'bindLoad': ['binding.js']
+             'bindLoad': ['FormView.js']
           })
           depp.require(['pre','bindLoad'], setupForm)
           
-          var bindingForm;
+          var formView;
           
           function setupForm() {
              
-             bindingForm = new BindForm()
-             bindingForm.init('form1');
+             formView = new FormView()
+             formView.init('form1');
           
              $('#clearBut').click(function(){
-                bindingForm.clearFields()
+                formView.clearFields()
              })//click
              
              $('#saveBut').click(function(){
-                let row = bindingForm.getFields()
-                bindingForm.add(row) //do the validation in .js
+                let row = formView.getFields()
+                formView.add(row) //do the validation in .js
              })//click
           
              $('#updateBut').click(function(){
-                let row = bindingForm.getFields()
-                bindingForm.update(row)
+                let row = formView.getFields()
+                formView.update(row)
              })//click
           
              $('#deleteBut').click(function(){
-                let row = bindingForm.getFields()
-                bindingForm.delete(row)
+                let row = formView.getFields()
+                formView.delete(row)
              })//click
           
              $('#backBut').click(function(){
@@ -128,5 +128,5 @@
       }
       
     </script>
-  <!-- mB v4.14.23 on 2019-01-04T10:13:57.982Z --></body>
+  <!-- mB v4.14.23 on 2019-01-04T16:11:59.675Z --></body>
 </html>

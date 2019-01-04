@@ -1,4 +1,4 @@
-class BindTable {
+class ViewModelView {
 
    init(data_, id){
       this.data = data_

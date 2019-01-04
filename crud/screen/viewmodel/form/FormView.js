@@ -1,10 +1,10 @@
 
-class BindForm {
+class FormView {
 
    constructor(){
       this.form = ''
       this.row = typeof sessionStorage.getItem('row') !='undefined' && JSON.parse(sessionStorage.getItem('row'))
-      this.data = new ServiceOne()
+      this.data = new OneModel()
    }
 
    init(divId){

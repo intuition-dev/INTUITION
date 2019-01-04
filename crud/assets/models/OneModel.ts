@@ -2,7 +2,7 @@ declare var db1: any
 declare var validator: any
 declare var _start: any
 
-class ServiceOne { // testable crud and fake flag, heavy work. view-model
+class OneModel { // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in DB
    dataSourceType: string = 'real'  //real or fake
