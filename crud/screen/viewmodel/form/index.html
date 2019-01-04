@@ -79,7 +79,7 @@
         </style>
         <script>
           depp.define({
-             'bindLoad': ['FormView.js']
+             'bindLoad': ['FormBind.js']
           })
           depp.require(['pre','bindLoad'], setupForm)
           
@@ -87,7 +87,7 @@
           
           function setupForm() {
              
-             formView = new FormView()
+             formView = new FormBind()
              formView.init('form1');
           
              $('#clearBut').click(function(){
@@ -128,5 +128,5 @@
       }
       
     </script>
-  <!-- mB v4.14.23 on 2019-01-04T16:11:59.675Z --></body>
+  <!-- mB v4.14.23 on 2019-01-04T20:05:51.761Z --></body>
 </html>

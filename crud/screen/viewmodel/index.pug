@@ -34,7 +34,7 @@ block main
    script.
       depp.define({
          'bindLoad': [
-            'ViewModelView.js'
+            'ViewModelBind.js'
          ]
       })
 
@@ -45,7 +45,7 @@ block main
 
       function setupBinding() {
          console.log('binding', Date.now() - _start)
-         tabView = new ViewModelView()
+         tabView = new ViewModelBind()
          tabView.init(new OneModel(), 'list1')
 
          $('#create-new').on('click', function(ev){

@@ -1,5 +1,5 @@
 
-class FormView {
+class FormBind {
 
    constructor(){
       this.form = ''

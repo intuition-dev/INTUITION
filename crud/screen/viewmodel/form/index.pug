@@ -29,7 +29,7 @@ block main
 
    script.
       depp.define({
-         'bindLoad': ['FormView.js']
+         'bindLoad': ['FormBind.js']
       })
       depp.require(['pre','bindLoad'], setupForm)
 
@@ -37,7 +37,7 @@ block main
 
       function setupForm() {
          
-         formView = new FormView()
+         formView = new FormBind()
          formView.init('form1');
 
          $('#clearBut').click(function(){

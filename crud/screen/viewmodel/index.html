@@ -81,7 +81,7 @@
         <script>
           depp.define({
              'bindLoad': [
-                'ViewModelView.js'
+                'ViewModelBind.js'
              ]
           })
           
@@ -92,7 +92,7 @@
           
           function setupBinding() {
              console.log('binding', Date.now() - _start)
-             tabView = new ViewModelView()
+             tabView = new ViewModelBind()
              tabView.init(new OneModel(), 'list1')
           
              $('#create-new').on('click', function(ev){
@@ -116,5 +116,5 @@
       }
       
     </script>
-  <!-- mB v4.14.23 on 2019-01-04T16:11:52.650Z --></body>
+  <!-- mB v4.14.23 on 2019-01-04T20:05:51.801Z --></body>
 </html>
