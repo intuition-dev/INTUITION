@@ -1,1 +1,118 @@
-<!doctype html><html><head><script>ROOT="/",console.log("ROOT","/");let _start=Date.now()</script><meta charset='utf-8'><meta content='width=device-width,initial-scale=1' name='viewport'><link href='/assets/favicon.png' rel='shortcut icon' type='image/x-icon'><script src='https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js'></script><script src='https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js'></script><script src='https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js'></script><script src='/assets/services/ServiceOne.js'></script><script src='https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js'></script><script src='https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js'></script><script src='/assets/js/loader.js'></script><link href='/assets/3rd/spectreTop.css' rel='stylesheet'><style>.delayShowing{opacity:0}</style></head><body><d-hide><script src='/assets/tags/preRW-tag.min.js'></script><preRW-tag></preRW-tag><script>window.preRWtag=riot.mount("preRW-tag")[0]</script></d-hide><div class='c-offcanvas-content-wrap'><header class='edge flex'><div class='white left'><div class='navbar-brand mr-2'><h2 id='navBarHead'>CRUD App</h2></div></div><div class='white right'><div class='hide-lg'><a href='/screen/tabu' class='btn btn-link'>Tabu</a><a href='/screen/viewmodel' class='btn btn-link'>ViewModel CRUD</a><a href='/screen/auth' class='btn btn-link'>Auth</a></div><a href='#navOpen' class='js-offcanvas-trigger' id='off-cbut'><div class='white'><svg class='bord featherSVG' viewBox='0 0 24 24'><line x1='3' x2='21' y1='12' y2='12'></line><line x1='3' x2='21' y1='6' y2='6'></line><line x1='3' x2='21' y1='18' y2='18'></line></svg></div></a></div></header><div id='router'><div class='grid-form' id='form1' autocomplete='off'><fieldset><legend>Form</legend><div data-row-span='2'><div data-field-span='1'><label>Field 1</label><input name='col1' type='text'></div><div data-field-span='1'><label>Field 2</label><input name='col2' type='text'></div></div></fieldset><input name='id' hidden=''></div><div class='buts'><button class='btn' id='clearBut'>Clear</button><button class='btn' id='saveBut'>Save data</button><button class='btn' id='backBut'>Back</button></div><style>.buts button{margin:.5rem}</style><script>var bindingForm;function setupForm(){(bindingForm=new BindForm).init(data,"form1"),$("#clearBut").click(function(){bindingForm.clearFields()}),$("#saveBut").click(function(){let row=bindingForm.getFields();bindingForm.add(row)}),$("#backBut").click(function(){window.location.replace("/screen/viewmodel")})}depp.define({modLoad:["../vmDataBinding.js"]}),depp.require(["pre","modLoad"],setupForm)</script></div></div><div class='delayShowing' id='navOpen'><ul class='nav navBarOpen'><h3 class='navbar-brand navBarOpenHea' id='navBarOpenHead'>CRUD App</h3><li class='nav-item'><a href='/screen/tabu'>Tabu</a><a href='/screen/live'>Live CRUD</a><a href='/screen/auth'>Auth</a><a href='/screen/auth'>Auth</a></li></ul></div><script>function userSzSc(){console.log("resize|scroll")}</script><!-- mB v4.14.23 on 2019-01-04T00:19:43.823Z --></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>ROOT = '/' //- Mobile only: sets global pug and .js from dat.yaml
+      console.log('ROOT','/')
+      let _start = Date.now()
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
+    <script src="/assets/services/ServiceOne.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <link href="/assets/3rd/spectreTop.css" rel="stylesheet" type="text/css">
+    <style>.delayShowing { opacity: 0; }</style>
+  </head>
+  <body>
+    <d-hide>
+      <script src="/assets/tags/preRW-tag.min.js"></script>
+      <preRW-tag></preRW-tag>
+      <script>
+        window.preRWtag = riot.mount('preRW-tag')[0]
+        
+      </script>
+    </d-hide>
+    <div class="c-offcanvas-content-wrap">
+      <header class="flex edge">
+        <div class="left white">
+          <div class="navbar-brand mr-2">
+            <h2 id="navBarHead">CRUD App </h2>
+          </div>
+        </div>
+        <div class="right white">
+          <div class="hide-lg"><a class="btn btn-link" href="/screen/tabu">Tabu</a><a class="btn btn-link" href="/screen/viewmodel">ViewModel CRUD</a><a class="btn btn-link" href="/screen/auth">Auth</a></div><a class="js-offcanvas-trigger" id="off-cbut" href="#navOpen">
+            <div class="white">
+              <svg class="bord featherSVG" viewBox="0 0 24 24">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </div></a>
+        </div>
+      </header>
+      <div id="router">
+        <div class="grid-form" id="form1" autocomplete="off">
+          <fieldset>
+            <legend>Form</legend>
+            <div data-row-span="2">
+              <div data-field-span="1">
+                <label>Field 1</label>
+                <input name="col1" type="text">
+              </div>
+              <div data-field-span="1">
+                <label>Field 2</label>
+                <input name="col2" type="text">
+              </div>
+            </div>
+          </fieldset>
+          <input hidden="" name="id">
+        </div>
+        <div class="buts">
+          <button class="btn" id="clearBut">Clear</button>
+          <button class="btn" id="saveBut">Save data</button>
+          <button class="btn" id="backBut">Back</button>
+        </div>
+        <style>
+          .buts button {
+             margin: .5rem;
+          }
+          
+        </style>
+        <script>
+          depp.define({
+             'bindLoad': ['binding.js']
+          })
+          depp.require(['pre','bindLoad'], setupForm)
+          
+          var bindingForm;
+          
+          function setupForm() {
+             
+             bindingForm = new BindForm()
+             bindingForm.init(new ServiceOne(), 'form1');
+          
+             $('#clearBut').click(function(){
+                bindingForm.clearFields()
+             })//click
+             
+             $('#saveBut').click(function(){
+                let row = bindingForm.getFields()
+                bindingForm.add(row)
+             })//click
+          
+             $('#backBut').click(function(){
+                window.location.replace('/screen/viewmodel')
+             })
+          } //()
+        </script>
+      </div>
+    </div>
+    <div class="delayShowing" id="navOpen">
+      <ul class="nav navBarOpen">
+        <h3 class="navBarOpenHea navbar-brand" id="navBarOpenHead">CRUD App</h3>
+        <li class="nav-item"><a href="/screen/tabu">Tabu</a><a href="/screen/live">Live CRUD</a><a href="/screen/auth">Auth</a><a href="/screen/auth">Auth</a></li>
+      </ul>
+    </div>
+    <script>
+      function userSzSc() {
+         console.log('resize|scroll')
+      }
+      
+    </script>
+  <!-- mB v4.14.23 on 2019-01-04T00:35:38.149Z --></body>
+</html>

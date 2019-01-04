@@ -26,16 +26,16 @@ block main
 
    script.
       depp.define({
-         'modLoad': ['../vmDataBinding.js']
+         'bindLoad': ['binding.js']
       })
-      depp.require(['pre','modLoad'], setupForm)
+      depp.require(['pre','bindLoad'], setupForm)
 
       var bindingForm;
 
       function setupForm() {
          
          bindingForm = new BindForm()
-         bindingForm.init(data, 'form1');
+         bindingForm.init(new ServiceOne(), 'form1');
 
          $('#clearBut').click(function(){
             bindingForm.clearFields()
@@ -50,3 +50,4 @@ block main
             window.location.replace('/screen/viewmodel')
          })
       } //()
+
