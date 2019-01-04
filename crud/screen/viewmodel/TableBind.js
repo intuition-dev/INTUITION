@@ -1,4 +1,4 @@
-class ViewModelBind {
+class TableBind {
 
    init(data_, id){
       this.data = data_

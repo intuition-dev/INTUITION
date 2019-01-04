@@ -33,30 +33,30 @@ block main
       })
       depp.require(['pre','bindLoad'], setupForm)
 
-      var formView;
+      var formBind;
 
       function setupForm() {
          
-         formView = new FormBind()
-         formView.init('form1');
+         formBind = new FormBind()
+         formBind.init('form1');
 
          $('#clearBut').click(function(){
-            formView.clearFields()
+            formBind.clearFields()
          })//click
          
          $('#saveBut').click(function(){
-            let row = formView.getFields()
-            formView.add(row) //do the validation in .js
+            let row = formBind.getFields()
+            formBind.add(row) //do the validation in .js
          })//click
 
          $('#updateBut').click(function(){
-            let row = formView.getFields()
-            formView.update(row)
+            let row = formBind.getFields()
+            formBind.update(row)
          })//click
 
          $('#deleteBut').click(function(){
-            let row = formView.getFields()
-            formView.delete(row)
+            let row = formBind.getFields()
+            formBind.delete(row)
          })//click
 
          $('#backBut').click(function(){
