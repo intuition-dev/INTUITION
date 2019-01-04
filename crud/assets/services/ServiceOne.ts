@@ -1,6 +1,6 @@
 declare var db1: any
-declare var _disE: any
 declare var validator: any
+declare var _start: any
 
 class ServiceOne { // testable crud and fake flag, heavy work. view-model
 
@@ -9,7 +9,7 @@ class ServiceOne { // testable crud and fake flag, heavy work. view-model
    form
 
    read(ctx, cb){
-      console.log('- reading...', ctx)
+      console.log('- reading...', Date.now() - _start)
 
       if(this.dataSourceType=='fake') {
          let rows = [
