@@ -9,7 +9,6 @@ class BindTable {
 
       depp.require(['tabLoaded' ], function() { 
          _this.table = new Tabulator("#"+id, {
-            data:tabledata, //assign data to table
             layout:"fitColumns",      //fit columns to width of table
             columns:[ //Define Table Columns
                {title:"id", field:"id", visible:false},
@@ -23,13 +22,13 @@ class BindTable {
                window.location.replace('/screen/viewmodel/form');
             },
          })//tab
-         depp.read('tabReady')
+         depp.done('tabReady')
       })//depp
 
    }//()
 
    onCB (rows, ctx) {
-      depp.require(['tabLoaded' ], function() { 
+      depp.require(['tabReady' ], function() { 
          ctx.table.clearData()
          ctx.table.setData(rows)
       })

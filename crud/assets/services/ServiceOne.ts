@@ -8,7 +8,7 @@ class ServiceOne { // testable crud and fake flag, heavy work. view-model
    form
 
    read(ctx, cb){
-      console.log('--ViewModelDataServ reading...', ctx)
+      console.log('- reading...', ctx)
 
       if(this.dataSourceType=='fake') {
          let rows = [
