@@ -4,7 +4,7 @@ class BindForm {// extends ViewModelDataServ {
    constructor(){
       super()
       this.form = ''
-      this.data = typeof localStorage.getItem('row') !='undefined' && JSON.parse(localStorage.getItem('row'));
+      this.data = typeof sessionStorage.getItem('row') !='undefined' && JSON.parse(sessionStorage.getItem('row'));
    }
    
    init(divId) {
@@ -49,7 +49,7 @@ class BindForm {// extends ViewModelDataServ {
 
 
    clearFields(){
-      localStorage.removeItem('row');
+      sessionStorage.removeItem('row');
       $(this.form).find('input').val('')
    }
 }
