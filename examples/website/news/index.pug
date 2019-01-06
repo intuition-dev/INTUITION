@@ -13,11 +13,11 @@ extends /layout/layout
 block top
    script(src=ROOT+ 'news/tag/table-tag.js')
    style.
-      .pageBack {
+      .pageBack.delayShowing {
          background-image: url(img.jpg);
       }
 
-   .pageBack(data-js-menu-highlight="news")
+   .pageBack.delayShowing(data-js-menu-highlight="news")
       include /layout/nav
       br
       .pad
