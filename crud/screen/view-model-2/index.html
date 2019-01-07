@@ -86,11 +86,7 @@
           function setupBinding() {
              console.log('binding', Date.now() - _start);
              bind = new Bind();
-             bind.init('list1');
-          
-             $('.tabulator-cell').on('click', function() {
-                bind.getRow();
-             });
+             bind.init('form1', 'list1');
           
              $('#clearBut').on('click', function(){
                 bind.clearFields();
@@ -127,5 +123,5 @@
       }
       
     </script>
-  <!-- mB v4.14.7 on 2019-01-07T10:02:07.109Z --></body>
+  <!-- mB v4.14.7 on 2019-01-07T12:12:20.337Z --></body>
 </html>

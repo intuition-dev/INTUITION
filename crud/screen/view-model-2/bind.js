@@ -1,16 +1,19 @@
 class Bind {
 
    constructor(){
+      this.form = '';
       this.data = new OneModel();
    }
 
-   init(id){
+   init(formId, tabId){
       this.data.read(this, this.onCB); //reading the data (real or fake)
+
+      this.form = '#' + formId;
 
       let _this = this;
 
-      depp.require(['tabLoaded' ], function() { 
-         _this.table = new Tabulator("#"+id, {
+      depp.require(['tabLoaded' ], function() {
+         _this.table = new Tabulator("#"+tabId, {
             layout:"fitColumns",      //fit columns to width of table
             columns:[ //Define Table Columns
                {title:"id", field:"id", visible:false},
@@ -20,8 +23,9 @@ class Bind {
             rowClick:function(e, row){ //trigger 
                var row = row.getData();
                console.log('row: ', row);
-               sessionStorage.setItem('row', JSON.stringify(row)); //save object in sessionStorage, to retrive it on the next page(form)
-               window.location.replace('/screen/viewmodel/form');
+               $('input[name="col1"]').val(row.col1);
+               $('input[name="col2"]').val(row.col2);
+               $('input[name="id"]').val(row.id);
             },
          })//tab
          depp.done('tabReady');
@@ -31,22 +35,16 @@ class Bind {
 
    onCB (rows, ctx) {
       depp.require(['tabReady'], function() { 
-         ctx.table.clearData()
-         ctx.table.setData(rows)
+         ctx.table.clearData();
+         ctx.table.setData(rows);
       })
-   }
-
-   getRow() {
-      $(this).find('input[name="col1"]').val(this.row['col1']);
-      $(this).find('input[name="col2"]').val(this.row['col2']);
-      $(this).find('input[name="id"]').val(this.row['id']);
    }
 
    add(row) {
       let validation = this.data.valid(row);
       
       if (validation=='OK') {
-         this.data.add(row);
+         this.data.add(row).then(() => this.redraw());
       } else  {
          console.log('error', validation);
       }
@@ -57,17 +55,18 @@ class Bind {
       
       if(validation=='OK') {
          this.data.update(row);
+         this.redraw();
       } else  {
          console.log('error', validation);
       }
    }
 
    delete(row) {
-      this.data.delete(row);
+      this.data.delete(row).then(()=> this.redraw());
    }
    
    getFields() {
-      let lst = {};
+      let lst = {}
       //start w/ pk
       let input = $(this.form+' [name="id"]');
       lst['id'] = input.val();
@@ -77,14 +76,19 @@ class Bind {
             let input = $(this);
             lst[ input.attr('name')] = input.val();
          }
-      )//each
+      );
       console.log('--lst',lst);
       return lst;
-   }//()
+   }
 
 
-   clearFields(){
-      $(this).find('input').val('');
+   clearFields() {
+      $('input').val('');
+   }
+
+   redraw() {
+      this.data.read(this, this.onCB);
+      this.clearFields();
    }
      
 }

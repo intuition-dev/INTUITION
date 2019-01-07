@@ -42,14 +42,14 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
       if(row.id) delete row.id // that should not be there on add
 
       let newPK = db1.collection(this.entityName).doc() // make PK
-      newPK.set(row) // insert
-         .then(function() { 
-            console.log('successful')
-            if(cb) cb(1)
+      return newPK.set(row) // insert
+            .then(function() { 
+               console.log('successful')
+               if(cb) cb(1)
+            })
+         .catch(function(error) {
+            console.error('oops', error)
          })
-      .catch(function(error) {
-         console.error('oops', error)
-      })
    }//()
 
    update( row, cb ) { //resolve, reject) {
@@ -75,13 +75,13 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
       let id = row['id']
 
       let ref = db1.collection(this.entityName).doc(id)
-      ref.delete() // delete
-         .then(function() { 
-            console.log('successfully deleted')
+      return ref.delete() // delete
+            .then(function() { 
+               console.log('successfully deleted')
+            })
+         .catch(function(error) {
+            console.error('oops', error)
          })
-      .catch(function(error) {
-         console.error('oops', error)
-      })
    }
 
    valid(row) {

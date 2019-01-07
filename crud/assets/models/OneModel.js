@@ -34,7 +34,7 @@ class OneModel {
         if (row.id)
             delete row.id;
         let newPK = db1.collection(this.entityName).doc();
-        newPK.set(row)
+        return newPK.set(row)
             .then(function () {
             console.log('successful');
             if (cb)
@@ -64,7 +64,7 @@ class OneModel {
     delete(row) {
         let id = row['id'];
         let ref = db1.collection(this.entityName).doc(id);
-        ref.delete()
+        return ref.delete()
             .then(function () {
             console.log('successfully deleted');
         })
