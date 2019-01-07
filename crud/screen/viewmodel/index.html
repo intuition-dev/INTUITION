@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="right white">
-          <div class="hide-lg"><a class="btn btn-link" href="/screen/tabu">Tabu</a><a class="btn btn-link" href="/screen/viewmodel">ViewModel CRUD</a><a class="btn btn-link" href="/screen/auth">Auth</a></div><a class="js-offcanvas-trigger" id="off-cbut" href="#navOpen">
+          <div class="hide-lg"><a class="btn btn-link" href="/screen/tabu">Tabu</a><a class="btn btn-link" href="/screen/viewmodel">ViewModel CRUD</a><a class="btn btn-link" href="/screen/view-model-2">ViewModel CRUD 2</a><a class="btn btn-link" href="/screen/auth">Auth</a></div><a class="js-offcanvas-trigger" id="off-cbut" href="#navOpen">
             <div class="white">
               <svg class="bord featherSVG" viewBox="0 0 24 24">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -81,19 +81,19 @@
         <script>
           depp.define({
              'bindLoad': [
-                'ViewModelBind.js'
+                'TableBind.js'
              ]
           })
           
           depp.require(['pre','bindLoad'], setupBinding)
           
-          var tabView
+          var tabBind
           
           
           function setupBinding() {
              console.log('binding', Date.now() - _start)
-             tabView = new ViewModelBind()
-             tabView.init(new OneModel(), 'list1')
+             tabBind = new TableBind()
+             tabBind.init(new OneModel(), 'list1')
           
              $('#create-new').on('click', function(ev){
                 ev.preventDefault()
@@ -116,5 +116,5 @@
       }
       
     </script>
-  <!-- mB v4.14.23 on 2019-01-04T20:05:51.801Z --></body>
+  <!-- mB v4.14.7 on 2019-01-07T09:50:33.768Z --></body>
 </html>

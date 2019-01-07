@@ -47,6 +47,7 @@
       </header>
       <div id="router">
         <div class="pad">
+          <div class="display table-custom" id="list1" width="100%"></div>
           <div class="grid-form" id="form1" autocomplete="off">
             <fieldset>
               <legend>Form</legend>
@@ -68,51 +69,49 @@
             <button class="btn" id="saveBut">Save data</button>
             <button class="btn" id="updateBut">Update data</button>
             <button class="btn" id="deleteBut">Delete data</button>
-            <button class="btn" id="backBut">Back</button>
           </div>
         </div>
-        <style>
-          .buts button {
-             margin: .5rem;
-          }
-          
-        </style>
         <script>
           depp.define({
-             'bindLoad': ['FormBind.js']
+             'bindLoad': [
+                'bind.js'
+                ,'style.css'
+             ]
           })
-          depp.require(['pre','bindLoad'], setupForm)
           
-          var formBind;
+          depp.require(['pre','bindLoad'], setupBinding);
           
-          function setupForm() {
+          var bind;
+          
+          function setupBinding() {
+             console.log('binding', Date.now() - _start);
+             bind = new Bind();
+             bind.init('list1');
+          
+             $('.tabulator-cell').on('click', function() {
+                bind.getRow();
+             });
+          
+             $('#clearBut').on('click', function(){
+                bind.clearFields();
+             });
              
-             formBind = new FormBind()
-             formBind.init('form1');
+             $('#saveBut').on('click', function(){
+                let row = bind.getFields();
+                bind.add(row);
+             });
           
-             $('#clearBut').click(function(){
-                formBind.clearFields()
-             })//click
-             
-             $('#saveBut').click(function(){
-                let row = formBind.getFields()
-                formBind.add(row) //do the validation in .js
-             })//click
+             $('#updateBut').on('click', function(){
+                let row = bind.getFields();
+                bind.update(row);
+             });
           
-             $('#updateBut').click(function(){
-                let row = formBind.getFields()
-                formBind.update(row)
-             })//click
+             $('#deleteBut').on('click', function(){
+                let row = bind.getFields();
+                bind.delete(row);
+             });
           
-             $('#deleteBut').click(function(){
-                let row = formBind.getFields()
-                formBind.delete(row)
-             })//click
-          
-             $('#backBut').click(function(){
-                window.location.replace('/screen/viewmodel')
-             })
-          } //()
+          }
         </script>
       </div>
     </div>
@@ -128,5 +127,5 @@
       }
       
     </script>
-  <!-- mB v4.14.7 on 2019-01-07T09:50:33.803Z --></body>
+  <!-- mB v4.14.7 on 2019-01-07T10:02:07.109Z --></body>
 </html>

@@ -1,0 +1,48 @@
+extends /layout/layout
+
+block main
+   .pad
+      #list1.display(width='100%').table-custom
+      include form.pug
+      
+   script.
+      depp.define({
+         'bindLoad': [
+            'bind.js'
+            ,'style.css'
+         ]
+      })
+
+      depp.require(['pre','bindLoad'], setupBinding);
+
+      var bind;
+
+      function setupBinding() {
+         console.log('binding', Date.now() - _start);
+         bind = new Bind();
+         bind.init('list1');
+
+         $('.tabulator-cell').on('click', function() {
+            bind.getRow();
+         });
+
+         $('#clearBut').on('click', function(){
+            bind.clearFields();
+         });
+         
+         $('#saveBut').on('click', function(){
+            let row = bind.getFields();
+            bind.add(row);
+         });
+
+         $('#updateBut').on('click', function(){
+            let row = bind.getFields();
+            bind.update(row);
+         });
+
+         $('#deleteBut').on('click', function(){
+            let row = bind.getFields();
+            bind.delete(row);
+         });
+
+      }
