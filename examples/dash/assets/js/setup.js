@@ -28,6 +28,7 @@ function onDeppLoaded() {
          , ROOT + 'assets/css/nav.css'
          , ROOT + 'assets/css/main.css'
          , 'css!https://fonts.googleapis.com/css?family=Open+Sans'
+         , ROOT + 'assets/js/progressbar.min.js'
       ],
       'chartjs': [
          'https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js'
