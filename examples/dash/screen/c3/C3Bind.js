@@ -36,7 +36,7 @@ class C3Bind {
       if( this._data !=null) {
          let chartData = this._data.read();
 
-         console.log('chartData', chartData[1]);
+         // console.log('chartData', chartData[1]);
          let date = [];
          let data1 = [];
          let data2 = [];
@@ -53,9 +53,9 @@ class C3Bind {
             data2.push(chartData[1][i].data2);
          }
 
-         console.log('date', date);
-         console.log('data1', data1);
-         console.log('data2', data2);
+         // console.log('date', date);
+         // console.log('data1', data1);
+         // console.log('data2', data2);
 
          initC(canvasId2);
          configTimeseries = {
@@ -88,13 +88,28 @@ class C3Bind {
       if( this._data !=null) {
          let chartData = this._data.read();
 
+         // console.log('chartData', chartData[2]);
+         let data1 = [];
+         let data2 = [];
+
+         for (let i = 0; i < chartData[2].length; i++) {
+            data1.push(chartData[2][i].data1);
+         }
+
+         for (let i = 0; i < chartData[2].length; i++) {
+            data2.push(chartData[2][i].data2);
+         }
+
+         // console.log('data1', data1);
+         // console.log('data2', data2);
+
          initC(canvasId3);
 
          config = {
             data: {
                columns: [
-                     ['data1', 30, 200, 100, 400, 150, 250],
-                     ['data2', 130, 100, 140, 200, 150, 50]
+                  data1,
+                  data2
                ],
                type: 'bar'
             },
@@ -132,6 +147,32 @@ class C3Bind {
       this.canvas = '#'+canvasId4;
       if( this._data !=null) {
          let chartData = this._data.read();
+
+         // console.log('chartData', chartData[3]);
+         let data1 = [];
+         let data2 = [];
+         let data3 = [];
+         let data4 = [];
+
+         for (let i = 0; i < chartData[3].length; i++) {
+            data1.push(chartData[3][i].data1);
+         }
+
+         for (let i = 0; i < chartData[3].length; i++) {
+            data2.push(chartData[3][i].data2);
+         }
+         for (let i = 0; i < chartData[3].length; i++) {
+            data3.push(chartData[3][i].data3);
+         }
+
+         for (let i = 0; i < chartData[3].length; i++) {
+            data4.push(chartData[3][i].data4);
+         }
+
+         // console.log('data1', data1);
+         // console.log('data2', data2);
+         // console.log('data1', data3);
+         // console.log('data2', data4);
 
          initC(canvasId4);
          
