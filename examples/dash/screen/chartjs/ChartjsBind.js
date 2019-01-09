@@ -8,7 +8,7 @@ class ChartjsBind {
    init(canvasId){
       
       this.canvas = '#'+canvasId;
-      if( this._data !=null){
+      if( this._data !=null) {
 
          let chartData = this._data.read();
          // console.log('chartData', chartData[0]);

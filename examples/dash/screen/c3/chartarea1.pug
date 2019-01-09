@@ -6,44 +6,17 @@ div.py-2
    div#c3-chart-timeseries
 
    script.
-     depp.require(['c3'], function(){
-         initC('c3-chart-donut');
-         initC('c3-chart-timeseries');
-         config = {
-            data: {
-               columns: [
-                     ['data1', 30],
-                     ['data2', 120],
-               ],
-               type : 'donut',
-               onclick: function (d, i) { console.log("onclick", d, i); },
-               onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-               onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-            },
-            donut: {
-               title: "Iris Petal Width"
-            }
-         }
-         configTimeseries = {
-            data: {
-            x: 'x',
-      //        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
-            columns: [
-                  ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-      //            ['x', '20130101', '20130102', '20130103', '20130104', '20130105', '20130106'],
-                  ['data1', 30, 200, 100, 400, 150, 250],
-                  ['data2', 130, 340, 200, 500, 250, 350]
-            ]
-         },
-         axis: {
-            x: {
-                  type: 'timeseries',
-                  tick: {
-                     format: '%Y-%m-%d'
-                  }
-            }
-         }
-         }
-         onC3('#c3-chart-donut', config)
-         onC3('#c3-chart-timeseries', configTimeseries)
-      })
+      depp.require(['c3'], function(){
+         config = {};
+         configTimeseries = {};
+      });
+
+      depp.require(['c3', 'loadModel', 'loadC3Bind'], setupChartView);
+
+      function setupChartView(){
+         let canvasId = 'c3-chart-donut';
+         let canvasId2 = 'c3-chart-timeseries';
+         let chart  = new C3Bind();
+         chart.init(canvasId);
+         chart.init2(canvasId2);
+      }
