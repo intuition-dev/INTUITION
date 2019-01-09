@@ -42,9 +42,17 @@ function onDeppLoaded() {
          'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js',
          'https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.js'
       ],
-      'uvcharts': [
-         'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js',
-         'https://cdnjs.cloudflare.com/ajax/libs/uvCharts/2.0.0/uvcharts.min.js',
+      'loadModel': [
+         ROOT + 'assets/models/OneModel.js'
+      ],
+      'loadChartjsBind': [
+         ROOT + 'screen/chartjs/ChartjsBind.js'
+      ],
+      'loadC3Bind': [
+         ROOT + 'screen/chartjs/C3Bind.js'
+      ],
+      'loadNvd3Bind': [
+         ROOT + 'screen/chartjs/Nvd3Bind.js'
       ]
    })//define
    depp.require(['pre'], setup)
