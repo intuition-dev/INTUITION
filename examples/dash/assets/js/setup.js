@@ -43,7 +43,9 @@ function onDeppLoaded() {
          'https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.js'
       ],
       'loadModel': [
-         ROOT + 'assets/models/OneModel.js'
+         ROOT + 'assets/models/ChartjsModel.js'
+         , ROOT + 'assets/models/C3Model.js'
+         , ROOT + 'assets/models/Nvd3Model.js'
       ],
       'loadChartjsBind': [
          ROOT + 'screen/chartjs/ChartjsBind.js'

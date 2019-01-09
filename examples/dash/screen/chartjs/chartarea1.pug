@@ -3,39 +3,10 @@ div.py-2
    canvas#chartjs-chart-pie
 
    script.
-     depp.require(['chartjs'], function(){
+      depp.require(['loadModel', 'loadChartjsBind'], setupChartView);
 
-         config = {
-         type: 'polarArea',
-            data: {
-               labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
-               datasets: [
-               {
-                  backgroundColor: ['#3e95cd', '#8e5ea2','#3cba9f','#e8c3b9','#c45850'],
-                  data: [2478,5267,734,784,433]
-               }
-               ]
-            },
-
-            options: {
-               responsive: false,
-               layout: {
-                  padding: 20
-               },
-               maintainAspectRatio: false,
-               animation: {
-                  duration: 350,
-                  animateRotate: false
-               },
-               title: {
-                  display: true,
-                  text: 'Predicted world population (millions) in 2050'
-               },
-               legend: {
-                  display: false,
-                  reverse: true
-                }
-            }
-         }
-         initC('chartjs-chart-pie', config);
-      })
+      function setupChartView(){
+         let canvasId = 'chartjs-chart-pie';
+         let chart  = new ChartjsBind();
+         chart.init(canvasId);
+      }
