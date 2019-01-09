@@ -51,10 +51,10 @@ function onDeppLoaded() {
          ROOT + 'screen/chartjs/ChartjsBind.js'
       ],
       'loadC3Bind': [
-         ROOT + 'screen/chartjs/C3Bind.js'
+         ROOT + 'screen/c3/C3Bind.js'
       ],
       'loadNvd3Bind': [
-         ROOT + 'screen/chartjs/Nvd3Bind.js'
+         ROOT + 'screen/nvd3/Nvd3Bind.js'
       ]
    })//define
    depp.require(['pre'], setup)

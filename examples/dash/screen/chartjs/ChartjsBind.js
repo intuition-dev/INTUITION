@@ -98,10 +98,10 @@ class ChartjsBind {
             coord.push(chartData[1][i].data);
          }
 
-         console.log('label', label);
-         console.log('bgColor', bg);
-         console.log('border', border);
-         console.log('coord', coord);
+         // console.log('label', label);
+         // console.log('bgColor', bg);
+         // console.log('border', border);
+         // console.log('coord', coord);
 
          depp.require(['chartjs'], function(){
 
