@@ -48,9 +48,9 @@ script.
 
 
    function setupPg(perPage, feed_) {
-      console.log('PG')
+      console.info('PG')
       pgContCount++
-      console.log('s', pgContCount)
+      console.info('s', pgContCount)
       pgContainer[pgContCount] = $('#pagination-container')
 
       pgContainer[pgContCount].pagination({
@@ -68,20 +68,20 @@ script.
    }//()
 
    function userSzSc() {
-      console.log('resize|scroll')
+      console.info('resize|scroll')
       guessShow()
    }
 
    function guessShow() {
       let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9
       n = Math.round( n * .7)
-      console.log('g', n)
+      console.info('g', n)
       return n
    }
 
    function onSrch() {
       let s = $( "#srchFld" ).val()
-      console.log('srch', s)
+      console.info('srch', s)
       pgContainer[pgContCount].pagination('disable')
       pgContainer[pgContCount].pagination('hide')
       pgContainer[pgContCount].pagination('destroy')

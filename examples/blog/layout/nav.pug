@@ -27,12 +27,12 @@ header.flex.edge.delayShowing
 
 script.
    loadjs.ready('device', function() {
-      console.log('navJBar')
+      console.info('navJBar')
       new Navbar('.navJBar') // top
 
       //toggle
       $( "#navBarCont" ).click(function() { //side
-         console.log(isOpen)
+         console.info(isOpen)
          if(isOpen)
             navClose()
          else

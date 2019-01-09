@@ -18,7 +18,7 @@ block main
       var bind;
 
       function setupBinding() {
-         console.log('binding', Date.now() - _start);
+         console.info('binding', Date.now() - _start);
          bind = new Bind();
          bind.init('form1', 'list1');
 

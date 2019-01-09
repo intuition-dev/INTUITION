@@ -15,7 +15,7 @@ preRW-tag
       // allow read, write: if request.auth.token.email_verified == true ;
 
       // you should setup your Firestore so only auth user can access:
-      // console.log('auth', isUserIn()) // if not, you can gray out the page with a modal
+      // console.info('auth', isUserIn()) // if not, you can gray out the page with a modal
 
       // RW generic *GLOBALS* ///////////////////////////////////////////////////////////////////
       window.firebase.initializeApp(fconfig)

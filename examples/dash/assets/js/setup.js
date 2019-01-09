@@ -7,7 +7,7 @@ $(document).ready(function () {
       window.isphone = true
    }
 
-   console.log('phonegap?', window.isphone)
+   console.info('phonegap?', window.isphone)
    if (window.isphone) { // //file is a browser
       document.addEventListener("deviceready", onDeviceReady, false)
    } else {
@@ -63,7 +63,7 @@ function onDeppLoaded() {
 
 
 function onDeviceReady() { // nothing will work before this
-   console.log('deviceready!')
+   console.info('deviceready!')
 }
 
 let _scSz = true
@@ -88,7 +88,7 @@ function setup() {
 
    setupUserSzSc()
 
-   console.log('style done', Date.now() - _start)
+   console.info('style done', Date.now() - _start)
    $('.delayShowing').removeClass('delayShowing') // show
 }//ready
 
@@ -125,5 +125,5 @@ function disE(evtName, msg) {
 }
 // eg
 addEventListener('bla', function(evt) {
-   console.log(evt.detail)
+   console.info(evt.detail)
 })

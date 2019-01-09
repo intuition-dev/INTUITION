@@ -16,9 +16,9 @@ class C3Bind {
             data: {
                columns: chartData[0],
                type : 'donut',
-               onclick: function (d, i) { console.log("onclick", d, i); },
-               onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-               onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+               onclick: function (d, i) { console.info("onclick", d, i); },
+               onmouseover: function (d, i) { console.info("onmouseover", d, i); },
+               onmouseout: function (d, i) { console.info("onmouseout", d, i); }
             },
             donut: {
                title: "Iris Petal Width"
@@ -36,7 +36,7 @@ class C3Bind {
       if( this._data !=null) {
          let chartData = this._data.read();
 
-         // console.log('chartData', chartData[1]);
+         // console.info('chartData', chartData[1]);
          let date = [];
          let data1 = [];
          let data2 = [];
@@ -53,9 +53,9 @@ class C3Bind {
             data2.push(chartData[1][i].data2);
          }
 
-         // console.log('date', date);
-         // console.log('data1', data1);
-         // console.log('data2', data2);
+         // console.info('date', date);
+         // console.info('data1', data1);
+         // console.info('data2', data2);
 
          initC(canvasId2);
          configTimeseries = {
@@ -88,7 +88,7 @@ class C3Bind {
       if( this._data !=null) {
          let chartData = this._data.read();
 
-         // console.log('chartData', chartData[2]);
+         // console.info('chartData', chartData[2]);
          let data1 = [];
          let data2 = [];
 
@@ -100,8 +100,8 @@ class C3Bind {
             data2.push(chartData[2][i].data2);
          }
 
-         // console.log('data1', data1);
-         // console.log('data2', data2);
+         // console.info('data1', data1);
+         // console.info('data2', data2);
 
          initC(canvasId3);
 
@@ -148,7 +148,7 @@ class C3Bind {
       if( this._data !=null) {
          let chartData = this._data.read();
 
-         // console.log('chartData', chartData[3]);
+         // console.info('chartData', chartData[3]);
          let data1 = [];
          let data2 = [];
          let data3 = [];
@@ -169,10 +169,10 @@ class C3Bind {
             data4.push(chartData[3][i].data4);
          }
 
-         // console.log('data1', data1);
-         // console.log('data2', data2);
-         // console.log('data1', data3);
-         // console.log('data2', data4);
+         // console.info('data1', data1);
+         // console.info('data2', data2);
+         // console.info('data1', data3);
+         // console.info('data2', data4);
 
          initC(canvasId4);
          

@@ -6,7 +6,7 @@ block head2
    script.
       axios.get('/blog/items.json').then(function(resp) {
          feed = resp.data;
-         console.log('f ready');
+         console.info('f ready');
          loadjs.done('feed');
       })// fetch
 

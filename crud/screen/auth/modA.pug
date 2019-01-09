@@ -30,13 +30,13 @@ script.
       $('#up').click(function(){
          let email = $('#f1 [name="email"]').val()
          let pswd = $('#f1 [name="pswd"]').val()
-         console.log(email,pswd)
+         console.info(email,pswd)
          auth.createUserWithEmailAndPassword(email,pswd)
             .then(function(user) {
                bAuth.sendEmailVerification()
             })
             .catch(function(error){
-               console.log(error) //show error in .message
+               console.info(error) //show error in .message
                alert(error) // replace with pretty popup
             })
       })//click
@@ -44,26 +44,26 @@ script.
       $('#in').click(function(){
          let email = $('#f1 [name="email"]').val()
          let pswd = $('#f1 [name="pswd"]').val()
-         console.log(email,pswd)
+         console.info(email,pswd)
          auth.signInWithEmailAndPassword(email,pswd)
             .then(function(user) {
-               console.log(user)
+               console.info(user)
                alert('Signed in successfully') //replace with pretty popup
             })
             .catch(function(error){
-               console.log(error)
+               console.info(error)
                alert(error) // replace with pretty popup
             })
       })//click
 
       $('#out').click(function(){
-         console.log('out')
+         console.info('out')
          auth.signOut()
       })//click
 
       $('#rest').click(function(){
          let email = $('#f1 [name="email"]').val()
-         console.log(email)
+         console.info(email)
          auth.sendPasswordResetEmail(email)
       })//click
 

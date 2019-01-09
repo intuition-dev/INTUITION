@@ -5,7 +5,7 @@ extends /layout/layout
    script.
       axios.get('/news/list.json').then(function(resp) {
          news = resp.data
-         console.log('n ready')
+         console.info('n ready')
          //loadjs.done('news')
       })// fetch
 

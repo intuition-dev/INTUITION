@@ -21,7 +21,7 @@ class FormBind {
       if(validation=='OK')
          this.data.add(row)
       else  {
-         console.log('error', validation)
+         console.info('error', validation)
       } //else
    }
 
@@ -31,7 +31,7 @@ class FormBind {
       if(validation=='OK')
          this.data.update(row)
       else  {
-         console.log('error', validation)
+         console.info('error', validation)
       } //else
    }
 
@@ -60,7 +60,7 @@ class FormBind {
             lst[ input.attr('name')] = input.val()
          }//index
       )//each
-      console.log('--lst',lst)
+      console.info('--lst',lst)
       return lst
    }//()
 

@@ -59,9 +59,9 @@ feed-tag
 
 
    script.
-      console.log('oh hi tag')
+      console.info('oh hi tag')
       this.on('*', function(evt) {
-         //console.log('riot', evt)
+         //console.info('riot', evt)
       })
       this.items = []
       thiz = this
@@ -72,7 +72,7 @@ feed-tag
             thiz.update()
             return
          }
-         console.log(Object.keys(data[0]))
+         console.info(Object.keys(data[0]))
          // clone
          let cloned = JSON.parse(JSON.stringify(data))
          thiz.items = cloned
@@ -84,7 +84,7 @@ feed-tag
             if (item.image.indexOf('//')==-1)
                 item.image = item.url + '/' + item.image
 
-            console.log(item.url)
+            console.info(item.url)
          }
 
          thiz.update()

@@ -22,7 +22,7 @@ class Bind {
             ],
             rowClick:function(e, row){ //trigger 
                var row = row.getData();
-               console.log('row: ', row);
+               console.info('row: ', row);
                $('input[name="col1"]').val(row.col1);
                $('input[name="col2"]').val(row.col2);
                $('input[name="id"]').val(row.id);
@@ -46,7 +46,7 @@ class Bind {
       if (validation=='OK') {
          this.data.add(row).then(() => this.redraw());
       } else  {
-         console.log('error', validation);
+         console.info('error', validation);
       }
    }
 
@@ -57,7 +57,7 @@ class Bind {
          this.data.update(row);
          this.redraw();
       } else  {
-         console.log('error', validation);
+         console.info('error', validation);
       }
    }
 
@@ -77,7 +77,7 @@ class Bind {
             lst[ input.attr('name')] = input.val();
          }
       );
-      console.log('--lst',lst);
+      console.info('--lst',lst);
       return lst;
    }
 

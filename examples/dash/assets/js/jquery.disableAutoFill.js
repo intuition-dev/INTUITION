@@ -48,10 +48,10 @@
             $(this).val(tmpPassword.replace(/./g, '*'));
 
             if (settings.debugMode) {
-                console.log('Current keyup position: ' + currKeyupPos);
-                console.log('Password length: ' + passwordLen);
-                console.log('Real password:');
-                console.log(realPassword);
+                console.info('Current keyup position: ' + currKeyupPos);
+                console.info('Password length: ' + passwordLen);
+                console.info('Real password:');
+                console.info(realPassword);
             }
         });
     }
@@ -68,7 +68,7 @@
  
             if (settings.callback.call()) {
                 if (settings.debugMode) {
-                    console.log(obj.serialize())
+                    console.info(obj.serialize())
                 } else {
                     obj.submit();
                 }

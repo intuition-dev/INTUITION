@@ -4,7 +4,7 @@ html
       //- Mobile only: <script src="https://console.re/connector.js" data-channel="MY_NAME" id="consolerescript"></script>
       script.
          ROOT = '#{ROOT}' //- Mobile only: sets global pug and .js from dat.yaml
-         console.log('ROOT','#{ROOT}')
+         console.info('ROOT','#{ROOT}')
          let _start = Date.now()
       meta(charset='utf-8')
       
@@ -78,7 +78,7 @@ html
 
       script.
          function userSzSc() {
-            console.log('resize|scroll')
+            console.info('resize|scroll')
          }
 
    //-link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')

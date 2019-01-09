@@ -7,7 +7,7 @@ $(document).ready(function () {
         window.isphone = true
     }
 
-    console.log('phonegap?', window.isphone)
+    console.info('phonegap?', window.isphone)
     if (window.isphone) { // //file is a browser
         document.addEventListener("deviceready", onDeviceReady, false)
     } else {
@@ -35,7 +35,7 @@ depp.define({
 
 
 function onDeviceReady() { // nothing will work before this
-    console.log('deviceready!')
+    console.info('deviceready!')
 }
 
 function cssLoaded() {// called by the style sheet in layout
@@ -64,7 +64,7 @@ depp.require(['cssJs'], function() {
         }
     }, 150);
 
-    console.log('style done', Date.now() - _start);
+    console.info('style done', Date.now() - _start);
 });
 
 // util: /////////////////////////////////////////////////////////////////////
@@ -98,5 +98,5 @@ function disE(evtName, msg) {
 }
 // eg
 addEventListener('bla', function(evt) {
-   console.log(evt.detail)
+   console.info(evt.detail)
 })

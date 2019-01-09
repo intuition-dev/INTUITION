@@ -9,7 +9,7 @@ class Nvd3Bind {
 
       if( this._data !=null){
 
-         // console.log('this._data.read()', this._data.read());
+         // console.info('this._data.read()', this._data.read());
          let chartData = this._data.read();
 
          /*These lines are all chart setup.  Pick and choose which chart features you want to utilize. */

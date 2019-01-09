@@ -32,21 +32,21 @@ card-tag
    br
 
    script.
-      console.log('oh hi tag')
+      console.info('oh hi tag')
       this.on('*', function(evt) {
-         console.log('riot', evt)
+         console.info('riot', evt)
       })
       this.items = []
       thiz = this
 
       render(data) {// public
-         console.log(data)
+         console.info(data)
          if(!data ) {
             thiz.items = []
             thiz.update()
             return
          }
-         console.log(Object.keys(data[0]))
+         console.info(Object.keys(data[0]))
          // clone
          let cloned = JSON.parse(JSON.stringify(data))
          thiz.items = cloned
@@ -57,7 +57,7 @@ card-tag
 
             item.image = ROOT + 'blog/' + item.url + '/who.jpg'
             item.url = ROOT + 'blog/' + item.url
-            console.log(item.url)
+            console.info(item.url)
          }
 
          thiz.update()

@@ -44,7 +44,7 @@ block main
 
 
       function setupBinding() {
-         console.log('binding', Date.now() - _start)
+         console.info('binding', Date.now() - _start)
          tabBind = new TableBind()
          tabBind.init(new OneModel(), 'list1')
 

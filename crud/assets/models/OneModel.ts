@@ -9,7 +9,7 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
    form
 
    read(ctx, cb){
-      console.log('- reading...', Date.now() - _start)
+      console.info('- reading...', Date.now() - _start)
 
       if(this.dataSourceType=='fake') {
          let rows = [
@@ -34,7 +34,7 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
             cb(rows, ctx)
          })
       .catch(function(error) {
-         console.log("Error getting documents: ", error)
+         console.info("Error getting documents: ", error)
       })
    }//()
 
@@ -44,7 +44,7 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
       let newPK = db1.collection(this.entityName).doc() // make PK
       return newPK.set(row) // insert
             .then(function() { 
-               console.log('successful')
+               console.info('successful')
                if(cb) cb(1)
             })
          .catch(function(error) {
@@ -53,15 +53,15 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
    }//()
 
    update( row, cb ) { //resolve, reject) {
-      console.log(row)
+      console.info(row)
       let id = row['id']
-      console.log(id, row)
+      console.info(id, row)
       delete row.id // we are not save pk in a row
 
       let ref = db1.collection(this.entityName).doc(id)
       ref.set(row) // save
          .then(function() { 
-            console.log('successful')
+            console.info('successful')
             if(cb) cb(1)//1 = ok
          })
       .catch(function(error) {
@@ -77,7 +77,7 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
       let ref = db1.collection(this.entityName).doc(id)
       return ref.delete() // delete
             .then(function() { 
-               console.log('successfully deleted')
+               console.info('successfully deleted')
             })
          .catch(function(error) {
             console.error('oops', error)
@@ -85,7 +85,7 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
    }
 
    valid(row) {
-      console.log(row)
+      console.info(row)
       let col1 = row['col1']
       let col2 = row['col2']
       if(validator.isEmpty(col1, { ignore_whitespace: true }) )

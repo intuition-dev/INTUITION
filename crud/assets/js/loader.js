@@ -5,14 +5,14 @@ if (document.URL.indexOf("http://") === -1
    window.isphone = true
 }
 
-console.log('phonegap?', window.isphone)
+console.info('phonegap?', window.isphone)
 if (window.isphone) { // //file is a browser
    document.addEventListener("deviceready", onDeviceReady, false)
 } else {
    document.addEventListener("DOMContentLoaded",  onDeviceReady, false)
 }
 function onDeviceReady() {
-   console.log('deviceready')
+   console.info('deviceready')
    depp.done('deviceready')
 }
 
@@ -26,7 +26,7 @@ function disE(evtName, data, ctx) {
 } 
 //etg:
 addEventListener('evtName', function(evt) {
-   console.log(evt.detail.msg)
+   console.info(evt.detail.msg)
 })
 //end example dispatch 
 
@@ -77,18 +77,18 @@ function onLoaded() {
    })
    let offcanvas = $('#navOpen').data('offcanvas-component')
    $('#off-cbut').click(function () {
-      console.log('#offItems')
+      console.info('#offItems')
       offcanvas.open()
    })
    $('#navOpen').click(function () {
-      console.log('#navOpen')
+      console.info('#navOpen')
       offcanvas.close()
    })
 
    $('.delayShowing').removeClass('delayShowing') // show
 
    depp.done('onLoaded')
-   console.log('onLoaded done', Date.now() - _start)
+   console.info('onLoaded done', Date.now() - _start)
    bAuth = new BaseAuth()
 
 }//onLoaded
@@ -101,20 +101,20 @@ class BaseAuth {
       const THIZ = this
       auth.onAuthStateChanged(function (user_) {
          if (THIZ.isUserIn()) {
-            console.log('CRUDauth', true);
+            console.info('CRUDauth', true);
          }
          else {
-            console.log('CRUDauth', 'bye');
+            console.info('CRUDauth', 'bye');
          }
       });
    }
    sendEmailVerification() {
        if (!this.isUserIn()) {
-           console.log('sending', auth.currentUser);
+           console.info('sending', auth.currentUser);
            auth.currentUser.sendEmailVerification();
        }
        else
-           console.log('no currentUser');
+           console.info('no currentUser');
    }
    isUserIn() {
        if (!auth.currentUser)

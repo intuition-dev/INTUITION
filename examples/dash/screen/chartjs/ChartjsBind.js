@@ -11,7 +11,7 @@ class ChartjsBind {
       if( this._data !=null) {
 
          let chartData = this._data.read();
-         // console.log('chartData', chartData[0]);
+         // console.info('chartData', chartData[0]);
          let label = [];
          let bgColor = [];
          let coord = [];
@@ -28,9 +28,9 @@ class ChartjsBind {
             coord.push(chartData[0][i].data);
          }
 
-         // console.log('label', label);
-         // console.log('bgColor', bgColor);
-         // console.log('coord', coord);
+         // console.info('label', label);
+         // console.info('bgColor', bgColor);
+         // console.info('coord', coord);
 
          depp.require(['chartjs'], function(){
 
@@ -76,7 +76,7 @@ class ChartjsBind {
       if( this._data !=null){
 
          let chartData = this._data.read();
-         // console.log('chartData', chartData[1]);
+         // console.info('chartData', chartData[1]);
          let label = [];
          let bg = [];
          let border = [];
@@ -98,10 +98,10 @@ class ChartjsBind {
             coord.push(chartData[1][i].data);
          }
 
-         // console.log('label', label);
-         // console.log('bgColor', bg);
-         // console.log('border', border);
-         // console.log('coord', coord);
+         // console.info('label', label);
+         // console.info('bgColor', bg);
+         // console.info('border', border);
+         // console.info('coord', coord);
 
          depp.require(['chartjs'], function(){
 

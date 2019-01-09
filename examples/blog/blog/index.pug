@@ -13,10 +13,10 @@ block main
       axios.get('/blog/items.json').then(function(resp) {
          resp.data.items = resp.data.items.filter(item => item.publish === true);
          blog = resp.data;
-         console.log('t ready');
+         console.info('t ready');
          
          const tag = riot.mount('card-tag')[0]; // mount the first tag
-         console.log(blog.items);
+         console.info(blog.items);
          tag.render(blog.items);
 
          depp.require(['cssJs'], function() {
@@ -26,9 +26,9 @@ block main
          });
 
          function setupPg(perPage, blog_) {
-            console.log('PG');
+            console.info('PG');
             pgContCount++;
-            console.log('s', pgContCount);
+            console.info('s', pgContCount);
             pgContainer[pgContCount] = $('#pagination-container');
 
             perPage = 2;
@@ -50,7 +50,7 @@ block main
          function guessShow() {
             let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9;
             n = Math.round( n * .7);
-            console.log('g', n);
+            console.info('g', n);
             return n;
          }
       });

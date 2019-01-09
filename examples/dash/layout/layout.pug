@@ -3,7 +3,7 @@ html
    head
       script.
          ROOT = '#{ROOT}' //- sets global pug and .js from dat.yaml
-         console.log('root','#{ROOT}')
+         console.info('root','#{ROOT}')
          let _start=Date.now()
 
       meta(charset='utf-8')
@@ -50,7 +50,7 @@ html
 
       script.
          function userSzSc() {
-            console.log('resize|scroll')
+            console.info('resize|scroll')
          }
 
    //link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')

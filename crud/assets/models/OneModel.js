@@ -4,7 +4,7 @@ class OneModel {
         this.dataSourceType = 'real';
     }
     read(ctx, cb) {
-        console.log('- reading...', Date.now() - _start);
+        console.info('- reading...', Date.now() - _start);
         if (this.dataSourceType == 'fake') {
             let rows = [
                 { id: 1, col1: " Bob11", col2: "Bob12" },
@@ -27,7 +27,7 @@ class OneModel {
             cb(rows, ctx);
         })
             .catch(function (error) {
-            console.log("Error getting documents: ", error);
+            console.info("Error getting documents: ", error);
         });
     }
     add(row, cb) {
@@ -36,7 +36,7 @@ class OneModel {
         let newPK = db1.collection(this.entityName).doc();
         return newPK.set(row)
             .then(function () {
-            console.log('successful');
+            console.info('successful');
             if (cb)
                 cb(1);
         })
@@ -45,14 +45,14 @@ class OneModel {
         });
     }
     update(row, cb) {
-        console.log(row);
+        console.info(row);
         let id = row['id'];
-        console.log(id, row);
+        console.info(id, row);
         delete row.id;
         let ref = db1.collection(this.entityName).doc(id);
         ref.set(row)
             .then(function () {
-            console.log('successful');
+            console.info('successful');
             if (cb)
                 cb(1);
         })
@@ -66,14 +66,14 @@ class OneModel {
         let ref = db1.collection(this.entityName).doc(id);
         return ref.delete()
             .then(function () {
-            console.log('successfully deleted');
+            console.info('successfully deleted');
         })
             .catch(function (error) {
             console.error('oops', error);
         });
     }
     valid(row) {
-        console.log(row);
+        console.info(row);
         let col1 = row['col1'];
         let col2 = row['col2'];
         if (validator.isEmpty(col1, { ignore_whitespace: true }))

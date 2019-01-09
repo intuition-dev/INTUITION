@@ -17,7 +17,7 @@ class TableBind {
             ],
             rowClick:function(e, row){ //trigger 
                var row = row.getData()
-               console.log('row: ', row);
+               console.info('row: ', row);
                sessionStorage.setItem('row', JSON.stringify(row)); //save object in sessionStorage, to retrive it on the next page(form)
                window.location.replace('/screen/viewmodel/form');
             },
