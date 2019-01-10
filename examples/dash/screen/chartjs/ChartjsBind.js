@@ -60,21 +60,16 @@ class ChartjsBind {
                   },
                   onClick: function(c,i) {
                      e = i[0];
-                     // console.info('e._index', e._index);
                      let label = this.data.labels[e._index];
                      let data = this.data.datasets[0].data[e._index];
                      let bgcolor = this.data.datasets[0].backgroundColor[e._index];
-                     // console.info('label', label);
-                     // console.info('data', data);
-                     // console.info('bgcolor', bgcolor);
-                     // console.info('c', i);
 
                      let style = {
                         color: 'rgb(121, 118, 118)',
                         position: 'absolute',
                         left: '5px',
                         top: '50%',
-                        padding: 0,
+                        padding: '0 0 2px 0',
                         margin: 0,
                         transform: 'translate(-0%, -50%)',
                         fontSize: '10px'
@@ -85,10 +80,10 @@ class ChartjsBind {
                      $('#progress-bar .label-name').text(label);
 
                      let bar = new ProgressBar.Line(container, {
-                        strokeWidth: 8,
+                        strokeWidth: 15,
                         easing: 'linear',
                         duration: 600,
-                        color: bgcolor,
+                        color: bgcolor+45,
                         trailColor: '#fff',
                         trailWidth: 1,
                         svgStyle: {width: '100px', height: '100%'},
@@ -173,6 +168,47 @@ class ChartjsBind {
                            labelString: 'GDP (PPP)'
                         }
                      }]
+                  },
+                  onClick: function(c,i) {
+                     e = i[0];
+                     console.info('e._index', e._index);
+                     let label = this.data.datasets[0].label[e._index];
+                     let data = this.data.datasets[0].data[e._index].r;
+                     let bgcolor = this.data.datasets[0].backgroundColor[e._index];
+                     console.info('label', label);
+                     console.info('data', data);
+                     console.info('bgcolor', bgcolor);
+                     console.info('c', i);
+
+                     let style = {
+                        color: 'rgb(121, 118, 118)',
+                        position: 'absolute',
+                        left: '5px',
+                        top: '50%',
+                        padding: '0 0 2px 0',
+                        margin: 0,
+                        transform: 'translate(-0%, -50%)',
+                        fontSize: '10px'
+                     };
+                     let container = '#progress-bar-2 .data';
+                     $('#progress-bar-2').removeClass('d-hide');
+                     $(container).html('');
+                     $('#progress-bar-2 .label-name').text(label);
+
+                     let bar = new ProgressBar.Line(container, {
+                        strokeWidth: 15,
+                        easing: 'linear',
+                        duration: 600,
+                        color: bgcolor,
+                        trailColor: '#fff',
+                        trailWidth: 1,
+                        svgStyle: {width: '100px', height: '100%'},
+                        text: {
+                           value: data,
+                           style: style
+                        }
+                     });
+                     bar.animate(1);  // Value from 0.0 to 1.0
                   }
                }
             }
