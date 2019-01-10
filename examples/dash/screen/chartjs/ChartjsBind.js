@@ -64,6 +64,8 @@ class ChartjsBind {
                      let data = this.data.datasets[0].data[e._index];
                      let bgcolor = this.data.datasets[0].backgroundColor[e._index];
 
+                     let maxVal = Math.max.apply(Math, this.data.datasets[0].data.map(function(o) { return o; }));
+
                      let style = {
                         color: 'rgb(121, 118, 118)',
                         position: 'absolute',
@@ -92,7 +94,7 @@ class ChartjsBind {
                            style: style
                         }
                      });
-                     bar.animate(1);  // Value from 0.0 to 1.0
+                     bar.animate(data/maxVal);  // bar width according to data percent from max value
                   }
                }
             }
@@ -171,14 +173,11 @@ class ChartjsBind {
                   },
                   onClick: function(c,i) {
                      e = i[0];
-                     console.info('e._index', e._index);
                      let label = this.data.datasets[0].label[e._index];
                      let data = this.data.datasets[0].data[e._index].r;
                      let bgcolor = this.data.datasets[0].backgroundColor[e._index];
-                     console.info('label', label);
-                     console.info('data', data);
-                     console.info('bgcolor', bgcolor);
-                     console.info('c', i);
+
+                     let maxVal = Math.max.apply(Math, this.data.datasets[0].data.map(function(o) { return o.r; }));
 
                      let style = {
                         color: 'rgb(121, 118, 118)',
@@ -208,7 +207,7 @@ class ChartjsBind {
                            style: style
                         }
                      });
-                     bar.animate(1);  // Value from 0.0 to 1.0
+                     bar.animate(data/maxVal);  // bar width according to data percent from max value
                   }
                }
             }

@@ -36,7 +36,6 @@ class C3Bind {
       if( this._data !=null) {
          let chartData = this._data.read();
 
-         // console.info('chartData', chartData[1]);
          let date = [];
          let data1 = [];
          let data2 = [];
@@ -52,10 +51,6 @@ class C3Bind {
          for (let i = 0; i < chartData[1].length; i++) {
             data2.push(chartData[1][i].data2);
          }
-
-         // console.info('date', date);
-         // console.info('data1', data1);
-         // console.info('data2', data2);
 
          initC(canvasId2);
          configTimeseries = {
@@ -88,7 +83,6 @@ class C3Bind {
       if( this._data !=null) {
          let chartData = this._data.read();
 
-         // console.info('chartData', chartData[2]);
          let data1 = [];
          let data2 = [];
 
@@ -99,9 +93,6 @@ class C3Bind {
          for (let i = 0; i < chartData[2].length; i++) {
             data2.push(chartData[2][i].data2);
          }
-
-         // console.info('data1', data1);
-         // console.info('data2', data2);
 
          initC(canvasId3);
 
@@ -148,7 +139,6 @@ class C3Bind {
       if( this._data !=null) {
          let chartData = this._data.read();
 
-         // console.info('chartData', chartData[3]);
          let data1 = [];
          let data2 = [];
          let data3 = [];
@@ -168,11 +158,6 @@ class C3Bind {
          for (let i = 0; i < chartData[3].length; i++) {
             data4.push(chartData[3][i].data4);
          }
-
-         // console.info('data1', data1);
-         // console.info('data2', data2);
-         // console.info('data1', data3);
-         // console.info('data2', data4);
 
          initC(canvasId4);
          
