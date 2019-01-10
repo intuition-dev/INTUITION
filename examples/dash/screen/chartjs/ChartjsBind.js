@@ -11,7 +11,6 @@ class ChartjsBind {
       if( this._data !=null) {
 
          let chartData = this._data.read();
-         // console.info('chartData', chartData[0]);
          let label = [];
          let bgColor = [];
          let coord = [];
@@ -27,10 +26,6 @@ class ChartjsBind {
          for (let i = 0; i < chartData[0].length; i++) {
             coord.push(chartData[0][i].data);
          }
-
-         // console.info('label', label);
-         // console.info('bgColor', bgColor);
-         // console.info('coord', coord);
 
          depp.require(['chartjs'], function(){
 
@@ -62,11 +57,53 @@ class ChartjsBind {
                   legend: {
                      display: false,
                      reverse: true
+                  },
+                  onClick: function(c,i) {
+                     e = i[0];
+                     // console.info('e._index', e._index);
+                     let label = this.data.labels[e._index];
+                     let data = this.data.datasets[0].data[e._index];
+                     let bgcolor = this.data.datasets[0].backgroundColor[e._index];
+                     // console.info('label', label);
+                     // console.info('data', data);
+                     // console.info('bgcolor', bgcolor);
+                     // console.info('c', i);
+
+                     let style = {
+                        color: 'rgb(121, 118, 118)',
+                        position: 'absolute',
+                        left: '5px',
+                        top: '50%',
+                        padding: 0,
+                        margin: 0,
+                        transform: 'translate(-0%, -50%)',
+                        fontSize: '10px'
+                     };
+                     let container = '#progress-bar .data';
+                     $('#progress-bar').removeClass('d-hide');
+                     $(container).html('');
+                     $('#progress-bar .label-name').text(label);
+
+                     let bar = new ProgressBar.Line(container, {
+                        strokeWidth: 8,
+                        easing: 'linear',
+                        duration: 600,
+                        color: bgcolor,
+                        trailColor: '#fff',
+                        trailWidth: 1,
+                        svgStyle: {width: '100px', height: '100%'},
+                        text: {
+                           value: data,
+                           style: style
+                        }
+                     });
+                     bar.animate(1);  // Value from 0.0 to 1.0
                   }
                }
             }
             initC(canvasId, config);
          });
+
       }
    }
 
@@ -76,7 +113,6 @@ class ChartjsBind {
       if( this._data !=null){
 
          let chartData = this._data.read();
-         // console.info('chartData', chartData[1]);
          let label = [];
          let bg = [];
          let border = [];
@@ -97,11 +133,6 @@ class ChartjsBind {
          for (let i = 0; i < chartData[1].length; i++) {
             coord.push(chartData[1][i].data);
          }
-
-         // console.info('label', label);
-         // console.info('bgColor', bg);
-         // console.info('border', border);
-         // console.info('coord', coord);
 
          depp.require(['chartjs'], function(){
 
