@@ -25,12 +25,12 @@ Blog app consists of 3 parts:
 * In terminal #1
     ```sh
     $ cd adminEditorsEG
-    $ tsc && ts-node index.ts
+    $ tsc && node index*.js
     ```
 * In terminal #2
     ```sh
     $ cd adminzAdminEG
-    $ tsc && ts-node index.ts
+    $ tsc && node index*.js
     ```
 
 * In browser
@@ -51,7 +51,7 @@ Blog app consists of 3 parts:
 ```sh
 $ sudo pkill node
 $ cd adminEditorsEG
-$ nohup tsc && ts-node index.ts &
+$ nohup tsc && node index*.js &
 $ cd adminzAdminEG
-$ nohup tsc && ts-node index.ts &
+$ nohup tsc && node index*.js &
 ```
