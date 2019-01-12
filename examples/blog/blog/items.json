@@ -1,5 +1,5 @@
 {
-  "nbVer": "v4.15.7",
+  "nbVer": "v4.15.8",
   "note": "This is statically served and visible publicly.",
   "items": [
     {
@@ -12,7 +12,6 @@
       "date": "06.nov.2018",
       "image": "https://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
-      "publish": true,
       "url": "post-1",
       "index": 0
     },
@@ -26,7 +25,6 @@
       "date": "06.nov.2018",
       "image": "https://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
-      "publish": true,
       "url": "post-2",
       "index": 1
     },
@@ -40,7 +38,6 @@
       "date": "06.nov.2018",
       "image": "https://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
-      "publish": true,
       "url": "post-3",
       "index": 2
     },
@@ -54,7 +51,6 @@
       "date": "06.nov.2018",
       "image": "https://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
-      "publish": true,
       "url": "post-4",
       "index": 3
     }
