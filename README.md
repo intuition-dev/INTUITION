@@ -47,5 +47,5 @@ Examples include an admin module, a watcher module, SPA, Blog, Website, Slides, 
 Primary focus is high development productivity (via "low-code") and being easy to learn. But it is also fully flexible to build any WebApp in any directory tree structure you like an use any CSS/SASS framework you like.
 MetaBake supports CSS classes in Markdown, plus, because it uses Pug - it can also do any HTML layout. But MetaBake is not static only - it fully supports and has examples and docs for dynamic apps.
 
-[MetaBake.org](http://www.MetaBake.org)
+[MetaBake.org](http://www.mBake.org)
 
