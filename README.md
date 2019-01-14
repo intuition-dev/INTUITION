@@ -2,7 +2,7 @@
 
 Docs, examples and more at:
 
-[mBake.org](http://www.mBake.org)
+[mBake.org](http://mBake.org)
 [Click for 'THE' mbake Docs](http://doc.mBake.org/mbake/)
 
 
@@ -54,8 +54,10 @@ Of course you can use regular Pug syntax to include other Pug files; or Markdown
 ## Home Page
 
 There are many example apps, and shipped templates include include an CMS module, a watcher module, SPA, Blog, Website, Slides, Dashboard, CRUD, PWA, Electron, Hybrid mobile apps, Cloud v2.0 via AWS|FireStore, RIOTjs, Ads and more. 
-Primary focus is high development productivity (via "low-code") and being easy to learn. It is also fully flexible to build any WebApp in any directory tree structure you like an use any CSS/SASS framework you like.
-MetaBake supports CSS classes in Markdown, plus, because it uses Pug - it can also do any HTML layout. But MetaBake is not static only - it fully supports and has examples, shipped apps, and docs for dynamic apps.
 
-[mBake.org](http://www.mBake.org)
+Primary focus is high development productivity (via "low-code") and being easy to learn. It is also fully flexible to build any WebApp in any directory tree structure you like an use any CSS/SASS framework you like.
+
+MetaBake supports CSS classes in Markdown, plus, because it uses Pug - it can also do any HTML layout. But MetaBake is not static only - it fully supports and has examples, shipped apps, and docs for dynamic and even mobile apps.
+
+[mBake.org](http://mBake.org)
 
