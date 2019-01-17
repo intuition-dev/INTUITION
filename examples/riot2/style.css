@@ -1,0 +1,58 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: #010110;
+}
+
+header {
+    display: block;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#322a70+0,426998+100 */
+    background: #322a70; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #322a70 0%, #426998 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #322a70 0%,#426998 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #322a70 0%,#426998 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#322a70', endColorstr='#426998',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+header h1 {
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 100;
+    margin: 0;
+}
+
+.content-wrap, header {
+    padding: 2rem;
+}
+
+.content-wrap {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #322a70;
+}
+
+a {
+    font-size: 14px;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    font-weight: 300;
+    color: #010110;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    padding: 0 20px 20px;
+    list-style-type: square;
+}

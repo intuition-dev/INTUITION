@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        script.
+            window.ROOT = '#{ROOT}'
+
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title #{title}
+
+        link(rel='stylesheet', href=ROOT +'style.css')
+        link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i", rel="stylesheet")
+
+        script(src='https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
+        script(src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js')
+        script(src=ROOT + 'app.js')
+        script(src=ROOT + 'boa-tag.min.js')
+    body
+        header
+            h1 #{title}
+
+        .content-wrap
+
+            div
+                boa-tag
+
+            script.
+                let boaTag = riot.mount('boa-tag')[0]; // the boa tag
+                boaTag.doSomething(41);
+
+            .info
+                h3 For more information learn more about Riot.js, pug and Yield
+
+                ul
+                    li 
+                        a(href="https://medium.com/@uptimevic/learn-riot-js-dynamic-binding-in-90-seconds-fcece5237c67") Learn dynamic binding with Riot.js in 90 seconds
+                    li 
+                        a(href="http://tutorials.jenkov.com/riotjs/yield.html") Riot.js Yield
