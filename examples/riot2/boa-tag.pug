@@ -1,9 +1,12 @@
 boa-tag
 
-    p Hi there.
-    p { num }
+    p A simple example of calculating. The form below is passed inside a tag using Yield feature
+    p.num { num }
+
+    <yield />
+
 
     script.
-        doSomething(arg) {
-            this.update({num: arg+1});
+        doSomething(arg1, arg2) {
+            this.update({num: +arg1+ +arg2});
         }
