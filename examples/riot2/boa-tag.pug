@@ -4,10 +4,18 @@ boa-tag
     p.num { num }
 
     <yield />
+    button(type='submit') Check sum!
 
 
 
     script.
+        $(document).on('click', 'button', e => {
+            e.preventDefault();
+            let arg1 = $('input#one').val();
+            let arg2 = $('input#two').val();
+            boaTag.doSomething(arg1, arg2);
+        });
+
         doSomething(arg1, arg2) {
             this.update({num: +arg1+ +arg2});
         }
