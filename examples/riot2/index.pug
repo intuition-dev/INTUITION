@@ -25,17 +25,9 @@ html
                     form
                         input(type='number', placeholder='Enter any number', id='one')
                         input(type='number', placeholder='Enter any number', id='two')
-                        button(type='submit') Check sum!
 
             script.
                 let boaTag = riot.mount('boa-tag')[0]; // the boa tag
-                
-                $(document).on('submit', 'form', e => {
-                    e.preventDefault();
-                    let arg1 = $('input#one').val();
-                    let arg2 = $('input#two').val();
-                    boaTag.doSomething(arg1, arg2);
-                });
 
             .info
                 h3 For more information learn more about Riot.js, pug and Yield:
