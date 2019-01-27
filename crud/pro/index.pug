@@ -1,0 +1,34 @@
+head
+body
+   p view dev console:
+   script.
+
+      function fooA(arg) {
+         return new Promise(function(resolve, reject) {
+            // ... code arg
+            // ... code
+            resolve('bla1')
+         })
+      }
+      function fooB(arg) {
+         return new Promise(function(resolve, reject) {
+            // ... code arg
+            // ... code
+            resolve('bla2')
+         })
+      }
+
+      //regular
+      pro = fooA()
+      pro.then(function(ret) {
+         // do something
+         console.log('one', ret)
+      })
+
+      //all
+      pro1 = fooA()
+      pro2 = fooB()
+      Promise.all([pro1, pro2]).then(function(ret) {
+         // do something
+         console.log('all', ret)
+      })
