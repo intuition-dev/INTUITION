@@ -5,29 +5,29 @@ body
 
       function fooA(arg) {
          return new Promise(function(resolve, reject) {
-            // ... code arg
-            // ... code
+            console.log(arg)
+            // something comes back from www
             resolve('bla1')
          })
       }
       function fooB(arg) {
          return new Promise(function(resolve, reject) {
-            // ... code arg
-            // ... code
+            console.log(arg)
+            // something comes back from www
             resolve('bla2')
          })
       }
 
       //regular
-      pro = fooA()
+      pro = fooA(1)
       pro.then(function(ret) {
          // do something
          console.log('one', ret)
       })
 
       //all
-      pro1 = fooA()
-      pro2 = fooB()
+      pro1 = fooA(2)
+      pro2 = fooB(3)
       Promise.all([pro1, pro2]).then(function(ret) {
          // do something
          console.log('all', ret)
