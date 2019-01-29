@@ -2,7 +2,11 @@ declare var db1: any
 declare var validator: any
 declare var _start: any
 
-class Example1Model { // testable crud and fake flag, heavy work. view-model
+interface iExample1Model {
+   read(ctx, cb):void
+}
+
+class Example1Model implements iExample1Model{ // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in DB
    dataSourceType: string = 'real'  //real or fake
@@ -18,7 +22,6 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
             {id:3, col1:" Bob31", col2:"Bob32"}
          ]
          cb(rows, ctx)
-         return
       }
 
       const ref = db1.collection(this.entityName)

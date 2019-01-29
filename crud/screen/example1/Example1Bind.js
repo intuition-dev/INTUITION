@@ -29,8 +29,7 @@ class Example1Bind {
 
    onCB (rows, ctx) {
       depp.require(['tabReady' ], function() {
-         ctx.table.clearData()
-         ctx.table.setData(rows)
+         ctx.table.replaceData(rows)
       })
    }//()
 

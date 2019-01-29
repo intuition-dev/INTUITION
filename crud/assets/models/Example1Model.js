@@ -12,7 +12,6 @@ class Example1Model {
                 { id: 3, col1: " Bob31", col2: "Bob32" }
             ];
             cb(rows, ctx);
-            return;
         }
         const ref = db1.collection(this.entityName);
         ref
