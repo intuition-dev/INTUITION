@@ -1,3 +1,14 @@
+
+function onData(data) {// no need for data
+
+   //let data = vm.getViewObject('form1')
+   //do binding 
+  }
+  
+read(ctx, onData)
+
+  
+
 class Example1Bind {
 
    init(id){

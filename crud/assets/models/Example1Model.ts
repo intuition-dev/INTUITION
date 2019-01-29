@@ -3,18 +3,25 @@ declare var validator: any
 declare var _start: any
 
 /**
-   On cb, you can also get the model
+   On cb
+   VM maps to screen
  */
 interface iVM {
-   getViewObject(name:string):any
-   getViewList(name:string):any
+   getViewObject(name:string) // name value pairs forms
+   getViewList(name:string):any // array for table
 }
 
-class Example1Model  { // testable crud and fake flag, heavy work. view-model
+
+class Example1Model implements iVM { // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in DB
    dataSourceType: string = 'real'  //real or fake
    form
+
+
+   read2(subijectId, companyID, ctx, cb ) {
+
+   }
 
    /**
     * On cb, you can also get the model
@@ -30,7 +37,7 @@ class Example1Model  { // testable crud and fake flag, heavy work. view-model
             {id:2, col1:" Bob21", col2:"Bob22"},
             {id:3, col1:" Bob31", col2:"Bob32"}
          ]
-         cb(rows, ctx)
+         cb(this.getViewObject('form1')
       }
 
       const ref = db1.collection(this.entityName)
@@ -44,7 +51,7 @@ class Example1Model  { // testable crud and fake flag, heavy work. view-model
                rows.push(row)
             })
             /**
-            This could be a signal to view get data
+            This could be a notice to view get data
              */
             cb(rows, ctx)
          })
