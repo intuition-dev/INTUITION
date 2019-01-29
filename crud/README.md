@@ -1,14 +1,14 @@
 
 - You should know some Firestore  already.
-- Tutorial would show datatable, form and signals ahead
+- Tutorial would show tabulator.js, forms
 
-- Then, all together, the RW 
+- Using ViewModel pattern to separate the data from views
 
-- It has a helper lib, rw.js
+- all models in assets/models that gets bind in screen/...
 
-- And an obfuscated setup tag in the layout folder.
+- tags under assets/tags
 
-- Best way to get started? Copy the RW folder('screen)
+- Best way to get started? Copy the crud folder
 
 - Validation can be done via loaded is.js or other similar js tools, eg validate.js
 
