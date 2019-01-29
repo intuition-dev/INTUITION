@@ -2,16 +2,25 @@ declare var db1: any
 declare var validator: any
 declare var _start: any
 
-interface iExample1Model {
-   read(ctx, cb):void
+/**
+   On cb, you can also get the model
+ */
+interface iVM {
+   getViewObject(name:string):any
+   getViewList(name:string):any
 }
 
-class Example1Model implements iExample1Model{ // testable crud and fake flag, heavy work. view-model
+class Example1Model  { // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in DB
    dataSourceType: string = 'real'  //real or fake
    form
 
+   /**
+    * On cb, you can also get the model
+    * @param ctx 
+    * @param cb 
+    */
    read(ctx, cb){
       console.info('- reading...', Date.now() - _start)
 
@@ -34,6 +43,9 @@ class Example1Model implements iExample1Model{ // testable crud and fake flag, h
                row['id'] = doc.id
                rows.push(row)
             })
+            /**
+            This could be a signal to view get data
+             */
             cb(rows, ctx)
          })
       .catch(function(error) {
