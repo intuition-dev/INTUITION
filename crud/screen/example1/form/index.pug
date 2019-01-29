@@ -29,21 +29,24 @@ block main
 
    script.
       depp.define({
-         'bindLoad': ['FormBind.js']
+         'bindLoad': [
+            ROOT + 'assets/models/Example1Model.js',
+            'FormBind.js',
+         ]
       })
       depp.require(['pre','bindLoad'], setupForm)
 
       var formBind;
 
       function setupForm() {
-         
+
          formBind = new FormBind()
          formBind.init('form1');
 
          $('#clearBut').click(function(){
             formBind.clearFields()
          })//click
-         
+
          $('#saveBut').click(function(){
             let row = formBind.getFields()
             formBind.add(row) //do the validation in .js
@@ -60,7 +63,7 @@ block main
          })//click
 
          $('#backBut').click(function(){
-            window.location.replace('/screen/viewmodel')
+            window.location.replace('/screen/example1')
          })
       } //()
 

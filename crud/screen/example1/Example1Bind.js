@@ -1,13 +1,13 @@
-class TableBind {
+class Example1Bind {
 
-   init(data_, id){
-      this.data = data_
+   init(id){
+      this.data = new Example1Model()
 
       this.data.read(this, this.onCB) //reading the data (real or fake)
 
       let _this = this
 
-      depp.require(['tabLoaded' ], function() { 
+      depp.require(['tabLoaded' ], function() {
          _this.table = new Tabulator("#"+id, {
             layout:"fitColumns",      //fit columns to width of table
             columns:[ //Define Table Columns
@@ -15,11 +15,11 @@ class TableBind {
                {title:"Col1", field:"col1", align:"left", width:'50%'},
                {title:"Col2", field:"col2", align:"left", width:'50%'},
             ],
-            rowClick:function(e, row){ //trigger 
+            rowClick:function(e, row){ //trigger
                var row = row.getData()
                console.info('row: ', row);
                sessionStorage.setItem('row', JSON.stringify(row)); //save object in sessionStorage, to retrive it on the next page(form)
-               window.location.replace('/screen/viewmodel/form');
+               window.location.replace('/screen/example1/form');
             },
          })//tab
          depp.done('tabReady')
@@ -28,7 +28,7 @@ class TableBind {
    }//()
 
    onCB (rows, ctx) {
-      depp.require(['tabReady' ], function() { 
+      depp.require(['tabReady' ], function() {
          ctx.table.clearData()
          ctx.table.setData(rows)
       })

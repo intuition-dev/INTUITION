@@ -4,11 +4,11 @@ class FormBind {
    constructor(){
       this.form = ''
       this.row = typeof sessionStorage.getItem('row') !='undefined' && JSON.parse(sessionStorage.getItem('row'))
-      this.data = new OneModel()
+      this.data = new Example1Model()
    }
 
    init(divId){
-      
+
       this.form = '#'+divId
       if( this.row !=null){
          this.onCB() //run 'onCB' only when there was a click on the row in the table, other way no data needed in the form
@@ -17,7 +17,7 @@ class FormBind {
 
    add(row) {
       let validation = this.data.valid(row) //do the validation
-      
+
       if(validation=='OK')
          this.data.add(row)
       else  {
@@ -27,7 +27,7 @@ class FormBind {
 
    update(row) {
       let validation = this.data.valid(row) //do the validation
-      
+
       if(validation=='OK')
          this.data.update(row)
       else  {
@@ -38,7 +38,7 @@ class FormBind {
    delete(row) {
       this.data.delete(row)
    }
-   
+
    onCB() {
       let _this = this
 
@@ -47,15 +47,15 @@ class FormBind {
       $(_this.form).find('input[name="id"]').val(this.row['id'])
    }
 
-   
+
    getFields() {
       let lst = {}
       //start w/ pk
       let input = $(this.form+' [name="id"]')
       lst['id'] = input.val()
-   
+
       $(this.form+' input').each(
-         function(index){  
+         function(index){
             let input = $(this)
             lst[ input.attr('name')] = input.val()
          }//index

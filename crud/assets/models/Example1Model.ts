@@ -2,7 +2,7 @@ declare var db1: any
 declare var validator: any
 declare var _start: any
 
-class OneModel { // testable crud and fake flag, heavy work. view-model
+class Example1Model { // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in DB
    dataSourceType: string = 'real'  //real or fake
@@ -29,7 +29,7 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
             querySnapshot.forEach(function(doc) {
                let row = doc.data()
                row['id'] = doc.id
-               rows.push(row)  
+               rows.push(row)
             })
             cb(rows, ctx)
          })
@@ -43,7 +43,7 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
 
       let newPK = db1.collection(this.entityName).doc() // make PK
       return newPK.set(row) // insert
-            .then(function() { 
+            .then(function() {
                console.info('successful')
                if(cb) cb(1)
             })
@@ -60,7 +60,7 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
 
       let ref = db1.collection(this.entityName).doc(id)
       ref.set(row) // save
-         .then(function() { 
+         .then(function() {
             console.info('successful')
             if(cb) cb(1)//1 = ok
          })
@@ -76,7 +76,7 @@ class OneModel { // testable crud and fake flag, heavy work. view-model
 
       let ref = db1.collection(this.entityName).doc(id)
       return ref.delete() // delete
-            .then(function() { 
+            .then(function() {
                console.info('successfully deleted')
             })
          .catch(function(error) {

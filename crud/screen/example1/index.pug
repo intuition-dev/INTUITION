@@ -3,7 +3,7 @@ extends /layout/layout
 block main
    .pad
       #list1.display(width='100%').table-custom
-      
+
       .buts
          button.btn.btn-primary.float-right#create-new Create new row
    style.
@@ -33,24 +33,24 @@ block main
 
    script.
       depp.define({
-         'bindLoad': [
-            'TableBind.js'
+         'exampleBind': [
+            ROOT + 'assets/models/Example1Model.js',
+            'Example1Bind.js',
          ]
       })
 
-      depp.require(['pre','bindLoad'], setupBinding)
+      depp.require(['pre','exampleBind'], setupBinding)
 
-      var tabBind
-
+      var exampleBind
 
       function setupBinding() {
          console.info('binding', Date.now() - _start)
-         tabBind = new TableBind()
-         tabBind.init(new OneModel(), 'list1')
+         exampleBind = new Example1Bind()
+         exampleBind.init('list1')
 
          $('#create-new').on('click', function(ev){
             ev.preventDefault()
             sessionStorage.removeItem('row')
-            window.location.replace('/screen/viewmodel/form')
+            window.location.replace('/screen/example1/form')
          })
       }

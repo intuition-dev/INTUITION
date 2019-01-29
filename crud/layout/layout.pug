@@ -7,7 +7,7 @@ html
          console.info('ROOT','#{ROOT}')
          let _start = Date.now()
       meta(charset='utf-8')
-      
+
       meta(name='viewport', content='width=device-width, initial-scale=1')
       link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
 
@@ -17,16 +17,13 @@ html
       script(src='https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js')
       script(src='https://www.gstatic.com/firebasejs/5.8.1/firebase-firestore.js')
 
-      //- needed for 
-      script(src='/assets/models/OneModel.js')
-
       //- needed to start
       script(src='https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js')
       script(src='https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
       script(src= ROOT + 'assets/js/loader.js')
-      
+
       //- top css layout
-      link(href='/assets/3rd/spectreTop.css', rel='stylesheet', type='text/css') 
+      link(href='/assets/3rd/spectreTop.css', rel='stylesheet', type='text/css')
       style.
          .delayShowing { opacity: 0; }
    body
@@ -38,18 +35,18 @@ html
          preRW-tag
          script.
             window.preRWtag = riot.mount('preRW-tag')[0]
-   
+
       .c-offcanvas-content-wrap
          //-top
          header.flex.edge
 
             .left.white
                .navbar-brand.mr-2
-                  h2#navBarHead CRUD App 
+                  h2#navBarHead CRUD App
             .right.white
                .hide-lg
                   a.btn.btn-link(href= ROOT + 'screen/tabu') Tabu
-                  a.btn.btn-link(href= ROOT + 'screen/viewmodel') ViewModel CRUD
+                  a.btn.btn-link(href= ROOT + 'screen/example1') ViewModel CRUD
                   a.btn.btn-link(href= ROOT + 'screen/view-model-2') ViewModel CRUD 2
                   a.btn.btn-link(href= ROOT + 'screen/auth') Auth
 

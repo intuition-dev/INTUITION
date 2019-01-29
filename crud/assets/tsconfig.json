@@ -6,8 +6,6 @@
      "allowJs": false,
      "sourceMap": false,
      "removeComments": true,
-     "outDir": ".",
-     "baseUrl": "."
    },
    "include": [
        "**/*.ts"

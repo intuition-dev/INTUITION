@@ -1,4 +1,4 @@
-class OneModel {
+class Example1Model {
     constructor() {
         this.entityName = 'table_one2';
         this.dataSourceType = 'real';

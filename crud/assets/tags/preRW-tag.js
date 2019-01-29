@@ -12,6 +12,4 @@ riot.tag2('prerw-tag', '', '', '', function(opts) {
     auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
     window.db1  = window.firebase.firestore()
-    const dsettings = {  timestampsInSnapshots: true}
-    db1.settings(dsettings)
 });
