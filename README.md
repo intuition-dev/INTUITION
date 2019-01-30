@@ -1,4 +1,4 @@
-[Click for 'THE' mbake Docs](https://metabake.github.io/MetaBake-Docs/)
+[Click for 'THE' mbake Docs](http://docs.mBake.org)
 
 
 ### MetaBake is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding.
