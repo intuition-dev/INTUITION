@@ -1,12 +1,18 @@
 /**
    On cb
    VM maps to screen
+   Hides entities
  */
 interface iVM {
-   getViewList(params:string):any // return array for table, params specifying which data needs for table
+   // list or array or set
+   // object 
+   getViewChart(name?:string):any // return array for table, params specifying which data needs for table
+   getViewList(name?:string):any // return array for table, params specifying which data needs for table
+   getViewForm(name?:string):any // return array for table, params specifying which data needs for table
+
 }
 
-// CRUD
+// Needs CRUD methods
 class Example1ViewModel {
    exampleModel:any
 
@@ -15,8 +21,10 @@ class Example1ViewModel {
    }
 
    getViewList(table){
-      // if table == ''
+      // if table == '1'
       this.exampleModel.read(table, this.onCB)
+      // else if table 2 
+      // ... 
    }
 
    onCB(table, data){

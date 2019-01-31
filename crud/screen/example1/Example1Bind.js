@@ -1,3 +1,7 @@
+
+/**
+  No reference to entities
+ */
 class Example1Bind {
 
    constructor(){
@@ -35,7 +39,7 @@ class Example1Bind {
          })//tab
          depp.done('onTab');
          // table.setData(data)
-         _this.viewModel.getViewList(_this._table)
+         _this.viewModel.getViewList('table1')
       })//d
    }
 
