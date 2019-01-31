@@ -45,8 +45,13 @@
         </div>
       </header>
       <div id="router">
-        <div class="pad">
-          <div class="display table-custom" id="list1" width="100%"></div>
+        <div width="100%">
+          <div class="pad">
+            <table class="table-custom" id="table1"></table>
+          </div>
+          <div class="pad">
+            <table class="table-custom" id="table2"></table>
+          </div>
           <div class="buts">
             <button class="btn btn-primary float-right" id="create-new">Create new row</button>
           </div>
@@ -57,6 +62,7 @@
           }
           
           .table-custom {
+             width: 100%;
              border-color: #d6d6d6;
           }
           .table-custom .tabulator-header {
@@ -87,12 +93,16 @@
           
           depp.require(['pre','exampleBind'], setupBinding)
           
-          var exampleBind
-          
           function setupBinding() {
              console.info('binding', Date.now() - _start)
-             exampleBind = new Example1Bind()
-             exampleBind.init('list1')
+          
+             var exampleBind = new Example1Bind()
+          
+             Promise.all([exampleBind.init()])
+                .then(function(){
+                   exampleBind.getViewList1('table1')
+                   exampleBind.getViewList2('table2')
+                })
           
              $('#create-new').on('click', function(ev){
                 ev.preventDefault()
@@ -115,5 +125,5 @@
       }
       
     </script>
-  <!-- mB v4.15.26 on 2019-01-29T15:59:24.701Z --></body>
+  <!-- mB v4.15.26 on 2019-01-31T11:03:20.748Z --></body>
 </html>

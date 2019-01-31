@@ -7,41 +7,50 @@ declare var _start: any
    VM maps to screen
  */
 interface iVM {
-   getViewObject(name:string) // name value pairs forms
-   getViewList(name:string):any // array for table
+   getViewList(params:object):any // return array for table, params specifying which data needs for table
 }
 
 
-class Example1Model implements iVM { // testable crud and fake flag, heavy work. view-model
+class Example1Model { // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in DB
-   dataSourceType: string = 'real'  //real or fake
+   dataSourceType: string = 'fake'  //real or fake
    form
 
+   _data:object[] = [] //fetched data
 
-   read2(subijectId, companyID, ctx, cb ) {
-
+   getViewList(params){
+      return this._data.map((d)=>{
+         let temp = {}
+         params.map((p)=>{
+            if(Object.keys(d).includes(p)){
+               temp[p] = d[p]
+            }
+         })
+         return temp
+      })
    }
-
    /**
     * On cb, you can also get the model
-    * @param ctx 
-    * @param cb 
+    * @param ctx
+    * @param cb
     */
-   read(ctx, cb){
-      console.info('- reading...', Date.now() - _start)
+   read(){
+      let _this = this
+      console.info('--reading...', Date.now() - _start)
 
       if(this.dataSourceType=='fake') {
          let rows = [
             {id:1, col1:" Bob11", col2:"Bob12"},
             {id:2, col1:" Bob21", col2:"Bob22"},
-            {id:3, col1:" Bob31", col2:"Bob32"}
+            {id:3, col1:" Bob31", col2:"Bob32"},
          ]
-         cb(this.getViewObject('form1')
+         this._data.push(...rows)
+         return
       }
 
       const ref = db1.collection(this.entityName)
-      ref
+      return ref
          .get()
          .then(function(querySnapshot) {
             let rows = []
@@ -50,10 +59,10 @@ class Example1Model implements iVM { // testable crud and fake flag, heavy work.
                row['id'] = doc.id
                rows.push(row)
             })
-            /**
-            This could be a notice to view get data
-             */
-            cb(rows, ctx)
+            return rows
+         })
+         .then(function(data){
+            _this._data.push(...data) //saving fetched data in the state
          })
       .catch(function(error) {
          console.info("Error getting documents: ", error)

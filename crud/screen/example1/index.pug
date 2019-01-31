@@ -1,8 +1,12 @@
 extends /layout/layout
 
 block main
-   .pad
-      #list1.display(width='100%').table-custom
+   div(width="100%")
+      .pad
+         table#table1.table-custom
+
+      .pad
+         table#table2.table-custom
 
       .buts
          button.btn.btn-primary.float-right#create-new Create new row
@@ -12,6 +16,7 @@ block main
       }
 
       .table-custom {
+         width: 100%;
          border-color: #d6d6d6;
       }
       .table-custom .tabulator-header {
@@ -41,12 +46,16 @@ block main
 
       depp.require(['pre','exampleBind'], setupBinding)
 
-      var exampleBind
-
       function setupBinding() {
          console.info('binding', Date.now() - _start)
-         exampleBind = new Example1Bind()
-         exampleBind.init('list1')
+
+         var exampleBind = new Example1Bind()
+
+         Promise.all([exampleBind.init()])
+            .then(function(){
+               exampleBind.getViewList1('table1')
+               exampleBind.getViewList2('table2')
+            })
 
          $('#create-new').on('click', function(ev){
             ev.preventDefault()
