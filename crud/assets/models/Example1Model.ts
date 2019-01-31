@@ -20,10 +20,7 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
    _data:object[] = [] //fetched data
 
    getViewList(params){
-      return this.getData(params)
-   }
 
-   getData(params){
       let temp = []
 
       this._data.map(function(d){
