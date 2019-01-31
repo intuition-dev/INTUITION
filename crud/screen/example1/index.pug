@@ -39,7 +39,7 @@ block main
    script.
       depp.define({
          'exampleBind': [
-            ROOT + 'assets/models/Example1Model.js',
+            ROOT + 'assets/models/service/Example1Model.js',
             ROOT + 'assets/models/Example1ViewModel.js',
             'Example1Bind.js',
          ]
@@ -51,8 +51,8 @@ block main
          console.info('binding', Date.now() - _start)
 
          var exampleBind = new Example1Bind()
-         exampleBind.getViewList('table1')
-         exampleBind.getViewList1('table2')
+         exampleBind.getViewList1('table1')
+         exampleBind.getViewList2('table2')
 
          $('#create-new').on('click', function(ev){
             ev.preventDefault()

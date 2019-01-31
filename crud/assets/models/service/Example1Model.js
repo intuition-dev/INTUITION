@@ -13,7 +13,8 @@ class Example1Model {
                 { id: 2, col1: " Bob21", col2: "Bob22" },
                 { id: 3, col1: " Bob31", col2: "Bob32" },
             ];
-            cb(ctx, rows);
+            _this._data.push(...rows);
+            return;
         }
         const ref = db1.collection(this.entityName);
         return ref
@@ -25,7 +26,8 @@ class Example1Model {
                 row['id'] = doc.id;
                 rows.push(row);
             });
-            cb(ctx, rows);
+            _this._data.push(...rows);
+            return;
         })
             .catch(function (error) {
             console.info("Error getting documents: ", error);
@@ -74,7 +76,7 @@ class Example1Model {
         });
     }
     valid(row) {
-        console.info(row);
+        console.info('---row', row);
         let col1 = row['col1'];
         let col2 = row['col2'];
         if (validator.isEmpty(col1, { ignore_whitespace: true }))

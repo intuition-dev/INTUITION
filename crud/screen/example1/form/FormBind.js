@@ -4,7 +4,7 @@ class FormBind {
    constructor(){
       this.form = ''
       this.row = typeof sessionStorage.getItem('row') !='undefined' && JSON.parse(sessionStorage.getItem('row'))
-      this.data = new Example1Model()
+      this.viewModel = new Example1ViewModel()
    }
 
    init(divId){
@@ -16,27 +16,29 @@ class FormBind {
    }
 
    add(row) {
-      let validation = this.data.valid(row) //do the validation
+      console.info("--row:", row)
+      let validation = this.viewModel.valid(row) //do the validation
+      console.info("--validation:", validation)
 
       if(validation=='OK')
-         this.data.add(row)
+         this.viewModel.add(row)
       else  {
          console.info('error', validation)
       } //else
    }
 
    update(row) {
-      let validation = this.data.valid(row) //do the validation
+      let validation = this.viewModel.valid(row) //do the validation
 
       if(validation=='OK')
-         this.data.update(row)
+         this.viewModel.update(row)
       else  {
          console.info('error', validation)
       } //else
    }
 
    delete(row) {
-      this.data.delete(row)
+      this.viewModel.delete(row)
    }
 
    onCB() {

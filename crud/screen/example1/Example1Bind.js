@@ -8,22 +8,33 @@ class Example1Bind {
       this.viewModel = new Example1ViewModel()
    }
 
-   getViewList(tableID){
+   getViewList1(tableID){
+      let _this = this
       let columns = [ //Define Table Columns
          {title:"Col1", field:"col1", align:"left", width:150},
          {title:"Col2", field:"col2", align:"left", width:'70%'},
       ];
-      this.setTable(tableID, columns)
+      Promise.all([this.viewModel.getViewList(tableID)])
+         .then(function(data){
+            _this.setTable(tableID, columns, data[0])
+         })
    }
-   getViewList1(tableID){
+
+   getViewList2(tableID){
+      let _this = this
+
       let columns = [ //Define Table Columns
-         {title:"Col2", field:"col2", align:"left", width:'70%'},
+         {title:"Col45", field:"col45", align:"left", width:'70%'},
+         {title:"Col55", field:"col55", align:"left", width:'70%'},
       ];
 
-      this.setTable(tableID, columns)
+      Promise.all([this.viewModel.getViewList(tableID)])
+         .then(function(data){
+            _this.setTable(tableID, columns, data[0])
+         })
    }
 
-   setTable(table, columns){
+   setTable(table, columns, data){
       let _this = this
       depp.require(['tabLoaded' ], function() {
          _this._table = new Tabulator("#"+table, {
@@ -38,8 +49,7 @@ class Example1Bind {
             },
          })//tab
          depp.done('onTab');
-         // table.setData(data)
-         _this.viewModel.getViewList('table1')
+         _this._table.setData(data)
       })//d
    }
 

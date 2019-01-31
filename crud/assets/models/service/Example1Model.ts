@@ -7,6 +7,7 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
    entityName: string = 'table_one2' //name of the collection in DB
    dataSourceType: string = 'real'  //real or fake
    form
+   _data:object[]= []
 
    /**
     * On cb, you can also get the model
@@ -23,7 +24,9 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
             {id:2, col1:" Bob21", col2:"Bob22"},
             {id:3, col1:" Bob31", col2:"Bob32"},
          ]
-         cb(ctx, rows)
+         _this._data.push(...rows)
+         return
+         // cb(ctx, rows)
       }
 
       const ref = db1.collection(this.entityName)
@@ -36,7 +39,9 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
                row['id'] = doc.id
                rows.push(row)
             })
-            cb(ctx, rows)
+            _this._data.push(...rows)
+            return
+            // cb(ctx, rows)
          })
       .catch(function(error) {
          console.info("Error getting documents: ", error)
@@ -90,7 +95,6 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
    }
 
    valid(row) {
-      console.info(row)
       let col1 = row['col1']
       let col2 = row['col2']
       if(validator.isEmpty(col1, { ignore_whitespace: true }) )
