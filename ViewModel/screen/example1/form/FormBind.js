@@ -43,7 +43,7 @@ class FormBind {
    onCB() {
       let _this = this
       console.info("--id:", this.id)
-      this.viewModel.getViewForm('form1', this.id)
+      this.viewModel.getViewForm('form1')
       // $(_this.form).find('input[name="col1"]').val(this.row['col1'])
       // $(_this.form).find('input[name="col2"]').val(this.row['col2'])
       // $(_this.form).find('input[name="id"]').val(this.row['id'])

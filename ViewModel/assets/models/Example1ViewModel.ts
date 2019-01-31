@@ -8,7 +8,7 @@ interface iVM {
    // object
    getViewChart(name?:string):any // return array for table, params specifying which data needs for table
    getViewList(name?:string):any // return array for table, params specifying which data needs for table
-   getViewForm(name?:string, id?:string):any // return array for table, params specifying which data needs for table
+   getViewForm(name?:string):any // return array for table, params specifying which data needs for table
 
 }
 
@@ -17,7 +17,7 @@ class Example1ViewModel {
    exampleModel:any
 
    constructor(){
-      this.exampleModel =  new Example1Model()
+      this.exampleModel =  new Example1EModel()
    }
 
    getViewList(table){
