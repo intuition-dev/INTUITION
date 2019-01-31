@@ -17,20 +17,6 @@ class Example1Model {
             return;
         }
         let ref = db1.collection(this.entityName);
-        if (id) {
-            return db1.collection(this.entityName).doc(id)
-                .get()
-                .then(function (docSnap) {
-                let temp = docSnap.data();
-                temp['id'] = docSnap.id;
-                console.info("--docSnap.data():", temp);
-                _this._data.push(...temp);
-                return;
-            })
-                .catch(function (error) {
-                console.info("Error getting documents: ", error);
-            });
-        }
         return ref
             .get()
             .then(function (querySnapshot) {
@@ -41,7 +27,7 @@ class Example1Model {
                 rows.push(row);
             });
             _this._data.push(...rows);
-            return;
+            return rows;
         })
             .catch(function (error) {
             console.info("Error getting documents: ", error);

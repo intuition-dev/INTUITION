@@ -31,21 +31,21 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
 
       let ref = db1.collection(this.entityName)
 
-      if(id){
-         return db1.collection(this.entityName).doc(id)
-         .get()
-         .then(function(docSnap) {
-            let temp = docSnap.data()
-            temp['id'] = docSnap.id
-            console.info("--docSnap.data():", temp)
-            _this._data.push(...temp)
-            return
-            // cb(ctx, rows)
-         })
-      .catch(function(error) {
-         console.info("Error getting documents: ", error)
-      })
-      }
+      // if(id){
+      //    return db1.collection(this.entityName).doc(id)
+      //    .get()
+      //    .then(function(docSnap) {
+      //       let temp = docSnap.data()
+      //       temp['id'] = docSnap.id
+      //       console.info("--docSnap.data():", temp)
+      //       _this._data.push(...temp)
+      //       return
+      //       // cb(ctx, rows)
+      //    })
+      // .catch(function(error) {
+      //    console.info("Error getting documents: ", error)
+      // })
+      // }
 
       return ref
          .get()
@@ -57,7 +57,7 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
                rows.push(row)
             })
             _this._data.push(...rows)
-            return
+            return rows
             // cb(ctx, rows)
          })
       .catch(function(error) {

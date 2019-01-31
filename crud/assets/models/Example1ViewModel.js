@@ -4,25 +4,20 @@ class Example1ViewModel {
     }
     getViewList(table) {
         let _this = this;
+        console.info("--_this:", _this);
         let data;
-        return this.read()
-            .then(function () {
-            switch (table) {
-                case 'table1':
-                    data = _this.exampleModel._data;
-                    break;
-                case 'table2':
-                    data = [
-                        { id: 1, col45: 'Col45', col55: 'Col55' },
-                        { id: 1, col45: 'Col45_2', col55: 'Col55_2' }
-                    ];
-                    break;
-            }
-            return data;
-        })
-            .then(function (data) {
-            return data;
-        });
+        switch (table) {
+            case 'table1':
+                data = _this.exampleModel._data;
+                break;
+            case 'table2':
+                data = [
+                    { id: 1, col45: 'Col45', col55: 'Col55' },
+                    { id: 1, col45: 'Col45_2', col55: 'Col55_2' }
+                ];
+                break;
+        }
+        return data;
     }
     getViewForm(formName, id) {
         let _this = this;

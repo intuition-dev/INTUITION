@@ -14,9 +14,10 @@ class Example1Bind {
          {title:"Col1", field:"col1", align:"left", width:150},
          {title:"Col2", field:"col2", align:"left", width:'70%'},
       ];
-      Promise.all([this.viewModel.getViewList(tableID)])
-         .then(function(data){
-            _this.setTable(tableID, columns, data[0])
+      Promise.all([this.viewModel.read()])
+         .then(function(){
+            let data = _this.viewModel.getViewList(tableID)
+            _this.setTable(tableID, columns, data)
          })
    }
 
@@ -28,9 +29,10 @@ class Example1Bind {
          {title:"Col55", field:"col55", align:"left", width:'70%'},
       ];
 
-      Promise.all([this.viewModel.getViewList(tableID)])
-         .then(function(data){
-            _this.setTable(tableID, columns, data[0])
+      Promise.all([this.viewModel.read()])
+         .then(function(){
+            let data = _this.viewModel.getViewList(tableID)
+            _this.setTable(tableID, columns, data)
          })
    }
 
