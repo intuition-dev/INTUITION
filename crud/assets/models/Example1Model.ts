@@ -20,9 +20,13 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
    _data:object[] = [] //fetched data
 
    getViewList(params){
-      return this._data.map((d)=>{
+      return this.getData(params)
+   }
+
+   getData(params){
+      return this._data.map(function(d){
          let temp = {}
-         params.map((p)=>{
+         params.map(function(p){
             if(Object.keys(d).includes(p)){
                temp[p] = d[p]
             }
