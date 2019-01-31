@@ -24,15 +24,19 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
    }
 
    getData(params){
-      return this._data.map(function(d){
-         let temp = {}
+      let temp = []
+
+      this._data.map(function(d){
+         let tempObj = {}
          params.map(function(p){
             if(Object.keys(d).includes(p)){
-               temp[p] = d[p]
+               tempObj[p] = d[p]
             }
          })
-         return temp
+         temp.push(tempObj)
       })
+
+      return temp
    }
    /**
     * On cb, you can also get the model
