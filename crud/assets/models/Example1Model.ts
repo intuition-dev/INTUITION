@@ -19,7 +19,7 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
 
    _data:object[] = [] //fetched data
 
-   getViewList(params){
+   getViewList(params){ 
 
       let temp = []
 
