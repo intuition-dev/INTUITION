@@ -1,46 +1,30 @@
-class Example1ViewModel {
+class FormViewModel {
     constructor() {
-        this.exampleModel = new Example1Model();
+        this.exampleModel = new Example1EModel();
     }
-    getViewList(table) {
-        let _this = this;
-        console.info("--_this:", _this);
-        let data;
-        switch (table) {
-            case 'table1':
-                data = _this.exampleModel._data;
-                break;
-            case 'table2':
-                data = [
-                    { id: 1, col45: 'Col45', col55: 'Col55' },
-                    { id: 1, col45: 'Col45_2', col55: 'Col55_2' }
-                ];
-                break;
-        }
-        return data;
-    }
-    getViewForm(formName, id) {
-        let _this = this;
-        return this.read(id)
-            .then(function () {
-            return _this.exampleModel._data;
-        })
-            .then(function (data) {
-            console.info("--data:", data);
-            return data;
-        });
+    getViewForm(formName) {
+        return this.exampleModel._dataObj;
     }
     read(id) {
         return Promise.all([this.exampleModel.read(id)]);
     }
     add(row, cb) {
-        this.exampleModel.add(row, cb);
+        return this.exampleModel.add(row)
+            .then(function () {
+            window.location.replace('/screen/example1');
+        });
     }
     update(row, cb) {
-        this.exampleModel.update(row, cb);
+        return this.exampleModel.update(row, cb)
+            .then(function (id) {
+            console.log('document with', id, 'was updated');
+        });
     }
     delete(row) {
-        this.exampleModel.delete(row);
+        this.exampleModel.delete(row)
+            .then(function (id) {
+            window.location.replace('/screen/example1');
+        });
     }
     valid(row) {
         return this.exampleModel.valid(row);

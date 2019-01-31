@@ -2,12 +2,13 @@ declare var db1: any
 declare var validator: any
 declare var _start: any
 
-class Example1Model { // testable crud and fake flag, heavy work. view-model
+class Example1EModel { // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in DB
    dataSourceType: string = 'real'  //real or fake
    form
    _data:object[]= []
+   _dataObj:object = {}
 
    /**
     * On cb, you can also get the model
@@ -31,21 +32,19 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
 
       let ref = db1.collection(this.entityName)
 
-      // if(id){
-      //    return db1.collection(this.entityName).doc(id)
-      //    .get()
-      //    .then(function(docSnap) {
-      //       let temp = docSnap.data()
-      //       temp['id'] = docSnap.id
-      //       console.info("--docSnap.data():", temp)
-      //       _this._data.push(...temp)
-      //       return
-      //       // cb(ctx, rows)
-      //    })
-      // .catch(function(error) {
-      //    console.info("Error getting documents: ", error)
-      // })
-      // }
+      if(id){
+         return db1.collection(this.entityName).doc(id)
+         .get()
+         .then(function(docSnap) {
+            let temp = docSnap.data()
+            temp['id'] = docSnap.id
+            Object.assign(_this._dataObj, temp)
+            return
+         })
+      .catch(function(error) {
+         console.info("Error getting documents: ", error)
+      })
+      }
 
       return ref
          .get()
@@ -57,7 +56,7 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
                rows.push(row)
             })
             _this._data.push(...rows)
-            return rows
+            return
             // cb(ctx, rows)
          })
       .catch(function(error) {
@@ -65,36 +64,34 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
       })
    }//()
 
-   add( row, cb ) { //resolve, reject) {
+   add( row) { //resolve, reject) {
       if(row.id) delete row.id // that should not be there on add
 
       let newPK = db1.collection(this.entityName).doc() // make PK
       return newPK.set(row) // insert
             .then(function() {
                console.info('successful')
-               if(cb) cb(1)
             })
          .catch(function(error) {
             console.error('oops', error)
          })
    }//()
 
-   update( row, cb ) { //resolve, reject) {
+   update( row) { //resolve, reject) {
       console.info(row)
       let id = row['id']
       console.info(id, row)
       delete row.id // we are not save pk in a row
 
       let ref = db1.collection(this.entityName).doc(id)
-      ref.set(row) // save
+      return ref.set(row) // save
          .then(function() {
             console.info('successful')
-            if(cb) cb(1)//1 = ok
+            return id
          })
       .catch(function(error) {
          console.error('oops', error)
       })
-      return id
 
    }//()
 

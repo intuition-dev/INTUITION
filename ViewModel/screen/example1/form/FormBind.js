@@ -4,14 +4,22 @@ class FormBind {
    constructor(){
       this.form = ''
       this.id = typeof sessionStorage.getItem('id') !='undefined' && JSON.parse(sessionStorage.getItem('id'))
-      this.viewModel = new Example1ViewModel()
+      this.viewModel = new FormViewModel()
    }
 
    init(divId){
-
+      let _this = this
       this.form = '#'+divId
       if( this.id !=null){
-         this.onCB() //run 'onCB' only when there was a click on the row in the table, other way no data needed in the form
+         Promise.all([this.viewModel.read(this.id)])
+            .then(function(){
+               let data = _this.viewModel.getViewForm('form1')
+               console.info("--data:", data)
+
+               $('#form1').find('input[name="col1"]').val(data['col1'])
+               $('#form1').find('input[name="col2"]').val(data['col2'])
+               $('#form1').find('input[name="id"]').val(data['id'])
+            })
       }
    }
 
@@ -38,15 +46,6 @@ class FormBind {
 
    delete(row) {
       this.viewModel.delete(row)
-   }
-
-   onCB() {
-      let _this = this
-      console.info("--id:", this.id)
-      this.viewModel.getViewForm('form1')
-      // $(_this.form).find('input[name="col1"]').val(this.row['col1'])
-      // $(_this.form).find('input[name="col2"]').val(this.row['col2'])
-      // $(_this.form).find('input[name="id"]').val(this.row['id'])
    }
 
 

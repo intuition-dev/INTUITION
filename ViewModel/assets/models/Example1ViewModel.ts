@@ -22,7 +22,6 @@ class Example1ViewModel {
 
    getViewList(table){
       let _this = this
-      console.info("--_this:", _this)
       let data
 
       switch (table){
@@ -38,38 +37,8 @@ class Example1ViewModel {
       }
       return data
    }
-
-   getViewForm(formName, id){
-      let _this = this
-
-      return this.read(id)
-         .then(function(){
-            return _this.exampleModel._data
-         })
-         .then(function(data){
-            console.info("--data:", data)
-            return data
-         })
-   }
-
    read(id?:string){
-      return Promise.all([this.exampleModel.read(id)])
+      return Promise.all([this.exampleModel.read()])
       //maybe other read methods from a diffrent entity
-   }
-
-   add(row, cb){
-      this.exampleModel.add(row, cb)
-   }
-
-   update(row, cb){
-      this.exampleModel.update(row, cb)
-   }
-
-   delete(row){
-      this.exampleModel.delete(row)
-   }
-
-   valid(row){
-      return this.exampleModel.valid(row)
    }
 }
