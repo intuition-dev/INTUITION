@@ -1,38 +1,28 @@
 class Example1Bind {
 
+   constructor(){
+      this.viewModel = new Example1ViewModel()
+   }
 
-   init(){
-      this.data = new Example1Model()
-      return this.data.read() //reading the data (real or fake)
-   }//()
-
-   getViewList1(tableId){
+   getViewList(tableID){
       let columns = [ //Define Table Columns
          {title:"Col1", field:"col1", align:"left", width:150},
          {title:"Col2", field:"col2", align:"left", width:'70%'},
       ];
-      let params = ['id', 'col1', 'col2']
-
-      let data = this.data.getViewList(params) //thats where we get and later bind the data
-
-      this.setTable(tableId, columns, data)
+      this.setTable(tableID, columns)
    }
-
-   getViewList2(tableId){
+   getViewList1(tableID){
       let columns = [ //Define Table Columns
-         {title:"Col2", field:"col2", align:"left", width:'100%'},
+         {title:"Col2", field:"col2", align:"left", width:'70%'},
       ];
-      let params = ['id', 'col2']
 
-      let data = this.data.getViewList(params) //thats where we get and later bind the data
-
-      this.setTable(tableId, columns, data)
+      this.setTable(tableID, columns)
    }
 
-   setTable(tableId, columns, data){
-
+   setTable(table, columns){
+      let _this = this
       depp.require(['tabLoaded' ], function() {
-         let table = new Tabulator("#"+tableId, {
+         _this._table = new Tabulator("#"+table, {
             layout:"fitColumns",      //fit columns to width of table
             columns:columns,
             layoutColumnsOnNewData:true,
@@ -43,9 +33,10 @@ class Example1Bind {
                window.location.replace('/screen/example1/form');
             },
          })//tab
-         table.setData(data)
-      })//depp
-
+         depp.done('onTab');
+         // table.setData(data)
+         _this.viewModel.getViewList(_this._table)
+      })//d
    }
 
 }//class

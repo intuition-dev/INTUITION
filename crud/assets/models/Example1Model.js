@@ -1,26 +1,10 @@
 class Example1Model {
     constructor() {
         this.entityName = 'table_one2';
-        this.dataSourceType = 'fake';
+        this.dataSourceType = 'real';
         this._data = [];
     }
-    getViewList(params) {
-        return this.getData(params);
-    }
-    getData(params) {
-        let temp = [];
-        this._data.map(function (d) {
-            let tempObj = {};
-            params.map(function (p) {
-                if (Object.keys(d).includes(p)) {
-                    tempObj[p] = d[p];
-                }
-            });
-            temp.push(tempObj);
-        });
-        return temp;
-    }
-    read() {
+    read(ctx, cb) {
         let _this = this;
         console.info('--reading...', Date.now() - _start);
         if (this.dataSourceType == 'fake') {
@@ -29,8 +13,7 @@ class Example1Model {
                 { id: 2, col1: " Bob21", col2: "Bob22" },
                 { id: 3, col1: " Bob31", col2: "Bob32" },
             ];
-            this._data.push(...rows);
-            return;
+            cb(ctx, rows);
         }
         const ref = db1.collection(this.entityName);
         return ref
@@ -42,10 +25,7 @@ class Example1Model {
                 row['id'] = doc.id;
                 rows.push(row);
             });
-            return rows;
-        })
-            .then(function (data) {
-            _this._data.push(...data);
+            cb(ctx, rows);
         })
             .catch(function (error) {
             console.info("Error getting documents: ", error);

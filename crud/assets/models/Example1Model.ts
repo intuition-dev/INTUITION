@@ -2,45 +2,18 @@ declare var db1: any
 declare var validator: any
 declare var _start: any
 
-/**
-   On cb
-   VM maps to screen
- */
-interface iVM {
-   getViewList(params:object):any // return array for table, params specifying which data needs for table
-}
-
-
 class Example1Model { // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in DB
-   dataSourceType: string = 'fake'  //real or fake
+   dataSourceType: string = 'real'  //real or fake
    form
 
-   _data:object[] = [] //fetched data
-
-   getViewList(params){ 
-
-      let temp = []
-
-      this._data.map(function(d){
-         let tempObj = {}
-         params.map(function(p){
-            if(Object.keys(d).includes(p)){
-               tempObj[p] = d[p]
-            }
-         })
-         temp.push(tempObj)
-      })
-
-      return temp
-   }
    /**
     * On cb, you can also get the model
     * @param ctx
     * @param cb
     */
-   read(){
+   read(ctx, cb){
       let _this = this
       console.info('--reading...', Date.now() - _start)
 
@@ -50,8 +23,7 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
             {id:2, col1:" Bob21", col2:"Bob22"},
             {id:3, col1:" Bob31", col2:"Bob32"},
          ]
-         this._data.push(...rows)
-         return
+         cb(ctx, rows)
       }
 
       const ref = db1.collection(this.entityName)
@@ -64,10 +36,7 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
                row['id'] = doc.id
                rows.push(row)
             })
-            return rows
-         })
-         .then(function(data){
-            _this._data.push(...data) //saving fetched data in the state
+            cb(ctx, rows)
          })
       .catch(function(error) {
          console.info("Error getting documents: ", error)
