@@ -6,6 +6,7 @@ interface iVM {
    getViewList(params:string):any // return array for table, params specifying which data needs for table
 }
 
+// CRUD
 class Example1ViewModel {
    exampleModel:any
 
@@ -14,6 +15,7 @@ class Example1ViewModel {
    }
 
    getViewList(table){
+      // if table == ''
       this.exampleModel.read(table, this.onCB)
    }
 
