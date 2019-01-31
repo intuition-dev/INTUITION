@@ -4,7 +4,7 @@ class Example1Model {
         this.dataSourceType = 'real';
         this._data = [];
     }
-    read(ctx, cb) {
+    read(id) {
         let _this = this;
         console.info('--reading...', Date.now() - _start);
         if (this.dataSourceType == 'fake') {
@@ -16,7 +16,21 @@ class Example1Model {
             _this._data.push(...rows);
             return;
         }
-        const ref = db1.collection(this.entityName);
+        let ref = db1.collection(this.entityName);
+        if (id) {
+            return db1.collection(this.entityName).doc(id)
+                .get()
+                .then(function (docSnap) {
+                let temp = docSnap.data();
+                temp['id'] = docSnap.id;
+                console.info("--docSnap.data():", temp);
+                _this._data.push(...temp);
+                return;
+            })
+                .catch(function (error) {
+                console.info("Error getting documents: ", error);
+            });
+        }
         return ref
             .get()
             .then(function (querySnapshot) {
@@ -76,7 +90,6 @@ class Example1Model {
         });
     }
     valid(row) {
-        console.info('---row', row);
         let col1 = row['col1'];
         let col2 = row['col2'];
         if (validator.isEmpty(col1, { ignore_whitespace: true }))

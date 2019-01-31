@@ -24,8 +24,19 @@ class Example1ViewModel {
             return data;
         });
     }
-    read() {
-        return Promise.all([this.exampleModel.read()]);
+    getViewForm(formName, id) {
+        let _this = this;
+        return this.read(id)
+            .then(function () {
+            return _this.exampleModel._data;
+        })
+            .then(function (data) {
+            console.info("--data:", data);
+            return data;
+        });
+    }
+    read(id) {
+        return Promise.all([this.exampleModel.read(id)]);
     }
     add(row, cb) {
         this.exampleModel.add(row, cb);

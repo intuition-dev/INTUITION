@@ -14,7 +14,7 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
     * @param ctx
     * @param cb
     */
-   read(ctx, cb){
+   read(id?:string){
       let _this = this
       console.info('--reading...', Date.now() - _start)
 
@@ -29,7 +29,24 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
          // cb(ctx, rows)
       }
 
-      const ref = db1.collection(this.entityName)
+      let ref = db1.collection(this.entityName)
+
+      if(id){
+         return db1.collection(this.entityName).doc(id)
+         .get()
+         .then(function(docSnap) {
+            let temp = docSnap.data()
+            temp['id'] = docSnap.id
+            console.info("--docSnap.data():", temp)
+            _this._data.push(...temp)
+            return
+            // cb(ctx, rows)
+         })
+      .catch(function(error) {
+         console.info("Error getting documents: ", error)
+      })
+      }
+
       return ref
          .get()
          .then(function(querySnapshot) {
@@ -103,5 +120,4 @@ class Example1Model { // testable crud and fake flag, heavy work. view-model
          return 'Col2 is blank'
       return 'OK'
    }
-
 }

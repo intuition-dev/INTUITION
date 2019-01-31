@@ -8,7 +8,7 @@ interface iVM {
    // object
    getViewChart(name?:string):any // return array for table, params specifying which data needs for table
    getViewList(name?:string):any // return array for table, params specifying which data needs for table
-   getViewForm(name?:string):any // return array for table, params specifying which data needs for table
+   getViewForm(name?:string, id?:string):any // return array for table, params specifying which data needs for table
 
 }
 
@@ -44,8 +44,21 @@ class Example1ViewModel {
          })
    }
 
-   read(){
-      return Promise.all([this.exampleModel.read()])
+   getViewForm(formName, id){
+      let _this = this
+
+      return this.read(id)
+         .then(function(){
+            return _this.exampleModel._data
+         })
+         .then(function(data){
+            console.info("--data:", data)
+            return data
+         })
+   }
+
+   read(id?:string){
+      return Promise.all([this.exampleModel.read(id)])
       //maybe other read methods from a diffrent entity
    }
 

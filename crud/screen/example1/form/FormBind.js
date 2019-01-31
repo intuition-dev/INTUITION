@@ -3,20 +3,19 @@ class FormBind {
 
    constructor(){
       this.form = ''
-      this.row = typeof sessionStorage.getItem('row') !='undefined' && JSON.parse(sessionStorage.getItem('row'))
+      this.id = typeof sessionStorage.getItem('id') !='undefined' && JSON.parse(sessionStorage.getItem('id'))
       this.viewModel = new Example1ViewModel()
    }
 
    init(divId){
 
       this.form = '#'+divId
-      if( this.row !=null){
+      if( this.id !=null){
          this.onCB() //run 'onCB' only when there was a click on the row in the table, other way no data needed in the form
       }
    }
 
    add(row) {
-      console.info("--row:", row)
       let validation = this.viewModel.valid(row) //do the validation
       console.info("--validation:", validation)
 
@@ -43,10 +42,11 @@ class FormBind {
 
    onCB() {
       let _this = this
-
-      $(_this.form).find('input[name="col1"]').val(this.row['col1'])
-      $(_this.form).find('input[name="col2"]').val(this.row['col2'])
-      $(_this.form).find('input[name="id"]').val(this.row['id'])
+      console.info("--id:", this.id)
+      this.viewModel.getViewForm('form1', this.id)
+      // $(_this.form).find('input[name="col1"]').val(this.row['col1'])
+      // $(_this.form).find('input[name="col2"]').val(this.row['col2'])
+      // $(_this.form).find('input[name="id"]').val(this.row['id'])
    }
 
 
@@ -68,7 +68,7 @@ class FormBind {
 
 
    clearFields(){
-      sessionStorage.removeItem('row');
+      sessionStorage.removeItem('id');
       $(this.form).find('input').val('')
    }
 }
