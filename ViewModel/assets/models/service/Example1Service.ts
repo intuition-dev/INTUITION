@@ -2,14 +2,9 @@ declare var db1: any
 declare var validator: any
 declare var _start: any
 
-class Example1EModel { // testable crud and fake flag, heavy work. view-model
+class Example1Service { // testable crud and fake flag, heavy work. view-model
 
    entityName: string = 'table_one2' //name of the collection in DB
-   dataSourceType: string = 'real'  //real or fake
-   form
-   _data:object[]= []
-   _dataObj:object = {}
-
    /**
     * On cb, you can also get the model
     * @param ctx
@@ -19,17 +14,6 @@ class Example1EModel { // testable crud and fake flag, heavy work. view-model
       let _this = this
       console.info('--reading...', Date.now() - _start)
 
-      if(this.dataSourceType=='fake') {
-         let rows = [
-            {id:1, col1:" Bob11", col2:"Bob12"},
-            {id:2, col1:" Bob21", col2:"Bob22"},
-            {id:3, col1:" Bob31", col2:"Bob32"},
-         ]
-         _this._data.push(...rows)
-         return
-         // cb(ctx, rows)
-      }
-
       let ref = db1.collection(this.entityName)
 
       if(id){
@@ -38,8 +22,8 @@ class Example1EModel { // testable crud and fake flag, heavy work. view-model
          .then(function(docSnap) {
             let temp = docSnap.data()
             temp['id'] = docSnap.id
-            Object.assign(_this._dataObj, temp)
-            return
+            // Object.assign(_this._dataObj, temp)
+            return temp
          })
       .catch(function(error) {
          console.info("Error getting documents: ", error)
@@ -55,9 +39,7 @@ class Example1EModel { // testable crud and fake flag, heavy work. view-model
                row['id'] = doc.id
                rows.push(row)
             })
-            _this._data.push(...rows)
-            return
-            // cb(ctx, rows)
+            return rows
          })
       .catch(function(error) {
          console.info("Error getting documents: ", error)

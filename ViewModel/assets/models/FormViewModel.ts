@@ -14,17 +14,28 @@ interface iVM {
 // Needs CRUD methods
 class FormViewModel {
    exampleModel:any
+   _dataObj:object = {}
+   dataSourceType: string = 'real'  //real or fake
 
    constructor(){
-      this.exampleModel =  new Example1EModel()
+      this.exampleModel =  new Example1Service()
    }
 
    getViewForm(formName){
-      return this.exampleModel._dataObj
+      if(this.dataSourceType=='fake') {
+         let row = {id:1, col1:" Bob11", col2:"Bob12"}
+
+         return row
+      }
+      return this._dataObj
    }
 
    read(id?:string){
+      let _this = this
       return Promise.all([this.exampleModel.read(id)])
+         .then(function(data){
+            Object.assign(_this._dataObj, data[0])
+         })
       //maybe other read methods from a diffrent entity
    }
 

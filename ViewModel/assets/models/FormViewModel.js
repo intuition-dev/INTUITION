@@ -1,12 +1,22 @@
 class FormViewModel {
     constructor() {
-        this.exampleModel = new Example1EModel();
+        this._dataObj = {};
+        this.dataSourceType = 'real';
+        this.exampleModel = new Example1Service();
     }
     getViewForm(formName) {
-        return this.exampleModel._dataObj;
+        if (this.dataSourceType == 'fake') {
+            let row = { id: 1, col1: " Bob11", col2: "Bob12" };
+            return row;
+        }
+        return this._dataObj;
     }
     read(id) {
-        return Promise.all([this.exampleModel.read(id)]);
+        let _this = this;
+        return Promise.all([this.exampleModel.read(id)])
+            .then(function (data) {
+            Object.assign(_this._dataObj, data[0]);
+        });
     }
     add(row, cb) {
         return this.exampleModel.add(row)

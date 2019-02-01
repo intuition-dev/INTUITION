@@ -15,30 +15,41 @@ interface iVM {
 // Needs CRUD methods
 class Example1ViewModel {
    exampleModel:any
+   _data:object[]= []
+   dataSourceType: string = 'real'  //real or fake
 
    constructor(){
-      this.exampleModel =  new Example1EModel()
+      this.exampleModel =  new Example1Service()
    }
 
    getViewList(table){
-      let _this = this
-      let data
 
       switch (table){
          case 'table1':
-            data = _this.exampleModel._data
-            break;
+            if(this.dataSourceType=='fake') {
+               let rows = [
+                  {id:1, col1:" Bob11", col2:"Bob12"},
+                  {id:2, col1:" Bob21", col2:"Bob22"},
+                  {id:3, col1:" Bob31", col2:"Bob32"},
+               ]
+               return rows
+            }
+            return this._data
          case 'table2':
-            data = [
+            let rows  = [
                {id:1, col45:'Col45', col55: 'Col55'},
                {id:1, col45:'Col45_2', col55: 'Col55_2'}
             ]
-            break;
+            return rows
       }
-      return data
    }
-   read(id?:string){
+
+   read(){
+      let _this = this
       return Promise.all([this.exampleModel.read()])
+         .then(function(data){
+            _this._data = [].concat(data[0])
+         })
       //maybe other read methods from a diffrent entity
    }
 }

@@ -1,22 +1,10 @@
-class Example1EModel {
+class Example1Service {
     constructor() {
         this.entityName = 'table_one2';
-        this.dataSourceType = 'real';
-        this._data = [];
-        this._dataObj = {};
     }
     read(id) {
         let _this = this;
         console.info('--reading...', Date.now() - _start);
-        if (this.dataSourceType == 'fake') {
-            let rows = [
-                { id: 1, col1: " Bob11", col2: "Bob12" },
-                { id: 2, col1: " Bob21", col2: "Bob22" },
-                { id: 3, col1: " Bob31", col2: "Bob32" },
-            ];
-            _this._data.push(...rows);
-            return;
-        }
         let ref = db1.collection(this.entityName);
         if (id) {
             return db1.collection(this.entityName).doc(id)
@@ -24,8 +12,7 @@ class Example1EModel {
                 .then(function (docSnap) {
                 let temp = docSnap.data();
                 temp['id'] = docSnap.id;
-                Object.assign(_this._dataObj, temp);
-                return;
+                return temp;
             })
                 .catch(function (error) {
                 console.info("Error getting documents: ", error);
@@ -40,8 +27,7 @@ class Example1EModel {
                 row['id'] = doc.id;
                 rows.push(row);
             });
-            _this._data.push(...rows);
-            return;
+            return rows;
         })
             .catch(function (error) {
             console.info("Error getting documents: ", error);
