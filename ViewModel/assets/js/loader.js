@@ -134,20 +134,4 @@ function getUrlVars() {
    return vars
 }
 
-/*
-let _scSz = true
-function setupUserSzSc() {
-   $(window).scroll(function () {
-      _scSz = true
-   })
-   $(window).resize(function () {
-      _scSz = true
-   })
-}//()
-setInterval(function () {
-   if (_scSz) {
-      _scSz = false
-      userSzSc()
-   }
-}, 150)
-*/
+
