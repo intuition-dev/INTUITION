@@ -36,11 +36,12 @@ class Example1ViewModel {
             }
             return this._data
          case 'table2':
-            let rows  = [
-               {id:1, col45:'Col45', col55: 'Col55'},
-               {id:1, col45:'Col45_2', col55: 'Col55_2'}
-            ]
-            return rows
+               let rows  = [
+                  {id:1, col45:'Col45', col55: 'Col55'},
+                  {id:1, col45:'Col45_2', col55: 'Col55_2'}
+               ]
+               return rows
+
       }
    }
 

@@ -8,31 +8,22 @@ class Example1Bind {
       this.viewModel = new Example1ViewModel()
    }
 
-   getViewList1(tableID){
+   getViewList(tableID, tableID2){
       let _this = this
-      let columns = [ //Define Table Columns
+      let columns1 = [ //Define Table Columns
          {title:"Col1", field:"col1", align:"left", width:150},
          {title:"Col2", field:"col2", align:"left", width:'70%'},
       ];
-      Promise.all([this.viewModel.read()])
-         .then(function(){
-            let data = _this.viewModel.getViewList(tableID)
-            _this.setTable(tableID, columns, data)
-         })
-   }
-
-   getViewList2(tableID){
-      let _this = this
-
-      let columns = [ //Define Table Columns
+      let columns2 = [ //Define Table Columns
          {title:"Col45", field:"col45", align:"left", width:'70%'},
          {title:"Col55", field:"col55", align:"left", width:'70%'},
       ];
-
       Promise.all([this.viewModel.read()])
          .then(function(){
-            let data = _this.viewModel.getViewList(tableID)
-            _this.setTable(tableID, columns, data)
+            let data1 = _this.viewModel.getViewList(tableID)
+            let data2 = _this.viewModel.getViewList(tableID2)
+            _this.setTable(tableID, columns1, data1)
+            _this.setTable(tableID2, columns2, data2)
          })
    }
 
