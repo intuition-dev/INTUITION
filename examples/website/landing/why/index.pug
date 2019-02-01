@@ -1,0 +1,23 @@
+extends /layout/layout
+
+block main
+
+   style.
+      .pageBack {
+         background-image: url(img.jpg);
+      }
+
+   .pageBack.delayShowing
+      br
+      h1.white.splash.text-center  #{title}
+
+
+   //.pad 
+      .title #{title}
+      .space #{content_text}
+      img(src=image, height='160', width='160')
+
+   .pad
+      include:metaMD text.md
+
+   p 

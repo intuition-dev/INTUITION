@@ -1,0 +1,64 @@
+doctype html
+html(lang='en_US')
+   head
+      //- this website has 4 interactive effects
+      link(rel='amphtml', href='m.html')
+      script.
+         let _start = Date.now()
+      meta(charset='utf-8')
+      link(rel='shortcut icon', href= '/assets/favicon.png', type='image/x-icon')
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+
+      title #{title}
+      meta(name='description', content=content_text)
+
+      //- Schema.org markup for Google+
+      meta(itemprop='name', content=title)
+      meta(itemprop='description', content=content_text)
+      meta(itemprop='image', content=image)
+      meta(name='keywords', content=keywords)
+
+      //- Twitter Card data
+      meta(name='twitter:card', content='summary_large_image')
+      meta(name='twitter:title', content=title)
+      meta(name='twitter:description', content=content_text)
+      //- Twitter summary card with large image must be at least 280x150px
+      meta(name='twitter:image', content=image)
+
+      //- Open Graph data
+      meta(property='og:title', content=title)
+      meta(property='og:type', content='article')
+      //- meta(property='og:url', content='#')
+      meta(property='og:image', content=image)
+      meta(property='og:description', content=comment)
+
+      meta(name="google-site-verification", content="Zu5ZnMt3FILJtC7eu_MhsNzb5tHdGXAfReJspT3RwNg")
+
+      //- loading
+      script(src='https://unpkg.com/axios@0.19.0-beta.1/dist/axios.min.js')
+      script(src='https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js')
+
+      //- get the images
+      script(src='https://cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js')
+      script(src= '/assets/js/loader.js')
+
+      //- top css layout
+      link(href='/assets/3rd/spectreTop.css', rel='stylesheet', type='text/css') 
+      style.
+         .delayShowing { opacity: 0 !important; }
+      //- in case a page needs it:
+      block head2
+
+   body
+
+      include navJBar
+
+      .route
+         block main
+         include foot
+
+      script.
+         function userSzSc() {
+            console.info('resize|scroll')
+         }
+      

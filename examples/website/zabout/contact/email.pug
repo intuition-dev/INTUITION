@@ -1,0 +1,86 @@
+
+
+.pad
+   #mailFrm.grid-form
+      fieldset
+         legend For inquiries, please use the below submission form:
+         div(data-row-span='2')
+            div(data-field-span='1')
+               label Name
+               input#name(type='text', required)
+            div(data-field-span='1')
+               label E-mail
+               input#email(type='email', required)
+         div(data-row-span='1')
+            div(data-field-span='1')
+               label Message
+               textarea(name='msg', required)
+   .notification.d-hide
+
+   button#sendBut.btn-custom.btn-primary(type='submit') Send Message
+
+
+br
+
+script.
+   depp.require(['css'], setupEmail);
+
+   /**
+      return error message if validation fails or OK 
+   */
+   function val() { 
+      let nameInput = $('#name').val();
+      let emailInput = $('#email').val();
+      let msgTextarea = $('textarea[name="msg"]').val();
+      if (validator.isEmpty(nameInput, { ignore_whitespace: true }) ) {
+         return 'Name is blank';
+      }
+      if (validator.isEmpty(emailInput, { ignore_whitespace: true }) ) {
+         return 'Email is blank';
+      }
+      if (validator.isEmail(emailInput) === false) {
+         return 'Email is invalid';
+      }
+      if (validator.isEmpty(msgTextarea, { ignore_whitespace: true }) ) {
+         return 'Message is blank';
+      }
+      return 'OK';
+   }
+
+   function setupEmail() {
+      emailjs.init("user_Pc9qJia9LYfibI953zcJY"); // user_Ml0VMHTbgatOE8QpYmnmb
+      $('#mailFrm').disableAutoFill();
+
+      $('#sendBut').click(function() {
+         
+         $('.notification').removeClass('.error-msg').addClass('d-hide').text('');
+
+         let msg = val();
+         if(msg=='OK') {
+            console.info('send');
+            let dat = {
+               name: $("#name").val()
+               ,email: $("#email").val()
+               ,msg: $("textarea[name='msg']").val()
+            }
+            console.info(dat);
+            $(this).attr("disabled", "disabled");
+            emailjs
+               .send('gmail', 'template_ZiJDZalK', dat )
+               .then(() => {
+                  $(this).removeAttr("disabled");
+                  $('.notification').removeClass('d-hide error-msg').text('The email has been sent');
+               });
+            $("#name, #email, textarea[name='msg']").val('');
+         }
+         else  {
+            swal({
+               type: 'error',
+               title: 'Oops...',
+               text: msg
+            });
+         }
+
+      });
+
+   }

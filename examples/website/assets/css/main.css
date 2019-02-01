@@ -1,0 +1,102 @@
+
+* {
+   font-kerning: normal !important;
+}
+
+h1, h2, h3, h4 {
+   font-family: "Oswald";
+   letter-spacing: -.5px !important;
+}
+
+.text, p {
+   letter-spacing: .125px !important;
+}
+
+p::first-letter, text::first-letter {
+   font-size: 130%;
+}
+
+.logo {
+   font-family: 'Open Sans';
+   font-weight: bold;
+   letter-spacing: -1px !important;
+}
+
+.splash {
+   font-size: 60px;
+}
+
+header {
+   background: #0F3557;
+   padding-left: 15px;
+   height: 65px;
+   line-height: 65px;
+   box-shadow: -1px 3px 10px #888888;
+   z-index: 10;
+}
+
+.pageBack {
+   background-attachment: scroll;
+   min-height: 45vh;
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+ul {
+   margin-left: 1rem;
+}
+
+/* resize images */
+.monkeyContainer {
+   width: 120px;
+   height: 120px;
+}
+.monkeyContainer img {
+   width: 100%;
+   height: auto;
+}
+
+.flex, .center, .top, .right, .bottom, .left{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.flex {
+   align-content: flex-start;
+}
+.top    { align-items:     flex-start; }
+.right  { justify-content: flex-end;   }
+.bottom { align-items:     flex-end;   }
+.left   { justify-content: flex-start; }
+/* override */
+.edge  { justify-content: space-between;
+   flex-wrap: nowrap;
+}
+
+.white, .white * { color: white !important; }
+
+.padL {
+   padding-left: 15px;
+}
+.pad {
+   padding: 15px;
+}
+
+.bord { /* icons & bars */
+   outline-style: solid;
+   outline-offset: 7px;
+   outline-width: thin;
+   margin-right: 25px;
+   margin-left: 25px ;
+}
+.featherSVG {
+   width: 24px;
+   height: 24px;
+   stroke: currentColor;
+   stroke-width: 2;
+   stroke-linecap: round;
+   stroke-linejoin: round;
+   fill: none;
+ }
+

@@ -10,21 +10,21 @@ extends /layout/layout
       })// fetch
 
 
-block top
-   script(src=ROOT+ 'news/tag/table-tag.js')
-   style.
-      .pageBack {
-         background-image: url(img.jpg);
-      }
+//- block top
+//-    style.
+//-       .pageBack {
+//-          background-image: url(img.jpg);
+//-       }
 
-   .pageBack.delayShowing(data-js-menu-highlight="news")
-      include /layout/nav
-      br
-      .pad
-         H1.flex.white.fLarge.fBod The ACME Corporation
+//-    .pageBack.delayShowing(data-js-menu-highlight="news")
+//-       include /layout/nav
+//-       br
+//-       .pad
+//-          H1.flex.white.fLarge.fBod The ACME Corporation
 
 
 block main
+   script(src=ROOT+ 'news/tag/table-tag.js')
    .pad
       H1.cAccent.line.fBod Press Releases
       table-tag

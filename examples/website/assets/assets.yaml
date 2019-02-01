@@ -1,0 +1,5 @@
+css:
+- spectre/spectre.scss
+- spectre/spectreTop.scss
+- 3rd/gridform.sass
+- 3rd/navJBar.scss

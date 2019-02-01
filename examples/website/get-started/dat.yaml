@@ -1,0 +1,9 @@
+basedir: ../
+
+pretty: false
+
+title: Get Started
+image: >-
+  http://mBake.org/assets/img/slide-3.jpg
+content_text: Install, First Page
+keywords: MetaBake install, MetaBake get started

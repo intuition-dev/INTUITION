@@ -1,0 +1,47 @@
+extends /layout/layout
+
+block main
+   .d-hide(data-js-menu-highlight="who-benefits")
+
+   style.
+      .pageBack {
+         background-image: url(img.jpg);
+      }
+      .benefitsImg {
+         max-width:90%;
+         max-height:100%;
+      }
+      .flip {
+         -moz-transform: scaleX(-1);
+         -webkit-transform: scaleX(-1);
+         transform: scaleX(-1);
+      }
+
+   .pageBack.delayShowing
+      br
+      h1.white.splash.text-center  #{title}
+   
+   .pad
+      include:metaMD who.md
+      .pad
+         .columns
+            .column.col-6 
+               include:metaMD tech-leads.md
+            .column.col-6
+               img.flip.benefitsImg(src='cloud.png')
+         .columns
+            .column.col-6 
+               img.benefitsImg(src='ui.png')
+            .column.col-6 
+               include:metaMD cto.md
+
+         .columns
+            .column.col-6 
+               include:metaMD vpe.md
+            .column.col-6 
+               img.benefitsImg(src='cloud.png')
+         .columns
+            .column.col-6 
+               img.benefitsImg.flip(src='ui.png')
+            .column.col-6 
+               include:metaMD new.md
