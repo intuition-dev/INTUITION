@@ -6,31 +6,35 @@ block main
    .columns.page
       h2.column.col-12.text-center Chart Js
       .column.col-6
-         include chartarea1
+         div.py-2
+            h4.text-center Pie Chart
+            canvas#chartjs-chart-pie
          #progress-bar.progress-bar.d-hide
             .label-name
             .data
 
       .column.col-6
-         include chartarea2
+         div.py-2
+            h4.text-center Balloons Chart
+            canvas#chartjs-chart-balloons
          #progress-bar-2.progress-bar.d-hide
             .label-name
             .data
 
    //link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')
    script.
-      function initC(chart, config) {
-         var mc = document.getElementById(chart)
-         let w = (window.innerWidth - 400) / 2
-         let h = (window.innerHeight - 120) / 2
-         mc.width = w
-         mc.height = h
+      depp.define({
+         'loadViewModel': [
+            ROOT + 'assets/models/ChartjsViewModel.js',
+            'ChartjsBind.js'
+         ]
+      })
 
-         var ctx = mc.getContext('2d')
-         ctx.canvas.parentNode.style.width = w +'px'
-         ctx.canvas.parentNode.style.height = h + 'px'
+      depp.require(['loadViewModel'], setupChartView);
 
-         var myChart = new Chart(ctx, config)
-         //myChart.update()
-
-      }//()
+      function setupChartView(){
+         let canvasId = 'chartjs-chart-pie';
+         let canvasId2 = 'chartjs-chart-balloons';
+         let chart  = new ChartjsBind();
+         chart.getViewChart(canvasId, canvasId2);
+      }

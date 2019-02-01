@@ -1,6 +1,8 @@
-class ChartjsModel {
+class ChartjsViewModel {
     constructor() {
         this.dataSourceType = 'fake';
+        this._data1 = [];
+        this._data2 = [];
     }
     read() {
         let data = [{
@@ -26,7 +28,7 @@ class ChartjsModel {
             }];
         let data2 = [{
                 label: 'China',
-                bg: 'rgba(255,221,50,0.2)',
+                bgColor: 'rgba(255,221,50,0.2)',
                 border: 'rgba(255,221,50,1)',
                 data: {
                     x: 21269017,
@@ -35,7 +37,7 @@ class ChartjsModel {
                 }
             }, {
                 label: 'Denmark',
-                bg: 'rgba(60,186,159,0.2)',
+                bgColor: 'rgba(60,186,159,0.2)',
                 border: 'rgba(60,186,159,1)',
                 data: {
                     x: 258702,
@@ -44,7 +46,7 @@ class ChartjsModel {
                 }
             }, {
                 label: 'Germany',
-                bg: 'rgba(0,0,0,0.2)',
+                bgColor: 'rgba(0,0,0,0.2)',
                 border: '#000',
                 data: {
                     x: 3979083,
@@ -53,7 +55,7 @@ class ChartjsModel {
                 }
             }, {
                 label: 'Japan',
-                bg: 'rgba(193,46,12,0.2)',
+                bgColor: 'rgba(193,46,12,0.2)',
                 border: 'rgba(193,46,12,1)',
                 data: {
                     x: 4931877,
@@ -62,7 +64,16 @@ class ChartjsModel {
                 }
             }];
         if (this.dataSourceType == 'fake') {
-            return [data, data2];
+            this._data1 = [].concat(data);
+            this._data2 = [].concat(data2);
+        }
+    }
+    getViewChart(name) {
+        switch (name) {
+            case 'chartjs-chart-pie':
+                return this._data1;
+            case 'chartjs-chart-balloons':
+                return this._data2;
         }
     }
 }
