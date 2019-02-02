@@ -1,3 +1,4 @@
+<img src="https://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
 
 ## ViewModel
 
