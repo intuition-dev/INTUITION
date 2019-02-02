@@ -4,10 +4,10 @@
 You can use any framework or library with Metabake. And MetaBake comes with a recommended 'app framework' for WebApps in 3 lines:
 
 
-      interface iVM {t
-         getViewChart(name?:string):any // return array for table, params specifying which data needs for table
-         getViewList(name?:string):any // return array for table, params specifying which data needs for table
-         getViewForm(name?:string):any // return array for table, params specifying which data needs for table
+      interface iVM {
+         getViewChart(name?:string):any 
+         getViewList(name?:string):any 
+         getViewForm(name?:string):any 
       }
 
 
@@ -27,6 +27,8 @@ The goal is to be as flexible as possible. When you have a form, table or chart,
 
 (if you create includes, tags/components, you should pass the VM to it)
 
+VM also has a dataSourceType: string = 'real'  //real or fake
+The purpose is to allow development of View to be faster; and to allow for a demo if back end is b0rked.
 
 # Other
 
