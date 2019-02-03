@@ -2,7 +2,7 @@
 
 ### MetaBake is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding.
 
-#### MetaBake works via static generation; with Pug, Markdown and more; including dynamic apps and data binding. We aim to grow the popularity of low-code. *'All. My. Friends. Know a low-coder.'*
+#### MetaBake works via static generation; with Pug, Markdown and more; including dynamic apps and data binding. We aim to grow the popularity of low-code. *'All My Friends Know a low-coder.'*
 
 MetaBake mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging low-code pillars for high development productivity.
 
@@ -57,5 +57,6 @@ Primary focus is high development productivity (via "low-code") and being easy t
 
 
 - Click for mBake Docs: [docs.mBake.org](http://docs.mBake.org)
-
+- [git.mBake.org](http://git.mBake.org)
+- Community [forum.mBake.org](http://forum.mBake.org)
 - Check for the latest version of mBake: [npm.js](https://www.npmjs.com/package/mbake)
