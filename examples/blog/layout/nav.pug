@@ -1,3 +1,4 @@
+script(src='/layout/mini.min.js')
 script(src='/layout/navJBar.js')
 script(type='text/javascript', async defer, src='https://assets.pinterest.com/js/pinit.js')
 
@@ -18,7 +19,7 @@ header.flex.edge.delayShowing
             a.forum(href= ROOT + 'forum') FORUM
       div &nbsp;
       .white.show-lg#navBarCont
-         svg.featherSVG(viewBox='0 0 24 24')
+         svg.feather(viewBox='0 0 24 24')
             line(x1='3', y1='12', x2='21', y2='12')
             line(x1='3', y1='6',  x2='21', y2='6')
             line(x1='3', y1='18', x2='21', y2='18')
@@ -26,7 +27,7 @@ header.flex.edge.delayShowing
 #navOpen.show-lg
 
 script.
-   loadjs.ready('device', function() {
+   depp.require('device', function() {
       console.info('navJBar')
       new Navbar('.navJBar') // top
 

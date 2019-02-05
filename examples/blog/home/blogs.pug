@@ -23,7 +23,7 @@ style.
 script.
    const tag = riot.mount('feed-tag')[0] // mount the first tag
 
-   loadjs.ready(['cssJs','feed'], function () {// 'show' page, ex: unhide
+   depp.require(['cssJs'], function () {// 'show' page, ex: unhide
       const srchOptions = {
          shouldSort: true,
          threshold: 0.3,

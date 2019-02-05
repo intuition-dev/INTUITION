@@ -18,7 +18,7 @@ html('⚡')
          style(amp-boilerplate='').
             body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
 
-      include ../shared/css
+      include ../shared/css.pug
 
       block head2
 
@@ -28,7 +28,7 @@ html('⚡')
             include ./nav-m
             .img-top.home.inner
                .pad
-                  H1.flex.white.fLarge.fBod #{titleTop}
+                  H1.flex.white.fLarge.fBod #{pageTitleTop}
 
       #router
          block main

@@ -28,7 +28,7 @@ html(lang='en_US')
         var content_text = '#{content_text}'
         var title = '#{title}'
 
-      title #{title}
+      title #{pageTitle}
       meta(name='description', content=content_text)
 
       // Schema.org markup for Google+
@@ -60,7 +60,7 @@ html(lang='en_US')
             include ./nav
             .img-top.home.inner
                .pad
-                  H1.flex.white.fLarge.fBod #{titleTop}
+                  H1.flex.white.fLarge.fBod #{pageTitleTop}
 
       #router
          block main

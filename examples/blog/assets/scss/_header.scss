@@ -57,7 +57,7 @@ header {
     }
 }
 
-.featherSVG {
+.feather {
     width: 24px;
     height: 24px;
     stroke: currentColor;
@@ -140,7 +140,6 @@ ul, ul li {
             -webkit-transition: all .35s ease-in-out;
             -o-transition: all .35s ease-in-out;
             transition: all .35s ease-in-out;
-            text-shadow: 0 0 18px rgb(130, 163, 137);
 
             &:hover, &.active {
                 color: $color-theme1;

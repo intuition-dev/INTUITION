@@ -7,7 +7,7 @@ block head2
       axios.get('/blog/items.json').then(function(resp) {
          feed = resp.data;
          console.info('f ready');
-         loadjs.done('feed');
+         depp.require('feed');
       })// fetch
 
 block main

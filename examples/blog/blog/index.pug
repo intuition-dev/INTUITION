@@ -1,0 +1,56 @@
+extends /layout/layout
+//- App Shell
+
+block head2
+   script(src=ROOT+ 'blog/tags/card-tag.js')
+   
+block main
+   .pad
+      #pagination-container.custom-pagination
+      card-tag
+
+   script.
+      axios.get('/blog/items.json').then(function(resp) {
+         resp.data.items = resp.data.items.filter(item => item.publish1 === true);
+         blog = resp.data;
+         console.info('resp.data --------->', blog);
+         
+         const tag = riot.mount('card-tag')[0]; // mount the first tag
+         console.info('blog.items ------------>', blog.items);
+         tag.render(blog.items);
+
+         depp.require(['cssJs'], function() {
+            pgContainer =[];
+            pgContCount=-1;
+            setupPg(guessShow(), blog);
+         });
+
+         function setupPg(perPage, blog_) {
+            console.info('PG');
+            pgContCount++;
+            console.info('s', pgContCount);
+            pgContainer[pgContCount] = $('#pagination-container');
+
+            perPage = 2;
+
+            pgContainer[pgContCount].pagination({
+               className: 'paginationjs-theme-blue',
+               dataSource: blog_,
+               locator: 'items',
+               pageSize: perPage,
+               autoHidePrevious: true,
+               autoHideNext: true,
+               callback: function(data, pagination) {
+                  tag.render(data);
+               }
+            })
+
+         }//()
+
+         function guessShow() {
+            let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9;
+            n = Math.round( n * .7);
+            console.info('g', n);
+            return n;
+         }
+      });

@@ -25,12 +25,12 @@ Blog app consists of 3 parts:
 * In terminal #1
     ```sh
     $ cd adminEditorsEG
-    $ tsc && node index*.js
+    $ tsc && ts-node index.ts
     ```
 * In terminal #2
     ```sh
     $ cd adminzAdminEG
-    $ tsc && node index*.js
+    $ tsc && ts-node index.ts
     ```
 
 * In browser
@@ -41,7 +41,7 @@ Blog app consists of 3 parts:
 ## Server run
 
 ### Configure and mount s3 bucket
-* set up s3 mounting software as described [here](https://github.com/MetaBake/MetaBake-Docs/blob/master/doc/_doc3/docs/ca.md#cloud-mount-s3)
+* set up s3 mounting software as described [here](https://github.com/metabake/Metabake-Docs/blob/master/doc/_doc3/docs/ca.md#cloud-mount-s3)
 * mount s3 bucket:    
     ```sh
     $ /root/goofys --profile default -o allow_other --use-content-type blog-app-project <PATH-TO-BLOG-DIR>
@@ -51,7 +51,7 @@ Blog app consists of 3 parts:
 ```sh
 $ sudo pkill node
 $ cd adminEditorsEG
-$ nohup tsc && node index*.js &
+$ nohup tsc && ts-node index.ts &
 $ cd adminzAdminEG
-$ nohup tsc && node index*.js &
+$ nohup tsc && ts-node index.ts &
 ```
