@@ -1,14 +1,15 @@
 extends /layout/layout
-//- App Shell
 
-   // in head, $$$ get for speed
+block head2
+   //- App Shell
+   //- in head, $$$ get for speed
+   script(src=ROOT+ 'news/tag/table-tag.js')
    script.
       axios.get('/news/list.json').then(function(resp) {
          news = resp.data
          console.info('n ready')
          //loadjs.done('news')
       })// fetch
-
 
 //- block top
 //-    style.
@@ -24,7 +25,6 @@ extends /layout/layout
 
 
 block main
-   script(src=ROOT+ 'news/tag/table-tag.js')
    .pad
       H1.cAccent.line.fBod Press Releases
       table-tag
