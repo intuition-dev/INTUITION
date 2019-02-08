@@ -1,4 +1,4 @@
-basedir: ../
+basedir: ../blog/
 
 prefix: /blog/
 

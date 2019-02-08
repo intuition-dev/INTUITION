@@ -2,12 +2,11 @@ extends /layout/layout
 //- App Shell
 
 block head2
-   script(src=ROOT+ 'blog/tags/card-tag.js')
+   script(src=ROOT+ 'home/tags/card-tag.js')
    
 block main
-   .container
-      #pagination-container.custom-pagination
-      card-tag
+   #pagination-container.custom-pagination
+   card-tag
 
    script.
       axios.get('../blog/items.json').then(function(resp) {
