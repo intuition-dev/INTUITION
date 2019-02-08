@@ -118,15 +118,22 @@ header {
         justify-content: space-between;
         padding: .5rem 0 0 0;
     }
+    .menu-wrapper a {
+        color: #fff;
+        &:hover, &:active, &:focus {
+            color: rgba(255,255,255,0.8);
+        }
+    }
     a {
         transition: color .3s linear;
         text-transform: uppercase;
-        color: #fff!important;
+        color: #fff;
         font-weight: 300;
         display: block;
         font-size: 15px;
         line-height: 1.5;
         margin-right: 2.5rem;
+        letter-spacing: 1px;
         &.logo {
             font-size: 26px;
             letter-spacing: 9px;

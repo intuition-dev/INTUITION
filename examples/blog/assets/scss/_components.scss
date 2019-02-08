@@ -9,7 +9,7 @@
 
         .blog {
             &-item {
-                padding: 15px;
+                padding: 0 15px 15px 15px;
 
                 &:hover {
                     .share {
@@ -21,16 +21,8 @@
     }
 
     .category {
-        position: relative;
-
-        &:before {
-            content: '';
-            display: inline-block;
-            margin: 0 7px -3px 0;
-            width: 2px;
-            height: 17px;
-            background: $color-theme1;
-        }
+        letter-spacing: 2px;
+        font-weight: 700;
     }
 
     .avatar {
@@ -133,8 +125,11 @@
     }
 
     .title {
-        font-weight: 600;
-        font-size: $font-size-global-theme1 + 4;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        text-align: justify;
     }
 
     .divider {
@@ -250,12 +245,17 @@ svg {
     display: table;
     .paginationjs .paginationjs-pages {
         ul {
-
+            
             li {
-                margin: 5px 5px 5px 0;
+                margin: 10px 10px 10px 0;
 
+                &, a, &:after, &:before {
+                    font-family: $font-family-theme1;
+                    font-weight: 300;
+                    font-size: 16px;
+                }
                 &:last-child {
-                    margin: 5px 0;
+                    margin: 10px 0;
                 }
 
                 &:before {
@@ -263,18 +263,20 @@ svg {
                 }
 
                 > a:hover {
-                    background: rgba($color-theme1, 0.2);
+                    background: #151f2b;
                 }
 
                 a {
-                    border-radius: $border-radius-theme1;
-                    color: $color-theme1;
-                    border: 1px solid $color-theme1;
-                    min-width: 30px;
-                    min-height: 30px;
+                    border-radius: 0;
+                    border: 1px solid #384752;
+                    min-width: 40px;
+                    min-height: 40px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    background: #384752;
+                    color: white;
+                    transition: background .3s linear;
                 }
 
                 &, .active {
@@ -283,47 +285,56 @@ svg {
 
                 &.active {
                     a {
-                        border-color: $color-theme1;
-                        background: $color-theme1;
-                        color: white;
+                        border-color: #384752;
+                        background: 0;
+                        color: #384752;
                     }
                 }
             }
 
             .paginationjs {
-                position: relative;
                 &-next, &-prev {
+                    height: 40px;
+                    position: relative;
                     a {
                         text-indent: -99999px;
                         border: 0;
                         width: initial;
-                        height: 30px;
                         position: absolute;
+                        background: 0;
+                    }
+                    &:after {
+                        display: inline-block;
+                        color: #384752;
+                        text-indent: 0;
+                        top: 7px;
+                        position: absolute;
+                        cursor: pointer;
+                        transition: color .3s linear;
+                        letter-spacing: 2px;
+                    }
 
-                        &:after {
-                            display: inline-block;
-                            color: $color-theme1;
-                            text-indent: 0;
-                            font-weight: bold;
-                            top: 3px;
-                        }
-
+                    a {
                         &:hover {
                             background: 0;
                         }
                     }
 
+                    &:hover:after {
+                        color: #151f2b;
+                    }
+
                 }
                 &-prev {
-                    left: -70px;
-                    a:after {
+                    left: -80px;
+                    &:after {
                         content: 'Previous';
                     }
                 }
 
                 &-next {
-                    right: -15px;
-                    a:after {
+                    right: -5px;
+                    &:after {
                         content: 'Next';
                     }
                 }

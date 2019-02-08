@@ -5,7 +5,7 @@ block head2
    script(src=ROOT+ 'blog/tags/card-tag.js')
    
 block main
-   .pad
+   .container
       #pagination-container.custom-pagination
       card-tag
 
@@ -31,7 +31,7 @@ block main
             console.info('s', pgContCount);
             pgContainer[pgContCount] = $('#pagination-container');
 
-            perPage = 2;
+            perPage = 3;
 
             pgContainer[pgContCount].pagination({
                className: 'paginationjs-theme-blue',

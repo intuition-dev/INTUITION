@@ -86,12 +86,32 @@
         width: 40px;
         min-width: initial;
         height: 40px;
-        border-radius: 50%;
+        border-radius: 0;
         margin: 0 10px 0 0;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        transform: rotate(30deg);
+        // transition: transform .3s linear;
+        &.btn-secondary {
+            background: linear-gradient(to right, #151f2b 50%,#fff 50%) no-repeat scroll right bottom / 210% 100% #fff;
+            & {
+                &, svg {
+                    color: #384752;
+                    fill: #384752;
+                }
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background-position: left bottom;
+            // transform: none;
+            &, svg {
+                color: #fff;
+                fill: #fff;
+            }
+        }
 
         &:last-of-type {
             margin: 0;

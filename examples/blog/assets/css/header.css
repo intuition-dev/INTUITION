@@ -18,7 +18,9 @@ ul,ul li{padding:0;margin:0;}
 .navJBar li li > ul{top:-999em;left:85%;transition:left .3s ease,opacity .2s linear;-webkit-transition:left .3s ease,opacity .2s linear;}
 header{background:#151f2b;background:linear-gradient(to right,#151f2b 0%,#384752 100%);color:#fff;}
 header .header-wrap{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0 0 0;}
-header a{transition:color .3s linear;text-transform:uppercase;color:#fff !important;font-weight:300;display:block;font-size:15px;line-height:1.5;margin-right:2.5rem;}
+header .menu-wrapper a{color:#fff;}
+header .menu-wrapper a:hover,header .menu-wrapper a:active,header .menu-wrapper a:focus{color:rgba(255,255,255,0.8);}
+header a{transition:color .3s linear;text-transform:uppercase;color:#fff;font-weight:300;display:block;font-size:15px;line-height:1.5;margin-right:2.5rem;letter-spacing:1px;}
 header a.logo{font-size:26px;letter-spacing:9px;}
 header h1{text-align:center;text-transform:uppercase;font-weight:300;font-size:52px;color:#fff;margin:0;padding:1rem 0;}
 header h1:before{content:'';display:block;height:2px;width:200px;max-width:100%;margin:0 auto;background:#151f2b;background:linear-gradient(to right,#151f2b 0%,#384752 100%);}
@@ -34,4 +36,4 @@ header h1:before{content:'';display:block;height:2px;width:200px;max-width:100%;
 @media (max-width:600px){.navbar-brand{padding-left:0;}
  #logo{font-size:1.2rem;}
  .navJBar li a{font-size:12px;line-height:1.7;}
- .navJBar li li a{font-size:10px;}} /* mB v4.16.06 on 2019-02-08T13:59:54.596Z */
+ .navJBar li li a{font-size:10px;}} /* mB v4.16.06 on 2019-02-08T15:45:11.225Z */

@@ -12,6 +12,11 @@ body {
     padding: 0 25px;
 }
 
+#router .container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
 @mixin diagonal-gradient($color-theme1-from, $color-theme1-to){
 	background: $color-theme1-from;
     background: -moz-linear-gradient(-45deg,$color-theme1-from 0%,$color-theme1-from 20%,$color-theme1-to 82%,$color-theme1-to 100%);
