@@ -8,8 +8,11 @@ html(lang='en_US')
          let _start = Date.now()
       meta(charset='utf-8')
       meta(name='viewport', content='width=device-width, initial-scale=1')
-      link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
-      link(href='https://fonts.googleapis.com/css?family=Old+Standard+TT:400,700', rel='stylesheet')
+      link(rel='shortcut icon', href= ROOT + 'favicon.ico', type='image/x-icon')
+
+      //- top css layout
+      link(href=ROOT + 'assets/css/spectreTop.css', rel='stylesheet', type='text/css') 
+      link(href=ROOT + 'assets/css/header.css', rel='stylesheet', type='text/css')
 
       script(src='https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js')
       script(src='https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
@@ -22,31 +25,22 @@ html(lang='en_US')
          .delayShowing { opacity: 0; }
 
       //-link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')
-      script.
-        var comment = '#{comment}'
-        var image = '#{image}'
-        var content_text = '#{content_text}'
-        var title = '#{title}'
 
       title #{pageTitle}
       meta(name='description', content=content_text)
 
-      // Schema.org markup for Google+
+      //- Schema.org markup for Google+
       meta(itemprop='name', content=title)
       meta(itemprop='description', content=content_text)
       meta(itemprop='image', content=image)
 
-      // Twitter Card data
-      meta(name='twitter:card', content='summary_large_image')
+      //- Twitter Card data
       meta(name='twitter:title', content=title)
       meta(name='twitter:description', content=content_text)
-      // Twitter summary card with large image must be at least 280x150px
       meta(name='twitter:image', content=image)
 
-      // Open Graph data
+      //- Open Graph data
       meta(property='og:title', content=title)
-      meta(property='og:type', content='article')
-      meta(property='og:url', content='http://liz-blog-seo-test.s3-website-us-east-1.amazonaws.com')
       meta(property='og:image', content=image)
       meta(property='og:description', content=comment)
 
@@ -54,20 +48,10 @@ html(lang='en_US')
 
    body
 
-      //-manually include /layout/nav
       block top
-         .pageBack(data-js-menu-highlight="blog")
+         .header-wrap
             include ./nav
-            .img-top.home.inner
-               .pad
-                  H1.flex.white.fLarge.fBod #{pageTitleTop}
 
       #router
          block main
-
          include foot
-
-      //- script.
-      //-    function userSzSc() {
-      //-       console.info('resize|scroll')
-      //-    }

@@ -2,35 +2,4 @@
    color: white;
    background: url(../img/bg.jpg) center center / cover, $background-dark2-theme1;
    text-shadow: 1px 1px 3px rgba(255, 255, 255, 1);
-   &-logo {
-        font-weight: bold;
-        font-size: $font-size-global-theme1 + 6;
-        span {
-            color: $color-theme1;
-        }
-   }
-   .column {
-        a {
-            display: block;
-            color: $text-color-dark-2-theme1;
-            &:not(.text-bold) {
-                color: $text-color-dark-2-theme1;
-                &:hover, &:active, &:focus {
-                    color: $color-theme1;
-                }
-            }
-            &.text-bold {
-                margin-bottom: 10px;
-                letter-spacing: -1px;
-            }
-        }
-   }
-   .edge {
-      margin: 2rem 0 0;
-      flex-wrap: wrap;
-   }
-   .copyright {
-      font-size: $font-size-global-theme1 - 2;
-      color: $color-theme1;
-   }
 }

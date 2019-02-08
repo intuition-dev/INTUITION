@@ -26,21 +26,6 @@
         }
     }
 
-    &-center {
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    &-primary {
-        background: linear-gradient(to right, $button-primary-theme1-hover 50%,$button-primary-theme1 50%) no-repeat scroll right bottom / 210% 100% $button-primary-theme1;
-        &, &:hover, &:active, &:focus {
-            &, svg {
-                color: $button-primary-theme1-color;
-                fill: $button-primary-theme1-color;
-            }
-        }
-    }
-
     &-secondary {
         background: linear-gradient(to right, $button-secondary-theme1-hover 50%,$button-secondary-theme1 50%) no-repeat scroll right bottom / 210% 100% $button-secondary-theme1;
 
@@ -71,23 +56,6 @@
         &:hover, &:active, &:focus {
             background-position: left bottom;
         }
-    }
-}
-
-.btn.btn-clear {
-    background: transparent;
-    border: 0;
-    color: currentColor;
-    height: 1rem;
-    line-height: .8rem;
-    margin-left: .2rem;
-    margin-right: -2px;
-    opacity: 1;
-    padding: .1rem;
-    text-decoration: none;
-    width: 1rem;
-    &::before {
-        content: "\2715";
     }
 }
 

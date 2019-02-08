@@ -7,8 +7,9 @@
     </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT:400,700" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/spectreTop.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/header.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.0.3/dist/depp.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js"></script>
     <script src="https://unpkg.com/axios@0.19.0-beta.1/dist/axios.min.js"></script>
@@ -18,96 +19,77 @@
       .delayShowing { opacity: 0; }
       
     </style>
-    <script>var comment = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      var image = 'https://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg'
-      var content_text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod'
-      var title = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      
-    </script>
     <title>Metabake - Blog - Blog Post 1</title>
     <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod">
-    <!-- Schema.org markup for Google+-->
     <meta itemprop="name" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
     <meta itemprop="description" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod">
     <meta itemprop="image" content="https://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg">
-    <!-- Twitter Card data-->
-    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
     <meta name="twitter:description" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod">
-    <!-- Twitter summary card with large image must be at least 280x150px-->
     <meta name="twitter:image" content="https://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg">
-    <!-- Open Graph data-->
     <meta property="og:title" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="http://liz-blog-seo-test.s3-website-us-east-1.amazonaws.com">
     <meta property="og:image" content="https://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg">
     <meta property="og:description" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
   </head>
   <body>
-    <div class="pageBack" data-js-menu-highlight="blog">
+    <div class="header-wrap">
       <script src="/layout/mini.min.js"></script>
       <script src="/layout/navJBar.js"></script>
       <script type="text/javascript" async defer src="https://assets.pinterest.com/js/pinit.js"></script>
-      <header class="flex edge delayShowing">
-        <div class="left white" id="navbar-brand">
-          <div class="navbar-brand mr-2 padL">
-            <h3 id="logo"><a href="/"> <span>Acme</span>corp</a></h3>
+      <header class="delayShowing">
+        <div class="container">
+          <div class="header-wrap"><a class="logo" href="/">Acmecorp</a>
+            <div class="menu-wrapper">
+              <ul class="hide-lg navJBar" id="navJBar" data-function="navJBar">
+                <li class="navFirst"><a class="about" href="/">home</a></li>
+                <li><a class="forum" href="/forum">forum</a></li>
+              </ul>
+              <div class="show-lg" id="navBarCont">
+                <svg class="feather" viewBox="0 0 24 24">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="right white">
-          <ul class="hide-lg navJBar" id="navJBar" data-function="navJBar">
-            <li class="navFirst"><a class="about" href="/">HOME</a></li>
-            <li><a class="forum" href="/forum">FORUM</a></li>
-          </ul>
-          <div>&nbsp;</div>
-          <div class="white show-lg" id="navBarCont">
-            <svg class="feather" viewBox="0 0 24 24">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </div>
+          <h1>Blog</h1>
         </div>
       </header>
       <div class="show-lg" id="navOpen"></div>
       <script>
         depp.require('device', function() {
-           console.info('navJBar')
-           new Navbar('.navJBar') // top
+            console.info('navJBar')
+            new Navbar('.navJBar') // top
         
-           //toggle
-           $( "#navBarCont" ).click(function() { //side
-              console.info(isOpen)
-              if(isOpen)
-                 navClose()
-              else
-                 navOpen()
-           })
+            //toggle
+            $( "#navBarCont" ).click(function() { //side
+                console.info(isOpen)
+                if(isOpen)
+                    navClose()
+                else
+                    navOpen()
+            })
         })//ready
         
         isOpen = false
         function navOpen() {
-           let $clone= $("#navJBar").clone(true)
-           $clone.removeClass('hide-lg')
-           $('#navOpen').html($clone)
-           new Navbar('#navOpen')
-           $('.navFirst').addClass('open')
-           $('.navFirst').addClass('open-position')
-           isOpen = true
+            let $clone= $("#navJBar").clone(true)
+            $clone.removeClass('hide-lg')
+            $('#navOpen').html($clone)
+            new Navbar('#navOpen')
+            $('.navFirst').addClass('open')
+            $('.navFirst').addClass('open-position')
+            isOpen = true
         }
         function navClose() {
-           $('#navOpen').empty()
-           $('.navFirst').removeClass('open')
-           $('.navFirst').removeClass('open-position')
-           isOpen = false
+            $('#navOpen').empty()
+            $('.navFirst').removeClass('open')
+            $('.navFirst').removeClass('open-position')
+            isOpen = false
         }
         
       </script>
-      <div class="img-top home inner">
-        <div class="pad">
-          <H1 class="flex white fLarge fBod">Blog</H1>
-        </div>
-      </div>
     </div>
     <div id="router">
       <div class="container narrow blog blog-single">
@@ -336,5 +318,5 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
       </div>
     </div>
-  <!-- mB v4.16.06 on 2019-02-07T17:58:54.351Z --></body>
+  <!-- mB v4.16.06 on 2019-02-08T13:45:57.654Z --></body>
 </html>

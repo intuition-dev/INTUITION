@@ -2,58 +2,55 @@ script(src='/layout/mini.min.js')
 script(src='/layout/navJBar.js')
 script(type='text/javascript', async defer, src='https://assets.pinterest.com/js/pinit.js')
 
-header.flex.edge.delayShowing
-   #navbar-brand.left.white
-      .navbar-brand.mr-2.padL
-         h3#logo
-            a(href='/') 
-               span Acme
-               | corp
-   .right.white
-      ul#navJBar.hide-lg.navJBar(data-function='navJBar')
-         li.navFirst
-            a.about(href='/') HOME
-         li
-            a.forum(href= ROOT + 'forum') FORUM
-      div &nbsp;
-      .white.show-lg#navBarCont
-         svg.feather(viewBox='0 0 24 24')
-            line(x1='3', y1='12', x2='21', y2='12')
-            line(x1='3', y1='6',  x2='21', y2='6')
-            line(x1='3', y1='18', x2='21', y2='18')
+header.delayShowing
+    .container
+        .header-wrap
+            a.logo(href='/') Acmecorp
+            .menu-wrapper
+                ul#navJBar.hide-lg.navJBar(data-function='navJBar')
+                    li.navFirst
+                        a.about(href='/') home
+                    li
+                        a.forum(href= ROOT + 'forum') forum
+                .show-lg#navBarCont
+                    svg.feather(viewBox='0 0 24 24')
+                        line(x1='3', y1='12', x2='21', y2='12')
+                        line(x1='3', y1='6',  x2='21', y2='6')
+                        line(x1='3', y1='18', x2='21', y2='18')
+        h1 #{pageTitleTop}
 
 #navOpen.show-lg
 
 script.
-   depp.require('device', function() {
-      console.info('navJBar')
-      new Navbar('.navJBar') // top
+    depp.require('device', function() {
+        console.info('navJBar')
+        new Navbar('.navJBar') // top
 
-      //toggle
-      $( "#navBarCont" ).click(function() { //side
-         console.info(isOpen)
-         if(isOpen)
-            navClose()
-         else
-            navOpen()
-      })
-   })//ready
+        //toggle
+        $( "#navBarCont" ).click(function() { //side
+            console.info(isOpen)
+            if(isOpen)
+                navClose()
+            else
+                navOpen()
+        })
+    })//ready
 
-   isOpen = false
-   function navOpen() {
-      let $clone= $("#navJBar").clone(true)
-      $clone.removeClass('hide-lg')
-      $('#navOpen').html($clone)
-      new Navbar('#navOpen')
-      $('.navFirst').addClass('open')
-      $('.navFirst').addClass('open-position')
-      isOpen = true
-   }
-   function navClose() {
-      $('#navOpen').empty()
-      $('.navFirst').removeClass('open')
-      $('.navFirst').removeClass('open-position')
-      isOpen = false
-   }
+    isOpen = false
+    function navOpen() {
+        let $clone= $("#navJBar").clone(true)
+        $clone.removeClass('hide-lg')
+        $('#navOpen').html($clone)
+        new Navbar('#navOpen')
+        $('.navFirst').addClass('open')
+        $('.navFirst').addClass('open-position')
+        isOpen = true
+    }
+    function navClose() {
+        $('#navOpen').empty()
+        $('.navFirst').removeClass('open')
+        $('.navFirst').removeClass('open-position')
+        isOpen = false
+    }
 
 //-link(href= 'debug.css', rel='stylesheet')
