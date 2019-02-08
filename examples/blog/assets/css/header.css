@@ -36,4 +36,4 @@ header h1:before{content:'';display:block;height:2px;width:200px;max-width:100%;
 @media (max-width:600px){.navbar-brand{padding-left:0;}
  #logo{font-size:1.2rem;}
  .navJBar li a{font-size:12px;line-height:1.7;}
- .navJBar li li a{font-size:10px;}} /* mB v4.16.06 on 2019-02-08T16:31:18.018Z */
+ .navJBar li li a{font-size:10px;}} /* mB v4.16.06 on 2019-02-08T16:36:12.714Z */
