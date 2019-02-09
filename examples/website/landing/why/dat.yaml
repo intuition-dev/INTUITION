@@ -1,6 +1,6 @@
 basedir: ../../
 
-pretty: true
+pretty: false
 
 title: Why MetaBake?
 image: >-
