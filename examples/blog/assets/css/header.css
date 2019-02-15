@@ -32,8 +32,13 @@ header h1:before{content:'';display:block;height:2px;width:200px;max-width:100%;
  ul.navJBar li > a:after{display:none;}
  ul.navJBar li.open-position > ul{position:static;}
  ul.navJBar > li{float:none;}
- ul.navJBar > li > a{float:none;}}
+ ul.navJBar > li > a{float:none;}
+ header h1{font-size:38px;}
+ header h1:before{margin:0 auto .5rem auto;}}
+@media (max-width:840px){header h1{font-size:28px;}}
 @media (max-width:600px){.navbar-brand{padding-left:0;}
  #logo{font-size:1.2rem;}
  .navJBar li a{font-size:12px;line-height:1.7;}
- .navJBar li li a{font-size:10px;}} /* mB v4.16.09 on 2019-02-15T10:20:41.330Z */
+ .navJBar li li a{font-size:10px;}}
+@media (max-width:480px){header a.logo{font-size:18px;letter-spacing:5px;}
+ header h1{font-size:20px;padding-bottom:.7rem;}} /* mB v4.15.25 on 2019-02-15T12:50:15.837Z */

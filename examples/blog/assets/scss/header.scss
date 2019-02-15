@@ -208,6 +208,19 @@ header {
             }
         }
     }
+
+    header h1 {
+        font-size: 38px;
+        &:before {
+            margin: 0 auto .5rem auto;
+        }
+    }
+}
+
+@media (max-width: 840px) {
+    header h1 {
+        font-size: 28px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -227,6 +240,19 @@ header {
 
         li a {
             font-size: 10px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        a.logo {
+            font-size: 18px;
+            letter-spacing: 5px;
+        }
+        h1 {
+            font-size: 20px;
+            padding-bottom: .7rem;
         }
     }
 }

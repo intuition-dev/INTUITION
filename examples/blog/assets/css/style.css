@@ -16,6 +16,7 @@ body{background:#fff;}
 .line:after{background:#e65740;background:-webkit-gradient(left top,right bottom,color-stop(0%,#e65740),color-stop(20%,#e65740),color-stop(82%,#3AAFA9),color-stop(100%,#3AAFA9));background:linear-gradient(135deg,#e65740 0%,#e65740 20%,#3AAFA9 82%,#3AAFA9 100%);content:"";display:block;height:4px;margin-top:20px;width:70px;}
 .d-flex{display:flex;}
 .img-responsive{max-width:100%;}
+@media (max-width:600px){.container{padding:0 15px;}}
 .blog-preview{margin:0 -15px;}
 .blog-preview .avatar{width:32px;height:32px;}
 .blog-preview .blog-item{padding:0 15px 15px 15px;}
@@ -87,8 +88,11 @@ svg{width:30px;height:30px;}
  .blog-single .author .img,.blog-single .author img{flex-shrink:0;}
  .blog-single .author a,.blog-single .author p{text-align:left;}
  .blog-single .author .name{margin:0;}
- .blog-single .author .avatar{margin:0 1rem 0 0;}}
-@media (max-width:600px){.blog-single .title{font-size:24px;}}
+ .blog-single .author .avatar{margin:0 1rem 0 0;}
+ .blog-single .title{margin:1rem 0;}}
+@media (max-width:600px){.blog .title{font-size:14px;}
+ .blog-single .title{font-size:20px;}}
+@media only screen and (max-width:600px){.blog .share{opacity:1;}}
 @media (max-width:480px){.blog-single .img{max-height:300px;}
  .blog-single .post-title{padding:1rem;}}
 .btn-custom{text-transform:uppercase;border-radius:0;border:0;font-size:12px;min-width:100px;padding:12px 20px;transition:all .2s ease-in-out;display:table;}
@@ -125,4 +129,11 @@ footer .foot-menu-item a{text-transform:uppercase;font-weight:300;letter-spacing
 .footer-1,.footer-2{justify-content:space-between;}
 .footer-2{align-items:flex-end;}
 .footer-1{align-items:center;}
-.foot-logo{text-transform:uppercase;font-size:25px;letter-spacing:2px;font-weight:300;} /* mB v4.16.09 on 2019-02-15T10:20:41.340Z */
+.foot-logo{text-transform:uppercase;font-size:25px;letter-spacing:2px;font-weight:300;}
+@media (max-width:600px){footer .container{min-height:250px;}}
+@media (max-width:480px){.foot-logo{margin-bottom:1rem;font-size:20px;}
+ .footer-1,.footer-2{flex-direction:column;justify-content:flex-start;align-items:flex-start;}
+ footer .foot-menu-item:first-of-type{margin-left:0;}
+ footer .foot-menu-item a{font-size:14px;}
+ footer .copyright{margin-top:1.5rem;order:2;}
+ #router .container{padding-top:1rem;padding-bottom:1rem;}} /* mB v4.15.25 on 2019-02-15T12:50:15.841Z */

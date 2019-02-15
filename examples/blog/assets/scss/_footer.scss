@@ -61,3 +61,41 @@ footer {
     letter-spacing: 2px;
     font-weight: 300;
 }
+
+@media (max-width: 600px) {
+    footer .container {
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .foot-logo {
+        margin-bottom: 1rem;
+        font-size: 20px;
+    }
+    .footer {
+        &-1, &-2 {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+    footer {
+        .foot-menu-item {
+            &:first-of-type {
+                margin-left: 0;
+            }
+            a {
+                font-size: 14px;
+            }
+        }
+        .copyright {
+            margin-top: 1.5rem;
+            order: 2;
+        }
+    }
+    #router .container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}

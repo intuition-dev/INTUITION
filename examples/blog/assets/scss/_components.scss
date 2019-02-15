@@ -405,13 +405,25 @@ svg {
                     margin: 0 1rem 0 0;
                 }
             }
+            .title {
+                margin: 1rem 0;
+            }
         }
     }
 }
 
 @media (max-width: 600px) {
+    .blog .title {
+        font-size: 14px;
+    }
     .blog-single .title {
-        font-size: 24px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .blog .share {
+        opacity: 1;
     }
 }
 

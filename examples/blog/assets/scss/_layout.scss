@@ -43,3 +43,9 @@ body {
 .img-responsive {
     max-width: 100%;
 }
+
+@media (max-width: 600px) {
+    .container {
+        padding: 0 15px;
+    }
+}
