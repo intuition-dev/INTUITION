@@ -1,6 +1,6 @@
 {
   "prefix": "/blog/",
-  "nbVer": "v4.16.06",
+  "nbVer": "v4.16.08",
   "note": "This is statically served and visible publicly.",
   "items": [
     {

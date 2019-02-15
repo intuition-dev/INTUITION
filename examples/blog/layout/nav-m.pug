@@ -1,15 +1,11 @@
-header.flex.edge.delayShowing.header-amp
-   #navbar-brand.white
-      .navbar-brand
-         h3#logo
-            a(href='/') 
-               span Meta
-               | bake
-   .white.nav-menu-wrapper
-      ul#navJBar.navJBar(data-function='navJBar')
-         li.navFirst
-            a.about(href='#') HOME
-         li
-            a.blog(href= ROOT + 'blog') BLOG
-         li
-            a.forum(href= ROOT + 'forum') FORUM
+header.delayShowing
+    .container
+        .header-wrap
+            a.logo(href='/') Acmecorp
+            .menu-wrapper
+                ul#navJBar.hide-lg.navJBar
+                    li.navFirst
+                        a.about(href='/') home
+                    li
+                        a.forum(href= ROOT + 'forum') forum
+        h1 #{pageTitleTop}
