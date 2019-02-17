@@ -1,6 +1,6 @@
-//declare var db1: any
-//declare var validator: any
-//declare var _start: any
+declare var db1: any
+declare var validator: any
+declare var _start: any
 
 class Example1Service { // testable crud and fake flag, heavy work. view-model
 
