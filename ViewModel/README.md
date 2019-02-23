@@ -35,6 +35,7 @@ VM should also do any data validation; returning an empty string if OK or an err
 The purpose of VM is to allow development of View to be faster; and to allow for a demo if back end is b0rked.
 
 The iVM methods should return a Collection|Data Strucutre, collections.js is included in /assets/3rd
+- http://www.collectionsjs.com
 
 ### Advanced
 - The collections.js has events, so you can implement FLUX, but it's not recommended.
