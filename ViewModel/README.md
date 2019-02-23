@@ -38,7 +38,7 @@ The iVM methods should return a Collection|Data Strucutre, collections.js is inc
 - http://www.collectionsjs.com
 
 ### Advanced
-- The collections.js has events, so you can implement FLUX, but it's not recommended.
+- The collections.js has events(via Range-Changes collection), so you could use FLUX, but FLUX is not recommended.
 - You can look at as an ECS(Entity-Component-System), where Entity is the name of the VM, 
 and it must matach the name of the page/screen folder; the componets is the IVM methods that return the Collection|Data Strucutres 
 that map to view, and systems are your CRUD type methods.
