@@ -1,6 +1,8 @@
 <img src="https://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
 
-## ViewModel
+# Your VM must map to the view!
+
+## ViewModel (VM)
 
 You can use any framework or library with Metabake. And MetaBake comes with a recommended 'app framework' for WebApps in 3 lines:
 
@@ -10,7 +12,6 @@ You can use any framework or library with Metabake. And MetaBake comes with a re
          getViewList(name?:string):any 
          getViewForm(name?:string):any 
       }
-
 
 
 This is somewhat similar to KnockOut.js M-VM-V. Major difference is that the VM for MetaBake is
@@ -29,7 +30,19 @@ The goal is to be as flexible as possible. When you have a form, table or chart,
 (if you create includes, tags/components, you should pass the VM to it)
 
 VM also has a dataSourceType: string = 'real'  //real or fake
-The purpose is to allow development of View to be faster; and to allow for a demo if back end is b0rked.
+
+VM should also do any data validation; returning an empty string if OK or an error message.
+The purpose of VM is to allow development of View to be faster; and to allow for a demo if back end is b0rked.
+
+The iVM methods should return a Collection|Data Strucutre, collections.js is included in /assets/3rd
+
+### Advanced
+- The collections.js has events, so you can implement FLUX, but it's not recommended.
+- You can look at as an ECS(Entity-Component-System), where Entity is the name of the VM, 
+and it must matach the name of the page/screen folder; the componets is the IVM methods that return the Collection|Data Strucutres 
+that map to view, and systems are your CRUD type methods.
+eg. ECS: http://archive.is/yRvvG
+
 
 # Other
 
