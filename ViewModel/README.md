@@ -34,13 +34,13 @@ VM also has a dataSourceType: string = 'real'  //real or fake
 VM should also do any data validation; returning an empty string if OK or an error message.
 The purpose of VM is to allow development of View to be faster; and to allow for a demo if back end is b0rked.
 
-The iVM methods should return a Collection|Data Strucutre, collections.js is included in /assets/3rd
+The iVM methods should return a Collection|Data Structure, collections.js is included in /assets/3rd
 - http://www.collectionsjs.com
 
 ### Advanced
 - The collections.js has events(via Range-Changes collection), so you could use FLUX, but FLUX is not recommended.
-- You can look at as an ECS(Entity-Component-System), where Entity is the name of the VM, 
-and it must matach the name of the page/screen folder; the componets is the IVM methods that return the Collection|Data Strucutres 
+- You should favor composition over inheritance. You should even look at VM as an ECS(Entity-Component-System), where Entity is the name of the VM, 
+and it must matach the name of the page/screen folder; the components is the IVM methods that return the Collection|Data Strucutres 
 that map to view, and systems are your CRUD type methods.
 eg. ECS: http://archive.is/yRvvG
 
