@@ -43,6 +43,7 @@ The iVM methods should return a Collection|Data Structure, collections.js is inc
 and it must matach the name of the page/screen folder; the components is the IVM methods that return the Collection|Data Strucutres 
 that map to view, and systems are your CRUD type methods.
 eg. ECS: http://archive.is/yRvvG
+- Services classes should be documented via document.js
 
 
 # Other
