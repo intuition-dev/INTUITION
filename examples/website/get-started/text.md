@@ -1,8 +1,8 @@
 # Get started
 
-MetaBake is the extensible low-code productivity tool that simplifies the process for building great software.
+MetaBake is the extensible LOW-CODE productivity tool that simplifies the process for building great software.
 
-MetaBake mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging low-code pillars for high development productivity.
+MetaBake mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging LOW-CODE pillars for high development productivity.
 
 ## Install
 
