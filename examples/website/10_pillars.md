@@ -15,7 +15,7 @@ How do you lead a team of intelligent VPs, Directors, and managers of
 software development to the next level?
 
 
-I discovered LOW-CODE when I went looking for the next wave of software
+I discovered low-code when I went looking for the next wave of software
 development effectiveness. We have gone through many waves, such as
 mainframes, mini's (like DEC), and data centers. Now, we use cloud
 computing. Worth mentioning, is that when we had data centers, budgets
@@ -30,7 +30,7 @@ productivity jump in software development for almost 10-15 years. If you
 have been developing software for less than 15 years, you may not expect
 a new wave to change everything.
 
-There are many good LOW-CODE tools: Airtable, BettyBlocks, Pega, ServiceNow, OutSystems, Bubble or you can even consider MBaaS tools as well; and even Form builders
+There are many good low-code tools: Airtable, BettyBlocks, Pega, ServiceNow, OutSystems, Bubble or you can even consider MBaaS tools as well; and even Form builders
 
 
 # Solution
@@ -88,12 +88,12 @@ leverage a documented CSS framework.  Also development is iterative.
 Regardless of how anyone feels about it, in this vocation, one must be
 able to master things quickly, and 'forget' older things. So, if O.O. and
 F.P. are over, one must learn the coming (4GL) declarative low-code. One
-example of declarative LOW-CODE is already known by a large percent of
+example of declarative low-code is already known by a large percent of
 NodeJS developers that use NodeJS 'Express' library: It uses Pug instead
 of HTML. Markup is how eBay develops software, using its less popular
 'Marko', that is similar to Pug. If one has never used Pug, it is a bit like a more powerful
 version of something called 'Markdown'; Pug is compatible with PHP,
-Python, etc. The most common way to use declarative LOW-CODE is with
+Python, etc. The most common way to use declarative low-code is with
 static generators, as mentioned above. With that being said, yes, one
 does write dynamic apps and dynamic data binding by utilizing static
 generators. (* There is an article linked from mBake.org to a Medium article regarding dynamic binding.) 
@@ -172,7 +172,7 @@ industry. Answers to questions such as how quickly an org in their industry segm
 developer software, how many pages or screens per day per developer, are
 a few examples on the web. The most important part is knowing one's
 productivity; how many pages or screens, per day per developer are they
-doing? Ideally one compares this number before LOW-CODE and after
+doing? Ideally one compares this number before low-code and after
 low-code pillars, as well as to their operating costs.
 
 (And if you have to use PHP to be productive, than do it)
@@ -180,10 +180,10 @@ low-code pillars, as well as to their operating costs.
 # Get Started
 
 The next wave of development productivity is coming, and we can see that
-it will be low-code. LOW-CODE is the way to create
+it will be low-code. low-code is the way to create
 front-end web and application development.
 
-You can see a LOW-CODE CRUD example here:
+You can see a low-code CRUD example here:
 
 -   https://github.com/MetaBake
 

@@ -4,4 +4,4 @@ MetaBake comes with many features and benefits for various individuals in the te
 
 It offers benefit of interest to new web or software developers, technological officers, lead technologists, vice presidents of engineering departments, and new developers.
 
-The MetaBake LOW-CODE platform allows you to build six to ten times faster than traditional development.
+The MetaBake low-code platform allows you to build six to ten times faster than traditional development.
