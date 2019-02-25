@@ -20,38 +20,19 @@ onDeppLoaded()
 function onDeppLoaded() {
    depp.define({
       'pre': [
-         ROOT + 'assets/css/gridform.css'
-         , '/assets/js/jquery.disableAutoFill.js'
+         ROOT + 'assets/css/gridform.css',
+         ROOT + 'assets/3rd/jquery.disableAutoFill.js',
+         ROOT + 'assets/3rd/collections.js'
       ],
       'css': [
          ROOT + 'assets/css/spectre.css'
          , ROOT + 'assets/css/nav.css'
          , ROOT + 'assets/css/main.css'
          , 'css!https://fonts.googleapis.com/css?family=Open+Sans'
-         , ROOT + 'assets/js/progressbar.min.js'
       ],
-      'chartjs': [
-         'https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js'
-      ],
-      'c3': [
-         'https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css',
-         'https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js',
-         'https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js'
-      ],
-      'nvd3': [
-         'https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.css',
-         'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js',
-         'https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.js'
-      ],
-      'loadModel': [
-         , ROOT + 'assets/models/C3Model.js'
-         , ROOT + 'assets/models/Nvd3Model.js'
-      ],
-      'loadC3Bind': [
-         ROOT + 'screen/c3/C3Bind.js'
-      ],
-      'loadNvd3Bind': [
-         ROOT + 'screen/nvd3/Nvd3Bind.js'
+      'vega': [
+         'https://cdn.jsdelivr.net/npm/vega@4',
+         'https://cdn.jsdelivr.net/npm/vega-embed@3'
       ]
    })//define
    depp.require(['pre'], setup)
@@ -120,6 +101,6 @@ function disE(evtName, msg) {
    dispatchEvent(new CustomEvent(evtName, { detail: msg }))
 }
 // eg
-addEventListener('bla', function(evt) {
+addEventListener('bla', function (evt) {
    console.info(evt.detail)
 })
