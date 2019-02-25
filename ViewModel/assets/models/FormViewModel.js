@@ -1,42 +1,43 @@
-class FormViewModel {
-    constructor() {
+var FormViewModel = (function () {
+    function FormViewModel() {
         this._dataObj = {};
         this.dataSourceType = 'real';
         this.exampleModel = new Example1Service();
     }
-    getViewForm(formName) {
+    FormViewModel.prototype.getViewForm = function (formName) {
         if (this.dataSourceType == 'fake') {
-            let row = { id: 1, col1: " Bob11", col2: "Bob12" };
+            var row = { id: 1, col1: " Bob11", col2: "Bob12" };
             return row;
         }
         return this._dataObj;
-    }
-    read(id) {
-        let _this = this;
+    };
+    FormViewModel.prototype.read = function (id) {
+        var _this = this;
         return Promise.all([this.exampleModel.read(id)])
             .then(function (data) {
             Object.assign(_this._dataObj, data[0]);
         });
-    }
-    add(row, cb) {
+    };
+    FormViewModel.prototype.add = function (row, cb) {
         return this.exampleModel.add(row)
             .then(function () {
             window.location.replace('/screen/example1');
         });
-    }
-    update(row, cb) {
+    };
+    FormViewModel.prototype.update = function (row, cb) {
         return this.exampleModel.update(row, cb)
             .then(function (id) {
             console.log('document with', id, 'was updated');
         });
-    }
-    delete(row) {
+    };
+    FormViewModel.prototype.delete = function (row) {
         this.exampleModel.delete(row)
             .then(function (id) {
             window.location.replace('/screen/example1');
         });
-    }
-    valid(row) {
+    };
+    FormViewModel.prototype.valid = function (row) {
         return this.exampleModel.valid(row);
-    }
-}
+    };
+    return FormViewModel;
+}());
