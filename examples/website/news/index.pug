@@ -3,7 +3,7 @@ extends /layout/layout
 block head2
    //- App Shell
    //- in head, $$$ get for speed
-   script(src=ROOT+ 'news/tag/table-tag.js')
+   script(src=ROOT+ 'news/tag/table-comp.js')
    script.
       axios.get('/news/list.json').then(function(resp) {
          news = resp.data
