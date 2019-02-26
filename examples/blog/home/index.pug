@@ -6,7 +6,7 @@ block head2
    
 block main
    #pagination-container.custom-pagination
-   card-tag
+   card-comp
 
    script.
       axios.get('../blog/items.json').then(function(resp) {
@@ -14,7 +14,7 @@ block main
          blog = resp.data;
          console.info('resp.data --------->', blog);
          
-         const tag = riot.mount('card-tag')[0]; // mount the first tag
+         const tag = riot.mount('card-comp')[0]; // mount the first tag
          console.info('blog.items ------------>', blog.items);
          tag.render(blog.items);
 

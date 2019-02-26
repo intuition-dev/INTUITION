@@ -27,10 +27,10 @@ block head2
 block main
    .pad
       H1.cAccent.line.fBod Press Releases
-      table-tag
+      table-comp
 
    script.
-      const tag = riot.mount('table-tag')[0] // mount the first tag
+      const tag = riot.mount('table-comp')[0] // mount the first tag
       //loadjs.ready('news', function() {
             tag.render(news)
       //})

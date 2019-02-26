@@ -2,11 +2,11 @@ head
 	title #{title}
 body
 	script(src='//cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
-	script(src='tags/first-tag.min.js')
+	script(src='tags/first-comp.min.js')
 	p
 	div
-		first-tag
+		first-comp
 	script.
-		let firstTag = riot.mount('first-tag')[0] // the first tag
+		let firstTag = riot.mount('first-comp')[0] // the first tag
 		firstTag.doSomething(42)
 
