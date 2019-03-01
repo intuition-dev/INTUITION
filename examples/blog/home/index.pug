@@ -2,54 +2,111 @@ extends /layout/layout
 //- App Shell
 
 block head2
-   script(src=ROOT+ 'home/comps/card-comp.js')
+    script(src=ROOT+ 'home/comps/card-comp.js')
    
 block main
-   #pagination-container.custom-pagination
-   card-comp
+    #pagination-container.custom-pagination
+    card-comp
 
-   script.
-      axios.get('../blog/items.json').then(function(resp) {
-         resp.data.items = resp.data.items.filter(item => item.publish1 === true);
-         blog = resp.data;
-         console.info('resp.data --------->', blog);
-         
-         const tag = riot.mount('card-comp')[0]; // mount the first tag
-         console.info('blog.items ------------>', blog.items);
-         tag.render(blog.items);
+    script.
+        function msieversion2() {
 
-         depp.require(['cssJs'], function() {
-            pgContainer =[];
-            pgContCount=-1;
-            setupPg(guessShow(), blog);
-         });
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
 
-         function setupPg(perPage, blog_) {
-            console.info('PG');
-            pgContCount++;
-            console.info('s', pgContCount);
-            pgContainer[pgContCount] = $('#pagination-container');
+            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) { // If Internet Explorer, return version number
 
-            perPage = 3;
+                depp.require(['ie'], function() {
+                
+                    axios.get('../blog/items.json').then(function(resp) {
+                        resp.data.items = resp.data.items.filter(function(item) {
+                            item.publish1 === true;
+                        });
+                        blog = resp.data;
+                        
+                        const tag = riot.mount('card-comp')[0]; // mount the first tag
+                        tag.render(blog.items);
 
-            pgContainer[pgContCount].pagination({
-               className: 'paginationjs-theme-blue',
-               dataSource: blog_,
-               locator: 'items',
-               pageSize: perPage,
-               autoHidePrevious: true,
-               autoHideNext: true,
-               callback: function(data, pagination) {
-                  tag.render(data);
-               }
-            })
+                        depp.require(['cssJs'], function() {
+                            pgContainer =[];
+                            pgContCount=-1;
+                            setupPg(guessShow(), blog);
+                        });
 
-         }//()
+                        function setupPg(perPage, blog_) {
+                            pgContCount++;
+                            pgContainer[pgContCount] = $('#pagination-container');
 
-         function guessShow() {
-            let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9;
-            n = Math.round( n * .7);
-            console.info('g', n);
-            return n;
-         }
-      });
+                            perPage = 3;
+
+                            pgContainer[pgContCount].pagination({
+                                className: 'paginationjs-theme-blue',
+                                dataSource: blog_,
+                                locator: 'items',
+                                pageSize: perPage,
+                                autoHidePrevious: true,
+                                autoHideNext: true,
+                                callback: function(data, pagination) {
+                                    tag.render(data);
+                                }
+                            })
+
+                        }//()
+
+                        function guessShow() {
+                            let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9;
+                            n = Math.round( n * .7);
+                            console.info('g', n);
+                            return n;
+                        }
+                    });
+
+                });
+
+            } else { // If another browser, return 0
+                
+                axios.get('../blog/items.json').then(function(resp) {
+                    resp.data.items = resp.data.items.filter(item => item.publish1 === true);
+                    blog = resp.data;
+                    
+                    const tag = riot.mount('card-comp')[0]; // mount the first tag
+                    tag.render(blog.items);
+
+                    depp.require(['cssJs'], function() {
+                        pgContainer =[];
+                        pgContCount=-1;
+                        setupPg(guessShow(), blog);
+                    });
+
+                    function setupPg(perPage, blog_) {
+                        pgContCount++;
+                        pgContainer[pgContCount] = $('#pagination-container');
+
+                        perPage = 3;
+
+                        pgContainer[pgContCount].pagination({
+                            className: 'paginationjs-theme-blue',
+                            dataSource: blog_,
+                            locator: 'items',
+                            pageSize: perPage,
+                            autoHidePrevious: true,
+                            autoHideNext: true,
+                            callback: function(data, pagination) {
+                                tag.render(data);
+                            }
+                        })
+
+                    }//()
+
+                    function guessShow() {
+                        let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9;
+                        n = Math.round( n * .7);
+                        return n;
+                    }
+                });
+                
+            }
+
+            return false;
+        }
+        msieversion2();
