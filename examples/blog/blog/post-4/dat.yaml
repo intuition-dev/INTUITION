@@ -2,20 +2,14 @@ basedir: ../../
 
 ROOT: '/'
 
+author: 
+  name: Author 1
+  avatar: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrc3NNp59rWqcpvZhhpahLpVGRZOnTxzm4ZonMj4MZbwyLMLZ
 
-
-pageTitleTop: Blog
-pageTitle: Metabake - Blog - Blog Post 1
-
-name: Author 1
-authorDesc: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 title: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-img_url: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We
-avatar: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrc3NNp59rWqcpvZhhpahLpVGRZOnTxzm4ZonMj4MZbwyLMLZ
-category: nature
+image:  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We
+tags: nature
 date: 06.nov.2018
-image: >-
-  https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img(11).jpg
 content_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-comment: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+summary: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 publish: true
