@@ -13,35 +13,16 @@ $(document).ready(function () {
     } else {
         onDeviceReady()
     }
-})
-
-// check if IE browser
-function msieversion() {
-
-    var ua = window.navigator.userAgent;
-    var msie = ua.indexOf("MSIE ");
-
-    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) { // If Internet Explorer, return version number
-        console.info('IE');
-        depp.define({
-            'ie': [
-                'https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js',
-                'https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js'
-            ]
-        });
-        depp.require(['ie']);
-    }
-    else { // If another browser, return 0
-        console.info('not IE');
-    }
-
-    return false;
-}
-msieversion();
+});
 
 depp.define({
+    'ie': [
+        'https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js',
+        'https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js'
+    ],
     'fonts': [
-        'css!https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Lora:400,400i,700,700i'
+        '$ie'
+        ,'css!https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Lora:400,400i,700,700i'
     ],
     'cssJs': [
         '#fonts'
