@@ -18,4 +18,4 @@ image: >-
   https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img(11).jpg
 content_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 comment: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-publish1: true
+publish: true
