@@ -1,8 +1,8 @@
-# Create linux machine, install Caddy with webDAV and mount folder from linux machine to your PC via Mountain Duck 
+# Create linux machine, install Caddy with webDAV and mount folder from linux machine to your PC via Mountain Duck or on another linux machine 
 
 mbake is Cloud v2.0. You do not need to install or maintain any HTTP, DB or any other server.
 
-## Steps
+## Setup Caddy & webDAV for blog source code
 
 1. Setup up a Linux box in the cloud, e.g. [Digital Ocean](www.digitalocean.com).
 
@@ -66,10 +66,8 @@ mbake is Cloud v2.0. You do not need to install or maintain any HTTP, DB or any 
 
         http://157.230.189.157:8080/
 
-1. Install on Mac [Mountain Duck](https://mountainduck.io) you may choose a different _webDAV mount_ software. Mount replaces FTP.
 
-1. In Mountain Duck, create a new `webDAV (HTTP)` connection. Fill the fields for `server` and `username`, `path` -- `/webdav/www` then click `connect`, it will ask for username and password enter the username and password from Caddyfile. The mounted folder will open in Finder. 
-    Now you have mounted folder of your site from linux machine on your local PC and you can edit it.
+## Add CDN for your blog
 
 1. Create an account on [CDN77](https://www.cdn77.com/) if you don't already have one.
 
@@ -78,6 +76,137 @@ mbake is Cloud v2.0. You do not need to install or maintain any HTTP, DB or any 
 1. Go to tab `other settings` and select `cache expiry` -- `10 minutes`, then go to `Purge` tab and `purge all files`. This action is needed to reduce the time of files caching.
 
 1. To verify that the mount is working, you can edit some file and check if changes applied in the browser via the Endpoint URL from your recently created CDN Resource. For the url check tab `Overview` --> `CDN Resource URL` (note that it might pass some time, eg: 5 minutes for changes to apply).
+
+## Mount on another linux machine
+
+1. Setup up a Linux box in the cloud, e.g. [Digital Ocean](www.digitalocean.com).
+
+1. Change the root password for DO linux box. Connect by ssh in terminal. It will ask to enter existing password and then new password:
+
+        $ ssh root@[IP-Address]
+
+1. In CA (assuming that you have an account in CA, done in previous tutorial), connect to the Linux box.
+
+1. In CA, open SSH to the Linux box.
+
+
+We'll be mounting using `davfs2` — a Linux file system driver that allows to mount a WebDAV resource.
+
+1. Install `davfs2`
+
+        ```sh
+        $ cat <<EOF | sudo debconf-set-selections
+        davfs2 davfs2/suid_file boolean false
+        EOF
+        $ sudo apt-get update
+        $ sudo apt install -y davfs2
+        ```
+
+1. Reconfigure `davfs2` to enable to use `davfs` under unprivileged users
+
+        ```sh
+    	$ sudo dpkg-reconfigure davfs2
+        ```
+
+1.  Create a directory: 
+
+        ```sh
+        $ mkdir ~/.davfs2
+        ```
+
+    create file:
+
+        ```sh
+    	$ vim ~/.davfs2/davfs2.conf
+        ```
+
+    with contents:
+
+        ```conf
+        secrets /root/.davfs2/secret
+        ```
+    	// press `a` keyboard button to run edit mode --> edit file --> `esc` --> `:w`(for saving) --> `enter` --> `:q` (to quit the file) --> `enter` 
+
+1. Edit `~/.davfs2/secrets` file to add credentials to remote WebDav diectory:
+
+        ```sh
+    	$ vim ~/.davfs2/secrets
+        ```
+
+    Add a line to the end of file in following style:
+
+        ```conf
+        https://<WebDav URI>   <username> <password>
+        ```
+
+    eg: 
+        ```conf
+        http://157.230.189.157:8080/webdav/www   admin 123123
+        ```
+
+    Set the permission: 
+
+        ```sh
+        $ chmod 600 ~/.davfs2/secrets
+        ```
+
+1. Make a directory in which you'll mount
+
+        ```sh
+        $ mkdir mount
+        ```
+
+    Add a line to `/etc/fstab` about the remote WebDav directory
+
+        ```sh
+    	$ vim /etc/fstab
+        ```
+
+        ```conf
+        https://<WebDav URI> <mount point>
+        davfs user,noauto,file_mode=600,dir_mode=700 0 1
+        ```
+
+    eg:
+        ```conf
+        http://157.230.189.157:8080/webdav/www /root/mount davfs user,noauto,file_mode=600,dir_mode=700 0 1
+        ```
+
+1. Add your user to the davfs2 group
+
+        ```sh
+        // check user:
+        $ whoami
+        $ sudo vim /etc/group
+        ```
+
+    Add your username as follows:
+
+        ```conf
+        davfs2:x:134:<username>
+        ```
+
+    eg:
+
+        ```conf
+        davfs2:x:134:root
+    	```
+
+1. That's it. You can use following commands without being a root user to mount/umount
+
+        ```sh
+        $ mount <mount point>
+        $ umount <mount point>
+        ```
+
+    eg:
+
+        ```sh
+        $ mount /root/mount
+        $ umount /root/mount
+        ```
+
+## Admin CMS deploy (on another linux machine)
 
 1. Create folder for Blog CMS Editor App in your Linux machine terminal in CA and download Blog CMS App to this folder, change `blog-cms` with your own name:
     ```sh
