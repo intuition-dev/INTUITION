@@ -212,7 +212,7 @@ We'll be mounting using `davfs2` — a Linux file system driver that allows to m
     ```sh
     $ mkdir blog-cms
     $ cd blog-cms
-    $ mbakeW -a
+    $ mbakeW -c
     ```
 
 1. The Blog CMS App source code will be downloaded to `blog-cms` folder. Check `README.md` file in the root of `blog-cms` folder for deploy instructions.
