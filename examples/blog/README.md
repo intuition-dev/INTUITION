@@ -206,7 +206,7 @@ We'll be mounting using `davfs2` — a Linux file system driver that allows to m
         $ umount /root/mount
         ```
 
-## Admin CMS deploy (on another linux machine)
+## Admin CMS deploy (on linux box with Caddy and source code of site)
 
 1. Create folder for Blog CMS Editor App in your Linux machine terminal in CA and download Blog CMS App to this folder, change `blog-cms` with your own name:
     ```sh
