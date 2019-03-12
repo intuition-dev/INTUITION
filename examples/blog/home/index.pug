@@ -5,14 +5,11 @@ block head2
     script(src=ROOT+ 'home/comps/card-comp.js')
    
 block main
-    #pagination-container.custom-pagination
-    .left
-        form#srch-form.grid-form
-            fieldset
-                div(data-row-span='1')
-                div(data-field-span='1')
-                    input#srchFld(type='text')
-        button#srchBut.btn Search
+    .columns.navigation-wrap
+        #pagination-container.custom-pagination
+        form#srch-form.grid-form.srch-form
+            input#srchFld(type='text', placeholder='Search for post')
+            button#srchBut.btn.srch-btn
     card-comp
 
     script.
@@ -48,7 +45,10 @@ block main
                     
                     //search
                     fuse = new Fuse(blog.items, srchOptions);
-                    $( "#srchBut" ).click(onSrch);//search
+                    $('#srch-form').submit(function(e) {
+                        e.preventDefault();
+                        onSrch();
+                    });//search
                 });
 
                 function setupPg(perPage, blog_) {
