@@ -1,1 +1,1 @@
-###### Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. {.title}
+###### Cras at lacus varius elit convallis pharetra. Maecenas eget ornare eros. Praesent porttitor suscipit ultricies. Orci varius natoque. {.title}

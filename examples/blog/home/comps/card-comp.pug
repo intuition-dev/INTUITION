@@ -2,32 +2,30 @@
 card-comp
     .blog.columns.blog-preview
         <virtual each={  items}>
-            <virtual if={ publish1}>
-                .blog-item.col-4.col-md-6.col-xs-12
-                    .blog-item__inside(href='{url}')
-                        a.img(href='{url}')
-                            img.img__inside(src="{image}")
-                        .desc
-                            .post-header.d-flex
-                                a(href='#').category { category }
-                                .share
-                                    a.icon-wrap(href='https://www.facebook.com/sharer/sharer.php?u=http://liz-blog-seo-test.s3-website-us-east-1.amazonaws.com/{url}', target='_blank')
-                                        include ./assets/img/svg/fb-share.svg
-                                    a.icon-wrap(href='http://twitter.com/share?url=http://liz-blog-seo-test.s3-website-us-east-1.amazonaws.com/{url}', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0', target='_blank')
-                                        include ./assets/img/svg/twi-share.svg
-                                    a.icon-wrap(href='https://www.pinterest.com/pin/create/button/?url=liz-blog-seo-test.s3-website-us-east-1.amazonaws.com/{url}&media={image}', target='_blank', data-pin-shape='round')    
-                                        include ./assets/img/svg/pin-share.svg
-                            .post-body
-                                h6.title { title }
-                            .post-footer.d-flex
-                                a.avatar(href='{url}')
-                                    img.avatar__inside( src= '{avatar}' )
-                                .d-flex
-                                    a.name(href='{url}') { name }
-                                    .divider /
-                                    time.date { date }
+            .blog-item.col-4.col-md-6.col-xs-12
+                .blog-item__inside(href='{url}')
+                    a.img(href='{url}')
+                        img.img__inside(src="{image}")
+                    .desc
+                        .post-header.d-flex
+                            a(href='#').category { category }
+                            .share
+                                a.icon-wrap(href='https://www.facebook.com/sharer/sharer.php?u=http://liz-blog-seo-test.s3-website-us-east-1.amazonaws.com/{url}', target='_blank')
+                                    include ./assets/img/svg/fb-share.svg
+                                a.icon-wrap(href='http://twitter.com/share?url=http://liz-blog-seo-test.s3-website-us-east-1.amazonaws.com/{url}', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0', target='_blank')
+                                    include ./assets/img/svg/twi-share.svg
+                                a.icon-wrap(href='https://www.pinterest.com/pin/create/button/?url=liz-blog-seo-test.s3-website-us-east-1.amazonaws.com/{url}&media={image}', target='_blank', data-pin-shape='round')    
+                                    include ./assets/img/svg/pin-share.svg
+                        .post-body
+                            h6.title { title }
+                        .post-footer.d-flex
+                            a.avatar(href='{url}')
+                                img.avatar__inside( src= '{avatar}' )
+                            .d-flex
+                                a.name(href='{url}') { name }
+                                .divider /
+                                time.date { date }
 
-            </virtual>
         </virtual>
     br
 

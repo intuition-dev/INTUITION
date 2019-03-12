@@ -6,48 +6,103 @@ block head2
    
 block main
     #pagination-container.custom-pagination
+    .left
+        form#srch-form.grid-form
+            fieldset
+                div(data-row-span='1')
+                div(data-field-span='1')
+                    input#srchFld(type='text')
+        button#srchBut.btn Search
     card-comp
 
     script.
-        axios.get('../blog/items.json').then(function(resp) {
-            resp.data.items = resp.data.items.filter(function(item) {
-                item.publish1 === true;
+        depp.require(['axios'], function() {
+
+            axios.get('../blog/items.json').then(function(resp) {
+                blog = resp.data;
+                
+                var tag = riot.mount('card-comp')[0]; // mount the first tag
+                tag.render(blog.items);
+
+
+                depp.require(['cssJs'], function() {
+
+                    // search
+                    $('#srch-form').disableAutoFill();
+                    const srchOptions = {
+                        shouldSort: true,
+                        threshold: 0.3,
+                        maxPatternLength: 64,
+                        keys: [
+                            "title",
+                            "content_text",
+                            "comment",
+                            "url",
+                            "summary"
+                        ]
+                    }//search
+
+                    pgContainer =[];
+                    pgContCount=-1;
+                    setupPg(guessShow(), blog);
+                    
+                    //search
+                    fuse = new Fuse(blog.items, srchOptions);
+                    $( "#srchBut" ).click(onSrch);//search
+                });
+
+                function setupPg(perPage, blog_) {
+                    pgContCount++;
+                    pgContainer[pgContCount] = $('#pagination-container');
+
+                    perPage = 3;
+
+                    pgContainer[pgContCount].pagination({
+                        className: 'paginationjs-theme-blue',
+                        dataSource: blog_,
+                        locator: 'items',
+                        pageSize: perPage,
+                        autoHidePrevious: true,
+                        autoHideNext: true,
+                        callback: function(data, pagination) {
+                            tag.render(data);
+                        }
+                    })
+
+                }//()
+
+                function guessShow() {
+                    let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9;
+                    n = Math.round( n * .7);
+                    console.info('g', n);
+                    return n;
+                }
+
+                //search
+                function onSrch() {
+                    let s = $( "#srchFld" ).val();
+                    console.log('srch', s);
+                    pgContainer[pgContCount].pagination('disable');
+                    pgContainer[pgContCount].pagination('hide');
+                    pgContainer[pgContCount].pagination('destroy');
+
+                    if(!s || s.length < 1) {
+                        setupPg(guessShow(), blog);
+                        return;
+                    }//fi
+
+                    //else we search
+                    let items = fuse.search(s);
+                    if(!items || items.length < 1) {// not found
+                        tag.render();
+                        return;
+                    }//fi
+
+                    let found = {};
+                    found.items = items;
+                    setupPg(guessShow(), found);
+                }//() search
+
             });
-            blog = resp.data;
-            
-            const tag = riot.mount('card-comp')[0]; // mount the first tag
-            tag.render(blog.items);
 
-            depp.require(['cssJs'], function() {
-                pgContainer =[];
-                pgContCount=-1;
-                setupPg(guessShow(), blog);
-            });
-
-            function setupPg(perPage, blog_) {
-                pgContCount++;
-                pgContainer[pgContCount] = $('#pagination-container');
-
-                perPage = 3;
-
-                pgContainer[pgContCount].pagination({
-                    className: 'paginationjs-theme-blue',
-                    dataSource: blog_,
-                    locator: 'items',
-                    pageSize: perPage,
-                    autoHidePrevious: true,
-                    autoHideNext: true,
-                    callback: function(data, pagination) {
-                        tag.render(data);
-                    }
-                })
-
-            }//()
-
-            function guessShow() {
-                let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9;
-                n = Math.round( n * .7);
-                console.info('g', n);
-                return n;
-            }
         });
