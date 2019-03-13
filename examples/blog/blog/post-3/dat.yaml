@@ -13,4 +13,7 @@ tags: nature
 date: 06.nov.2018
 content_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 summary: Suspendisse mi justo, consectetur vitae purus ac, lobortis auctor leo. Phasellus volutpat lectus hendrerit lectus tempus, vel suscipit nisi luctus. Suspendisse mi justo, consectetur vitae purus ac, lobortis auctor leo. Phasellus volutpat lectus hendrerit lectus tempus, vel suscipit nisi luctus.
+
 publish: true
+publishOrder: 2
+publishDate: 1552480865

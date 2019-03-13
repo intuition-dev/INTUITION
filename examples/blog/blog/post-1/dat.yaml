@@ -13,6 +13,9 @@ tags: nature
 date: 06.nov.2018
 content_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 summary: Quisque faucibus lacinia turpis id fermentum. Sed eu velit massa. Etiam molestie, ante at imperdiet ornare, sapien nulla volutpat nunc. Quisque faucibus lacinia turpis id fermentum. Sed eu velit massa. Etiam molestie, ante at imperdiet ornare, sapien nulla volutpat nunc.
+
 publish: true
+publishOrder: 4
+publishDate: 1552480865
 
 pretty: false
