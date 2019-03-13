@@ -20,9 +20,9 @@ card-comp
                             h6.title { title }
                         .post-footer.d-flex
                             a.avatar(href='{url}')
-                                img.avatar__inside( src= '{avatar}' )
+                                img.avatar__inside( src= '{author.avatar}' )
                             .d-flex
-                                a.name(href='{url}') { name }
+                                a.name(href='{url}') { author.name }
                                 .divider /
                                 time.date { date }
 
