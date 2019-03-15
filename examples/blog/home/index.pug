@@ -17,7 +17,10 @@ block main
 
             axios.get('../blog/items.json').then(function(resp) {
 
-                let items = new Map(resp.data.items);
+                let sortedItems = resp.data.items.sort(function(a, b) {
+                    return (a.publishOrder < b.publishOrder) ? -1 : (a.publishOrder > b.publishOrder) ? 1 : 0;
+                });
+                let items = new List(sortedItems);
                 blog = resp.data;
                 
                 var tag = riot.mount('card-comp')[0]; // mount the first tag
