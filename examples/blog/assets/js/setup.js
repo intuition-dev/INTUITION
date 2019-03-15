@@ -31,6 +31,7 @@ depp.define({
     'axios': [
         '#hasPromise'
         , 'https://unpkg.com/axios@0.18.0/dist/axios.min.js'
+        , ROOT + 'assets/3rd/collections.js'
     ],
     'fonts': [
         '#axios'
@@ -48,7 +49,7 @@ depp.define({
         , 'https://cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
         , 'https://cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
         , 'https://cdn.jsdelivr.net/npm/is_js@0.9.0/is.min.js'
-        , '/assets/js/jquery.disableAutoFill.js'
+        , '/assets/3rd/jquery.disableAutoFill.js'
         , ROOT + 'assets/js/ui.js'
     ]
 })//define
