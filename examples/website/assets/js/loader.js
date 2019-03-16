@@ -9,7 +9,7 @@ depp.define({
    'pre': [
      'https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js'
 
-   , 'https://cdn.jsdelivr.net/npm/is_js@0.9.0/is.min.js'
+   
    , 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.min.js'
    , 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.css'
    , 'https://cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
