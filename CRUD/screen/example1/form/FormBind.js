@@ -40,6 +40,7 @@ class FormBind {
       if(validation=='OK')
          this.viewModel.update(row)
       else  {
+         // do the pop
          console.info('error', validation)
       } //else
    }
