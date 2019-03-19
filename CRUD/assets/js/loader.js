@@ -9,7 +9,7 @@ console.info('phonegap?', window.isphone)
 if (window.isphone) { // //file is a browser
    document.addEventListener("deviceready", onDeviceReady, false)
 } else {
-   document.addEventListener("DOMContentLoaded",  onDeviceReady, false)
+   document.addEventListener("DOMContentLoaded", onDeviceReady, false)
 }
 function onDeviceReady() {
    console.info('deviceready')
@@ -19,31 +19,27 @@ function onDeviceReady() {
 // example event
 function disE(evtName, data, ctx) {
    const msg = {
-         data: data,
-         ctx: ctx
-      }
+      data: data,
+      ctx: ctx
+   }
    dispatchEvent(new CustomEvent(evtName, { detail: msg }))
-} 
+}
 //etg:
-addEventListener('evtName', function(evt) {
+addEventListener('evtName', function (evt) {
    console.info(evt.detail.msg)
 })
 //end example dispatch 
 
 depp.define({
    'pre': [
-        'https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js'
+      'https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js'
 
       , 'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_js/js-offcanvas.pkgd.js'
       , 'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_css/prefixed/js-offcanvas.css'
 
-      , ROOT + 'assets/3rd/gridform.css'
-
+      , ROOT + 'assets/css/gridform.css'
       //, 'https://cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
       //, 'https://cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
-
-      
-
    ]
 
    , 'tabLoaded': ['#pre'
@@ -59,14 +55,14 @@ depp.define({
    ]
 
    , 'css': ['#tabLoaded'
-      , ROOT + 'assets/3rd/spectre.css'
-      , ROOT + 'assets/3rd/nav.css'
+      , ROOT + 'assets/css/spectre.css'
+      , ROOT + 'assets/css/nav.css'
       , ROOT + 'assets/css/main.css'
       , 'css!https://fonts.googleapis.com/css?family=Open+Sans'
    ]
 })//define
 
-depp.require(['pre','deviceready'], onLoaded)
+depp.require(['pre', 'deviceready'], onLoaded)
 
 // ////////////////////////////////////////////////////////////////////]\
 function onLoaded() {
@@ -109,17 +105,17 @@ class BaseAuth {
       });
    }
    sendEmailVerification() {
-       if (!this.isUserIn()) {
-           console.info('sending', auth.currentUser);
-           auth.currentUser.sendEmailVerification();
-       }
-       else
-           console.info('no currentUser');
+      if (!this.isUserIn()) {
+         console.info('sending', auth.currentUser);
+         auth.currentUser.sendEmailVerification();
+      }
+      else
+         console.info('no currentUser');
    }
    isUserIn() {
-       if (!auth.currentUser)
-           return false;
-       return auth.currentUser.emailVerified;
+      if (!auth.currentUser)
+         return false;
+      return auth.currentUser.emailVerified;
    }
 }
 

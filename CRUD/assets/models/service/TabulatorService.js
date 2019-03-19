@@ -1,8 +1,8 @@
-var Example1Service = (function () {
-    function Example1Service() {
+var TabulatorService = (function () {
+    function TabulatorService() {
         this.entityName = 'table_one2';
     }
-    Example1Service.prototype.read = function (id) {
+    TabulatorService.prototype.read = function (id) {
         var _this = this;
         console.info('--reading...', Date.now() - _start);
         var ref = db1.collection(this.entityName);
@@ -33,7 +33,7 @@ var Example1Service = (function () {
             console.info("Error getting documents: ", error);
         });
     };
-    Example1Service.prototype.add = function (row) {
+    TabulatorService.prototype.add = function (row) {
         if (row.id)
             delete row.id;
         var newPK = db1.collection(this.entityName).doc();
@@ -45,7 +45,7 @@ var Example1Service = (function () {
             console.error('oops', error);
         });
     };
-    Example1Service.prototype.update = function (row) {
+    TabulatorService.prototype.update = function (row) {
         console.info(row);
         var id = row['id'];
         console.info(id, row);
@@ -60,7 +60,7 @@ var Example1Service = (function () {
             console.error('oops', error);
         });
     };
-    Example1Service.prototype.delete = function (row) {
+    TabulatorService.prototype.delete = function (row) {
         var id = row['id'];
         var ref = db1.collection(this.entityName).doc(id);
         return ref.delete()
@@ -71,14 +71,5 @@ var Example1Service = (function () {
             console.error('oops', error);
         });
     };
-    Example1Service.prototype.valid = function (row) {
-        var col1 = row['col1'];
-        var col2 = row['col2'];
-        if (validator.isEmpty(col1, { ignore_whitespace: true }))
-            return 'Col1 is blank';
-        if (validator.isEmpty(col2, { ignore_whitespace: true }))
-            return 'Col2 is blank';
-        return 'OK';
-    };
-    return Example1Service;
+    return TabulatorService;
 }());

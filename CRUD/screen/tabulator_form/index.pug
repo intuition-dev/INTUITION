@@ -5,9 +5,6 @@ block main
       .pad
          table#table1.table-custom
 
-      .pad
-         table#table2.table-custom
-
       .buts
          button.btn.btn-primary.float-right#create-new Create new row
    style.
@@ -38,24 +35,24 @@ block main
 
    script.
       depp.define({
-         'exampleBind': [
-            ROOT + 'assets/models/service/Example1Service.js',
-            ROOT + 'assets/models/Example1ViewModel.js',
-            'Example1Bind.js',
+         'TabulatorBind': [
+            ROOT + 'assets/models/service/TabulatorService.js',
+            ROOT + 'assets/models/TabulatorViewModel.js',
+            'TabulatorBind.js',
          ]
       })
 
-      depp.require(['pre','exampleBind'], setupBinding)
+      depp.require(['pre','TabulatorBind'], setupBinding)
 
       function setupBinding() {
          console.info('binding', Date.now() - _start)
 
-         var exampleBind = new Example1Bind()
-         exampleBind.getViewList('table1', 'table2')
+         var tabulatorBind = new TabulatorBind()
+         tabulatorBind.getViewList('table1')
 
          $('#create-new').on('click', function(ev){
             ev.preventDefault()
             sessionStorage.removeItem('id')
-            window.location.replace('/screen/example1/form')
+            window.location.replace('/screen/tabulator_form/form')
          })
       }

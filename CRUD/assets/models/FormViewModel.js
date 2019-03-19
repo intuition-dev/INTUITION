@@ -2,7 +2,7 @@ var FormViewModel = (function () {
     function FormViewModel() {
         this._dataObj = {};
         this.dataSourceType = 'real';
-        this.exampleModel = new Example1Service();
+        this.exampleModel = new TabulatorService();
     }
     FormViewModel.prototype.getViewForm = function (formName) {
         if (this.dataSourceType == 'fake') {
@@ -37,7 +37,13 @@ var FormViewModel = (function () {
         });
     };
     FormViewModel.prototype.valid = function (row) {
-        return this.exampleModel.valid(row);
+        var col1 = row['col1'];
+        var col2 = row['col2'];
+        if (validator.isEmpty(col1, { ignore_whitespace: true }))
+            return 'Col1 is blank';
+        if (validator.isEmpty(col2, { ignore_whitespace: true }))
+            return 'Col2 is blank';
+        return 'OK';
     };
     return FormViewModel;
 }());
