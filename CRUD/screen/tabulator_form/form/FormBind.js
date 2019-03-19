@@ -1,18 +1,18 @@
 
 class FormBind {
 
-   constructor(){
+   constructor() {
       this.form = ''
-      this.id = typeof sessionStorage.getItem('id') !='undefined' && JSON.parse(sessionStorage.getItem('id'))
+      this.id = typeof sessionStorage.getItem('id') != 'undefined' && JSON.parse(sessionStorage.getItem('id'))
       this.viewModel = new FormViewModel()
    }
 
-   init(divId){
+   init(divId) {
       let _this = this
-      this.form = '#'+divId
-      if( this.id !=null){
+      this.form = '#' + divId
+      if (this.id != null) {
          Promise.all([this.viewModel.read(this.id)])
-            .then(function(){
+            .then(function () {
                let data = _this.viewModel.getViewForm('form1')
                console.info("--data:", data)
 
@@ -27,9 +27,9 @@ class FormBind {
       let validation = this.viewModel.valid(row) //do the validation
       console.info("--validation:", validation)
 
-      if(validation=='OK')
+      if (validation == 'OK')
          this.viewModel.add(row)
-      else  {
+      else {
          console.info('error', validation)
       } //else
    }
@@ -37,11 +37,15 @@ class FormBind {
    update(row) {
       let validation = this.viewModel.valid(row) //do the validation
 
-      if(validation=='OK')
+      if (validation == 'OK')
          this.viewModel.update(row)
-      else  {
+      else {
          // do the pop
-         console.info('error', validation)
+         Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: validation,
+         })
       } //else
    }
 
@@ -53,21 +57,21 @@ class FormBind {
    getFields() {
       let lst = {}
       //start w/ pk
-      let input = $(this.form+' [name="id"]')
+      let input = $(this.form + ' [name="id"]')
       lst['id'] = input.val()
 
-      $(this.form+' input').each(
-         function(index){
+      $(this.form + ' input').each(
+         function (index) {
             let input = $(this)
-            lst[ input.attr('name')] = input.val()
+            lst[input.attr('name')] = input.val()
          }//index
       )//each
-      console.info('--lst',lst)
+      console.info('--lst', lst)
       return lst
    }//()
 
 
-   clearFields(){
+   clearFields() {
       sessionStorage.removeItem('id');
       $(this.form).find('input').val('')
    }

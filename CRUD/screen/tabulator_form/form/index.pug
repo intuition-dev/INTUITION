@@ -33,15 +33,15 @@ block main
             ROOT + 'assets/models/service/TabulatorService.js',
             ROOT + 'assets/models/FormViewModel.js',
             'FormBind.js',
+            'https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.min.js',
+            'https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.css',
          ]
       })
       depp.require(['pre','bindLoad'], setupForm)
 
-      var formBind;
-
       function setupForm() {
 
-         formBind = new FormBind()
+         var formBind = new FormBind()
          formBind.init('form1');
 
          $('#clearBut').click(function(){
@@ -53,7 +53,7 @@ block main
             formBind.add(row) //do the validation in .js
          })//click
 
-         $('#updateBut').click(function(){
+         $('#updateBut').click(function(ev){
             let row = formBind.getFields()
             formBind.update(row)
          })//click
