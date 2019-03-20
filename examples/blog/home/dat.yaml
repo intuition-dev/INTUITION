@@ -2,8 +2,7 @@ basedir: ../
 
 ROOT: '/'
 
-pretty: true
-
+pretty: false
 publish1: false
 
 pageTitleTop: Blog
