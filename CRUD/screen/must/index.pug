@@ -7,16 +7,16 @@ block main
          #target
 
    script(id="template" type="x-tmpl-mustache").
-         <ul class="news-container">
-         {{#data}}
-            <li class="news-items">
-               <img class="image" src="{{urlToImage}}" />
-               <span class="title">{{title}}</span>
-               <span class="description">{{description}}</span>
-               <span class="url"><a href="{{url}}">{{url}}</a></span>
-            </li>
-         {{/data}}
-         </ul>
+      <ul class="news-container">
+      {{#data}}
+         <li class="news-items">
+            <img class="image" src="{{urlToImage}}" />
+            <span class="title">{{title}}</span>
+            <span class="description">{{description}}</span>
+            <span class="url"><a href="{{url}}">{{url}}</a></span>
+         </li>
+      {{/data}}
+      </ul>
    
    style.
       .news-container {

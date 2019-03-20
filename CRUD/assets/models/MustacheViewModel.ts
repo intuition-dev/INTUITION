@@ -41,6 +41,7 @@ class MustacheViewModel {
          })
          .then(function (response) {
             _this._data = [].concat(response.articles)
+            console.info("--response.articles:", response)
             return
          })
       //maybe other read methods from a diffrent entity

@@ -26,6 +26,7 @@ var MustacheViewModel = (function () {
         })
             .then(function (response) {
             _this._data = [].concat(response.articles);
+            console.info("--response.articles:", response);
             return;
         });
     };
