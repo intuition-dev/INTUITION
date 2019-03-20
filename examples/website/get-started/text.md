@@ -53,7 +53,7 @@ $ mbake
 and
 
 ```sh
-$ mbakeW
+$ mbakeX
 ```
 
 This will output available commands for downloading starter applications.
