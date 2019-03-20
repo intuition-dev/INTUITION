@@ -30,7 +30,11 @@ class FormBind {
       if (validation == 'OK')
          this.viewModel.add(row)
       else {
-         console.info('error', validation)
+         Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: validation,
+         })
       } //else
    }
 

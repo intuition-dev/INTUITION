@@ -38,6 +38,7 @@ depp.define({
       , 'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_css/prefixed/js-offcanvas.css'
 
       , ROOT + 'assets/css/gridform.css'
+      , ROOT + 'assets/3rd/collections.min.js'
       //, 'https://cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
       //, 'https://cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
    ]
@@ -58,7 +59,7 @@ depp.define({
       , ROOT + 'assets/css/spectre.css'
       , ROOT + 'assets/css/nav.css'
       , ROOT + 'assets/css/main.css'
-      , 'css!https://fonts.googleapis.com/css?family=Open+Sans'
+      , 'css!https://fonts.googleapis.com/css?family=Open+Sans:400,600'
    ]
 })//define
 
