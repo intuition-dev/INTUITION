@@ -2,17 +2,11 @@ extends /layout/layout-amp
 
 block main
    div
-      amp-list(src="https://ampbyexample.com/json/cart.json" layout="fixed-height" height="56")
+      amp-list(src="//localhost:8090/screen/amp-must/data.json" layout="fixed-height" height="56")
          template(type="amp-mustache").
-            <div id="cart">
-               {{#cart_items}}
-                  <div class="cart-item">
-                     <span>{{name}}</span>
-                     <span>{{quantity}}</span>
-                     <span>{{price}}</span>
-                  </div>
-               {{/cart_items}}
-               {{^cart_items}}
-                  <div>Your cart is empty!</div>
-               {{/cart_items}}
+            <div class="news-items">
+               <amp-img class="image" src="{{urlToImage}}" width="200px" height="100px"></amp-img>
+               <span class="title">{{title}}</span>
+               <span class="description">{{description}}</span>
+               <span class="url"><a href="{{url}}">{{url}}</a></span>
             </div>

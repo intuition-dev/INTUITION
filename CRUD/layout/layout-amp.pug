@@ -18,9 +18,34 @@ html('⚡')
                body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
                
       style(amp-custom='').
-         .cart-item {
-            background: #ccc;
+         .news-items {
             padding: 16px;
+            list-style: none;
+         }
+         .news-items .title, .news-items .description {
+            display: block;
+         }
+         
+         .news-items .title {
+            font-weight: 600;
+            color: black;
+            margin-bottom: 8px;
+         }
+         
+         .news-items .description {
+            margin-top: 16px;
+            font-size: 12px;
+         }
+         
+         .news-items .image {
+            width: 100%;
+         }
+         
+         .news-items .url a {
+            padding: 0;
+            font-size: 12px;
+            margin-top: 8px;
+            color: #7b7b7b;
          }
 
    body
