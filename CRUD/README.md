@@ -40,7 +40,7 @@ The iVM methods should return a Collection|Data Structure, collections.js is inc
 ### Advanced
 - The collections.js has events(via Range-Changes collection), so you could use FLUX, but FLUX is not recommended.
 - You should favor composition over inheritance. You should even look at VM as an ECS(Entity-Component-System), where Entity is the name of the VM, 
-and it must matach the name of the page/screen folder; the components is the IVM methods that return the Collection|Data Structures 
+and it must match the name of the page/screen folder; the components is the IVM methods that return the Collection|Data Structures 
 that map to view, and systems are your CRUD type methods.
 eg. ECS: http://archive.is/yRvvG
 - Services classes should be documented via document.js
