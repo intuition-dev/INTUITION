@@ -97,11 +97,11 @@ mbake -i .
 It will create items.json.
 This allows you to fetch that json; and search for content, blog, items, etc.
 
-This is the basics and intro to MetaBake. You can see it helps with html, .js, .css, and json. You can use use these basic features to help you write any webapp.
+This is the basics and intro to MetaBake. You can see it helps with html, .js, .css, and json. You can use these basic features to help you write any webapp.
 
 ## To learn more:
 
-There are many example apps, and shipped templates include include: an CMS module, a watcher, SPA, Blog, Website, Slides, Dashboard, CRUD, PWA, AMP, Electron, Hybrid mobile apps, server-less via AWS | GCP FireStore, RIOTjs, Ads and more. 
+There are many example apps, and shipped templates include: an CMS module, a watcher, SPA, Blog, Website, Slides, Dashboard, CRUD, PWA, AMP, Electron, Hybrid mobile apps, server-less via AWS | GCP FireStore, RIOTjs, Ads and more. 
 
 MetaBake is not static only - it fully supports and has examples, shipped apps, and docs for dynamic and mobile apps; using single code base.
 
