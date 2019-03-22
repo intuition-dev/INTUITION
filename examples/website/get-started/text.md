@@ -66,4 +66,4 @@ $ mbake -s
 
 Examples include an admin module, a watcher module, SPA, Blog, Website, Slides, Dashboard, CRUD, PWA, Electron, Hybrid mobile apps, Cloud v2.0 via AWS|FireStore, RIOTjs and more.
 
-Primary focus is high development productivity (via "low-code") and being easy to learn. But it is also fully flexible to build any WebApp in any directory tree structure you like and use any CSS/SASS framework you like. MetaBake supports CSS classes in Markdown, plus, because it uses Pug - it can also do any HTML layout. But MetaBake is not static only - it fully supports and has examples and docs for dynamic applications.
+Primary focus is high development productivity (via "low-code") and being easy to learn. But it is also fully flexible to build any web-app in any directory tree structure you like and use any CSS/SASS framework you like. MetaBake supports CSS classes in Markdown, plus, because it uses Pug - it can also do any HTML layout. But MetaBake is not static only - it fully supports and has examples and docs for dynamic applications.

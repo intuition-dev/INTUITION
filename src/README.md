@@ -2,7 +2,7 @@
 
 ### MetaBake is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding. 'All my friends KNOW a low-coder'
 
-MetaBake mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging low-code pillars for high developer productivity.
+MetaBake mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging our documented high-productivity pillars for high developer productivity.
 
 ## Install
 
@@ -97,7 +97,7 @@ mbake -i .
 It will create items.json.
 This allows you to fetch that json; and search for content, blog, items, etc.
 
-This is the basics and intro to MetaBake. You can see it helps with html, .js, .css, and json. You can use these basic features to help you write any webapp.
+This is the basics and intro to MetaBake. You can see it helps with html, .js, .css, and json. You can use these basic features to help you write any web-app.
 
 ## To learn more:
 

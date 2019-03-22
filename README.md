@@ -97,7 +97,7 @@ mbake -i .
 It will create items.json.
 This allows you to fetch that json; and search for content, blog, items, etc.
 
-This is the basics and intro to MetaBake. You can see it helps with html, .js, .css, and json. You can use these basic features to help you write any webapp.
+This is the basics and intro to MetaBake. You can see it helps with html, .js, .css, and json. You can use these basic features to help you write any web-app.
 
 ## To learn more:
 
