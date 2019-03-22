@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "5.02.22",
+   "version": "5.03.01",
    "description": "MetaBake is the extensible open source low-code productivity tool for programmers. *All my friends KNOW a low-coder*",
    "main": "mbake.js",
    "scripts": {
@@ -36,7 +36,7 @@
       "axios": ">=0.18.0",
       "beeper": ">=1.1.1",
       "cheerio": ">=1.0.0-rc.2",
-      "chokidar": ">=2.1.4",
+      "chokidar": ">=2.1.5",
       "cli-clear": ">=1.0.4",
       "colors": ">=1.3.3",
       "command-line-args": ">=5.0.2",

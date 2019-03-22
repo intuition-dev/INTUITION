@@ -1,6 +1,22 @@
 <img src="https://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
 
-# Your VM must map to the view!
+Demo: http://youtube.com/watch?v=B-mSA71S7VY
+
+# CRUD Examples
+
+There are four basic examples:
+
+- Table with basic onClick event (tabulator.js)
+- Table with Firestore binding (firestore data biding)
+- Form Validation (validator.js in conjunction with sweetalert2.js)
+- Authentication (firestore authentication)
+
+## Structure explanation based on  "Table with basic onClick event" example
+
+- screen/tabulator/index.pug: View
+- screen/tabulator/TabulatorBind.js: binds TabulatorViewModel.js to the View
+- assets/models/TabulatorViewModel.js: VM(view model) that reflects the View
+
 
 ## CRUD w/ ViewModel (VM) 
 
@@ -56,19 +72,4 @@ eg. ECS: http://archive.is/yRvvG
 
 - all models in assets/models that gets bind in screen/...
 
-Demo: http://youtube.com/watch?v=B-mSA71S7VY
-
-# CRUD Examples
-
-There are four basic examples:
-
-- Table with basic onClick event (tabulator.js)
-- Table with Firestore binding (firestore data biding)
-- Form Validation (validator.js in conjunction with sweetalert2.js)
-- Authentication (firestore authentication)
-
-## Structure explanation based on  "Table with basic onClick event" example
-
-- screen/tabulator/index.pug: View
-- screen/tabulator/TabulatorBind.js: binds TabulatorViewModel.js to the View
-- assets/models/TabulatorViewModel.js: VM(view model) that reflects the View
+Your VM must map to the (pug) View!
