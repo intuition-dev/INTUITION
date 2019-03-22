@@ -2,10 +2,10 @@
 /**
   No reference to entities
  */
-class TabulatorBind {
+class TabulatorFormBind {
 
    constructor() {
-      this.viewModel = new TabulatorViewModel()
+      this.viewModel = new TabulatorFormViewModel()
    }
 
    getViewList(tableID, tableID2) {

@@ -3,6 +3,31 @@ extends /layout/layout
 block main
    div(width="100%")
       .pad
-         h3 Tabulator.js for tables example
+         h3 Tabulator.js
+            span(class="h3_extra") (Simple tabulator example with on click event)
          include list
+   
+   style. 
+      .h3_extra {
+         font-size: 12px;
+         display: inline-block;
+         margin-left: 8px;
+      }
+
+   script.
+      depp.define({
+         'TabulatorBind': [
+            ROOT + 'assets/models/TabulatorViewModel.js',
+            'TabulatorBind.js',
+         ]
+      })
+
+      depp.require(['pre','TabulatorBind'], setupBinding)
+
+      function setupBinding() {
+         console.info('binding', Date.now() - _start)
+
+         var tabulatorBind = new TabulatorBind()
+         tabulatorBind.getViewList('example-table')
+      }
 

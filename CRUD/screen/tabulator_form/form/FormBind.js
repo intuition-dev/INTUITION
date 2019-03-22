@@ -29,6 +29,9 @@ class FormBind {
 
       if (validation == 'OK')
          this.viewModel.add(row)
+            .then(function () {
+               window.location.replace('/screen/tabulator_form')
+            })
       else {
          Swal.fire({
             type: 'error',
@@ -43,6 +46,9 @@ class FormBind {
 
       if (validation == 'OK')
          this.viewModel.update(row)
+            .then(function () {
+               window.location.replace('/screen/tabulator_form')
+            })
       else {
          // do the pop
          Swal.fire({
@@ -55,6 +61,9 @@ class FormBind {
 
    delete(row) {
       this.viewModel.delete(row)
+         .then(function () {
+            window.location.replace('/screen/tabulator_form')
+         })
    }
 
 

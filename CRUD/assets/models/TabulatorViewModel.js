@@ -1,29 +1,26 @@
 var TabulatorViewModel = (function () {
     function TabulatorViewModel() {
         this._data = [];
-        this.dataSourceType = 'real';
-        this.exampleModel = new TabulatorService();
+        this.dataSourceType = 'fake';
     }
     TabulatorViewModel.prototype.getViewList = function (table) {
         switch (table) {
-            case 'table1':
-                if (this.dataSourceType == 'fake') {
-                    var rows = [
-                        { id: 1, col1: " Bob11", col2: "Bob12" },
-                        { id: 2, col1: " Bob21", col2: "Bob22" },
-                        { id: 3, col1: " Bob31", col2: "Bob32" },
-                    ];
-                    return rows;
-                }
+            case 'example-table':
+                console.info("--this._data:", this._data);
                 return this._data;
         }
     };
     TabulatorViewModel.prototype.read = function () {
-        var _this = this;
-        return Promise.all([this.exampleModel.read()])
-            .then(function (data) {
-            _this._data = [].concat(data[0]);
-        });
+        if (this.dataSourceType == 'fake') {
+            var rows = [
+                { id: 1, name: "Oli Bob", age: "12", col: "red", dob: "" },
+                { id: 2, name: "Mary May", age: "1", col: "blue", dob: "14/05/1982" },
+                { id: 3, name: "Christine Lobowski", age: "42", col: "green", dob: "22/05/1982" },
+                { id: 4, name: "Brendon Philips", age: "125", col: "orange", dob: "01/08/1980" },
+                { id: 5, name: "Margret Marmajuke", age: "16", col: "yellow", dob: "31/01/1999" },
+            ];
+            return this._data = [].concat(rows);
+        }
     };
     return TabulatorViewModel;
 }());

@@ -19,22 +19,13 @@ var FormViewModel = (function () {
         });
     };
     FormViewModel.prototype.add = function (row, cb) {
-        return this.exampleModel.add(row)
-            .then(function () {
-            window.location.replace('/screen/example1');
-        });
+        return this.exampleModel.add(row);
     };
     FormViewModel.prototype.update = function (row, cb) {
-        return this.exampleModel.update(row, cb)
-            .then(function (id) {
-            console.log('document with', id, 'was updated');
-        });
+        return this.exampleModel.update(row, cb);
     };
     FormViewModel.prototype.delete = function (row) {
-        this.exampleModel.delete(row)
-            .then(function (id) {
-            window.location.replace('/screen/example1');
-        });
+        return this.exampleModel.delete(row);
     };
     FormViewModel.prototype.valid = function (row) {
         var col1 = row['col1'];

@@ -25,7 +25,9 @@ html
       //- top css layout
       link(src='/assets/3rd/spectreTop.css', rel='stylesheet', type='text/css')
       style.
+         body {font-family: 'Open Sans', sans-serif; margin: 0;}
          .delayShowing { opacity: 0; }
+   
 
 
       script(src="//instant.page/1.2.2", type="module", integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU")
@@ -48,12 +50,11 @@ html
                   h2#navBarHead CRUD App
             .right.white
                .hide-lg
-                  a.btn.btn-link(href= ROOT + 'screen/tabu') Tabu
-                  a.btn.btn-link(href= ROOT + 'screen/tabulator_form') ViewModel CRUD
+                  a.btn.btn-link(href= ROOT + 'screen/tabu') Tabulator
+                  a.btn.btn-link(href= ROOT + 'screen/tabulator_form') Live CRUD
+                  a.btn.btn-link(href= ROOT + 'screen/validation') Validation
                   a.btn.btn-link(href= ROOT + 'screen/auth') Auth
-                  a.btn.btn-link(href= ROOT + 'screen/must') Mustache
-                  a.btn.btn-link(href= ROOT + 'screen/amp-must') AMP-Mustache
-                  a.btn.btn-link(href= ROOT + 'screen/riot-must') RIOT-Mustache
+
 
                a#off-cbut.js-offcanvas-trigger( href='#navOpen')
                   .white
@@ -75,6 +76,7 @@ html
             li.nav-item
                a(href= ROOT + 'screen/tabu') Tabu
                a(href= ROOT + 'screen/live') Live CRUD
+               a(href= ROOT + 'screen/validation') Validation
                a(href= ROOT + 'screen/auth') Auth
 
       script.

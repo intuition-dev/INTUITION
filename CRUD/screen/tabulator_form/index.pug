@@ -3,13 +3,21 @@ extends /layout/layout
 block main
    div(width="100%")
       .pad
+         h3 Tabulator.js
+            span(class="h3_extra") (Tabulator/Firestore)
          table#table1.table-custom
 
-      .buts
-         button.btn.btn-primary.float-right#create-new Create new row
+         .buts
+            button.btn.btn-success.float-right#create-new Create new row
+   
    style.
       .buts button {
          margin: 1rem 0;
+      }
+      .h3_extra {
+         font-size: 12px;
+         display: inline-block;
+         margin-left: 8px;
       }
 
       .table-custom {
@@ -35,20 +43,20 @@ block main
 
    script.
       depp.define({
-         'TabulatorBind': [
+         'TabulatorFormBind': [
             ROOT + 'assets/models/service/TabulatorService.js',
-            ROOT + 'assets/models/TabulatorViewModel.js',
-            'TabulatorBind.js',
+            ROOT + 'assets/models/TabulatorFormViewModel.js',
+            'TabulatorFormBind.js',
          ]
       })
 
-      depp.require(['pre','TabulatorBind'], setupBinding)
+      depp.require(['pre','TabulatorFormBind'], setupBinding)
 
       function setupBinding() {
          console.info('binding', Date.now() - _start)
 
-         var tabulatorBind = new TabulatorBind()
-         tabulatorBind.getViewList('table1')
+         var tabulatorFormBind = new TabulatorFormBind()
+         tabulatorFormBind.getViewList('table1')
 
          $('#create-new').on('click', function(ev){
             ev.preventDefault()
