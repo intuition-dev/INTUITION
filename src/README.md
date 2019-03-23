@@ -5,11 +5,11 @@
 
 ### MetaBake&trade; is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding. 'All my friends KNOW a low-coder'
 
-MetaBake&trade; mbake CLI is a modern way to generate websites and dynamic webapps via low-code to help you achieve high developer productivity without additional effort. MetaBake&trade; open source tool helps you deliver web apps 10X faster with less coding by leveraging our documented high-productivity approaches/pillars. MetaBake&trade; is a simple tool, but can build any type of an app or website, and it allows for gradual adoption. You can start by slowly adopting just a few of its approaches. 
+MetaBake&trade; mbake CLI tool is a modern way to generate websites and dynamic webapps via low-code to help you achieve high developer productivity, without additional effort. MetaBake&trade; open source tool helps you deliver web apps 10X faster with less coding by leveraging our documented high-productivity approaches/pillars. MetaBake&trade; is a simple tool, but can build any type of an app or website, and it allows for gradual adoption. You can start by slowly adopting just a few of its approaches. 
 
 Prerequisites: you should know HTML, CSS an .js - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett. You should also learn Pug, to get started on Pug, watch [Pug (aka Jade) on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
 
-Best way to get started with mbake is to read and practice the docs at http://docs.mbake.org. But here is a taste:
+Best way to get started with mbake is to read and practice the docs full at http://docs.mbake.org. But here is a taste:
 
 
 ## Install
@@ -19,6 +19,7 @@ yarn global add mbake
 mbake
 ```
 
+# MetaBake in 2 Minute:
 
 ## First Page
 
@@ -92,7 +93,16 @@ mbake -t .
 It will create a .js and min.js files.
 
 
----
+## Watcher
+
+There are many extra's, one is a watcher. This will watch the current folder and refresh the browser:
+
+```sh
+mbakeX -W .
+```
+
+----
+
 
 ## Itemize (eg Blog)
 So far you created all files in folder called one. Now lets create a file above folder one.
@@ -111,6 +121,8 @@ It will create items.json.
 This allows you to fetch that json; and search for content, blog, items, etc.
 
 This is the basics and intro to MetaBake&trade;. You can see it helps with html, .js, .css, and json. You can use these basic features to help you write any web-app.
+
+---
 
 ## To learn more:
 
