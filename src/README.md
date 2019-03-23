@@ -87,9 +87,9 @@ It will create a css file with auto-prefixes.
 
 ## TypeScript
 
-If you write a ts file, like foo.ts:
+TypeScript is supper-set of JavaScript. Write a ts file, like foo.ts:
 ```ts
-foo(i:nubmer) {
+foo(i:number) {
     console.log('oh hi')
 }
 ```
@@ -97,8 +97,10 @@ and run
 ```sh
 mbake -t .
 ```
-It will create a .js and min.js files.
+It will create a .js and min.js files. It will output ES5 to support IE11, so feel free to use class { } syntax. 
+If there is no .ts, than it will simply slightly mimifify js files into min.js (but no ES5 conversion).
 
+----
 
 ## Watcher
 
