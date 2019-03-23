@@ -187,7 +187,7 @@ You can see a low-code CRUD example here:
 
 -   https://github.com/MetaBake
 
-You can run it by installing MetaBake from
+You can run it by installing MetaBake&trade; from
 here:
 
 -   https://www.staticgen.com/MetaBake

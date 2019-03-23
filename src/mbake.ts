@@ -36,7 +36,6 @@ function version () {
    console.info('  For a starter website:                                           mbake -w')
    console.info('  For a starter blog|items:                                        mbake -b')
 
-   console.info('  For a starter dash web app:                                      mbake -d')
    console.info('  For an example dynamic web app CRUD:                             mbake -u')
 
    console.info()
@@ -57,7 +56,6 @@ const optionDefinitions = [
    { name: 'MinJS', alias: 't', type: Boolean },
 
    { name: 'blog', alias: 'b', type: Boolean },
-   { name: 'dash', alias: 'd', type: Boolean },
 
    { name: 'website', alias: 'w', type: Boolean },
    { name: 'CRUD', alias: 'u', type: Boolean },
@@ -88,13 +86,6 @@ function unzipB () {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
    console.info('Extracted a starter blog app to ./blog')
-   process.exit()
-}
-function unzipD () {
-   let src: string = __dirname + '/dash.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted an starter Dash web app to ./dash')
    process.exit()
 }
 
@@ -147,8 +138,6 @@ else if (argsParsed.css)
    css(arg)
 else if (argsParsed.blog)
    unzipB()
-else if (argsParsed.dash)
-   unzipD()
 else if (argsParsed.CRUD)
    unzipCRUD()
 else if (argsParsed.website)

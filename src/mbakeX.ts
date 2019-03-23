@@ -34,8 +34,9 @@ function version () {
    console.info()
    console.info(' Starters:')
    console.info('  For a starter baseCMS :                                           mbakeX -m')
+   console.info('  For a starter dash web-app:                                       mbakeX -d')
 
-   console.info('  For example slides markdown:                                      mbakeX -d')
+   console.info('  For example slides markdown:                                      mbakeX -k')
 
    console.info('  For a Electron(pre-PhoneGap) app:                                 mbakeX -e')
    console.info('  For a starter hybrid Phonegap app:                                mbakeX -o')
@@ -55,6 +56,7 @@ const optionDefinitions = [
 
    { name: 'watcher', alias: 'w', type: Boolean },
    { name: 'comps', alias: 'c', type: Boolean },
+   { name: 'dash', alias: 'd', type: Boolean },
 
    { name: 'map', alias: 'p', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
@@ -66,7 +68,7 @@ const optionDefinitions = [
    { name: 'phonegap', alias: 'o', type: Boolean },
    { name: 'elect', alias: 'e', type: Boolean },
    { name: 'ad', alias: 'a', type: Boolean },
-   { name: 'slides', alias: 'd', type: Boolean },
+   { name: 'slides', alias: 'k', type: Boolean },
 ]
 
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -111,7 +113,13 @@ function unzipL () {
    console.info('Extracted example of markdown slides to ./slidesEx')
    process.exit()
 }
-
+function unzipH () {
+   let src: string = __dirname + '/dash.zip'
+   let zip = new AdmZip(src)
+   zip.extractAllTo(cwd, /*overwrite*/true)
+   console.info('Extracted an starter Dash web app to ./dash')
+   process.exit()
+}
 
 //  ////////////////////////////////////////////////////////////////////////////////////////////////
 function csv2Json (arg) {
@@ -182,6 +190,8 @@ else if (argsParsed.img) {
 else if (argsParsed.SFTP) {
    sft(arg)
 }
+else if (argsParsed.dash)
+   unzipH()
 else if (argsParsed.map)
    map(arg)
 else if (argsParsed.slides)

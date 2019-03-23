@@ -20,7 +20,7 @@ There are four basic examples:
 
 ## CRUD w/ ViewModel (VM) 
 
-You can use any framework or library with Metabake. And MetaBake comes with a recommended 'app framework' for WebApps in 3 lines:
+You can use any framework or library with MetaBake&trade;. And MetaBake&trade; comes with a recommended 'app framework' for WebApps in 3 lines:
 
 
       interface iVM {
@@ -30,9 +30,9 @@ You can use any framework or library with Metabake. And MetaBake comes with a re
       }
 
 
-This is somewhat similar to M-VM-V. Major difference is that the VM for MetaBake is
+This is somewhat similar to M-VM-V. Major difference is that the VM for MetaBake&trade; is
 what KnockOut called Complex VM or a Master VM.
-Minor difference is that the M is called Services in MetaBake. (and V is Pug for us). So this is S-VM-V architecture.
+Minor difference is that the M is called Services in MetaBake&trade;. (and V is Pug for us). So this is S-VM-V architecture.
 
 Since it is an interface and .js has no interfaces it is just to guide you: When you write a Model, it must map to the View(the entire Pug page|screen, that has *state* via query string, eg: &cust=102).
 So how to use:

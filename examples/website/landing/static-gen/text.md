@@ -1,7 +1,7 @@
 
 There are many good static gen offerings. Hugo, Pelican, Jekyll, etc.
 
-MetaBake (mBake):
+MetaBake&trade; (mBake):
 - Use Pug, .md (markdown)
 - Can use *ANY* layout or CSS framework
 - Handles dynamic data, eg: Google FireStore.

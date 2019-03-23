@@ -1,8 +1,8 @@
 <img src="https://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
 
-### MetaBake is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding. 'All my friends KNOW a low-coder'
+### MetaBake&trade; is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding. 'All my friends KNOW a low-coder'
 
-MetaBake mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging our documented high-productivity pillars for high developer productivity.
+MetaBake&trade; mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging our documented high-productivity pillars for high developer productivity.
 
 ## Install
 
@@ -33,7 +33,7 @@ mbake .
 
 This will create index.html. 
 
-Of course you can use regular Pug syntax to include other Pug files; or Markdown. (MetaBake markdown flavor includes CSS support):
+Of course you can use regular Pug syntax to include other Pug files; or Markdown. (MetaBake&trade; markdown flavor includes CSS support):
 ```pug
     body
         div
@@ -97,13 +97,13 @@ mbake -i .
 It will create items.json.
 This allows you to fetch that json; and search for content, blog, items, etc.
 
-This is the basics and intro to MetaBake. You can see it helps with html, .js, .css, and json. You can use these basic features to help you write any web-app.
+This is the basics and intro to MetaBake&trade;. You can see it helps with html, .js, .css, and json. You can use these basic features to help you write any web-app.
 
 ## To learn more:
 
 There are many example apps, and shipped templates include: an CMS module, a watcher, SPA, Blog, Website, Slides, Dashboard, CRUD, PWA, AMP, Electron, Hybrid mobile apps, server-less via AWS | GCP FireStore, RIOTjs, Ads and more. 
 
-MetaBake is not static only - it fully supports and has examples, shipped apps, and docs for dynamic and mobile apps; using single code base.
+MetaBake&trade; is not static only - it fully supports and has examples, shipped apps, and docs for dynamic and mobile apps; using single code base.
 
 - Click for mBake Docs: [docs.mBake.org](http://docs.mBake.org)
 - [git.mBake.org](http://git.mBake.org)
