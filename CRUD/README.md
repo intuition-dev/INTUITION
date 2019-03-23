@@ -73,3 +73,9 @@ eg. ECS: http://archive.is/yRvvG
 - all models in assets/models that gets bind in screen/...
 
 Your VM must map to the (pug) View!
+
+
+
+## Continue
+
+Please remember to continue your tutorial
