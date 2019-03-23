@@ -4,9 +4,9 @@
  *
  * @license MIT
  * @version 1.2.3
- * @author  Terry, https://github.com/terrylinooo/
+ * @author  Terry, http://github.com/terrylinooo/
  * @updated 2018-08-01
- * @link    https://github.com/terrylinooo/jquery.disableAutoFill
+ * @link    http://github.com/terrylinooo/jquery.disableAutoFill
  */
 
 (function($) {

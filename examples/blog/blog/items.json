@@ -6,10 +6,10 @@
     {
       "author": {
         "name": "Author 1",
-        "avatar": "https://cdn5.vectorstock.com/i/1000x1000/73/04/female-avatar-profile-icon-round-woman-face-vector-18307304.jpg"
+        "avatar": "//cdn5.vectorstock.com/i/1000x1000/73/04/female-avatar-profile-icon-round-woman-face-vector-18307304.jpg"
       },
       "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We",
+      "image": "http://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We",
       "tags": "nature",
       "date": "06.nov.2018",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
@@ -21,12 +21,12 @@
     {
       "author": {
         "name": "Author 2",
-        "avatar": "https://cdn1.vectorstock.com/i/1000x1000/72/90/female-avatar-profile-icon-round-woman-face-vector-18307290.jpg"
+        "avatar": "//cdn1.vectorstock.com/i/1000x1000/72/90/female-avatar-profile-icon-round-woman-face-vector-18307290.jpg"
       },
       "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "tags": "sport",
       "date": "06.nov.2018",
-      "image": "https://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg",
+      "image": "http://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
       "summary": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "url": "post-2",
@@ -36,10 +36,10 @@
     {
       "author": {
         "name": "Author 2",
-        "avatar": "https://cdn1.vectorstock.com/i/1000x1000/35/25/woman-avatar-isolated-faceless-female-cartoon-vector-21453525.jpg"
+        "avatar": "//cdn1.vectorstock.com/i/1000x1000/35/25/woman-avatar-isolated-faceless-female-cartoon-vector-21453525.jpg"
       },
       "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We",
+      "image": "http://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We",
       "tags": "nature",
       "date": "06.nov.2018",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
@@ -51,10 +51,10 @@
     {
       "author": {
         "name": "Author 1",
-        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrc3NNp59rWqcpvZhhpahLpVGRZOnTxzm4ZonMj4MZbwyLMLZ"
+        "avatar": "http://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrc3NNp59rWqcpvZhhpahLpVGRZOnTxzm4ZonMj4MZbwyLMLZ"
       },
       "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We",
+      "image": "http://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We",
       "tags": "nature",
       "date": "06.nov.2018",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",

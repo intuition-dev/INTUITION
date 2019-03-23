@@ -8,7 +8,7 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 sdfwef
 
-[LinkedIn](https://www.linkedin.com/in/vic-c/)
+[LinkedIn](http://www.linkedin.com/in/vic-c/)
 
 
-[//]: # (https://github.com/arve0/markdown-it-attrs)
+[//]: # (http://github.com/arve0/markdown-it-attrs)

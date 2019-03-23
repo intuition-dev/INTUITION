@@ -3,7 +3,7 @@ $(document).ready(function () {
     // are we running in native app or in a browser?
     window.isphone = false
     if (document.URL.indexOf("http://") === -1
-        && document.URL.indexOf("https://") === -1) {
+        && document.URL.indexOf("http://") === -1) {
         window.isphone = true
     }
 
@@ -19,8 +19,8 @@ $(document).ready(function () {
 if (!window.Promise) {
     depp.define({
         'hasPromise': [
-            'https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js',
-            'https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js'
+            '//cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js',
+            '//cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js'
         ]
     });
 } else  {
@@ -30,24 +30,24 @@ if (!window.Promise) {
 depp.define({
     'axios': [
         '#hasPromise'
-        , 'https://unpkg.com/axios@0.18.0/dist/axios.min.js'
+        , '//unpkg.com/axios@0.18.0/dist/axios.min.js'
         , ROOT + 'assets/3rd/collections.js'
     ],
     'fonts': [
         '#axios'
-        , 'css!https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Lora:400,400i,700,700i'
+        , 'css!//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Lora:400,400i,700,700i'
     ],
     'cssJs': [
         '#fonts',
         ROOT + 'assets/css/style.css'
         
-        , 'https://cdn.jsdelivr.net/npm/fuse.js@3.3.0/dist/fuse.min.js'
+        , '//cdn.jsdelivr.net/npm/fuse.js@3.3.0/dist/fuse.min.js'
         
-        , 'https://cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.min.js'
-        , 'https://cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.css'
+        , '//cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.min.js'
+        , '//cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.css'
         
-        , 'https://cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
-        , 'https://cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
+        , '//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
+        , '//cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
         
         , '/assets/3rd/jquery.disableAutoFill.js'
         , ROOT + 'assets/js/ui.js'

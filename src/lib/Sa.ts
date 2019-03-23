@@ -261,7 +261,7 @@ export class MinJS {//es5
 
    }//options
 
-   compile (fileNames: string[], options: ts.CompilerOptions): void { //https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
+   compile (fileNames: string[], options: ts.CompilerOptions): void { //http://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
       let program = ts.createProgram(fileNames, options);
       let emitResult = program.emit();
 

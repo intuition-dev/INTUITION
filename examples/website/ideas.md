@@ -1,18 +1,18 @@
 
-https://www.marksmen.com/why-marksmen/#ourcustomers
+http://www.marksmen.com/why-marksmen/#ourcustomers
 
-https://enterprise.liquidsky.com/technology.html
+http://enterprise.liquidsky.com/technology.html
 
-https://www.brookfield.com
+http://www.brookfield.com
 
-https://www.wildfirepr.com
+http://www.wildfirepr.com
 
-https://sproutsend.com
+http://sproutsend.com
 
-https://www.wpengine.com
+http://www.wpengine.com
 
-https://code83.com
+http://code83.com
 
 http://kickass.partners/studies.html
 
-https://www.kony.com/solutions/mbaas/
+http://www.kony.com/solutions/mbaas/

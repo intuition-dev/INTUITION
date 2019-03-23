@@ -7,7 +7,7 @@ var Shim = require("./shim");
 var GenericCollection = require("./generic-collection");
 var GenericMap = require("./generic-map");
 
-// Burgled from https://github.com/domenic/dict
+// Burgled from http://github.com/domenic/dict
 
 module.exports = Dict;
 function Dict(values, getDefault) {
@@ -1446,7 +1446,7 @@ var Dict = require("./_dict");
 var PropertyChanges = require("./listen/property-changes");
 var MapChanges = require("./listen/map-changes");
 
-// Burgled from https://github.com/domenic/dict
+// Burgled from http://github.com/domenic/dict
 
 module.exports = Dict;
 Object.addEach(Dict.prototype, PropertyChanges.prototype);
@@ -2834,7 +2834,7 @@ List.prototype.reverse = function () {
 /*
     Copyright (c) 2016, Montage Studio Inc. All Rights Reserved.
     3-Clause BSD License
-    https://github.com/montagejs/montage/blob/master/LICENSE.md
+    http://github.com/montagejs/montage/blob/master/LICENSE.md
 */
 
 var Map = require("../_map");
@@ -3242,7 +3242,7 @@ MapChanges.prototype.dispatchBeforeMapChange = function (key, value) {
     Based in part on observable arrays from Motorola Mobility’s Montage
     Copyright (c) 2012, Motorola Mobility LLC. All Rights Reserved.
     3-Clause BSD License
-    https://github.com/motorola-mobility/montage/blob/master/LICENSE.md
+    http://github.com/motorola-mobility/montage/blob/master/LICENSE.md
 */
 
 /*
@@ -4549,7 +4549,7 @@ function setupCollectionSet() {
     Based in part on extras from Motorola Mobility’s Montage
     Copyright (c) 2012, Motorola Mobility LLC. All Rights Reserved.
     3-Clause BSD License
-    https://github.com/motorola-mobility/montage/blob/master/LICENSE.md
+    http://github.com/motorola-mobility/montage/blob/master/LICENSE.md
 */
 
 var Function = require("./shim-function");
@@ -4677,8 +4677,8 @@ define("deleteAll", function (value, equals) {
     return count;
 });
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-// https://tc39.github.io/ecma262/#sec-array.prototype.find
+// http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+// http://tc39.github.io/ecma262/#sec-array.prototype.find
 if (!Array.prototype.find) {
     define("find", function(predicate) {
         // 1. Let O be ? ToObject(this value).
@@ -5074,7 +5074,7 @@ module.exports = Object;
     Based in part on extras from Motorola Mobility’s Montage
     Copyright (c) 2012, Motorola Mobility LLC. All Rights Reserved.
     3-Clause BSD License
-    https://github.com/motorola-mobility/montage/blob/master/LICENSE.md
+    http://github.com/motorola-mobility/montage/blob/master/LICENSE.md
 */
 
 /**
@@ -6601,7 +6601,7 @@ SortedSet.prototype.swap = function (start, length, plus) {
 // Binary Search Trees" by Sleator and Tarjan. Guarantees that root.value
 // equals value if value exists. If value does not exist, then root will be
 // the node whose value either immediately preceeds or immediately follows value.
-// - as described in https://github.com/hij1nx/forest
+// - as described in http://github.com/hij1nx/forest
 SortedSet.prototype.splay = function (value) {
     var stub, left, right, temp, root, history;
 
@@ -7405,7 +7405,7 @@ module.exports = (typeof WeakMap !== 'undefined') ? WeakMap : require("weak-map"
     // * It is much faster in a performance critical place
     // * It avoids relying on Object.create(null), which had been
     //   problematic on Chrome 28.0.1480.0. See
-    //   https://code.google.com/p/google-caja/issues/detail?id=1687
+    //   http://code.google.com/p/google-caja/issues/detail?id=1687
     hiddenRecord = { key: key };
 
     // When using this WeakMap emulation on platforms where

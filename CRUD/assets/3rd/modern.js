@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.6.0
- * Build https://modernizr.com/download?-csscalc-customevent-fetch-promises-setclasses-dontmin
+ * Build http://modernizr.com/download?-csscalc-customevent-fetch-promises-setclasses-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -92,10 +92,10 @@
    "authors": ["Alberto Elias"],
    "notes": [{
      "name": "W3C DOM reference",
-     "href": "https://www.w3.org/TR/DOM-Level-3-Events/#interface-CustomEvent"
+     "href": "http://www.w3.org/TR/DOM-Level-3-Events/#interface-CustomEvent"
    }, {
      "name": "MDN documentation",
-     "href": "https://developer.mozilla.org/en/docs/Web/API/CustomEvent"
+     "href": "http://developer.mozilla.org/en/docs/Web/API/CustomEvent"
    }],
    "polyfills": ["eventlistener"]
  }
@@ -118,10 +118,10 @@
    "tags": ["es6"],
    "notes": [{
      "name": "The ES6 promises spec",
-     "href": "https://github.com/domenic/promises-unwrapping"
+     "href": "http://github.com/domenic/promises-unwrapping"
    },{
      "name": "Chromium dashboard - ES6 Promises",
-     "href": "https://www.chromestatus.com/features/5681726336532480"
+     "href": "http://www.chromestatus.com/features/5681726336532480"
    },{
      "name": "JavaScript Promises: There and back again - HTML5 Rocks",
      "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
@@ -157,7 +157,7 @@
    "caniuse": "fetch",
    "notes": [{
      "name": "Fetch Living Standard",
-     "href": "https://fetch.spec.whatwg.org/"
+     "href": "http://fetch.spec.whatwg.org/"
    }],
    "polyfills": ["fetch"]
  }

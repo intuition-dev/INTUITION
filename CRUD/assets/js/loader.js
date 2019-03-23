@@ -1,7 +1,7 @@
 
 window.isphone = false
 if (document.URL.indexOf("http://") === -1
-   && document.URL.indexOf("https://") === -1) {
+   && document.URL.indexOf("http://") === -1) {
    window.isphone = true
 }
 
@@ -32,34 +32,34 @@ addEventListener('evtName', function (evt) {
 
 depp.define({
    'pre': [
-      'https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js'
+      '//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js'
 
-      , 'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_js/js-offcanvas.pkgd.js'
-      , 'https://cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_css/prefixed/js-offcanvas.css'
+      , '//cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_js/js-offcanvas.pkgd.js'
+      , '//cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_css/prefixed/js-offcanvas.css'
 
       , ROOT + 'assets/css/gridform.css'
       , ROOT + 'assets/3rd/collections.min.js'
-      //, 'https://cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
-      //, 'https://cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
+      //, '//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
+      //, '//cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
    ]
 
    , 'tabLoaded': ['#pre'
-      , 'https://cdn.jsdelivr.net/npm/validator@10.9.0/validator.min.js'
-      , 'https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.css'
-      , 'https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.min.js'
+      , '//cdn.jsdelivr.net/npm/validator@10.9.0/validator.min.js'
+      , '//cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.css'
+      , '//cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.min.js'
 
       , ROOT + 'assets/3rd/jquery.disableAutoFill.js'
 
-      , 'https://cdn.jsdelivr.net/npm/tabulator-tables@4.1.3/dist/js/tabulator.min.js'
-      , 'https://cdn.jsdelivr.net/npm/tabulator-tables@4.1.3/dist/css/tabulator.min.css'
-      , 'https://cdn.jsdelivr.net/npm/tabulator-tables@4.1.3/dist/css/tabulator_simple.min.css'
+      , '//cdn.jsdelivr.net/npm/tabulator-tables@4.1.3/dist/js/tabulator.min.js'
+      , '//cdn.jsdelivr.net/npm/tabulator-tables@4.1.3/dist/css/tabulator.min.css'
+      , '//cdn.jsdelivr.net/npm/tabulator-tables@4.1.3/dist/css/tabulator_simple.min.css'
    ]
 
    , 'css': ['#tabLoaded'
       , ROOT + 'assets/css/spectre.css'
       , ROOT + 'assets/css/nav.css'
       , ROOT + 'assets/css/main.css'
-      , 'css!https://fonts.googleapis.com/css?family=Open+Sans:400,600'
+      , 'css!//fonts.googleapis.com/css?family=Open+Sans:400,600'
    ]
 })//define
 

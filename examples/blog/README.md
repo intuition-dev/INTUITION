@@ -10,7 +10,7 @@ mbake is Cloud v2.0. You do not need to install or maintain any HTTP, DB or any 
 
         $ ssh root@[IP-Address]
 
-1. Setup a Web IDE account, e.g. [CodeAnywhere](https://codeanywhere.com) online text editor (hereafter CA)
+1. Setup a Web IDE account, e.g. [CodeAnywhere](http://codeanywhere.com) online text editor (hereafter CA)
 
 1. In CA, connect to the Linux box.
 
@@ -20,7 +20,7 @@ mbake is Cloud v2.0. You do not need to install or maintain any HTTP, DB or any 
 
 1. On Linux machine, install Caddy with webDAV plugin, eg:
 
-        $ curl https://getcaddy.com | bash -s personal http.webdav
+        $ curl http://getcaddy.com | bash -s personal http.webdav
 
 1. Add `Caddyfile` to the root folder and config it, eg:
 
@@ -69,9 +69,9 @@ mbake is Cloud v2.0. You do not need to install or maintain any HTTP, DB or any 
 
 ## Add CDN for your blog
 
-1. Create an account on [CDN77](https://www.cdn77.com/) if you don't already have one.
+1. Create an account on [CDN77](http://www.cdn77.com/) if you don't already have one.
 
-1. Go to [CDN 77](https://client.cdn77.com) and create a resource for your linux machine: select `My Origin`, select `http://` and in the `domain` field type in the ip address of your linux machine and specify the port (8080 in our case)
+1. Go to [CDN 77](http://client.cdn77.com) and create a resource for your linux machine: select `My Origin`, select `http://` and in the `domain` field type in the ip address of your linux machine and specify the port (8080 in our case)
 
 1. Go to tab `other settings` and select `cache expiry` -- `10 minutes`, then go to `Purge` tab and `purge all files`. This action is needed to reduce the time of files caching.
 
@@ -136,7 +136,7 @@ We'll be mounting using `davfs2` — a Linux file system driver that allows to m
     Add a line to the end of file in following style:
 
         ```conf
-        https://<WebDav URI>   <username> <password>
+        http://<WebDav URI>   <username> <password>
         ```
 
     eg: 
@@ -163,7 +163,7 @@ We'll be mounting using `davfs2` — a Linux file system driver that allows to m
         ```
 
         ```conf
-        https://<WebDav URI> <mount point>
+        http://<WebDav URI> <mount point>
         davfs user,noauto,file_mode=600,dir_mode=700 0 1
         ```
 

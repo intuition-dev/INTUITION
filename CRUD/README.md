@@ -1,4 +1,4 @@
-<img src="https://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
+<img src="http://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
 
 Demo: http://youtube.com/watch?v=B-mSA71S7VY
 
@@ -61,7 +61,7 @@ that map to view, and systems are your CRUD type methods.
 eg. ECS: http://archive.is/yRvvG
 - Services classes should be documented via document.js
 - If an event bus is needed by the view, you can use browsers's built in Custom Events to wire VM, binding, screen and components. 
-- If you want to do testing, you test VM (not the View; test the ViewModel, eg. via: https://qunitjs.com )
+- If you want to do testing, you test VM (not the View; test the ViewModel, eg. via: http://qunitjs.com )
 
 # Other
 

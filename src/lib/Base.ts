@@ -299,7 +299,7 @@ export class BakeWrk {
       return html
    }
 
-   //https://github.com/kangax/html-minifier/issues/843
+   //http://github.com/kangax/html-minifier/issues/843
    static minify_es6 (text, inline) {
       var uglifyEsOptions = {
          parse: { bare_returns: {} },

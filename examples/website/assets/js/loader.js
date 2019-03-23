@@ -7,23 +7,23 @@ function onDeviceReady() {
 
 depp.define({
    'pre': [
-     'https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js'
+     '//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js'
 
    
-   , 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.min.js'
-   , 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.css'
-   , 'https://cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
+   , '//cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.min.js'
+   , '//cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.css'
+   , '//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
 
    , '/assets/css/gridform.css'
 ]
 })//define
 
 depp.define({ '2nd': ['#pre'
-   , 'https://cdn.emailjs.com/sdk/2.2.4/email.min.js'
+   , '//cdn.emailjs.com/sdk/2.2.4/email.min.js'
    , '/assets/3rd/jquery.disableAutoFill.js' 
-   , 'https://cdn.jsdelivr.net/npm/validator@10.9.0/validator.min.js'
-   , 'https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.css'
-   , 'https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.min.js'
+   , '//cdn.jsdelivr.net/npm/validator@10.9.0/validator.min.js'
+   , '//cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.css'
+   , '//cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.min.js'
 
    ]
 })//define
@@ -33,8 +33,8 @@ depp.define({ 'css': ['#2nd'
    ,'/assets/css/gridform.css'
    ,'/assets/css/main.css'
 
-   , 'css!https://fonts.googleapis.com/css?family=Open+Sans'
-   , 'css!https://fonts.googleapis.com/css?family=Oswald'//headings
+   , 'css!//fonts.googleapis.com/css?family=Open+Sans'
+   , 'css!//fonts.googleapis.com/css?family=Oswald'//headings
 
 
    ]

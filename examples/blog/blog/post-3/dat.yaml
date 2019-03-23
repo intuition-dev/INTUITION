@@ -4,11 +4,11 @@ ROOT: '/'
 
 author: 
   name: Author 2
-  avatar: https://cdn1.vectorstock.com/i/1000x1000/35/25/woman-avatar-isolated-faceless-female-cartoon-vector-21453525.jpg
+  avatar: //cdn1.vectorstock.com/i/1000x1000/35/25/woman-avatar-isolated-faceless-female-cartoon-vector-21453525.jpg
   desc: Integer iaculis, nisi id vehicula hendrerit, enim diam dignissim erat, non malesuada lorem ipsum vitae lacus. Aliquam interdum ante dolor, sit amet elementum lacus sodales quis. Aliquam erat volutpat. Praesent ut porta quam. Fusce pharetra eros lacinia elit efficitur, sed condimentum est efficitur.
 
 title: Suspendisse mi justo, consectetur vitae purus ac, lobortis auctor leo. Phasellus volutpat lectus hendrerit lectus tempus, vel suscipit nisi luctus.
-image:  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We
+image:  http://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We
 tags: nature
 date: 06.nov.2018
 content_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
