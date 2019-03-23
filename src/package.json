@@ -11,9 +11,9 @@
       "mbakeX": "mbakeX.js"
    },
    "license": "MIT",
-   "author": "http://mBake.org",
-   "bugs": "http://github.com/metabake/mBake-CLI/issues",
-   "homepage": "http://docs.mBake.org",
+   "author": "http://mbake.org",
+   "bugs": "http://github.com/metabake/mbake-CLI/issues",
+   "homepage": "http://docs.mbake.org",
    "repository": {
       "type": "git",
       "url": "http://github.com/metabake"

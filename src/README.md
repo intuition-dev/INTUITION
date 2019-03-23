@@ -1,8 +1,16 @@
+
+# About MetaBake&trade;
+
 <img src="https://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
 
 ### MetaBake&trade; is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding. 'All my friends KNOW a low-coder'
 
-MetaBake&trade; mbake CLI lets you generate websites and dynamic webapps in Pug by leveraging our documented high-productivity pillars for high developer productivity.
+MetaBake&trade; mbake CLI is a modern way to generate websites and dynamic webapps via low-code to help you achieve high developer productivity without additional effort. MetaBake&trade; open source tool helps you deliver web apps 10X faster with less coding by leveraging our documented high-productivity approaches/pillars. MetaBake&trade; is a simple tool, but can build any type of an app or website, and it allows for gradual adoption. You can start by slowly adopting just a few of its approaches. 
+
+Prerequisites: you should know HTML, CSS an .js - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett. You should also learn Pug, to get started on Pug, watch [Pug (aka Jade) on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
+
+Best way to get started with mbake is to read and practice the docs at http://docs.mbake.org. But here is a taste:
+
 
 ## Install
 
@@ -10,6 +18,7 @@ MetaBake&trade; mbake CLI lets you generate websites and dynamic webapps in Pug 
 yarn global add mbake
 mbake
 ```
+
 
 ## First Page
 
@@ -40,6 +49,7 @@ Of course you can use regular Pug syntax to include other Pug files; or Markdown
             include:metaMD comment.md
 ```
 So if you write a markdown file comment.md; it will be included in index.html
+
 
 ## SASS
 
@@ -81,6 +91,9 @@ mbake -t .
 ```
 It will create a .js and min.js files.
 
+
+---
+
 ## Itemize (eg Blog)
 So far you created all files in folder called one. Now lets create a file above folder one.
 1. So above your folder that has index.pug and dat.yaml, create a a blank file dat_i.yaml, with nothing there.
@@ -105,7 +118,7 @@ There are many example apps, and shipped templates include: an CMS module, a wat
 
 MetaBake&trade; is not static only - it fully supports and has examples, shipped apps, and docs for dynamic and mobile apps; using single code base.
 
-- Click for mBake Docs: [docs.mBake.org](http://docs.mBake.org)
-- [git.mBake.org](http://git.mBake.org)
-- Community [forum.mBake.org](http://forum.mBake.org)
-- Check for the latest version of mBake: [npm.js](https://www.npmjs.com/package/mbake)
+- Click for mbake Docs: [docs.mbake.org](http://docs.mbake.org)
+- [git.mbake.org](http://git.mbake.org)
+- Community [forum.mbake.org](http://forum.mbake.org)
+- Check for the latest version of mbake: [npm.js](https://www.npmjs.com/package/mbake)

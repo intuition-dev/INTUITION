@@ -1,4 +1,4 @@
-// All rights reserved by MetaBake(mBake.org) | Cekvenich, licensed under LGPL 3.0
+// All rights reserved by MetaBake(mbake.org) | Cekvenich, licensed under LGPL 3.0
 
 import { Ver } from './Base'
 import yaml = require('js-yaml')

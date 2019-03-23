@@ -105,7 +105,7 @@ There are many example apps, and shipped templates include: an CMS module, a wat
 
 MetaBake&trade; is not static only - it fully supports and has examples, shipped apps, and docs for dynamic and mobile apps; using single code base.
 
-- Click for mBake Docs: [docs.mBake.org](http://docs.mBake.org)
-- [git.mBake.org](http://git.mBake.org)
-- Community [forum.mBake.org](http://forum.mBake.org)
-- Check for the latest version of mBake: [npm.js](https://www.npmjs.com/package/mbake)
+- Click for mbake Docs: [docs.mbake.org](http://docs.mbake.org)
+- [git.mbake.org](http://git.mbake.org)
+- Community [forum.mbake.org](http://forum.mbake.org)
+- Check for the latest version of mbake: [npm.js](https://www.npmjs.com/package/mbake)

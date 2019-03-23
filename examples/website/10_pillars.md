@@ -96,7 +96,7 @@ version of something called 'Markdown'; Pug is compatible with PHP,
 Python, etc. The most common way to use declarative low-code is with
 static generators, as mentioned above. With that being said, yes, one
 does write dynamic apps and dynamic data binding by utilizing static
-generators. (* There is an article linked from mBake.org to a Medium article regarding dynamic binding.) 
+generators. (* There is an article linked from mbake.org to a Medium article regarding dynamic binding.) 
 A static generator takes the developer-friendly declarative
 low-code and generates less friendly html and js, similar to how designers
 use SASS to generate CSS.
@@ -192,11 +192,11 @@ here:
 
 -   https://www.staticgen.com/MetaBake
 
-## mBake.org
+## mbake.org
 
 If your organization would like to try one or more of the low-code
 pillars, please [contact
-me](mailto:vic@mBake.org?subject=10%20Pillars%20of%20Low%20Code%20Inquiry).
+me](mailto:vic@mbake.org?subject=10%20Pillars%20of%20Low%20Code%20Inquiry).
 We can teach your team on-site!
 
 Or, if you have a project that you want to do in 1/10th of the time at

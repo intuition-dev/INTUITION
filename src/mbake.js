@@ -30,7 +30,7 @@ function version() {
     console.info();
     console.info('  mbakeX extra has CMS, components and more flags and examples: mbakeX');
     console.info();
-    console.info(' Full docs: http://doc.mBake.org');
+    console.info(' Full docs: http://doc.mbake.org');
     console.info();
     process.exit();
 }

@@ -1,6 +1,6 @@
 # Privacy Policy
 
-MetaBake&trade; (“MetaBake” “we” “us” or “our”) operates a website located at mBake.org (the “website”) from which users can gather information concerning news and services provided by MetaBake&trade;. This MetaBake&trade; Privacy Policy (“Privacy Policy”) covers our treatment of personally identifiable information that we collect when you access the website.
+MetaBake&trade; (“MetaBake” “we” “us” or “our”) operates a website located at mbake.org (the “website”) from which users can gather information concerning news and services provided by MetaBake&trade;. This MetaBake&trade; Privacy Policy (“Privacy Policy”) covers our treatment of personally identifiable information that we collect when you access the website.
 
 #### Information Collection and Use 
 
@@ -28,7 +28,7 @@ MetaBake&trade; may amend this Privacy Policy from time to time. If we make any 
 
 ### Questions or Suggestions
 
-If you have questions or suggestions, send an email to info@mBake.org.
+If you have questions or suggestions, send an email to info@mbake.org.
 
 ### IP Addresses
 
