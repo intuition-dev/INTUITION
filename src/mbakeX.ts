@@ -36,7 +36,7 @@ function version () {
    console.info('  For a starter baseCMS :                                           mbakeX -m')
    console.info('  For a starter dash web-app:                                       mbakeX -d')
 
-   console.info('  For example slides markdown:                                      mbakeX -k')
+   console.info('  For example slides Markdown:                                      mbakeX -k')
 
    console.info('  For a Electron(pre-PhoneGap) app:                                 mbakeX -e')
    console.info('  For a starter hybrid Phonegap app:                                mbakeX -o')
@@ -110,7 +110,7 @@ function unzipL () {
    let src: string = __dirname + '/slidesEx.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted example of markdown slides to ./slidesEx')
+   console.info('Extracted example of Markdown slides to ./slidesEx')
    process.exit()
 }
 function unzipH () {
