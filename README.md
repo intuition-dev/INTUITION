@@ -61,7 +61,7 @@ So if you write a markdown file comment.md; it will be included in index.html
 
 ## SASS
 
-Create a ex.sass file 
+CSS can be hard to work with so people use Sass/Scss. Create a ex.sass file:
 ```css
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
@@ -82,7 +82,7 @@ and run
 ```sh
 mbake -s .
 ```
-It will create a css file with auto-prefixes
+It will create a css file with auto-prefixes.
 
 
 ## TypeScript
