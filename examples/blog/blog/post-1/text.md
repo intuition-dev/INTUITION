@@ -11,4 +11,4 @@ sdfwef
 [LinkedIn](http://www.linkedin.com/in/vic-c/)
 
 
-[//]: # (http://github.com/arve0/Markdown-it-attrs)
+[//]: # (http://github.com/arve0/markdown-it-attrs)

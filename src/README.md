@@ -19,7 +19,7 @@ yarn global add mbake
 mbake
 ```
 
-# MetaBake&trade; in 2 Minute:
+# MetaBake in 2 Minute:
 
 ## First Page
 
@@ -43,20 +43,20 @@ mbake .
 
 This will create index.html. 
 
-Of course you can use regular Pug syntax to include other Pug files; or Markdown. (MetaBake&trade; Markdown flavor includes CSS support):
+Of course you can use regular Pug syntax to include other Pug files; or Markdown. (MetaBake&trade; markdown flavor includes CSS support):
 ```pug
     body
         div
             include:metaMD comment.md
 ```
 
-And example Markdown file with CSS style
+And example markdown file with CSS style
 ```
   # header {.style-me}
   I think this is good.
 ```
 
-So if you write a Markdown file comment.md; it will be included in index.html
+So if you write a markdown file comment.md; it will be included in index.html
 
 
 ## SASS
@@ -102,7 +102,7 @@ It will create a .js and min.js files.
 
 ## Watcher
 
-There are many extra's, one is a watcher. This will watch the current folder and auto-refresh the browser:
+There are many extra's, one is a watcher. This will watch the current folder and refresh the browser:
 
 ```sh
 mbakeX -W .

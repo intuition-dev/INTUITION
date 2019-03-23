@@ -8,13 +8,13 @@ export class Ver {
 }
 
 // metaMD
-import MarkdownItAttrs = require('Markdown-it-attrs')
-const md = require('Markdown-it')({
+import markdownItAttrs = require('markdown-it-attrs')
+const md = require('markdown-it')({
    html: true,
    typographer: true,
    linkify: true
 })
-md.use(MarkdownItAttrs)
+md.use(markdownItAttrs)
 
 import Marpit = require('@marp-team/marpit')
 const marpit = new Marpit.Marpit()

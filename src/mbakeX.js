@@ -27,7 +27,7 @@ function version() {
     console.info();
     console.info(' Starters:');
     console.info('  For a starter baseCMS :                                           mbakeX -m');
-    console.info('  For example slides Markdown:                                      mbakeX -d');
+    console.info('  For example slides markdown:                                      mbakeX -d');
     console.info('  For a Electron(pre-PhoneGap) app:                                 mbakeX -e');
     console.info('  For a starter hybrid Phonegap app:                                mbakeX -o');
     console.info('  For an example Ad:                                                mbakeX -a');
@@ -84,7 +84,7 @@ function unzipL() {
     let src = __dirname + '/slidesEx.zip';
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
-    console.info('Extracted example of Markdown slides to ./slidesEx');
+    console.info('Extracted example of markdown slides to ./slidesEx');
     process.exit();
 }
 function csv2Json(arg) {
