@@ -1,4 +1,5 @@
 // All rights reserved by MetaBake(mbake.org) | Cekvenich, licensed under LGPL 3.0
+// NOTE: You can extend this file!
 
 import {MBake, RetMsg, Dirs, Dat} from './Base'
 import {Sas} from './Sa'

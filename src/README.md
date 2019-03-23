@@ -49,6 +49,13 @@ Of course you can use regular Pug syntax to include other Pug files; or Markdown
         div
             include:metaMD comment.md
 ```
+
+And example markdown file with CSS style
+```
+  # header {.style-me}
+  I think this is good.
+```
+
 So if you write a markdown file comment.md; it will be included in index.html
 
 
@@ -102,6 +109,7 @@ mbakeX -W .
 ```
 
 ----
+
 
 
 ## Itemize (eg Blog)

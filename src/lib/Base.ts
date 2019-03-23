@@ -1,4 +1,5 @@
 // All rights reserved by MetaBake(mbake.org) | Cekvenich, licensed under LGPL 3.0
+// NOTE: You can extend this file!
 
 export class Ver {
    ver () {
@@ -10,7 +11,8 @@ export class Ver {
 import markdownItAttrs = require('markdown-it-attrs')
 const md = require('markdown-it')({
    html: true,
-   typographer: true
+   typographer: true,
+   linkify: true
 })
 md.use(markdownItAttrs)
 

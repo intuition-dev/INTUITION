@@ -1,4 +1,5 @@
 // All rights reserved by MetaBake(mbake.org) | Cekvenich, licensed under LGPL 3.0
+// NOTE: You can extend this file!
 
 import { Ver } from './Base'
 import yaml = require('js-yaml')
