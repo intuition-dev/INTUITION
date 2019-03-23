@@ -19,7 +19,7 @@ yarn global add mbake
 mbake
 ```
 
-# MetaBake in 2 Minute:
+# MetaBake&trade; in 2 Minute:
 
 ## First Page
 
@@ -58,6 +58,20 @@ And example Markdown file with CSS style
 
 So if you write a Markdown file comment.md; it will be included in index.html
 
+---
+
+## Watcher
+
+This will start a webserver and auto-refresh browser, and watch for file changes to auto build:
+
+```sh
+  mbakeX -w .
+```
+
+Instead of . you can specify any path.
+Also, the fact that we are generating this static content allows us to have the entire webapp served by a CDN. 
+
+---
 
 ## SASS
 
@@ -102,17 +116,39 @@ If there is no .ts, than it will simply slightly mimifify js files into min.js (
 
 ----
 
-## Watcher
+## Examples - Website
 
-There are many extra's, one is a watcher. This will watch the current folder and refresh the browser:
+There are 12 very different examples included in the mbake CLI. One is just a website:
 
 ```sh
-mbakeX -W .
+  mbake -w
+```
+That will extract an example website in the current folder. ( Obviously you can create any layout with any combination of css and other libraries, but here is how we laid out an example/starter website). 
+
+### depp.min.js
+
+Most example web-apps, including the website, need to load external .js libraries. 
+MetaBake example the use the CDN centric .js loader 'depp': http://github.com/muicss/johnnydepp but you can use any 'loader' lib you like. But learn the default depp.js, since all the examples us that one:
+
+```javascript
+// define dependencies
+depp.define({
+  'jquery': ['/path/to/jquery.js'],
+  'plugin1': ['#jquery', '/path/to/plugin1.js', '/path/to/plugin1.css', '/path/to/plugin1.png'],
+  'plugin2': ['#jquery', '/path/to/plugin2.js', '/path/to/plugin2.css', '/path/to/plugin2.png']
+})
+
+// load dependencies
+depp.require(['plugin1', 'plugin2'], function() {
+  /* plugin1 and plugin2 are ready to be used */
+})
 ```
 
-----
+You'll find the real loading code in /assets/js/loader.js. Our preferred CDN host for external .js libs is: http://jsdelivr.com
 
+---
 
+---
 
 ## Itemize (eg Blog)
 So far you created all files in folder called one. Now lets create a file above folder one.
@@ -143,4 +179,4 @@ MetaBake&trade; is not static only - it fully supports and has examples, shipped
 - Click for mbake Docs: [docs.mbake.org](http://docs.mbake.org)
 - [git.mbake.org](http://git.mbake.org)
 - Community [forum.mbake.org](http://forum.mbake.org)
-- Check for the latest version of mbake: [npm.js](http://www.npmjs.com/package/mbake)
+- Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)

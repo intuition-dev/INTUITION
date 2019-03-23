@@ -28,7 +28,8 @@ function version () {
    console.info('  Process .ts and .js file to .min:                                mbake -t . # . or path')
    
    console.info('  To process Pug and dat_i items to items.json:                    mbake -i . # . or path,')
-   console.info('     or any sub-folder, where path is folder containing dat_i.yaml; also does regular mbake of Pug')
+   console.info('     or any sub-folder, where path is folder containing dat_i.yaml;')
+   console.info('     also does regular mbake of Pug')
    
    console.info(' ----------------------------------------------------------------')
    console.info()
@@ -39,7 +40,7 @@ function version () {
    console.info('  For an example dynamic web app CRUD:                             mbake -u')
 
    console.info()
-   console.info('  mbakeX extra has CMS, components and more flags and examples: mbakeX')
+   console.info('  mbakeX CLI extra has CMS, components and more flags and examples: mbakeX')
    console.info()
    console.info(' Full docs: http://doc.mbake.org')
    console.info()
