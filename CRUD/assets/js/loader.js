@@ -50,9 +50,9 @@ depp.define({
 
       , ROOT + 'assets/3rd/jquery.disableAutoFill.js'
 
-      , '//cdn.jsdelivr.net/npm/tabulator-tables@4.1.3/dist/js/tabulator.min.js'
-      , '//cdn.jsdelivr.net/npm/tabulator-tables@4.1.3/dist/css/tabulator.min.css'
-      , '//cdn.jsdelivr.net/npm/tabulator-tables@4.1.3/dist/css/tabulator_simple.min.css'
+      , '//cdn.jsdelivr.net/npm/tabulator-tables@4.2.3/dist/js/tabulator.min.js'
+      , '//cdn.jsdelivr.net/npm/tabulator-tables@4.2.3/dist/css/tabulator.min.css'
+      , '//cdn.jsdelivr.net/npm/tabulator-tables@4.2.3/dist/css/tabulator_simple.min.css'
    ]
 
    , 'css': ['#tabLoaded'
