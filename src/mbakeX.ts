@@ -19,17 +19,17 @@ function version () {
    console.info('  from ' + __dirname)
    console.info()
    console.info('Usage: ')
-   console.info('  For local(non-cloud) watcher and server on port 8090 :      mbakeX -w .  # . or path')
+   console.info('  For local(non-cloud) watcher and server on port 8090 :      mbakeX -w .')
 
-   console.info('  To process Pug and RIOT *-comp.pug tags/components:         mbakeX -c . # . or path;')
+   console.info('  To process Pug and RIOT *-comp.pug tags/components:         mbakeX -c .')
    console.info('     also does regular mbake of Pug')
 
-   console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -p .  # . or path')
-   console.info('  Compress .jpg images with a default compression level:      mbakeX -i .  # . or path')
-   console.info('  To process list.csv to list.json:                           mbakeX -l .  # . or path')
+   console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -p .  #')
+   console.info('  Compress .jpg images with a default compression level:      mbakeX -i .  #')
+   console.info('  To process list.csv to list.json:                           mbakeX -l .  #')
    console.info('  SFTP w/o source code(eg: .js, SASS, pug) - avoid, instead mount: mbakeX -F ./sftp_site_sec.yaml')
-   console.info('    # . or path')
 
+   console.info('     . anywhere is current directory, or use any path instead of .')
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
