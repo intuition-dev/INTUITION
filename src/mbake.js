@@ -14,21 +14,21 @@ function version() {
     console.info('mbake CLI version: ' + b.ver());
     console.info();
     console.info('Usage:');
-    console.info('  To process any_dir Pug to html recursively:                      mbake .    # . or path');
-    console.info('  Process SASS/SCSS file into css, requires assets.yaml:           mbake -s .  # . ');
+    console.info('  To process any_dir Pug to html recursively:                 mbake .    # . or path');
+    console.info('  Process SASS/SCSS file into css, requires assets.yaml:      mbake -s .  # .');
     console.info('     or path that has assets.yaml, or any sub-folder under /assets');
-    console.info('  Process .ts and .js file to .min:                                mbake -t . # . or path');
-    console.info('  To process Pug and dat_i items to items.json:                    mbake -i . # . or path,');
-    console.info('     or any sub-folder, where path is folder containing dat_i.yaml; also does regular mbake of Pug');
-    console.info(' ----------------------------------------------------------------');
+    console.info('  Process .ts and .js file to .min:                           mbake -t . # . or path');
+    console.info('  To process Pug and dat_i items to items.json:               mbake -i . # . or path,');
+    console.info('     or any sub-folder, where path is folder containing dat_i.yaml;');
+    console.info('     also does regular mbake of Pug');
+    console.info(' -------------------------------------------------------------');
     console.info();
     console.info(' Starters:');
-    console.info('  For a starter website:                                           mbake -w');
-    console.info('  For a starter blog|items:                                        mbake -b');
-    console.info('  For a starter dash web app:                                      mbake -d');
-    console.info('  For an example dynamic web app CRUD:                             mbake -u');
+    console.info('  For a starter website:                                      mbake -w');
+    console.info('  For a starter blog|items:                                   mbake -b');
+    console.info('  For an example dynamic web app CRUD:                        mbake -u');
     console.info();
-    console.info('  mbakeX extra has CMS, components and more flags and examples: mbakeX');
+    console.info('  mbakeX CLI extra has CMS, components and more flags and examples: mbakeX');
     console.info();
     console.info(' Full docs: http://doc.mbake.org');
     console.info();
@@ -40,7 +40,6 @@ const optionDefinitions = [
     { name: 'css', alias: 's', type: Boolean },
     { name: 'MinJS', alias: 't', type: Boolean },
     { name: 'blog', alias: 'b', type: Boolean },
-    { name: 'dash', alias: 'd', type: Boolean },
     { name: 'website', alias: 'w', type: Boolean },
     { name: 'CRUD', alias: 'u', type: Boolean },
 ];
@@ -66,13 +65,6 @@ function unzipB() {
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
     console.info('Extracted a starter blog app to ./blog');
-    process.exit();
-}
-function unzipD() {
-    let src = __dirname + '/dash.zip';
-    let zip = new AdmZip(src);
-    zip.extractAllTo(cwd, true);
-    console.info('Extracted an starter Dash web app to ./dash');
     process.exit();
 }
 if (arg) {
@@ -114,8 +106,6 @@ else if (argsParsed.css)
     css(arg);
 else if (argsParsed.blog)
     unzipB();
-else if (argsParsed.dash)
-    unzipD();
 else if (argsParsed.CRUD)
     unzipCRUD();
 else if (argsParsed.website)
