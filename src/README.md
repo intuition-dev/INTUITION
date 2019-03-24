@@ -19,7 +19,7 @@ yarn global add mbake
 mbake
 ```
 
-# MetaBake&trade; first 2 Minutes:
+# MetaBake&trade; in 2 Minute:
 
 ## First Page
 
@@ -34,6 +34,8 @@ and create file dat.yaml
 ```yaml
 key1: World
 ```
+
+Note: to create a new page|screen in mbake, create a new folder with an index.pug and day.yaml in each folder.
 
 ### Now make with mbake:
 

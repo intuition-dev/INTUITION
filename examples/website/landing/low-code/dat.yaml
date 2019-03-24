@@ -3,7 +3,6 @@ basedir: ../../
 pretty: false
 
 title: MetaBake&trade; versus other Low-Code tools
-image: >-
-  http://mbake.org/assets/img/slide-3.jpg
+image: slide-3.jpg
 content_text: MetaBake&trade; is the open source extensible low-code productivity tool for programmers.
-keywords: low-code, Airtable, BettyBlocks, Pega, ServiceNow, OutSystems, Bubble, MBaaS.
+keywords: low-code, gulp, grunt, CMS, static gen

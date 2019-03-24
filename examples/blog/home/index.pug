@@ -23,13 +23,13 @@ block main
                 let items = new List(sortedItems);
                 blog = resp.data;
                 
-                var tag = riot.mount('card-comp')[0]; // mount the first tag
+                var tag = riot.mount('card-comp')[0]; //- mount the first tag
                 tag.render(items);
 
 
                 depp.require(['cssJs'], function() {
 
-                    // search
+                    //- search
                     $('#srch-form').disableAutoFill();
                     const srchOptions = {
                         shouldSort: true,
