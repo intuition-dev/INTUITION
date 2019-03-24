@@ -9,3 +9,5 @@ npm publish
 sudo yarn global add mbake
 mbakeX
 #yarn global upgrade 
+
+# find . -type f -name 'package-lock.json' 

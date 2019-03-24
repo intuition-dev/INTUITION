@@ -19,28 +19,28 @@ function version () {
    console.info('  from ' + __dirname)
    console.info()
    console.info('Usage: ')
-   console.info('  For local(non-cloud) watcher and server on port 8090 :           mbakeX -w .  # . or path')
+   console.info('  For local(non-cloud) watcher and server on port 8090 :      mbakeX -w .  # . or path')
 
-   console.info('  To process Pug and RIOT *-comp.pug tags/components:              mbakeX -c . # . or path;')
+   console.info('  To process Pug and RIOT *-comp.pug tags/components:         mbakeX -c . # . or path;')
    console.info('     also does regular mbake of Pug')
 
-   console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:           mbakeX -p .  # . or path')
-   console.info('  Compress .jpg images with a default compression level:           mbakeX -i .  # . or path')
-   console.info('  To process list.csv to list.json:                                mbakeX -l .  # . or path')
+   console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -p .  # . or path')
+   console.info('  Compress .jpg images with a default compression level:      mbakeX -i .  # . or path')
+   console.info('  To process list.csv to list.json:                           mbakeX -l .  # . or path')
    console.info('  SFTP w/o source code(eg: .js, SASS, pug) - avoid, instead mount: mbakeX -F ./sftp_site_sec.yaml')
    console.info('    # . or path')
 
-   console.info(' ----------------------------------------------------------------')
+   console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
-   console.info('  For a starter baseCMS :                                           mbakeX -m')
-   console.info('  For a starter dash web-app:                                       mbakeX -d')
+   console.info('  For a starter baseCMS :                                     mbakeX -m')
+   console.info('  For a starter dash web-app:                                 mbakeX -d')
 
-   console.info('  For example slides markdown:                                      mbakeX -k')
+   console.info('  For example slides markdown:                                mbakeX -k')
 
-   console.info('  For a Electron(pre-PhoneGap) app:                                 mbakeX -e')
-   console.info('  For a starter hybrid Phonegap app:                                mbakeX -o')
-   console.info('  For an example Ad:                                                mbakeX -a')
+   console.info('  For a Electron(pre-PhoneGap) app:                           mbakeX -e')
+   console.info('  For a starter hybrid Phonegap app:                          mbakeX -o')
+   console.info('  For an example Ad:                                          mbakeX -a')
 
    console.info()
 
