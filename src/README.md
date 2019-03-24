@@ -19,7 +19,7 @@ yarn global add mbake
 mbake
 ```
 
-# MetaBake&trade; in 2 Minute:
+# MetaBake&trade; first 2 Minutes:
 
 ## First Page
 
@@ -124,49 +124,6 @@ There are 12 very different examples included in the mbake CLI. One is just a we
   mbake -w
 ```
 That will extract an example website in the current folder. ( Obviously you can create any layout with any combination of css and other libraries, but here is how we laid out an example/starter website). 
-
-### depp.min.js
-
-Most example web-apps, including the website, need to load external .js libraries. 
-MetaBake example the use the CDN centric .js loader 'depp': http://github.com/muicss/johnnydepp but you can use any 'loader' lib you like. But learn the default depp.js, since all the examples us that one:
-
-```javascript
-// define dependencies
-depp.define({
-  'jquery': ['/path/to/jquery.js'],
-  'plugin1': ['#jquery', '/path/to/plugin1.js', '/path/to/plugin1.css', '/path/to/plugin1.png'],
-  'plugin2': ['#jquery', '/path/to/plugin2.js', '/path/to/plugin2.css', '/path/to/plugin2.png']
-})
-
-// load dependencies
-depp.require(['plugin1', 'plugin2'], function() {
-  /* plugin1 and plugin2 are ready to be used */
-})
-```
-
-You'll find the real loading code in /assets/js/loader.js. Our preferred CDN host for external .js libs is: http://jsdelivr.com
-
----
-
----
-
-## Itemize (eg Blog)
-So far you created all files in folder called one. Now lets create a file above folder one.
-1. So above your folder that has index.pug and dat.yaml, create a a blank file dat_i.yaml, with nothing there.
-
-2. And copy the folder one, as folder two. So you have two folders, one and two - each with dat.yaml; and above them dat_i.yaml!
-
-3. Edit two/dat.yaml to say key1: World2 
-instead of key1: World
-
-4. And now, in the folder above one/ and two/ run:
-```sh
-mbake -i .
-```
-It will create items.json.
-This allows you to fetch that json; and search for content, blog, items, etc.
-
-This is the basics and intro to MetaBake&trade;. You can see it helps with html, .js, .css, and json. You can use these basic features to help you write any web-app.
 
 ---
 
