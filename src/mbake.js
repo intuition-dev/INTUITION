@@ -21,7 +21,7 @@ function version() {
     console.info('  To process Pug and dat_i items to items.json:               mbake -i .');
     console.info('     or any sub-folder, where path is folder containing dat_i.yaml;');
     console.info('     also does regular mbake of Pug');
-    console.info('     . anywhere is current directory, or use any path instead of .');
+    console.info('     Note: . anywhere is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');
     console.info();
     console.info(' Starters:');

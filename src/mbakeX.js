@@ -21,8 +21,9 @@ function version() {
     console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -p .  #');
     console.info('  Compress .jpg images with a default compression level:      mbakeX -i .  #');
     console.info('  To process list.csv to list.json:                           mbakeX -l .  #');
-    console.info('  SFTP w/o source code(eg: .js, SASS, pug) - avoid, instead mount: mbakeX -F ./sftp_site_sec.yaml');
-    console.info('     . anywhere is current directory, or use any path instead of .');
+    console.info('  SFTP w/o source code(eg: .js, SASS, pug) - avoid,');
+    console.info('  instead mount: mbakeX -F ./sftp_site_sec.yaml');
+    console.info('     Note: . anywhere is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');
     console.info();
     console.info(' Starters:');

@@ -38,7 +38,7 @@ export class Wa {
       const mp = new MetaPro(dir)
       let ww = new Watch(mp, dir)
       ww.start(false)
-      console.info(' Serving on port ' + port + '... ')
+      console.info(' Serving on ' + 'http://localhost:' + port)
       console.info(' --------------------------')
       console.info('')
       opn('http://localhost:' + port)
