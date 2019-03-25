@@ -1,6 +1,7 @@
 
 # About MetaBake&trade;
 <img src="http://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
+
 #### 'All my friends KNOW the low-coder'
 
 ### MetaBake&trade; is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding. 
