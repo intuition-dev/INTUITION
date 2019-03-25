@@ -169,7 +169,7 @@ list of items. No magic.
 ---
 
 # mbake review, extras and next steps
-#### 'All my friends KNOW the low-coder'
+##### 'All my friends KNOW the low-coder'
 
 mbake is the open source modern tool for developers that makes you most productive: it makes Pug, SCSS and Typescript.
 It comes with example apps that include WebSite showing how to load.js, CRUD showing how to do dynamic apps. You can use any
