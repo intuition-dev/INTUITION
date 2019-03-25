@@ -31,7 +31,7 @@ function version () {
    console.info('     or any sub-folder, where path is folder containing dat_i.yaml;')
    console.info('     also does regular mbake of Pug')
    
-   console.info('     . anywhere is current directory, or use any path instead of .')
+   console.info('     Note: . anywhere is current directory, or use any path instead of .')
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
