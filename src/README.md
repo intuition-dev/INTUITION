@@ -1,16 +1,13 @@
 
 # About MetaBake&trade;
-
 <img src="http://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
+#### 'All my friends KNOW the low-coder'
 
-### MetaBake&trade; is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding. 'All my friends KNOW a low-coder'
+### MetaBake&trade; is the extensible open source low-code productivity tool for programmers; including dynamic apps and data binding. 
 
 MetaBake&trade; mbake CLI tool is a modern way to generate websites and dynamic webapps via low-code to help you achieve high developer productivity, without additional effort. MetaBake&trade; open source tool helps you deliver web apps 10X faster with less coding by leveraging our documented high-productivity approaches/pillars. MetaBake&trade; is a simple tool, but can build any type of an app or website, and it allows for gradual adoption. You can start by slowly adopting just a few of its approaches. 
 
-Prerequisites: you should know HTML, CSS an .js - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett. You should also learn Pug, to get started on Pug, watch [Pug (aka Jade) on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
-
-Best way to get started with mbake is to read and practice the docs full at http://docs.mbake.org. But here is a taste:
-
+Prerequisites: you should know HTML, CSS an .js - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett.
 
 ## Install
 
@@ -129,11 +126,45 @@ That will extract an example website in the current folder. ( Obviously you can 
 
 ---
 
-## To learn more:
+# Dynamic data/CRUD/'ViewModel'
 
-There are many example apps, and shipped templates include: an CMS module, a watcher, SPA, Blog, Website, Slides, Dashboard, CRUD, PWA, AMP, Electron, Hybrid mobile apps, server-less via AWS | GCP FireStore, RIOTjs, Ads and more. 
+This relates to dynamic data, not static content (static eg: CMS or eCommerce). To extract an example CRUD web-app in the current folder:
+```sh
+mbake -u
+```
+It has a README.md in root of the website that you can glance.
 
-MetaBake&trade; is not static only - it fully supports and has examples, shipped apps, and docs for dynamic and mobile apps; using single code base.
+---
+
+# mbake review, extras and next steps
+#### 'All my friends KNOW the low-coder'
+
+mbake is the open source modern tool for developers that makes you most productive: it makes Pug, SCSS and Typescript.
+It comes with example apps that include WebSite showing how to load.js, CRUD showing how to do dynamic apps. You can use any
+application architecture you like, but 
+Also it you you can itemize (-i dat.yaml files) to make a nice SEO friendly blog.
+
+## Extras and next steps
+
+
+Now that you know mbake foundation, here are some choices for next things to learn in the advanced docs, pick and chose:
+
+- baseCMS: an admin panel that you can host to can use as is; or as a base to build commercial grade CMS or eCommerce site, including browser plugin.
+- MetaCake: plugin components, makes it easy for designers to write real web-apps. Developed with RIOTjs, easier than Reactjs (commercial license optional)
+- AMP
+- SPA router: with page transition effects and state machine (needed for cross-platform development)
+- Cross platform development with real single code base development: single code base for Web, AMP, Electron and PhoneGap/Crodova
+- VS code from the Cloud: multiple developers using a browser against same VS Code host in the cloud
+
+Other examples include:
+- Using markdown CSS effect: allows non-programmers to write interactive stories
+- Slide show with markdown
+- Dashboard example 
+- Ads example
+
+---
+
+# Links
 
 - Click for mbake Docs: [docs.mbake.org](http://docs.mbake.org)
 - [git.mbake.org](http://git.mbake.org)
