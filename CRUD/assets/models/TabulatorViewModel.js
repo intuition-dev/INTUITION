@@ -6,11 +6,11 @@ var TabulatorViewModel = (function () {
     TabulatorViewModel.prototype.getViewList = function (table) {
         switch (table) {
             case 'example-table':
-                console.info("--this._data:", this._data);
                 return this._data;
         }
     };
     TabulatorViewModel.prototype.read = function () {
+        var _this = this;
         if (this.dataSourceType == 'fake') {
             var rows = [
                 { id: 1, name: "Oli Bob", age: "12", col: "red", dob: "" },
@@ -19,7 +19,10 @@ var TabulatorViewModel = (function () {
                 { id: 4, name: "Brendon Philips", age: "125", col: "orange", dob: "01/08/1980" },
                 { id: 5, name: "Margret Marmajuke", age: "16", col: "yellow", dob: "31/01/1999" },
             ];
-            return this._data = [].concat(rows);
+            return Promise.all([rows])
+                .then(function (data) {
+                _this._data = [].concat(data[0]);
+            });
         }
     };
     return TabulatorViewModel;
