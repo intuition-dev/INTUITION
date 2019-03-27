@@ -34,7 +34,7 @@ function version() {
     console.info('  For a starter hybrid Phonegap app:                          mbakeX -o');
     console.info('  For an example Ad:                                          mbakeX -a');
     console.info();
-    console.info(' Full docs: http://docs.mbake.org');
+    console.info(' Full docs: http://docs.MetaBake.org');
     console.info();
     process.exit();
 }

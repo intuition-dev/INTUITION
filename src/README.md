@@ -200,7 +200,7 @@ Other examples include:
 
 # Links
 
-- Click for mbake Docs: [docs.mbake.org](http://docs.mbake.org)
-- [git.mbake.org](http://git.mbake.org)
-- Community [forum.mbake.org](http://forum.mbake.org)
+- Click for mbake Docs: [docs.MetaBake.org](http://docs.MetaBake.org)
+- [git.MetaBake.org](http://git.MetaBake.org)
+- Community [forum.MetaBake.org](http://forum.MetaBake.org)
 - Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)

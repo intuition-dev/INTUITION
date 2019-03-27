@@ -45,7 +45,7 @@ function version () {
 
    console.info()
 
-   console.info(' Full docs: http://docs.mbake.org')
+   console.info(' Full docs: http://docs.MetaBake.org')
    console.info()
 
    process.exit()

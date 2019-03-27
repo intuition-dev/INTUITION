@@ -43,7 +43,7 @@ function version () {
    console.info()
    console.info('  mbakeX CLI extra has CMS, components and more flags and examples: mbakeX')
    console.info()
-   console.info(' Full docs: http://doc.mbake.org')
+   console.info(' Full docs: http://doc.MetaBake.org')
    console.info()
 
    process.exit()
