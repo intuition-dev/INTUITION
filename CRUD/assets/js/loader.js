@@ -39,8 +39,6 @@ depp.define({
 
       , ROOT + 'assets/css/gridform.css'
       , ROOT + 'assets/3rd/collections.min.js'
-      , 'https://cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.css'
-      , 'https://cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.min.js'
    ]
 
    , 'tabLoaded': ['#pre'

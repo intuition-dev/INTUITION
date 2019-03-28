@@ -1,0 +1,25 @@
+extends /layout/layout
+
+block main
+   .pad
+      #qunit
+      #qunit-fixture
+      
+   script.
+      depp.define({
+         'TabulatorBind': [
+            'https://cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.css',
+            'https://cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.min.js',
+            ROOT + 'assets/models/TabulatorViewModel.js',
+            'TabulatorVMTest.js'
+         ]
+      })
+      
+      depp.require(['pre','TabulatorBind'], setupBinding)
+      
+      function setupBinding() {
+         console.info('binding', Date.now() - _start)
+
+         var test = new TabulatorVMTest()
+         test.init()
+      }
