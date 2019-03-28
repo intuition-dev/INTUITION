@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "5.03.05",
+   "version": "5.03.06",
    "description": "MetaBake&trade; is the extensible open source low-code productivity tool for programmers. *All my friends KNOW a low-coder*",
    "main": "mbake.js",
    "scripts": {
@@ -56,7 +56,7 @@
       "markdown-it": ">=8.4.2",
       "markdown-it-attrs": ">=2.3.2",
       "node-sass": ">=4.11.0",
-      "opn": ">=5.5.0",
+      "opn": ">=6.0.0",
       "probe-image-size": ">=4.0.0",
       "pug": ">=2.0.3",
       "reload": ">=2.4.0",
@@ -68,12 +68,13 @@
       "terser": ">=3.17.0",
       "tracer": ">=0.9.8",
       "traverse": ">=0.6.6",
+      "typescript": ">=3.3.4000",
       "uglify-es": ">=3.3.9",
-      "unfluff": ">=3.2.0",
-      "typescript": ">=3.3.4000"
+      "unfluff": ">=3.2.0"
    },
    "devDependencies": {
-      "@types/node": ">=11.11.6",
-      "npm-check-updates": ">=3.1.1"
+      "@types/node": ">=11.12.0",
+      "npm-check-updates": ">=3.1.2",
+      "simple-git": ">=1.110.0"
    }
 }
