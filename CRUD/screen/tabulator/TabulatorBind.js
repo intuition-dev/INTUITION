@@ -38,5 +38,4 @@ class TabulatorBind {
          _this._table.setData(data)
       })//d
    }
-
 }//class
