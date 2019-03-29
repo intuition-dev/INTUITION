@@ -1,18 +1,24 @@
 var FormViewModel = (function () {
     function FormViewModel() {
         this._dataObj = {};
-        this.dataSourceType = 'real';
+        this.dataSourceType = 'fake';
         this.exampleModel = new TabulatorService();
     }
     FormViewModel.prototype.getViewForm = function (formName) {
-        if (this.dataSourceType == 'fake') {
-            var row = { id: 1, col1: " Bob11", col2: "Bob12" };
-            return row;
+        if (formName == 'form1') {
+            return this._dataObj;
         }
-        return this._dataObj;
     };
     FormViewModel.prototype.read = function (id) {
         var _this = this;
+        if (this.dataSourceType == 'fake') {
+            var row = { id: 1, col1: " Bob11", col2: "Bob12" };
+            return Promise.all([row])
+                .then(function (data) {
+                console.info("--data:", data);
+                Object.assign(_this._dataObj, data[0]);
+            });
+        }
         return Promise.all([this.exampleModel.read(id)])
             .then(function (data) {
             Object.assign(_this._dataObj, data[0]);

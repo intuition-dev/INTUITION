@@ -16,23 +16,31 @@ interface iVM {
 class FormViewModel {
    exampleModel: any
    _dataObj: object = {}
-   dataSourceType: string = 'real'  //real or fake
+   dataSourceType: string = 'fake'  //real or fake
 
    constructor() {
       this.exampleModel = new TabulatorService()
    }
 
    getViewForm(formName) {
-      if (this.dataSourceType == 'fake') {
-         let row = { id: 1, col1: " Bob11", col2: "Bob12" }
-
-         return row
+      if (formName == 'form1') {
+         return this._dataObj
       }
-      return this._dataObj
    }
 
    read(id?: string) {
       let _this = this
+
+      if (this.dataSourceType == 'fake') {
+         let row = { id: 1, col1: " Bob11", col2: "Bob12" }
+
+         return Promise.all([row])
+            .then(function (data) {
+               console.info("--data:", data)
+               Object.assign(_this._dataObj, data[0])
+            })
+      }
+
       return Promise.all([this.exampleModel.read(id)])
          .then(function (data) {
             Object.assign(_this._dataObj, data[0])

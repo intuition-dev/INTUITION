@@ -8,9 +8,11 @@ block main
    script.
       depp.define({
          'TabulatorBind': [
-            'https://cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.css',
-            'https://cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.min.js',
-            ROOT + 'assets/models/TabulatorViewModel.js',
+            '//cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.css',
+            '//cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.min.js',
+            '/assets/models/TabulatorViewModel.js',
+            '/assets/models/service/TabulatorService.js',
+            '/assets/models/FormViewModel.js',
             'TabulatorVMTest.js'
          ]
       })
@@ -21,5 +23,7 @@ block main
          console.info('binding', Date.now() - _start)
 
          var test = new TabulatorVMTest()
-         test.init()
+         test.test1()
+         test.test2()
+         test.test3()
       }
