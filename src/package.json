@@ -75,6 +75,8 @@
    "devDependencies": {
       "@types/node": ">=11.12.2",
       "npm-check-updates": ">=3.1.3",
-      "simple-git": ">=1.110.0"
+      "pully": ">=2.7.0",
+      "simple-git": ">=1.110.0",
+      "handbrake-js": ">=3.0.8"
    }
 }
