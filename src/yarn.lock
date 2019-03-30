@@ -45,10 +45,15 @@
   dependencies:
     "@types/babel-types" "*"
 
-"@types/node@*", "@types/node@>=11.12.0":
+"@types/node@*":
   version "11.12.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.12.0.tgz#ec5594728811dc2797e42396cfcdf786f2052c12"
   integrity sha512-Lg00egj78gM+4aE0Erw05cuDbvX9sLJbaaPwwRtdCdAMnIudqrQZ0oZX98Ek0yiSK/A2nubHgJfvII/rTT2Dwg==
+
+"@types/node@>=11.12.2":
+  version "11.12.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.12.2.tgz#d7f302e74b10e9801d52852137f652d9ee235da8"
+  integrity sha512-c82MtnqWB/CqqK7/zit74Ob8H1dBdV7bK+BcErwtXbe0+nUGkgzq5NTDmRW/pAv2lFtmeNmW95b0zK2hxpeklg==
 
 abbrev@1:
   version "1.1.1"
@@ -3175,10 +3180,10 @@ npm-bundled@^1.0.1:
   resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.0.6.tgz#e7ba9aadcef962bb61248f91721cd932b3fe6bdd"
   integrity sha512-8/JCaftHwbd//k6y2rEWp6k1wxVfpFzB6t1p825+cUb7Ym2XQfhwIC5KwhrvzZRJu+LtDE585zVaS32+CGtf0g==
 
-npm-check-updates@>=3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-3.1.2.tgz#447b6ccdc460b863190d43dc2ca9885a6fc2ecb0"
-  integrity sha512-DNLJsfMqJ3dvR/Ff0S1Jjv33MlNyKewkG6i2GJWULGLfHeu6ry4W8g2lYSCAHymAy2+JYgk+WXntow1rCxiuiA==
+npm-check-updates@>=3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-3.1.3.tgz#9cd5af8f5c8c541f4e0287ca5d7f00aad1dad5fc"
+  integrity sha512-Et4QQkHQtffGbeP2sbdguC4VIkHstd8WWIk292zoY1SRiJZ45FfSINhrRn0dPftQ5z40C0P7aLS6gBjR8gxbtw==
   dependencies:
     bluebird "^3.5.3"
     chalk "^2.4.2"
@@ -3198,6 +3203,7 @@ npm-check-updates@>=3.1.2:
     progress "^2.0.3"
     prompts "^2.0.4"
     rc-config-loader "^2.0.2"
+    registry-url "^5.0.0"
     requireg "^0.2.1"
     semver "^5.6.0"
     semver-utils "^1.1.4"
@@ -4890,10 +4896,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@>=3.3.4000:
-  version "3.3.4000"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.4000.tgz#76b0f89cfdbf97827e1112d64f283f1151d6adf0"
-  integrity sha512-jjOcCZvpkl2+z7JFn0yBOoLQyLoIkNZAs/fYJkUG6VKy6zLPHJGfQJYFHzibB6GJaF/8QrcECtlQ5cpvRHSMEA==
+typescript@>=3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.4.1.tgz#b6691be11a881ffa9a05765a205cb7383f3b63c6"
+  integrity sha512-3NSMb2VzDQm8oBTLH6Nj55VVtUEpe/rgkIzMir0qVoLyjDZlnMBva0U6vDiV3IH+sl/Yu6oP5QwsAQtHPmDd2Q==
 
 typical@^4.0.0:
   version "4.0.0"
