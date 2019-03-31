@@ -3,7 +3,7 @@
 
 export class Ver {
    ver () {
-      return 'v5.03.07'
+      return 'v5.03.08'
    }
 }
 
@@ -126,7 +126,6 @@ export class Dirs {
       logger.info(this.dir)
       const rec = FileHound.create() //recursive
          .paths(this.dir)
-         // XXX XXX XXX .ext('yaml')
          .ext('pug')
          .findSync()
       let ret: string[] = [] //empty string array
@@ -321,6 +320,53 @@ export class BakeWrk {
       return result.code.replace(/;$/, '')
    }
 
+   indexes(source, f) {
+      if (!source) 
+        return []
+      if (!f) 
+        return []
+      
+      var result = []
+      for (let i = 0; i < source.length; ++i) {
+        if (source.substring(i, i + f.length) == f) 
+          result.push(i)
+      }
+      return result
+    }
+
+
+   //the markdown magic for fix
+   fixHTMLcss(h) {
+      if(!h) return h
+      var nh = (' ' + h).slice(1) // make a copy
+
+      let hits:number[] = this.indexes(h, '<!--')
+      if(hits.length <1 ) return nh
+      logger.trace(hits.length)
+
+      let start=hits[0]
+      let end = h.indexOf('-->', start)
+      let str = h.substring(start+5,end-1)
+      try {
+         logger.trace(str)
+         let y = yaml.load(str)
+         //refactor nh to remove markup
+         let s1 = h.substring(0,start)
+         let s2 = h.substring(end+3)
+         
+
+
+         // add div
+
+         // add css style inline
+
+         return this.fixHTMLcss(s1+s2) // keep going while <|-- exists
+      } catch(err){
+         logger.error(err)
+         return h
+      }
+   }//()
+
    bake () {
       let tstFile = this.dir + '/index.pug'
       if (!fs.existsSync(tstFile)) {
@@ -352,6 +398,9 @@ export class BakeWrk {
       let html = pug.renderFile(this.dir + '/index.pug', options)
 
       const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->'
+      // FIX the html for css
+      html=this.fixHTMLcss(html)
+
       if (!options['pretty'])
          html = minify(html, minifyO)
       html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml)
@@ -365,7 +414,9 @@ export class BakeWrk {
          return ' '
       //static data binding:
       html = pug.renderFile(this.dir + '/m.pug', options)
-
+      // FIX the html for css
+      html=this.fixHTMLcss(html)
+  
       if (!options['pretty'])
          html = minify(html, minifyO)
       html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml)

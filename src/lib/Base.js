@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.03.06';
+        return 'v5.03.08';
     }
 }
 exports.Ver = Ver;
@@ -264,6 +264,41 @@ class BakeWrk {
         }
         return result.code.replace(/;$/, '');
     }
+    indexes(source, f) {
+        if (!source)
+            return [];
+        if (!f)
+            return [];
+        var result = [];
+        for (let i = 0; i < source.length; ++i) {
+            if (source.substring(i, i + f.length) == f)
+                result.push(i);
+        }
+        return result;
+    }
+    fixHTMLcss(h) {
+        if (!h)
+            return h;
+        var nh = (' ' + h).slice(1);
+        let hits = this.indexes(h, '<!--');
+        if (hits.length < 1)
+            return nh;
+        logger.trace(hits.length);
+        let start = hits[0];
+        let end = h.indexOf('-->', start);
+        let str = h.substring(start + 5, end - 1);
+        try {
+            logger.trace(str);
+            let y = yaml.load(str);
+            let s1 = h.substring(0, start);
+            let s2 = h.substring(end + 3);
+            return this.fixHTMLcss(s1 + s2);
+        }
+        catch (err) {
+            logger.error(err);
+            return h;
+        }
+    }
     bake() {
         let tstFile = this.dir + '/index.pug';
         if (!fs.existsSync(tstFile)) {
@@ -292,6 +327,7 @@ class BakeWrk {
         };
         let html = pug.renderFile(this.dir + '/index.pug', options);
         const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->';
+        html = this.fixHTMLcss(html);
         if (!options['pretty'])
             html = minify(html, minifyO);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
@@ -300,6 +336,7 @@ class BakeWrk {
         if (!fs.existsSync(this.dir + '/m.pug'))
             return ' ';
         html = pug.renderFile(this.dir + '/m.pug', options);
+        html = this.fixHTMLcss(html);
         if (!options['pretty'])
             html = minify(html, minifyO);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
