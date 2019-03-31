@@ -3,7 +3,7 @@
 
 export class Ver {
    ver () {
-      return 'v5.03.08'
+      return 'v5.04.1'
    }
 }
 
@@ -320,7 +320,8 @@ export class BakeWrk {
       return result.code.replace(/;$/, '')
    }
 
-   indexes(source, f) {
+   //find string indexes
+   static sindexes(source, f) {
       if (!source) 
         return []
       if (!f) 
@@ -340,7 +341,7 @@ export class BakeWrk {
       if(!h) return h
       var nh = (' ' + h).slice(1) // make a copy
 
-      let hits:number[] = this.indexes(h, '<!--')
+      let hits:number[] = BakeWrk.sindexes(h, '<!--')
       if(hits.length <1 ) return nh
       logger.trace(hits.length)
 
@@ -353,14 +354,19 @@ export class BakeWrk {
          //refactor nh to remove markup
          let s1 = h.substring(0,start)
          let s2 = h.substring(end+3)
-         
-
-
-         // add div
 
          // add css style inline
+         let klass = y['class']
+         let background_image = y['background-image']
+         let css = ' <style>.'+klass+' { '
+         css = css+ 'background-image: ' + background_image + ';'
+         css = css+ ' </style>'
 
-         return this.fixHTMLcss(s1+s2) // keep going while <|-- exists
+         // add div
+         let div = ' <div class=\'' + klass + '\' >'
+         div = div+ '</div> '
+
+         return this.fixHTMLcss(s1+div+css+s2) // keep going while <|-- exists
       } catch(err){
          logger.error(err)
          return h

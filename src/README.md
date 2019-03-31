@@ -1,6 +1,6 @@
 
 # About MetaBake&trade;
-<img src="http://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
+<img src="http://metabake.github.io/mbakeDocs/logo.jpg" width="100">
 
 #### 'All my friends KNOW the low-coder'
 

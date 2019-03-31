@@ -1,4 +1,4 @@
-<img src="http://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
+<img src="http://metabake.github.io/mbakeDocs/logo.jpg" width="100">
 
 Demo: http://youtube.com/watch?v=B-mSA71S7VY
 

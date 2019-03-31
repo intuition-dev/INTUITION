@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "5.03.08",
+   "version": "5.04.1",
    "description": "MetaBake&trade; is the extensible open source low-code productivity tool for programmers. *All my friends KNOW the low-coder*",
    "main": "mbake.js",
    "scripts": {
@@ -21,8 +21,8 @@
    "keywords": [
       "pug",
       "static gen",
-      "riotjs",
       "low-code",
+      "riotjs",
       "cms"
    ],
    "engines": {

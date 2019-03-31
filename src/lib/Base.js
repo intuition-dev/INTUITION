@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.03.08';
+        return 'v5.04.1';
     }
 }
 exports.Ver = Ver;
@@ -264,7 +264,7 @@ class BakeWrk {
         }
         return result.code.replace(/;$/, '');
     }
-    indexes(source, f) {
+    static sindexes(source, f) {
         if (!source)
             return [];
         if (!f)
@@ -280,7 +280,7 @@ class BakeWrk {
         if (!h)
             return h;
         var nh = (' ' + h).slice(1);
-        let hits = this.indexes(h, '<!--');
+        let hits = BakeWrk.sindexes(h, '<!--');
         if (hits.length < 1)
             return nh;
         logger.trace(hits.length);
@@ -292,7 +292,14 @@ class BakeWrk {
             let y = yaml.load(str);
             let s1 = h.substring(0, start);
             let s2 = h.substring(end + 3);
-            return this.fixHTMLcss(s1 + s2);
+            let klass = y['class'];
+            let background_image = y['background-image'];
+            let css = ' <style>.' + klass + ' { ';
+            css = css + 'background-image: ' + background_image + ';';
+            css = css + ' </style>';
+            let div = ' <div class=\'' + klass + '\' >';
+            div = div + '</div> ';
+            return this.fixHTMLcss(s1 + div + css + s2);
         }
         catch (err) {
             logger.error(err);
