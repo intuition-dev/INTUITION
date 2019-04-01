@@ -112,6 +112,7 @@ header {
     background: -webkit-linear-gradient(left, #151f2b 0%,#384752 100%); 
     background: linear-gradient(to right, #151f2b 0%,#384752 100%); 
     color: #fff;
+    padding: 1rem 0 0 0;
     .header-wrap {
         display: flex;
         align-items: center;
@@ -147,6 +148,13 @@ header {
         color: #fff;
         margin: 0;
         padding: 1rem 0;
+        max-width: 50%;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: auto;
+        margin-right: auto;
         &:before {
             content: '';
             display: block;

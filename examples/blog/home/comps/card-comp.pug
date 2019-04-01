@@ -45,10 +45,10 @@ card-comp
                 return;
             }
             //- clone
-            let cloned = JSON.parse(JSON.stringify(data));
+            var cloned = JSON.parse(JSON.stringify(data));
             thiz.items = cloned;
 
-            let sz = thiz.items.length;
+            var sz = thiz.items.length;
             for(i = 0; i < sz; i++) {
                 var item = thiz.items[i];
 

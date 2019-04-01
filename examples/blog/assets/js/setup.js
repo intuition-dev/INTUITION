@@ -61,7 +61,7 @@ function onDeviceReady() { // nothing will work before this
 function cssLoaded() {// called by the style sheet in layout
 }
 
-let _scSz = true
+var _scSz = true
 function setupUserSzSc() {
     $(window).scroll(function () {
         _scSz = true

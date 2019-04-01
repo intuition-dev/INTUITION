@@ -17,10 +17,18 @@ block main
 
             axios.get('../blog/items.json').then(function(resp) {
 
-                let sortedItems = resp.data.items.sort(function(a, b) {
+                var currentTime = Math.floor(new Date().getTime()/1000.0); 
+
+                var sortedItems = resp.data.items.filter(e => {
+
+                        var res = e.publishDate <= currentTime;
+                        return res;
+
+                    }).sort(function(a, b) {
                     return (a.publishOrder < b.publishOrder) ? -1 : (a.publishOrder > b.publishOrder) ? 1 : 0;
                 });
-                let items = new List(sortedItems);
+
+                var items = new List(sortedItems);
                 blog = resp.data;
                 
                 var tag = riot.mount('card-comp')[0]; //- mount the first tag
@@ -46,7 +54,7 @@ block main
 
                     pgContainer =[];
                     pgContCount=-1;
-                    setupPg(guessShow(), blog);
+                    setupPg(guessShow(), sortedItems);
                     
                     //search
                     fuse = new Fuse(items, srchOptions);
@@ -78,7 +86,7 @@ block main
                 }//()
 
                 function guessShow() {
-                    let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9;
+                    var n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9;
                     n = Math.round( n * .7);
                     console.info('g', n);
                     return n;
@@ -86,7 +94,7 @@ block main
 
                 //search
                 function onSrch() {
-                    let s = $('#srchFld').val();
+                    var s = $('#srchFld').val();
                     console.log('srch', s);
                     pgContainer[pgContCount].pagination('disable');
                     pgContainer[pgContCount].pagination('hide');
@@ -98,13 +106,13 @@ block main
                     }//fi
 
                     //else we search
-                    let items = fuse.search(s);
+                    var items = fuse.search(s);
                     if(!items || items.length < 1) {// not found
                         tag.render();
                         return;
                     }//fi
 
-                    let found = {};
+                    var found = {};
                     found.items = items;
                     setupPg(guessShow(), found);
                 }//() search

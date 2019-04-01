@@ -4,7 +4,7 @@ ROOT: '/'
 
 author: 
   name: Author 1
-  avatar: http://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrc3NNp59rWqcpvZhhpahLpVGRZOnTxzm4ZonMj4MZbwyLMLZ
+  avatar: https://icstravelgroup.com/wp-content/uploads/2017/07/icstravelgroup_clients_icons00001.png
   desc: Integer iaculis, nisi id vehicula hendrerit, enim diam dignissim erat, non malesuada lorem ipsum vitae lacus. Aliquam interdum ante dolor, sit amet elementum lacus sodales quis. Aliquam erat volutpat. Praesent ut porta quam. Fusce pharetra eros lacinia elit efficitur, sed condimentum est efficitur.
 
 title: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -16,4 +16,4 @@ summary: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo
 
 publish: true
 publishOrder: 1
-publishDate: 1553002228
+publishDate: 1519913297

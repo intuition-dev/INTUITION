@@ -38,7 +38,7 @@ script.
 
     isOpen = false
     function navOpen() {
-        let $clone= $("#navJBar").clone(true)
+        var $clone= $("#navJBar").clone(true)
         $clone.removeClass('hide-lg')
         $('#navOpen').html($clone)
         new Navbar('#navOpen')

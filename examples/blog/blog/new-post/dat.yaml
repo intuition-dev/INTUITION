@@ -2,8 +2,7 @@ basedir: ../../
 ROOT: /
 author:
   name: Author 1
-  avatar: >-
-    //cdn5.vectorstock.com/i/1000x1000/73/04/female-avatar-profile-icon-round-woman-face-vector-18307304.jpg
+  avatar: https://icstravelgroup.com/wp-content/uploads/2017/07/icstravelgroup_clients_icons00001.png
   desc: >-
     Galanthus is a small genus of about 20 species of bulbous perennial herbaceous plants in the family Amaryllidaceae. The plants have two linear leaves and a single small white drooping bell shaped flower with six petal-like tepals in two circles. The smaller inner petals have green markings.
 title: >-
@@ -18,7 +17,7 @@ summary: >-
   Galanthus is a small genus of about 20 species of bulbous perennial herbaceous plants in the family Amaryllidaceae. The plants have two linear leaves and a single small white drooping bell shaped flower with six petal-like tepals in two circles. The smaller inner petals have green markings.
 publish: true
 publishOrder: 3
-publishDate: 1584624626
+publishDate: 1396361297
 pretty: false
 pageTitleTop: Snowdrop
 pageTitle: Snowdrop
