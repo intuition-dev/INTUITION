@@ -600,14 +600,14 @@ export class Comps {
    static getObsOptions (): TInputOptions {
       let t = {
          identifierNamesGenerator: 'mangled' // for virus
-         , disableConsoleOutput: true
+         , disableConsoleOutput: false // set to true after riot fix, add some logs to see riot loading, etc.
          , target: 'browser-no-eval'
 
          , stringArray: true
          , stringArrayThreshold: 1
          , stringArrayEncoding: 'rc4'
 
-         , selfDefending: true
+         , selfDefending: true // I wonder if this causes the riot problem, try this first, set to false
 
          , controlFlowFlattening: true
          , controlFlowFlatteningThreshold: 1
