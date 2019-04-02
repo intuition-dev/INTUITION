@@ -14,119 +14,7 @@ const sharp = require('sharp');
 const ts = require("typescript");
 const UglifyJS = require("uglify-es");
 const decomment = require("decomment");
-const Client = require("ssh2-sftp-client");
 const logger = require('tracer').console();
-class SFTP {
-    constructor(fn) {
-        let cfg = yaml.load(fs.readFileSync(fn + '.yaml'));
-        const dir = cfg.from;
-        this.sftp = new Client();
-        const THIZ = this;
-        this.sftp.connect({
-            host: cfg.host,
-            port: cfg.port,
-            username: cfg.username,
-            password: cfg.password
-        }).then(function (resp) {
-            delete cfg.password;
-            console.log(cfg);
-            THIZ.upload(dir, cfg.hostFolder);
-        }).catch(function (err) {
-            console.log(cfg);
-            console.log(err, 'catch error');
-            process.exit(-1);
-        });
-    }
-    async upload(dir, target) {
-        const dirs = FileHound.create()
-            .paths(dir)
-            .directory()
-            .findSync();
-        const len = dir.length;
-        let dirs2 = [];
-        for (let s of dirs) {
-            let n = s.substring(len);
-            dirs2.push(n);
-        }
-        console.log(dirs2);
-        const rec = FileHound.create()
-            .paths(dir)
-            .addFilter(function (fn) {
-            if (fn._pathname.endsWith('.min.js'))
-                return true;
-            if (fn._pathname.endsWith('.js'))
-                return false;
-            if (fn._pathname.endsWith('.pug'))
-                return false;
-            if (fn._pathname.endsWith('.yaml'))
-                return false;
-            if (fn._pathname.endsWith('.md'))
-                return false;
-            if (fn._pathname.toLowerCase().endsWith('.scss'))
-                return false;
-            if (fn._pathname.toLowerCase().endsWith('.sass'))
-                return false;
-            if (fn._pathname.endsWith('.ts'))
-                return false;
-            if (fn._pathname.endsWith('tsconfig.json'))
-                return false;
-            if (fn._pathname.endsWith('.gitignore'))
-                return false;
-            return true;
-        })
-            .findSync();
-        let rec2 = [];
-        for (let s of rec) {
-            let n = s.substring(len);
-            rec2.push(n);
-        }
-        console.log(rec2);
-        const THIZ = this;
-        for (let s of dirs2) {
-            await this.mkdirOne(target, s);
-        }
-        for (let s of rec2) {
-            await this.putOne(dir + s, target + s);
-        }
-        this.done(target);
-    }
-    async putOne(fn, tn) {
-        return this.sftp.fastPut(fn, tn)
-            .then(function (resp) {
-            console.log(resp);
-        }).catch(function (err) {
-            console.log(err, 'catch error');
-            process.exit(-1);
-        });
-    }
-    async mkdirOne(target, newDir) {
-        console.log(target + newDir);
-        const THIZ = this;
-        return new Promise(function (resolve, reject) {
-            THIZ.sftp.mkdir(target + newDir, true)
-                .then(function (resp) {
-                resolve();
-            }).catch(function (err) {
-                resolve();
-            });
-        });
-    }
-    done(target) {
-        const THIZ = this;
-        this.sftp.list(target)
-            .then(function (resp) {
-            for (let obj of resp) {
-                console.log(obj.type, obj.name);
-            }
-            console.log('Done.');
-            THIZ.sftp.end();
-        }).catch(function (err) {
-            console.log(err, 'catch error');
-            process.exit(-1);
-        });
-    }
-}
-exports.SFTP = SFTP;
 class MinJS {
     constructor(dir) {
         try {
@@ -331,5 +219,5 @@ class Sas {
 }
 exports.Sas = Sas;
 module.exports = {
-    Sas, Resize, YamlConfig, SFTP, MinJS
+    Sas, Resize, YamlConfig, MinJS
 };

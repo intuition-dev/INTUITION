@@ -21,8 +21,6 @@ function version() {
     console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -p .');
     console.info('  Compress .jpg images with a default compression level:      mbakeX -i .');
     console.info('  To process list.csv to list.json:                           mbakeX -l .');
-    console.info('  SFTP w/o source code(eg: .js, SASS, pug) - avoid,');
-    console.info('  instead mount: mbakeX -F ./sftp_site_sec.yaml');
     console.info('     Note: . anywhere is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');
     console.info();
@@ -45,7 +43,6 @@ const optionDefinitions = [
     { name: 'dash', alias: 'd', type: Boolean },
     { name: 'map', alias: 'p', type: Boolean },
     { name: 'img', alias: 'i', type: Boolean },
-    { name: 'SFTP', alias: 'F', type: Boolean },
     { name: 'csv2Json', alias: 'l', type: Boolean },
     { name: 'CMS', alias: 'm', type: Boolean },
     { name: 'phonegap', alias: 'o', type: Boolean },
@@ -106,9 +103,6 @@ function map(arg) {
 function img(arg) {
     new Sa_1.Resize().do(arg);
 }
-function sft(arg) {
-    new Sa_1.SFTP(arg);
-}
 function comps(arg) {
     new Base_1.MBake().comps(arg);
 }
@@ -156,9 +150,6 @@ else if (argsParsed.watcher) {
 }
 else if (argsParsed.img) {
     img(arg);
-}
-else if (argsParsed.SFTP) {
-    sft(arg);
 }
 else if (argsParsed.dash)
     unzipH();

@@ -3,7 +3,7 @@ clear
 tsc
 
 
-node mbake.js /Users/code/Documents/GitHub/mbakeCMS/fx
+node mbakeX.js
 
 # node mbakeX.js -w /Users/code/Documents/GitHub/MetaBake-Docs/meta-website
 

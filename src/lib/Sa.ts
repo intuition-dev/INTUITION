@@ -21,151 +21,11 @@ import * as ts from "typescript"
 import UglifyJS = require("uglify-es")
 import decomment = require('decomment')
 
-import Client = require('ssh2-sftp-client')
-
 //import colors = require('colors');
 const logger = require('tracer').console()
 
 
 // //////////////////////////////////////////////////////////////////
-
-export class SFTP {
-   sftp
-
-   constructor(fn) {//sftp_site_sec.yaml
-
-      let cfg = yaml.load(fs.readFileSync(fn + '.yaml'))
-
-      const dir = cfg.from
-      this.sftp = new Client()
-
-      const THIZ = this
-      this.sftp.connect({
-         host: cfg.host,
-         port: cfg.port,
-         username: cfg.username,
-         password: cfg.password
-      }).then(function (resp) {
-         delete cfg.password
-         console.log(cfg)
-
-         THIZ.upload(dir, cfg.hostFolder)
-      }).catch(function (err) {
-         console.log(cfg)
-         console.log(err, 'catch error')
-         process.exit(-1)
-      })
-   }
-
-   async upload (dir: string, target) {//TODO: skip the .git folder and files in there.
-
-      const dirs = FileHound.create() //recursive
-         .paths(dir)
-         .directory()
-         .findSync()
-      const len = dir.length
-      let dirs2: string[] = [] //empty string array
-      for (let s of dirs) {//clean the strings
-         //console.info(s)
-         let n = s.substring(len)
-         //console.info(n)
-         dirs2.push(n)
-      }
-      console.log(dirs2)
-
-      const rec = FileHound.create() //recursive
-         .paths(dir)
-         .addFilter(function (fn) {
-            if (fn._pathname.endsWith('.min.js'))
-               return true
-            if (fn._pathname.endsWith('.js'))
-               return false
-            if (fn._pathname.endsWith('.pug'))
-               return false
-            if (fn._pathname.endsWith('.yaml'))
-               return false
-            if (fn._pathname.endsWith('.md'))
-               return false
-            if (fn._pathname.toLowerCase().endsWith('.scss'))
-               return false
-            if (fn._pathname.toLowerCase().endsWith('.sass'))
-               return false
-            if (fn._pathname.endsWith('.ts'))
-               return false
-            if (fn._pathname.endsWith('tsconfig.json')) // ts config
-               return false
-            if (fn._pathname.endsWith('.gitignore')) // gitignore
-               return false
-            //else OK:
-            return true
-         })
-         .findSync()
-
-      let rec2: string[] = [] //empty string array
-      for (let s of rec) {//clean the strings
-         //console.info(s)
-         let n = s.substring(len)
-         //console.info(n)
-         rec2.push(n)
-      }
-      console.log(rec2)
-
-      // dir
-      const THIZ = this
-      for (let s of dirs2) {//do dirs
-         await this.mkdirOne(target, s)
-      }
-
-      //files
-      for (let s of rec2) {//do dirs
-         await this.putOne(dir + s, target + s)
-      }
-
-      this.done(target)
-
-   }//()
-
-   async putOne (fn, tn) {//TODO: compare size and date, and if match, skip
-      return this.sftp.fastPut(fn, tn)
-         .then(function (resp) {
-            console.log(resp)
-         }).catch(function (err) {
-            console.log(err, 'catch error')
-            process.exit(-1)
-         })
-   }//()
-
-   async mkdirOne (target, newDir) {
-      console.log(target + newDir)
-      const THIZ = this
-      return new Promise(function (resolve, reject) {
-         THIZ.sftp.mkdir(target + newDir, true)
-            .then(function (resp) {
-               resolve()
-            }).catch(function (err) {
-               resolve() // duplicate dir, OK
-            })
-      })
-   }//()
-
-   done (target) {
-
-      const THIZ = this
-
-      this.sftp.list(target)
-         .then(function (resp) {
-            for (let obj of resp) {//do dirs
-               console.log(obj.type, obj.name)
-            }
-            console.log('Done.')
-            THIZ.sftp.end()
-         }).catch(function (err) {
-            console.log(err, 'catch error')
-            process.exit(-1)
-         })
-   }//()
-}//class
-
 
 export class MinJS {//es5
    constructor(dir) {
@@ -424,5 +284,5 @@ export class Sas {
 }//class
 
 module.exports = {
-   Sas, Resize, YamlConfig, SFTP, MinJS
+   Sas, Resize, YamlConfig, MinJS
 }

@@ -1,7 +1,6 @@
 
 from: /Users/code/Documents/GitHub/someCode
 
-host: ftp.cdn77.com
 port: 22
 username: user1u
 password: 123123
