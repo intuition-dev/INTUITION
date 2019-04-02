@@ -2,8 +2,8 @@
 // NOTE: You can extend this file!
 
 export class Ver {
-   ver () {
-      return 'v5.04.1'
+   ver() {
+      return 'v5.04.2'
    }
 }
 
@@ -57,16 +57,16 @@ export class RetMsg {
       this._code = code
       this._msg = msg
    }//)_
-   get cmd (): string {
+   get cmd(): string {
       return this.cmd
    }
-   get code (): number {
+   get code(): number {
       return Math.round(this._code)
    }
-   get msg (): any {
+   get msg(): any {
       return this
    }
-   log () {
+   log() {
       console.info(this.cmd, this.msg, this.code)
    }
 }//class
@@ -77,14 +77,14 @@ export class Dirs {
       let dir = Dirs.slash(dir_)
       this.dir = dir
    }
-   static slash (path_) {// windowze
+   static slash(path_) {// windowze
       return path_.replace(/\\/g, '/')
    }
-   static goUpOne (dir): string {
+   static goUpOne(dir): string {
       return path.resolve(dir, '..')
    }
 
-   getInDir (sub) {
+   getInDir(sub) {
       const rec = FileHound.create() //recursive
          .paths(this.dir + sub)
          .not().glob("*.js")
@@ -107,7 +107,7 @@ export class Dirs {
    /**
     * Get list of dirs w/o root part
     */
-   getShort () {
+   getShort() {
       let lst = this.getFolders()
       let ret: string[] = [] //empty string array
       const ll = this.dir.length
@@ -122,7 +122,7 @@ export class Dirs {
       return ret
    }
 
-   getFolders () {
+   getFolders() {
       logger.info(this.dir)
       const rec = FileHound.create() //recursive
          .paths(this.dir)
@@ -160,7 +160,7 @@ export class Dat {
       let keys = Object.keys(y)
       if (keys.includes('include')) this._addData()
    }
-   write () {
+   write() {
       try {
          let y = yaml.dump(this.props, {
             skipInvalid: true,
@@ -173,10 +173,10 @@ export class Dat {
          fs.writeFileSync(p, y)
       } catch (err) { logger.info(err) }
    }
-   set (key, val) { // ex: 'title', 'My First Blog'
+   set(key, val) { // ex: 'title', 'My First Blog'
       this.props[key] = val
    }
-   _addData () {
+   _addData() {
       let jn = this.props.include
       let fn = this._path + '/' + jn
       logger.info(fn)
@@ -184,7 +184,7 @@ export class Dat {
       Object.assign(this.props, JSON.parse(jso.toString())) // merge
    }
 
-   getAll (): Object {
+   getAll(): Object {
       return this.props
    }//()
 }//class
@@ -192,7 +192,7 @@ export class Dat {
 
 export class MBake {
 
-   bake (path_): RetMsg {
+   bake(path_): RetMsg {
       if (!path_ || path_.length < 1) {
          console.info('no path_ arg passed')
          return
@@ -222,7 +222,7 @@ export class MBake {
       return new RetMsg(path_ + ' bake', 1, 'ok')
    }
 
-   comps (path_, watcher?: boolean, mount?: string): RetMsg {
+   comps(path_, watcher?: boolean, mount?: string): RetMsg {
       if (!path_ || path_.length < 1) {
          console.info('no path_ arg passed')
          return
@@ -244,7 +244,7 @@ export class MBake {
    }
 
    // itemize and bake
-   itemizeNBake (ppath_): RetMsg {
+   itemizeNBake(ppath_): RetMsg {
       if (!ppath_ || ppath_.length < 1) {
          console.info('no path_ arg passed')
          return
@@ -262,7 +262,7 @@ export class MBake {
    }
 
    // itemize, bake and tag, needs itemize to find yaml i dat in path_
-   _all (path_): RetMsg {
+   _all(path_): RetMsg {
       try {
          let t = new Comps(path_)
          let lst = t.get()
@@ -287,19 +287,19 @@ export class BakeWrk {
       console.info(' processing: ' + this.dir)
    }
 
-   static metaMD (text, options) {//a custom md filter that uses a transformer
+   static metaMD(text, options) {//a custom md filter that uses a transformer
       console.info(' ', options)
       return md.render(text)
    }
 
-   static marp (text, options) {//a custom md filter that uses a transformer
+   static marp(text, options) {//a custom md filter that uses a transformer
       console.info(' ', options)
       const { html, css } = marpit.render(text)
       return html
    }
 
    //http://github.com/kangax/html-minifier/issues/843
-   static minify_es6 (text, inline) {
+   static minify_es6(text, inline) {
       var uglifyEsOptions = {
          parse: { bare_returns: {} },
          mangle: false,
@@ -322,58 +322,58 @@ export class BakeWrk {
 
    //find string indexes
    static sindexes(source, f) {
-      if (!source) 
-        return []
-      if (!f) 
-        return []
-      
+      if (!source)
+         return []
+      if (!f)
+         return []
+
       var result = []
       for (let i = 0; i < source.length; ++i) {
-        if (source.substring(i, i + f.length) == f) 
-          result.push(i)
+         if (source.substring(i, i + f.length) == f)
+            result.push(i)
       }
       return result
-    }
+   }
 
 
    //the markdown magic for fix
    fixHTMLcss(h) {
-      if(!h) return h
+      if (!h) return h
       var nh = (' ' + h).slice(1) // make a copy
 
-      let hits:number[] = BakeWrk.sindexes(h, '<!--')
-      if(hits.length <1 ) return nh
+      let hits: number[] = BakeWrk.sindexes(h, '<!--')
+      if (hits.length < 1) return nh
       logger.trace(hits.length)
 
-      let start=hits[0]
+      let start = hits[0]
       let end = h.indexOf('-->', start)
-      let str = h.substring(start+5,end-1)
+      let str = h.substring(start + 5, end - 1)
       try {
          logger.trace(str)
          let y = yaml.load(str)
          //refactor nh to remove markup
-         let s1 = h.substring(0,start)
-         let s2 = h.substring(end+3)
+         let s1 = h.substring(0, start)
+         let s2 = h.substring(end + 3)
 
          // add css style inline
          let klass = y['class']
          let background_image = y['background-image']
-         let css = ' <style>.'+klass+' { '
-         css = css+ 'background-image: ' + background_image + ';'
-         css = css+ ' </style>'
+         let css = ' <style>.' + klass + ' { '
+         css = css + 'background-image: ' + background_image + ';'
+         css = css + ' </style>'
 
          // add div
          let div = ' <div class=\'' + klass + '\' >'
-         div = div+ '</div> '
+         div = div + '</div> '
 
-         return this.fixHTMLcss(s1+div+css+s2) // keep going while <|-- exists
-      } catch(err){
+         return this.fixHTMLcss(s1 + div + css + s2) // keep going while <|-- exists
+      } catch (err) {
          logger.error(err)
          return h
       }
    }//()
 
-   bake () {
+   bake() {
       let tstFile = this.dir + '/index.pug'
       if (!fs.existsSync(tstFile)) {
          return
@@ -405,7 +405,7 @@ export class BakeWrk {
 
       const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->'
       // FIX the html for css
-      html=this.fixHTMLcss(html)
+      html = this.fixHTMLcss(html)
 
       if (!options['pretty'])
          html = minify(html, minifyO)
@@ -421,8 +421,8 @@ export class BakeWrk {
       //static data binding:
       html = pug.renderFile(this.dir + '/m.pug', options)
       // FIX the html for css
-      html=this.fixHTMLcss(html)
-  
+      html = this.fixHTMLcss(html)
+
       if (!options['pretty'])
          html = minify(html, minifyO)
       html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml)
@@ -432,7 +432,7 @@ export class BakeWrk {
 
    }//()
 
-   getNameFromFileName (filename) {//lifted from pug cli
+   getNameFromFileName(filename) {//lifted from pug cli
       filename = Dirs.slash(filename)
 
       if (filename.indexOf('/') > -1) {
@@ -466,7 +466,7 @@ export class Items {
       this.dirs = d.getFolders()
    }
 
-   _addAnItem (dn) {
+   _addAnItem(dn) {
       try {
          if (!fs.existsSync(dn + '/dat.yaml'))
             return
@@ -512,7 +512,7 @@ export class Items {
       }
    }
 
-   itemize (): string {
+   itemize(): string {
       logger.info('Itemizing: ' + this.dir)
 
       const rootDir: string = this.dir
@@ -548,7 +548,7 @@ export class Items {
       return ' processed '
    }
 
-   static clean (o: Object) {// remove fields that are pug
+   static clean(o: Object) {// remove fields that are pug
       delete o['basedir']
       delete o['ROOT']
       delete o['pretty']
@@ -568,7 +568,7 @@ export class Comps {
       this.dir = dir
    }
 
-   get () {
+   get() {
       const rec = FileHound.create() //recursive
          .paths(this.dir)
          .ext('pug')
@@ -581,7 +581,7 @@ export class Comps {
       }
       return ret
    }//()
-   comps (list, watcher?: boolean, mount?: string): string {
+   comps(list, watcher?: boolean, mount?: string): string {
       console.info('Looking for tags *-comp ' + this.dir)
       for (let val of list) {//clean the strings
          let s: string = fs.readFileSync(val).toString()
@@ -597,10 +597,10 @@ export class Comps {
       return 'ok'
    }//()
 
-   static getObsOptions (): TInputOptions {
+   static getObsOptions(): TInputOptions {
       let t = {
-         identifierNamesGenerator: 'mangled' // for virus
-         , disableConsoleOutput: false // set to true after riot fix, add some logs to see riot loading, etc.
+         identifierNamesGenerator: 'hexadecimal' // for virus
+         , disableConsoleOutput: true // set to true after riot fix, add some logs to see riot loading, etc.
          , target: 'browser-no-eval'
 
          , stringArray: true
@@ -620,7 +620,7 @@ export class Comps {
 
    ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
-   process (s: string, fn: string, watcher?: boolean, mount?: string) {
+   process(s: string, fn: string, watcher?: boolean, mount?: string) {
       const r_options = { 'template': 'pug' }
 
       logger.info('compiling', fn + '.tag')

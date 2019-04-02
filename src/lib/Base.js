@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.1';
+        return 'v5.04.2';
     }
 }
 exports.Ver = Ver;
@@ -476,7 +476,7 @@ class Comps {
     }
     static getObsOptions() {
         let t = {
-            identifierNamesGenerator: 'mangled',
+            identifierNamesGenerator: 'hexadecimal',
             disableConsoleOutput: true,
             target: 'browser-no-eval',
             stringArray: true,
