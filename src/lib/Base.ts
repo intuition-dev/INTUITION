@@ -600,14 +600,14 @@ export class Comps {
    static getObsOptions(): TInputOptions {
       let t = {
          identifierNamesGenerator: 'hexadecimal' // for virus
-         , disableConsoleOutput: true // set to true after riot fix, add some logs to see riot loading, etc.
+         , disableConsoleOutput: true 
          , target: 'browser-no-eval'
 
          , stringArray: true
          , stringArrayThreshold: 1
          , stringArrayEncoding: 'rc4'
 
-         , selfDefending: true // I wonder if this causes the riot problem, try this first, set to false
+         , selfDefending: true 
 
          , controlFlowFlattening: true
          , controlFlowFlatteningThreshold: 1
