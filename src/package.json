@@ -30,7 +30,7 @@
       "yarn": ">=1.15.2"
    },
    "dependencies": {
-      "@marp-team/marpit": ">=0.8.0",
+      "@marp-team/marpit": ">=0.9.0",
       "adm-zip": ">=0.4.13",
       "autoprefixer": ">=9.5.0",
       "axios": ">=0.18.0",
