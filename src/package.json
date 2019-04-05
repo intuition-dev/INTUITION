@@ -1,6 +1,6 @@
 {
    "name": "mbake",
-   "version": "5.04.3",
+   "version": "5.04.4",
    "description": "MetaBake&trade; is the extensible open source low-code productivity tool for programmers. *All my friends KNOW the low-coder*",
    "main": "mbake.js",
    "scripts": {
