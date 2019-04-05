@@ -45,13 +45,14 @@
   resolved "https://registry.yarnpkg.com/@ffmpeg-installer/win32-x64/-/win32-x64-4.1.0.tgz#17e8699b5798d4c60e36e2d6326a8ebe5e95a2c5"
   integrity sha512-Drt5u2vzDnIONf4ZEkKtFlbvwj6rI3kxw1Ck9fpudmtgaZIHD4ucsWB2lCZBXRxJgXR+2IMSti+4rtM4C4rXgg==
 
-"@marp-team/marpit@>=0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@marp-team/marpit/-/marpit-0.9.0.tgz#5a12f00a97832907806af81933d8d2f5e25cb4e6"
-  integrity sha512-nPtIXu2leY/EDKsjvu3g4tsa98yRAXpM1w2bpUUKLtPC0wirdhxIJWGjW8W24Hm0+c+F/f3jibE7B15fTCVweA==
+"@marp-team/marpit@>=0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@marp-team/marpit/-/marpit-0.9.1.tgz#6d25110b370f079378a0ef153776b3aa3d891163"
+  integrity sha512-+60TACjL4M/dGP9KG5WJse1iLbaD4RAMkBpCq7qfwm7JU730WjM6zdTfSXJ6U2o6U/yoJsaDq5UYJ4MNGMwRMA==
   dependencies:
     color-string "^1.5.3"
     js-yaml "^3.13.0"
+    lodash.get "^4.4.2"
     lodash.kebabcase "^4.1.1"
     markdown-it "^8.4.2"
     markdown-it-front-matter "^0.1.2"
@@ -2875,6 +2876,11 @@ lodash.foreach@^4.3.0, lodash.foreach@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.foreach/-/lodash.foreach-4.5.0.tgz#1a6a35eace401280c7f06dddec35165ab27e3e53"
   integrity sha1-Gmo16s5AEoDH8G3d7DUWWrJ+PlM=
+
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
 
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
