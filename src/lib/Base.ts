@@ -405,7 +405,7 @@ export class BakeWrk {
 
       const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->'
       // FIX the html for css
-      html = this.fixHTMLcss(html)
+      html = this.fixedHTMLcss(html)
 
       if (!options['pretty'])
          html = minify(html, minifyO)
@@ -421,7 +421,7 @@ export class BakeWrk {
       //static data binding:
       html = pug.renderFile(this.dir + '/m.pug', options)
       // FIX the html for css
-      html = this.fixHTMLcss(html)
+      html = this.fixedHTMLcss(html)
 
       if (!options['pretty'])
          html = minify(html, minifyO)

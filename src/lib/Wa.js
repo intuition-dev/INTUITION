@@ -85,7 +85,8 @@ class Watch {
         this.watcher.unwatch('*.html');
         this.watcher.unwatch('*.swpc*');
         this.watcher.unwatch('*.min*');
-        this.watcher.unwatch('*.ts');
+        this.watcher.unwatch('*.min.js');
+        this.watcher.unwatch('*.css');
         this.watcher.unwatch('.DS_Store');
         this.watcher.unwatch('.gitignore');
         this.watcher.unwatch('.git');
@@ -245,6 +246,14 @@ exports.MDevSrv = MDevSrv;
 class FileOps {
     constructor(root_) {
         this.root = Base_1.Dirs.slash(root_);
+    }
+    count(fileAndExt) {
+        const files = FileHound.create()
+            .paths(this.root)
+            .depth(0)
+            .match(fileAndExt + '*')
+            .findSync();
+        return files.length;
     }
     clone(src, dest) {
         logger.info('copy?');

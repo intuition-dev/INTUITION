@@ -94,7 +94,7 @@ class MinJS {
         console.info(`status code '${exitCode}'.`);
     }
 }
-MinJS.ver = '// ' + new Base_1.Ver().ver() + ' on ' + new Date().toISOString() + '\r\n';
+MinJS.ver = '// mB ' + new Base_1.Ver().ver() + ' on ' + new Date().toISOString() + '\r\n';
 MinJS.options = {
     ecma: 5,
     keep_classnames: true,

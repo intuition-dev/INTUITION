@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.3';
+        return 'v5.04.4';
     }
 }
 exports.Ver = Ver;
@@ -276,7 +276,7 @@ class BakeWrk {
         }
         return result;
     }
-    fixHTMLcss(h) {
+    fixedHTMLcss(h) {
         if (!h)
             return h;
         var nh = (' ' + h).slice(1);
@@ -299,7 +299,7 @@ class BakeWrk {
             css = css + ' </style>';
             let div = ' <div class=\'' + klass + '\' >';
             div = div + '</div> ';
-            return this.fixHTMLcss(s1 + div + css + s2);
+            return this.fixedHTMLcss(s1 + div + css + s2);
         }
         catch (err) {
             logger.error(err);
@@ -413,8 +413,7 @@ class Items {
         let fn = rootDir + '/dat_i.yaml';
         let y = yaml.load(fs.readFileSync((fn)));
         Items.clean(y);
-        y.nbVer = new Ver().ver();
-        y.note = 'This is statically served and visible publicly.';
+        y.mbVer = new Ver().ver();
         this.feed = y;
         logger.warn(this.feed);
         for (let val of this.dirs) {

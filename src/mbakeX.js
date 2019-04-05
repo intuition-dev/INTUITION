@@ -25,14 +25,12 @@ function version() {
     console.info(' -------------------------------------------------------------');
     console.info();
     console.info(' Starters:');
-    console.info('  For a starter baseCMS :                                     mbakeX -m');
+    console.info('  For a starter WebCMS :                                      mbakeX -m');
     console.info('  For a starter dash web-app:                                 mbakeX -d');
     console.info('  For example slides markdown:                                mbakeX -k');
     console.info('  For a Electron(pre-PhoneGap) app:                           mbakeX -e');
     console.info('  For a starter hybrid Phonegap app:                          mbakeX -o');
     console.info('  For an example Ad:                                          mbakeX -a');
-    console.info();
-    console.info(' Full docs: http://docs.MetaBake.org');
     console.info();
     process.exit();
 }
