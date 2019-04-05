@@ -112,7 +112,8 @@ export class Watch {
       this.watcher.unwatch('*.html')
       this.watcher.unwatch('*.swpc*')
       this.watcher.unwatch('*.min*')
-      this.watcher.unwatch('*.ts')
+      this.watcher.unwatch('*.min.js')
+      this.watcher.unwatch('*.css')
       this.watcher.unwatch('.DS_Store')
       this.watcher.unwatch('.gitignore')
       this.watcher.unwatch('.git') // how to ignore git folder of changes? todo
@@ -316,6 +317,18 @@ export class FileOps {
    root
    constructor(root_) {
       this.root = Dirs.slash(root_)
+   }
+
+   /** returns # of files with the name, used for edit ver */
+   count(fileAndExt):number {
+
+      const files = FileHound.create()
+         .paths(this.root)
+         .depth(0)
+         .match(fileAndExt+'*')
+         .findSync()
+
+      return files.length
    }
 
    clone(src, dest): RetMsg {

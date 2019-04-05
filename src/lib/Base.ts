@@ -336,8 +336,8 @@ export class BakeWrk {
    }
 
 
-   //the markdown magic for fix
-   fixHTMLcss(h) {
+   //the markdown magic for fixed
+   fixedHTMLcss(h) {
       if (!h) return h
       var nh = (' ' + h).slice(1) // make a copy
 
@@ -366,7 +366,7 @@ export class BakeWrk {
          let div = ' <div class=\'' + klass + '\' >'
          div = div + '</div> '
 
-         return this.fixHTMLcss(s1 + div + css + s2) // keep going while <|-- exists
+         return this.fixedHTMLcss(s1 + div + css + s2) // keep going while <|-- exists
       } catch (err) {
          logger.error(err)
          return h
@@ -521,8 +521,7 @@ export class Items {
       let y = yaml.load(fs.readFileSync((fn)))
 
       Items.clean(y)
-      y.nbVer = new Ver().ver()
-      y.note = 'This is statically served and visible publicly.'
+      y.mbVer = new Ver().ver()
       this.feed = y
       logger.warn(this.feed)
 

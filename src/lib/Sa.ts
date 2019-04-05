@@ -95,7 +95,7 @@ export class MinJS {//es5
 
    }//()
 
-   static ver = '// ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
+   static ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
    static options = {
       ecma: 5,
