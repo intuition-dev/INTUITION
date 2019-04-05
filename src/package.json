@@ -49,7 +49,7 @@
       "fs-extra": ">=7.0.1",
       "html-minifier": ">=4.0.0",
       "javascript-obfuscator": ">=0.18.1",
-      "js-yaml": ">=3.13.0",
+      "js-yaml": ">=3.13.1",
       "jstransformer": ">=1.0.0",
       "jstransformer-markdown-it": ">=2.1.0",
       "lunr": ">=2.3.6",
@@ -67,7 +67,7 @@
       "terser": ">=3.17.0",
       "tracer": ">=0.9.8",
       "traverse": ">=0.6.6",
-      "typescript": ">=3.4.1",
+      "typescript": ">=3.4.2",
       "uglify-es": ">=3.3.9",
       "unfluff": ">=3.2.0"
    },
