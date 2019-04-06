@@ -1,7 +1,7 @@
 {
    "name": "mbake",
    "version": "5.04.4",
-   "description": "MetaBake&trade; is the extensible open source low-code productivity tool for programmers. *All my friends KNOW the low-coder*",
+   "description": "*All my friends KNOW the low-coder* MetaBake is open source and extensible low-code productivity tool for programmers.",
    "main": "mbake.js",
    "scripts": {
       "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""
