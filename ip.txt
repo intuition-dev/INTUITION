@@ -1,6 +1,6 @@
 
 Examples and use is MIT.
-All, except these are LGPL-3:
+Except these are LGPL-3:
 - CLI tool source
 - ViewModel interface and design
 - API that calls baseCMS 
