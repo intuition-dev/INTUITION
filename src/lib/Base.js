@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.4';
+        return 'v5.04.5';
     }
 }
 exports.Ver = Ver;
@@ -334,7 +334,7 @@ class BakeWrk {
         };
         let html = pug.renderFile(this.dir + '/index.pug', options);
         const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->';
-        html = this.fixHTMLcss(html);
+        html = this.fixedHTMLcss(html);
         if (!options['pretty'])
             html = minify(html, minifyO);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
@@ -343,7 +343,7 @@ class BakeWrk {
         if (!fs.existsSync(this.dir + '/m.pug'))
             return ' ';
         html = pug.renderFile(this.dir + '/m.pug', options);
-        html = this.fixHTMLcss(html);
+        html = this.fixedHTMLcss(html);
         if (!options['pretty'])
             html = minify(html, minifyO);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
