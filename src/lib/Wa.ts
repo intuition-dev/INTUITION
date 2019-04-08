@@ -132,7 +132,7 @@ export class Watch {
       if (Watch.refreshPending) return  //debounce
       Watch.refreshPending = true
       setTimeout(function () {
-         console.info('reload')
+         logger.info('reload')//,MDevSrv.reloadServer)
          MDevSrv.reloadServer.reload()
 
          Watch.refreshPending = false
@@ -268,6 +268,7 @@ export class MDevSrv {
       logger.info(dir, port)
       app.set('app port', port)
       MDevSrv.reloadServer = reload(app, {verbose: false, port: 9856})
+      logger.info('reloadServer')
       app.set('views', dir)
 
       const bodyInterceptor = interceptor(function (req, res) {

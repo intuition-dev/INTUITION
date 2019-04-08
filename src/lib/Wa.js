@@ -103,7 +103,7 @@ class Watch {
             return;
         Watch.refreshPending = true;
         setTimeout(function () {
-            console.info('reload');
+            logger.info('reload');
             MDevSrv.reloadServer.reload();
             Watch.refreshPending = false;
         }, 100);
@@ -207,6 +207,7 @@ class MDevSrv {
         logger.info(dir, port);
         app.set('app port', port);
         MDevSrv.reloadServer = reload(app, { verbose: false, port: 9856 });
+        logger.info('reloadServer');
         app.set('views', dir);
         const bodyInterceptor = interceptor(function (req, res) {
             return {

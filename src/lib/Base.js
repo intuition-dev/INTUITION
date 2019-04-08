@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.5';
+        return 'v5.04.6';
     }
 }
 exports.Ver = Ver;
@@ -33,7 +33,7 @@ const logger = require('tracer').colorConsole({
         }
     ]
 });
-const beeper = require('beeper');
+const beeper = require("beeper");
 const JavaScriptObfuscator = require("javascript-obfuscator");
 class RetMsg {
     constructor(cmd, code, msg) {

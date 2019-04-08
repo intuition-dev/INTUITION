@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.04.5'
+      return 'v5.04.6'
    }
 }
 
@@ -39,13 +39,12 @@ const logger = require('tracer').colorConsole({
       }
    ]
 })
-const beeper = require('beeper')
+
+import beeper = require('beeper');
 
 import * as JavaScriptObfuscator from 'javascript-obfuscator'
 import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
 //import { idText } from 'typescript';
-
-import beeper = require('beeper');
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class RetMsg {
