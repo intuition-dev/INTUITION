@@ -26,7 +26,7 @@ function version() {
     console.info();
     console.info(' Starters:');
     console.info('  For a starter website:                                      mbake -w');
-    console.info('  For a starter blog|items:                                   mbake -b');
+    console.info('  For a starter CMS|items:                                    mbake -e');
     console.info('  For an example dynamic web app CRUD:                        mbake -u');
     console.info();
     console.info('  mbakeX CLI extra has WebCMS, components and more flags and examples: mbakeX');
@@ -40,7 +40,7 @@ const optionDefinitions = [
     { name: 'items', alias: 'i', type: Boolean },
     { name: 'css', alias: 's', type: Boolean },
     { name: 'MinJS', alias: 't', type: Boolean },
-    { name: 'blog', alias: 'b', type: Boolean },
+    { name: 'CMS', alias: 'e', type: Boolean },
     { name: 'website', alias: 'w', type: Boolean },
     { name: 'CRUD', alias: 'u', type: Boolean },
 ];
@@ -61,11 +61,11 @@ function unzipS() {
     console.info('Extracted a starter website to ./website');
     process.exit();
 }
-function unzipB() {
-    let src = __dirname + '/blog.zip';
+function unzipE() {
+    let src = __dirname + '/CMS.zip';
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
-    console.info('Extracted a starter blog app to ./blog');
+    console.info('Extracted a starter CMS app to ./CMS');
     process.exit();
 }
 if (arg) {
@@ -106,7 +106,7 @@ if (argsParsed.items)
 else if (argsParsed.css)
     css(arg);
 else if (argsParsed.blog)
-    unzipB();
+    unzipE();
 else if (argsParsed.CRUD)
     unzipCRUD();
 else if (argsParsed.website)

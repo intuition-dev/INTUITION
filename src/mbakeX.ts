@@ -32,7 +32,7 @@ function version () {
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
-   console.info('  For a starter WebCMS :                                      mbakeX -m')
+   console.info('  For a starter WebAdmin :                                    mbakeX -m')
    console.info('  For a starter dash web-app:                                 mbakeX -d')
 
    console.info('  For example slides markdown:                                mbakeX -k')
@@ -59,7 +59,7 @@ const optionDefinitions = [
 
    { name: 'csv2Json', alias: 'l', type: Boolean },
 
-   { name: 'CMS', alias: 'm', type: Boolean },
+   { name: 'WebAdmin', alias: 'm', type: Boolean },
    { name: 'phonegap', alias: 'o', type: Boolean },
    { name: 'elect', alias: 'e', type: Boolean },
    { name: 'ad', alias: 'a', type: Boolean },
@@ -70,11 +70,11 @@ const argsParsed = commandLineArgs(optionDefinitions)
 let arg: string = argsParsed.mbakeX
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
-function unzipA () {
-   let src: string = __dirname + '/CMS.zip'
+function unzipM () {
+   let src: string = __dirname + '/WebAdmin.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted a starter CMS in this folder')
+   console.info('Extracted a starter WebAdmin in this folder')
    process.exit()
 }
 
@@ -167,8 +167,8 @@ if (argsParsed.elect)
    unzipE()
 else if (argsParsed.phonegap)
    unzipG()
-else if (argsParsed.CMS)
-   unzipA()
+else if (argsParsed.WebAdmin)
+   unzipM()
 else if (argsParsed.ad)
    unzipD()
 else if (argsParsed.csv2Json)
