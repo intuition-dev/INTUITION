@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.04.8'
+      return 'v5.04.10'
    }
 }
 
@@ -340,13 +340,13 @@ export class BakeWrk {
       if (!h) return h
       var nh = (' ' + h).slice(1) // make a copy
 
-      let hits: number[] = BakeWrk.sindexes(h, '<!--')
+      let hits: number[] = BakeWrk.sindexes(h, '<!XX')
       if (hits.length < 1) return nh
       logger.trace(hits.length)
 
       let start = hits[0]
-      let end = h.indexOf('-->', start)
-      let str = h.substring(start + 5, end - 1)
+      let end = h.indexOf('XXX>', start)
+      let str = h.substring(start + 5, end)
       try {
          logger.trace(str)
          let y = yaml.load(str)
