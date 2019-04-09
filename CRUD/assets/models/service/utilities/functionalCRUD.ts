@@ -12,15 +12,28 @@ Functional CRUD approach:
 export const getFromDatabase = (database = db1) => entity => database.collection(entity)
 
 //We avoid the use of ifs, thanks to partial application and ternary operator
-export const read = table => (id?: string) => id ? 
-    table.doc(id).get()
-    .then((docSnap: any) => docSnap.data())
-    .catch( (error: any) => console.log('Woops, something went wrong: ', error) ) :
-
-    table.doc().get()
-    .then( (docSnap: any)=> docSnap.data() )
-    .catch( (error: any) => console.log('Woops, something went wrong: ', error) )
-
+export const read = table => (id?: string) => 
+    id
+    ? table
+        .doc(id)
+        .get()
+        .then(docSnap => {
+        console.log(docSnap.data());
+        return docSnap.data();
+        })
+        .catch(error => console.log("Woops, something went wrong: ", error))
+    : table
+        .get()
+        .then(querySnapshot => {
+        let rows = [];
+        querySnapshot.forEach(docSnap => {
+            let row = docSnap.data();
+            row["id"] = docSnap.id;
+            rows.push(row);
+        });
+        return rows;
+        })
+        .catch(error => console.log("Woops, something went wrong: ", error));
 
 export const add = table => row => table.doc().set(row)
     .then(() => console.log('data added succesfully'))
