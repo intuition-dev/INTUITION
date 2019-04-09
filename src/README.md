@@ -22,15 +22,13 @@ Prerequisites: you should know HTML, CSS an .js - that is all we use. If you nee
 
 ## Quick start
 ```sh
-
 yarn global add mbake
 
-mbake -w . // for a base website
+mbake -w . /* for a base website */
 
 cd website
 
-mbakeX -w . //to run the watcher/livereload
-
+mbakeX -w . /* to run the watcher/livereload */
 ```
 
   
@@ -62,9 +60,7 @@ p Hello #{key1}
 and create file dat.yaml
 
 ```yaml
-
 key1: World
-
 ```
 
   
@@ -75,12 +71,10 @@ key1: World
 
 #### Now make with mbake:
 
-  
 
 ```sh
 mbake .
 ```
-
   
 
 This will create index.html.
@@ -131,6 +125,8 @@ Instead of `.` you can specify any path.
 
 Also, the fact that we are generating this static content allows us to have the entire webapp served by a CDN.  
 
+
+  
 ## SASS
 
 CSS can be hard to work with, so people use Sass/Scss. Create a `style.scss` file:
