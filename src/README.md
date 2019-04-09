@@ -1,10 +1,11 @@
 
   
 
-# MetaBake&trade;
+# Metabake&trade;
 
 #### 'All my friends KNOW the low-coder'
-### MetaBake&trade; is open source and extensible low-code productivity tool for programmers.
+
+### Metabake&trade; is open source and extensible low-code productivity tool for programmers.
 
   
 ## Overview
@@ -77,16 +78,12 @@ mbake .
 ```
   
 
-This will create index.html.
-
-Of course you can use regular Pug syntax to include other Pug files; or Markdown. (MetaBake&trade; Markdown flavor includes CSS support):
+This will create `index.html`. Of course you can use regular Pug syntax to include other Pug files or Markdown. (MetaBake&trade; Markdown flavor includes CSS support):
 
 ```pug
 body
-
-div
-
-include:metaMD comment.md
+	div
+		include:metaMD comment.md
 ```
 
   
@@ -114,9 +111,7 @@ This will start a webserver and auto-refresh browser, and watch for file changes
   
 
 ```sh
-
 mbakeX -w .
-
 ```
 
   
@@ -133,17 +128,12 @@ CSS can be hard to work with, so people use Sass/Scss. Create a `style.scss` fil
 
 ```css
 $font-stack: Helvetica, sans-serif;
-
 $primary-color: #333;
 
 body {
-
-font: 100% $font-stack;
-
-color: $primary-color;
-
+	font: 100% $font-stack;
+	color: $primary-color;
 }
-
 ```
 Create file `assets.yaml` in assets folder, to compile your scss to css
 
