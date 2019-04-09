@@ -201,7 +201,7 @@ Other examples include:
 
 # Links
 
-- [MetaBake.org] (https://www.MetaBake.org)
+- [MetaBake.org](https://www.MetaBake.org)
 - Click for mbake Docs: [docs.MetaBake.org](http://docs.MetaBake.org)
 - [git.MetaBake.org](http://git.MetaBake.org)
 - Community [forum.MetaBake.org](http://forum.MetaBake.org)
