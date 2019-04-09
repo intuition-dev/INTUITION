@@ -9,7 +9,7 @@ Functional CRUD approach:
 //We may now use them for piping/composing further custom functionality.
 
 
-export const getFromDatabase = (database = db1) => entity => database.collection(entity)
+export const getFromDatabase = (database) => entity => database.collection(entity)
 
 //We avoid the use of ifs, thanks to partial application and ternary operator
 export const read = table => (id?: string) => 

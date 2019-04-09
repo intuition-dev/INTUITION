@@ -2,26 +2,27 @@ import { compose } from './utilities/functionalUtilities'
 import { read, add, update, remove, getFromDatabase } from './utilities/functionalCRUD'
 
 
-const getTableOneFromDb1 = getFromDatabase('table_one2')
+
+const getFromDb1 = getFromDatabase(db1)
+
 
 export const readFromTableOne = compose(
     read,
-    getTableOneFromDb1
-)
+    getFromDb1
+)('table_one2')
 
 export const addInTableOne = compose(
     add,
-    getTableOneFromDb1
-)
+    getFromDb1
+)('table_one2')
 
 export const updateInTableOne = compose(
     update,
-    getTableOneFromDb1
-)
+    getFromDb1
+)('table_one2')
 
 export const deleteFromTableOne = compose(
     remove,
-    getTableOneFromDb1
-)
-
+    getFromDb1
+)('table_one2')
 
