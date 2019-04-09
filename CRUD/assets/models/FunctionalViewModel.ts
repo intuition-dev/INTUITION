@@ -6,10 +6,9 @@ import {FAKEDATA} from './service/utilities/dummyData';
 We start to define a class with methods an attached data. 
 However, we can stil make use or our FP approach in service.
 */
-export default class FunctionalViewModel {
+class FunctionalViewModel {
     _data: object[] = []
     dataSourceType: string = 'real' //We switch between real or fake data
-
 
     //Instead of a switch we use an object literal:
     getViewList = (table) => ({
