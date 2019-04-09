@@ -20,7 +20,7 @@ There are four basic examples:
 
 ## CRUD w/ ViewModel (VM) 
 
-You can use any framework or library with MetaBake&trade;. And MetaBake&trade; comes with a recommended 'app framework' for WebApps in 3 lines:
+You can use any framework or library with MetaBake&trade;. And MetaBakecomes with a recommended 'app framework' for WebApps in 3 lines:
 
 
       interface iVM {
@@ -30,7 +30,7 @@ You can use any framework or library with MetaBake&trade;. And MetaBake&trade; c
       }
 
 
-This is somewhat similar to M-VM-V. Major difference is that the VM for MetaBake&trade; is
+This is somewhat similar to M-VM-V. Major difference is that the VM for MetaBakeis
 what KnockOut called Complex VM or a Master VM.
 Minor difference is that the M is called Services in MetaBake&trade;. (and V is Pug for us). So this is S-VM-V architecture.
 

@@ -5,9 +5,9 @@ changefreq: monthly
 menu:
    - Why MetaBake:
       - Why MetaBake: /why-MetaBake/why-MetaBake
-      - MetaBake&trade; vs. Other low-code: /why-MetaBake/MetaBake-vs-other-low-code
-      - MetaBake&trade; vs. Hugo: /why-MetaBake/MetaBake-vs-hugo
-      - MetaBake&trade; vs. Gulp and Grunt: /why-MetaBake/MetaBake-vs-gulp-and-grunt
+      - MetaBakevs. Other low-code: /why-MetaBake/MetaBake-vs-other-low-code
+      - MetaBakevs. Hugo: /why-MetaBake/MetaBake-vs-hugo
+      - MetaBakevs. Gulp and Grunt: /why-MetaBake/MetaBake-vs-gulp-and-grunt
    - Who Benefits: /who-benefits
    - Get Started: /get-started
    - About:

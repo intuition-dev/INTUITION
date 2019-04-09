@@ -2,8 +2,8 @@ basedir: ../../
 
 pretty: false
 
-title: MetaBake&trade; versus StaticGen
+title: MetaBakeversus StaticGen
 image: >-
   http://mbake.org/assets/img/slide-3.jpg
-content_text: MetaBake&trade; offers a convenient build with easy features to use, more than Hugo supports.
+content_text: MetaBakeoffers a convenient build with easy features to use, more than Hugo supports.
 keywords: Static Gen, Hugo, Pelican, Jekyll

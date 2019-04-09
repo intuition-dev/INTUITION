@@ -1,18 +1,17 @@
 
-  
 
 # Metabake&trade;
 
 #### 'All my friends KNOW the low-coder'
 
-### Metabake&trade; is open source and extensible low-code productivity tool for programmers.
+### MetaBakeis open source and extensible low-code productivity tool for programmers.
 
   
 ## Overview
 
-MetaBake&trade; mbake CLI tool is a modern way to generate websites and dynamic webapps via low-code to help you achieve high developer productivity, without additional effort. MetaBake&trade; open source tool helps you deliver web apps 10X faster with less coding by leveraging our documented high-productivity approaches/pillars. It leverages static generation; with Pug, Markdown and more; including dynamic apps, data binding, extensible baseCMS, components and more.
+MetaBakembake CLI tool is a modern way to generate websites and dynamic webapps via low-code to help you achieve high developer productivity, without additional effort. MetaBakeopen source tool helps you deliver web apps 10X faster with less coding by leveraging our documented high-productivity approaches/pillars. It leverages static generation; with Pug, Markdown and more; including dynamic apps, data binding, extensible baseCMS, components and more.
 
-MetaBake&trade; is a simple tool, but can build any type of an app or website, and it allows for gradual adoption. You can start by slowly adopting just a few of its approaches.
+MetaBakeis a simple tool, but can build any type of an app or website, and it allows for gradual adoption. You can start by slowly adopting just a few of its approaches.
 
   
   
@@ -78,7 +77,7 @@ mbake .
 ```
   
 
-This will create `index.html`. Of course you can use regular Pug syntax to include other Pug files or Markdown. (MetaBake&trade; Markdown flavor includes CSS support):
+This will create `index.html`. Of course you can use regular Pug syntax to include other Pug files or Markdown. (MetaBakeMarkdown flavor includes CSS support):
 
 ```pug
 body
@@ -273,10 +272,8 @@ Now that you know mbake foundation, here are some choices for next things to lea
 # Links
 
 
+- MetaBake.org (https://www.metabake.org)
 - Click for mbake Docs: [docs.metabake.org](http://docs.MetaBake.org)
-
 - [git.metabake.org](http://git.MetaBake.org)
-
 - Community [forum.metabake.org](http://forum.MetaBake.org)
-
 - Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)
