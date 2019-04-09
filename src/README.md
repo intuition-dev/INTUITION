@@ -3,7 +3,7 @@
 <img src="http://MetaBake.github.io/mbakeDocs/logo.jpg" width="100">
 
 
-#### 'All my friends KNOW the low-coder'
+## 'All my friends KNOW the low-coder'
 
 ### MetaBake is open source and extensible low-code productivity tool for programmers. 
 
