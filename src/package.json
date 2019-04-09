@@ -12,11 +12,11 @@
    },
    "license": "MIT",
    "author": "http://www.MetaBake.org",
-   "bugs": "http://github.com/metabake/mbake/issues",
+   "bugs": "http://github.com/MetaBake /mbake/issues",
    "homepage": "http://www.MetaBake.org",
    "repository": {
       "type": "git",
-      "url": "http://github.com/metabake"
+      "url": "http://github.com/MetaBake "
    },
    "keywords": [
       "pug",

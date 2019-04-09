@@ -2,7 +2,7 @@ basedir: ../../
 
 pretty: false
 
-title: MetaBakeversus other Low-Code tools
+title: MetaBake versus other Low-Code tools
 image: slide-3.jpg
-content_text: MetaBakeis the open source extensible low-code productivity tool for programmers.
+content_text: MetaBake is the open source extensible low-code productivity tool for programmers.
 keywords: low-code, gulp, grunt, CMS, static gen

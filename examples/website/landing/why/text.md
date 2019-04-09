@@ -1,7 +1,7 @@
 
-## Why MetaBake?
+## Why MetaBake ?
 
-#### MetaBake's goal is: **high development productivity**
+#### MetaBake 's goal is: **high development productivity**
 
 
 The view for most people in leadership/management roles today is that the process of software development is far too slow. Website, web app, and native mobile app development takes too long to put into production and is too expensive. Historically, software development makes huge productivity leaps roughly every 10 years. You can see this as we moved from mainframes to data centers, data centers to cloud servers, and moving from 1st to 2nd to 3rd generation programming languages (e.g. 1GL machine, 2GL assembly, 3GL: javascript). We haven’t made a large leap forward in productivity in ~15 years and we’re overdue for the next phase.
