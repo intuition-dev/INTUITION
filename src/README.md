@@ -20,7 +20,7 @@ yarn global add mbake
 mbake
 ```
 
-# MetaBake&trade; in 2 Minutes:
+# MetaBake&trade; in 4 Minutes:
 
 ## First Page
 
