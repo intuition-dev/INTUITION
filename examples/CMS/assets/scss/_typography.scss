@@ -45,6 +45,12 @@ a {
     }
 }
 
+a, button {
+    &, &:hover, &:active, &:focus {
+        outline: none;
+    }
+}
+
 p, ul {
     color: $text-color-dark-theme1;
     font-size: $font-size-global-theme1;

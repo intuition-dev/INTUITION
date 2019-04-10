@@ -1,4 +1,3 @@
 css:
-- scss/header.scss
-- spectre/spectreTop.scss
-- scss/style.sass
+- scss/spectreTop.scss
+- scss/spectreBottom.scss

@@ -1,5 +1,7 @@
+@import "../spectre/_buttons.scss";
 .btn {
     &-custom {
+        @extend .btn;
         text-transform: uppercase;
         border-radius: $border-radius-theme1;
         border: 0;
