@@ -28,8 +28,8 @@ block main
                     return (a.publishOrder < b.publishOrder) ? -1 : (a.publishOrder > b.publishOrder) ? 1 : 0;
                 });
 
-                var items = new List(sortedItems);
-                blog = resp.data;
+                //- var items = new List(sortedItems);
+                var items = sortedItems;
                 
                 var tag = riot.mount('card-comp')[0]; //- mount the first tag
                 tag.render(items);
@@ -65,7 +65,7 @@ block main
 
                 });
 
-                function setupPg(perPage, blog_) {
+                function setupPg(perPage, sortedItems_) {
                     pgContCount++;
                     pgContainer[pgContCount] = $('#pagination-container');
 
@@ -73,7 +73,7 @@ block main
 
                     pgContainer[pgContCount].pagination({
                         className: 'paginationjs-theme-blue',
-                        dataSource: blog_,
+                        dataSource: sortedItems_,
                         locator: 'items',
                         pageSize: perPage,
                         autoHidePrevious: true,
@@ -101,7 +101,7 @@ block main
                     pgContainer[pgContCount].pagination('destroy');
 
                     if(!s || s.length < 1) {
-                        setupPg(guessShow(), blog);
+                        setupPg(guessShow(), sortedItems);
                         return;
                     }//fi
 
