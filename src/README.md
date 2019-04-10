@@ -43,10 +43,8 @@ In the folder 'one', create file index.pug
 ```pug
 
 header
-
 body
-
-p Hello #{key1}
+   p Hello #{key1}
 
 ```
 
@@ -71,8 +69,8 @@ This will create `index.html`. Of course you can use regular Pug syntax to inclu
 
 ```pug
 body
-	div
-		include:metaMD comment.md
+   div
+      include:metaMD comment.md
 ```
 
 
@@ -114,8 +112,8 @@ $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
 
 body {
-	font: 100% $font-stack;
-	color: $primary-color;
+   font: 100% $font-stack;
+   color: $primary-color;
 }
 ```
 Create file `assets.yaml` in assets folder, to compile your scss to css
@@ -135,9 +133,9 @@ It will create a css file in `assets/css` with auto-prefixes.
 So the structure of asset folder should look something like that:
 ```folder
 assets/
-	css/style.css /* this is going to be compiled from style.scss */
-	scss/style.scss /* your working area */
-	assets.yaml /* with `scss` files that need to be compiled */
+   css/style.css /* this is going to be compiled from style.scss */
+   scss/style.scss /* your working area */
+   assets.yaml /* with `scss` files that need to be compiled */
 	...
 ```
 
