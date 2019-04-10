@@ -1,9 +1,0 @@
-basedir: ../../
-
-pretty: false
-
-title: MetaBake versus Gulp and Grunt
-image: >-
-  http://mbake.org/assets/img/slide-3.jpg
-content_text: MetaBake is very easy to get started with; there are no hassles involved, trying to get going…not so easy with Gulp and Grunt
-keywords: MetaBake versus Gulp, MetaBake versus Grunt, gulp, grunt

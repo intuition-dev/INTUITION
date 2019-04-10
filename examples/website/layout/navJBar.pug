@@ -1,56 +1,27 @@
-
-link(href= '/assets/css/spectre.css', rel='stylesheet')
-
 script(src='/assets/3rd/navJBar.js')
 
-header.flex.edge
+.container.columns
+   header.flex.edge.column.col-11.col-mx-auto
+      #navbar-brand.left
+         .navbar-brand.mr-2.padL
+            a.logo(href="/") MySite 
+      .right
+         ul#navJBar.hide-lg.navJBar(data-function='navJBar')
+            li.navFirst
+               a(href='#') About
+               ul
+                  li
+                     a(href='/contacts') Contacts
+            li
+               a(href='#') Showcase
+            li
+               a(href='#') Blog
 
-   #navbar-brand.left.white
-      .navbar-brand.mr-2.padL
-         h1.logo MetaBake 
-   .right.white
-      ul#navJBar.hide-lg.navJBar(data-function='navJBar')
-
-         li.navFirst            
-            a(href='#') Why MetaBake 
-            ul
-               li
-                  a(href='/landing/why') Why MetaBake 
-               li
-                  a(href='/landing/low-code') MetaBake vs. low-code
-               li
-                  a(href='/landing/static-gen') MetaBake vs. Hugo, StaticGen
-               li
-                  a(href='/landing/gulp-grunt') MetaBake vs. Gulp, Grunt
-               li
-                  a(href='/landing/download') Download
-
-         li
-            a(href='/get-started') Get Started
-
-         li
-            a(href='/use-cases/benefits') Who Benefits
-
-
-         li
-            a(href='/zabout/about/') About us
-
-         //- Move to footer li
-            a.about(href='#') About
-            ul
-               li
-                  a(href='/about/about/') About Us
-               li
-                  a(href='/about/support/') Support
-
-
-      div &nbsp;
-
-      .white.show-lg#navBarCont
-         svg.bord.featherSVG(viewBox='0 0 24 24')
-            line(x1='3', y1='12', x2='21', y2='12')
-            line(x1='3', y1='6',  x2='21', y2='6')
-            line(x1='3', y1='18', x2='21', y2='18')
+         .show-lg#navBarCont
+            svg.bord.featherSVG(viewBox='0 0 24 24')
+               line(x1='3', y1='12', x2='21', y2='12')
+               line(x1='3', y1='6',  x2='21', y2='6')
+               line(x1='3', y1='18', x2='21', y2='18')
 
 #navOpen.show-lg
 

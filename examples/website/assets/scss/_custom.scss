@@ -1,0 +1,156 @@
+* {
+   font-kerning: normal !important;
+}
+
+body,
+html {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+}
+
+body {
+   background: linear-gradient(-45deg, $gray-color-light 50%, white 50%)
+}
+
+h1,
+h2,
+h3,
+h4 {
+   font-family: "Oswald";
+}
+
+.text,
+p {
+   letter-spacing: .125px !important;
+}
+
+p::first-letter,
+text::first-letter {
+   font-size: 130%;
+}
+
+
+
+.splash {
+   font-size: 60px;
+}
+
+.pageBack {
+   background-attachment: scroll;
+   min-height: 45vh;
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+ul {
+   margin-left: 1rem;
+}
+
+/* resize images */
+.monkeyContainer {
+   width: 120px;
+   height: 120px;
+}
+
+.monkeyContainer img {
+   width: 100%;
+   height: auto;
+}
+
+.flex,
+.center,
+.top,
+.right,
+.bottom,
+.left {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.flex {
+   align-content: flex-start;
+}
+
+.top {
+   align-items: flex-start;
+}
+
+.right {
+   justify-content: flex-end;
+}
+
+.bottom {
+   align-items: flex-end;
+}
+
+.left {
+   justify-content: flex-start;
+}
+
+/* override */
+.edge {
+   justify-content: space-between;
+   flex-wrap: nowrap;
+}
+
+.bord {
+   /* icons & bars */
+   outline-style: solid;
+   outline-offset: 7px;
+   outline-width: thin;
+   margin-right: 25px;
+   margin-left: 25px;
+}
+
+.featherSVG {
+   width: 24px;
+   height: 24px;
+   stroke: currentColor;
+   stroke-width: 2;
+   stroke-linecap: round;
+   stroke-linejoin: round;
+   fill: none;
+}
+
+.l-wrapper {
+   height: calc(100% - 65px);
+}
+
+//header
+header {
+   font-weight: 300;
+   background: transparent;
+   padding-left: 15px;
+   height: 65px;
+   line-height: 65px;
+   z-index: 10;
+
+   & .navJBar {
+      margin: 0;
+
+      & a {
+         color: $primary-color;
+         font-size: .8rem;
+      }
+   }
+
+   & .logo {
+      font-family: 'Open Sans';
+      font-weight: bold;
+      font-size: 1rem;
+      color: $dark-color;
+   }
+}
+
+.l-section-container {
+   padding: 3rem 0;
+   height: calc(100% - 60px);
+}
+
+footer {
+   padding: 1rem 0;
+   font-size: .7rem;
+}

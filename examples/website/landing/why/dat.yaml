@@ -1,9 +1,0 @@
-basedir: ../../
-
-pretty: false
-
-title: Why MetaBake ?
-image: >-
-  http://mbake.org/assets/img/slide-3.jpg
-content_text: MetaBake is the open source extensible low-code productivity tool for programmers.
-keywords: low-code, building, software
