@@ -28,8 +28,7 @@ block main
                     return (a.publishOrder < b.publishOrder) ? -1 : (a.publishOrder > b.publishOrder) ? 1 : 0;
                 });
 
-                //- var items = new List(sortedItems);
-                var items = sortedItems;
+                var items = new Object(sortedItems);
                 
                 var tag = riot.mount('card-comp')[0]; //- mount the first tag
                 tag.render(items);

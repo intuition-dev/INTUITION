@@ -137,3 +137,11 @@
         }
     }
 }
+
+.srch-btn {
+    &, &:hover, &:active, &:focus, &:visited {
+        box-shadow: none;
+        outline: none;
+        background: transparent;
+    }
+}
