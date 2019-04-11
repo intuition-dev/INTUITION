@@ -3,14 +3,20 @@
 
 ## 'All my friends KNOW the low-coder'
 
-### MetaBake is open source and extensible low-code productivity tool for programmers.
+## About MetaBake
 
-## Overview
-MetaBake mbake CLI tool is a modern way to generate websites and dynamic webapps via low-code to help you achieve high developer productivity, without additional effort. MetaBake open source tool helps you deliver web apps 10X faster with less coding by leveraging our documented high-productivity approaches/pillars. It leverages static generation; with Pug, Markdown and more; including dynamic apps, data binding, extensible baseCMS, components and more.
+mbake is an open source and extensible meta-programming CLI tool for programmers. You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom baseCMS and all sorts of dynamic web-apps.
 
-MetaBake is a simple tool, but can build any type of an app or website, and it allows for gradual adoption. You can start by slowly adopting just a few of its approaches.
+## Philosophy
 
-Prerequisites: you should know HTML, CSS an .js - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett.
+mbake favours a declarative and iterative approach to programming. This makes mbake useful and resilient across the whole lyfecycle of development: from prototyping to final completion. Also, you can easily customize it to make it fit your needs without additional effort. 
+
+If you want to dive deeper into the foundations of mbake, you can take a look at our documented high-productivity approaches*[link to 10 pillars]
+
+## Prerequisites: 
+
+You should know HTML, CSS an JavaScript - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett.
+
 
 
 ## Quick start
