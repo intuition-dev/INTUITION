@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.04.12'
+      return 'v5.04.14'
    }
 }
 
@@ -334,44 +334,6 @@ export class BakeWrk {
       return result
    }
 
-
-   //the markdown magic for fixed
-   fixedHTMLcss(h) {
-      if (!h) return h
-      var nh = (' ' + h).slice(1) // make a copy
-
-      let hits: number[] = BakeWrk.sindexes(h, '<!XX')
-      if (hits.length < 1) return nh
-      logger.trace(hits.length)
-
-      let start = hits[0]
-      let end = h.indexOf('XXX>', start)
-      let str = h.substring(start + 5, end)
-      try {
-         logger.trace(str)
-         let y = yaml.load(str)
-         //refactor nh to remove markup
-         let s1 = h.substring(0, start)
-         let s2 = h.substring(end + 3)
-
-         // add css style inline
-         let klass = y['class']
-         let background_image = y['background-image']
-         let css = ' <style>.' + klass + ' { '
-         css = css + 'background-image: ' + background_image + ';'
-         css = css + ' </style>'
-
-         // add div
-         let div = ' <div class=\'' + klass + '\' >'
-         div = div + '</div> '
-
-         return this.fixedHTMLcss(s1 + div + css + s2) // keep going while <|-- exists
-      } catch (err) {
-         logger.error(err)
-         return h
-      }
-   }//()
-
    bake() {
       let tstFile = this.dir + '/index.pug'
       if (!fs.existsSync(tstFile)) {
@@ -403,8 +365,6 @@ export class BakeWrk {
       let html = pug.renderFile(this.dir + '/index.pug', options)
 
       const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->'
-      // FIX the html for css
-      html = this.fixedHTMLcss(html)
 
       if (!options['pretty'])
          html = minify(html, minifyO)
@@ -419,8 +379,6 @@ export class BakeWrk {
          return ' '
       //static data binding:
       html = pug.renderFile(this.dir + '/m.pug', options)
-      // FIX the html for css
-      html = this.fixedHTMLcss(html)
 
       if (!options['pretty'])
          html = minify(html, minifyO)
