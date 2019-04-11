@@ -1,0 +1,21 @@
+* {
+    min-width: 0;
+	min-height: 0;
+	box-sizing: border-box;
+}
+
+@import '../scss/3rd/_pagination';
+@import '../scss/_variables';
+@import '../spectre/_variables';
+@import '../spectre/_mixins';
+
+@import "../spectre/normalize";
+@import "../spectre/base";
+@import "../spectre/layout";
+
+@import '../scss/_header';
+@import '../scss/_typography';
+@import '../scss/_layout';
+@import '../scss/_components';
+@import '../scss/_button';
+@import '../scss/_footer';
