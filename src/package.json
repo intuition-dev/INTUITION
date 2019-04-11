@@ -54,7 +54,7 @@
       "jstransformer-markdown-it": ">=2.1.0",
       "lunr": ">=2.3.6",
       "markdown-it": ">=8.4.2",
-      "markdown-it-attrs": ">=2.3.2",
+      "markdown-it-container": ">=2.0.0",
       "node-sass": ">=4.11.0",
       "opn": ">=6.0.0",
       "probe-image-size": ">=4.0.0",
@@ -73,8 +73,8 @@
    },
    "devDependencies": {
       "@types/node": ">=11.13.4",
+      "handbrake-js": ">=3.0.8",
       "npm-check-updates": ">=3.1.7",
-      "simple-git": ">=1.110.0",
-      "handbrake-js": ">=3.0.8"
+      "simple-git": ">=1.110.0"
    }
 }

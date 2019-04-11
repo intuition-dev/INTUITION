@@ -8,13 +8,25 @@ export class Ver {
 }
 
 // metaMD
-import markdownItAttrs = require('markdown-it-attrs')
+import markdownItCont = require('markdown-it-container')
 const md = require('markdown-it')({
    html: true,
    typographer: true,
    linkify: true
 })
-md.use(markdownItAttrs)
+md.use(markdownItCont, 'dynamic', {
+   // https://github.com/markdown-it/markdown-it-container/issues/23
+   validate: function() { return true; },
+   render: function(tokens, idx) {
+       var token = tokens[idx]
+
+       if (token.nesting === 1) {
+           return '\n<div class="' + token.info.trim() + '">'
+       } else {
+           return '</div>\n'
+       }
+   }
+})
 
 import Marpit = require('@marp-team/marpit')
 const marpit = new Marpit.Marpit()

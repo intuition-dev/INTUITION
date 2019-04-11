@@ -2,17 +2,28 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.12';
+        return 'v5.04.14';
     }
 }
 exports.Ver = Ver;
-const markdownItAttrs = require("markdown-it-attrs");
+const markdownItCont = require("markdown-it-container");
 const md = require('markdown-it')({
     html: true,
     typographer: true,
     linkify: true
 });
-md.use(markdownItAttrs);
+md.use(markdownItCont, 'dynamic', {
+    validate: function () { return true; },
+    render: function (tokens, idx) {
+        var token = tokens[idx];
+        if (token.nesting === 1) {
+            return '\n<div class="' + token.info.trim() + '">';
+        }
+        else {
+            return '</div>\n';
+        }
+    }
+});
 const Marpit = require("@marp-team/marpit");
 const marpit = new Marpit.Marpit();
 const fs = require("fs-extra");
@@ -276,36 +287,6 @@ class BakeWrk {
         }
         return result;
     }
-    fixedHTMLcss(h) {
-        if (!h)
-            return h;
-        var nh = (' ' + h).slice(1);
-        let hits = BakeWrk.sindexes(h, '<!XX');
-        if (hits.length < 1)
-            return nh;
-        logger.trace(hits.length);
-        let start = hits[0];
-        let end = h.indexOf('XXX>', start);
-        let str = h.substring(start + 5, end);
-        try {
-            logger.trace(str);
-            let y = yaml.load(str);
-            let s1 = h.substring(0, start);
-            let s2 = h.substring(end + 3);
-            let klass = y['class'];
-            let background_image = y['background-image'];
-            let css = ' <style>.' + klass + ' { ';
-            css = css + 'background-image: ' + background_image + ';';
-            css = css + ' </style>';
-            let div = ' <div class=\'' + klass + '\' >';
-            div = div + '</div> ';
-            return this.fixedHTMLcss(s1 + div + css + s2);
-        }
-        catch (err) {
-            logger.error(err);
-            return h;
-        }
-    }
     bake() {
         let tstFile = this.dir + '/index.pug';
         if (!fs.existsSync(tstFile)) {
@@ -334,7 +315,6 @@ class BakeWrk {
         };
         let html = pug.renderFile(this.dir + '/index.pug', options);
         const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->';
-        html = this.fixedHTMLcss(html);
         if (!options['pretty'])
             html = minify(html, minifyO);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
@@ -343,7 +323,6 @@ class BakeWrk {
         if (!fs.existsSync(this.dir + '/m.pug'))
             return ' ';
         html = pug.renderFile(this.dir + '/m.pug', options);
-        html = this.fixedHTMLcss(html);
         if (!options['pretty'])
             html = minify(html, minifyO);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
