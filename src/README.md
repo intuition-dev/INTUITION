@@ -1,9 +1,9 @@
 
-# MetaBake
+# Metabake
 
 ## 'All my friends KNOW the low-coder'
 
-## About MetaBake
+## About Metabake
 
 mbake is an open source and extensible meta-programming CLI tool for programmers. You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom baseCMS and all sorts of dynamic web-apps.
 
@@ -11,7 +11,7 @@ mbake is an open source and extensible meta-programming CLI tool for programmers
 
 mbake favours a declarative and iterative approach to programming. This makes mbake useful and resilient across the whole lyfecycle of development: from prototyping to final completion. Also, you can easily customize it to make it fit your needs without additional effort. 
 
-If you want to dive deeper into the foundations of mbake, you can take a look at our documented high-productivity approaches: [10 pillars of MetaBake](https://github.com/metabake/mbakeDocs/blob/master/meta-slides.prog/pillars.md)
+If you want to dive deeper into the foundations of mbake, you can take a look at our documented high-productivity approaches: [10 pillars of Metabake](https://github.com/metabake/mbakeDocs/blob/master/meta-slides.prog/pillars.md)
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ mbakeX -w . /* to run the watcher/livereload */
 ```
 
 
-## MetaBake in 4 Minutes
+## Metabake in 4 Minutes
 
 Building sites take a few moments, just add `pug` and `dat.yaml` files in the folder, and compile it with `mbake .` from the root folder of your site.
 
@@ -58,7 +58,7 @@ key1: World
 mbake .
 ```
 
-This will create `index.html`. Of course you can use regular Pug syntax to include other Pug files or Markdown. (MetaBake Markdown flavor includes CSS support):
+This will create `index.html`. Of course you can use regular Pug syntax to include other Pug files or Markdown. (Metabake Markdown flavor includes CSS support):
 ```pug
 body
    div

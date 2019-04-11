@@ -5,10 +5,10 @@ tsc
 
 node mbake.js /Users/code/Documents/GitHub/mbake/examples/fx
 
-# node mbakeX.js -w /Users/code/Documents/GitHub/MetaBake -Docs/meta-website
+# node mbakeX.js -w /Users/code/Documents/GitHub/Metabake -Docs/meta-website
 
-# node mbakeX.js -c /Users/code/Documents/GitHub/MetaBake -Docs/mbake-blog/assets
-#node mbake.js -i /Users/code/Documents/GitHub/MetaBake -Docs/mbake-blog/posts/post-1
+# node mbakeX.js -c /Users/code/Documents/GitHub/Metabake -Docs/mbake-blog/assets
+#node mbake.js -i /Users/code/Documents/GitHub/Metabake -Docs/mbake-blog/posts/post-1
 
 ## mbake ewApp/wUI
 ## node mbakeX.js -g .

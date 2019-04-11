@@ -3,11 +3,11 @@ host: 'http://mbake.org'
 changefreq: monthly
 
 menu:
-   - Why MetaBake :
-      - Why MetaBake : /why-MetaBake /why-MetaBake 
-      - MetaBake vs. Other low-code: /why-MetaBake /MetaBake -vs-other-low-code
-      - MetaBake vs. Hugo: /why-MetaBake /MetaBake -vs-hugo
-      - MetaBake vs. Gulp and Grunt: /why-MetaBake /MetaBake -vs-gulp-and-grunt
+   - Why Metabake :
+      - Why Metabake : /why-Metabake /why-Metabake 
+      - Metabake vs. Other low-code: /why-Metabake /Metabake -vs-other-low-code
+      - Metabake vs. Hugo: /why-Metabake /Metabake -vs-hugo
+      - Metabake vs. Gulp and Grunt: /why-Metabake /Metabake -vs-gulp-and-grunt
    - Who Benefits: /who-benefits
    - Get Started: /get-started
    - About:

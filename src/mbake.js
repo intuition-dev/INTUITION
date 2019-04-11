@@ -31,7 +31,7 @@ function version() {
     console.info();
     console.info('  mbakeX CLI extra has WebCMS, components and more flags and examples: mbakeX');
     console.info();
-    console.info(' Full docs: http://docs.MetaBake.org');
+    console.info(' Full docs: http://docs.Metabake.org');
     console.info();
     process.exit();
 }

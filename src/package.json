@@ -1,7 +1,7 @@
 {
    "name": "mbake",
    "version": "5.04.14",
-   "description": "*All my friends KNOW the low-coder*; MetaBake is open source and extensible low-code productivity tool for programmers.",
+   "description": "*All my friends KNOW the low-coder*; Metabake is open source and extensible low-code productivity tool for programmers.",
    "main": "mbake.js",
    "scripts": {
       "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""
@@ -11,12 +11,12 @@
       "mbakeX": "mbakeX.js"
    },
    "license": "MIT",
-   "author": "http://www.MetaBake.org",
-   "bugs": "http://github.com/MetaBake/mbake/issues",
-   "homepage": "http://www.MetaBake.org",
+   "author": "http://www.Metabake.org",
+   "bugs": "http://github.com/Metabake/mbake/issues",
+   "homepage": "http://www.Metabake.org",
    "repository": {
       "type": "git",
-      "url": "http://github.com/MetaBake "
+      "url": "http://github.com/Metabake "
    },
    "keywords": [
       "pug",
