@@ -10,7 +10,8 @@ body
    link(href='page.css', rel='stylesheet', type='text/css') 
 
    .container
-      .columns
+      //- this is pug 'row'
+      .columns 
          .column.col-2
             .stick Title 1
          
@@ -23,7 +24,8 @@ body
 
          .column.col-1 xxx
       hr
-      include:metaMD article2.md
+      //- same 'row' in pure markdown
+      include:metaMD mdOnly.md
 
 
 
