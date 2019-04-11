@@ -6,12 +6,12 @@
 
 @import '../scss/3rd/_pagination';
 @import '../scss/_variables';
-@import '../spectre/_variables';
-@import '../spectre/_mixins';
+@import 'spectre/_variables';
+@import 'spectre/_mixins';
 
-@import "../spectre/normalize";
-@import "../spectre/base";
-@import "../spectre/layout";
+@import "spectre/normalize";
+@import "spectre/base";
+@import "spectre/layout";
 
 @import '../scss/_header';
 @import '../scss/_typography';
