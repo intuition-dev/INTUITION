@@ -1,17 +1,14 @@
 
-
 # Metabake
 
-#### 'All my friends KNOW the low-coder'
+## 'All my friends KNOW the low-coder'
 
 ### Metabake is open source and extensible low-code productivity tool for programmers.
 
 ## Overview
-
 Metabake mbake CLI tool is a modern way to generate websites and dynamic webapps via low-code to help you achieve high developer productivity, without additional effort. Metabake open source tool helps you deliver web apps 10X faster with less coding by leveraging our documented high-productivity approaches/pillars. It leverages static generation; with Pug, Markdown and more; including dynamic apps, data binding, extensible baseCMS, components and more.
 
 Metabake is a simple tool, but can build any type of an app or website, and it allows for gradual adoption. You can start by slowly adopting just a few of its approaches.
-
 
 Prerequisites: you should know HTML, CSS an .js - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett.
 
@@ -19,25 +16,19 @@ Prerequisites: you should know HTML, CSS an .js - that is all we use. If you nee
 ## Quick start
 ```sh
 yarn global add mbake
-
 mbake -w . /* for a base website */
-
 cd website
-
 mbakeX -w . /* to run the watcher/livereload */
 ```
 
 
 ## MetaBake in 4 Minutes
 
-
 Building sites take a few moments, just add `pug` and `dat.yaml` files in the folder, and compile it with `mbake .` from the root folder of your site.
 
 
 ### Example
-
 Create a folder called 'one'.
-
 In the folder 'one', create file index.pug
 
 ```pug
@@ -49,64 +40,49 @@ body
 ```
 
 and create file dat.yaml
-
 ```yaml
 key1: World
 ```
-
-
 > Note: to create a new page|screen in mbake, create a new folder with an index.pug and day.yaml in each folder.
 
 
 ### Now make with mbake:
-
 
 ```sh
 mbake .
 ```
 
 This will create `index.html`. Of course you can use regular Pug syntax to include other Pug files or Markdown. (Metabake Markdown flavor includes CSS support):
-
 ```pug
 body
    div
       include:metaMD comment.md
 ```
 
-
 And example Markdown file with CSS style
-
 ```
 # header {.style-me}
-
 I think this is good.
 ```
 
 
 So if you write a Markdown file comment.md, it will be included in index.html
-
 ---
+
 
 ### Watcher
 
-
 This will start a webserver and auto-refresh browser, and watch for file changes to auto build:
-
-
 ```sh
 mbakeX -w .
 ```
 
-
 Instead of `.` you can specify any path.
-
 Also, the fact that we are generating this static content allows us to have the entire webapp served by a CDN
 
 
 ## SASS
-
 CSS can be hard to work with, so people use Sass/Scss. Create a `style.scss` file:
-
 ```css
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
@@ -122,8 +98,8 @@ Create file `assets.yaml` in assets folder, to compile your scss to css
 css:
 - style.scss
 ```
-and run
 
+and run
 ```sh
 mbake -s .
 ```
@@ -141,9 +117,7 @@ assets/
 
 ## TypeScript
 
-
 TypeScript is supper-set of JavaScript. Write a ts file, like foo.ts:
-
 ```ts
 foo(i:number) {
 	console.log('oh hi')
@@ -151,20 +125,17 @@ foo(i:number) {
 ```
 
 and run
-
 ```sh
 mbake -t .
 ```
 
 It will create a `.js` and `min.js` files. It will output ES5 to support IE11, so feel free to use class { } syntax.
-
 If there is no `.ts`, than it will simply slightly mimifify js files into min.js (but no ES5 conversion).
+
 
 ## Examples - Website
 
-
 There are 12 very different examples included in the mbake CLI. One is just a website:
-
 ```sh
 mbake -w
 ```
@@ -207,7 +178,6 @@ It will create `items.json`. This allows you to fetch that json and search for c
 
 
 The example blog will also show you how the `items.json` is read to display a nice searchable and paginated
-
 list of items. No magic.
 
 
@@ -216,9 +186,7 @@ list of items. No magic.
 ##### 'All my friends KNOW the low-coder'
 
 `mbake` is the open source modern tool for developers that makes you most productive: it makes Pug, SCSS and Typescript.
-
 It comes with example apps that include WebSite showing how to load.js, CRUD showing how to do dynamic apps. You can use any application architecture you like
-
 Also you can itemize `mbake -i dat.yaml` files to make a nice SEO friendly blog.
 
 ## Extras and next steps
@@ -245,5 +213,4 @@ Now that you know mbake foundation, here are some choices for next things to lea
 - [metabake.org](https://www.metabake.org)
 - Click for mbake Docs: [docs.metabake.org](http://docs.metabake.org)
 - [git.metabake.org](http://git.metabake.org)
-- Community [forum.metabake.org](http://forum.metabake.org)
 - Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)
