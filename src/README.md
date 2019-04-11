@@ -11,9 +11,9 @@ mbake is an open source and extensible meta-programming CLI tool for programmers
 
 mbake favours a declarative and iterative approach to programming. This makes mbake useful and resilient across the whole lyfecycle of development: from prototyping to final completion. Also, you can easily customize it to make it fit your needs without additional effort. 
 
-If you want to dive deeper into the foundations of mbake, you can take a look at our documented high-productivity approaches*[link to 10 pillars]
+If you want to dive deeper into the foundations of mbake, you can take a look at our documented high-productivity approaches: [10 pillars of MetaBake](https://github.com/metabake/mbakeDocs/blob/master/meta-slides.prog/pillars.md)
 
-## Prerequisites: 
+## Prerequisites
 
 You should know HTML, CSS an JavaScript - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett.
 
