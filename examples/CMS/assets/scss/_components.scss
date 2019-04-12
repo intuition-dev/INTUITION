@@ -458,6 +458,24 @@ svg {
     }
 }
 
+.fixed-bg {
+    background-image: url(../img/nature-4.png);
+    background-attachment: fixed;
+    height: 500px;
+    // background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    .sticky-element {
+        margin: 0;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        top: 100px;
+        position: sticky; /* sticky */
+        -webkit-position: sticky;
+        color: #151E24;
+    }
+}
+
 @media (max-width: 960px) {
     .blog {
         .col-post-content {
