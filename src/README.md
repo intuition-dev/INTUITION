@@ -5,13 +5,13 @@
 
 ## About Metabake
 
-mbake is an open source and extensible meta-programming CLI tool for programmers. You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom baseCMS and all sorts of dynamic web-apps.
+mbake is an open source and extensible meta-programming CLI tool for programmers. You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom CMS and all sorts of dynamic web-apps.
 
 ## Philosophy
 
+Metabake has a simple goal: high development productivity, to deliver maintainable webapps quickly and efficiently with least amount of resources. 
 mbake favours a declarative and iterative approach to programming. This makes mbake useful and resilient across the whole lyfecycle of development: from prototyping to final completion. Also, you can easily customize it to make it fit your needs without additional effort. 
 
-If you want to dive deeper into the foundations of mbake, you can take a look at our documented high-productivity approaches: [10 pillars of Metabake](https://github.com/metabake/mbakeDocs/blob/master/meta-slides.prog/pillars.md)
 
 ## Prerequisites
 
@@ -199,7 +199,7 @@ Also you can itemize `mbake -i dat.yaml` files to make a nice SEO friendly CMS.
 
 Now that you know mbake foundation, here are some choices for next things to learn in the advanced docs, pick and chose:
 
-- baseCMS: an admin panel that you can host to can use as is; or as a base to build commercial grade CMS or eCommerce site, including browser plugin.
+- CMS: an admin panel that you can host to can use as is; or as a base to build commercial grade CMS or eCommerce site, including browser plugin.
 - MetaCake: plugin components, makes it easy for designers to write real web-apps. Developed with RIOTjs, easier than Reactjs (commercial license optional)
 - AMP
 - SPA router: with page transition effects and state machine (needed for cross-platform development)

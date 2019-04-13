@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.04.14'
+      return 'v5.04.15'
    }
 }
 
@@ -390,7 +390,6 @@ export class BakeWrk {
 
    // if loc, do locale
    locAll(options) {
-      logger.trace(options)
       if(!options.LOC) return false 
 
       let d = options.LOC
@@ -405,13 +404,12 @@ export class BakeWrk {
          a = yaml.load(fs.readFileSync(dir2))
          d = dir2.slice(0, -8)
       }
-      logger.info(d)
       // found
       const css: string[] = a.loc
       const set: Set<string> = new Set(css)
       logger.info(set)
 
-      let merged = {...options, ...a} // es18 spread
+      let merged = {...a, ...options} // es18 spread
       for (let item of set) {
          this.do1Locale(item,merged)
       }
@@ -424,12 +422,12 @@ export class BakeWrk {
       //extract locale var
       console.log(locale)
       let localeProps = {}
-      localeProps['locale'] = locale // can be access in pug or js  
+      localeProps['LOCALE'] = locale // any var can be access in pug or js  eg window.locale = '#{LOCALE}'
+
       for (var key in combOptions) 
          if(key.endsWith('-'+locale)) { //for each key
             let len = key.length - ('-'+locale).length
             let key2 = key.substring(0,len)
-            logger.trace(key2, len)
             localeProps[key2] = combOptions[key]
          }
       
@@ -442,11 +440,14 @@ export class BakeWrk {
       fs.ensureDirSync(locDir)
 
       // if loc.pug exists
+      if (fs.existsSync(locDir+'/loc.pug'))
+         this.writeFile(locDir+'/loc.pug', locMerged, locDir + '/index.html' )
+      else  this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html' )
 
-      this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html' )
-
-
-      // if m.pug
+      //amp
+      if (!fs.existsSync(this.dir + '/m.pug'))
+         return ' '
+      this.writeFile(this.dir + '/m.pug', locMerged, locDir + '/m.html' )
 
    }
 
@@ -459,19 +460,6 @@ export class BakeWrk {
       fs.writeFileSync(target, html)
    }
 
-   /*
-   getNameFromFileName(filename) {//lifted from pug cli
-      filename = Dirs.slash(filename)
-
-      if (filename.indexOf('/') > -1) {
-         let pos = filename.lastIndexOf('/') + 1
-         filename = filename.substring(pos)
-      }
-      let file = filename.replace(/\.(?:pug|jade)$/, '')
-      return file.toLowerCase().replace(/[^a-z0-9]+([a-z])/g, function (_, character) {
-         return character.toUpperCase()
-      }) + 'Bind'
-   }*/
 }//class
 
 

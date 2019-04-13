@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.14';
+        return 'v5.04.15';
     }
 }
 exports.Ver = Ver;
@@ -321,7 +321,6 @@ class BakeWrk {
         this.writeFile(this.dir + '/m.pug', options, this.dir + '/m.html');
     }
     locAll(options) {
-        logger.trace(options);
         if (!options.LOC)
             return false;
         let d = options.LOC;
@@ -335,11 +334,10 @@ class BakeWrk {
             a = yaml.load(fs.readFileSync(dir2));
             d = dir2.slice(0, -8);
         }
-        logger.info(d);
         const css = a.loc;
         const set = new Set(css);
         logger.info(set);
-        let merged = Object.assign({}, options, a);
+        let merged = Object.assign({}, a, options);
         for (let item of set) {
             this.do1Locale(item, merged);
         }
@@ -348,11 +346,11 @@ class BakeWrk {
     do1Locale(locale, combOptions) {
         console.log(locale);
         let localeProps = {};
+        localeProps['LOCALE'] = locale;
         for (var key in combOptions)
             if (key.endsWith('-' + locale)) {
                 let len = key.length - ('-' + locale).length;
                 let key2 = key.substring(0, len);
-                logger.trace(key2, len);
                 localeProps[key2] = combOptions[key];
             }
         let locMerged = Object.assign({}, combOptions, localeProps);
@@ -360,7 +358,13 @@ class BakeWrk {
         let locDir = this.dir + '/' + locale;
         console.log(locDir);
         fs.ensureDirSync(locDir);
-        this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html');
+        if (fs.existsSync(locDir + '/loc.pug'))
+            this.writeFile(locDir + '/loc.pug', locMerged, locDir + '/index.html');
+        else
+            this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html');
+        if (!fs.existsSync(this.dir + '/m.pug'))
+            return ' ';
+        this.writeFile(this.dir + '/m.pug', locMerged, locDir + '/m.html');
     }
     writeFile(source, options, target) {
         let html = pug.renderFile(source, options);
