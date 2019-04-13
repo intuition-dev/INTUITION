@@ -343,6 +343,7 @@ class BakeWrk {
         for (let item of set) {
             this.do1Locale(item, merged);
         }
+        fs.remove(this.dir + '/index.html');
     }
     do1Locale(locale, combOptions) {
         console.log(locale);
@@ -355,7 +356,11 @@ class BakeWrk {
                 localeProps[key2] = combOptions[key];
             }
         let locMerged = Object.assign({}, combOptions, localeProps);
-        console.log(locMerged);
+        console.log(localeProps);
+        let locDir = this.dir + '/' + locale;
+        console.log(locDir);
+        fs.ensureDirSync(locDir);
+        this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html');
     }
     writeFile(source, options, target) {
         let html = pug.renderFile(source, options);

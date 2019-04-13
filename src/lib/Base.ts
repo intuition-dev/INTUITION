@@ -416,6 +416,8 @@ export class BakeWrk {
          this.do1Locale(item,merged)
       }
 
+      //delete 'root' index.html
+      fs.remove(this.dir+'/index.html')
    }//()
 
    do1Locale(locale, combOptions) {
@@ -431,12 +433,20 @@ export class BakeWrk {
          }
       
       let locMerged = {...combOptions, ...localeProps} // es18 spread
-      console.log(locMerged)
+      console.log(localeProps)
 
       // if dir not exists
+      let locDir = this.dir + '/' + locale
+      console.log(locDir)
+      fs.ensureDirSync(locDir)
+
       // if loc.pug exists
-   
-      //write
+
+      this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html' )
+
+
+      // if m.pug
+
    }
 
    writeFile(source, options, target) {
