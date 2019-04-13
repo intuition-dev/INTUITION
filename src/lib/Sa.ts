@@ -219,18 +219,18 @@ export class Sas {
     */
    css (dir) {
       logger.info(dir)
-      let m
+      let a
       let fn = dir + '/assets.yaml'
       if (fs.existsSync(fn))
-         m = yaml.load(fs.readFileSync(fn))
+         a = yaml.load(fs.readFileSync(fn))
       else {
          let dir2: string = findUp.sync('assets.yaml', { cwd: dir })
-         m = yaml.load(fs.readFileSync(dir2))
+         a = yaml.load(fs.readFileSync(dir2))
          dir = dir2.slice(0, -12)
       }
       logger.info(dir)
 
-      const css: string[] = m.css
+      const css: string[] = a.css
       const set: Set<string> = new Set(css)
       logger.info(set)
 
@@ -248,7 +248,7 @@ export class Sas {
          , outputStyle: 'compact'
       })
 
-      postcss([autoprefixer({ browsers: ['> 1%', 'ios_saf >= 8', 'not ie < 11'] })]).process(css.css, { from: undefined }).then(function (result) {
+      postcss([autoprefixer({ browsers: ['> 1%', 'ios_saf >= 10', 'not ie < 11'] })]).process(css.css, { from: undefined }).then(function (result) {
          result.warnings().forEach(function (warn) {
             console.warn(warn.toString())
          })

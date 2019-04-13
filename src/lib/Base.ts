@@ -346,6 +346,21 @@ export class BakeWrk {
       return result
    }
 
+   minifyO = {
+      caseSensitive: true,
+      collapseWhitespace: true,
+      decodeEntities: true,
+      minifyCSS: true,
+      minifyJS: BakeWrk.minify_es6,
+      quoteCharacter: "'",
+      removeComments: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      useShortDoctype: true,
+      sortAttributes: true,
+      sortClassName: true
+   }
+
    bake() {
       let tstFile = this.dir + '/index.pug'
       if (!fs.existsSync(tstFile)) {
@@ -353,53 +368,55 @@ export class BakeWrk {
       }
       process.chdir(this.dir)
 
-      let m = new Dat(this.dir)
+      let dat = new Dat(this.dir)
+
       //static data binding with a custom md filter that uses a transformer
-      let options = m.getAll()
+      let options = dat.getAll()
       options['filters'] = {
          metaMD: BakeWrk.metaMD,
          marp: BakeWrk.marp
       }
-      let minifyO = {
-         caseSensitive: true,
-         collapseWhitespace: true,
-         decodeEntities: true,
-         minifyCSS: true,
-         minifyJS: BakeWrk.minify_es6,
-         quoteCharacter: "'",
-         removeComments: true,
-         removeScriptTypeAttributes: true,
-         removeStyleLinkTypeAttributes: true,
-         useShortDoctype: true,
-         sortAttributes: true,
-         sortClassName: true
-      }
-      let html = pug.renderFile(this.dir + '/index.pug', options)
 
-      const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->'
+      if(this.loc(options)) // if locale, we are not writing here, but in sub folders.
+         return ' '
 
-      if (!options['pretty'])
-         html = minify(html, minifyO)
-      html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml)
-
-      let fn = this.dir + '/index.html'
-      fs.writeFileSync(fn, html)
-      //console.info(' processed: '+ this.dir)
-
+      this.writeFile(this.dir + '/index.pug', options, this.dir + '/index.html' )
       //amp
       if (!fs.existsSync(this.dir + '/m.pug'))
          return ' '
-      //static data binding:
-      html = pug.renderFile(this.dir + '/m.pug', options)
-
-      if (!options['pretty'])
-         html = minify(html, minifyO)
-      html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml)
-
-      fn = this.dir + '/m.html'
-      fs.writeFileSync(fn, html)
+      this.writeFile(this.dir + '/m.pug', options, this.dir + '/m.html' )
 
    }//()
+
+   // if loc, do locale
+   loc(options) {
+      logger.trace(options)
+      if(!options.LOC) return false 
+
+      
+      console.log('xxx')
+      let a
+      let fn = dir + '/assets.yaml'
+      if (fs.existsSync(fn))
+         a = yaml.load(fs.readFileSync(fn))
+      else {
+         let dir2: string = findUp.sync('assets.yaml', { cwd: dir })
+         a = yaml.load(fs.readFileSync(dir2))
+         dir = dir2.slice(0, -12)
+      }
+      logger.info(dir)
+
+
+   }
+
+   writeFile(source, options, target) {
+      let html = pug.renderFile(source, options)
+      const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->'
+      if (!options['pretty'])
+         html = minify(html, this.minifyO)
+      html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml)
+      fs.writeFileSync(target, html)
+   }
 
    getNameFromFileName(filename) {//lifted from pug cli
       filename = Dirs.slash(filename)
@@ -459,7 +476,6 @@ export class Items {
          Items.clean(y)
 
          let dl = dn.lastIndexOf('/')
-
          let url = dn.substring(dl + 1)
          console.info('', url)
          y.url = url
@@ -473,7 +489,6 @@ export class Items {
 
          y.index = this.feed.items.length
          //console.info('', this.feed.items.length)
-
          this.feed.items.push(y)
 
       } catch (err) {
@@ -520,9 +535,8 @@ export class Items {
       delete o['basedir']
       delete o['ROOT']
       delete o['pretty']
-
-      // don't include
-      delete o['publish']
+      delete o['LOC']
+      delete o['publishFlag']
 
    }
 

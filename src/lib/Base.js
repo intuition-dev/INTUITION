@@ -244,6 +244,20 @@ class MBake {
 exports.MBake = MBake;
 class BakeWrk {
     constructor(dir_) {
+        this.minifyO = {
+            caseSensitive: true,
+            collapseWhitespace: true,
+            decodeEntities: true,
+            minifyCSS: true,
+            minifyJS: BakeWrk.minify_es6,
+            quoteCharacter: "'",
+            removeComments: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            useShortDoctype: true,
+            sortAttributes: true,
+            sortClassName: true
+        };
         let dir = Dirs.slash(dir_);
         this.dir = dir;
         console.info(' processing: ' + this.dir);
@@ -293,41 +307,32 @@ class BakeWrk {
             return;
         }
         process.chdir(this.dir);
-        let m = new Dat(this.dir);
-        let options = m.getAll();
+        let dat = new Dat(this.dir);
+        let options = dat.getAll();
         options['filters'] = {
             metaMD: BakeWrk.metaMD,
             marp: BakeWrk.marp
         };
-        let minifyO = {
-            caseSensitive: true,
-            collapseWhitespace: true,
-            decodeEntities: true,
-            minifyCSS: true,
-            minifyJS: BakeWrk.minify_es6,
-            quoteCharacter: "'",
-            removeComments: true,
-            removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            useShortDoctype: true,
-            sortAttributes: true,
-            sortClassName: true
-        };
-        let html = pug.renderFile(this.dir + '/index.pug', options);
-        const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->';
-        if (!options['pretty'])
-            html = minify(html, minifyO);
-        html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
-        let fn = this.dir + '/index.html';
-        fs.writeFileSync(fn, html);
+        if (this.loc(options))
+            return ' ';
+        this.writeFile(this.dir + '/index.pug', options, this.dir + '/index.html');
         if (!fs.existsSync(this.dir + '/m.pug'))
             return ' ';
-        html = pug.renderFile(this.dir + '/m.pug', options);
+        this.writeFile(this.dir + '/m.pug', options, this.dir + '/m.html');
+    }
+    loc(options) {
+        logger.trace(options);
+        if (!options.LOC)
+            return false;
+        console.log('xxx');
+    }
+    writeFile(source, options, target) {
+        let html = pug.renderFile(source, options);
+        const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->';
         if (!options['pretty'])
-            html = minify(html, minifyO);
+            html = minify(html, this.minifyO);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
-        fn = this.dir + '/m.html';
-        fs.writeFileSync(fn, html);
+        fs.writeFileSync(target, html);
     }
     getNameFromFileName(filename) {
         filename = Dirs.slash(filename);
@@ -415,7 +420,8 @@ class Items {
         delete o['basedir'];
         delete o['ROOT'];
         delete o['pretty'];
-        delete o['publish'];
+        delete o['LOC'];
+        delete o['publishFlag'];
     }
 }
 exports.Items = Items;

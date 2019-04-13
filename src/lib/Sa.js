@@ -193,7 +193,7 @@ class Sas {
             file: dir + '/' + fn2,
             outputStyle: 'compact'
         });
-        postcss([autoprefixer({ browsers: ['> 1%', 'ios_saf >= 8', 'not ie < 11'] })]).process(css.css, { from: undefined }).then(function (result) {
+        postcss([autoprefixer({ browsers: ['> 1%', 'ios_saf >= 10', 'not ie < 11'] })]).process(css.css, { from: undefined }).then(function (result) {
             result.warnings().forEach(function (warn) {
                 console.warn(warn.toString());
             });
