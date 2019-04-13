@@ -377,7 +377,7 @@ export class BakeWrk {
          marp: BakeWrk.marp
       }
 
-      if(this.loc(options)) // if locale, we are not writing here, but in sub folders.
+      if(this.locAll(options)) // if locale, we are not writing here, but in sub folders.
          return ' '
 
       this.writeFile(this.dir + '/index.pug', options, this.dir + '/index.html' )
@@ -389,24 +389,54 @@ export class BakeWrk {
    }//()
 
    // if loc, do locale
-   loc(options) {
+   locAll(options) {
       logger.trace(options)
       if(!options.LOC) return false 
 
-      
-      console.log('xxx')
+      let d = options.LOC
+      d= this.dir + d
+
       let a
-      let fn = dir + '/assets.yaml'
+      let fn = d + '/loc.yaml'
       if (fs.existsSync(fn))
          a = yaml.load(fs.readFileSync(fn))
       else {
-         let dir2: string = findUp.sync('assets.yaml', { cwd: dir })
+         let dir2: string = findUp.sync('loc.yaml', { cwd: d })
          a = yaml.load(fs.readFileSync(dir2))
-         dir = dir2.slice(0, -12)
+         d = dir2.slice(0, -8)
       }
-      logger.info(dir)
+      logger.info(d)
+      // found
+      const css: string[] = a.loc
+      const set: Set<string> = new Set(css)
+      logger.info(set)
 
+      let merged = {...options, ...a} // es18 spread
+      for (let item of set) {
+         this.do1Locale(item,merged)
+      }
 
+   }//()
+
+   do1Locale(locale, combOptions) {
+      //extract locale var
+      console.log(locale)
+      let localeProps = {}
+      for (var key in combOptions) 
+         if(key.endsWith('-'+locale)) { //for each key
+            let len = key.length - ('-'+locale).length
+            let key2 = key.substring(0,len)
+            logger.trace(key2, len)
+            localeProps[key2] = combOptions[key]
+         }
+      
+      let locMerged = {...combOptions, ...localeProps} // es18 spread
+      console.log(locMerged)
+
+      // if dir not exists
+      // if loc.pug exists
+   
+      //write
    }
 
    writeFile(source, options, target) {
@@ -418,6 +448,7 @@ export class BakeWrk {
       fs.writeFileSync(target, html)
    }
 
+   /*
    getNameFromFileName(filename) {//lifted from pug cli
       filename = Dirs.slash(filename)
 
@@ -429,7 +460,7 @@ export class BakeWrk {
       return file.toLowerCase().replace(/[^a-z0-9]+([a-z])/g, function (_, character) {
          return character.toUpperCase()
       }) + 'Bind'
-   }
+   }*/
 }//class
 
 

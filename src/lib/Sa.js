@@ -169,17 +169,17 @@ exports.Resize = Resize;
 class Sas {
     css(dir) {
         logger.info(dir);
-        let m;
+        let a;
         let fn = dir + '/assets.yaml';
         if (fs.existsSync(fn))
-            m = yaml.load(fs.readFileSync(fn));
+            a = yaml.load(fs.readFileSync(fn));
         else {
             let dir2 = findUp.sync('assets.yaml', { cwd: dir });
-            m = yaml.load(fs.readFileSync(dir2));
+            a = yaml.load(fs.readFileSync(dir2));
             dir = dir2.slice(0, -12);
         }
         logger.info(dir);
-        const css = m.css;
+        const css = a.css;
         const set = new Set(css);
         logger.info(set);
         for (let item of set) {

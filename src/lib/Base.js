@@ -313,18 +313,49 @@ class BakeWrk {
             metaMD: BakeWrk.metaMD,
             marp: BakeWrk.marp
         };
-        if (this.loc(options))
+        if (this.locAll(options))
             return ' ';
         this.writeFile(this.dir + '/index.pug', options, this.dir + '/index.html');
         if (!fs.existsSync(this.dir + '/m.pug'))
             return ' ';
         this.writeFile(this.dir + '/m.pug', options, this.dir + '/m.html');
     }
-    loc(options) {
+    locAll(options) {
         logger.trace(options);
         if (!options.LOC)
             return false;
-        console.log('xxx');
+        let d = options.LOC;
+        d = this.dir + d;
+        let a;
+        let fn = d + '/loc.yaml';
+        if (fs.existsSync(fn))
+            a = yaml.load(fs.readFileSync(fn));
+        else {
+            let dir2 = findUp.sync('loc.yaml', { cwd: d });
+            a = yaml.load(fs.readFileSync(dir2));
+            d = dir2.slice(0, -8);
+        }
+        logger.info(d);
+        const css = a.loc;
+        const set = new Set(css);
+        logger.info(set);
+        let merged = Object.assign({}, options, a);
+        for (let item of set) {
+            this.do1Locale(item, merged);
+        }
+    }
+    do1Locale(locale, combOptions) {
+        console.log(locale);
+        let localeProps = {};
+        for (var key in combOptions)
+            if (key.endsWith('-' + locale)) {
+                let len = key.length - ('-' + locale).length;
+                let key2 = key.substring(0, len);
+                logger.trace(key2, len);
+                localeProps[key2] = combOptions[key];
+            }
+        let locMerged = Object.assign({}, combOptions, localeProps);
+        console.log(locMerged);
     }
     writeFile(source, options, target) {
         let html = pug.renderFile(source, options);
@@ -333,17 +364,6 @@ class BakeWrk {
             html = minify(html, this.minifyO);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
         fs.writeFileSync(target, html);
-    }
-    getNameFromFileName(filename) {
-        filename = Dirs.slash(filename);
-        if (filename.indexOf('/') > -1) {
-            let pos = filename.lastIndexOf('/') + 1;
-            filename = filename.substring(pos);
-        }
-        let file = filename.replace(/\.(?:pug|jade)$/, '');
-        return file.toLowerCase().replace(/[^a-z0-9]+([a-z])/g, function (_, character) {
-            return character.toUpperCase();
-        }) + 'Bind';
     }
 }
 BakeWrk.ebodyHtml = '</body>';
