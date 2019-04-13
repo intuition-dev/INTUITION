@@ -424,6 +424,7 @@ export class BakeWrk {
       //extract locale var
       console.log(locale)
       let localeProps = {}
+      localeProps['locale'] = locale // can be access in pug or js  
       for (var key in combOptions) 
          if(key.endsWith('-'+locale)) { //for each key
             let len = key.length - ('-'+locale).length

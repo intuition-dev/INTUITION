@@ -160,9 +160,9 @@ mbake -u
 It has a README.md in root of the website that you can glance.
 
 
-## Blog/Itemize example
+## CMS/Itemize example
 
-### Itemize (eg Blog)
+### Itemize (eg CMS)
 
 Lets build a folder called `Items` and in that folder create a blank file `dat_i.yaml,` with nothing there.
 - In the folder called `Items` create folder `Page1` and folder `Page2`. In each page folder create `index.pug` and `dat.yaml`. So you have `Page1` and `Page2` folder under `Items`.
@@ -178,12 +178,12 @@ And add a few more key/value words in each dat.yaml, but make each pages values 
 ```sh
 mbake -i .
 ```
-It will create `items.json`. This allows you to fetch that json and search for content, blog, items, etc.
+It will create `items.json`. This allows you to fetch that json and search for content, CMS, items, etc.
 
-### `mbake -b` will emit an example blog with above.
+### `mbake -b` will emit an example CMS with above.
 
 
-The example blog will also show you how the `items.json` is read to display a nice searchable and paginated
+The example CMS will also show you how the `items.json` is read to display a nice searchable and paginated
 list of items. No magic.
 
 
@@ -193,7 +193,7 @@ list of items. No magic.
 
 `mbake` is the open source modern tool for developers that makes you most productive: it makes Pug, SCSS and Typescript.
 It comes with example apps that include WebSite showing how to load.js, CRUD showing how to do dynamic apps. You can use any application architecture you like
-Also you can itemize `mbake -i dat.yaml` files to make a nice SEO friendly blog.
+Also you can itemize `mbake -i dat.yaml` files to make a nice SEO friendly CMS.
 
 ## Extras and next steps
 
