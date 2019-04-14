@@ -65,11 +65,16 @@ body
       include:metaMD comment.md
 ```
 
-And example Markdown file with CSS style
+And example Markdown file with CSS nested classes. Title is nested in 2 levels, .column class CSS and second level .stick CSS class
 ```
-# header {.style-me}
-I think this is good.
+:::: column col-2
+::: stick
+Title 
+:::
+::::
+
 ```
+
 
 
 So if you write a Markdown file comment.md, it will be included in index.html
