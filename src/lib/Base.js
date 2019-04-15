@@ -380,9 +380,9 @@ exports.BakeWrk = BakeWrk;
 class Items {
     constructor(dir_) {
         let dir = Dirs.slash(dir_);
-        let fn = dir + '/dat_i.yaml';
+        let fn = dir + '/dat.yaml';
         if (!fs.existsSync(fn)) {
-            let dir2 = findUp.sync('dat_i.yaml', { cwd: dir });
+            let dir2 = findUp.sync('dat.yaml', { cwd: dir });
             dir = dir2.slice(0, -11);
         }
         this.dir = dir;
@@ -423,7 +423,7 @@ class Items {
     itemize() {
         logger.info('Itemizing: ' + this.dir);
         const rootDir = this.dir;
-        let fn = rootDir + '/dat_i.yaml';
+        let fn = rootDir + '/dat.yaml';
         let y = yaml.load(fs.readFileSync((fn)));
         Items.clean(y);
         y.mbVer = new Ver().ver();

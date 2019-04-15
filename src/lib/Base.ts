@@ -470,10 +470,10 @@ export class Items {
 
    constructor(dir_: string) {
       let dir = Dirs.slash(dir_)
-      let fn: string = dir + '/dat_i.yaml'
+      let fn: string = dir + '/dat.yaml'
 
       if (!fs.existsSync(fn)) { //if it does not exist, go up a level
-         let dir2: string = findUp.sync('dat_i.yaml', { cwd: dir })
+         let dir2: string = findUp.sync('dat.yaml', { cwd: dir })
          dir = dir2.slice(0, -11)
       }
 
@@ -531,7 +531,7 @@ export class Items {
 
       const rootDir: string = this.dir
       // header file
-      let fn: string = rootDir + '/dat_i.yaml'
+      let fn: string = rootDir + '/dat.yaml'
       let y = yaml.load(fs.readFileSync((fn)))
 
       Items.clean(y)
