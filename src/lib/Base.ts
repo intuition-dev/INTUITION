@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.04.16'
+      return 'v5.04.17'
    }
 }
 
@@ -544,9 +544,7 @@ export class Items {
       const rootDir: string = this.dir
       // header file
       let fn: string = rootDir + '/dat_i.yaml'
-      if (!fs.existsSync(fn)) {
-         fn = rootDir + '/dat.yaml'
-      }
+      if (!fs.existsSync(fn)) return;
 
       let y = yaml.load(fs.readFileSync((fn)))
 

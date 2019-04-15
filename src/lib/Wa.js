@@ -92,11 +92,9 @@ class Watch {
         this.watcher.unwatch('.git');
         let thiz = this;
         this.watcher.on('add', function (path) {
-            console.info('added---------------------------------------------------------');
             thiz.auto(path);
         });
         this.watcher.on('change', function (path) {
-            console.info('changed---------------------------------------------------------');
             thiz.auto(path);
         });
     }

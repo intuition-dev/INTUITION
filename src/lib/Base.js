@@ -433,9 +433,8 @@ class Items {
         logger.info('Itemizing: ' + this.dir);
         const rootDir = this.dir;
         let fn = rootDir + '/dat_i.yaml';
-        if (!fs.existsSync(fn)) {
-            fn = rootDir + '/dat.yaml';
-        }
+        if (!fs.existsSync(fn))
+            return;
         let y = yaml.load(fs.readFileSync((fn)));
         Items.clean(y);
         y.mbVer = new Ver().ver();
