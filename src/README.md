@@ -3,20 +3,17 @@
 
 ## 'All my friends KNOW the low-coder'
 
-## About Metabake
+## Overview
 
-mbake is an open source and extensible meta-programming CLI tool for programmers. You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom CMS and all sorts of dynamic web-apps.
+Metabake is an open source and extensible meta-programming CLI tool written in Javascript. 
 
-## Philosophy
+Metabake provides all the necessary tools for a developer to write cleaner code faster, with `pug` templating and livereload out of the box.
 
-Metabake has a simple goal: high development productivity, to deliver maintainable webapps quickly and efficiently with least amount of resources. 
-mbake favours a declarative and iterative approach to programming. This makes mbake useful and resilient across the whole lyfecycle of development: from prototyping to final completion. Also, you can easily customize it to make it fit your needs without additional effort. 
-
+You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom CMS/E-Commerce and all sorts of dynamic web-apps.
 
 ## Prerequisites
 
 You should know HTML, CSS an JavaScript - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett.
-
 
 
 ## Quick start
