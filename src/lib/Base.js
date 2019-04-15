@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.15';
+        return 'v5.04.16';
     }
 }
 exports.Ver = Ver;
