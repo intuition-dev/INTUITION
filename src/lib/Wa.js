@@ -92,9 +92,11 @@ class Watch {
         this.watcher.unwatch('.git');
         let thiz = this;
         this.watcher.on('add', function (path) {
+            console.info('added---------------------------------------------------------');
             thiz.auto(path);
         });
         this.watcher.on('change', function (path) {
+            console.info('changed---------------------------------------------------------');
             thiz.auto(path);
         });
     }
@@ -176,12 +178,20 @@ class MetaPro {
         this.setLast(msg);
         return msg;
     }
+    js(dir) {
+        new Sa_1.MinJS(this.mount + '/' + dir);
+        let msg = new Base_1.RetMsg('js', 1, 'success');
+        this.setLast(msg);
+        return msg;
+    }
     autoBake(folder__, file) {
         const folder = Base_1.Dirs.slash(folder__);
         const ext = file.split('.').pop();
         logger.info('WATCHED2a:', folder, ext);
         if (ext == 'scss' || ext == 'sass')
             return this.css(folder);
+        if (ext == 'ts')
+            return this.js(folder);
         if (ext == 'yaml')
             return this.itemize(folder);
         if (ext == 'md')

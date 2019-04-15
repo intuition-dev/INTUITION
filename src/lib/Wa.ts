@@ -2,7 +2,7 @@
 // NOTE: You can extend these classes!
 
 import {MBake, RetMsg, Dirs, Dat} from './Base'
-import {Sas} from './Sa'
+import {Sas, MinJS} from './Sa'
 
 import fs = require('fs-extra')
 import FileHound = require('filehound')
@@ -227,6 +227,13 @@ export class MetaPro {
       return msg
    }
 
+   js(dir: string) {
+      new MinJS(this.mount + '/' + dir);
+      let msg: RetMsg = new RetMsg('js', 1, 'success')
+      this.setLast(msg)
+      return msg
+   }
+
    // when you pass the file name, ex: watch
    autoBake(folder__, file): RetMsg {
       const folder = Dirs.slash(folder__)
@@ -237,6 +244,9 @@ export class MetaPro {
 
       if (ext == 'scss' || ext == 'sass') // css
          return this.css(folder)
+         
+      if (ext == 'ts') // ts
+         return this.js(folder)
 
       if (ext == 'yaml') // bake and itemize
          return this.itemize(folder)
