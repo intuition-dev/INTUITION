@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// All rights reserved by mbake.org | Cekvenich, licensed under LGPL 3.0
+// All rights reserved by Metabake.org | Cekvenich, licensed under LGPL 3.0
 
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
