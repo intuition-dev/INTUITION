@@ -477,7 +477,7 @@ export class Items {
          let dir2: string = findUp.sync('dat.yaml', { cwd: dir })
 
          if (dir2 != null) {
-            dir = dir2.slice(0, -11)
+            dir = dir2.slice(0, -11) // this reported error for UBAYCAP
          }
       }
 

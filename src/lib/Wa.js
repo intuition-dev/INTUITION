@@ -67,7 +67,7 @@ class Watch {
         this.root = mount;
     }
     start(poll_) {
-        console.info(' watcher works best on linux, on ssh watched drives - that are S3 mounts');
+        console.info(' watcher starting');
         console.info(this.root);
         this.watcher = chokidar.watch(this.root, {
             ignored: '*.swpc*',

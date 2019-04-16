@@ -91,7 +91,7 @@ export class Watch {
    }
 
    start(poll_) {// true for WAN
-      console.info(' watcher works best on linux, on ssh watched drives - that are S3 mounts')
+      console.info(' watcher starting')
       console.info(this.root)
       this.watcher = chokidar.watch(this.root, {
          ignored: '*.swpc*',

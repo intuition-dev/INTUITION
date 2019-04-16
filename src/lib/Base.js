@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.16';
+        return 'v5.04.18';
     }
 }
 exports.Ver = Ver;
@@ -228,7 +228,7 @@ class MBake {
         }
         return this.bake(ppath_);
     }
-    _all(path_) {
+    _allx(path_) {
         try {
             let t = new Comps(path_);
             let lst = t.get();
