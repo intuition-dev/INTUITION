@@ -9,6 +9,10 @@ const Sa_1 = require("./lib/Sa");
 const cwd = process.cwd();
 function version() {
     let b = new Base_1.Ver();
+    console.info('mbakeX CLI version: ' + b.ver());
+}
+function help() {
+    let b = new Base_1.Ver();
     console.info();
     console.info('mbakeX CLI version: ' + b.ver());
     console.info('  your node version is ' + process.version);
@@ -38,6 +42,8 @@ function version() {
 }
 const optionDefinitions = [
     { name: 'mbakeX', defaultOption: true },
+    { name: 'help', alias: 'h', type: Boolean },
+    { name: 'version', alias: 'v', type: Boolean },
     { name: 'watcher', alias: 'w', type: Boolean },
     { name: 'port', alias: 'p', type: String },
     { name: 'reload-port', alias: 'r', type: String },
@@ -159,5 +165,9 @@ else if (argsParsed.map)
     map(arg);
 else if (argsParsed.slides)
     unzipL();
-else if (!arg)
+else if (argsParsed.version)
     version();
+else if (argsParsed.help)
+    help();
+else if (!arg)
+    help();

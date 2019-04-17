@@ -10,6 +10,10 @@ clear();
 const cwd = process.cwd();
 function version() {
     let b = new Base_1.Ver();
+    console.info('mbake CLI version: ' + b.ver());
+}
+function help() {
+    let b = new Base_1.Ver();
     console.info();
     console.info('mbake CLI version: ' + b.ver());
     console.info();
@@ -37,6 +41,8 @@ function version() {
 }
 const optionDefinitions = [
     { name: 'mbake', defaultOption: true },
+    { name: 'help', alias: 'h', type: Boolean },
+    { name: 'version', alias: 'v', type: Boolean },
     { name: 'items', alias: 'i', type: Boolean },
     { name: 'css', alias: 's', type: Boolean },
     { name: 'MinJS', alias: 't', type: Boolean },
@@ -113,7 +119,11 @@ else if (argsParsed.website)
     unzipS();
 else if (argsParsed.MinJS)
     minJS(arg);
-else if (!arg)
+else if (argsParsed.version)
     version();
+else if (argsParsed.help)
+    help();
+else if (!arg)
+    help();
 else
     bake(arg);

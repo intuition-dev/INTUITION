@@ -12,6 +12,11 @@ import { Resize } from './lib/Sa'
 const cwd: string = process.cwd()
 
 function version () {
+   let b = new Ver();
+   console.info('mbakeX CLI version: ' + b.ver()) // tsc
+}
+
+function help () {
    let b = new Ver()
    console.info()
    console.info('mbakeX CLI version: ' + b.ver()) // tsc
@@ -51,6 +56,9 @@ function version () {
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
    { name: 'mbakeX', defaultOption: true },
+
+   { name: 'help', alias: 'h', type: Boolean },
+   { name: 'version', alias: 'v', type: Boolean },
 
    { name: 'watcher', alias: 'w', type: Boolean },
    { name: 'port', alias: 'p', type: String },
@@ -179,7 +187,6 @@ else if (argsParsed.csv2Json)
    csv2Json(arg)
 else if (argsParsed.watcher) {
    Wa.watch(arg, argsParsed.port, argsParsed['reload-port']);
-   // Wa.watch(arg, argsParsed.port);
 }
 else if (argsParsed.img) {
    img(arg)
@@ -190,5 +197,9 @@ else if (argsParsed.map)
    map(arg)
 else if (argsParsed.slides)
    unzipL()
-else if (!arg)
+else if (argsParsed.version)
    version()
+else if (argsParsed.help)
+   help()
+else if (!arg)
+   help()
