@@ -21,7 +21,7 @@ function help() {
     console.info('Usage: ');
     console.info('  For local(non-cloud) watcher and server on port (default 8090, defaul reload 9856) :            mbakeX -w .');
     console.info('     -p, --port to specify port for watcher (must be used with -r) :                              mbakeX -w . -p 8091 -r 9857');
-    console.info('     -r, --reload-port to specify port for live reload (must be used with -p) :                   mbakeX -w . --port=8091 --reload-port=9857');
+    console.info('     -r, --reload-port to specify port for live reload :                                          mbakeX -w . --port=8091 --reload-port=9857');
     console.info('  To process Pug and RIOT *-comp.pug tags/components:         mbakeX -c .');
     console.info('     also does regular mbake of Pug');
     console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -p .');
