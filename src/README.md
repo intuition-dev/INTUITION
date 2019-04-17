@@ -5,7 +5,7 @@
 
 ## Overview
 
-Metabake is an open source and extensible meta-programming CLI tool written in Javascript. 
+### Metabake is open source and extensible low-code productivity tool for programmers.
 
 Metabake provides all the necessary tools for a developer to write cleaner code faster, with `pug` templating and livereload out of the box.
 
