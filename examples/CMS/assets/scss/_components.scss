@@ -110,7 +110,7 @@
         flex-wrap: wrap;
     }
 
-    .name, .title, .title p, .category, .date {
+    .name, .title, .title p, .category, .date, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
         color: $text-color-dark-2-theme1;
     }
 
@@ -125,11 +125,17 @@
     }
 
     .title {
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 1.5;
-        letter-spacing: 1px;
-        text-align: justify;
+        &, h1, h2, h3, h4, h5, h6 {
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            text-align: justify;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            padding: 0;
+            margin: 0;
+        }
     }
 
     .divider {
@@ -152,7 +158,9 @@
         }
 
         .title {
-            text-align: left;
+            &, h1, h2, h3, h4, h5, h6 {
+                text-align: left;
+            }
         }
 
         .column {
@@ -177,7 +185,7 @@
         }
 
         .title {
-            &, p {
+            &, p, h1, h2, h3, h4, h5, h6 {
                 font-size: 28px;
                 font-family: $font-family2-theme1;
                 line-height: 1.2;
@@ -464,7 +472,6 @@ svg {
     background-image: url(../img/nature-4.png);
     background-attachment: fixed;
     height: 500px;
-    // background-position: center center;
     background-repeat: no-repeat;
     background-size: 100%;
     .sticky-element {
@@ -475,6 +482,10 @@ svg {
         position: sticky; /* sticky */
         -webkit-position: sticky;
         color: #151E24;
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            padding: 0;
+        }
     }
 }
 
@@ -542,10 +553,14 @@ svg {
 
 @media (max-width: 600px) {
     .blog .title {
-        font-size: 14px;
+        &, h1, h2, h3, h4, h5, h6 {
+            font-size: 14px;
+        }
     }
     .blog-single .title {
-        font-size: 20px;
+        &, h1, h2, h3, h4, h5, h6 {
+            font-size: 20px;
+        }
     }
 }
 
@@ -562,7 +577,9 @@ svg {
         }
 
         .post-title {
-            padding: 1rem;
+            &, h1, h2, h3, h4, h5, h6 {
+                padding: 1rem;
+            }
         }
     }
 }
