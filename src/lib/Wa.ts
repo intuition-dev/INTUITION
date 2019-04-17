@@ -32,9 +32,9 @@ import opn = require('opn')
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////
 export class Wa {
 
-   static watch(dir: string, port?: number) {
+   static watch(dir: string, port?: number, reloadPort?: number) {
       port = typeof port !== 'undefined' ? port : 8090;
-      let ss = new MDevSrv(dir, port)
+      let ss = new MDevSrv(dir, port, reloadPort)
       const mp = new MetaPro(dir)
       let ww = new Watch(mp, dir)
       ww.start(false)
@@ -272,12 +272,11 @@ export class MDevSrv {
    static reloadServer
    // http://github.com/alallier/reload
 
-   constructor(dir, port) {
-
+   constructor(dir, port, reloadPort?) {
       let app = express()
       logger.info(dir, port)
       app.set('app port', port)
-      MDevSrv.reloadServer = reload(app, {verbose: false, port: 9856})
+      MDevSrv.reloadServer = reload(app, {verbose: false, port: reloadPort || 9856})
       logger.info('reloadServer')
       app.set('views', dir)
 

@@ -19,7 +19,9 @@ function version () {
    console.info('  from ' + __dirname)
    console.info()
    console.info('Usage: ')
-   console.info('  For local(non-cloud) watcher and server on port 8090 :      mbakeX -w .')
+   console.info('  For local(non-cloud) watcher and server on port (default 8090, defaul reload 9856) :            mbakeX -w .')
+   console.info('     -p, --port to specify port for watcher (must be used with -r) :                              mbakeX -w . -p 8091 -r 9857')
+   console.info('     -r, --reload-port to specify port for live reload (must be used with -p) :                   mbakeX -w . --port=8091 --reload-port=9857')
 
    console.info('  To process Pug and RIOT *-comp.pug tags/components:         mbakeX -c .')
    console.info('     also does regular mbake of Pug')
@@ -51,15 +53,17 @@ const optionDefinitions = [
    { name: 'mbakeX', defaultOption: true },
 
    { name: 'watcher', alias: 'w', type: Boolean },
+   { name: 'port', alias: 'p', type: String },
+   { name: 'reload-port', alias: 'r', type: String },
    { name: 'comps', alias: 'c', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
 
-   { name: 'map', alias: 'p', type: Boolean },
+   { name: 'map', alias: 'm', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
 
    { name: 'csv2Json', alias: 'l', type: Boolean },
 
-   { name: 'WebAdmin', alias: 'm', type: Boolean },
+   { name: 'WebAdmin', alias: 'b', type: Boolean },
    { name: 'phonegap', alias: 'o', type: Boolean },
    { name: 'elect', alias: 'e', type: Boolean },
    { name: 'ad', alias: 'a', type: Boolean },
@@ -174,7 +178,8 @@ else if (argsParsed.ad)
 else if (argsParsed.csv2Json)
    csv2Json(arg)
 else if (argsParsed.watcher) {
-   Wa.watch(arg)
+   Wa.watch(arg, argsParsed.port, argsParsed['reload-port']);
+   // Wa.watch(arg, argsParsed.port);
 }
 else if (argsParsed.img) {
    img(arg)

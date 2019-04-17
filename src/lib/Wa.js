@@ -20,9 +20,9 @@ const logger = require('tracer').console();
 const csv2JsonV2 = require("csvtojson");
 const opn = require("opn");
 class Wa {
-    static watch(dir, port) {
+    static watch(dir, port, reloadPort) {
         port = typeof port !== 'undefined' ? port : 8090;
-        let ss = new MDevSrv(dir, port);
+        let ss = new MDevSrv(dir, port, reloadPort);
         const mp = new MetaPro(dir);
         let ww = new Watch(mp, dir);
         ww.start(false);
@@ -210,11 +210,11 @@ MetaPro.srcProp = 'src';
 MetaPro.destProp = 'dest';
 exports.MetaPro = MetaPro;
 class MDevSrv {
-    constructor(dir, port) {
+    constructor(dir, port, reloadPort) {
         let app = express();
         logger.info(dir, port);
         app.set('app port', port);
-        MDevSrv.reloadServer = reload(app, { verbose: false, port: 9856 });
+        MDevSrv.reloadServer = reload(app, { verbose: false, port: reloadPort || 9856 });
         logger.info('reloadServer');
         app.set('views', dir);
         const bodyInterceptor = interceptor(function (req, res) {
