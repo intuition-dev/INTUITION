@@ -249,8 +249,8 @@ export class MetaPro {
          return this.js(folder)
 
       if (ext == 'yaml') // bake and itemize
-         // return this.itemize(folder)
-         return this.bake(folder)
+         return this.itemize(folder)
+         // return this.bake(folder)
       if (ext == 'md')
          return this.bake(folder)
 

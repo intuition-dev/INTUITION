@@ -191,7 +191,7 @@ class MetaPro {
         if (ext == 'ts')
             return this.js(folder);
         if (ext == 'yaml')
-            return this.bake(folder);
+            return this.itemize(folder);
         if (ext == 'md')
             return this.bake(folder);
         if (ext == 'pug') {
