@@ -1,6 +1,6 @@
 {
   "prefix": "/blog/",
-  "mbVer": "v5.04.11",
+  "mbVer": "v5.04.21",
   "items": [
     {
       "author": {
@@ -14,6 +14,7 @@
       "date": "06.nov.2018",
       "content_text": "Galanthus is a small genus of about 20 species of bulbous perennial herbaceous plants in the family Amaryllidaceae. The plants have two linear leaves and a single small white drooping bell shaped flower with six petal-like tepals in two circles. The smaller inner petals have green markings.",
       "summary": "Galanthus is a small genus of about 20 species of bulbous perennial herbaceous plants in the family Amaryllidaceae. The plants have two linear leaves and a single small white drooping bell shaped flower with six petal-like tepals in two circles. The smaller inner petals have green markings.",
+      "publish": true,
       "publishOrder": 3,
       "publishDate": 1396361297,
       "pageTitleTop": "Snowdrop",
@@ -34,6 +35,7 @@
       "date": "06.nov.2018",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
       "summary": "Quisque faucibus lacinia turpis id fermentum. Sed eu velit massa. Etiam molestie, ante at imperdiet ornare, sapien nulla volutpat nunc. Quisque faucibus lacinia turpis id fermentum. Sed eu velit massa. Etiam molestie, ante at imperdiet ornare, sapien nulla volutpat nunc.",
+      "publish": true,
       "publishOrder": 4,
       "publishDate": 1519913297,
       "url": "post-1",
@@ -52,6 +54,7 @@
       "image": "http://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
       "summary": "Cras at lacus varius elit convallis pharetra. Maecenas eget ornare eros. Praesent porttitor suscipit ultricies. Orci varius natoque. Cras at lacus varius elit convallis pharetra. Maecenas eget ornare eros. Praesent porttitor suscipit ultricies. Orci varius natoque.",
+      "publish": true,
       "publishOrder": 3,
       "publishDate": 1519913297,
       "url": "post-2",
@@ -70,6 +73,7 @@
       "date": "06.nov.2018",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
       "summary": "Suspendisse mi justo, consectetur vitae purus ac, lobortis auctor leo. Phasellus volutpat lectus hendrerit lectus tempus, vel suscipit nisi luctus. Suspendisse mi justo, consectetur vitae purus ac, lobortis auctor leo. Phasellus volutpat lectus hendrerit lectus tempus, vel suscipit nisi luctus.",
+      "publish": true,
       "publishOrder": 2,
       "publishDate": 1519913297,
       "url": "post-3",
@@ -88,6 +92,7 @@
       "date": "06.nov.2018",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
       "summary": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "publish": true,
       "publishOrder": 1,
       "publishDate": 1519913297,
       "url": "post-4",
@@ -106,6 +111,7 @@
       "image": "http://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
       "summary": "Cras at lacus varius elit convallis pharetra. Maecenas eget ornare eros. Praesent porttitor suscipit ultricies. Orci varius natoque. Cras at lacus varius elit convallis pharetra. Maecenas eget ornare eros. Praesent porttitor suscipit ultricies. Orci varius natoque.",
+      "publish": true,
       "publishOrder": 3,
       "publishDate": 1519913297,
       "url": "test-77",
@@ -124,6 +130,7 @@
       "image": "http://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg",
       "content_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
       "summary": "Cras at lacus varius elit convallis pharetra. Maecenas eget ornare eros. Praesent porttitor suscipit ultricies. Orci varius natoque. Cras at lacus varius elit convallis pharetra. Maecenas eget ornare eros. Praesent porttitor suscipit ultricies. Orci varius natoque.",
+      "publish": true,
       "publishOrder": 7,
       "publishDate": 1519913297,
       "url": "test-88",
