@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.18';
+        return 'v5.04.19';
     }
 }
 exports.Ver = Ver;
@@ -228,11 +228,12 @@ class MBake {
         }
         return this.bake(ppath_);
     }
-    _allx(path_) {
+    _all(path_) {
         try {
             let t = new Comps(path_);
             let lst = t.get();
             t.comps(lst);
+            console.info('================================path', path_);
             return this.itemizeNBake(path_);
         }
         catch (err) {
@@ -380,15 +381,8 @@ exports.BakeWrk = BakeWrk;
 class Items {
     constructor(dir_) {
         let dir = Dirs.slash(dir_);
-        let fn = dir + '/dat.yaml';
-        let fn2 = dir + '/dat_i.yaml';
+        let fn = dir + '/dat_i.yaml';
         if (!fs.existsSync(fn)) {
-            let dir2 = findUp.sync('dat.yaml', { cwd: dir });
-            if (dir2 != null) {
-                dir = dir2.slice(0, -11);
-            }
-        }
-        if (!fs.existsSync(fn2)) {
             let dir2 = findUp.sync('dat_i.yaml', { cwd: dir });
             if (dir2 != null) {
                 dir = dir2.slice(0, -11);

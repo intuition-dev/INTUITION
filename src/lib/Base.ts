@@ -278,6 +278,7 @@ export class MBake {
          let t = new Comps(path_)
          let lst = t.get()
          t.comps(lst)
+         console.info('================================path', path_);
          return this.itemizeNBake(path_)
       } catch (err) {
          logger.info(err)
@@ -470,22 +471,13 @@ export class Items {
 
    constructor(dir_: string) {
       let dir = Dirs.slash(dir_)
-      let fn: string = dir + '/dat.yaml'
-      let fn2: string = dir + '/dat_i.yaml'
+      let fn: string = dir + '/dat_i.yaml'
 
       if (!fs.existsSync(fn)) { //if it does not exist, go up a level
-         let dir2: string = findUp.sync('dat.yaml', { cwd: dir })
-
-         if (dir2 != null) {
-            dir = dir2.slice(0, -11) // this reported error for UBAYCAP
-         }
-      }
-
-      if (!fs.existsSync(fn2)) { //if it does not exist, go up a level
          let dir2: string = findUp.sync('dat_i.yaml', { cwd: dir })
 
          if (dir2 != null) {
-            dir = dir2.slice(0, -11)
+            dir = dir2.slice(0, -11) // this reported error for UBAYCAP
          }
       }
 
