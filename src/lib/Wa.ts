@@ -132,7 +132,7 @@ export class Watch {
       if (Watch.refreshPending) return  //debounce
       Watch.refreshPending = true
       setTimeout(function () {
-         logger.info('reload')//,MDevSrv.reloadServer)
+         logger.info('reload')
          MDevSrv.reloadServer.reload()
 
          Watch.refreshPending = false
@@ -270,14 +270,16 @@ export class MetaPro {
 // Meta: //////////////////////
 export class MDevSrv {
    static reloadServer
-   // http://github.com/alallier/reload
 
    constructor(dir, port, reloadPort?) {
       let app = express()
       logger.info(dir, port)
       app.set('app port', port)
-      MDevSrv.reloadServer = reload(app, {verbose: false, port: reloadPort || 9856})
-      logger.info('reloadServer')
+      reload(app, {verbose: false, port: reloadPort || 9856}).then((reloadServer_) => {
+         MDevSrv.reloadServer = reloadServer_
+         logger.info('reloadServer')
+      })//()
+
       app.set('views', dir)
 
       const bodyInterceptor = interceptor(function (req, res) {

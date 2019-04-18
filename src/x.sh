@@ -3,9 +3,9 @@ clear
 tsc
 
 
-node mbake.js /Users/code/Documents/GitHub/mbake/examples/locEg/pg1
+# node mbake.js /Users/code/Documents/GitHub/mbake/examples/locEg/pg1
 
-# node mbakeX.js -w /Users/code/Documents/GitHub/Metabake -Docs/meta-website
+node mbakeX.js -w /Users/code/Documents/GitHub/mbake/examples/website
 
 # node mbakeX.js -c /Users/code/Documents/GitHub/Metabake -Docs/mbake-blog/assets
 #node mbake.js -i /Users/code/Documents/GitHub/Metabake -Docs/mbake-blog/posts/post-1

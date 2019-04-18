@@ -214,8 +214,10 @@ class MDevSrv {
         let app = express();
         logger.info(dir, port);
         app.set('app port', port);
-        MDevSrv.reloadServer = reload(app, { verbose: false, port: reloadPort || 9856 });
-        logger.info('reloadServer');
+        reload(app, { verbose: false, port: reloadPort || 9856 }).then((reloadServer_) => {
+            MDevSrv.reloadServer = reloadServer_;
+            logger.info('reloadServer');
+        });
         app.set('views', dir);
         const bodyInterceptor = interceptor(function (req, res) {
             return {
