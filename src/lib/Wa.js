@@ -177,8 +177,18 @@ class MetaPro {
         return msg;
     }
     js(dir) {
-        new Sa_1.MinJS(this.mount + '/' + dir);
+        const folder = this.mount + '/' + dir;
+        const js = new Sa_1.MinJS(folder);
+        js.ts(folder);
         let msg = new Base_1.RetMsg('js', 1, 'success');
+        this.setLast(msg);
+        return msg;
+    }
+    minJS(dir) {
+        const folder = this.mount + '/' + dir;
+        const js = new Sa_1.MinJS(folder);
+        js.min(folder);
+        let msg = new Base_1.RetMsg('min.js', 1, 'success');
         this.setLast(msg);
         return msg;
     }

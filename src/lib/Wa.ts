@@ -228,8 +228,21 @@ export class MetaPro {
    }
 
    js(dir: string) {
-      new MinJS(this.mount + '/' + dir);
+      const folder = this.mount + '/' + dir;
+      const js = new MinJS(folder);
+      js.ts(folder);
+
       let msg: RetMsg = new RetMsg('js', 1, 'success')
+      this.setLast(msg)
+      return msg
+   }
+
+   minJS(dir: string) {
+      const folder = this.mount + '/' + dir;
+      const js = new MinJS(folder);
+      js.min(folder);
+
+      let msg: RetMsg = new RetMsg('min.js', 1, 'success')
       this.setLast(msg)
       return msg
    }
@@ -247,6 +260,9 @@ export class MetaPro {
          
       if (ext == 'ts') // ts
          return this.js(folder)
+         
+      // if (ext == 'js') // js
+      //    return this.minJS(folder)
 
       if (ext == 'yaml') // bake and itemize
          return this.itemize(folder)

@@ -34,7 +34,7 @@ function help () {
    console.info('  To process Pug and RIOT *-comp.pug tags/components:         mbakeX -c .')
    console.info('     also does regular mbake of Pug')
 
-   console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -p .')
+   console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .')
    console.info('  Compress .jpg images with a default compression level:      mbakeX -i .')
    console.info('  To process list.csv to list.json:                           mbakeX -l .')
 
@@ -42,7 +42,7 @@ function help () {
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
-   console.info('  For a starter WebAdmin :                                    mbakeX -m')
+   console.info('  For a starter WebAdmin :                                    mbakeX -b')
    console.info('  For a starter dash web-app:                                 mbakeX -d')
 
    console.info('  For example slides markdown:                                mbakeX -k')
@@ -64,21 +64,23 @@ const optionDefinitions = [
    { name: 'version', alias: 'v', type: Boolean },
 
    { name: 'watcher', alias: 'w', type: Boolean },
+
+   { name: 'prod', type: Boolean },
    { name: 'port', alias: 'p', type: String },
    { name: 'reload-port', alias: 'r', type: String },
+
    { name: 'comps', alias: 'c', type: Boolean },
-   { name: 'dash', alias: 'd', type: Boolean },
 
    { name: 'map', alias: 'm', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
-
    { name: 'csv2Json', alias: 'l', type: Boolean },
-
+   
    { name: 'WebAdmin', alias: 'b', type: Boolean },
-   { name: 'phonegap', alias: 'o', type: Boolean },
-   { name: 'elect', alias: 'e', type: Boolean },
-   { name: 'ad', alias: 'a', type: Boolean },
+   { name: 'dash', alias: 'd', type: Boolean },
    { name: 'slides', alias: 'k', type: Boolean },
+   { name: 'elect', alias: 'e', type: Boolean },
+   { name: 'phonegap', alias: 'o', type: Boolean },
+   { name: 'ad', alias: 'a', type: Boolean },
 ]
 
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -151,6 +153,10 @@ function bake (arg) {
    new MBake().bake(arg)
    process.exit()
 }
+function prod (arg) {
+   new MBake().clearToProd(arg)
+   process.exit()
+}
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
 if (arg) {
    arg = Dirs.slash(arg)
@@ -200,6 +206,8 @@ else if (argsParsed.map)
    map(arg)
 else if (argsParsed.slides)
    unzipL()
+else if (argsParsed.prod)
+   prod(arg)
 else if (argsParsed.version)
    version()
 else if (argsParsed.help)

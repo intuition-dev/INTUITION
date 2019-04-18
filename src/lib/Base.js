@@ -29,6 +29,7 @@ const marpit = new Marpit.Marpit();
 const fs = require("fs-extra");
 const FileHound = require("filehound");
 const yaml = require("js-yaml");
+const findRemoveSync = require("find-remove");
 const path = require("path");
 const findUp = require("find-up");
 const riotc = require("riot-compiler");
@@ -211,6 +212,22 @@ class MBake {
         catch (err) {
             return new RetMsg(path_ + ' tag', -1, err);
         }
+    }
+    clearToProd(path_) {
+        if (!path_ || path_.length < 1) {
+            console.info('no path_ arg passed');
+            return;
+        }
+        try {
+            console.info(' Clearing ' + path_);
+            var result = findRemoveSync('/home/miri/Documents/code/MetaBakeCode/CMS/', { extensions: ['.pug', '.log'] });
+            console.log('=================== result', result);
+        }
+        catch (err) {
+            logger.info(err);
+            return new RetMsg(path_ + ' bake', -1, err);
+        }
+        return new RetMsg(path_ + ' bake', 1, 'ok');
     }
     itemizeNBake(ppath_) {
         if (!ppath_ || ppath_.length < 1) {
