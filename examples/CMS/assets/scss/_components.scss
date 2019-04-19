@@ -206,6 +206,8 @@
                     font-weight: 300;
                     line-height: 1.5;
                     letter-spacing: 1px;
+                }
+                .capital p {
                     &:first-of-type {
                         &:first-letter {
                             float: left;
@@ -225,6 +227,13 @@
                     font-weight: 300;
                     letter-spacing: 2px;
                     text-transform: uppercase;
+                }
+                a {
+                    color: #333;
+                }
+                .soc-links a {
+                    display: table;
+                    margin: 1rem 0;
                 }
             }
         }
@@ -470,7 +479,7 @@ svg {
 }
 
 .fixed-bg {
-    background-image: url(../img/nature-4.png);
+    background-image: url('../img/img-20.jpg');
     background-attachment: fixed;
     height: 500px;
     background-repeat: no-repeat;
@@ -483,6 +492,7 @@ svg {
         position: sticky; /* sticky */
         -webkit-position: sticky;
         color: #151E24;
+        text-shadow: 1px 0px 1px rgba(255, 255, 255, 0.3);
         h1, h2, h3, h4, h5, h6 {
             margin: 0;
             padding: 0;
