@@ -31,6 +31,7 @@ function help () {
    console.info('     -r, --reload-port to specify port for live reload :      mbakeX -w . --port=8091 --reload-port=9857')
    console.info()
 
+   console.info('  To recursevly remove source files:                          mbakeX --prod .')
    console.info('  To process Pug and RIOT *-comp.pug tags/components:         mbakeX -c .')
    console.info('     also does regular mbake of Pug')
 

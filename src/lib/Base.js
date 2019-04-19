@@ -29,7 +29,6 @@ const marpit = new Marpit.Marpit();
 const fs = require("fs-extra");
 const FileHound = require("filehound");
 const yaml = require("js-yaml");
-const findRemoveSync = require("find-remove");
 const path = require("path");
 const findUp = require("find-up");
 const riotc = require("riot-compiler");
@@ -220,8 +219,18 @@ class MBake {
         }
         try {
             console.info(' Clearing ' + path_);
-            var result = findRemoveSync('/home/miri/Documents/code/MetaBakeCode/CMS/', { extensions: ['.pug', '.log'] });
-            console.log('=================== result', result);
+            let dir = Dirs.slash(path_);
+            const rec = FileHound.create()
+                .paths(dir)
+                .ext(['pug', 'yaml', 'js', 'ts', 'scss'])
+                .findSync();
+            rec.forEach(file => {
+                const min = file.split('.')[file.split('.').length - 2] === 'min';
+                if (!min) {
+                    console.info(' Removing ' + file);
+                    fs.removeSync(file);
+                }
+            });
         }
         catch (err) {
             logger.info(err);

@@ -34,7 +34,6 @@ const marpit = new Marpit.Marpit()
 import fs = require('fs-extra')
 import FileHound = require('filehound')
 import yaml = require('js-yaml')
-import findRemoveSync = require('find-remove')
 
 import path = require("path")
 import findUp = require('find-up')
@@ -263,11 +262,23 @@ export class MBake {
          return
       }
       try {
+
          console.info(' Clearing ' + path_)
+         let dir = Dirs.slash(path_)
 
-         var result = findRemoveSync('/home/miri/Documents/code/MetaBakeCode/CMS/', {extensions: ['.pug', '.yaml']})
-         console.log('=================== result', result)
-
+         const rec = FileHound.create() //recursive
+         .paths(dir)
+         .ext(['pug', 'yaml', 'js', 'ts', 'scss'])
+         .findSync()
+         
+         rec.forEach(file => {
+            const min = file.split('.')[file.split('.').length - 2] === 'min';
+            
+            if (!min) {
+               console.info(' Removing ' + file)
+               fs.removeSync(file)
+            }
+         });
       } catch (err) {
          logger.info(err)
          return new RetMsg(path_ + ' bake', -1, err)
