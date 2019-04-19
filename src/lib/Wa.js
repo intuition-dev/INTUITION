@@ -21,7 +21,7 @@ const csv2JsonV2 = require("csvtojson");
 const opn = require("opn");
 class Wa {
     static watch(dir, port, reloadPort) {
-        port = typeof port !== 'undefined' ? port : 8090;
+        port = port || 8090;
         let ss = new MDevSrv(dir, port, reloadPort);
         const mp = new MetaPro(dir);
         let ww = new Watch(mp, dir);
@@ -224,9 +224,13 @@ class MDevSrv {
         let app = express();
         logger.info(dir, port);
         app.set('app port', port);
-        reload(app, { verbose: false, port: reloadPort || 9856 }).then((reloadServer_) => {
+        const rport = Number(reloadPort) || 9856;
+        reload(app, { verbose: false, port: rport })
+            .then((reloadServer_) => {
             MDevSrv.reloadServer = reloadServer_;
             logger.info('reloadServer');
+        }).catch(e => {
+            console.log('==================e', e);
         });
         app.set('views', dir);
         const bodyInterceptor = interceptor(function (req, res) {
