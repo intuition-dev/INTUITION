@@ -67,12 +67,12 @@
       "terser": ">=3.17.0",
       "tracer": ">=0.9.8",
       "traverse": ">=0.6.6",
-      "typescript": ">=3.4.3",
+      "typescript": ">=3.4.4",
       "uglify-es": ">=3.3.9",
       "unfluff": ">=3.2.0"
    },
    "devDependencies": {
-      "@types/node": ">=11.13.5",
+      "@types/node": ">=11.13.6",
       "handbrake-js": ">=3.0.8",
       "npm-check-updates": ">=3.1.8",
       "simple-git": ">=1.110.0"
