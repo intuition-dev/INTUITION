@@ -9,11 +9,11 @@
 
 Metabake provides all the necessary tools for a developer to write cleaner code faster, with `pug` templating and livereload out of the box.
 
-You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom CMS/E-Commerce and all sorts of dynamic web-apps.
+You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom CMS/E-Commerce, CRUD and all sorts of dynamic web-apps.
 
 ## Prerequisites
 
-You should know HTML, CSS an JavaScript - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett.
+You should know HTML, CSS and JavaScript - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett.
 
 
 ## Quick start
@@ -27,7 +27,7 @@ mbakeX -w . /* to run the watcher/livereload */
 
 ## Metabake in 4 Minutes
 
-Building sites take a few moments, just add `pug` and `dat.yaml` files in the folder, and compile it with `mbake .` from the root folder of your site.
+Building sites take a few moments, just add `index.pug` and `dat.yaml` files in the folder, and compile it with `mbake .` from the root folder of your site.
 
 
 ### Example
@@ -189,14 +189,6 @@ The example CMS will also show you how the `items.json` is read to display a nic
 list of items. No magic.
 
 
-# mbake review, extras and next steps
-
-##### 'All my friends KNOW the low-coder'
-
-`mbake` is the open source modern tool for developers that makes you most productive: it makes Pug, SCSS and Typescript.
-It comes with example apps that include WebSite showing how to load.js, CRUD showing how to do dynamic apps. You can use any application architecture you like
-Also you can itemize `mbake -i dat.yaml` files to make a nice SEO friendly CMS.
-
 ## Extras and next steps
 
 Now that you know mbake foundation, here are some choices for next things to learn in the advanced docs, pick and chose:
@@ -218,7 +210,7 @@ Now that you know mbake foundation, here are some choices for next things to lea
 
 # Links
 
-- [metabake.org](https://www.metabake.org)
-- Click for mbake Docs: [docs.metabake.org](http://docs.metabake.org)
-- [git.metabake.org](http://git.metabake.org)
+- [Metabake.org](https://www.Metabake.org)
+- Click for mbake Docs: [docs.Metabake.org](http://docs.Metabake.org)
+- [git.Metabake.org](http://git.Metabake.org)
 - Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)
