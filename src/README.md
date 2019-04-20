@@ -3,15 +3,15 @@
 
 ## 'All my friends KNOW the low-coder'
 
-## Overview
+#### Metabake is open source and extensible low-code productivity tool for programmers.
 
-### Metabake is open source and extensible low-code productivity tool for programmers.
+## Overview
 
 Metabake(mbake) provides all the necessary tools for a developer to write cleaner code faster, with `pug` templating and livereload out of the box.
 
 You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom CMS/E-Commerce, CRUD and all sorts of dynamic web-apps.
 
-## Prerequisites
+### Prerequisites
 
 You should know HTML, CSS and JavaScript - that is all we use. If you need to catch up, we recommend this book: 'Design and Build Websites' by Jon Duckett.
 
