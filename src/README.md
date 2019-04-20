@@ -7,7 +7,7 @@
 
 ### Metabake is open source and extensible low-code productivity tool for programmers.
 
-Metabake provides all the necessary tools for a developer to write cleaner code faster, with `pug` templating and livereload out of the box.
+Metabake(mbake) provides all the necessary tools for a developer to write cleaner code faster, with `pug` templating and livereload out of the box.
 
 You can gradually adopt it while it allows you to develop faster - and with clean simplicity - Static Websites, Web Components, custom CMS/E-Commerce, CRUD and all sorts of dynamic web-apps.
 
@@ -211,6 +211,7 @@ Now that you know mbake foundation, here are some choices for next things to lea
 # Links
 
 - [Metabake.org](https://www.Metabake.org)
-- Click for mbake Docs: [docs.Metabake.org](http://docs.Metabake.org)
-- [git.Metabake.org](http://git.Metabake.org)
+- Docs: [docs.Metabake.org](http://docs.Metabake.org)
+- [blog.Metabake.org](http://blog.Metabake.org)
+- [Github](http://git.Metabake.org)
 - Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)
