@@ -210,8 +210,8 @@ Now that you know mbake foundation, here are some choices for next things to lea
 
 # Links
 
+- Full Docs: [docs.Metabake.org](http://docs.Metabake.org)
 - [Metabake.org](https://www.Metabake.org)
-- Docs: [docs.Metabake.org](http://docs.Metabake.org)
 - [blog.Metabake.org](http://blog.Metabake.org)
 - [Github](http://git.Metabake.org)
 - Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)
