@@ -1,6 +1,6 @@
 # zip up the sample apps, update Base.ts version
 # ncu -u
-echo 'Make sure CMS secrets are not in zip'
+echo 'Make sure WebAdmin secrets are not in zip'
 tsc
 node mbake.js
 npm publish
