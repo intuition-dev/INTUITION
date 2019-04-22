@@ -2537,6 +2537,11 @@ javascript-obfuscator@>=0.18.1:
     string-template "1.0.0"
     tslib "1.9.3"
 
+javascript-state-machine@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/javascript-state-machine/-/javascript-state-machine-3.1.0.tgz#06eeb2136a6a19ae1b56105c25caec283dd5cd14"
+  integrity sha512-BwhYxQ1OPenBPXC735RgfB+ZUG8H3kjsx8hrYTgWnoy6TPipEy4fiicyhT2lxRKAXq9pG7CfFT8a2HLr6Hmwxg==
+
 jju@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/jju/-/jju-1.4.0.tgz#a3abe2718af241a2b2904f84a625970f389ae32a"
@@ -4131,7 +4136,7 @@ relateurl@^0.2.7:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-reload@^3.0.1:
+reload@>=3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/reload/-/reload-3.0.1.tgz#6da51f5fb1ae69bb97bba67280258facbc6e5c7c"
   integrity sha512-NFM2dFo/86O9m5U48kRlFOaksX/Y6Ua10OiLt7rQbMAHRKZmGzB3wXExelr86VbV+4JMsuQjXiFkuNYVmvhvMw==

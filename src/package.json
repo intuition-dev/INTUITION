@@ -75,6 +75,7 @@
       "@types/node": ">=11.13.6",
       "handbrake-js": ">=3.0.8",
       "npm-check-updates": ">=3.1.8",
-      "simple-git": ">=1.110.0"
+      "simple-git": ">=1.110.0",
+      "javascript-state-machine": ">=3.1.0"
    }
 }
