@@ -51,7 +51,6 @@ VM should also do any data validation; returning an empty string if OK or an err
 The purpose of VM is to allow development of View to be faster; and to allow for a demo if back end is b0rked.
 
 ### Advanced
-- The collections.js has events(via Range-Changes collection), so you could use FLUX, but FLUX is not recommended.
 - You should favor composition over inheritance. You should even look at VM as an ECS(Entity-Component-System), where Entity is the name of the VM, 
 and it must match the name of the page/screen folder; the components is the IVM methods that return the Collection|Data Structures 
 that map to view, and systems are your CRUD type methods.
