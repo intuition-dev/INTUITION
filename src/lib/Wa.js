@@ -18,7 +18,7 @@ const cheerio = require("cheerio");
 const interceptor = require("express-interceptor");
 const logger = require('tracer').console();
 const csv2JsonV2 = require("csvtojson");
-const opn = require("opn");
+const opn = require("open");
 class Wa {
     static watch(dir, port, reloadPort) {
         port = port || 8090;

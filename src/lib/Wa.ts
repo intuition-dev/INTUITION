@@ -27,7 +27,7 @@ const logger = require('tracer').console()
 
 import csv2JsonV2 = require('csvtojson')
 
-import opn = require('opn')
+import opn = require('open')
 
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////
 export class Wa {
