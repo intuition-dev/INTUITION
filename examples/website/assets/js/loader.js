@@ -8,7 +8,7 @@ function onDeviceReady() {
 
 depp.define({
    'pre': [
-      '//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js'
+      '//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.slim.min.js'
       , '//cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.min.js'
       , '//cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.css'
       , '//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'

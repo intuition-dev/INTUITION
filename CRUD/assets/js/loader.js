@@ -32,7 +32,7 @@ addEventListener('evtName', function (evt) {
 
 depp.define({
    'pre': [
-      '//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js'
+      '//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.slim.min.js'
 
       , '//cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_js/js-offcanvas.pkgd.js'
       , '//cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_css/prefixed/js-offcanvas.css'
