@@ -37,7 +37,9 @@ export class Wa {
       let ss = new MDevSrv(dir, port, reloadPort)
       const mp = new MetaPro(dir)
       let ww = new Watch(mp, dir)
-      ww.start(false)
+      
+      ww.start(100) // build every X ms after save
+
       console.info(' Serving on ' + 'http://localhost:' + port)
       console.info(' --------------------------')
       console.info('')
@@ -90,22 +92,23 @@ export class Watch {
       this.root = mount
    }
 
-   start(poll_) {// true for WAN
+   start(delay_) {// true for WAN
       console.info(' watcher starting')
       console.info(this.root)
       this.watcher = chokidar.watch(this.root, {
          ignored: '*.swpc*',
          ignoreInitial: true,
          cwd: this.root,
-         usePolling: poll_,
-         binaryInterval: 100000,
-         interval: 50//time
+         usePolling: true, // for linux support
+         useFsEvents: false, // for linux support
+         binaryInterval: 1000*2,
+         interval: delay_//time
 
          //alwaysStat: true,
-         , atomic: 50
+         , atomic: delay_
          , awaitWriteFinish: {
-            stabilityThreshold: 100,
-            pollInterval: 50
+            stabilityThreshold: delay_ * 2.1,
+            pollInterval: delay_
          }
       })
 
@@ -127,17 +130,22 @@ export class Watch {
       })
    }//()
 
-   static refreshPending = false
+   static debounce(func, wait) { // don't fire event often
+      var timeout;
+      return function () {
+         var context = this, args = arguments
+         var later = function () {
+            timeout = null
+         }
+         var callNow = !timeout
+         clearTimeout(timeout)
+         timeout = setTimeout(later, wait)
+         if (callNow) func.apply(context, args)
+      }
+   }
+
    refreshBro() {
-      if (Watch.refreshPending) return  //debounce
-      Watch.refreshPending = true
-      setTimeout(function () {
-         logger.info('reload')
-         MDevSrv.reloadServer.reload()
-
-         Watch.refreshPending = false
-
-      }, 100)//time
+      Watch.debounce(MDevSrv.reloadServer.reload(), 200)
    }
 
    auto(path_: string) {//process
@@ -248,9 +256,8 @@ export class MetaPro {
    }
 
    // when you pass the file name, ex: watch
-   autoBake(folder__, file): RetMsg {
+   autoBake(folder__, file) {
       const folder = Dirs.slash(folder__)
-
 
       const ext = file.split('.').pop()
       logger.info('WATCHED2a:', folder, ext)
@@ -260,9 +267,6 @@ export class MetaPro {
          
       if (ext == 'ts') // ts
          return this.js(folder)
-         
-      // if (ext == 'js') // js
-      //    return this.minJS(folder)
 
       if (ext == 'yaml') // bake and itemize
          return this.itemize(folder)
@@ -277,11 +281,9 @@ export class MetaPro {
             return this.bake(folder)
       }
 
-      let m = new RetMsg(folder + '-' + file, -1, 'nothing to bake')
-      this.setLast(m)// maybe not set it to avoid noise?
-      return m
-   }
-}
+   }//()
+
+}//class
 
 // Meta: //////////////////////
 export class MDevSrv {

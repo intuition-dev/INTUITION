@@ -25,7 +25,7 @@ class Wa {
         let ss = new MDevSrv(dir, port, reloadPort);
         const mp = new MetaPro(dir);
         let ww = new Watch(mp, dir);
-        ww.start(false);
+        ww.start(100);
         console.info(' Serving on ' + 'http://localhost:' + port);
         console.info(' --------------------------');
         console.info('');
@@ -66,20 +66,21 @@ class Watch {
         this.mp = mp_;
         this.root = mount;
     }
-    start(poll_) {
+    start(delay_) {
         console.info(' watcher starting');
         console.info(this.root);
         this.watcher = chokidar.watch(this.root, {
             ignored: '*.swpc*',
             ignoreInitial: true,
             cwd: this.root,
-            usePolling: poll_,
-            binaryInterval: 100000,
-            interval: 50,
-            atomic: 50,
+            usePolling: true,
+            useFsEvents: false,
+            binaryInterval: 1000 * 2,
+            interval: delay_,
+            atomic: delay_,
             awaitWriteFinish: {
-                stabilityThreshold: 100,
-                pollInterval: 50
+                stabilityThreshold: delay_ * 2.1,
+                pollInterval: delay_
             }
         });
         this.watcher.unwatch('*.html');
@@ -98,15 +99,22 @@ class Watch {
             thiz.auto(path);
         });
     }
+    static debounce(func, wait) {
+        var timeout;
+        return function () {
+            var context = this, args = arguments;
+            var later = function () {
+                timeout = null;
+            };
+            var callNow = !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow)
+                func.apply(context, args);
+        };
+    }
     refreshBro() {
-        if (Watch.refreshPending)
-            return;
-        Watch.refreshPending = true;
-        setTimeout(function () {
-            logger.info('reload');
-            MDevSrv.reloadServer.reload();
-            Watch.refreshPending = false;
-        }, 100);
+        Watch.debounce(MDevSrv.reloadServer.reload(), 200);
     }
     auto(path_) {
         let path = Base_1.Dirs.slash(path_);
@@ -127,7 +135,6 @@ class Watch {
         }
     }
 }
-Watch.refreshPending = false;
 exports.Watch = Watch;
 class MetaPro {
     constructor(mount) {
@@ -210,9 +217,6 @@ class MetaPro {
             else
                 return this.bake(folder);
         }
-        let m = new Base_1.RetMsg(folder + '-' + file, -1, 'nothing to bake');
-        this.setLast(m);
-        return m;
     }
 }
 MetaPro.folderProp = 'folder';
