@@ -103,14 +103,14 @@ export class Watch {
          cwd: this.root,
          usePolling: true, // for linux support
          useFsEvents: false, // for linux support
-         binaryInterval: 1000*2,
+         binaryInterval: delay_ * 5,
          interval: delay_//time
 
          //alwaysStat: true,
          , atomic: delay_
          , awaitWriteFinish: {
-            stabilityThreshold: delay_ * 2.1,
-            pollInterval: delay_
+            stabilityThreshold: delay_ * 2.11,
+            pollInterval: delay_ *.7
          }
       })
 
@@ -125,10 +125,10 @@ export class Watch {
 
       let thiz = this
       this.watcher.on('add', function (path) {
-         thiz.auto(path)
+         Watch.debounce(thiz.auto(path), this.delay*2.2)
       })
       this.watcher.on('change', function (path) {
-         thiz.auto(path)
+         Watch.debounce(thiz.auto(path), this.delay*2.2)
       })
    }//()
 
@@ -147,7 +147,7 @@ export class Watch {
    }
 
    refreshBro() {
-      Watch.debounce(MDevSrv.reloadServer.reload(), this.delay*1.3)
+      Watch.debounce(MDevSrv.reloadServer.reload(), this.delay*1.1)
    }
 
    auto(path_: string) {//process

@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.04.28'
+      return 'v5.04.29'
    }
 }
 
