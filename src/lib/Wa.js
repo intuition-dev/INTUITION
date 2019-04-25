@@ -459,7 +459,7 @@ class Scrape {
             }
         });
     }
-    static getImageSize(iurl_) {
+    static __getImageSize(iurl_) {
         logger.info(iurl_);
         return probe(iurl_, { timeout: 3000 });
     }

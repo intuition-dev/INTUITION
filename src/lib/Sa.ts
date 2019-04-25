@@ -16,6 +16,7 @@ import fs = require('fs-extra')
 import FileHound = require('filehound')
 
 const sharp = require('sharp')
+import probe = require('probe-image-size')
 
 import * as ts from "typescript"
 import UglifyJS = require("uglify-es")
@@ -164,12 +165,11 @@ export class YamlConfig {
 export class Resize {
 
    do (dir) {
-      console.log('Png input should be 4K or larger')
       logger.info(dir)
 
       const rec = FileHound.create() //recursive
          .paths(dir)
-         .ext("png")
+         .ext('jpg')
          .findSync()
 
       let ret: string[] = [] //empty string array
@@ -180,14 +180,22 @@ export class Resize {
 
       }
       for (let s of ret) {
-         console.info(s)
+         this.smaller(s)
       }
    }
 
-   smaller (file) {
-      this.smaller(+ '.png')
+   isWide(file):boolean {
+      var data = fs.readFileSync(file + '.jpg')
+      let p = probe.sync(data)
+      if(p.width && p.width > 3200) return true
+      logger.info(file, ' is low res')
+      return false
+   }
 
-      sharp(file + '.png').toFormat('jpeg')
+   smaller (file) {
+      logger.info(file)
+      if(!this.isWide(file)) return
+      sharp(file + '.jpg')
          .resize(1680 * 1.9)
          .jpeg({
             quality: 74,
@@ -197,7 +205,7 @@ export class Resize {
          .blur()
          .toFile(file + '.2K.min.jpg')
 
-      sharp(file + '.png').toFormat('jpeg')
+      sharp(file + '.jpg')
          .resize(320 * 2)
          .jpeg({
             quality: 78,
