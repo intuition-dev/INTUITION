@@ -182,36 +182,4 @@ mbake -i .
 ```
 It will create `items.json`. This allows you to fetch that json and search for content, CMS, items, etc.
 
-### `mbake -b` will emit an example CMS with above.
-
-
-The example CMS will also show you how the `items.json` is read to display a nice searchable and paginated
-list of items. No magic.
-
-
-## Extras and next steps
-
-Now that you know mbake foundation, here are some choices for next things to learn in the advanced docs, pick and chose:
-
-- CMS: an admin panel that you can host to can use as is; or as a base to build commercial grade CMS or eCommerce site, including browser plugin.
-- MetaCake: plugin components, makes it easy for designers to write real web-apps. Developed with RIOTjs, easier than Reactjs (commercial license optional)
-- AMP
-- SPA router: with page transition effects and state machine (needed for cross-platform development)
-- Cross platform development with real single code base development: single code base for Web, AMP, Electron and PhoneGap/Crodova
-- VS code from the Cloud: multiple developers using a browser against same VS Code host in the cloud
-
-**Other examples include:**
-
-- Using markdown CSS effect: allows non-programmers to write interactive stories
-- Slide show with markdown
-- Dashboard example
-- Ads example
-
-
-# Links
-
-- Full Docs: [docs.Metabake.org](http://docs.Metabake.org)
-- [Metabake.org](https://www.Metabake.org)
-- [blog.Metabake.org](http://blog.Metabake.org)
-- [Github](http://git.Metabake.org)
-- Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)
+# Todo
