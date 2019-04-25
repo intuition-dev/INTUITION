@@ -128,10 +128,11 @@ class YamlConfig {
 exports.YamlConfig = YamlConfig;
 class Resize {
     do(dir) {
-        console.info(dir);
+        console.log('Png input should be 4K or larger');
+        logger.info(dir);
         const rec = FileHound.create()
             .paths(dir)
-            .ext("jpg")
+            .ext("png")
             .findSync();
         let ret = [];
         for (let s of rec) {
@@ -140,13 +141,13 @@ class Resize {
                 continue;
             ret.push(n);
         }
-        console.info(ret);
         for (let s of ret) {
-            this.smaller(s);
+            console.info(s);
         }
     }
     smaller(file) {
-        sharp(file + '.jpg')
+        this.smaller(+'.png');
+        sharp(file + '.png').toFormat('jpeg')
             .resize(1680 * 1.9)
             .jpeg({
             quality: 74,
@@ -155,7 +156,7 @@ class Resize {
         })
             .blur()
             .toFile(file + '.2K.min.jpg');
-        sharp(file + '.jpg')
+        sharp(file + '.png').toFormat('jpeg')
             .resize(320 * 2)
             .jpeg({
             quality: 78,

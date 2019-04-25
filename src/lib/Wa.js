@@ -74,6 +74,8 @@ class Watch {
             ignored: '*.swpc*',
             ignoreInitial: true,
             cwd: this.root,
+            usePolling: true,
+            useFsEvents: false,
             binaryInterval: delay_ * 5,
             interval: delay_,
             atomic: delay_,

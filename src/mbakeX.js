@@ -29,7 +29,7 @@ function help() {
     console.info('  To process Pug and RIOT *-comp.pug tags/components:         mbakeX -c .');
     console.info('     also does regular mbake of Pug');
     console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .');
-    console.info('  Compress .jpg images with a default compression level:      mbakeX -i .');
+    console.info('  Compress 4K or larger .png images to default sizes:         mbakeX -i .');
     console.info('  To process list.csv to list.json:                           mbakeX -l .');
     console.info('     Note: . anywhere is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');

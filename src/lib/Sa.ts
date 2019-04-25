@@ -164,31 +164,30 @@ export class YamlConfig {
 export class Resize {
 
    do (dir) {
-
-      console.info(dir)
+      console.log('Png input should be 4K or larger')
+      logger.info(dir)
 
       const rec = FileHound.create() //recursive
          .paths(dir)
-         .ext("jpg")
+         .ext("png")
          .findSync()
 
       let ret: string[] = [] //empty string array
       for (let s of rec) {//clean the strings
-         //console.info(s)
          let n = s.slice(0, -4)
-         //console.info(n)
          if (n.includes('.min')) continue
-
          ret.push(n)
+
       }
-      console.info(ret)
-      for (let s of ret) {//clean the strings
-         this.smaller(s)
+      for (let s of ret) {
+         console.info(s)
       }
    }
 
    smaller (file) {
-      sharp(file + '.jpg')
+      this.smaller(+ '.png')
+
+      sharp(file + '.png').toFormat('jpeg')
          .resize(1680 * 1.9)
          .jpeg({
             quality: 74,
@@ -198,7 +197,7 @@ export class Resize {
          .blur()
          .toFile(file + '.2K.min.jpg')
 
-      sharp(file + '.jpg')
+      sharp(file + '.png').toFormat('jpeg')
          .resize(320 * 2)
          .jpeg({
             quality: 78,
