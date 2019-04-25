@@ -38,7 +38,7 @@ export class Wa {
       const mp = new MetaPro(dir)
       let ww = new Watch(mp, dir)
       
-      ww.start(100) // build every X ms after save
+      ww.start(120) // build every X ms after save
 
       console.info(' Serving on ' + 'http://localhost:' + port)
       console.info(' --------------------------')
@@ -92,7 +92,9 @@ export class Watch {
       this.root = mount
    }
 
+   delay
    start(delay_) {// true for WAN
+      this.delay = delay_
       console.info(' watcher starting')
       console.info(this.root)
       this.watcher = chokidar.watch(this.root, {
@@ -145,7 +147,7 @@ export class Watch {
    }
 
    refreshBro() {
-      Watch.debounce(MDevSrv.reloadServer.reload(), 200)
+      Watch.debounce(MDevSrv.reloadServer.reload(), this.delay*2)
    }
 
    auto(path_: string) {//process

@@ -67,6 +67,7 @@ class Watch {
         this.root = mount;
     }
     start(delay_) {
+        this.delay = delay_;
         console.info(' watcher starting');
         console.info(this.root);
         this.watcher = chokidar.watch(this.root, {
@@ -114,7 +115,7 @@ class Watch {
         };
     }
     refreshBro() {
-        Watch.debounce(MDevSrv.reloadServer.reload(), 200);
+        Watch.debounce(MDevSrv.reloadServer.reload(), this.delay * 2);
     }
     auto(path_) {
         let path = Base_1.Dirs.slash(path_);
