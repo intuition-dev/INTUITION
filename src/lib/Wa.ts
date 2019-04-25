@@ -38,7 +38,7 @@ export class Wa {
       const mp = new MetaPro(dir)
       let ww = new Watch(mp, dir)
       
-      ww.start(150) // build every X ms after save
+      ww.start(500) // build every X ms after save
 
       console.info(' Serving on ' + 'http://localhost:' + port)
       console.info(' --------------------------')
@@ -125,24 +125,25 @@ export class Watch {
 
       let thiz = this
       this.watcher.on('add', function (path) {
-         Watch.debounce(thiz.auto(path), this.delay*2.2)
+         Watch.debounce(thiz.auto(path), this.delay*4.3)
       })
       this.watcher.on('change', function (path) {
-         Watch.debounce(thiz.auto(path), this.delay*2.2)
+         Watch.debounce(thiz.auto(path), this.delay*4.3)
       })
    }//()
 
-   static debounce(func, wait) { // don't fire event often
+   static debounce(callback, time) {
       var timeout;
-      return function () {
-         var context = this, args = arguments
-         var later = function () {
-            timeout = null
+      return function() {
+         var context = this
+         var args = arguments;
+         if (timeout) {
+            clearTimeout(timeout)
          }
-         var callNow = !timeout
-         clearTimeout(timeout)
-         timeout = setTimeout(later, wait)
-         if (callNow) func.apply(context, args)
+         timeout = setTimeout(function() {
+            timeout = null
+            callback.apply(context, args)
+         }, time)
       }
    }
 

@@ -25,7 +25,7 @@ class Wa {
         let ss = new MDevSrv(dir, port, reloadPort);
         const mp = new MetaPro(dir);
         let ww = new Watch(mp, dir);
-        ww.start(150);
+        ww.start(500);
         console.info(' Serving on ' + 'http://localhost:' + port);
         console.info(' --------------------------');
         console.info('');
@@ -74,8 +74,6 @@ class Watch {
             ignored: '*.swpc*',
             ignoreInitial: true,
             cwd: this.root,
-            usePolling: true,
-            useFsEvents: false,
             binaryInterval: delay_ * 5,
             interval: delay_,
             atomic: delay_,
@@ -94,24 +92,24 @@ class Watch {
         this.watcher.unwatch('.git');
         let thiz = this;
         this.watcher.on('add', function (path) {
-            Watch.debounce(thiz.auto(path), this.delay * 2.2);
+            Watch.debounce(thiz.auto(path), this.delay * 4.3);
         });
         this.watcher.on('change', function (path) {
-            Watch.debounce(thiz.auto(path), this.delay * 2.2);
+            Watch.debounce(thiz.auto(path), this.delay * 4.3);
         });
     }
-    static debounce(func, wait) {
+    static debounce(callback, time) {
         var timeout;
         return function () {
-            var context = this, args = arguments;
-            var later = function () {
+            var context = this;
+            var args = arguments;
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+            timeout = setTimeout(function () {
                 timeout = null;
-            };
-            var callNow = !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow)
-                func.apply(context, args);
+                callback.apply(context, args);
+            }, time);
         };
     }
     refreshBro() {
