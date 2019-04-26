@@ -72,7 +72,7 @@
       "unfluff": ">=3.2.0"
    },
    "devDependencies": {
-      "@types/node": ">=11.13.7",
+      "@types/node": ">=11.13.8",
       "handbrake-js": ">=3.0.8",
       "javascript-state-machine": ">=3.1.0",
       "npm-check-updates": ">=3.1.8",
