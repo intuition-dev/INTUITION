@@ -43,7 +43,6 @@ function help () {
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
-   console.info('  For a starter WebAdmin :                                    mbakeX -b')
    console.info('  For a starter dash web-app:                                 mbakeX -d')
 
    console.info('  For example slides markdown:                                mbakeX -k')
@@ -76,7 +75,6 @@ const optionDefinitions = [
    { name: 'img', alias: 'i', type: Boolean },
    { name: 'csv2Json', alias: 'l', type: Boolean },
    
-   { name: 'WebAdmin', alias: 'b', type: Boolean },
    { name: 'dash', alias: 'd', type: Boolean },
    { name: 'slides', alias: 'k', type: Boolean },
    { name: 'elect', alias: 'e', type: Boolean },
@@ -88,14 +86,6 @@ const argsParsed = commandLineArgs(optionDefinitions)
 let arg: string = argsParsed.mbakeX
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
-function unzipM () {
-   let src: string = __dirname + '/WebAdmin.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted a starter WebAdmin in this folder')
-   process.exit()
-}
-
 function unzipG () {
    let src: string = __dirname + '/PGap.zip'
    let zip = new AdmZip(src)
@@ -189,8 +179,6 @@ if (argsParsed.elect)
    unzipE()
 else if (argsParsed.phonegap)
    unzipG()
-else if (argsParsed.WebAdmin)
-   unzipM()
 else if (argsParsed.ad)
    unzipD()
 else if (argsParsed.csv2Json)
