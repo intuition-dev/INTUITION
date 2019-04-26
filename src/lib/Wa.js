@@ -154,9 +154,8 @@ class MetaPro {
     bake(dir) {
         let folder = this.mount + '/' + dir;
         logger.info(folder);
-        let msg = this.b.bake(folder);
-        this.setLast(msg);
-        return msg;
+        let pro = this.b.bake(folder);
+        return new Base_1.RetMsg('unknown', 0, 'unkown');
     }
     compsRoot() {
         return this.comps('/');
@@ -164,9 +163,8 @@ class MetaPro {
     comps(dir) {
         let folder = this.mount + '/' + dir;
         logger.info(folder);
-        let msg = this.b.comps(folder, true, this.mount);
-        this.setLast(msg);
-        return msg;
+        let pro = this.b.comps(folder, true, this.mount);
+        return new Base_1.RetMsg('unknown', 0, 'unkown');
     }
     map() {
         let msg = this.m.gen();
@@ -174,9 +172,8 @@ class MetaPro {
         return msg;
     }
     itemize(dir) {
-        let msg = this.b.itemizeNBake(this.mount + '/' + dir);
-        this.setLast(msg);
-        return msg;
+        let pro = this.b.itemizeNBake(this.mount + '/' + dir);
+        return new Base_1.RetMsg('unknown', 0, 'unkown');
     }
     css(dir) {
         new Sa_1.Sas().css(this.mount + '/' + dir);

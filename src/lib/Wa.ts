@@ -204,9 +204,8 @@ export class MetaPro {
    bake(dir: string): RetMsg {
       let folder = this.mount + '/' + dir
       logger.info(folder)
-      let msg: RetMsg = this.b.bake(folder)
-      this.setLast(msg)
-      return msg
+      let pro = this.b.bake(folder)
+      return new RetMsg('unknown',0, 'unkown')
    }
 
    compsRoot(): RetMsg {
@@ -216,9 +215,8 @@ export class MetaPro {
    comps(dir: string): RetMsg {
       let folder = this.mount + '/' + dir
       logger.info(folder)
-      let msg: RetMsg = this.b.comps(folder, true, this.mount)
-      this.setLast(msg)
-      return msg
+      let pro= this.b.comps(folder, true, this.mount)
+      return new RetMsg('unknown',0, 'unkown')
    }
    map(): RetMsg {
       let msg: RetMsg = this.m.gen()
@@ -226,9 +224,8 @@ export class MetaPro {
       return msg
    }
    itemize(dir: string): RetMsg {
-      let msg: RetMsg = this.b.itemizeNBake(this.mount + '/' + dir)
-      this.setLast(msg)
-      return msg
+      let pro = this.b.itemizeNBake(this.mount + '/' + dir)
+      return new RetMsg('unknown',0, 'unkown')
    }
 
    css(dir: string) {

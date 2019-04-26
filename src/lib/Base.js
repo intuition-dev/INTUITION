@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.04.33';
+        return 'v5.04.34';
     }
 }
 exports.Ver = Ver;
@@ -171,46 +171,50 @@ class Dat {
 exports.Dat = Dat;
 class MBake {
     bake(path_) {
-        if (!path_ || path_.length < 1) {
-            console.info('no path_ arg passed');
-            return;
-        }
-        try {
-            console.info(' Baking ' + path_);
-            let d = new Dirs(path_);
-            let dirs = d.getFolders();
-            if (!dirs || dirs.length < 1) {
-                path_ = Dirs.goUpOne(path_);
-                console.info(' New Dir: ', path_);
-                d = new Dirs(path_);
-                dirs = d.getFolders();
+        return new Promise(function (resolve, reject) {
+            if (!path_ || path_.length < 1) {
+                console.info('no path_ arg passed');
+                reject('no path_ arg passed');
             }
-            for (let val of dirs) {
-                let n = new BakeWrk(val);
-                n.bake();
+            try {
+                console.info(' Baking ' + path_);
+                let d = new Dirs(path_);
+                let dirs = d.getFolders();
+                if (!dirs || dirs.length < 1) {
+                    path_ = Dirs.goUpOne(path_);
+                    console.info(' New Dir: ', path_);
+                    d = new Dirs(path_);
+                    dirs = d.getFolders();
+                }
+                for (let val of dirs) {
+                    let n = new BakeWrk(val);
+                    n.bake();
+                }
             }
-        }
-        catch (err) {
-            logger.info(err);
-            return new RetMsg(path_ + ' bake', -1, err);
-        }
-        return new RetMsg(path_ + ' bake', 1, 'ok');
+            catch (err) {
+                logger.info(err);
+                reject(err);
+            }
+            resolve('OK');
+        });
     }
     comps(path_, watcher, mount) {
-        if (!path_ || path_.length < 1) {
-            console.info('no path_ arg passed');
-            return;
-        }
-        try {
-            console.info(' Tag ' + path_);
-            let t = new Comps(path_);
-            let lst = t.get();
-            t.comps(lst, watcher, mount);
-            return this.bake(path_);
-        }
-        catch (err) {
-            return new RetMsg(path_ + ' tag', -1, err);
-        }
+        return new Promise(function (resolve, reject) {
+            if (!path_ || path_.length < 1) {
+                console.info('no path_ arg passed');
+                reject("no path args passed");
+            }
+            try {
+                console.info(' Tag ' + path_);
+                let t = new Comps(path_);
+                let lst = t.get();
+                t.comps(lst, watcher, mount);
+                this.bake(path_).then(function () { resolve('OK'); });
+            }
+            catch (err) {
+                reject(err);
+            }
+        });
     }
     clearToProd(path_) {
         if (!path_ || path_.length < 1) {
@@ -239,20 +243,22 @@ class MBake {
         return new RetMsg(path_ + ' bake', 1, 'ok');
     }
     itemizeNBake(ppath_) {
-        if (!ppath_ || ppath_.length < 1) {
-            console.info('no path_ arg passed');
-            return;
-        }
-        logger.info('ib:', ppath_);
-        try {
-            const i = new Items(ppath_);
-            i.itemize();
-        }
-        catch (err) {
-            logger.info(err);
-            return new RetMsg(ppath_ + ' itemizeB', -1, err);
-        }
-        return this.bake(ppath_);
+        return new Promise(function (resolve, reject) {
+            if (!ppath_ || ppath_.length < 1) {
+                console.info('no path_ arg passed');
+                reject('no path arg passed');
+            }
+            logger.info('ib:', ppath_);
+            try {
+                const i = new Items(ppath_);
+                i.itemize();
+            }
+            catch (err) {
+                logger.info(err);
+                reject(err);
+            }
+            this.bake(ppath_).then(function () { resolve('OK'); });
+        });
     }
     _all(path_) {
         try {

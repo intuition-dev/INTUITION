@@ -4,12 +4,12 @@ tsc
 
 # mbake -t /Users/code/Documents/GitHub/mbakeMobile/router-src/spa-ts-router/page
 
-# node mbake.js /Users/code/Documents/GitHub/mbake/examples/locEg/pg1
+node mbake.js /Users/code/Documents/GitHub/mbake/examples/website
 
 # node mbakeX.js -w /Users/code/Documents/GitHub/mbake/examples/website
 
 # node mbakeX.js -c /Users/code/Documents/GitHub/Metabake -Docs/mbake-blog/assets
-node mbakeX.js -i /Users/code/Documents/GitHub/mbake/examples/website/assets/img
+# node mbakeX.js -i /Users/code/Documents/GitHub/mbake/examples/website/assets/img
 
 ## mbake ewApp/wUI
 ## node mbakeX.js -g .
@@ -28,4 +28,3 @@ node mbakeX.js -i /Users/code/Documents/GitHub/mbake/examples/website/assets/img
 
 # node mbakeX.js -n /Users/code/Documents/GitHub/alan/al-admin/assets/models
 
-# node mbakeX.js -F ./sftp_site_sec 

@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.04.33'
+      return 'v5.04.34'
    }
 }
 
@@ -61,7 +61,7 @@ import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOpt
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * @deprecated Use Promise<string>
+ * @deprecated Use Promise and return 'OK' if resolved
  */
 export class RetMsg {
    _cmd: string
@@ -257,13 +257,12 @@ export class MBake {
          this.bake(path_).then(function(){resolve('OK')})
       } catch (err) {
          //logger.info(err)
-         return new RetMsg(path_ + ' tag', -1, err)
+         reject(err)
       }
       // return new RetMsg(path_ + ' tag', 1,'ok')
    })//pro
    }//()
 
-   // itemize and bake
    clearToProd(path_): RetMsg {
       if (!path_ || path_.length < 1) {
          console.info('no path_ arg passed')
