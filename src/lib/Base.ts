@@ -60,6 +60,9 @@ import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOpt
 //import { idText } from 'typescript';
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * @deprecated Use Promise<string>
+ */
 export class RetMsg {
    _cmd: string
    _code: number
@@ -204,10 +207,11 @@ export class Dat {
 
 export class MBake {
 
-   bake(path_): RetMsg {
+   bake(path_): Promise<string> {
+      return new Promise(function(resolve, reject){      
       if (!path_ || path_.length < 1) {
          console.info('no path_ arg passed')
-         return
+         reject('no path_ arg passed')
       }
       try {
          console.info(' Baking ' + path_)
@@ -229,15 +233,18 @@ export class MBake {
          }
       } catch (err) {
          logger.info(err)
-         return new RetMsg(path_ + ' bake', -1, err)
+         reject(err)
       }
-      return new RetMsg(path_ + ' bake', 1, 'ok')
-   }
+      resolve('OK')
+   })//pro
+   }//()
 
-   comps(path_, watcher?: boolean, mount?: string): RetMsg {
+   comps(path_, watcher?: boolean, mount?: string): Promise<string> {
+      return new Promise(function(resolve, reject){      
+
       if (!path_ || path_.length < 1) {
          console.info('no path_ arg passed')
-         return
+         reject("no path args passed")
       }
       try {
          console.info(' Tag ' + path_)
@@ -247,13 +254,14 @@ export class MBake {
          t.comps(lst, watcher, mount)
 
          // now do the regular bake
-         return this.bake(path_)
+         this.bake(path_).then(function(){resolve('OK')})
       } catch (err) {
          //logger.info(err)
          return new RetMsg(path_ + ' tag', -1, err)
       }
       // return new RetMsg(path_ + ' tag', 1,'ok')
-   }
+   })//pro
+   }//()
 
    // itemize and bake
    clearToProd(path_): RetMsg {
@@ -287,10 +295,11 @@ export class MBake {
    }
 
    // itemize and bake
-   itemizeNBake(ppath_): RetMsg {
+   itemizeNBake(ppath_): Promise<string>  {
+      return new Promise(function(resolve, reject){      
       if (!ppath_ || ppath_.length < 1) {
          console.info('no path_ arg passed')
-         return
+         reject('no path arg passed')
       }
       logger.info('ib:', ppath_)
 
@@ -299,13 +308,14 @@ export class MBake {
          i.itemize()
       } catch (err) {
          logger.info(err)
-         return new RetMsg(ppath_ + ' itemizeB', -1, err)
+         reject(err)
       }
-      return this.bake(ppath_)
-   }
+      this.bake(ppath_).then(function(){resolve('OK')})
+      })//pro
+   }//()
 
    // itemize, bake and tag, needs itemize to find yaml i dat in path_
-   _all(path_): RetMsg {
+   _all(path_) {
       try {
          let t = new Comps(path_)
          let lst = t.get()
@@ -318,7 +328,7 @@ export class MBake {
       }
       // return new RetMsg(path_ + ' tagA', 1,'ok')
    }
-}
+}//()
 
 export class BakeWrk {
    dir: string
