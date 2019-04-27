@@ -61,7 +61,7 @@ import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOpt
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * @deprecated Use Promise and return 'OK' if resolved
+ * @deprecated Use Promise and 'return' 'OK' if resolved
  */
 export class RetMsg {
    _cmd: string
