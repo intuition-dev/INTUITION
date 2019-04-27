@@ -15,7 +15,7 @@ tsc
 ## node mbakeX.js -g .
 # node mbakeX.js -w /Users/code/Documents/GitHub/Metas-Cake-DSL/CakeEG-DSL
 
-node mbake.js -s /Users/code/Documents/GitHub/alan/al-prod/assets
+node mbake.js -s delme
 
 #node mbakeX*.js /Users/code/Documents/GitHub/examples/examples/blog
 

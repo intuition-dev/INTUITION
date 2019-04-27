@@ -204,7 +204,8 @@ class Sas {
             file: dir + '/' + fn2,
             outputStyle: 'compact'
         });
-        postcss([autoprefixer({ browsers: ['> 1%', 'ios_saf >= 10', 'not ie < 11'] })]).process(css.css, { from: undefined }).then(function (result) {
+        postcss([autoprefixer({ browsers: ['> 0.5%', 'cover 99.5%', 'last 2 major versions', 'ios_saf >= 10', 'ie >= 11'] })]).process(css.css, { from: undefined }).then(function (result) {
+            console.info('autoprefixer');
             result.warnings().forEach(function (warn) {
                 console.warn(warn.toString());
             });
