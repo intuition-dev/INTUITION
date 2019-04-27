@@ -4,7 +4,7 @@ tsc
 
 # mbake -t /Users/code/Documents/GitHub/mbakeMobile/router-src/spa-ts-router/page
 
-node mbake.js /Users/code/Documents/GitHub/mbake/examples/website
+# node mbake.js /Users/code/Documents/GitHub/mbake/examples/website
 
 # node mbakeX.js -w /Users/code/Documents/GitHub/mbake/examples/website
 
@@ -15,7 +15,7 @@ node mbake.js /Users/code/Documents/GitHub/mbake/examples/website
 ## node mbakeX.js -g .
 # node mbakeX.js -w /Users/code/Documents/GitHub/Metas-Cake-DSL/CakeEG-DSL
 
-# node mbakeX.js -s /Users/code/Documents/GitHub/alan/al-prod/assets
+node mbake.js -s /Users/code/Documents/GitHub/alan/al-prod/assets
 
 #node mbakeX*.js /Users/code/Documents/GitHub/examples/examples/blog
 
