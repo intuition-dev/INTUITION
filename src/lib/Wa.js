@@ -25,7 +25,7 @@ class Wa {
         let ss = new MDevSrv(dir, port, reloadPort);
         const mp = new MetaPro(dir);
         let ww = new Watch(mp, dir);
-        ww.start(500);
+        ww.start(520);
         console.info(' Serving on ' + 'http://localhost:' + port);
         console.info(' --------------------------');
         console.info('');
@@ -115,7 +115,7 @@ class Watch {
         };
     }
     refreshBro() {
-        Watch.debounce(MDevSrv.reloadServer.reload(), this.delay * 1.1);
+        Watch.debounce(MDevSrv.reloadServer.reload(), this.delay * 1.3);
     }
     auto(path_) {
         let path = Base_1.Dirs.slash(path_);

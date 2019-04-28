@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.05.1';
+        return 'v5.05.2';
     }
 }
 exports.Ver = Ver;
@@ -205,7 +205,7 @@ class MBake {
                 reject("no path args passed");
             }
             try {
-                console.info(' Tag ' + path_);
+                console.info(' Xomp ' + path_);
                 let t = new Comps(path_);
                 let lst = t.get();
                 t.comps(lst, watcher, mount);
@@ -511,7 +511,7 @@ class Comps {
         return ret;
     }
     comps(list, watcher, mount) {
-        console.info('Looking for tags *-comp ' + this.dir);
+        console.info('Looking for comps: *-comp ' + this.dir);
         for (let val of list) {
             let s = fs.readFileSync(val).toString();
             let n = val.lastIndexOf('/');
@@ -520,14 +520,14 @@ class Comps {
             let p = name.lastIndexOf('.');
             name = name.substring(0, p);
             console.info(' ' + dir + name);
-            this.process(s, dir + name, watcher, mount);
+            this.process(s, dir + name, watcher);
         }
         return 'ok';
     }
     static getObsOptions() {
         let t = {
             identifierNamesGenerator: 'hexadecimal',
-            disableConsoleOutput: true,
+            disableConsoleOutput: false,
             target: 'browser-no-eval',
             stringArray: true,
             stringArrayThreshold: 1,
@@ -540,13 +540,13 @@ class Comps {
         };
         return t;
     }
-    process(s, fn, watcher, mount) {
+    process(s, fn, watcher) {
         const r_options = { 'template': 'pug' };
         logger.info('compiling', fn + '.tag');
         let js;
         try {
             if (watcher) {
-                js = riotc.compile(s, r_options, mount);
+                js = riotc.compile(s, r_options);
             }
             else {
                 js = riotc.compile(s, r_options);

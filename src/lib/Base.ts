@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.1'
+      return 'v5.05.2'
    }
 }
 
@@ -247,7 +247,7 @@ export class MBake {
          reject("no path args passed")
       }
       try {
-         console.info(' Tag ' + path_)
+         console.info(' Xomp ' + path_)
 
          let t = new Comps(path_)
          let lst = t.get()
@@ -259,7 +259,6 @@ export class MBake {
          //logger.info(err)
          reject(err)
       }
-      // return new RetMsg(path_ + ' tag', 1,'ok')
    })//pro
    }//()
 
@@ -640,8 +639,9 @@ export class Comps {
       }
       return ret
    }//()
+   
    comps(list, watcher?: boolean, mount?: string): string {
-      console.info('Looking for tags *-comp ' + this.dir)
+      console.info('Looking for comps: *-comp ' + this.dir)
       for (let val of list) {//clean the strings
          let s: string = fs.readFileSync(val).toString()
 
@@ -651,7 +651,7 @@ export class Comps {
          let p = name.lastIndexOf('.')
          name = name.substring(0, p)
          console.info(' ' + dir + name);
-         this.process(s, dir + name, watcher, mount)
+         this.process(s, dir + name, watcher) //, mount)
       }
       return 'ok'
    }//()
@@ -659,7 +659,7 @@ export class Comps {
    static getObsOptions(): TInputOptions {
       let t = {
          identifierNamesGenerator: 'hexadecimal' // for virus
-         , disableConsoleOutput: true 
+         , disableConsoleOutput: false // setting to true breaks things
          , target: 'browser-no-eval'
 
          , stringArray: true
@@ -679,14 +679,14 @@ export class Comps {
 
    ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
-   process(s: string, fn: string, watcher?: boolean, mount?: string) {
+   process(s: string, fn: string, watcher?: boolean) {//}, mount?: string) {
       const r_options = { 'template': 'pug' }
 
       logger.info('compiling', fn + '.tag')
       let js
       try {
          if (watcher) {
-            js = riotc.compile(s, r_options, mount)
+            js = riotc.compile(s, r_options) //, mount)
          } else {
             js = riotc.compile(s, r_options)
          }
