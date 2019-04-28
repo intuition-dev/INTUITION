@@ -38,7 +38,7 @@ export class Wa {
       const mp = new MetaPro(dir)
       let ww = new Watch(mp, dir)
       
-      ww.start(500) // build every X ms after save
+      ww.start(550) // build X ms after save
 
       console.info(' Serving on ' + 'http://localhost:' + port)
       console.info(' --------------------------')
@@ -148,7 +148,7 @@ export class Watch {
    }
 
    refreshBro() {
-      Watch.debounce(MDevSrv.reloadServer.reload(), this.delay*1.1)
+      Watch.debounce(MDevSrv.reloadServer.reload(), this.delay*1.3)
    }
 
    auto(path_: string) {//process
