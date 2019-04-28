@@ -30,33 +30,33 @@ card-comp
     br
 
     script.
-        console.info('oh hi tag');
+        console.info('oh hi tag')
         this.on('*', function(evt) {
-            console.info('riot', evt);
-        });
-        this.items = [];
-        thiz = this;
+            console.info('riot', evt)
+        })
+        this.items = []
+        thiz = this
 
         render(data) {// public
             console.info(data);
             if(!data ) {
-                thiz.items = [];
-                thiz.update();
-                return;
+                thiz.items = []
+                thiz.update()
+                return
             }
             //- clone
-            var cloned = JSON.parse(JSON.stringify(data));
-            thiz.items = cloned;
+            var cloned = JSON.parse(JSON.stringify(data))
+            thiz.items = cloned
 
-            var sz = thiz.items.length;
+            var sz = thiz.items.length
             for(i = 0; i < sz; i++) {
-                var item = thiz.items[i];
+                var item = thiz.items[i]
 
-                item.image = ROOT + 'blog/' + item.url + '/who.jpg';
-                item.url = ROOT + 'blog/' + item.url;
-                console.info(item.url);
+                item.image = ROOT + 'blog/' + item.url + '/who.jpg'
+                item.url = ROOT + 'blog/' + item.url
+                console.info(item.url)
             }
 
-            thiz.update();
+            thiz.update()
 
         }
