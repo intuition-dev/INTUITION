@@ -39,7 +39,7 @@ function help () {
    console.info('  To process list.csv to list.json:                           mbakeX -l .')
    console.info('  To recursively remove source files:                         mbakeX --prod .')
 
-   console.info('     Note: . anywhere is current directory, or use any path instead of .')
+   console.info('     Note: . is current directory, or use any path instead of .')
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
