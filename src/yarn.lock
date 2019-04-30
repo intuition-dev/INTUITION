@@ -2434,10 +2434,10 @@ is-regex@^1.0.3:
   dependencies:
     has "^1.0.1"
 
-is-regexp@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/is-regexp/-/is-regexp-1.0.0.tgz#fd2d883545c46bac5a633e7b9a09e87fa2cb5069"
-  integrity sha1-/S2INUXEa6xaYz57mgnof6LLUGk=
+is-regexp@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/is-regexp/-/is-regexp-2.1.0.tgz#cd734a56864e23b956bf4e7c66c396a4c0b22c2d"
+  integrity sha512-OZ4IlER3zmRIoB9AqNhEggVxqIH4ofDns5nRrPS6yQxXE1TPCUpFznBfRQmQa8uC+pXqjMnukiJBxCisIxiLGA==
 
 is-retry-allowed@^1.0.0:
   version "1.1.0"
@@ -4737,12 +4737,12 @@ strip-bom@^2.0.0:
   dependencies:
     is-utf8 "^0.2.0"
 
-strip-css-comments@>=3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/strip-css-comments/-/strip-css-comments-3.0.0.tgz#7a5625eff8a2b226cf8947a11254da96e13dae89"
-  integrity sha1-elYl7/iisibPiUehElTaluE9rok=
+strip-css-comments@>=4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/strip-css-comments/-/strip-css-comments-4.0.0.tgz#14842c11d0faeb85389411409a2a6b57e39c86c6"
+  integrity sha512-j5mil7aWjtelBpmDH9jsdGBE4qrOcG6I/oWJTQA97Hl0EexLxoXs/p4jGtxcwzgTEhf0DPxSdWZwtXsk+KXLeg==
   dependencies:
-    is-regexp "^1.0.0"
+    is-regexp "^2.1.0"
 
 strip-dirs@^2.0.0:
   version "2.1.0"
