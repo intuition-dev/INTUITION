@@ -6,12 +6,12 @@ tsc
 
 # node mbake.js /Users/code/Documents/GitHub/mbake/examples/website
 
-# node mbakeX.js -w /Users/code/Documents/GitHub/mbake/examples/website
+node mbakeX.js -w /Users/code/Documents/GitHub/mbake/examples/website
 
 # node mbakeX.js -c /Users/code/Documents/GitHub/Metabake -Docs/mbake-blog/assets
 # node mbakeX.js -i /Users/code/Documents/GitHub/mbake/examples/website/assets/img
 
-node mbakeX.js -c /Users/code/Documents/GitHub/mbakeCake/metaCake/surveryitem/comps
+#cnode mbakeX.js -c /Users/code/Documents/GitHub/mbakeCake/metaCake/surveryitem/comps
 
 
 
