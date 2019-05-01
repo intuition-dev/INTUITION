@@ -75,7 +75,6 @@
       "javascript-state-machine": ">=3.1.0",
       "npm-check-updates": ">=3.1.8",
       "simple-git": ">=1.110.0",
-      "jstransformer": ">=1.0.0",
-      "jstransformer-markdown-it": ">=2.1.0"
+      "jstransformer": ">=1.0.0"
    }
 }
