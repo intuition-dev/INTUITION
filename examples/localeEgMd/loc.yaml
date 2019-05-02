@@ -1,0 +1,13 @@
+
+
+# list of locales
+loc:
+- en
+- ru
+- de
+
+# default
+key1: hello
+
+key1-ru: Здравствуй
+key1-de: 'Herzlich wilkommen'
