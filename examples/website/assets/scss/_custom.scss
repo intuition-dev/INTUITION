@@ -10,7 +10,7 @@ html {
 }
 
 body {
-   background: linear-gradient(-45deg, $gray-color-light 50%, white 50%)
+   background: linear-gradient(-45deg, $gray-color-light 50%, white 50%);
 }
 
 h1,
@@ -29,8 +29,6 @@ p::first-letter,
 text::first-letter {
    font-size: 130%;
 }
-
-
 
 .splash {
    font-size: 60px;
