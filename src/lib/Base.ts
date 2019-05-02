@@ -16,15 +16,15 @@ const md = require('markdown-it')({
 })
 md.use(markdownItCont, 'dynamic', {
    // https://github.com/markdown-it/markdown-it-container/issues/23
-   validate: function() { return true; },
-   render: function(tokens, idx) {
-       var token = tokens[idx]
+   validate: function () { return true; },
+   render: function (tokens, idx) {
+      var token = tokens[idx]
 
-       if (token.nesting === 1) {
-           return '\n<div class="' + token.info.trim() + '">'
-       } else {
-           return '</div>\n'
-       }
+      if (token.nesting === 1) {
+         return '\n<div class="' + token.info.trim() + '">'
+      } else {
+         return '</div>\n'
+      }
    }
 })
 
@@ -208,58 +208,59 @@ export class Dat {
 export class MBake {
 
    bake(path_): Promise<string> {
-      return new Promise(function(resolve, reject){      
-      if (!path_ || path_.length < 1) {
-         console.info('no path_ arg passed')
-         reject('no path_ arg passed')
-      }
-      try {
-         console.info(' Baking ' + path_)
-
-         let d = new Dirs(path_)
-         let dirs = d.getFolders()
-
-         if (!dirs || dirs.length < 1) {
-            //go one up
-            path_ = Dirs.goUpOne(path_)
-            console.info(' New Dir: ', path_)
-            d = new Dirs(path_)
-            dirs = d.getFolders()
+      return new Promise(function (resolve, reject) {
+         if (!path_ || path_.length < 1) {
+            console.info('no path_ arg passed')
+            reject('no path_ arg passed')
          }
+         try {
+            console.info(' Baking ' + path_)
 
-         for (let val of dirs) {
-            let n = new BakeWrk(val)
-            n.bake()
+            let d = new Dirs(path_)
+            let dirs = d.getFolders()
+
+            if (!dirs || dirs.length < 1) {
+               //go one up
+               path_ = Dirs.goUpOne(path_)
+               console.info(' New Dir: ', path_)
+               d = new Dirs(path_)
+               dirs = d.getFolders()
+            }
+
+            for (let val of dirs) {
+               let n = new BakeWrk(val)
+               n.bake()
+            }
+            resolve('OK')
+         } catch (err) {
+            logger.info(err)
+            reject(err)
          }
-      } catch (err) {
-         logger.info(err)
-         reject(err)
-      }
-      resolve('OK')
-   })//pro
+      })//pro
    }//()
 
    comps(path_, watcher?: boolean, mount?: string): Promise<string> {
-      return new Promise(function(resolve, reject){      
+      let _this = this
+      return new Promise(function (resolve, reject) {
 
-      if (!path_ || path_.length < 1) {
-         console.info('no path_ arg passed')
-         reject("no path args passed")
-      }
-      try {
-         console.info(' Xomp ' + path_)
+         if (!path_ || path_.length < 1) {
+            console.info('no path_ arg passed')
+            reject("no path args passed")
+         }
+         try {
+            console.info(' Xomp ' + path_)
 
-         let t = new Comps(path_)
-         let lst = t.get()
-         t.comps(lst, watcher, mount)
+            let t = new Comps(path_)
+            let lst = t.get()
+            t.comps(lst, watcher, mount)
 
-         // now do the regular bake
-         this.bake(path_).then(function(){resolve('OK')})
-      } catch (err) {
-         //logger.info(err)
-         reject(err)
-      }
-   })//pro
+            // now do the regular bake
+            _this.bake(path_).then(function () { resolve('OK') })
+         } catch (err) {
+            //logger.info(err)
+            reject(err)
+         }
+      })//pro
    }//()
 
    clearToProd(path_): RetMsg {
@@ -273,13 +274,13 @@ export class MBake {
          let dir = Dirs.slash(path_)
 
          const rec = FileHound.create() //recursive
-         .paths(dir)
-         .ext(['pug', 'yaml', 'js', 'ts', 'scss'])
-         .findSync()
-         
+            .paths(dir)
+            .ext(['pug', 'yaml', 'js', 'ts', 'scss'])
+            .findSync()
+
          rec.forEach(file => {
             const min = file.split('.')[file.split('.').length - 2] === 'min';
-            
+
             if (!min) {
                console.info(' Removing ' + file)
                fs.removeSync(file)
@@ -293,22 +294,27 @@ export class MBake {
    }
 
    // itemize and bake
-   itemizeNBake(ppath_): Promise<string>  {
-      return new Promise(function(resolve, reject){      
-      if (!ppath_ || ppath_.length < 1) {
-         console.info('no path_ arg passed')
-         reject('no path arg passed')
-      }
-      logger.info('ib:', ppath_)
+   itemizeNBake(ppath_): Promise<string> {
+      let _this = this
+      return new Promise(function (resolve, reject) {
+         if (!ppath_ || ppath_.length < 1) {
+            console.info('no path_ arg passed')
+            reject('no path arg passed')
+         }
+         logger.info('ib:', ppath_)
 
-      try {
-         const i = new Items(ppath_)
-         i.itemize()
-      } catch (err) {
-         logger.info(err)
-         reject(err)
-      }
-      this.bake(ppath_).then(function(){resolve('OK')})
+         try {
+            const i = new Items(ppath_)
+            i.itemize()
+         } catch (err) {
+            logger.info(err)
+            reject(err)
+         }
+         return _this.bake(ppath_)
+            .then(function () { resolve('OK') })
+            .catch(function (err) {
+               reject(err)
+            })
       })//pro
    }//()
 
@@ -418,23 +424,23 @@ export class BakeWrk {
          marp: BakeWrk.marp
       }
 
-      if(this.locAll(options)) // if locale, we are not writing here, but in sub folders.
+      if (this.locAll(options)) // if locale, we are not writing here, but in sub folders.
          return ' '
 
-      this.writeFile(this.dir + '/index.pug', options, this.dir + '/index.html' )
+      this.writeFile(this.dir + '/index.pug', options, this.dir + '/index.html')
       //amp
       if (!fs.existsSync(this.dir + '/m.pug'))
          return ' '
-      this.writeFile(this.dir + '/m.pug', options, this.dir + '/m.html' )
+      this.writeFile(this.dir + '/m.pug', options, this.dir + '/m.html')
 
    }//()
 
    // if loc, do locale
    locAll(options) {
-      if(!options.LOC) return false 
+      if (!options.LOC) return false
 
       let d = options.LOC
-      d= this.dir + d
+      d = this.dir + d
 
       let a
       let fn = d + '/loc.yaml'
@@ -450,13 +456,13 @@ export class BakeWrk {
       const set: Set<string> = new Set(css)
       logger.info(set)
 
-      let merged = {...a, ...options} // es18 spread
+      let merged = { ...a, ...options } // es18 spread
       for (let item of set) {
-         this.do1Locale(item,merged)
+         this.do1Locale(item, merged)
       }
 
       //delete 'root' index.html
-      fs.remove(this.dir+'/index.html')
+      fs.remove(this.dir + '/index.html')
    }//()
 
    do1Locale(locale, combOptions) {
@@ -465,14 +471,14 @@ export class BakeWrk {
       let localeProps = {}
       localeProps['LOCALE'] = locale // any var can be access in pug or js  eg window.locale = '#{LOCALE}'
 
-      for (var key in combOptions) 
-         if(key.endsWith('-'+locale)) { //for each key
-            let len = key.length - ('-'+locale).length
-            let key2 = key.substring(0,len)
+      for (var key in combOptions)
+         if (key.endsWith('-' + locale)) { //for each key
+            let len = key.length - ('-' + locale).length
+            let key2 = key.substring(0, len)
             localeProps[key2] = combOptions[key]
          }
-      
-      let locMerged = {...combOptions, ...localeProps} // es18 spread
+
+      let locMerged = { ...combOptions, ...localeProps } // es18 spread
       console.log(localeProps)
 
       // if dir not exists
@@ -481,14 +487,14 @@ export class BakeWrk {
       fs.ensureDirSync(locDir)
 
       // if loc.pug exists
-      if (fs.existsSync(locDir+'/loc.pug'))
-         this.writeFile(locDir+'/loc.pug', locMerged, locDir + '/index.html' )
-      else  this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html' )
+      if (fs.existsSync(locDir + '/loc.pug'))
+         this.writeFile(locDir + '/loc.pug', locMerged, locDir + '/index.html')
+      else this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html')
 
       //amp
       if (!fs.existsSync(this.dir + '/m.pug'))
          return ' '
-      this.writeFile(this.dir + '/m.pug', locMerged, locDir + '/m.html' )
+      this.writeFile(this.dir + '/m.pug', locMerged, locDir + '/m.html')
 
    }
 
@@ -639,7 +645,7 @@ export class Comps {
       }
       return ret
    }//()
-   
+
    comps(list, watcher?: boolean, mount?: string): string {
       console.info('Looking for comps: *-comp ' + this.dir)
       for (let val of list) {//clean the strings
@@ -666,7 +672,7 @@ export class Comps {
          , stringArrayThreshold: 1
          , stringArrayEncoding: 'rc4'
 
-         , selfDefending: true 
+         , selfDefending: true
 
          , controlFlowFlattening: true
          , controlFlowFlatteningThreshold: 1
