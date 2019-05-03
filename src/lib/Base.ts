@@ -252,14 +252,21 @@ export class MBake {
 
             let t = new Comps(path_)
             let lst = t.get()
+
             t.comps(lst, watcher, mount)
 
-            // now do the regular bake
-            _this.bake(path_).then(function () { resolve('OK') })
+            _this.bake(path_)
+               .then(function () { resolve('OK') })
+               .catch(function (err) {
+                  logger.info(err)
+                  reject(err)
+               })
          } catch (err) {
-            //logger.info(err)
+            logger.info(err)
             reject(err)
          }
+
+
       })//pro
    }//()
 
@@ -306,19 +313,25 @@ export class MBake {
          try {
             const i = new Items(ppath_)
             i.itemize()
+
          } catch (err) {
             logger.info(err)
             reject(err)
          }
-         return _this.bake(ppath_)
+
+         _this.bake(ppath_)
             .then(function () { resolve('OK') })
             .catch(function (err) {
+               logger.info(err)
                reject(err)
             })
+
+
       })//pro
    }//()
 
    // itemize, bake and tag, needs itemize to find yaml i dat in path_
+   // this one need to be rewritten
    _all(path_) {
       try {
          let t = new Comps(path_)
