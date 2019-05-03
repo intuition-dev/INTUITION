@@ -18,7 +18,7 @@ $(document).ready(function () {
 // check if promises supports in browser
 if (!window.Promise) {
     depp.define({
-        'hasPromise': [
+        'hasPromise': [ // TODO: why 2?
             '//cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js',
             '//cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js'
         ]
@@ -29,7 +29,7 @@ if (!window.Promise) {
 
 depp.define({
     'axios': [
-        '#hasPromise'
+        '#hasPromise' 
         , '//unpkg.com/axios@0.18.0/dist/axios.min.js'
         , ROOT + 'assets/3rd/collections.js'
     ],
@@ -41,7 +41,7 @@ depp.define({
         '#fonts',
         ROOT + 'assets/css/spectreBottom.css'
         
-        , '//cdn.jsdelivr.net/npm/fuse.js@3.3.0/dist/fuse.min.js'
+        , '//cdn.jsdelivr.net/npm/fuse.js@3.3.0/dist/fuse.min.js' //TODO: remove
         
         , '//cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.min.js'
         
