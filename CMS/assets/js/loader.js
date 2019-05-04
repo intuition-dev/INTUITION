@@ -19,8 +19,7 @@ $(document).ready(function () {
 if (!window.Promise) {
     depp.define({
         'hasPromise': [ // TODO: why 2?
-            '//cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js',
-            '//cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js'
+            '//cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js'
         ]
     });
 } else  {
