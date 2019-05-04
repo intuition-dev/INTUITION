@@ -187,7 +187,7 @@ export class MetaPro {
    comps(dir: string): Promise<string> {
       let folder = this.mount + '/' + dir
       logger.info(folder)
-      return this.b.compsNBake(folder, true, this.mount)
+      return this.b.compsNBake(folder)
    }
    map(): Promise<string> {
       return this.m.gen()
