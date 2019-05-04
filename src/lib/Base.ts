@@ -3,9 +3,51 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.8'
+      return 'v5.05.9'
    }
 }
+import colors = require('colors')
+const logger = require('tracer').colorConsole({
+   filters: [
+      {
+         warn: colors.yellow,
+         error: [colors.red]
+      }
+   ]
+})
+
+import Marpit = require('@marp-team/marpit')
+const marpit = new Marpit.Marpit()
+
+import fs = require('fs-extra')
+import FileHound = require('filehound')
+import yaml = require('js-yaml')
+
+import path = require("path")
+import findUp = require('find-up')
+
+import riotc = require('riot-compiler')
+import pug = require('pug')
+const minify = require('html-minifier').minify
+const Terser = require("terser")
+
+import download = require('download')
+import beeper = require('beeper');
+
+import * as JavaScriptObfuscator from 'javascript-obfuscator'
+import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
+
+
+// code /////////////////////////////////////////////////////////////////////////////////////////////////
+export class DownloadFrag {
+   constructor(dir) {
+      download('https://unpkg.com/depp-defs@1.0.3/template/headFrag.pug').then(data => {
+         fs.writeFileSync(dir+'/headFrag.pug', data)
+         console.log(dir)
+     })  
+   }
+}
+
 
 // metaMD
 import markdownItCont = require('markdown-it-container')
@@ -28,48 +70,6 @@ md.use(markdownItCont, 'dynamic', {
    }
 })
 
-import Marpit = require('@marp-team/marpit')
-const marpit = new Marpit.Marpit()
-
-import fs = require('fs-extra')
-import FileHound = require('filehound')
-import yaml = require('js-yaml')
-
-import path = require("path")
-import findUp = require('find-up')
-
-import riotc = require('riot-compiler')
-import pug = require('pug')
-const minify = require('html-minifier').minify
-const Terser = require("terser")
-
-import download = require('download')
-
-import colors = require('colors');
-const logger = require('tracer').colorConsole({
-   filters: [
-      {
-         warn: colors.yellow,
-         error: [colors.red]
-      }
-   ]
-})
-
-import beeper = require('beeper');
-
-import * as JavaScriptObfuscator from 'javascript-obfuscator'
-import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
-
-// code /////////////////////////////////////////////////////////////////////////////////////////////////
-
-export class DownloadFrag {
-   constructor(dir) {
-      download('https://unpkg.com/depp-defs@1.0.3/template/headFrag.pug').then(data => {
-         fs.writeFileSync(dir+'/headFrag.pug', data)
-         console.log(dir)
-     })  
-   }
-}
 
 export class Dirs {
    dir: string
