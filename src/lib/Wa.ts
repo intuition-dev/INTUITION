@@ -38,7 +38,7 @@ export class Wa {
       const mp = new MetaPro(dir)
       let ww = new Watch(mp, dir)
       
-      ww.start(400) // build X ms after save
+      ww.start(300) // build X ms after save
 
       console.info(' Serving on ' + 'http://localhost:' + port)
       console.info(' --------------------------')
@@ -85,8 +85,11 @@ export class Watch {
    watcher
 
    mp: MetaPro
-   constructor(mp_: MetaPro, mount) {
+   constructor(mp_: MetaPro, mount:string) {
       this.mp = mp_
+      if(mount.endsWith('/.')) {
+         mount = mount.slice(0, -1)
+      }
       this.root = mount
    }
 
