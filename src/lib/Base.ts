@@ -71,32 +71,6 @@ export class DownloadFrag {
    }
 }
 
-/**
- * @deprecated Use Promise and 'return' 'OK' if resolved
- */
-export class RetMsg {
-   _cmd: string
-   _code: number
-   _msg: any
-   constructor(cmd: string, code: number, msg: any) {
-      this._cmd = cmd
-      this._code = code
-      this._msg = msg
-   }//)_
-   get cmd(): string {
-      return this.cmd
-   }
-   get code(): number {
-      return Math.round(this._code)
-   }
-   get msg(): any {
-      return this
-   }
-   log() {
-      console.info(this.cmd, this.msg, this.code)
-   }
-}//class
-
 export class Dirs {
    dir: string
    constructor(dir_: string) {
@@ -281,10 +255,11 @@ export class MBake {
       })//pro
    }//()
 
-   clearToProd(path_): RetMsg {
+   clearToProd(path_): Promise<string> {
+      return new Promise(function (resolve, reject) {
       if (!path_ || path_.length < 1) {
          console.info('no path_ arg passed')
-         return
+         reject(('no path_ arg passed'))
       }
       try {
 
@@ -305,10 +280,11 @@ export class MBake {
             }
          });
       } catch (err) {
-         logger.info(err)
-         return new RetMsg(path_ + ' bake', -1, err)
+         logger.warn(err)
+         reject(err)
       }
-      return new RetMsg(path_ + ' bake', 1, 'ok')
+      resolve('OK')
+    })
    }
 
    // itemize and bake
@@ -342,7 +318,8 @@ export class MBake {
    }//()
 
    // itemize, bake and tag, needs itemize to find yaml i dat in path_
-   // this one need to be rewritten
+   // Not used, delete
+   /*
    _all(path_) {
       try {
          let t = new Comps(path_)
@@ -354,8 +331,10 @@ export class MBake {
          logger.info(err)
          return new RetMsg(path_ + ' tagA', -1, err)
       }
-      // return new RetMsg(path_ + ' tagA', 1,'ok')
+      // return new RetMsg(path_ + ' tagA', 1,'OK')
    }
+   */
+  
 }//()
 
 export class BakeWrk {
@@ -683,7 +662,7 @@ export class Comps {
          console.info(' ' + dir + name);
          this.process(s, dir + name, watcher) //, mount)
       }
-      return 'ok'
+      return 'OK'
    }//()
 
    static getObsOptions(): TInputOptions {
@@ -750,5 +729,5 @@ export class Comps {
 
 
 module.exports = {
-   DownloadFrag, Dat, Dirs, BakeWrk, Items, Comps, Ver, MBake, RetMsg
+   DownloadFrag, Dat, Dirs, BakeWrk, Items, Comps, Ver, MBake
 }

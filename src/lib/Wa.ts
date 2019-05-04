@@ -1,7 +1,7 @@
 // All rights reserved by Metabake (Metabake.org) | Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 
-import {MBake, RetMsg, Dirs, Dat} from './Base'
+import {MBake, Dirs, Dat} from './Base'
 import {Sas, MinJS} from './Sa'
 
 import fs = require('fs-extra')
@@ -58,15 +58,13 @@ export class CSV2Json { // TODO: get to work with watcher
       this.dir = Dirs.slash(dir_)
    }
 
-   convert(): RetMsg {
-
+   convert(): Promise<string> {
+      return new Promise(function (resolve, reject) {
       let fn: string = this.dir + '/list.csv'
       if (!fs.existsSync(fn)) { //if it does not exist, go up a level
-         let r = new RetMsg('CSV2Json', -1, 'list.csv not found in ' + this.dir)
-         console.info('not found', r)
-         return r
+         console.info('not found')
+         reject('not found')
       }
-      let r = new RetMsg('CSV2Json', 1, 'OK')
       let thiz = this
       logger.info('1')
 
@@ -76,9 +74,9 @@ export class CSV2Json { // TODO: get to work with watcher
             let fj: string = thiz.dir + '/list.json'
 
             fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
-            return r
+            resolve('OK')
          })
-
+      })
    }//()
 }
 
@@ -185,15 +183,6 @@ export class MetaPro {
    static srcProp = 'src'
    static destProp = 'dest'
 
-   _lastMsg: RetMsg
-
-   setLast(m: RetMsg) {
-      this._lastMsg = new RetMsg(m._cmd, m.code, m.msg)
-   }
-   getLastMsg(): RetMsg {
-      let m = this._lastMsg
-      return new RetMsg(m._cmd, 1, m.msg)
-   }
 
    constructor(mount) {
       this.mount = mount
@@ -201,62 +190,48 @@ export class MetaPro {
       logger.info('MetaPro', this.mount)
    }
 
-   bake(dir: string): RetMsg {
+   bake(dir: string): Promise<string> {
+
       let folder = this.mount + '/' + dir
       logger.info(folder)
-      let pro = this.b.bake(folder)
-      return new RetMsg('unknown',0, 'unkown')
+      return this.b.bake(folder)
    }
 
-   compsRoot(): RetMsg {
+   ___compsRoot() {
       return this.comps('/')
    }
 
-   comps(dir: string): RetMsg {
+   comps(dir: string): Promise<string> {
       let folder = this.mount + '/' + dir
       logger.info(folder)
-      let pro= this.b.comps(folder, true, this.mount)
-      return new RetMsg('unknown',0, 'unkown')
+      return this.b.comps(folder, true, this.mount)
    }
-   map(): RetMsg {
-      let msg: RetMsg = this.m.gen()
-      this.setLast(msg)
-      return msg
-   }
-   itemize(dir: string): RetMsg {
-      let pro = this.b.itemizeNBake(this.mount + '/' + dir)
-      return new RetMsg('unknown',0, 'unkown')
+   map(): Promise<string> {
+      return this.m.gen()
    }
 
-   css(dir: string) {
-      new Sas().css(this.mount + '/' + dir)
-      let msg: RetMsg = new RetMsg('css', 1, 'success')
-      this.setLast(msg)
-      return msg
+   itemize(dir: string): Promise<string> {
+      return this.b.itemizeNBake(this.mount + '/' + dir)
    }
 
-   js(dir: string) {
+   css(dir: string):Promise<string> {
+      return new Sas().css(this.mount + '/' + dir)
+   }
+
+   js(dir: string):Promise<string> {
       const folder = this.mount + '/' + dir;
       const js = new MinJS(folder);
-      js.ts(folder);
-
-      let msg: RetMsg = new RetMsg('js', 1, 'success')
-      this.setLast(msg)
-      return msg
+      return js.ts(folder);
    }
 
-   minJS(dir: string) {
+   minJS(dir: string):Promise<string> {
       const folder = this.mount + '/' + dir;
       const js = new MinJS(folder);
-      js.min(folder);
-
-      let msg: RetMsg = new RetMsg('min.js', 1, 'success')
-      this.setLast(msg)
-      return msg
+      return js.min(folder);
    }
 
    // when you pass the file name, ex: watch
-   autoBake(folder__, file) {
+   autoBake(folder__, file):Promise<string> {
       const folder = Dirs.slash(folder__)
 
       const ext = file.split('.').pop()
@@ -365,7 +340,8 @@ export class FileOps {
       return files.length
    }
 
-   clone(src, dest): RetMsg {
+   clone(src, dest): Promise<string> {
+      return new Promise(function (resolve, reject) {
       logger.info('copy?')
 
       fs.copySync(this.root + src, this.root + dest)
@@ -375,7 +351,8 @@ export class FileOps {
       const d = new Dat(p)
       d.write()
       logger.info('copy!')
-      return new RetMsg('clone', 1, dest)
+      resolve('OK')
+      })
    }//()
 
    write(destFile, txt) {
@@ -414,7 +391,9 @@ export class Map {
       }
       this._root = root
    }
-   gen(): RetMsg {
+   gen():Promise<string> {
+      return new Promise(function (resolve, reject) {
+
       const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'))
       let jmenu = JSON.stringify(m.menu, null, 2)
       //menu done
@@ -474,7 +453,9 @@ export class Map {
                   }]
                })
             }
-         } catch (err) {logger.info(err)}
+         } catch (err) {
+            logger.info(err)
+         }
       }//for
 
       //validate and write
@@ -487,7 +468,8 @@ export class Map {
          thiz._map(leaves)
 
       })// to XML write
-      return new RetMsg(thiz._root + ' map', 1, 'ok')
+      resolve('OK')
+      })
    }//map()
 
    _map(leaves) {

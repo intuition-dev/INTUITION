@@ -38,7 +38,8 @@ export class MinJS {//es5
       this.min(dir)
    }
 
-   ts (dir) {
+   ts (dir):Promise<string> {
+      return new Promise(function (resolve, reject) {
       const rec = FileHound.create() //recursive
          .paths(dir)
          .ext("ts")
@@ -51,9 +52,12 @@ export class MinJS {//es5
          //noEmitOnError: true,
          removeComments: true
       })
+      resolve('OK')
+      })
    }
 
-   min (dir) { //.log, .info and .trace remove
+   min (dir):Promise<string> { 
+      return new Promise(function (resolve, reject) {
       const rec = FileHound.create() //recursive
          .paths(dir)
          .ext("js")
@@ -75,6 +79,8 @@ export class MinJS {//es5
          }
       }
       console.info('Done!'.green)
+      resolve('OK')
+      })
    }
 
    _minOne (fn) {
@@ -224,7 +230,9 @@ export class Sas {
     * @param dir 
     * Find assets.yaml and process each css in the assets.yaml array
     */
-   css (dir) {
+   css (dir):Promise<string> {
+      return new Promise(function (resolve, reject) {
+
       logger.info(dir)
       let a
       let fn = dir + '/assets.yaml'
@@ -247,6 +255,8 @@ export class Sas {
 
       console.info()
       console.info(' Done!'.green)
+      resolve('OK')
+      })
    }//()
 
    _trans (fn2, dir) {
