@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.7'
+      return 'v5.05.8'
    }
 }
 
@@ -224,9 +224,9 @@ export class MBake {
       })//pro
    }//()
 
-   comps(path_, watcher?: boolean, mount?: string): Promise<string> {
+   async compsNBake(path_, watcher?: boolean, mount?: string): Promise<string> {
       let _this = this
-      return new Promise(function (resolve, reject) {
+      return new Promise(async function (resolve, reject) {
 
          if (!path_ || path_.length < 1) {
             console.info('no path_ arg passed')
@@ -238,10 +238,11 @@ export class MBake {
             let t = new Comps(path_)
             let lst = t.get()
 
-            t.comps(lst, watcher, mount)
+            await t.comps(lst, watcher, mount)
 
             _this.bake(path_)
-               .then(function () { resolve('OK') })
+               .then(function () { 
+                  resolve('OK') })
                .catch(function (err) {
                   logger.info(err)
                   reject(err)
@@ -631,7 +632,10 @@ export class Comps {
       return ret
    }//()
 
-   comps(list, watcher?: boolean, mount?: string): string {
+   async comps(list, watcher?: boolean, mount?: string): Promise<string> {
+      const THIZ = this
+      return new Promise(async function (resolve, reject) {
+
       console.info('Looking for comps: *-comp ' + this.dir)
       for (let val of list) {//clean the strings
          let s: string = fs.readFileSync(val).toString()
@@ -642,9 +646,10 @@ export class Comps {
          let p = name.lastIndexOf('.')
          name = name.substring(0, p)
          console.info(' ' + dir + name);
-         this.process(s, dir + name, watcher) //, mount)
+         await THIZ.process(s, dir + name, watcher) //, mount) XXX VIC TODO
       }
-      return 'OK'
+      resolve('OK')
+    })
    }//()
 
    static getObsOptions(): TInputOptions {
@@ -670,7 +675,8 @@ export class Comps {
 
    ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
-   process(s: string, fn: string, watcher?: boolean) {//}, mount?: string) {
+   async process(s: string, fn: string, watcher?: boolean):Promise<string> {//}, mount?: string) {
+      return new Promise(function (resolve, reject) {   
       const r_options = { 'template': 'pug' }
 
       logger.info('compiling', fn + '.tag')
@@ -685,7 +691,7 @@ export class Comps {
          beeper(1);
          logger.error('compiler error')
          logger.error(err)
-         return
+         reject(err)
       }
 
       fs.writeFileSync(fn + '.js', js)
@@ -700,12 +706,13 @@ export class Comps {
       } catch (err) {
          logger.error('error')
          logger.error(err)
-         return
+         reject(err)
       }
 
       let obCode = this.ver + ugs.getObfuscatedCode()
-
       fs.writeFileSync(fn + '.min.js', obCode)
+      resolve('OK')
+      })
    }
 }//class
 

@@ -137,24 +137,39 @@ if (arg) {
    }
 }
 
-// pug: ////////////////////////////////////////////////////////////////////////////////////////////////
+//  ////////////////////////////////////////////////////////////////////////////////////////////////
 function bake (arg) {
-   new MBake().bake(arg)
-   process.exit()
+   let pro:Promise<string> = new MBake().bake(arg)
+
+   pro.then(function(val){
+      console.log(val)
+      process.exit()
+   })
 }
 
-// itemize : /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function itemize (arg) {
-   new MBake().itemizeNBake(arg)
-   process.exit()
+   let pro:Promise<string> = new MBake().itemizeNBake(arg)
+   
+   pro.then(function(val){
+      console.log(val)
+      process.exit()
+   })
 }
 
 function css (arg) {
-   new Sas().css(arg)
+   let pro:Promise<string> = new Sas().css(arg)
+
+   pro.then(function(val){
+      console.log(val)
+      process.exit()
+   })
 }
 
 function minJS (arg) {
-   new MinJS(arg)
+   let min = new MinJS()
+   min.ts(arg)
+   min.min(arg)
+
 }
 
 // start: /////////////////////////////////////////////////////////////////////////////////////

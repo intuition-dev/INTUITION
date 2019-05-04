@@ -139,12 +139,13 @@ function img (arg) {
 }
 
 function comps (arg) {
-   new MBake().comps(arg)
+   let pro:Promise<string> = new MBake().compsNBake(arg)
+   pro.then(function(val){
+      console.log(val)
+      process.exit()
+   })
 }
-function bake (arg) {
-   new MBake().bake(arg)
-   process.exit()
-}
+
 function prod (arg) {
    new MBake().clearToProd(arg)
    process.exit()
@@ -171,7 +172,6 @@ if (arg) {
 if (argsParsed.comps) {
    try {
       comps(arg)
-      bake(arg)
    } catch (err) {
       console.info(err)
    }

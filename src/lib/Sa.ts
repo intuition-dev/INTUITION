@@ -29,14 +29,6 @@ const logger = require('tracer').console()
 // //////////////////////////////////////////////////////////////////
 
 export class MinJS {//es5
-   constructor(dir) {
-      try {
-         this.ts(dir)
-      } catch (err) {
-         logger.warn(err)
-      }
-      this.min(dir)
-   }
 
    ts (dir):Promise<string> {
       return new Promise(function (resolve, reject) {

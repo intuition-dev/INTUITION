@@ -38,7 +38,7 @@ export class Wa {
       const mp = new MetaPro(dir)
       let ww = new Watch(mp, dir)
       
-      ww.start(520) // build X ms after save
+      ww.start(400) // build X ms after save
 
       console.info(' Serving on ' + 'http://localhost:' + port)
       console.info(' --------------------------')
@@ -146,7 +146,7 @@ export class Watch {
    }
 
    refreshBro() {
-      Watch.debounce(MDevSrv.reloadServer.reload(), this.delay*1.3)
+      MDevSrv.reloadServer.reload()
    }
 
    auto(path_: string) {//process
@@ -164,8 +164,12 @@ export class Watch {
       try {
          logger.info('WATCHED1:', folder + '/' + fn)
 
-         this.mp.autoBake(folder, fn)
-         this.refreshBro()
+         let pro:Promise<string> = this.mp.autoBake(folder, fn)
+         const THIZ = this
+         pro.then(function(val){
+            console.log(val)
+            THIZ.refreshBro()
+         })
 
       } catch (err) {
          logger.warn(err)
@@ -197,14 +201,10 @@ export class MetaPro {
       return this.b.bake(folder)
    }
 
-   ___compsRoot() {
-      return this.comps('/')
-   }
-
    comps(dir: string): Promise<string> {
       let folder = this.mount + '/' + dir
       logger.info(folder)
-      return this.b.comps(folder, true, this.mount)
+      return this.b.compsNBake(folder, true, this.mount)
    }
    map(): Promise<string> {
       return this.m.gen()
@@ -218,15 +218,15 @@ export class MetaPro {
       return new Sas().css(this.mount + '/' + dir)
    }
 
-   js(dir: string):Promise<string> {
+   ts(dir: string):Promise<string> {
       const folder = this.mount + '/' + dir;
-      const js = new MinJS(folder);
+      const js = new MinJS();
       return js.ts(folder);
    }
 
    minJS(dir: string):Promise<string> {
       const folder = this.mount + '/' + dir;
-      const js = new MinJS(folder);
+      const js = new MinJS();
       return js.min(folder);
    }
 
@@ -235,17 +235,16 @@ export class MetaPro {
       const folder = Dirs.slash(folder__)
 
       const ext = file.split('.').pop()
-      logger.info('WATCHED2a:', folder, ext)
+      logger.info('WATCHED2:', folder, ext)
 
       if (ext == 'scss' || ext == 'sass') // css
          return this.css(folder)
          
       if (ext == 'ts') // ts
-         return this.js(folder)
+         return this.ts(folder)
 
       if (ext == 'yaml') // bake and itemize
          return this.itemize(folder)
-         // return this.bake(folder)
       if (ext == 'md')
          return this.bake(folder)
 
