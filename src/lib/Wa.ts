@@ -95,8 +95,15 @@ export class Watch {
       this.delay = delay_
       console.info(' watcher starting')
       console.info(this.root)
-      this.watcher = chokidar.watch(this.root, {
-         ignored: '*.swpc*',
+      let watchList = []
+      watchList.push(this.root+'/**/*.md')
+      watchList.push( this.root+'/**/*.ts')
+      watchList.push( this.root+'/**/*.pug')
+      watchList.push(this.root+'/**/*.scss')
+      watchList.push(this.root+'/**/*.sass')
+
+      logger.trace(watchList)
+      this.watcher = chokidar.watch(watchList, {
          ignoreInitial: true,
          cwd: this.root,
          usePolling: true, // for linux support
@@ -104,52 +111,28 @@ export class Watch {
          binaryInterval: delay_ * 5,
          interval: delay_//time
 
-         //alwaysStat: true,
          , atomic: delay_
          , awaitWriteFinish: {
-            stabilityThreshold: delay_ * 2.11,
-            pollInterval: delay_ *.7
+            stabilityThreshold: delay_ * 1.2,
+            pollInterval: delay_ *.5
          }
       })
-
-      this.watcher.unwatch('*.html')
-      this.watcher.unwatch('*.swpc*')
-      this.watcher.unwatch('*.min*')
-      this.watcher.unwatch('*.min.js')
-      this.watcher.unwatch('*.css')
-      this.watcher.unwatch('.DS_Store')
-      this.watcher.unwatch('.gitignore')
-      this.watcher.unwatch('.git') // how to ignore git folder of changes? todo
 
       let thiz = this
       this.watcher.on('add', function (path) {
-         Watch.debounce(thiz.auto(path), this.delay*4.3)
+         thiz.auto(path, 'a')
       })
       this.watcher.on('change', function (path) {
-         Watch.debounce(thiz.auto(path), this.delay*4.3)
+         thiz.auto(path, 'c')
       })
    }//()
-
-   static debounce(callback, time) {
-      var timeout;
-      return function() {
-         var context = this
-         var args = arguments;
-         if (timeout) {
-            clearTimeout(timeout)
-         }
-         timeout = setTimeout(function() {
-            timeout = null
-            callback.apply(context, args)
-         }, time)
-      }
-   }
 
    refreshBro() {
       MDevSrv.reloadServer.reload()
    }
 
-   auto(path_: string) {//process
+   auto(path_: string, wa:string) {//process
+      console.log(wa)
       let path = Dirs.slash(path_)
 
       let p = path.lastIndexOf('/')
@@ -174,7 +157,7 @@ export class Watch {
       } catch (err) {
          logger.warn(err)
       }
-   }
+   }//()
 }//class
 
 export class MetaPro {
@@ -285,7 +268,7 @@ export class MDevSrv {
                return /text\/html/.test(res.get('Content-Type'))
             },
             intercept: function (body, send) {
-               console.info(' .')
+               //console.info(' .')
                let $document = cheerio.load(body)
                $document('body').prepend('<script src="/reload/reload.js"></script>')
                send($document.html())

@@ -223,6 +223,7 @@ export class Sas {
     * Find assets.yaml and process each css in the assets.yaml array
     */
    css (dir):Promise<string> {
+      const THIZ = this
       return new Promise(function (resolve, reject) {
 
       logger.info(dir)
@@ -242,7 +243,7 @@ export class Sas {
       logger.info(set)
 
       for (let item of set) {
-         this._trans(item, dir)
+         THIZ._trans(item, dir)
       }
 
       console.info()

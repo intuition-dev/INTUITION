@@ -636,7 +636,7 @@ export class Comps {
       const THIZ = this
       return new Promise(async function (resolve, reject) {
 
-      console.info('Looking for comps: *-comp ' + this.dir)
+      console.info('Looking for comps: *-comp ' + THIZ.dir)
       for (let val of list) {//clean the strings
          let s: string = fs.readFileSync(val).toString()
 
@@ -676,6 +676,7 @@ export class Comps {
    ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
    async process(s: string, fn: string, watcher?: boolean):Promise<string> {//}, mount?: string) {
+      const THIZ = this
       return new Promise(function (resolve, reject) {   
       const r_options = { 'template': 'pug' }
 
@@ -709,7 +710,7 @@ export class Comps {
          reject(err)
       }
 
-      let obCode = this.ver + ugs.getObfuscatedCode()
+      let obCode = THIZ.ver + ugs.getObfuscatedCode()
       fs.writeFileSync(fn + '.min.js', obCode)
       resolve('OK')
       })
