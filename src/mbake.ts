@@ -4,7 +4,7 @@
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
-import { Ver, MBake, Dirs } from './lib/Base'
+import { Ver, MBake, Dirs, DownloadFrag } from './lib/Base'
 import clear = require("cli-clear")
 
 import { MinJS,  Sas } from './lib/Sa'
@@ -36,13 +36,15 @@ function help () {
    console.info('  To process Pug and dat_i items to items.json:               mbake -i .')
    console.info('     or any sub-folder, where path is folder containing dat_i.yaml;')
    console.info('     also does regular mbake of Pug')
-   
+
+   console.info('  Download head fragment to kick of app:                       mbake -f .')
+
    console.info('     Note: . is current directory, or use any path instead of .')
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
    console.info('  For a starter website:                                      mbake -w')
-   console.info('  For a starter CMS|items:                                    mbake -e')
+   console.info('  For a starter CMS|items:                                    mbake -c')
 
    console.info('  For an example dynamic web app CRUD:                        mbake -u')
 
@@ -67,8 +69,9 @@ const optionDefinitions = [
 
    { name: 'MinJS', alias: 't', type: Boolean },
 
-   { name: 'CMS', alias: 'e', type: Boolean },
+   { name: 'frag', alias: 'f', type: Boolean },
 
+   { name: 'CMS', alias: 'c', type: Boolean },
    { name: 'website', alias: 'w', type: Boolean },
    { name: 'CRUD', alias: 'u', type: Boolean },
 
@@ -99,6 +102,9 @@ function unzipE () {
    zip.extractAllTo(cwd, /*overwrite*/true)
    console.info('Extracted a starter CMS app to ./CMS')
    process.exit()
+}
+function frag() {
+   new DownloadFrag(__dirname)
 }
 
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,6 +162,8 @@ else if (argsParsed.website)
    unzipS()
 else if (argsParsed.MinJS)
    minJS(arg)
+else if (argsParsed.frag)
+   frag(arg)
 else if (argsParsed.version)
    version()
 else if (argsParsed.help)

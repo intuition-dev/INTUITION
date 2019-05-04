@@ -41,7 +41,9 @@ import findUp = require('find-up')
 import riotc = require('riot-compiler')
 import pug = require('pug')
 const minify = require('html-minifier').minify
-const Terser = require("terser")
+import Terser = require("terser")
+
+import download = require('download')
 
 import colors = require('colors');
 const logger = require('tracer').colorConsole({
@@ -57,9 +59,18 @@ import beeper = require('beeper');
 
 import * as JavaScriptObfuscator from 'javascript-obfuscator'
 import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
-//import { idText } from 'typescript';
 
 // code /////////////////////////////////////////////////////////////////////////////////////////////////
+
+export class DownloadFrag {
+   constructor(dir) {
+      download('https://unpkg.com/depp-defs@1.0.3/template/headFrag.pug').then(data => {
+         fs.writeFileSync(dir+'/headFrag.pug', data)
+         console.log(dir)
+     })  
+   }
+}
+
 /**
  * @deprecated Use Promise and 'return' 'OK' if resolved
  */
@@ -739,5 +750,5 @@ export class Comps {
 
 
 module.exports = {
-   Dat, Dirs, BakeWrk, Items, Comps, Ver, MBake, RetMsg
+   DownloadFrag, Dat, Dirs, BakeWrk, Items, Comps, Ver, MBake, RetMsg
 }

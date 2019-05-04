@@ -15,7 +15,7 @@ import path = require('path')
 import fs = require('fs-extra')
 import FileHound = require('filehound')
 
-const sharp = require('sharp')
+import sharp = require('sharp')
 import probe = require('probe-image-size')
 
 import * as ts from "typescript"

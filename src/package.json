@@ -67,14 +67,17 @@
       "traverse": ">=0.6.6",
       "typescript": ">=3.4.5",
       "uglify-es": ">=3.3.9",
-      "unfluff": ">=3.2.0"
+      "unfluff": ">=3.2.0",
+      "download": ">=7.1.0"
+
    },
    "devDependencies": {
       "@types/node": ">=12.0.0",
       "handbrake-js": ">=3.0.8",
       "javascript-state-machine": ">=3.1.0",
+      "jstransformer": ">=1.0.0",
       "npm-check-updates": ">=3.1.9",
-      "simple-git": ">=1.112.0",
-      "jstransformer": ">=1.0.0"
+      "simple-git": ">=1.112.0"
+
    }
 }
