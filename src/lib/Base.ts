@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.6'
+      return 'v5.05.7'
    }
 }
 
@@ -317,24 +317,6 @@ export class MBake {
       })//pro
    }//()
 
-   // itemize, bake and tag, needs itemize to find yaml i dat in path_
-   // Not used, delete
-   /*
-   _all(path_) {
-      try {
-         let t = new Comps(path_)
-         let lst = t.get()
-         t.comps(lst)
-         console.info('================================path', path_);
-         return this.itemizeNBake(path_)
-      } catch (err) {
-         logger.info(err)
-         return new RetMsg(path_ + ' tagA', -1, err)
-      }
-      // return new RetMsg(path_ + ' tagA', 1,'OK')
-   }
-   */
-  
 }//()
 
 export class BakeWrk {

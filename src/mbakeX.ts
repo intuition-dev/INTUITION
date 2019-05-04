@@ -51,6 +51,7 @@ function help () {
    console.info('  For a starter hybrid Phonegap app:                          mbakeX -o')
    console.info('  For an example Ad:                                          mbakeX -a')
 
+   //TODO: check latest version via open of browser to npm
    console.info()
 
    process.exit()

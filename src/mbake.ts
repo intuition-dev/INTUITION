@@ -51,7 +51,12 @@ function help () {
    console.info()
    console.info('  mbakeX CLI extra has WebCMS, components and more flags and examples: mbakeX')
    console.info()
-   console.info(' Full docs: http://docs.Metabake.org')
+   console.info(' Full docs: https://docs.Metabake.org')
+
+   console.info()
+   console.info(' This is the CLI. For WebAdmin version of MetaBake, get from NPM or')
+   console.info('   check this https://github.com/metabake/mbakeWebAdmin ')
+
    console.info()
 
    process.exit()
