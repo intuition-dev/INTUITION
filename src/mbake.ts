@@ -73,10 +73,13 @@ const optionDefinitions = [
 
    { name: 'CMS', alias: 'c', type: Boolean },
    { name: 'website', alias: 'w', type: Boolean },
-   { name: 'CRUD', alias: 'u', type: Boolean },
-
+   { name: 'CRUD', alias: 'u', type: Boolean }
 ]
+
 const argsParsed = commandLineArgs(optionDefinitions)
+
+console.log(argsParsed)
+
 let arg: string = argsParsed.mbake
 
 console.info()
@@ -103,8 +106,8 @@ function unzipE () {
    console.info('Extracted a starter CMS app to ./CMS')
    process.exit()
 }
-function frag() {
-   new DownloadFrag(__dirname)
+function frag(arg) {
+   new DownloadFrag(arg)
 }
 
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////

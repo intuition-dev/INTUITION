@@ -41,7 +41,7 @@ import findUp = require('find-up')
 import riotc = require('riot-compiler')
 import pug = require('pug')
 const minify = require('html-minifier').minify
-import Terser = require("terser")
+const Terser = require("terser")
 
 import download = require('download')
 
