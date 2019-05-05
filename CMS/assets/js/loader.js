@@ -40,8 +40,6 @@ depp.define({
         '#fonts',
         ROOT + 'assets/css/spectreBottom.css'
         
-        , '//cdn.jsdelivr.net/npm/fuse.js@3.3.0/dist/fuse.min.js' //TODO: remove
-        
         , '//cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.min.js'
         
         , '//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'

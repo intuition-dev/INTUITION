@@ -16,19 +16,6 @@ function onDeviceReady() {
    depp.done('deviceready')
 }
 
-// example event
-function disE(evtName, data, ctx) {
-   const msg = {
-      data: data,
-      ctx: ctx
-   }
-   dispatchEvent(new CustomEvent(evtName, { detail: msg }))
-}
-//etg:
-addEventListener('evtName', function (evt) {
-   console.info(evt.detail.msg)
-})
-//end example dispatch 
 
 depp.define({
    'pre': [

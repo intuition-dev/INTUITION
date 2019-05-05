@@ -235,9 +235,8 @@ export class Sas {
     */
    css (dir):Promise<string> {
       const THIZ = this
-      return new Promise(function (resolve, reject) {
+      return new Promise(async function (resolve, reject) {
 
-      logger.info(dir)
       let a
       let fn = dir + '/assets.yaml'
       if (fs.existsSync(fn))
@@ -254,7 +253,7 @@ export class Sas {
       logger.info(set)
 
       for (let item of set) {
-         THIZ._trans(item, dir)
+         await THIZ._trans(item, dir)
       }
 
       console.info()
