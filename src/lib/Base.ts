@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.15'
+      return 'v5.05.17'
    }
 }
 import colors = require('colors')
@@ -37,7 +37,7 @@ import beeper = require('beeper');
 
 export class DownloadFrag {
    constructor(dir) {
-      download('https://unpkg.com/setup-depp-defs@0.5.0/template/headFrag.pug').then(data => {
+      download('https://unpkg.com/setup-depp-defs@0.5.1/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir+'/headFrag.pug', data)
          console.log('Extracted to',dir)
      })  
