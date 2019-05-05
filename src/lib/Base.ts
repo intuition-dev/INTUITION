@@ -60,7 +60,7 @@ md.use(markdownItCont, 'dynamic', {
    // https://github.com/markdown-it/markdown-it-container/issues/23
    validate: function () { return true; },
    render: function (tokens, idx) {
-      var token = tokens[idx]
+      let token = tokens[idx]
 
       if (token.nesting === 1) {
          return '\n<div class="' + token.info.trim() + '">'
@@ -344,7 +344,7 @@ export class BakeWrk {
 
    //http://github.com/kangax/html-minifier/issues/843
    static minify_es6(text, inline) {
-      var uglifyEsOptions = {
+      let uglifyEsOptions = {
          parse: { bare_returns: {} },
          mangle: false,
          keep_classnames: true,
@@ -352,10 +352,10 @@ export class BakeWrk {
          safari10: true
       }
 
-      var code = text.match(/^\s*\s*$/) ? '' : text
+      let code = text.match(/^\s*\s*$/) ? '' : text
       uglifyEsOptions.parse.bare_returns = inline
 
-      var result = Terser.minify(code, uglifyEsOptions)
+      let result = Terser.minify(code, uglifyEsOptions)
       if (result.error) {
          console.info('Uglify-es error:', result.error)
          beeper()
@@ -371,7 +371,7 @@ export class BakeWrk {
       if (!f)
          return []
 
-      var result = []
+      let result = []
       for (let i = 0; i < source.length; ++i) {
          if (source.substring(i, i + f.length) == f)
             result.push(i)
@@ -455,9 +455,9 @@ export class BakeWrk {
       //extract locale var
       console.log(locale)
       let localeProps = {}
-      localeProps['LOCALE'] = locale // any var can be access in pug or js  eg window.locale = '#{LOCALE}'
+      localeProps['LOCALE'] = locale // any let can be access in pug or js  eg window.locale = '#{LOCALE}'
 
-      for (var key in combOptions)
+      for (let key in combOptions)
          if (key.endsWith('-' + locale)) { //for each key
             let len = key.length - ('-' + locale).length
             let key2 = key.substring(0, len)

@@ -186,7 +186,7 @@ export class Resize {
    }
 
    isWide(file):boolean {
-      var data = fs.readFileSync(file + '.jpg')
+      let data = fs.readFileSync(file + '.jpg')
       let p = probe.sync(data)
       if(p.width && p.width > 3200) return true
       logger.info(file, ' is low res')

@@ -1,6 +1,6 @@
-declare var db1: any
-declare var validator: any
-declare var _start: any
+declare let db1: any
+declare let validator: any
+declare let _start: any
 
 class TabulatorService { // testable crud and fake flag, heavy work. view-model
 

@@ -1,4 +1,4 @@
-declare var validator;
+declare let validator;
 /**
    On cb
    VM maps to screen

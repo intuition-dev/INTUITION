@@ -1,4 +1,4 @@
-declare var validator;
+declare let validator;
 
 // Needs CRUD methods
 class ValidationViewModel {
