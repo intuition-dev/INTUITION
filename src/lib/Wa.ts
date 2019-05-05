@@ -134,7 +134,7 @@ export class Watch {
       MDevSrv.reloadServer.reload()
    }
 
-   auto(path_: string, wa:string) {//process
+   async auto(path_: string, wa:string) {//process
       console.log(wa)
       let path = Dirs.slash(path_)
 
@@ -150,13 +150,9 @@ export class Watch {
       try {
          logger.info('WATCHED1:', folder + '/' + fn)
 
-         let pro:Promise<string> = this.mp.autoBake(folder, fn)
-         const THIZ = this
-         pro.then(function(val){
-            console.log(val)
-            THIZ.refreshBro()
-         })
-
+         await this.mp.autoBake(folder, fn)
+         this.refreshBro()
+      
       } catch (err) {
          logger.warn(err)
       }
@@ -210,11 +206,12 @@ export class MetaPro {
       return js.ts(folder);
    }
 
-   minJS(dir: string):Promise<string> {
+   /*
+   __minJS(dir: string):Promise<string> {
       const folder = this.mount + '/' + dir;
       const js = new MinJS();
       return js.min(folder);
-   }
+   }*/
 
    // when you pass the file name, ex: watch
    autoBake(folder__, file):Promise<string> {
@@ -240,7 +237,7 @@ export class MetaPro {
          else
             return this.bake(folder)
       }
-
+      throw new Error('Cant process ' + ext)
    }//()
 
 }//class
