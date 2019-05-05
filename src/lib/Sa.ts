@@ -51,7 +51,7 @@ export class MinJS {//es5
 
    min (dir):Promise<string> { 
       const THIZ = this
-      return new Promise(function (resolve, reject) {
+      return new Promise(async function (resolve, reject) {
       const rec = FileHound.create() //recursive
          .paths(dir)
          .ext("js")
@@ -67,7 +67,7 @@ export class MinJS {//es5
          .findSync()
       for (let fn of rec) {//clean the strings
          try {
-            THIZ._minOne(fn)
+            await THIZ._minOne(fn)
          } catch (err) {
             logger.warn(err)
             reject(err)
@@ -79,12 +79,15 @@ export class MinJS {//es5
    }
 
    _minOne (fn) {
+      return new Promise(async function (resolve, reject) {
+      let result
+      try {
       console.log(fn)
-      const code: string = fs.readFileSync(fn).toString('utf8')
-
-      let result = UglifyJS.minify(code, MinJS.options)
+      let code:string = fs.readFileSync(fn).toString('utf8')
+      result = UglifyJS.minify(code, MinJS.options)
 
       let txt = decomment(result.code, { space: true })
+
       txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n')
       txt = txt.replace(/\n\s*\n/g, '\n')
       txt = txt.trim()
@@ -94,7 +97,12 @@ export class MinJS {//es5
       let fn2 = fn.slice(0, -3)
       fn2 = fn2 + '.min.js'
       fs.writeFileSync(fn2, txt)
-
+      resolve('OK')
+      } catch (err) {
+         logger.warn(err, result)
+         reject(err)
+      }
+      })
    }//()
 
    static ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'

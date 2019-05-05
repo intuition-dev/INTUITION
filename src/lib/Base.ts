@@ -224,7 +224,7 @@ export class MBake {
       })//pro
    }//()
 
-   async compsNBake(path_): Promise<string> {
+   compsNBake(path_): Promise<string> {
       let _this = this
       return new Promise(async function (resolve, reject) {
 
@@ -632,7 +632,7 @@ export class Comps {
       return ret
    }//()
 
-   async comps(list): Promise<string> {
+   comps(list): Promise<string> {
       const THIZ = this
       return new Promise(async function (resolve, reject) {
 
@@ -675,7 +675,7 @@ export class Comps {
 
    ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
-   async process(s: string, dir: string, fn: string):Promise<string> {
+   process(s: string, dir: string, fn: string):Promise<string> {
       const THIZ = this
       return new Promise(function (resolve, reject) {   
 
