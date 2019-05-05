@@ -33,21 +33,21 @@ const Terser = require("terser")
 
 import download = require('download')
 import beeper = require('beeper');
+////////////////////////////
 
-import * as JavaScriptObfuscator from 'javascript-obfuscator'
-import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
-
-
-// code /////////////////////////////////////////////////////////////////////////////////////////////////
 export class DownloadFrag {
    constructor(dir) {
-      download('https://unpkg.com/depp-defs@1.0.3/template/headFrag.pug').then(data => {
+      download('https://unpkg.com/setup-depp-defs@0.1.1/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir+'/headFrag.pug', data)
          console.log(dir)
      })  
    }
 }
 
+import * as JavaScriptObfuscator from 'javascript-obfuscator'
+import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
+
+// code /////////////////////////////////////////////////////////////////////
 
 // metaMD
 import markdownItCont = require('markdown-it-container')

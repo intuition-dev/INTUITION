@@ -31,13 +31,14 @@ const logger = require('tracer').console()
 export class MinJS {//es5
 
    ts (dir):Promise<string> {
+      logger.info(dir)
       const THIZ = this
       return new Promise(function (resolve, reject) {
          const rec = FileHound.create() //recursive
             .paths(dir)
             .ext("ts")
             .findSync()
-         if (rec.length < 1) return
+         if (rec.length < 1) resolve('OK')
 
          THIZ.compile(rec, {
             target: ts.ScriptTarget.ES5,
