@@ -82,11 +82,7 @@ const optionDefinitions = [
 ]
 
 const argsParsed = commandLineArgs(optionDefinitions)
-
-console.log(argsParsed)
-
 let arg: string = argsParsed.mbake
-
 console.info()
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
@@ -167,8 +163,11 @@ function css (arg) {
 
 function minJS (arg) {
    let min = new MinJS()
-   min.ts(arg)
-   min.min(arg)
+   let pro:Promise<string> =min.ts(arg)
+   pro.then(function(val){
+      console.log(val)
+      min.min(arg)
+   })
 
 }
 

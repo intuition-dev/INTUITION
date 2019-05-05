@@ -31,24 +31,25 @@ const logger = require('tracer').console()
 export class MinJS {//es5
 
    ts (dir):Promise<string> {
+      const THIZ = this
       return new Promise(function (resolve, reject) {
-      const rec = FileHound.create() //recursive
-         .paths(dir)
-         .ext("ts")
-         .findSync()
+         const rec = FileHound.create() //recursive
+            .paths(dir)
+            .ext("ts")
+            .findSync()
+         if (rec.length < 1) return
 
-      if (rec.length < 1) return
-
-      this.compile(rec, {
-         target: ts.ScriptTarget.ES5,
-         //noEmitOnError: true,
-         removeComments: true
-      })
+         THIZ.compile(rec, {
+            target: ts.ScriptTarget.ES5,
+            //noEmitOnError: true,
+            removeComments: true
+         })
       resolve('OK')
       })
    }
 
    min (dir):Promise<string> { 
+      const THIZ = this
       return new Promise(function (resolve, reject) {
       const rec = FileHound.create() //recursive
          .paths(dir)
@@ -65,9 +66,10 @@ export class MinJS {//es5
          .findSync()
       for (let fn of rec) {//clean the strings
          try {
-            this._minOne(fn)
+            THIZ._minOne(fn)
          } catch (err) {
             logger.warn(err)
+            reject(err)
          }
       }
       console.info('Done!'.green)
@@ -120,13 +122,13 @@ export class MinJS {//es5
 
    }//options
 
-   compile (fileNames: string[], options: ts.CompilerOptions): void { //http://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
-      let program = ts.createProgram(fileNames, options);
+   compile (fileNames: string[], options_: ts.CompilerOptions): void { //http://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
+      let program = ts.createProgram(fileNames, options_)
       let emitResult = program.emit();
 
       let allDiagnostics = ts
          .getPreEmitDiagnostics(program)
-         .concat(emitResult.diagnostics);
+         .concat(emitResult.diagnostics)
 
       allDiagnostics.forEach(diagnostic => {
          if (diagnostic.file) {

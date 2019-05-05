@@ -4,9 +4,9 @@ tsc
 
 # node mbake.js -s /Users/code/Documents/GitHub/mbake/examples/website/assets
 
-# node mbakeX.js -c /Users/code/Documents/GitHub/mbakeCake/metaCake/surveryitem
+node mbake.js -t /Users/code/Documents/GitHub/mbakeCake/broSys/setup-depp-defs
 
-node mbakeX.js -w /Users/code/Documents/GitHub/mbake/examples/website
+# node mbakeX.js -w /Users/code/Documents/GitHub/mbake/examples/website
 
 
 

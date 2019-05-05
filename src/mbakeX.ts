@@ -85,6 +85,7 @@ const optionDefinitions = [
 
 const argsParsed = commandLineArgs(optionDefinitions)
 let arg: string = argsParsed.mbakeX
+console.info()
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function unzipG () {
