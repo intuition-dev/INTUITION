@@ -140,6 +140,7 @@ mbake -t .
 It will create a `.js` and `min.js` files. It will output ES5 to support IE11, so feel free to use class { } syntax.
 If there is no `.ts`, than it will simply slightly mimifify js files into min.js (but no ES5 conversion).
 
+Lots of time you use .ts to call DB services: such as Google FireStore.
 
 ## Examples - Website
 
@@ -182,4 +183,14 @@ mbake -i .
 ```
 It will create `items.json`. This allows you to fetch that json and search for content, CMS, items, etc.
 
+## MetaBake FrameWork(FW)/Application Architecture(AA)
+
+There is not much to ours. 
+
+```sh
+mbake -f .
+```
+
+This emits a Pug file that you should include in your Pug's layout head section.
+In turn, the included file calls a 'setup-deffs' js file that defines and show you how to define things you can require later.
 

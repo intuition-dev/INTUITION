@@ -37,7 +37,7 @@ function help () {
    console.info('     or any sub-folder, where path is folder containing dat_i.yaml;')
    console.info('     also does regular mbake of Pug')
 
-   console.info('  Download head fragment to kick of app:                       mbake -f .')
+   console.info('  Download fragment to setup the app FW(framework):           mbake -f .')
 
    console.info('     Note: . is current directory, or use any path instead of .')
    console.info(' -------------------------------------------------------------')
