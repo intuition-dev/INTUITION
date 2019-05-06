@@ -1,13 +1,10 @@
 doctype html
 html(lang='en_US')
    head
+      include headFrag
       //- this website has 4 interactive effects
       link(rel='amphtml', href='m.html')
-      script.
-         let _start = Date.now()
-      meta(charset='utf-8')
       link(rel='shortcut icon', href= '/assets/favicon.png', type='image/x-icon')
-      meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover")
 
       title #{title}
       meta(name='description', content=content_text)
@@ -29,7 +26,6 @@ html(lang='en_US')
 
       //- loading
       script(src='//unpkg.com/axios@0.19.0-beta.1/dist/axios.min.js')
-      script(src='//cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js')
 
       //- get the images
       script(src='//cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js')

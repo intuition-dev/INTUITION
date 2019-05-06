@@ -1,0 +1,13 @@
+script.
+   var _start = Date.now()
+title #{title}
+meta(charset='utf-8')
+meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover")
+script(src='//cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js')
+script(src='//cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
+style.
+   .delayShowing { opacity: 0; }
+   .blur { -webkit-filter:blur(2px);filter:blur(2px); }
+   .blurText { color: transparent; text-shadow: 0 0 3px black; }
+script(src='//unpkg.com/setup-depp-defs@0.5.1/setup-defs.js')
+//- script(src='setup-defs.js')

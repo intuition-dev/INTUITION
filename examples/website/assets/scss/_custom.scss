@@ -115,6 +115,10 @@ ul {
 
 .l-wrapper {
    height: calc(100% - 65px);
+   ul {
+      list-style-type: none;
+      margin-left: 0;
+   }
 }
 
 @media (max-height: 700px) {
@@ -169,7 +173,7 @@ header {
             position: static;
             width: initial;
             border-top: 1px solid rgba($gray-color-light, .3);
-            margin: 0 4%;
+            margin: 0 24px;
             &, a {
                background: 0;
                color: white !important;
