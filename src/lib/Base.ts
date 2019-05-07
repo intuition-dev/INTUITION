@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.21'
+      return 'v5.05.22'
    }
 }
 import colors = require('colors')
@@ -242,7 +242,7 @@ export class MBake {
             let t = new Comps(path_)
             let lst = t.get()
 
-            await t.comps(lst, prod)
+            await t.comps(lst)
 
             _this.bake(path_, prod)
                .then(function () { 
@@ -638,7 +638,7 @@ export class Comps {
       return ret
    }//()
 
-   comps(list, prod:number): Promise<string> {
+   comps(list): Promise<string> {
       const THIZ = this
       return new Promise(async function (resolve, reject) {
 
@@ -652,7 +652,7 @@ export class Comps {
          let p = name.lastIndexOf('.')
          name = name.substring(0, p)
          console.info(' ' + dir + name);
-         await THIZ.process(s, dir, dir + name, prod)
+         await THIZ.process(s, dir, dir + name)
       }
       resolve('OK')
     })
@@ -681,16 +681,18 @@ export class Comps {
 
    ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
-   process(s: string, dir: string, fn: string, prod:number):Promise<string> {
+   process(s: string, dir: string, fn: string):Promise<string> {
       const THIZ = this
       return new Promise(function (resolve, reject) {   
-
-      const r_options = { 'template': 'pug', 'basedir' : dir, 'ENV': prod }
+      
+      const r_options = { 'template': 'pug', 'basedir' : dir }
 
       logger.info('compiling', fn )
       let js
       try {
+
          js = riotc.compile(s, r_options, fn) //tagpath
+
       } catch (err) {
          beeper(1);
          logger.error('compiler error')

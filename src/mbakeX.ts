@@ -32,9 +32,9 @@ function help () {
    console.info()
 
    console.info('  To process Pug and RIOT *-comp.pug components:              mbakeX -c .')
-   console.info('    Also does regular mbake of Pug, not just comps(ENV 0).')
-   console.info('  To compsNBake with PROD flag(3) in prod:                    mbakeX --compsNBakeP .')
-   console.info('  To compsNBake with DEV  flag(1) in prod:                    mbakeX --compsNBakeD .')
+   console.info('    Also does regular mbake of Pug, not just comps.')
+   console.info('  To bake with PROD flag(3) in prod:                          mbakeX --bakeP .')
+   console.info('  To bake with DEV  flag(1) in prod:                          mbakeX --bakeD .')
    console.info()
 
    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .')
@@ -75,8 +75,8 @@ const optionDefinitions = [
    { name: 'prod', type: Boolean },
    { name: 'comps', alias: 'c', type: Boolean },
 
-   { name: 'compsNBakeP', type: Boolean },
-   { name: 'compsNBakeD', type: Boolean },
+   { name: 'bakeP', type: Boolean },
+   { name: 'bakeD', type: Boolean },
 
    { name: 'map', alias: 'm', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
@@ -157,15 +157,15 @@ function prod (arg) {
    new MBake().clearToProd(arg)
    process.exit()
 }
-function compsNBakeP(arg) {
-   let pro:Promise<string> = new MBake().compsNBake(arg, 3)
+function bakeP(arg) {
+   let pro:Promise<string> = new MBake().bake(arg, 3)
    pro.then(function(val){
       console.log(val)
       process.exit()
    })
 }
-function compsNBakeD(arg) {
-   let pro:Promise<string> = new MBake().compsNBake(arg, 1)
+function bakeD(arg) {
+   let pro:Promise<string> = new MBake().bake(arg, 1)
    pro.then(function(val){
       console.log(val)
       process.exit()
@@ -220,10 +220,10 @@ else if (argsParsed.slides)
    unzipL()
 else if (argsParsed.prod)
    prod(arg)
-else if (argsParsed.compsNBakeP)
-   compsNBakeP(arg)
-else if (argsParsed.compsNBakeD)
-   compsNBakeD(arg)
+else if (argsParsed.bakeP)
+   bakeP(arg)
+else if (argsParsed.bakeD)
+   bakeD(arg)
 else if (argsParsed.version)
    version()
 else if (argsParsed.help)
