@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.17'
+      return 'v5.05.18'
    }
 }
 import colors = require('colors')
@@ -37,11 +37,15 @@ import beeper = require('beeper');
 
 export class DownloadFrag {
    constructor(dir) {
-      download('https://unpkg.com/setup-depp-defs@0.5.1/template/headFrag.pug').then(data => {
+      console.log('Extracting to',dir)
+      download('https://unpkg.com/setup-depp-defs@0.6.2/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir+'/headFrag.pug', data)
-         console.log('Extracted to',dir)
-     })  
-   }
+     })
+     download('https://unpkg.com/setup-depp-defs@0.6.2/template/devOps.pug').then(data => {
+         fs.writeFileSync(dir+'/devOps.pug', data)
+     })
+
+   }//()
 }
 
 import * as JavaScriptObfuscator from 'javascript-obfuscator'
