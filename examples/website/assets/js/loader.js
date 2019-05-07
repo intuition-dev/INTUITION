@@ -7,6 +7,8 @@ depp.define({
 
 depp.define({
    '2nd': ['#pre'
+      , '#has-Promise'
+      , '//unpkg.com/axios@0.18.0/dist/axios.min.js'
       , '#disableAutoFill'
       , '#validator'
       , '#sweetAlert'

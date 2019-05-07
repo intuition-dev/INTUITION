@@ -1,0 +1,115 @@
+card-comp
+    .columns
+        <virtual each={ items}>
+            .column.col-11.col-mx-auto
+                a.columns(href='{url}')
+                    <virtual if={ rtl}>
+                        .column.col-6.col-xs-12.l-wrap.rtl
+                            .card-header
+                                .card-title.h5 {cardTitle}
+                                .card-subtitle.text-gray {cardSubtitle}
+                            .card-image
+                                img.img-responsive(src='{image}' alt=cardSubtitle)
+                        .column.col-6.col-xs-12.r-wrap.rtl
+                            .card-body {cardBody}
+                    </virtual >
+                    <virtual if={ nortl}>
+                        .column.col-6.col-xs-12.l-wrap
+                            .card-header
+                                .card-title.h5 {cardTitle}
+                                .card-subtitle.text-gray {cardSubtitle}
+                            .card-image
+                                img.img-responsive(src='{image}' alt=cardSubtitle)
+                        .column.col-6.col-xs-12.r-wrap
+                            .card-body {cardBody}
+                    </virtual>
+        </virtual>
+
+    style.
+        .columns {
+            margin-top: 80px;
+            position: relative;
+        }
+        card-comp > .columns:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 6px;
+            background: rgba(0,21,61, .4);
+        }
+        .column {
+            margin-bottom: 16px;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        .l-wrap, .r-wrap {
+            padding: 0 5%;
+        }
+        .l-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .l-wrap.rtl {
+            order: 2;
+            justify-content: flex-start;
+        }
+        .l-wrap.rtl .card-header {
+            order: 2;
+            margin: 0 0 0 20px;
+        }
+        .l-wrap.rtl .card-image {
+            order: 1;
+        }
+        .r-wrap.rtl {
+            order: 1;
+            text-align: right;
+        }
+        .card-header {
+            flex-shrink: 0;
+            margin-right: 20px;
+            text-align: center;
+        }
+        .card-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(0,21,61, .3);
+        }
+
+    script.
+        this.on('*', function(evt) {
+            console.info('riot', evt)
+        })
+        this.items = []
+        thiz = this
+
+        render(data) {// public
+            console.info(data);
+            if(!data ) {
+                thiz.items = []
+                thiz.update()
+                return
+            }
+            //- clone
+            var cloned = JSON.parse(JSON.stringify(data))
+            thiz.items = cloned
+
+            var sz = thiz.items.length
+            for(i = 0; i < sz; i++) {
+                var item = thiz.items[i]
+
+                item.image = ROOT + item.url + '/who.jpg'
+                item.url = ROOT + item.url
+                item.rtl = item.rtl
+                console.info(item.url)
+            }
+
+            thiz.update()
+
+        }

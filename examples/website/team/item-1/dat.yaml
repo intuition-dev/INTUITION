@@ -1,0 +1,17 @@
+basedir: ../../
+
+ROOT: '/'
+
+cardTitle: Ksenia Aglaea
+cardSubtitle: Designer
+cardBody: Cras semper molestie consequat. Donec vestibulum tortor sed nunc auctor iaculis. Nulla malesuada id orci vel pellentesque. Vivamus feugiat elit enim, id suscipit massa convallis a. Vestibulum tortor sem, dapibus in tellus eu, maximus euismod erat. Donec non faucibus elit. Phasellus turpis quam, rhoncus ac elit et, venenatis semper augue. Etiam hendrerit enim vel dolor malesuada vulputate. Pellentesque ornare mi id ex iaculis, vel venenatis lorem porta. Vivamus eget dolor erat. 
+img: 'who.jpg'
+publish: true
+nortl: true
+
+content_text: 'lored'
+image: ''
+keywords: 'lorem'
+
+publishOrder: 1
+publishDate: 1519913297

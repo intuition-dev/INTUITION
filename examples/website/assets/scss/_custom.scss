@@ -15,12 +15,11 @@ body,
 html {
    margin: 0;
    padding: 0;
-   height: 100%;
+   min-height: 100vh;
 }
 
 body {
    background: linear-gradient(-45deg, $gray-color-light 50%, white 50%);
-   padding-bottom: 70px;
 }
 
 h1,
@@ -125,16 +124,13 @@ ul {
 
 .l-wrapper {
    // height: calc(100% - 65px);
+   min-height: calc(100vh - 65px);
+   height: 100%;
    position: relative;
+   padding-bottom: 70px;
    ul {
       list-style-type: none;
       margin-left: 0;
-   }
-}
-
-@media (max-height: 700px) {
-   .l-wrapper, body, html {
-      height: initial;
    }
 }
 
@@ -254,6 +250,7 @@ header {
 #navOpen {
    left: 0;
    right: 0;
+   z-index: 99;
    margin-left: auto;
    width: 91.66666667%;
    background: rgba(0,21,61,0.85);
@@ -325,7 +322,7 @@ footer {
    left: 0;
    right: 0;
    bottom: 0px;
-   z-index: 999;
+   z-index: 1;
 }
 
 .text-fixed {
@@ -347,7 +344,7 @@ footer {
 .contact-form-wrap {
    background: white;
    position: relative;
-   z-index: 999;
+   z-index: 1;
    padding: 1rem 1rem 3rem 1rem;
    
    &:before {
@@ -366,5 +363,14 @@ footer {
 .white-bg {
    background: white;
    position: relative;
-   z-index: 999;
+   z-index: 1;
+}
+
+.card {
+   .img-responsive {
+      height: 250px;
+      min-width: 100%;
+      display: block;
+      object-fit: cover;
+   }
 }

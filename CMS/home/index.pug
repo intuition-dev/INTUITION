@@ -23,6 +23,10 @@ block main
 
                 var sortedItems = resp.data.items.filter(e => {
 
+                        if (typeof publishDate === 'undefined') {
+                            return true;
+                        }
+                        
                         var res = e.publishDate <= currentTime;
                         return res;
 
