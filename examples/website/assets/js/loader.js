@@ -10,6 +10,7 @@ depp.define({
       , '#disableAutoFill'
       , '#validator'
       , '#sweetAlert'
+      , '#emailjs'
    ]
 }); //define 2nd
 
@@ -21,7 +22,7 @@ depp.define({
    ]
 }); //define css
 
-depp.require(['pre', 'css'], onLoaded); //d2
+depp.require(['pre'], onLoaded); //d2
 
 // usage: ////////////////////////////////////////////////////////////////////
 function onLoaded() {// 'show' page, ex: unhide

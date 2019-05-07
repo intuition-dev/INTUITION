@@ -20,6 +20,7 @@ html {
 
 body {
    background: linear-gradient(-45deg, $gray-color-light 50%, white 50%);
+   padding-bottom: 70px;
 }
 
 h1,
@@ -123,7 +124,8 @@ ul {
 }
 
 .l-wrapper {
-   height: calc(100% - 65px);
+   // height: calc(100% - 65px);
+   position: relative;
    ul {
       list-style-type: none;
       margin-left: 0;
@@ -154,10 +156,17 @@ header {
       & a {
          color: $primary-color;
          font-size: .8rem;
+
          &:hover {
             background: 0;
             color: $primary-color;
          }
+
+         &:hover, &:active, &:focus {
+            outline: none;
+            box-shadow: none;
+         }
+
       }
 
       > li { 
@@ -311,4 +320,51 @@ header {
 footer {
    padding: 1rem 0;
    font-size: .7rem;
+
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 0px;
+   z-index: 999;
+}
+
+.text-fixed {
+   height: 250px;
+   h2, h4, ul {
+      position: fixed;
+   }
+   h2 {
+      top: 140px;
+   }
+   h4 {
+      top: 200px;
+   }
+   ul {
+      top: 230px;
+   }
+}
+
+.contact-form-wrap {
+   background: white;
+   position: relative;
+   z-index: 999;
+   padding: 1rem 1rem 3rem 1rem;
+   
+   &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -2px;
+      height: 3px;
+      @include gradient($primary-color, red);
+   }
+
+}
+
+.white-bg {
+   background: white;
+   position: relative;
+   z-index: 999;
 }
