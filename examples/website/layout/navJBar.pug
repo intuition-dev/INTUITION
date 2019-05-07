@@ -11,11 +11,17 @@ script(src='/assets/3rd/navJBar.js')
                a(href='#') About
                ul
                   li
+                     a(href='/strategy') Strategy
+                  li
                      a(href='/contacts') Contacts
             li
-               a(href='#') Showcase
+               a(href='showcase') Showcase
             li
-               a(href='#') Blog
+               a(href='/blog') Blog
+            li
+               a(href='/team') Team
+            li
+               a(href='/news') News
 
          .show-lg#navBarCont
             svg.bord.featherSVG(viewBox='0 0 24 24')
@@ -26,7 +32,7 @@ script(src='/assets/3rd/navJBar.js')
 #navOpen.show-lg.col-11.col-mx-auto
 
 script.
-   depp.require(['pre', 'deviceready'], setupNav) 
+   depp.require(['pre'], setupNav) 
 
    function setupNav() {
       console.info('navJBar')
