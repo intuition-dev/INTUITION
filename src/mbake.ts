@@ -134,8 +134,8 @@ if (arg) {
 }
 
 //  ////////////////////////////////////////////////////////////////////////////////////////////////
-function bake (arg) {
-   let pro:Promise<string> = new MBake().bake(arg)
+function bake(arg) {
+   let pro:Promise<string> = new MBake().bake(arg, 0)
 
    pro.then(function(val){
       console.log(val)
@@ -143,8 +143,8 @@ function bake (arg) {
    })
 }
 
-function itemize (arg) {
-   let pro:Promise<string> = new MBake().itemizeNBake(arg)
+function itemize(arg) {
+   let pro:Promise<string> = new MBake().itemizeNBake(arg, 0)
    
    pro.then(function(val){
       console.log(val)
@@ -152,7 +152,7 @@ function itemize (arg) {
    })
 }
 
-function css (arg) {
+function css(arg) {
    let pro:Promise<string> = new Sas().css(arg)
 
    pro.then(function(val){
@@ -161,7 +161,7 @@ function css (arg) {
    })
 }
 
-function minJS (arg) {
+function minJS(arg) {
    let min = new MinJS()
    let pro:Promise<string> =min.ts(arg)
    pro.then(function(val){

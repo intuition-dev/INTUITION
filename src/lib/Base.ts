@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.18'
+      return 'v5.05.19'
    }
 }
 import colors = require('colors')
@@ -38,10 +38,10 @@ import beeper = require('beeper');
 export class DownloadFrag {
    constructor(dir) {
       console.log('Extracting to',dir)
-      download('https://unpkg.com/setup-depp-defs@0.6.2/template/headFrag.pug').then(data => {
+      download('https://unpkg.com/setup-depp-defs@0.6.3/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir+'/headFrag.pug', data)
      })
-     download('https://unpkg.com/setup-depp-defs@0.6.2/template/devOps.pug').then(data => {
+     download('https://unpkg.com/setup-depp-defs@0.6.3/template/devOps.pug').then(data => {
          fs.writeFileSync(dir+'/devOps.pug', data)
      })
 
@@ -196,7 +196,7 @@ export class Dat {
 
 export class MBake {
 
-   bake(path_): Promise<string> {
+   bake(path_, prod:number): Promise<string> {
       return new Promise(function (resolve, reject) {
          if (!path_ || path_.length < 1) {
             console.info('no path_ arg passed')
@@ -218,7 +218,7 @@ export class MBake {
 
             for (let val of dirs) {
                let n = new BakeWrk(val)
-               n.bake()
+               n.bake(prod)
             }
             resolve('OK')
          } catch (err) {
@@ -228,7 +228,7 @@ export class MBake {
       })//pro
    }//()
 
-   compsNBake(path_): Promise<string> {
+   compsNBake(path_, prod:number): Promise<string> {
       let _this = this
       return new Promise(async function (resolve, reject) {
 
@@ -244,7 +244,7 @@ export class MBake {
 
             await t.comps(lst)
 
-            _this.bake(path_)
+            _this.bake(path_, prod)
                .then(function () { 
                   resolve('OK') })
                .catch(function (err) {
@@ -293,7 +293,7 @@ export class MBake {
    }
 
    // itemize and bake
-   itemizeNBake(ppath_): Promise<string> {
+   itemizeNBake(ppath_, prod:number): Promise<string> {
       let _this = this
       return new Promise(function (resolve, reject) {
          if (!ppath_ || ppath_.length < 1) {
@@ -311,7 +311,7 @@ export class MBake {
             reject(err)
          }
 
-         _this.bake(ppath_)
+         _this.bake(ppath_, prod)
             .then(function () { resolve('OK') })
             .catch(function (err) {
                logger.info(err)
@@ -398,7 +398,7 @@ export class BakeWrk {
       sortClassName: true
    }
 
-   bake() {
+   bake(prod:number) {
       let tstFile = this.dir + '/index.pug'
       if (!fs.existsSync(tstFile)) {
          return
@@ -414,6 +414,8 @@ export class BakeWrk {
          marp: BakeWrk.marp
       }
 
+      options['ENV'] =  prod
+ 
       if (this.locAll(options)) // if locale, we are not writing here, but in sub folders.
          return ' '
 

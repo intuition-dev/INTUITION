@@ -34,6 +34,8 @@ function help () {
    console.info('  To process Pug and RIOT *-comp.pug tags/components:         mbakeX -c .')
    console.info('     also does regular mbake of Pug')
 
+   console.info('  To bake with PROD flag(3) in prod:                          mbakeX --bakeWP .')
+
    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .')
    console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbakeX -i .')
    console.info('  To process list.csv to list.json:                           mbakeX -l .')
@@ -66,11 +68,13 @@ const optionDefinitions = [
 
    { name: 'watcher', alias: 'w', type: Boolean },
 
-   { name: 'prod', type: Boolean },
    { name: 'port', alias: 'p', type: String },
    { name: 'reload-port', alias: 'r', type: String },
 
+   { name: 'prod', type: Boolean },
    { name: 'comps', alias: 'c', type: Boolean },
+
+   { name: 'bakeWP', type: Boolean },
 
    { name: 'map', alias: 'm', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
@@ -140,7 +144,7 @@ function img (arg) {
 }
 
 function comps (arg) {
-   let pro:Promise<string> = new MBake().compsNBake(arg)
+   let pro:Promise<string> = new MBake().compsNBake(arg, 0)
    pro.then(function(val){
       console.log(val)
       process.exit()
@@ -151,6 +155,14 @@ function prod (arg) {
    new MBake().clearToProd(arg)
    process.exit()
 }
+function bakeWP(arg) {
+   let pro:Promise<string> = new MBake().bake(arg, 3)
+   pro.then(function(val){
+      console.log(val)
+      process.exit()
+   })
+}
+
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
 if (arg) {
    arg = Dirs.slash(arg)
@@ -199,6 +211,8 @@ else if (argsParsed.slides)
    unzipL()
 else if (argsParsed.prod)
    prod(arg)
+else if (argsParsed.bakeWP)
+   bakeWP(arg)
 else if (argsParsed.version)
    version()
 else if (argsParsed.help)

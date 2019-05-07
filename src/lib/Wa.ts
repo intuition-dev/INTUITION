@@ -180,20 +180,20 @@ export class MetaPro {
 
       let folder = this.mount + '/' + dir
       logger.info(folder)
-      return this.b.bake(folder)
+      return this.b.bake(folder, 0)
    }
 
    comps(dir: string): Promise<string> {
       let folder = this.mount + '/' + dir
       logger.info(folder)
-      return this.b.compsNBake(folder)
+      return this.b.compsNBake(folder, 0)
    }
    map(): Promise<string> {
       return this.m.gen()
    }
 
    itemize(dir: string): Promise<string> {
-      return this.b.itemizeNBake(this.mount + '/' + dir)
+      return this.b.itemizeNBake(this.mount + '/' + dir, 0)
    }
 
    css(dir: string):Promise<string> {
