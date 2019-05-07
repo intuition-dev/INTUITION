@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.20'
+      return 'v5.05.21'
    }
 }
 import colors = require('colors')
@@ -242,7 +242,7 @@ export class MBake {
             let t = new Comps(path_)
             let lst = t.get()
 
-            await t.comps(lst)
+            await t.comps(lst, prod)
 
             _this.bake(path_, prod)
                .then(function () { 
@@ -638,7 +638,7 @@ export class Comps {
       return ret
    }//()
 
-   comps(list): Promise<string> {
+   comps(list, prod:number): Promise<string> {
       const THIZ = this
       return new Promise(async function (resolve, reject) {
 
@@ -652,7 +652,7 @@ export class Comps {
          let p = name.lastIndexOf('.')
          name = name.substring(0, p)
          console.info(' ' + dir + name);
-         await THIZ.process(s, dir, dir + name)
+         await THIZ.process(s, dir, dir + name, prod)
       }
       resolve('OK')
     })
@@ -681,11 +681,11 @@ export class Comps {
 
    ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
-   process(s: string, dir: string, fn: string):Promise<string> {
+   process(s: string, dir: string, fn: string, prod:number):Promise<string> {
       const THIZ = this
       return new Promise(function (resolve, reject) {   
 
-      const r_options = { 'template': 'pug', 'basedir' : dir }
+      const r_options = { 'template': 'pug', 'basedir' : dir, 'ENV': prod }
 
       logger.info('compiling', fn )
       let js
