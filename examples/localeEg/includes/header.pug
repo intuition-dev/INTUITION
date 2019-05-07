@@ -1,0 +1,48 @@
+header
+    nav
+        a(href='#') you site name
+        div.nav-item
+            a(href='/pg1/'+LOCALE, data-id="lang").links Page 1
+            a(href='/pg2/'+LOCALE, data-id="lang").links Page 2
+            form(name="select_language")
+                select(name="lang")
+                    option(value='en') EN
+                    option(value='ru') RU
+                    option(value='de') DE
+    script.
+        var form = document.forms[0];
+        var select = form.elements.lang;
+        
+        var lang = window.localStorage.getItem('lang');
+        
+        if(lang != null){
+            select.value = lang
+        }else {
+            select.value = 'en' //default value for language
+        }
+
+        select.onchange = function(event){
+            var option = event.target.selectedOptions[0]
+            select.value = option.value
+            
+            window.localStorage.setItem('lang', option.value);
+            
+            //get all .links, and replace its language
+            var links = document.querySelectorAll('a.links')
+            
+            for(var i=0; i< links.length; i++){
+                links[i].href = links[i].href.slice(0,-2) + option.value
+            }
+        }
+    
+    style. 
+        nav {
+            display: flex;
+            justify-content: space-between;
+        }
+        .nav-item {
+            display: flex;
+        }
+        .nav-item  a {
+            margin-right: 16px;
+        }
