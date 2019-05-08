@@ -1,26 +1,26 @@
 card-comp
     .columns
         <virtual each={ items}>
-            .column.col-11.col-mx-auto
+            .column.col-11.col-lg-12.col-mx-auto
                 a.columns(href='{url}')
                     <virtual if={ rtl}>
-                        .column.col-6.col-xs-12.l-wrap.rtl
+                        .column.col-6.col-md-12.l-wrap.rtl
                             .card-header
                                 .card-title.h5 {cardTitle}
                                 .card-subtitle.text-gray {cardSubtitle}
                             .card-image
                                 img.img-responsive(src='{image}' alt=cardSubtitle)
-                        .column.col-6.col-xs-12.r-wrap.rtl
+                        .column.col-6.col-md-12.r-wrap.rtl
                             .card-body {cardBody}
                     </virtual >
                     <virtual if={ nortl}>
-                        .column.col-6.col-xs-12.l-wrap
+                        .column.col-6.col-md-12.l-wrap
                             .card-header
                                 .card-title.h5 {cardTitle}
                                 .card-subtitle.text-gray {cardSubtitle}
                             .card-image
                                 img.img-responsive(src='{image}' alt=cardSubtitle)
-                        .column.col-6.col-xs-12.r-wrap
+                        .column.col-6.col-md-12.r-wrap
                             .card-body {cardBody}
                     </virtual>
         </virtual>
@@ -80,6 +80,33 @@ card-comp
             border-radius: 50%;
             overflow: hidden;
             border: 4px solid rgba(0,21,61, .3);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 960px) {
+            card-comp .card-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 840px) {
+            card-comp > .columns:after {
+                display: none;
+            }
+            .l-wrap, .l-wrap.rtl {
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+            .columns {
+                margin-top: 40px;
+            }
+            .card-body {
+                text-align: center;
+            }
+            .r-wrap.rtl {
+                order: 2;
+            }
         }
 
     script.

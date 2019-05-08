@@ -3,13 +3,14 @@ extends /layout/layout
 block main
     section.l-section-container
         .container
-            .columns
+            .columns.team-single
                 .column.col-11.col-mx-auto
                     .card
-                        .card-header
-                            .card-title.h5 #{cardTitle}
-                            .card-subtitle.text-gray #{cardSubtitle}
-                        .card-image
-                            img.img-responsive(src='who.jpg' alt=cardSubtitle)
+                        .d-flex
+                            .card-header
+                                .card-title.h5 #{cardTitle}
+                                .card-subtitle.text-gray #{cardSubtitle}
+                            .card-image
+                                img.img-responsive(src='who.jpg' alt=cardSubtitle)
                         .card-body #{cardBody}
                          
