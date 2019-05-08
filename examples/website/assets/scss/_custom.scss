@@ -11,6 +11,15 @@
    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$primary-color', endColorstr='$color2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+@mixin vertical-gradient($color1, $color2) {
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100 */
+   background: $color1; /* Old browsers */
+   background: -moz-linear-gradient(top, $color1 0%, $color2 100%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(top, $color1 0%,$color2 100%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(to bottom, $color1 0%,$color2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=0 ); /* IE6-9 */
+}
+
 body,
 html {
    margin: 0;
@@ -373,4 +382,192 @@ footer {
       display: block;
       object-fit: cover;
    }
+}
+
+card-comp a {
+   &, &:hover, &:active, &:focus, &:visited {
+      outline: none;
+      box-shadow: none;
+      color: $primary-color;
+      text-decoration: none;
+   }
+}
+
+.slick {
+   &-arrow {
+      position: absolute;
+      z-index: 9;
+      top: 50%;
+      border: 0;
+      background: 0;
+      cursor: pointer;
+
+      //arrow
+      transition: all .2s;
+      display: inline-block;
+      vertical-align: middle;
+      font-style: normal;
+      color: currentColor;
+      text-align: left;
+      text-indent: -9999px;
+      direction: ltr;
+
+      &, &:hover, &:active, &:focus {
+         outline: none;
+         box-shadow: none;
+      }
+
+      &:after, &:before {
+         content: '';
+         pointer-events: none;
+      }
+
+   }
+
+   &-prev {
+      left: -20px;
+
+      //arrow
+      width: 12px;
+      height: 20px;
+      margin: 7px 11px;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+
+      &:after, &:before {
+         width: 14px;
+         height: 2px;
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         margin: auto 0;
+         right: 2px;
+         box-shadow: inset 0 0 0 32px;
+         -webkit-transform-origin: right;
+         transform-origin: right;
+         content: '';
+         pointer-events: none;
+      }
+
+      &:before {
+         -webkit-transform: rotate(45deg);
+         transform: rotate(45deg);
+      }
+
+      &:after {
+         -webkit-transform: rotate(-45deg);
+         transform: rotate(-45deg);
+      }
+
+   }
+
+   &-next {
+      right: -20px;
+
+      //arrow
+      width: 12px;
+      height: 20px;
+      margin: 7px 11px;
+
+      &:before, &:after {
+         width: 14px;
+         height: 2px;
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         margin: auto 0;
+         right: 2px;
+         box-shadow: inset 0 0 0 32px;
+         -webkit-transform-origin: right;
+         transform-origin: right;
+      }
+
+      &:before {
+         -webkit-transform: rotate(45deg);
+         transform: rotate(45deg);
+      }
+
+      &:after {
+         -webkit-transform: rotate(-45deg);
+         transform: rotate(-45deg);
+      }
+
+   }
+
+}
+
+.slick-slide {
+   border: 0;
+   outline: none;
+}
+
+.news-slider {
+   
+   .card {
+      background: 0;
+
+      &-image {
+         position: relative;
+         height: 400px;
+         margin: 0 10px;
+   
+         img {
+            min-height: 100%;
+            min-width: 100%;
+            object-fit: cover;
+         }
+   
+         .text-wrap {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            @include vertical-gradient(rgba(0,0,0,0), black); 
+         }
+   
+      }
+
+      &-subtitle {
+         text-transform: uppercase;
+         margin-bottom: 15px;
+         font-weight: 300;
+         font-size: 14px;
+      }
+
+      &-title {
+         color: rgba(white, .7);
+      }
+
+      &-footer {
+         height: 0;
+         opacity: 0;
+         transition: all 1s ease-in-out;
+      }
+
+      &:hover {
+         .card-footer {
+            height: initial;
+            opacity: 1;
+         }
+      }
+
+      .btn {
+
+         &:active, &:focus, &:hover {
+            background: rgba(0,21,61,.9);
+            border-color: #00102e;
+            text-decoration: none;
+            color: white;
+         }
+
+      }
+
+   }
+
 }
