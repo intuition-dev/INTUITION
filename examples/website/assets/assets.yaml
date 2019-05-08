@@ -1,3 +1,4 @@
 css:
 - scss/spectre.scss
 - scss/spectreTop.scss
+- amp/amp.scss
