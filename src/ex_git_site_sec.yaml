@@ -1,7 +1,0 @@
-
-from: /Users/code/Documents/GitHub/someCode
-
-port: 22
-username: user1u
-password: 123123
-hostFolder: /www

@@ -6,6 +6,6 @@ tsc
 
 # node mbake.js -t /Users/code/Documents/GitHub/alan/al-prod
 
-node mbake.js -f .
+node mbakeX.js --git .
 
 

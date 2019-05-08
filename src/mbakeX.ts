@@ -6,7 +6,7 @@ import commandLineArgs = require('command-line-args')
 
 import { Ver, Dirs, MBake } from './lib/Base'
 import { Wa, CSV2Json, Map } from './lib/Wa'
-import { Resize } from './lib/Sa'
+import { Resize, Git } from './lib/Sa'
 
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
@@ -64,6 +64,8 @@ function help () {
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
+   { name: 'git', type: Boolean },
+
    { name: 'mbakeX', defaultOption: true },
 
    { name: 'help', alias: 'h', type: Boolean },
@@ -97,6 +99,9 @@ let arg: string = argsParsed.mbakeX
 console.info()
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
+function git(arg) {
+   new Git(arg)
+}
 function unzipG () {
    let src: string = __dirname + '/PGap.zip'
    let zip = new AdmZip(src)
@@ -236,6 +241,8 @@ else if (argsParsed.bakeS)
    bakeS(arg)
 else if (argsParsed.bakeD)
    bakeD(arg)
+else if (argsParsed.git)
+   git(arg)
 else if (argsParsed.version)
    version()
 else if (argsParsed.help)

@@ -22,11 +22,25 @@ import * as ts from "typescript"
 import UglifyJS = require("uglify-es")
 import decomment = require('decomment')
 
+
 //import colors = require('colors');
 const logger = require('tracer').console()
 
 
 // //////////////////////////////////////////////////////////////////
+export class Git {//es5
+   constructor(dir) {
+      const simpleGit = require('simple-git')()
+      
+      simpleGit.branch(function(err, bran){
+         if(err)  {
+            console.warn(err)
+            return
+         }
+         console.log(bran.all)
+      })
+   }//()
+}//class
 
 export class MinJS {//es5
 
@@ -305,5 +319,5 @@ export class Sas {
 }//class
 
 module.exports = {
-   Sas, Resize, YamlConfig, MinJS
+   Sas, Resize, YamlConfig, MinJS, Git
 }
