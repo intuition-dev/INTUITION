@@ -32,9 +32,11 @@ function help () {
    console.info()
 
    console.info('  To process Pug and RIOT *-comp.pug components:              mbakeX -c .')
-   console.info('    Also does regular mbake of Pug, not just comps.')
-   console.info('  To bake with PROD flag(3) in prod:                          mbakeX --bakeP .')
-   console.info('  To bake with DEV  flag(1) in prod:                          mbakeX --bakeD .')
+   console.info('    -c also does regular mbake of Pug, not just comps.')
+   console.info('  To bake with dev. ENV flag(1) in prod(default is 0):        mbakeX --bakeD .')
+   console.info('  To bake with staging ENV flag(2) in prod:                   mbakeX --bakeS .')
+   console.info('  To bake with production ENV flag(3) in prod:                mbakeX --bakeP .')
+
    console.info()
 
    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .')
@@ -76,6 +78,7 @@ const optionDefinitions = [
    { name: 'comps', alias: 'c', type: Boolean },
 
    { name: 'bakeP', type: Boolean },
+   { name: 'bakeS', type: Boolean },
    { name: 'bakeD', type: Boolean },
 
    { name: 'map', alias: 'm', type: Boolean },
@@ -164,6 +167,13 @@ function bakeP(arg) {
       process.exit()
    })
 }
+function bakeS(arg) {
+   let pro:Promise<string> = new MBake().bake(arg, 2)
+   pro.then(function(val){
+      console.log(val)
+      process.exit()
+   })
+}
 function bakeD(arg) {
    let pro:Promise<string> = new MBake().bake(arg, 1)
    pro.then(function(val){
@@ -222,6 +232,8 @@ else if (argsParsed.prod)
    prod(arg)
 else if (argsParsed.bakeP)
    bakeP(arg)
+else if (argsParsed.bakeS)
+   bakeS(arg)
 else if (argsParsed.bakeD)
    bakeD(arg)
 else if (argsParsed.version)
