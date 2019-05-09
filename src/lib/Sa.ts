@@ -22,7 +22,7 @@ import * as ts from "typescript"
 import UglifyJS = require("uglify-es")
 import decomment = require('decomment')
 
-var Git = require("nodegit")
+//var Git = require("nodegit")
 
 //import colors = require('colors');
 const logger = require('tracer').console()
@@ -35,7 +35,7 @@ export class Gith { // WIP
    constructor(dir) {
       this.config = yaml.load(fs.readFileSync('ex_git.yaml'))
       logger.trace(this.config)
-      console.log(Git. Time.monotonic())
+      //console.log(Git. Time.monotonic())
    }//()
 
    process() {
