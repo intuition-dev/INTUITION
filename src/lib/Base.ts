@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.26'
+      return 'v5.05.27'
    }
 }
 import colors = require('colors')
@@ -48,7 +48,7 @@ export class DownloadFrag {
    }//()
 }
 
-import * as JavaScriptObfuscator from 'javascript-obfuscator'
+import JavaScriptObfuscator = require('javascript-obfuscator')
 import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
 
 // code /////////////////////////////////////////////////////////////////////
