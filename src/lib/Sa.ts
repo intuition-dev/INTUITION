@@ -22,32 +22,20 @@ import * as ts from "typescript"
 import UglifyJS = require("uglify-es")
 import decomment = require('decomment')
 
-import simpleGit from 'simple-git/promise'
+var Git = require("nodegit")
 
 //import colors = require('colors');
 const logger = require('tracer').console()
 
 
 // //////////////////////////////////////////////////////////////////
-export class Gith {
-   git
+export class Gith { // WIP
    brans
    config
    constructor(dir) {
       this.config = yaml.load(fs.readFileSync('ex_git.yaml'))
       logger.trace(this.config)
-      this.git = simpleGit()
-   }//()
-
-   prep():any {
-      const THIZ = this
-      return THIZ.git.branch(function(err, bran){
-         if(err)  {
-            logger.warn(err)
-            throw err
-         }
-         THIZ.brans = bran.all
-   })//pro
+      console.log(Git. Time.monotonic())
    }//()
 
    process() {
@@ -61,7 +49,6 @@ export class Gith {
       //this.git.clone('repo', 'localPath')
 
    }
-
 
 }//class
 

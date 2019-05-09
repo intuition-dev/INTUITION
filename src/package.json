@@ -42,6 +42,7 @@
       "command-line-args": ">=5.1.1",
       "csvtojson": ">=2.0.8",
       "decomment": ">=0.9.2",
+      "download": ">=7.1.0",
       "express": ">=4.16.4",
       "express-interceptor": ">=1.2.0",
       "filehound": ">=1.17.0",
@@ -54,6 +55,7 @@
       "markdown-it": ">=8.4.2",
       "markdown-it-container": ">=2.0.0",
       "node-sass": ">=4.12.0",
+      "nodegit": ">=0.24.3",
       "open": ">=6.2.0",
       "probe-image-size": ">=4.0.0",
       "pug": ">=2.0.3",
@@ -67,10 +69,7 @@
       "traverse": ">=0.6.6",
       "typescript": ">=3.4.5",
       "uglify-es": ">=3.3.9",
-      "unfluff": ">=3.2.0",
-      "download": ">=7.1.0",
-      "simple-git": ">=1.113.0"
-
+      "unfluff": ">=3.2.0"
    },
    "devDependencies": {
       "@types/node": ">=12.0.0",
@@ -78,6 +77,5 @@
       "javascript-state-machine": ">=3.1.0",
       "jstransformer": ">=1.0.0",
       "npm-check-updates": ">=3.1.9"
-
    }
 }

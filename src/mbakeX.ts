@@ -100,13 +100,7 @@ console.info()
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function git(arg) {
-   let g = new Gith(arg)
-   g.prep().then(function(val){
-      console.log('Git', arg)
-      console.log(val)
-      g.process()
-   })//pro
-
+   let gg = new Gith(arg)
 }//()
 
 function unzipG () {
