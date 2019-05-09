@@ -323,7 +323,7 @@ export class FileOps {
    }
 
    clone(src, dest): Promise<string> {
-      return new Promise(function (resolve, reject) {
+      return new Promise( (resolve, reject) => {
       logger.info('copy?')
 
       fs.copySync(this.root + src, this.root + dest)
