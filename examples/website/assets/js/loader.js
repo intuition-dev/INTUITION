@@ -1,14 +1,15 @@
 depp.define({
    'pre': [
       '#jquery'
-      , '#zenscroll'
+      , '//unpkg.com/axios@0.18.0/dist/axios.min.js'
+
    ]
 }); //define pre
 
 depp.define({
    '2nd': ['#pre'
-      , '#has-Promise'
-      , '//unpkg.com/axios@0.18.0/dist/axios.min.js'
+      , '#polly'
+      , '#zenscroll'
       , '#disableAutoFill'
       , '#validator'
       , '#sweetAlert'
@@ -19,7 +20,7 @@ depp.define({
 depp.define({
    'css': ['#2nd'
       , '/assets/css/spectre.css'
-      , 'css!//fonts.googleapis.com/css?family=Open+Sans:300,400,600'
+      , '#OpenSans'
       , '#OswaldFont'//headings
    ]
 }); //define css
