@@ -1,7 +1,10 @@
 
-
 USER: 'something'
 
-REPO: 'github.com/username/repo'
+#emoty '' or HEAD is head.
+BRANCH: 'v18-05-02b' 
 
-BRANCH: 'v18-05-02b'
+REPO: 'github.com/username/repo'
+REPODIR: 'api'
+LOCALPATH: ''
+

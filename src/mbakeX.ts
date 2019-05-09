@@ -6,7 +6,7 @@ import commandLineArgs = require('command-line-args')
 
 import { Ver, Dirs, MBake } from './lib/Base'
 import { Wa, CSV2Json, Map } from './lib/Wa'
-import { Resize, Git } from './lib/Sa'
+import { Resize, Gith } from './lib/Sa'
 
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
@@ -100,8 +100,15 @@ console.info()
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function git(arg) {
-   new Git(arg)
-}
+   let g = new Gith(arg)
+   g.prep().then(function(val){
+      console.log('Git', arg)
+      console.log(val)
+      g.process()
+   })//pro
+
+}//()
+
 function unzipG () {
    let src: string = __dirname + '/PGap.zip'
    let zip = new AdmZip(src)

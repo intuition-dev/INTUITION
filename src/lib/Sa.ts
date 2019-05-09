@@ -22,24 +22,47 @@ import * as ts from "typescript"
 import UglifyJS = require("uglify-es")
 import decomment = require('decomment')
 
+import simpleGit from 'simple-git/promise'
 
 //import colors = require('colors');
 const logger = require('tracer').console()
 
 
 // //////////////////////////////////////////////////////////////////
-export class Git {//es5
+export class Gith {
+   git
+   brans
+   config
    constructor(dir) {
-      const simpleGit = require('simple-git')()
-      
-      simpleGit.branch(function(err, bran){
-         if(err)  {
-            console.warn(err)
-            return
-         }
-         console.log(bran.all)
-      })
+      this.config = yaml.load(fs.readFileSync('ex_git.yaml'))
+      logger.trace(this.config)
+      this.git = simpleGit()
    }//()
+
+   prep():any {
+      const THIZ = this
+      return THIZ.git.branch(function(err, bran){
+         if(err)  {
+            logger.warn(err)
+            throw err
+         }
+         THIZ.brans = bran.all
+   })//pro
+   }//()
+
+   process() {
+      logger.info(this.brans)
+      this._clone()
+   }
+
+   _clone() {
+      logger.info(this.brans)
+
+      //this.git.clone('repo', 'localPath')
+
+   }
+
+
 }//class
 
 export class MinJS {//es5
@@ -319,5 +342,5 @@ export class Sas {
 }//class
 
 module.exports = {
-   Sas, Resize, YamlConfig, MinJS, Git
+   Sas, Resize, YamlConfig, MinJS, Gith
 }
