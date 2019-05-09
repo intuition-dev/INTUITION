@@ -38,10 +38,10 @@ import beeper = require('beeper');
 export class DownloadFrag {
    constructor(dir) {
       console.log('Extracting to',dir)
-      download('https://unpkg.com/setup-depp-defs@0.6.7/template/headFrag.pug').then(data => {
+      download('https://unpkg.com/setup-depp-defs@0.6.8/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir+'/headFrag.pug', data)
      })
-     download('https://unpkg.com/setup-depp-defs@0.6.7/template/devOps.pug').then(data => {
+     download('https://unpkg.com/setup-depp-defs@0.6.8/template/devOps.pug').then(data => {
          fs.writeFileSync(dir+'/devOps.pug', data)
      })
 
