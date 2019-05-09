@@ -33,26 +33,43 @@ export class Gith { // WIP
    config
    remote
    pass='gdavor129'
-   constructor(dir) {
+   constructor(pass) {
+      console.log(pass)
       this.config = yaml.load(fs.readFileSync('ex_git.yaml'))
       logger.trace(this.config)
       
-      this.remote =  'https://'+this.config.USER +':'
+      this.remote =  'https://'+this.config.USERNAME +':'
       this.remote += this.pass +'@'
       this.remote += this.config.REPO
       console.log(this.remote)
+      
+      //login:
+      git.addConfig('user.name', this.config.USERNAME)
+      git.addConfig('user.email', this.config['USER-EMAIL'])
+      git.addConfig('remote.origin.url', this.remote +'.git')
+
    }//()
 
    process() {
+      this._branchExists('xx')
+   }//()
 
+   _login() {
+
+
+      //git config remote.origin.url https://{USERNAME}:{PASSWORD}@github.com/{USERNAME}/{REPONAME}.git
+   }
+
+   _branchExists(branch) {
       git.listRemote(['--heads']).then(function(data){
          console.log(data)
       })
+   }//()
+
+   _makeBranch(){
+
    }
-
-   _clone() {
-
-
+   _clone(){
 
    }
 
