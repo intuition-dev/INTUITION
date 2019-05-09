@@ -61,6 +61,7 @@
       "reload": ">=3.0.1",
       "riot-compiler": ">=3.6.0",
       "sharp": ">=0.22.1",
+      "simple-git": "^1.113.0",
       "sitemap": ">=2.2.0",
       "strip-css-comments": ">=4.0.0",
       "terser": ">=3.17.0",
