@@ -31,14 +31,21 @@ const logger = require('tracer').console()
 // //////////////////////////////////////////////////////////////////
 export class Gith { // WIP
    config
+   remote
+   pass='gdavor129'
    constructor(dir) {
       this.config = yaml.load(fs.readFileSync('ex_git.yaml'))
       logger.trace(this.config)
       
+      this.remote =  'https://'+this.config.USER +':'
+      this.remote += this.pass +'@'
+      this.remote += this.config.REPO
+      console.log(this.remote)
    }//()
 
    process() {
-      git.status().then(function(data){
+
+      git.listRemote(['--heads']).then(function(data){
          console.log(data)
       })
    }

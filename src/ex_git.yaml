@@ -1,13 +1,13 @@
 
-USER: 'something'
+USER: 'cekvenich'
 
 #empty '' or HEAD is head.
 BRANCH: 'v18-05-02b' 
 
 # will clone to folder, then pull up
 REPO-DIR: 'api'
-REPO: 'github.com/username/repo'
+REPO: 'github.com/metabake/mbakeUIThemes'
 
 # must be empty expect git.yaml
-LOCALPATH: ''
+LOCALPATH: 'api'
 
