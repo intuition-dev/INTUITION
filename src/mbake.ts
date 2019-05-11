@@ -108,7 +108,7 @@ function unzipE () {
    process.exit()
 }
 function frag(arg) {
-   new DownloadFrag(arg)
+   new DownloadFrag(arg, false)
 }
 
 // get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
