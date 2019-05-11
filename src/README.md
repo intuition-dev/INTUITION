@@ -218,6 +218,6 @@ Now that you know mbake foundation, here are some choices for next things to lea
 
 - Full Docs: [docs.Metabake.org](http://docs.Metabake.org)
 - [Metabake.org](https://www.Metabake.org)
-- [blog.Metabake.org](http://blog.Metabake.org)
+- [blog.Metabake.net](http://blog.Metabake.net)
 - [Github](http://git.Metabake.org)
 - Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)
