@@ -22,7 +22,6 @@ import * as ts from "typescript"
 import UglifyJS = require("uglify-es")
 import decomment = require('decomment')
 
-const git = require('simple-git/promise')()
 
 //import colors = require('colors');
 const logger = require('tracer').console()
@@ -33,6 +32,7 @@ export class Gith { // WIP
    config
    remote
    pass='gdavor129'
+   git : any
    constructor(pass) {
       console.log(pass)
       this.config = yaml.load(fs.readFileSync('ex_git.yaml'))
@@ -44,9 +44,9 @@ export class Gith { // WIP
       console.log(this.remote)
       
       //login:
-      git.addConfig('user.name', this.config.USERNAME)
-      git.addConfig('user.email', this.config['USER-EMAIL'])
-      git.addConfig('remote.origin.url', this.remote +'.git')
+      this.git.addConfig('user.name', this.config.USERNAME)
+      this.git.addConfig('user.email', this.config['USER-EMAIL'])
+      this.git.addConfig('remote.origin.url', this.remote +'.git')
 
    }//()
 
@@ -61,7 +61,7 @@ export class Gith { // WIP
    }
 
    _branchExists(branch) {
-      git.listRemote(['--heads']).then(function(data){
+      this.git.listRemote(['--heads']).then(function(data){
          console.log(data)
       })
    }//()
