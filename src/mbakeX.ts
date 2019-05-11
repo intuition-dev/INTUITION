@@ -65,11 +65,7 @@ function help () {
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
-   { name: 'git', type: Boolean },
-
    { name: 'mbakeX', defaultOption: true },
-
-   { name: 'devOps', defaultOption: true },
 
    { name: 'help', alias: 'h', type: Boolean },
    { name: 'version', alias: 'v', type: Boolean },
@@ -85,6 +81,9 @@ const optionDefinitions = [
    { name: 'bakeP', type: Boolean },
    { name: 'bakeS', type: Boolean },
    { name: 'bakeD', type: Boolean },
+
+   { name: 'devOps', type: Boolean },
+   { name: 'git', type: Boolean },
 
    { name: 'map', alias: 'm', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
