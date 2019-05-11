@@ -22,6 +22,7 @@ import * as ts from "typescript"
 import UglifyJS = require("uglify-es")
 import decomment = require('decomment')
 
+const execa = require('execa')
 
 //import colors = require('colors');
 const logger = require('tracer').console()
@@ -42,38 +43,51 @@ export class Gith { // WIP
       this.remote += this.pass +'@'
       this.remote += this.config.REPO
       console.log(this.remote)
-      
-      //login:
-      this.git.addConfig('user.name', this.config.USERNAME)
-      this.git.addConfig('user.email', this.config['USER-EMAIL'])
-      this.git.addConfig('remote.origin.url', this.remote +'.git')
 
    }//()
 
    process() {
-      this._branchExists('xx')
+      (async () => {
+         const {stdout} = await execa('echo', ['unicorns']);
+         console.log(stdout);
+         //=> 'unicorns'
+      })()
+
    }//()
 
-   _login() {
-
-
-      //git config remote.origin.url https://{USERNAME}:{PASSWORD}@github.com/{USERNAME}/{REPONAME}.git
+   _isFolderEmpty() {
+      
    }
 
    _branchExists(branch) {
-      this.git.listRemote(['--heads']).then(function(data){
-         console.log(data)
-      })
+      /*
+      git ls-remote https://cekvenich:gdavor129@github.com/cekvenich/alan.git
+      */
    }//()
-
-   _makeBranch(){
-
+   _getNEWRemoteBranch(){
+      /*
+      git clone https://cekvenich:gdavor129@github.com/cekvenich/alan
+      cd folder
+      git remote add test2 https://cekvenich:gdavor129@github.com/cekvenich/alan
+      git checkout -b test2
+      git push -u origin test2
+      */
    }
-   _clone(){
+   _getEXISTINGRemoteBranch(){ // if null, master
+      /*
+      git clone https://cekvenich:gdavor129@github.com/cekvenich/alan
+      cd folder
+
+      git checkout test2
+      */
+   }
+
+   _moveTo() { // move to folder
 
    }
 
 }//class
+
 
 export class MinJS {//es5
 

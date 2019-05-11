@@ -1,0 +1,26 @@
+# DANGER: these scripts use rm -rf *. So in case of some un-planed error this may rm * someplace unexpected. 
+# You should back up your box before deploying new version. Think of it as a feature: sometimes it deploys - sometimes it tests your fail over and recovery procedure
+# In any case no developer of this open source is liable in any way if the scripts here create an outage, issues or problems. 
+
+# used to deploy
+# for local use a git gui
+USER-NAME: 'cekvenich'
+USER-MAIL: 'vic@eml.cc'
+
+# master *always* for DEV(1). 
+# If branch does not exists, will create branch, mostly for regular STAGE(2). 
+# Else if branch exists it will download that branch (for irregular flow, if the branch had changes since creation)
+# Should not use this PROD(3, for prod you should zip STAGE and rebuild with ENV set to PROD-3)
+# eg format: yearmonth-daya,b,c... if there are more releases that day
+BRANCH: 'r1905-011a' 
+
+# with repo_owner
+REPO: 'github.com/cekvenich'
+PROJECT: alan
+# what folder is the project in repo
+REPO-FOLDER: 'api'
+
+# must be empty or not exists; and under .
+LOCAL-FOLDER: 'api'
+
+# After download and make: change http server(Caddy) to point to the new folder.
