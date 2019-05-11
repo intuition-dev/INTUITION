@@ -38,7 +38,7 @@ import beeper = require('beeper');
 export class DownloadFrag {
    constructor(dir, devops:boolean) {
       console.log('Extracting to',dir)
-      download('https://unpkg.com/setup-depp-defs@1.0.1/template/headFrag.pug').then(data => {
+      if(!devops) download('https://unpkg.com/setup-depp-defs@1.0.1/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir+'/headFrag.pug', data)
      })
      if(devops) {
@@ -46,7 +46,7 @@ export class DownloadFrag {
                fs.writeFileSync(dir+'/devOps.pug', data)
          })
          download('https://unpkg.com/setup-depp-defs@1.0.1/template/devOps.js').then(data => {
-               fs.writeFileSync(dir+'/devOps.pug', data)
+               fs.writeFileSync(dir+'/devOps.js', data)
          })
    }//fi
    }//()
