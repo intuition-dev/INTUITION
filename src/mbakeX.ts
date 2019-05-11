@@ -4,7 +4,7 @@
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
-import { Ver, Dirs, MBake } from './lib/Base'
+import { Ver, Dirs, MBake, DownloadFrag } from './lib/Base'
 import { Wa, CSV2Json, Map } from './lib/Wa'
 import { Resize, Gith } from './lib/Sa'
 
@@ -38,6 +38,7 @@ function help () {
    console.info('  To bake with production ENV flag(3) in prod:                mbakeX --bakeP .')
 
    console.info()
+   console.info('  Download fragment to setup the app devOps:                  mbake --devOps .')
 
    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .')
    console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbakeX -i .')
@@ -67,6 +68,8 @@ const optionDefinitions = [
    { name: 'git', type: Boolean },
 
    { name: 'mbakeX', defaultOption: true },
+
+   { name: 'devOps', defaultOption: true },
 
    { name: 'help', alias: 'h', type: Boolean },
    { name: 'version', alias: 'v', type: Boolean },
@@ -98,13 +101,17 @@ const argsParsed = commandLineArgs(optionDefinitions)
 let arg: string = argsParsed.mbakeX
 console.info()
 
-// unzip: ////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////
 function git(arg) {
    let gg = new Gith(arg)
    gg.process()
    
 }//()
 
+function frag(arg) {
+   new DownloadFrag(arg, true)
+}
+// unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function unzipG () {
    let src: string = __dirname + '/PGap.zip'
    let zip = new AdmZip(src)
@@ -244,6 +251,8 @@ else if (argsParsed.bakeS)
    bakeS(arg)
 else if (argsParsed.bakeD)
    bakeD(arg)
+else if (argsParsed.devOps)
+   frag(arg)
 else if (argsParsed.git)
    git(arg)
 else if (argsParsed.version)

@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.30'
+      return 'v5.05.31'
    }
 }
 import colors = require('colors')
@@ -41,11 +41,14 @@ export class DownloadFrag {
       download('https://unpkg.com/setup-depp-defs@1.0.1/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir+'/headFrag.pug', data)
      })
-     if(devops)
+     if(devops) {
          download('https://unpkg.com/setup-depp-defs@1.0.1/template/devOps.pug').then(data => {
                fs.writeFileSync(dir+'/devOps.pug', data)
          })
-
+         download('https://unpkg.com/setup-depp-defs@1.0.1/template/devOps.js').then(data => {
+               fs.writeFileSync(dir+'/devOps.pug', data)
+         })
+   }//fi
    }//()
 }
 
