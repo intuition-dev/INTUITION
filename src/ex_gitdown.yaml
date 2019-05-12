@@ -11,8 +11,8 @@ LOCALFolder: 'adminA'
 # Must be 'master' *99%* for DEV(1). 
 # If branch does not exists, will create branch, mostly for regular STAGE(2). 
 # Else if branch exists it will download that branch (eg. for irregular flow, if the branch had changes since creation)
-# And of course, *never* create a new branch for|on PROD(3) - allow STAGE to test first and then copy/ZIP (no Git).
-# So you should not use this for PROD(3, for prod you should zip STAGE and rebuild with ENV set to PROD-3)
+# And of course, *never* create a new branch for|on PROD(3) - allow STAGE to test first (and likely copy/ZIP so no Git).
+# 
 # eg branch format: yearmonth-day a,b,c... if there are rare multiple releases that day
 BRANCH: 'r1905-011xyz' 
 # BRANCH: 'r1912-28a' 
