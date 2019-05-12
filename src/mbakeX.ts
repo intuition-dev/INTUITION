@@ -43,6 +43,8 @@ function help () {
    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .')
    console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbakeX -i .')
    console.info('  To process list.csv to list.json:                           mbakeX -l .')
+   console.info('  To download branch from git, in folder with gitdown.yaml:   mbakeX --gitDown GIT-PSWD')
+   console.info('     passing the git password of gitdown user')
    console.info('  To recursively remove source files:                         mbakeX --prod .')
 
    console.info('    Note: . is current directory, or use any path instead of .')
@@ -83,7 +85,7 @@ const optionDefinitions = [
    { name: 'bakeD', type: Boolean },
 
    { name: 'devOps', type: Boolean },
-   { name: 'git', type: Boolean },
+   { name: 'gitDown', type: Boolean },
 
    { name: 'map', alias: 'm', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
@@ -251,7 +253,7 @@ else if (argsParsed.bakeD)
    bakeD(arg)
 else if (argsParsed.devOps)
    frag(arg)
-else if (argsParsed.git)
+else if (argsParsed.gitDown)
    git(arg)
 else if (argsParsed.version)
    version()

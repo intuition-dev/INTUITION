@@ -6,6 +6,5 @@ tsc
 
 # node mbake.js -t /Users/code/Documents/GitHub/alan/al-prod
 
-node mbakeX.js 
-
+node mbakeX.js --gitDown PASS
 

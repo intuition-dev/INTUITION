@@ -29,17 +29,19 @@ const logger = require('tracer').console()
 
 
 // //////////////////////////////////////////////////////////////////
-export class GitDown { // WIP
+export class GitDown { 
    config
    remote
    pass:string
    git : any
-   dir:string = '/Users/code/Downloads/src'
-   constructor(pass) {
-      // dir and pass
-      console.log(pass)
+   dir:string 
+   constructor(pass_:string) {
+      const last = pass_.lastIndexOf('/')
+      this.pass = pass_.substring(last+1)
+      this.dir = pass_.substring(0,last)
 
       this.config = yaml.load(fs.readFileSync('gitdown.yaml'))
+      console.log(this.dir, this.config.BRANCH)
       logger.trace(this.config)
       
       this.remote =  'https://'+this.config.LOGINName +':'
@@ -47,15 +49,22 @@ export class GitDown { // WIP
       this.remote += this.config.REPO +'/'
       this.remote += this.config.PROJECT
 
+      this._emptyFolders()
    }//()
 
    async process() {
-      let b = 'r1903-32'
-      await this._branchExists(b)
-      console.log(this.exists)
-      //await this. _getEXISTINGRemoteBranch(b)
-      //await this._getNEWRemoteBranch(b)
-      this._emptyFolders()
+      try {
+         let b = this.config.BRANCH
+         await this._branchExists(b)
+         console.log(this.exists)
+
+         if(this.exists) await this. _getEXISTINGRemoteBranch(b)
+         else await this._getNEWRemoteBranch(b)
+
+         this._moveTo(b)
+      } catch(err) {
+         console.error(err)
+      }
    }
 
    _moveTo(branch) { // move to folder
@@ -70,26 +79,27 @@ export class GitDown { // WIP
 
       let dirR = this.config.PROJECT
       dirR = this.dir + '/' + dirR 
-      fs.remove(dirR)
+      fs.removeSync(dirR)
       console.log('removed', dirR)
       console.log()
       
-      
       fs.writeJsonSync(dirTo +'/release.json', {branch: branch})
-      console.log('DONE!', dirTo)
+      console.log('DONE!')
+      console.log('Maybe time to make/bake', dirTo)
+      console.log('and then point http server to', dirTo)
+      console.log()
    }
 
    _emptyFolders() {
-
       let dirR = this.config.PROJECT
       dirR = this.dir + '/' + dirR 
-      console.log(dirR)
-      fs.remove('removed', dirR)
+      console.log('remove', dirR)
+      fs.removeSync(dirR)
 
       let dirTo = this.config.PROJECT
       dirTo = this.dir + '/' + this.config.LOCALFolder
-      console.log(dirTo)
-      fs.remove('removed', dirTo)
+      console.log('remove', dirTo)
+      fs.removeSync(dirTo)
    }
 
    async _getNEWRemoteBranch(branch){
@@ -118,6 +128,10 @@ export class GitDown { // WIP
       dir = this.dir + '/' + dir
       const {stdout2} = await execa('git', ['checkout', branch], {cwd: dir})
       console.log(dir, branch)
+
+      // list history of the branch
+      const {stdout3} = await execa('git', ['reflog', '--date=relative'], {cwd: dir})
+      console.log('history', stdout3)
       /*
       git clone https://cekvenich:PASS@github.com/cekvenich/alan
       cd folder
@@ -129,20 +143,17 @@ export class GitDown { // WIP
    async _branchExists(branch) {
       let cmd = this.remote
       cmd += '.git'
-
-      console.log(cmd)
+      logger.info(cmd)
 
       const {stdout} = await execa('git', ['ls-remote', cmd])
       this.exists = stdout.includes(branch)
 
-      console.log(this.exists)
       logger.trace(stdout)
       /*
       git ls-remote https://cekvenich:PASS@github.com/cekvenich/alan.git
       */
    }//()
 }//class
-
 
 export class MinJS {//es5
 
