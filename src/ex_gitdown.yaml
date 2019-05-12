@@ -2,18 +2,18 @@
 # You should back up your working server before using this script to deploy new version. 
 # Likely backup to a mounted NAS as tar.gz. 
 # In addition this may make your git password visible to other users of the computer you run gitdown command on.
-
 # Likely you want to work/be in your http servers public dir (eg: where Caddyfile is)
+
 # This folder will be deleted. And replaced with fresh code from the specified branch
 LOCALFolder: 'adminA'
 # LOCALFolder: 'dashB'
 
-# Must be 'master' *99%* for DEV(1). 
-# If branch does not exists, will create branch, mostly for regular STAGE(2). 
-# Else if branch exists it will download that branch (eg. for irregular flow, if the branch had changes since creation)
-# And of course, *never* create a new branch for|on PROD(3) - allow STAGE to test first (and likely copy/ZIP so no Git).
+# Should be 'master' 99% for DEV( 1 ). 
+# If branch does not exists, it will create a new branch - for regular STAGE( 2 ). 
+# Else if branch exists it will download that branch (but that should be some of the time, STAGE is mostly new branch to show latests)
+# And of course, *never* create a new branch for|on PROD( 3 ) - allow STAGE to test first (and likely copy/ZIP so no Git).
 # 
-# eg branch format: yearmonth-day a,b,c... if there are rare multiple releases that day
+# example branch format: yearmonth-day a,b,c... if there are rare multiple releases that day
 BRANCH: 'r1905-011xyz' 
 # BRANCH: 'r1912-28a' 
 
@@ -29,5 +29,5 @@ LOGINName: 'cekvenich'
 REPO: 'github.com/cekvenich'
 PROJECT: alan
 # After download and make/bake: change http server(eg Caddyfile) to point to the new folder.
-# * Irregular flow would be that you have a bug in prod, but you don't want a new full release, just that bug fixed. So staging has the old production branch.
-# And dev then is the staging new staging branch - allowing QA of both the new features and that production did not regress.
+# * Irregular flow would be that you have a bug in prod, but you don't want a new full release, just that bug fixed. So staging shoulb be the old production branch.
+# And dev then is the staging new staging branch - allowing QA of both the new features, and bugs so that production does not regress.
