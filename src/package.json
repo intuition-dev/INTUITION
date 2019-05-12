@@ -47,7 +47,7 @@
       "express": ">=4.16.4",
       "express-interceptor": ">=1.2.0",
       "filehound": ">=1.17.0",
-      "find-up": ">=3.0.0",
+      "find-up": ">=4.0.0",
       "fs-extra": ">=8.0.0",
       "html-minifier": ">=4.0.0",
       "javascript-obfuscator": ">=0.18.1",
