@@ -1,31 +1,33 @@
-# DANGER: 
-# You should back up your box before using this script to deploy new version. Think of it as a feature: sometimes it deploys - sometimes it tests your fail over
-# and recovery procedure, 
-# likely from a remote NAS tar.gz. In addition this may make your password visible to other users of the computer you run this command on.
-# In any case no developer of this open source is liable in any way if the scripts here create an outage, issues or problems. 
+# DISCLAIMER: 
+# You should back up your working server before using this script to deploy new version. 
+# Likely backup to a mounted NAS as tar.gz. 
+# In addition this may make your git password visible to other users of the computer you run gitdown command on.
 
+# Likely you want to work/be in your http servers public fir (eg: where Caddyfile is)
 # This folder will be deleted. And replaced with fresh code from the specified branch
-LOCALFolder: 'admin4'
+LOCALFolder: 'adminA'
+# LOCALFolder: 'dashA'
 
-# used to deploy in cloud, no use in local dev env.
-LOGINName: 'cekvenich'
-
-# must be 'master' *99%* for DEV(1). 
+# Must be 'master' *99%* for DEV(1). 
 # If branch does not exists, will create branch, mostly for regular STAGE(2). 
 # Else if branch exists it will download that branch (eg. for irregular flow, if the branch had changes since creation)
 # And of course, *never* create a new branch for|on PROD(3) - allow STAGE to test first and then copy/ZIP (no Git).
 # So you should not use this for PROD(3, for prod you should zip STAGE and rebuild with ENV set to PROD-3)
-# eg branch format: yearmonth-daya,b,c... if there are more releases that day
-BRANCH: 'r1905-011aaa' 
-# 'r1912-28a' 
+# eg branch format: yearmonth-day a,b,c... if there are rare multiple releases that day
+BRANCH: 'r1905-011xyz' 
+# BRANCH: 'r1912-28a' 
+
+# what folder is the project in repo
+REPOFolder: 'al-admin'
+# REPOFolder: 'al-dash'
+
+# used to deploy in cloud, no use in local dev env.
+LOGINName: 'cekvenich'
+# LOGINName: 'melikyants'
 
 # with repo_owner
 REPO: 'github.com/cekvenich'
 PROJECT: alan
-# what folder is the project in repo
-REPOFolder: 'al-admin'
-
 # After download and make/bake: change http server(eg Caddyfile) to point to the new folder.
-
 # * Irregular flow would be that you have a bug in prod, but you don't want a new full release, just that bug fixed. So staging has the old production branch.
 # And dev then is the staging new staging branch - allowing QA of both the new features and that production did not regress.
