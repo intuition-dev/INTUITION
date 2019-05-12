@@ -3,10 +3,10 @@
 # Likely backup to a mounted NAS as tar.gz. 
 # In addition this may make your git password visible to other users of the computer you run gitdown command on.
 
-# Likely you want to work/be in your http servers public fir (eg: where Caddyfile is)
+# Likely you want to work/be in your http servers public dir (eg: where Caddyfile is)
 # This folder will be deleted. And replaced with fresh code from the specified branch
 LOCALFolder: 'adminA'
-# LOCALFolder: 'dashA'
+# LOCALFolder: 'dashB'
 
 # Must be 'master' *99%* for DEV(1). 
 # If branch does not exists, will create branch, mostly for regular STAGE(2). 
