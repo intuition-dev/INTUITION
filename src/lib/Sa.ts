@@ -29,63 +29,118 @@ const logger = require('tracer').console()
 
 
 // //////////////////////////////////////////////////////////////////
-export class Gith { // WIP
+export class GitDown { // WIP
    config
    remote
-   pass='gdavor129'
+   pass:string
    git : any
+   dir:string = '/Users/code/Downloads/src'
    constructor(pass) {
+      // dir and pass
       console.log(pass)
-      this.config = yaml.load(fs.readFileSync('ex_git.yaml'))
+
+      this.config = yaml.load(fs.readFileSync('gitdown.yaml'))
       logger.trace(this.config)
       
-      this.remote =  'https://'+this.config.USERNAME +':'
+      this.remote =  'https://'+this.config.LOGINName +':'
       this.remote += this.pass +'@'
-      this.remote += this.config.REPO
-      console.log(this.remote)
+      this.remote += this.config.REPO +'/'
+      this.remote += this.config.PROJECT
 
    }//()
 
-   process() {
-      (async () => {
-         const {stdout} = await execa('echo', ['unicorns']);
-         console.log(stdout);
-         //=> 'unicorns'
-      })()
-
-   }//()
-
-   _isFolderEmpty() {
-      
+   async process() {
+      let b = 'r1903-32'
+      await this._branchExists(b)
+      console.log(this.exists)
+      //await this. _getEXISTINGRemoteBranch(b)
+      //await this._getNEWRemoteBranch(b)
+      this._emptyFolders()
    }
 
-   _branchExists(branch) {
+   _moveTo(branch) { // move to folder
+      let dir = this.config.PROJECT
+      dir = this.dir + '/' + dir + '/' + this.config.REPOFolder
+
+      let dirTo = this.config.PROJECT
+      dirTo = this.dir + '/' + this.config.LOCALFolder
+      console.log(dir, dirTo)
+
+      fs.moveSync(dir, dirTo)
+
+      let dirR = this.config.PROJECT
+      dirR = this.dir + '/' + dirR 
+      fs.remove(dirR)
+      console.log('removed', dirR)
+      console.log()
+      
+      
+      fs.writeJsonSync(dirTo +'/release.json', {branch: branch})
+      console.log('DONE!', dirTo)
+   }
+
+   _emptyFolders() {
+
+      let dirR = this.config.PROJECT
+      dirR = this.dir + '/' + dirR 
+      console.log(dirR)
+      fs.remove('removed', dirR)
+
+      let dirTo = this.config.PROJECT
+      dirTo = this.dir + '/' + this.config.LOCALFolder
+      console.log(dirTo)
+      fs.remove('removed', dirTo)
+   }
+
+   async _getNEWRemoteBranch(branch){
+      const {stdout} = await execa('git', ['clone', this.remote])
+
+      let dir = this.config.PROJECT
+      dir = this.dir + '/' + dir
+      //make a branch
+      const {stdout2} = await execa('git', ['remote', 'add', branch, this.remote], {cwd: dir})
+      const {stdout3} = await execa('git', ['checkout', '-b', branch], {cwd: dir})
+      // add to remote
+      const {stdout4} = await execa('git', ['push', '-u','origin', branch], {cwd: dir})
       /*
-      git ls-remote https://cekvenich:gdavor129@github.com/cekvenich/alan.git
-      */
-   }//()
-   _getNEWRemoteBranch(){
-      /*
-      git clone https://cekvenich:gdavor129@github.com/cekvenich/alan
+      git clone https://cekvenich:PASS@github.com/cekvenich/alan
       cd folder
-      git remote add test2 https://cekvenich:gdavor129@github.com/cekvenich/alan
+      git remote add test2 https://cekvenich:PASS@github.com/cekvenich/alan
       git checkout -b test2
       git push -u origin test2
       */
    }
-   _getEXISTINGRemoteBranch(){ // if null, master
-      /*
-      git clone https://cekvenich:gdavor129@github.com/cekvenich/alan
-      cd folder
 
+   async _getEXISTINGRemoteBranch(branch){ // if null, master
+      const {stdout} = await execa('git', ['clone', this.remote])
+
+      let dir = this.config.PROJECT
+      dir = this.dir + '/' + dir
+      const {stdout2} = await execa('git', ['checkout', branch], {cwd: dir})
+      console.log(dir, branch)
+      /*
+      git clone https://cekvenich:PASS@github.com/cekvenich/alan
+      cd folder
       git checkout test2
       */
    }
 
-   _moveTo() { // move to folder
+   exists:boolean
+   async _branchExists(branch) {
+      let cmd = this.remote
+      cmd += '.git'
 
-   }
+      console.log(cmd)
 
+      const {stdout} = await execa('git', ['ls-remote', cmd])
+      this.exists = stdout.includes(branch)
+
+      console.log(this.exists)
+      logger.trace(stdout)
+      /*
+      git ls-remote https://cekvenich:PASS@github.com/cekvenich/alan.git
+      */
+   }//()
 }//class
 
 
@@ -366,5 +421,5 @@ export class Sas {
 }//class
 
 module.exports = {
-   Sas, Resize, YamlConfig, MinJS, Gith
+   Sas, Resize, YamlConfig, MinJS, GitDown
 }

@@ -6,7 +6,7 @@ import commandLineArgs = require('command-line-args')
 
 import { Ver, Dirs, MBake, DownloadFrag } from './lib/Base'
 import { Wa, CSV2Json, Map } from './lib/Wa'
-import { Resize, Gith } from './lib/Sa'
+import { Resize, GitDown } from './lib/Sa'
 
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
@@ -102,9 +102,8 @@ console.info()
 
 // ///////////////////////////////////////////////////////////////////////////////////////////
 function git(arg) {
-   let gg = new Gith(arg)
+   let gg = new GitDown(arg)
    gg.process()
-   
 }//()
 
 function frag(arg) {

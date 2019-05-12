@@ -1,16 +1,18 @@
-# DANGER: these scripts use rm -rf *. So in case of some un-planed error this may rm * someplace unexpected. 
-# You should back up your box before deploying new version. Think of it as a feature: sometimes it deploys - sometimes it tests your fail over and recovery procedure
+# DANGER: 
+# You should back up your box before using this script to deploy new version. Think of it as a feature: sometimes it deploys - sometimes it tests your fail over
+# and recovery procedure, 
+# likely from a remote NAS tar.gz. In addition this may make your password visible to other users of the computer you run this command on.
 # In any case no developer of this open source is liable in any way if the scripts here create an outage, issues or problems. 
 
 # used to deploy
 # for local use a git gui
-USER-NAME: 'cekvenich'
-USER-MAIL: 'vic@eml.cc'
+LOGINName: 'cekvenich'
 
 # master *always* for DEV(1). 
 # If branch does not exists, will create branch, mostly for regular STAGE(2). 
 # Else if branch exists it will download that branch (for irregular flow, if the branch had changes since creation)
-# Should not use this PROD(3, for prod you should zip STAGE and rebuild with ENV set to PROD-3)
+# And of course, *never* create a new branch for|on PROD(3) - allow STAGE to test first and then copy.
+# So you should not use this for PROD(3, for prod you should zip STAGE and rebuild with ENV set to PROD-3)
 # eg format: yearmonth-daya,b,c... if there are more releases that day
 BRANCH: 'r1905-011a' 
 
@@ -18,9 +20,9 @@ BRANCH: 'r1905-011a'
 REPO: 'github.com/cekvenich'
 PROJECT: alan
 # what folder is the project in repo
-REPO-FOLDER: 'api'
+REPOFolder: 'al-admin'
 
 # must be empty or not exists; and under .
-LOCAL-FOLDER: 'api'
+LOCALFolder: 'api'
 
 # After download and make: change http server(Caddy) to point to the new folder.
