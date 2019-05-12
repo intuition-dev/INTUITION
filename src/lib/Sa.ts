@@ -83,7 +83,7 @@ export class GitDown {
       console.log('removed', dirR)
       console.log()
       
-      fs.writeJsonSync(dirTo +'/release.json', {branch: branch})
+      fs.writeJsonSync(dirTo +'/branch.json', {branch: branch})
       console.log('DONE!')
       console.log('Maybe time to make/bake', dirTo)
       console.log('and then point http server to', dirTo)
