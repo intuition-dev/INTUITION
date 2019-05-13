@@ -1,4 +1,4 @@
-# DISCLAIMER: 
+# DISCLAIMER: This is for deployment, not for local ENV .
 # You should back up your working server before using this script to deploy new version. 
 # Likely backup to a mounted NAS as tar.gz. 
 # In addition this may make your git password visible to other users of the computer you run gitdown command on.
