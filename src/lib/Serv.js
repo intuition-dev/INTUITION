@@ -15,6 +15,7 @@ const bodyParser = require('body-parser');
 const formidable = require('express-formidable');
 class ExpressRPC {
     static makeInstance(orig) {
+        console.log('Allowed>>>', orig);
         const cors = new CustomCors(orig);
         const appInst = express();
         appInst.use(cors);

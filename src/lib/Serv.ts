@@ -18,7 +18,7 @@ const formidable = require('express-formidable')
 export class ExpressRPC {
    
    static makeInstance(orig) {
-      console.log('Allowed',orig)
+      console.log('Allowed>>>',orig)
       const cors = new CustomCors(orig)
       const appInst = express()
       appInst.use(cors)
