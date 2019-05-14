@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.05.42'
+      return 'v5.05.43'
    }
 }
 import colors = require('colors')
