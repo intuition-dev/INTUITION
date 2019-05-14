@@ -10,6 +10,20 @@ class CustomCors {
     }
 }
 exports.CustomCors = CustomCors;
+const express = require('express');
+const bodyParser = require('body-parser');
+const formidable = require('express-formidable');
+class ExpressRPC {
+    makeInstance(orig) {
+        const cors = new CustomCors(orig);
+        const appInst = express();
+        appInst.use(cors);
+        appInst.use(bodyParser.urlencoded({ extended: false }));
+        appInst.use(formidable());
+        return appInst;
+    }
+}
+exports.ExpressRPC = ExpressRPC;
 module.exports = {
-    CustomCors
+    CustomCors, ExpressRPC
 };

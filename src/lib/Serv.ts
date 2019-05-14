@@ -11,6 +11,24 @@ export class CustomCors { // for use with http-rpc
    }
 }
 
+const express = require('express')
+const bodyParser = require('body-parser')
+const formidable = require('express-formidable')
+
+export class ExpressRPC {
+   
+   makeInstance(orig) {
+      const cors = new CustomCors(orig)
+      const appInst = express()
+      appInst.use(cors)
+
+      appInst.use(bodyParser.urlencoded({ extended: false }))
+      appInst.use(formidable())// for fetch
+
+      return appInst
+   }
+}
+
 module.exports = {
-   CustomCors
+   CustomCors, ExpressRPC
 }
