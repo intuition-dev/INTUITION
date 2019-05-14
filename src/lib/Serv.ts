@@ -17,7 +17,7 @@ const formidable = require('express-formidable')
 
 export class ExpressRPC {
    
-   makeInstance(orig) {
+   static makeInstance(orig) {
       const cors = new CustomCors(orig)
       const appInst = express()
       appInst.use(cors)

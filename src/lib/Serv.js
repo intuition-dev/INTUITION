@@ -14,7 +14,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const formidable = require('express-formidable');
 class ExpressRPC {
-    makeInstance(orig) {
+    static makeInstance(orig) {
         const cors = new CustomCors(orig);
         const appInst = express();
         appInst.use(cors);
