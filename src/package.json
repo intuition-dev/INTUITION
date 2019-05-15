@@ -10,7 +10,7 @@
       "mbake": "mbake.js",
       "mbakeX": "mbakeX.js"
    },
-   "license": "LGPL-3.0-only",
+   "license": "AGPL-3.0-only",
    "author": "http://www.Metabake.org",
    "bugs": "http://github.com/Metabake/mbake/issues",
    "homepage": "http://www.Metabake.org",
