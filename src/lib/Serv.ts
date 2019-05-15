@@ -15,7 +15,6 @@ export class CustomCors { // will be deprecated , use the class under here: Expr
          const origin = request.get('origin')
          let approved = false
          validOrigins.forEach( function(ori) { 
-            logger.trace(ori)
             if(ori=='*')  approved = true
             if(origin.includes(ori)) approved = true // allow on string match
          })
