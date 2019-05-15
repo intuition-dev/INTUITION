@@ -32,7 +32,7 @@ export class CustomCors { // will be deprecated , use the class under here: Expr
 
 export class ExpressRPC {
    /**
-    * @param origins An array of string that would match a domain. So host would match localhost 
+    * @param origins An array of string that would match a domain. So host would match localhost. Returns express server instance.
     */
    static makeInstance(origins:Array<string>) {
       console.log('Allowed >>> ', origins)
