@@ -1,11 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const logger = require('tracer').console();
 class CustomCors {
-    constructor(orig) {
+    constructor(validOrigins) {
         return (request, response, next) => {
-            response.setHeader('Access-Control-Allow-Origin', orig);
-            response.setHeader('Access-Control-Allow-Methods', 'POST');
-            return next();
+            const origin = request.get('origin');
+            logger.trace(origin);
+            let approved = false;
+            for (var ori in validOrigins) {
+                if (ori == '*')
+                    approved = true;
+                if (origin.includes(ori))
+                    approved = true;
+            }
+            if (approved) {
+                response.setHeader('Access-Control-Allow-Origin', origin);
+                return next();
+            }
+            response.status(403).end();
         };
     }
 }
@@ -14,9 +26,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const formidable = require('express-formidable');
 class ExpressRPC {
-    static makeInstance(orig) {
-        console.log('Allowed>>>', orig);
-        const cors = new CustomCors(orig);
+    static makeInstance(origins) {
+        console.log('Allowed>>>', origins);
+        const cors = new CustomCors(origins);
         const appInst = express();
         appInst.use(cors);
         appInst.use(bodyParser.urlencoded({ extended: false }));
