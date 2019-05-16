@@ -48,5 +48,5 @@ export class ExpressRPC {
 }
 
 module.exports = {
-   CustomCors, ExpressRPC
+   ExpressRPC
 }
