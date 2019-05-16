@@ -1,0 +1,7 @@
+{
+  "name": "http-rpc",
+  "version": "1.0.4",
+  "description": "Simple http-rpc, a bit like json-rpc",
+  "license": "AGPL-3.0-only"
+
+}

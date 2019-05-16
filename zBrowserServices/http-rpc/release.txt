@@ -1,0 +1,6 @@
+
+Edit code; compile(mbake -t .); edit read me.
+Then edit package json; npm publish. Check that link in readme works. 
+Then declare new definition for depp to use this instead. 
+Optional setup-defs.js.
+

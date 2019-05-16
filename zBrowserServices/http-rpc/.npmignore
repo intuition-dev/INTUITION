@@ -1,0 +1,7 @@
+
+srv/node_modules/
+
+*.sh
+*.cmd
+
+.DS_Store
