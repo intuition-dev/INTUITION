@@ -38,14 +38,14 @@ import beeper = require('beeper');
 export class DownloadFrag {
    constructor(dir, devops:boolean) {
       console.log('Extracting to',dir)
-      if(!devops) download('https://unpkg.com/mtool-belt@1.0.11/template/headFrag.pug').then(data => {
+      if(!devops) download('https://unpkg.com/mtool-belt@1.0.12/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir+'/headFrag.pug', data)
      })
      if(devops) {
-         download('https://unpkg.com/mtool-belt@1.0.11/template/devOps.pug').then(data => {
+         download('https://unpkg.com/mtool-belt@1.0.12/template/devOps.pug').then(data => {
                fs.writeFileSync(dir+'/devOps.pug', data)
          })
-         download('https://unpkg.com/mtool-belt@1.0.11/template/devOps.js').then(data => {
+         download('https://unpkg.com/mtool-belt@1.0.12/template/devOps.js').then(data => {
                fs.writeFileSync(dir+'/devOps.js', data)
          })
    }//fi
