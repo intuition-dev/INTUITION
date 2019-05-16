@@ -104,6 +104,7 @@ export class Watch {
       watchList.push( this.root+'/**/*.pug')
       watchList.push(this.root+'/**/*.scss')
       watchList.push(this.root+'/**/*.sass')
+      watchList.push(this.root+'/**/*.yaml')
 
       logger.trace(watchList)
       this.watcher = chokidar.watch(watchList, {
@@ -205,13 +206,6 @@ export class MetaPro {
       const js = new MinJS();
       return js.ts(folder);
    }
-
-   /*
-   __minJS(dir: string):Promise<string> {
-      const folder = this.mount + '/' + dir;
-      const js = new MinJS();
-      return js.min(folder);
-   }*/
 
    // when you pass the file name, ex: watch
    autoBake(folder__, file):Promise<string> {
