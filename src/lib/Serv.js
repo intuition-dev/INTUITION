@@ -10,7 +10,6 @@ class CustomCors {
             const origin = request.get('origin');
             let approved = false;
             validOrigins.forEach(function (ori) {
-                logger.trace(ori);
                 if (ori == '*')
                     approved = true;
                 if (origin.includes(ori))
@@ -39,5 +38,5 @@ class ExpressRPC {
 }
 exports.ExpressRPC = ExpressRPC;
 module.exports = {
-    CustomCors, ExpressRPC
+    ExpressRPC
 };

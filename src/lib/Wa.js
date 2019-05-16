@@ -82,6 +82,7 @@ class Watch {
         watchList.push(this.root + '/**/*.pug');
         watchList.push(this.root + '/**/*.scss');
         watchList.push(this.root + '/**/*.sass');
+        watchList.push(this.root + '/**/*.yaml');
         logger.trace(watchList);
         this.watcher = chokidar.watch(watchList, {
             ignoreInitial: true,
