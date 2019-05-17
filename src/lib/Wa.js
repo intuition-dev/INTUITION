@@ -28,7 +28,7 @@ class Wa {
         let ss = new MDevSrv(dir, port, reloadPort);
         const mp = new MetaPro(dir);
         let ww = new Watch(mp, dir);
-        ww.start(300);
+        ww.start(450);
         console.info(' Serving on ' + 'http://localhost:' + port);
         console.info(' --------------------------');
         console.info('');
@@ -83,6 +83,7 @@ class Watch {
         watchList.push(this.root + '/**/*.scss');
         watchList.push(this.root + '/**/*.sass');
         watchList.push(this.root + '/**/*.yaml');
+        watchList.push(this.root + '/**/*.js');
         logger.trace(watchList);
         this.watcher = chokidar.watch(watchList, {
             ignoreInitial: true,

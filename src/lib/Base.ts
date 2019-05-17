@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.06.01'
+      return 'v5.06.03'
    }
 }
 import colors = require('colors')
@@ -16,6 +16,7 @@ const logger = require('tracer').colorConsole({
    ]
 })
 
+import stripDebug = require('strip-debug')
 import Marpit = require('@marp-team/marpit')
 const marpit = new Marpit.Marpit()
 
@@ -707,6 +708,7 @@ export class Comps {
       fs.writeFileSync(fn + '.js', js)
 
       logger.info('minify')
+      js = stripDebug(js)
 
       let ugs
       try {

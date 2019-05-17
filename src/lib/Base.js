@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.06.01';
+        return 'v5.06.03';
     }
 }
 exports.Ver = Ver;
@@ -15,6 +15,7 @@ const logger = require('tracer').colorConsole({
         }
     ]
 });
+const stripDebug = require("strip-debug");
 const Marpit = require("@marp-team/marpit");
 const marpit = new Marpit.Marpit();
 const fs = require("fs-extra");
@@ -564,6 +565,7 @@ class Comps {
             }
             fs.writeFileSync(fn + '.js', js);
             logger.info('minify');
+            js = stripDebug(js);
             let ugs;
             try {
                 ugs = JavaScriptObfuscator.obfuscate(js, Comps.getObsOptions());
