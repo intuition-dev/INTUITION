@@ -66,7 +66,6 @@
       "sharp": ">=0.22.1",
       "sitemap": ">=2.2.0",
       "strip-css-comments": ">=4.0.0",
-      "strip-debug": ">=4.0.0",
       "terser": ">=3.17.0",
       "tracer": ">=0.9.8",
       "traverse": ">=0.6.6",

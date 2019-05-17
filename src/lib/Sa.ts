@@ -211,7 +211,7 @@ export class MinJS {//es5
       try {
       console.log(fn)
       let code:string = fs.readFileSync(fn).toString('utf8')
-      result = Terser.minify(code, MinJS.options)
+      result = Terser.minify(code, MinJS.optionsTs)
 
       let txt = decomment(result.code, { space: true })
 
@@ -234,7 +234,7 @@ export class MinJS {//es5
 
    static ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
-   static options = {
+   static optionsTs = {
       ecma: 5,
       parse: { html5_comments: false, ecma: 5},
       compress: {

@@ -83,11 +83,6 @@ acorn-jsx@^4.1.1:
   dependencies:
     acorn "^5.0.3"
 
-acorn-jsx@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.0.1.tgz#32a064fd925429216a09b141102bfdd185fae40e"
-  integrity sha512-HJ7CfNHrfJLlNTzIEUTj43LNWGkqpRLxm3YjAlcD0ACydk9XynzYsCBHxut+iqt+1aBXkx9UP/w/ZqMr13XIzg==
-
 acorn@^3.1.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
@@ -102,11 +97,6 @@ acorn@^5.0.3, acorn@^5.6.0:
   version "5.7.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
   integrity sha512-T/zvzYRfbVojPWahDsE5evJdHb3oJoQfFbsrKM7w5Zcs++Tr257tia3BmMP8XYVjp1S9RZXQMh7gao96BlqZOw==
-
-acorn@^6.0.2:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.1.1.tgz#7d25ae05bb8ad1f9b699108e1094ecd7884adc1f"
-  integrity sha512-jPTiwtOxaHNaAPg/dmrJ/beuzLRnXtB0kQPQ8JpotKJgTB6rX6c8mlf315941pyjBSaPg8NHXS9fhP4u17DpGA==
 
 adm-zip@>=0.4.13:
   version "0.4.13"
@@ -1386,11 +1376,6 @@ escodegen-wallaby@1.6.19:
   optionalDependencies:
     source-map "~0.2.0"
 
-eslint-visitor-keys@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
-  integrity sha512-qzm/XxIbxm/FHyH341ZrbnMUpe+5Bocte9xkmFMzPMjRaZMcXww+MpBptFvtU+79L362nqiLhekCxCxDPaUMBQ==
-
 espree@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/espree/-/espree-4.0.0.tgz#253998f20a0f82db5d866385799d912a83a36634"
@@ -1399,21 +1384,12 @@ espree@4.0.0:
     acorn "^5.6.0"
     acorn-jsx "^4.1.1"
 
-espree@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/espree/-/espree-4.1.0.tgz#728d5451e0fd156c04384a7ad89ed51ff54eb25f"
-  integrity sha512-I5BycZW6FCVIub93TeVY1s7vjhP9CY6cXCznIRfiig7nRviKZYdRnj/sHEWC6A7WE9RDWOFq9+7OsWSYz8qv2w==
-  dependencies:
-    acorn "^6.0.2"
-    acorn-jsx "^5.0.0"
-    eslint-visitor-keys "^1.0.0"
-
 esprima@4.0.1, esprima@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
 
-esprima@^2.1, esprima@^2.7.1:
+esprima@^2.7.1:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
   integrity sha1-luO3DVd59q1JzQMmc9HDEnZ7pYE=
@@ -4053,60 +4029,6 @@ riot-compiler@>=3.6.0:
     source-map "^0.7.2"
     string-similarity "^1.2.0"
 
-rocambole-node-remove@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/rocambole-node-remove/-/rocambole-node-remove-1.0.0.tgz#bd49b13dbe6122758374ffd247d8a739e821486f"
-  integrity sha1-vUmxPb5hInWDdP/SR9inOeghSG8=
-  dependencies:
-    rocambole-token "^1.1.0"
-
-rocambole-node-update@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/rocambole-node-update/-/rocambole-node-update-1.0.2.tgz#5f1bdc629b5da3986a509d639133eb8c4cffe700"
-  integrity sha512-kaOi0zb+Nm9hAclA0AZIoxblzAJ04J+HnWeG7+PJZYaf12atAAZavgxRjKcnGdidYNA8oQnZl8aoCt3nhFRbQg==
-  dependencies:
-    rocambole-token "^1.2.1"
-
-rocambole-node-update@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/rocambole-node-update/-/rocambole-node-update-2.0.0.tgz#5a4595fb058e8ffaec77e8678f506c046c230bb5"
-  integrity sha512-/4JYrGR1DjJbS9AVO9iL0/nD8S5sxRBB8FOVE1FG6BwNu3ZSFjgAarN5da4XDLoOZz1tOMkKDccpcx3y6uBl/Q==
-  dependencies:
-    rocambole-token "^1.2.1"
-
-rocambole-strip-alert@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/rocambole-strip-alert/-/rocambole-strip-alert-1.0.0.tgz#3b255fe6f18d6301f805a14e570b1f1f2dba857f"
-  integrity sha1-OyVf5vGNYwH4BaFOVwsfHy26hX8=
-  dependencies:
-    rocambole-node-update "^1.0.1"
-
-rocambole-strip-console@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/rocambole-strip-console/-/rocambole-strip-console-2.0.0.tgz#941e3f45c240f889b20fe425659f5c2d8c4519a7"
-  integrity sha512-XtdAUZPw7iZ7bcs8J+JIL5lsCuYPOt8mnm+G0ybJh3E6RZpLdaSIiYHpqfaQMeLB+E7L0gKyK3U5ugENKZ+8cQ==
-  dependencies:
-    rocambole-node-update "^2.0.0"
-
-rocambole-strip-debugger@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/rocambole-strip-debugger/-/rocambole-strip-debugger-1.0.1.tgz#bd3e500de967a94228098c118d8a387fc4591bd8"
-  integrity sha512-yBnd7R2/HUmVvhjdTnYC6R573hMizzmLaWUObxRKTGBlFT7aIFx+aMqreI6t10X508S740uz7iyCn6YjzLvrFg==
-  dependencies:
-    rocambole-node-remove "^1.0.0"
-
-rocambole-token@^1.1.0, rocambole-token@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/rocambole-token/-/rocambole-token-1.2.1.tgz#c785df7428dc3cb27ad7897047bd5238cc070d35"
-  integrity sha1-x4XfdCjcPLJ614lwR71SOMwHDTU=
-
-rocambole@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/rocambole/-/rocambole-0.7.0.tgz#f6c79505517dc42b6fb840842b8b953b0f968585"
-  integrity sha1-9seVBVF9xCtvuECEK4uVOw+WhYU=
-  dependencies:
-    esprima "^2.1"
-
 run-async@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.3.0.tgz#0371ab4ae0bdd720d4166d7dfda64ff7a445a6c0"
@@ -4556,17 +4478,6 @@ strip-css-comments@>=4.0.0:
   integrity sha512-j5mil7aWjtelBpmDH9jsdGBE4qrOcG6I/oWJTQA97Hl0EexLxoXs/p4jGtxcwzgTEhf0DPxSdWZwtXsk+KXLeg==
   dependencies:
     is-regexp "^2.1.0"
-
-strip-debug@>=4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/strip-debug/-/strip-debug-4.0.0.tgz#7b28e38a51475b481cdcddc3566bf7417bba5745"
-  integrity sha512-NjwTyc19/jnqhfvEYw4gkeIhlYAPfd9B31/HrEl4JJ/UnzUbPCWFJwkX1j62OjOb5sbd8fFzm1j88kKoXU4UXg==
-  dependencies:
-    espree "^4.1.0"
-    rocambole "^0.7.0"
-    rocambole-strip-alert "^1.0.0"
-    rocambole-strip-console "^2.0.0"
-    rocambole-strip-debugger "^1.0.0"
 
 strip-dirs@^2.0.0:
   version "2.1.0"

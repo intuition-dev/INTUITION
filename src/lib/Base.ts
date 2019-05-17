@@ -16,7 +16,6 @@ const logger = require('tracer').colorConsole({
    ]
 })
 
-import stripDebug = require('strip-debug')
 import Marpit = require('@marp-team/marpit')
 const marpit = new Marpit.Marpit()
 
@@ -351,25 +350,35 @@ export class BakeWrk {
       return html
    }
 
+   static EsOptionsPg = {
+      ecma: 5,
+      parse: {  html5_comments:false, ecma: 5},
+      compress: {drop_console:true, keep_classnames:true, keep_fnames: false, ecma: 5, 
+         keep_fargs:false, reduce_funcs: true},
+      output: {beautify:false, indent_level:0, ecma: 5, quote_style:3, safari10:true, semicolons: false}, 
+      mangle: false,
+      keep_classnames: true,
+      keep_fnames: true,
+      safari10: true
+   }
+   static EsOptionsSimple = {
+      ecma: 5,
+      compress: {drop_console:true, keep_classnames:true, keep_fnames: true, ecma: 5, 
+         keep_fargs:true, reduce_funcs: false},
+      output: {beautify:true, quote_style:3, safari10:true}, 
+      mangle: false,
+      keep_classnames: true,
+      keep_fnames: true
+      //,safari10: true
+   }
    //http://github.com/kangax/html-minifier/issues/843
-   static minify_es6(text, inline) {
-      let uglifyEsOptions = {
-         ecma: 5,
-         parse: {  html5_comments:false, ecma: 5},
-         compress: {drop_console:true, keep_classnames:true, keep_fnames: false, ecma: 5, 
-            keep_fargs:false, reduce_funcs: true},
-         output: {beautify:false, indent_level:0, ecma: 5, quote_style:3, safari10:true, semicolons: false}, 
-         mangle: false,
-         keep_classnames: true,
-         keep_fnames: true,
-         safari10: true
-      }
+   static minify_pg(text, inline) {
 
       let code = text.match(/^\s*\s*$/) ? '' : text
 
-      let result = Terser.minify(code, uglifyEsOptions)
+      let result = Terser.minify(code, BakeWrk.EsOptionsPg)
       if (result.error) {
-         console.info('Uglify-es error:', result.error)
+         console.info('Terser error:', result.error)
          beeper()
          return text
       }
@@ -391,12 +400,12 @@ export class BakeWrk {
       return result
    }
 
-   minifyO = {
+   static minifyPg = {
       caseSensitive: true,
       collapseWhitespace: true,
       decodeEntities: true,
       minifyCSS: true,
-      minifyJS: BakeWrk.minify_es6,
+      minifyJS: BakeWrk.minify_pg,
       quoteCharacter: "'",
       removeComments: true,
       removeScriptTypeAttributes: true,
@@ -427,11 +436,11 @@ export class BakeWrk {
       if (this.locAll(options)) // if locale, we are not writing here, but in sub folders.
          return ' '
 
-      this.writeFile(this.dir + '/index.pug', options, this.dir + '/index.html')
+      this.writeFilePg(this.dir + '/index.pug', options, this.dir + '/index.html')
       //amp
       if (!fs.existsSync(this.dir + '/m.pug'))
          return ' '
-      this.writeFile(this.dir + '/m.pug', options, this.dir + '/m.html')
+      this.writeFilePg(this.dir + '/m.pug', options, this.dir + '/m.html')
 
    }//()
 
@@ -488,21 +497,20 @@ export class BakeWrk {
 
       // if loc.pug exists
       if (fs.existsSync(locDir + '/loc.pug'))
-         this.writeFile(locDir + '/loc.pug', locMerged, locDir + '/index.html')
-      else this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html')
+         this.writeFilePg(locDir + '/loc.pug', locMerged, locDir + '/index.html')
+      else this.writeFilePg(this.dir + '/index.pug', locMerged, locDir + '/index.html')
 
       //amp
       if (!fs.existsSync(this.dir + '/m.pug'))
          return ' '
-      this.writeFile(this.dir + '/m.pug', locMerged, locDir + '/m.html')
-
+      this.writeFilePg(this.dir + '/m.pug', locMerged, locDir + '/m.html')
    }
 
-   writeFile(source, options, target) {
+   writeFilePg(source, options, target) {
       let html = pug.renderFile(source, options)
       const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->'
       if (!options['pretty'])
-         html = minify(html, this.minifyO)
+         html = minify(html, BakeWrk.minifyPg)
       html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml)
       fs.writeFileSync(target, html)
    }
@@ -666,7 +674,7 @@ export class Comps {
     })
    }//()
 
-   static getObsOptions(): TInputOptions {
+   static getCompOptions(): TInputOptions {
       let t = {
          identifierNamesGenerator: 'hexadecimal' // for virus
          , disableConsoleOutput: false // setting to true breaks things
@@ -696,10 +704,10 @@ export class Comps {
       const r_options = { 'template': 'pug', 'basedir' : dir }
 
       logger.info('compiling', fn )
-      let js
+      let js1
       try {
 
-         js = riotc.compile(s, r_options, fn) //tagpath
+         js1 = riotc.compile(s, r_options, fn) //tagpath
 
       } catch (err) {
          beeper(1);
@@ -707,16 +715,14 @@ export class Comps {
          logger.error(err)
          reject(err)
       }
+      fs.writeFileSync(fn + '.js', js1)
 
-      fs.writeFileSync(fn + '.js', js)
-
-      logger.info('minify')
-      js = stripDebug(js)
+      let js2 = Terser.minify(js1, BakeWrk.EsOptionsSimple)
 
       let ugs
       try {
-         // ugs http://npmjs.com/package/uglify-es
-         ugs = JavaScriptObfuscator.obfuscate(js, Comps.getObsOptions())// ugs
+         logger.info('obs')
+         ugs = JavaScriptObfuscator.obfuscate(js2, Comps.getCompOptions())
 
       } catch (err) {
          logger.error('error')

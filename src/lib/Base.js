@@ -15,7 +15,6 @@ const logger = require('tracer').colorConsole({
         }
     ]
 });
-const stripDebug = require("strip-debug");
 const Marpit = require("@marp-team/marpit");
 const marpit = new Marpit.Marpit();
 const fs = require("fs-extra");
@@ -281,20 +280,6 @@ class MBake {
 exports.MBake = MBake;
 class BakeWrk {
     constructor(dir_) {
-        this.minifyO = {
-            caseSensitive: true,
-            collapseWhitespace: true,
-            decodeEntities: true,
-            minifyCSS: true,
-            minifyJS: BakeWrk.minify_es6,
-            quoteCharacter: "'",
-            removeComments: true,
-            removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            useShortDoctype: true,
-            sortAttributes: true,
-            sortClassName: true
-        };
         let dir = Dirs.slash(dir_);
         this.dir = dir;
         console.info(' processing: ' + this.dir);
@@ -308,22 +293,11 @@ class BakeWrk {
         const { html, css } = marpit.render(text);
         return html;
     }
-    static minify_es6(text, inline) {
-        let uglifyEsOptions = {
-            ecma: 5,
-            parse: { html5_comments: false, ecma: 5 },
-            compress: { drop_console: true, keep_classnames: true, keep_fnames: false, ecma: 5,
-                keep_fargs: false, reduce_funcs: true },
-            output: { beautify: false, indent_level: 0, ecma: 5, quote_style: 3, safari10: true, semicolons: false },
-            mangle: false,
-            keep_classnames: true,
-            keep_fnames: true,
-            safari10: true
-        };
+    static minify_pg(text, inline) {
         let code = text.match(/^\s*\s*$/) ? '' : text;
-        let result = Terser.minify(code, uglifyEsOptions);
+        let result = Terser.minify(code, BakeWrk.EsOptionsPg);
         if (result.error) {
-            console.info('Uglify-es error:', result.error);
+            console.info('Terser error:', result.error);
             beeper();
             return text;
         }
@@ -356,10 +330,10 @@ class BakeWrk {
         options['ENV'] = prod;
         if (this.locAll(options))
             return ' ';
-        this.writeFile(this.dir + '/index.pug', options, this.dir + '/index.html');
+        this.writeFilePg(this.dir + '/index.pug', options, this.dir + '/index.html');
         if (!fs.existsSync(this.dir + '/m.pug'))
             return ' ';
-        this.writeFile(this.dir + '/m.pug', options, this.dir + '/m.html');
+        this.writeFilePg(this.dir + '/m.pug', options, this.dir + '/m.html');
     }
     locAll(options) {
         if (!options.LOC)
@@ -400,23 +374,57 @@ class BakeWrk {
         console.log(locDir);
         fs.ensureDirSync(locDir);
         if (fs.existsSync(locDir + '/loc.pug'))
-            this.writeFile(locDir + '/loc.pug', locMerged, locDir + '/index.html');
+            this.writeFilePg(locDir + '/loc.pug', locMerged, locDir + '/index.html');
         else
-            this.writeFile(this.dir + '/index.pug', locMerged, locDir + '/index.html');
+            this.writeFilePg(this.dir + '/index.pug', locMerged, locDir + '/index.html');
         if (!fs.existsSync(this.dir + '/m.pug'))
             return ' ';
-        this.writeFile(this.dir + '/m.pug', locMerged, locDir + '/m.html');
+        this.writeFilePg(this.dir + '/m.pug', locMerged, locDir + '/m.html');
     }
-    writeFile(source, options, target) {
+    writeFilePg(source, options, target) {
         let html = pug.renderFile(source, options);
         const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->';
         if (!options['pretty'])
-            html = minify(html, this.minifyO);
+            html = minify(html, BakeWrk.minifyPg);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
         fs.writeFileSync(target, html);
     }
 }
 BakeWrk.ebodyHtml = '</body>';
+BakeWrk.EsOptionsPg = {
+    ecma: 5,
+    parse: { html5_comments: false, ecma: 5 },
+    compress: { drop_console: true, keep_classnames: true, keep_fnames: false, ecma: 5,
+        keep_fargs: false, reduce_funcs: true },
+    output: { beautify: true, indent_level: 1, ecma: 5, quote_style: 3, safari10: true, semicolons: false },
+    mangle: false,
+    keep_classnames: true,
+    keep_fnames: true,
+    safari10: true
+};
+BakeWrk.EsOptionsSimple = {
+    ecma: 5,
+    compress: { drop_console: true, keep_classnames: true, keep_fnames: true, ecma: 5,
+        keep_fargs: true, reduce_funcs: false },
+    output: { beautify: true, quote_style: 3, safari10: true },
+    mangle: false,
+    keep_classnames: true,
+    keep_fnames: true
+};
+BakeWrk.minifyPg = {
+    caseSensitive: true,
+    collapseWhitespace: true,
+    decodeEntities: true,
+    minifyCSS: true,
+    minifyJS: BakeWrk.minify_pg,
+    quoteCharacter: "'",
+    removeComments: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    useShortDoctype: true,
+    sortAttributes: true,
+    sortClassName: true
+};
 exports.BakeWrk = BakeWrk;
 class Items {
     constructor(dir_) {
@@ -535,7 +543,7 @@ class Comps {
             resolve('OK');
         });
     }
-    static getObsOptions() {
+    static getCompOptions() {
         let t = {
             identifierNamesGenerator: 'hexadecimal',
             disableConsoleOutput: false,
@@ -556,9 +564,9 @@ class Comps {
         return new Promise(function (resolve, reject) {
             const r_options = { 'template': 'pug', 'basedir': dir };
             logger.info('compiling', fn);
-            let js;
+            let js1;
             try {
-                js = riotc.compile(s, r_options, fn);
+                js1 = riotc.compile(s, r_options, fn);
             }
             catch (err) {
                 beeper(1);
@@ -566,12 +574,12 @@ class Comps {
                 logger.error(err);
                 reject(err);
             }
-            fs.writeFileSync(fn + '.js', js);
-            logger.info('minify');
-            js = stripDebug(js);
+            fs.writeFileSync(fn + '.js', js1);
+            let js2 = Terser.minify(js1, BakeWrk.EsOptionsSimple);
             let ugs;
             try {
-                ugs = JavaScriptObfuscator.obfuscate(js, Comps.getObsOptions());
+                logger.info('obs');
+                ugs = JavaScriptObfuscator.obfuscate(js2, Comps.getCompOptions());
             }
             catch (err) {
                 logger.error('error');
