@@ -19,7 +19,7 @@ import sharp = require('sharp')
 import probe = require('probe-image-size')
 
 import * as ts from "typescript"
-import UglifyJS = require("uglify-es")
+const Terser = require("terser")
 import decomment = require('decomment')
 
 const execa = require('execa')
@@ -211,7 +211,7 @@ export class MinJS {//es5
       try {
       console.log(fn)
       let code:string = fs.readFileSync(fn).toString('utf8')
-      result = UglifyJS.minify(code, MinJS.options)
+      result = Terser.minify(code, MinJS.options)
 
       let txt = decomment(result.code, { space: true })
 
@@ -236,8 +236,7 @@ export class MinJS {//es5
 
    static options = {
       ecma: 5,
-      keep_classnames: true,
-      parse: { html5_comments: false },
+      parse: { html5_comments: false, ecma: 5},
       compress: {
          drop_console: true,
          ecma: 5,
@@ -245,16 +244,20 @@ export class MinJS {//es5
          keep_fnames: true,
          reduce_funcs: false
       },
-      mangle: false,
       output: {
          beautify: true,
-         bracketize: true,
          ecma: 5,
          indent_level: 1,
          preserve_line: true,
          quote_style: 3,
-         semicolons: false
-      }
+         semicolons: false,
+         safari10:true,
+         max_line_len:100
+      },
+      mangle: false,
+      keep_classnames: true,
+      keep_fnames: true,
+      safari10: true
 
    }//options
 

@@ -20,7 +20,7 @@ const FileHound = require("filehound");
 const sharp = require("sharp");
 const probe = require("probe-image-size");
 const ts = __importStar(require("typescript"));
-const UglifyJS = require("uglify-es");
+const Terser = require("terser");
 const decomment = require("decomment");
 const execa = require('execa');
 const logger = require('tracer').console();
@@ -161,7 +161,7 @@ class MinJS {
             try {
                 console.log(fn);
                 let code = fs.readFileSync(fn).toString('utf8');
-                result = UglifyJS.minify(code, MinJS.options);
+                result = Terser.minify(code, MinJS.options);
                 let txt = decomment(result.code, { space: true });
                 txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n');
                 txt = txt.replace(/\n\s*\n/g, '\n');
@@ -201,8 +201,7 @@ class MinJS {
 MinJS.ver = '// mB ' + new Base_1.Ver().ver() + ' on ' + new Date().toISOString() + '\r\n';
 MinJS.options = {
     ecma: 5,
-    keep_classnames: true,
-    parse: { html5_comments: false },
+    parse: { html5_comments: false, ecma: 5 },
     compress: {
         drop_console: true,
         ecma: 5,
@@ -210,16 +209,20 @@ MinJS.options = {
         keep_fnames: true,
         reduce_funcs: false
     },
-    mangle: false,
     output: {
         beautify: true,
-        bracketize: true,
         ecma: 5,
         indent_level: 1,
         preserve_line: true,
         quote_style: 3,
-        semicolons: false
-    }
+        semicolons: false,
+        safari10: true,
+        max_line_len: 100
+    },
+    mangle: false,
+    keep_classnames: true,
+    keep_fnames: true,
+    safari10: true
 };
 exports.MinJS = MinJS;
 class YamlConfig {

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.06.03';
+        return 'v5.06.04';
     }
 }
 exports.Ver = Ver;
@@ -310,14 +310,17 @@ class BakeWrk {
     }
     static minify_es6(text, inline) {
         let uglifyEsOptions = {
-            parse: { bare_returns: {} },
+            ecma: 5,
+            parse: { html5_comments: false, ecma: 5 },
+            compress: { drop_console: true, keep_classnames: true, keep_fnames: false, ecma: 5,
+                keep_fargs: false, reduce_funcs: true },
+            output: { beautify: false, indent_level: 0, ecma: 5, quote_style: 3, safari10: true, semicolons: false },
             mangle: false,
             keep_classnames: true,
             keep_fnames: true,
             safari10: true
         };
         let code = text.match(/^\s*\s*$/) ? '' : text;
-        uglifyEsOptions.parse.bare_returns = inline;
         let result = Terser.minify(code, uglifyEsOptions);
         if (result.error) {
             console.info('Uglify-es error:', result.error);
