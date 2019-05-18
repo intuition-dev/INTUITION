@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.06.04'
+      return 'v5.06.05'
    }
 }
 import colors = require('colors')
@@ -351,25 +351,25 @@ export class BakeWrk {
    }
 
    static EsOptionsPg = {
-      ecma: 5,
-      parse: {  html5_comments:false, ecma: 5},
-      compress: {drop_console:true, keep_classnames:true, keep_fnames: false, ecma: 5, 
+      parse: {  html5_comments:false},
+      compress: {drop_console:true, 
          keep_fargs:false, reduce_funcs: true},
-      output: {beautify:false, indent_level:0, ecma: 5, quote_style:3, safari10:true, semicolons: false}, 
+      output: {beautify:false, indent_level:0, quote_style:3, semicolons: false}, 
+      ecma: 5,
       mangle: false,
       keep_classnames: true,
       keep_fnames: true,
       safari10: true
    }
-   static EsOptionsSimple = {
-      ecma: 5,
-      compress: {drop_console:true, keep_classnames:true, keep_fnames: true, ecma: 5, 
+   static CompOptionsSimple = {
+      compress: {drop_console:true,
          keep_fargs:true, reduce_funcs: false},
-      output: {beautify:true, quote_style:3, safari10:true}, 
+      output:  {beautify:false, indent_level:0, quote_style:3, semicolons: false}, 
+      ecma: 5,
       mangle: false,
       keep_classnames: true,
-      keep_fnames: true
-      //,safari10: true
+      keep_fnames: true,
+      safari10: true
    }
    //http://github.com/kangax/html-minifier/issues/843
    static minify_pg(text, inline) {
@@ -716,13 +716,12 @@ export class Comps {
          reject(err)
       }
       fs.writeFileSync(fn + '.js', js1)
-
-      let js2 = Terser.minify(js1, BakeWrk.EsOptionsSimple)
+      let js2 = Terser.minify(js1, BakeWrk.CompOptionsSimple)
 
       let ugs
       try {
          logger.info('obs')
-         ugs = JavaScriptObfuscator.obfuscate(js2, Comps.getCompOptions())
+         ugs = JavaScriptObfuscator.obfuscate(js2.code, Comps.getCompOptions())
 
       } catch (err) {
          logger.error('error')

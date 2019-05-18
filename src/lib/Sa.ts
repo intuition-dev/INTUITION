@@ -235,25 +235,21 @@ export class MinJS {//es5
    static ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
 
    static optionsTs = {
-      ecma: 5,
-      parse: { html5_comments: false, ecma: 5},
+      parse: { html5_comments: false},
       compress: {
          drop_console: true,
-         ecma: 5,
-         keep_classnames: true,
-         keep_fnames: true,
-         reduce_funcs: false
+         reduce_funcs: false,
+         keep_fargs:true
       },
       output: {
          beautify: true,
-         ecma: 5,
          indent_level: 1,
          preserve_line: true,
          quote_style: 3,
          semicolons: false,
-         safari10:true,
-         max_line_len:100
+         max_line_len:90
       },
+      ecma: 5,
       mangle: false,
       keep_classnames: true,
       keep_fnames: true,

@@ -161,7 +161,7 @@ class MinJS {
             try {
                 console.log(fn);
                 let code = fs.readFileSync(fn).toString('utf8');
-                result = Terser.minify(code, MinJS.options);
+                result = Terser.minify(code, MinJS.optionsTs);
                 let txt = decomment(result.code, { space: true });
                 txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n');
                 txt = txt.replace(/\n\s*\n/g, '\n');
@@ -199,26 +199,22 @@ class MinJS {
     }
 }
 MinJS.ver = '// mB ' + new Base_1.Ver().ver() + ' on ' + new Date().toISOString() + '\r\n';
-MinJS.options = {
-    ecma: 5,
-    parse: { html5_comments: false, ecma: 5 },
+MinJS.optionsTs = {
+    parse: { html5_comments: false },
     compress: {
         drop_console: true,
-        ecma: 5,
-        keep_classnames: true,
-        keep_fnames: true,
-        reduce_funcs: false
+        reduce_funcs: false,
+        keep_fargs: true
     },
     output: {
         beautify: true,
-        ecma: 5,
         indent_level: 1,
         preserve_line: true,
         quote_style: 3,
         semicolons: false,
-        safari10: true,
-        max_line_len: 100
+        max_line_len: 90
     },
+    ecma: 5,
     mangle: false,
     keep_classnames: true,
     keep_fnames: true,
