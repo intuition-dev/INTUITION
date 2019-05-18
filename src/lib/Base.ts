@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.06.07'
+      return 'v5.06.08'
    }
 }
 import colors = require('colors')
@@ -366,7 +366,7 @@ export class BakeWrk {
          keep_fargs:true, reduce_funcs: false},
       output:  {beautify:false, indent_level:0, quote_style:0, semicolons: true}, 
       ecma: 5,
-      mangle: {module:true, topLevel:true },
+      mangle: true, // may need to be false for WebComp Modules
       keep_classnames: true,
       keep_fnames: true,
       safari10: true

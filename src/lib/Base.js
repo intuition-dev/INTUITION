@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.06.07';
+        return 'v5.06.08';
     }
 }
 exports.Ver = Ver;
@@ -407,7 +407,7 @@ BakeWrk.CompOptionsSimple = {
         keep_fargs: true, reduce_funcs: false },
     output: { beautify: false, indent_level: 0, quote_style: 0, semicolons: true },
     ecma: 5,
-    mangle: { module: true, topLevel: true },
+    mangle: true,
     keep_classnames: true,
     keep_fnames: true,
     safari10: true
