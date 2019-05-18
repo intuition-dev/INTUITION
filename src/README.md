@@ -196,6 +196,8 @@ In turn, the included file calls a toolBelt.js from a CDN.
 
 ## Next steps
 
+First, please give us a star at: https://github.com/metabake/mbake
+
 Now that you know mbake foundation, here are some choices for next things to learn in the advanced docs, pick and chose:
 
 - CMS: an admin panel that you can host to can use as is; or as a base to build commercial grade CMS or eCommerce site, including browser plugin.
