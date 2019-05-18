@@ -73,7 +73,6 @@ Title
 ```
 
 
-
 So if you write a Markdown file comment.md, it will be included in index.html
 ---
 
@@ -183,19 +182,19 @@ mbake -i .
 ```
 It will create `items.json`. This allows you to fetch that json and search for content, CMS, items, etc.
 
-## MetaBake FrameWork(FW)/Application Architecture(AA)
+## MetaBake tool belt
 
-There is not much to ours. 
+There are some libraries (and polly fills) that you use often. We just have a list of links, making them easy to load(depp.require())
 
 ```sh
 mbake -f .
 ```
 
 This emits a Pug file that you should include in your Pug's layout head section.
-In turn, the included file calls a 'setup-deffs' js file that defines and show you how to define things you can require later.
+In turn, the included file calls a toolBelt.js from a CDN.
 
 
-## Extras and next steps
+## Next steps
 
 Now that you know mbake foundation, here are some choices for next things to learn in the advanced docs, pick and chose:
 
