@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.06.05'
+      return 'v5.06.06'
    }
 }
 import colors = require('colors')
@@ -350,7 +350,7 @@ export class BakeWrk {
       return html
    }
 
-   static EsOptionsPg = {
+   static OptionsPg = {
       parse: {  html5_comments:false},
       compress: {drop_console:true, 
          keep_fargs:false, reduce_funcs: true},
@@ -376,7 +376,7 @@ export class BakeWrk {
 
       let code = text.match(/^\s*\s*$/) ? '' : text
 
-      let result = Terser.minify(code, BakeWrk.EsOptionsPg)
+      let result = Terser.minify(code, BakeWrk.OptionsPg)
       if (result.error) {
          console.info('Terser error:', result.error)
          beeper()

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.06.05';
+        return 'v5.06.06';
     }
 }
 exports.Ver = Ver;
@@ -295,7 +295,7 @@ class BakeWrk {
     }
     static minify_pg(text, inline) {
         let code = text.match(/^\s*\s*$/) ? '' : text;
-        let result = Terser.minify(code, BakeWrk.EsOptionsPg);
+        let result = Terser.minify(code, BakeWrk.OptionsPg);
         if (result.error) {
             console.info('Terser error:', result.error);
             beeper();
@@ -391,7 +391,7 @@ class BakeWrk {
     }
 }
 BakeWrk.ebodyHtml = '</body>';
-BakeWrk.EsOptionsPg = {
+BakeWrk.OptionsPg = {
     parse: { html5_comments: false },
     compress: { drop_console: true,
         keep_fargs: false, reduce_funcs: true },

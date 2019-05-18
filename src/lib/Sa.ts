@@ -20,7 +20,6 @@ import probe = require('probe-image-size')
 
 import * as ts from "typescript"
 const Terser = require("terser")
-import decomment = require('decomment')
 
 const execa = require('execa')
 
@@ -213,7 +212,7 @@ export class MinJS {//es5
       let code:string = fs.readFileSync(fn).toString('utf8')
       result = Terser.minify(code, MinJS.optionsTs)
 
-      let txt = decomment(result.code, { space: true })
+      let txt = result.code
 
       txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n')
       txt = txt.replace(/\n\s*\n/g, '\n')
@@ -244,7 +243,6 @@ export class MinJS {//es5
       output: {
          beautify: true,
          indent_level: 1,
-         preserve_line: true,
          quote_style: 3,
          semicolons: false,
          max_line_len:90

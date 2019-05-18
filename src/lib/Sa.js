@@ -21,7 +21,6 @@ const sharp = require("sharp");
 const probe = require("probe-image-size");
 const ts = __importStar(require("typescript"));
 const Terser = require("terser");
-const decomment = require("decomment");
 const execa = require('execa');
 const logger = require('tracer').console();
 class GitDown {
@@ -162,7 +161,7 @@ class MinJS {
                 console.log(fn);
                 let code = fs.readFileSync(fn).toString('utf8');
                 result = Terser.minify(code, MinJS.optionsTs);
-                let txt = decomment(result.code, { space: true });
+                let txt = result.code;
                 txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n');
                 txt = txt.replace(/\n\s*\n/g, '\n');
                 txt = txt.trim();
@@ -209,7 +208,6 @@ MinJS.optionsTs = {
     output: {
         beautify: true,
         indent_level: 1,
-        preserve_line: true,
         quote_style: 3,
         semicolons: false,
         max_line_len: 90
