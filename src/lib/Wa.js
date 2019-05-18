@@ -179,7 +179,7 @@ class MetaPro {
             else
                 return await this.bake(folder);
         }
-        throw new Error('Cant process ' + ext);
+        return ('Cant process ' + ext);
     }
 }
 MetaPro.folderProp = 'folder';

@@ -38,7 +38,7 @@ export class Wa {
       const mp = new MetaPro(dir)
       let ww = new Watch(mp, dir)
       
-      ww.start(450) // build X ms after saving a file
+      ww.start(400) // build X ms after saving a file
 
       console.info(' Serving on ' + 'http://localhost:' + port)
       console.info(' --------------------------')
@@ -223,6 +223,7 @@ export class MetaPro {
 
       if (ext == 'yaml') // bake and itemize
          return await this.itemize(folder)
+
       if (ext == 'md')
          return await this.bake(folder)
 
@@ -232,7 +233,7 @@ export class MetaPro {
          else
             return await this.bake(folder)
       }
-      throw new Error('Cant process ' + ext)
+      return ('Cant process ' + ext)
    }//()
 
 }//class
