@@ -99,17 +99,17 @@ class Watch {
             }
         });
         let thiz = this;
-        this.watcher.on('add', function (path) {
-            thiz.auto(path, 'a');
+        this.watcher.on('add', async function (path) {
+            await thiz.autoNT(path, 'a');
         });
-        this.watcher.on('change', function (path) {
-            thiz.auto(path, 'c');
+        this.watcher.on('change', async function (path) {
+            await thiz.autoNT(path, 'c');
         });
     }
     refreshBro() {
         MDevSrv.reloadServer.reload();
     }
-    async auto(path_, wa) {
+    async autoNT(path_, wa) {
         console.log(wa);
         let path = Base_1.Dirs.slash(path_);
         let p = path.lastIndexOf('/');
@@ -122,7 +122,7 @@ class Watch {
         try {
             logger.info('WATCHED1:', folder + '/' + fn);
             await this.mp.autoBake(folder, fn);
-            this.refreshBro();
+            await this.refreshBro();
         }
         catch (err) {
             logger.warn(err);
@@ -161,23 +161,23 @@ class MetaPro {
         const js = new Sa_1.MinJS();
         return js.ts(folder);
     }
-    autoBake(folder__, file) {
+    async autoBake(folder__, file) {
         const folder = Base_1.Dirs.slash(folder__);
         const ext = file.split('.').pop();
         logger.info('WATCHED2:', folder, ext);
         if (ext == 'scss' || ext == 'sass')
-            return this.css(folder);
+            return await this.css(folder);
         if (ext == 'ts')
-            return this.ts(folder);
+            return await this.ts(folder);
         if (ext == 'yaml')
-            return this.itemize(folder);
+            return await this.itemize(folder);
         if (ext == 'md')
-            return this.bake(folder);
+            return await this.bake(folder);
         if (ext == 'pug') {
             if (file.indexOf('-comp') >= 0)
-                return this.comps(folder);
+                return await this.comps(folder);
             else
-                return this.bake(folder);
+                return await this.bake(folder);
         }
         throw new Error('Cant process ' + ext);
     }

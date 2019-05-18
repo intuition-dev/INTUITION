@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.06.06'
+      return 'v5.06.07'
    }
 }
 import colors = require('colors')
@@ -364,9 +364,9 @@ export class BakeWrk {
    static CompOptionsSimple = {
       compress: {drop_console:true,
          keep_fargs:true, reduce_funcs: false},
-      output:  {beautify:false, indent_level:0, quote_style:3, semicolons: false}, 
+      output:  {beautify:false, indent_level:0, quote_style:0, semicolons: true}, 
       ecma: 5,
-      mangle: false,
+      mangle: {module:true, topLevel:true },
       keep_classnames: true,
       keep_fnames: true,
       safari10: true
@@ -682,7 +682,7 @@ export class Comps {
 
          , stringArray: true
          , stringArrayThreshold: 1
-         , stringArrayEncoding: 'rc4'
+         , stringArrayEncoding: 'rc4' // breaks if not
 
          , selfDefending: true
 

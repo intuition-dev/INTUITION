@@ -6,5 +6,5 @@ tsc
 
 # node mbake.js -t /Users/code/Documents/GitHub/alan/al-prod
 
-node mbake.js -t /Users/code/Documents/GitHub/alan/al-prod/assets/models
+node mbakeX.js -w /Users/code/Documents/GitHub/mbake/examples/website
 

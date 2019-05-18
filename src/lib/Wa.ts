@@ -124,11 +124,11 @@ export class Watch {
       })
 
       let thiz = this
-      this.watcher.on('add', function (path) {
-         thiz.auto(path, 'a')
+      this.watcher.on('add', async function (path) {
+         await thiz.autoNT(path, 'a')
       })
-      this.watcher.on('change', function (path) {
-         thiz.auto(path, 'c')
+      this.watcher.on('change', async function (path) {
+         await thiz.autoNT(path, 'c')
       })
    }//()
 
@@ -136,7 +136,8 @@ export class Watch {
       MDevSrv.reloadServer.reload()
    }
 
-   async auto(path_: string, wa:string) {//process
+
+   async autoNT(path_: string, wa:string) {//process
       console.log(wa)
       let path = Dirs.slash(path_)
 
@@ -151,9 +152,8 @@ export class Watch {
 
       try {
          logger.info('WATCHED1:', folder + '/' + fn)
-
          await this.mp.autoBake(folder, fn)
-         this.refreshBro()
+         await this.refreshBro()
       
       } catch (err) {
          logger.warn(err)
@@ -209,28 +209,28 @@ export class MetaPro {
    }
 
    // when you pass the file name, ex: watch
-   autoBake(folder__, file):Promise<string> {
+   async autoBake(folder__, file):Promise<string> {
       const folder = Dirs.slash(folder__)
 
       const ext = file.split('.').pop()
       logger.info('WATCHED2:', folder, ext)
 
       if (ext == 'scss' || ext == 'sass') // css
-         return this.css(folder)
+         return await this.css(folder)
          
       if (ext == 'ts') // ts
-         return this.ts(folder)
+         return await this.ts(folder)
 
       if (ext == 'yaml') // bake and itemize
-         return this.itemize(folder)
+         return await this.itemize(folder)
       if (ext == 'md')
-         return this.bake(folder)
+         return await this.bake(folder)
 
       if (ext == 'pug') {
          if (file.indexOf('-comp') >= 0)
-            return this.comps(folder)
+            return await this.comps(folder)
          else
-            return this.bake(folder)
+            return await this.bake(folder)
       }
       throw new Error('Cant process ' + ext)
    }//()

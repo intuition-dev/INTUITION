@@ -245,7 +245,7 @@ export class MinJS {//es5
          indent_level: 1,
          quote_style: 3,
          semicolons: false,
-         max_line_len:90
+         max_line_len:70
       },
       ecma: 5,
       mangle: false,
