@@ -1,13 +1,13 @@
 
-# Metabake
+# MetaBake
 
 ## 'All my friends KNOW the low-coder'
 
-#### Metabake is open source and extensible low-code productivity tool for front-end developers.
+#### MetaBake is open source and extensible low-code productivity tool for front-end developers.
 
 ## Overview
 
-Metabake(mbake) provides all the necessary tools for a developer to write cleaner code quicker, with `pug` and livereload out of the box.
+MetaBake(mbake) provides all the necessary tools for a developer to write cleaner code quicker, with `pug` and livereload out of the box.
 
 You can gradually adopt it while it allows you to develop quicker - and with clean simplicity - Static Websites, Web Components, custom CMS/E-Commerce, CRUD and all sorts of dynamic web-apps.
 
@@ -25,7 +25,7 @@ mbakeX -w . /* to run the watcher/livereload */
 ```
 
 
-## Metabake in 4 Minutes
+## MetaBake in 4 Minutes
 
 Building sites take a few moments, just add `index.pug` and `dat.yaml` files in the folder, and compile it with `mbake .` from the root folder of your site.
 
@@ -55,7 +55,7 @@ key1: World
 mbake .
 ```
 
-This will create `index.html`. Of course you can use regular Pug syntax to include other Pug files or Markdown. (Metabake Markdown flavor includes CSS support):
+This will create `index.html`. Of course you can use regular Pug syntax to include other Pug files or Markdown. (MetaBake Markdown flavor includes CSS support):
 ```pug
 body
    div
@@ -215,8 +215,8 @@ Now that you know mbake foundation, here are some choices for next things to lea
 
 # Links
 
-- Full Docs: [docs.Metabake.org](http://docs.Metabake.org)
-- [Metabake.org](https://www.Metabake.org)
-- [blog.Metabake.net](http://blog.Metabake.net)
-- [Github](http://git.Metabake.org)
+- Full Docs: [docs.MetaBake.org](http://docs.MetaBake.org)
+- [MetaBake.org](https://www.MetaBake.org)
+- [blog.MetaBake.net](http://blog.MetaBake.net)
+- [Github](http://git.MetaBake.org)
 - Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)
