@@ -16,7 +16,7 @@
    "homepage": "http://www.Metabake.org",
    "repository": {
       "type": "git",
-      "url": "https://github.com/metabake/mbake"
+      "url": "https://github.com/metabake"
    },
    "keywords": [
       "pug",

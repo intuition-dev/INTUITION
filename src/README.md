@@ -3,7 +3,7 @@
 
 ## 'All my friends KNOW the low-coder'
 
-#### Metabake is open source and extensible low-code productivity tool for programmers.
+#### Metabake is open source and extensible low-code productivity tool for front-end developers.
 
 ## Overview
 
