@@ -64,7 +64,7 @@ class GitDown {
         fs.removeSync(dirR);
         console.log('removed', dirR);
         console.log();
-        fs.writeJsonSync(dirTo + '/branch.json', { branch: branch });
+        fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: new Base_1.Ver().date() });
         console.log('DONE!');
         console.log('Maybe time to make/bake', dirTo);
         console.log('and then point http server to', dirTo);
@@ -197,7 +197,7 @@ class MinJS {
         console.info(`status code '${exitCode}'.`);
     }
 }
-MinJS.ver = '// mB ' + new Base_1.Ver().ver() + ' on ' + new Date().toISOString() + '\r\n';
+MinJS.ver = '// mB ' + new Base_1.Ver().ver() + ' on ' + new Base_1.Ver().date() + '\r\n';
 MinJS.optionsTs = {
     parse: { html5_comments: false },
     compress: {
@@ -322,7 +322,7 @@ class Sas {
             res = res.replace(/ }/g, '}');
             res = res.replace(/ { /g, '{');
             res = res.replace(/, /g, ',');
-            const ver = ' /* mB ' + new Base_1.Ver().ver() + ' on ' + new Date().toISOString() + " */";
+            const ver = ' /* mB ' + new Base_1.Ver().ver() + ' on ' + new Base_1.Ver().date() + " */";
             res = res + ver;
             let filename2 = path.basename(fn2);
             filename2 = filename2.split('.').slice(0, -1).join('.');

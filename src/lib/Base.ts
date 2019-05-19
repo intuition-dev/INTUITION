@@ -5,6 +5,9 @@ export class Ver {
    ver() {
       return 'v5.06.09'
    }
+   date():string {
+      return new Date().toISOString()
+   }
 }
 import colors = require('colors')
 const logger = require('tracer').colorConsole({
@@ -508,7 +511,7 @@ export class BakeWrk {
 
    writeFilePg(source, options, target) {
       let html = pug.renderFile(source, options)
-      const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->'
+      const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Ver().date() + ' -->'
       if (!options['pretty'])
          html = minify(html, BakeWrk.minifyPg)
       html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml)
@@ -695,7 +698,7 @@ export class Comps {
       return t as TInputOptions
    }
 
-   ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
+   ver = '// mB ' + new Ver().ver() + ' on ' + new Ver().date() + '\r\n'
 
    process(s: string, dir: string, fn: string):Promise<string> {
       const THIZ = this

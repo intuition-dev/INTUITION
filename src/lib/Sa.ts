@@ -82,7 +82,7 @@ export class GitDown {
       console.log('removed', dirR)
       console.log()
       
-      fs.writeJsonSync(dirTo +'/branch.json', {branch: branch})
+      fs.writeJsonSync(dirTo +'/branch.json', {branch: branch, syncedOn: new Ver().date() })
       console.log('DONE!')
       console.log('Maybe time to make/bake', dirTo)
       console.log('and then point http server to', dirTo)
@@ -231,7 +231,7 @@ export class MinJS {//es5
       })
    }//()
 
-   static ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n'
+   static ver = '// mB ' + new Ver().ver() + ' on ' + new Ver().date() + '\r\n'
 
    static optionsTs = {
       parse: { html5_comments: false},
@@ -411,7 +411,7 @@ export class Sas {
          res = res.replace(/, /g, ',')
 
          //add ver string
-         const ver = ' /* mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + " */"
+         const ver = ' /* mB ' + new Ver().ver() + ' on ' + new Ver().date() + " */"
          res = res + ver
 
          // write the file

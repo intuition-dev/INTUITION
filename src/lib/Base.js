@@ -4,6 +4,9 @@ class Ver {
     ver() {
         return 'v5.06.09';
     }
+    date() {
+        return new Date().toISOString();
+    }
 }
 exports.Ver = Ver;
 const colors = require("colors");
@@ -383,7 +386,7 @@ class BakeWrk {
     }
     writeFilePg(source, options, target) {
         let html = pug.renderFile(source, options);
-        const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + ' -->';
+        const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Ver().date() + ' -->';
         if (!options['pretty'])
             html = minify(html, BakeWrk.minifyPg);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
@@ -510,7 +513,7 @@ class Items {
 exports.Items = Items;
 class Comps {
     constructor(dir_) {
-        this.ver = '// mB ' + new Ver().ver() + ' on ' + new Date().toISOString() + '\r\n';
+        this.ver = '// mB ' + new Ver().ver() + ' on ' + new Ver().date() + '\r\n';
         let dir = Dirs.slash(dir_);
         this.dir = dir;
     }
