@@ -157,7 +157,7 @@ export class GitDown {
    }//()
 }//class
 
-export class MinJS {//es5
+export class MinJS {
 
    ts (dir):Promise<string> {
       logger.info(dir)
@@ -196,7 +196,7 @@ export class MinJS {//es5
          .findSync()
       for (let fn of rec) {//clean the strings
          try {
-            await THIZ._minOne(fn)
+            await THIZ._minOneJS(fn)
          } catch (err) {
             logger.warn(err)
             reject(err)
@@ -207,16 +207,21 @@ export class MinJS {//es5
       })
    }
 
-   _minOne (fn) {
+   _minOneJS (fn) {
       return new Promise(async function (resolve, reject) {
       let result
       try {
       console.log(fn)
       let code:string = fs.readFileSync(fn).toString('utf8')
 
+      let optionsClearJS = Object.assign({}, MinJS.CompOptionsCrypt)
+      let _output =   {indent_level:1, quote_style:3, semicolons: false}
+      optionsClearJS['output'] = _output
+      optionsClearJS['mangle'] = false
+
       if(fn.includes('-wcomp')) 
            result = Terser.minify(code, MinJS.CompOptionsCrypt)
-      else result = Terser.minify(code, MinJS.OptionsClearJS)
+      else result = Terser.minify(code, optionsClearJS)
 
       let txt = result.code
 
@@ -273,22 +278,11 @@ export class MinJS {//es5
       return t as TInputOptions
    }
 
-
    static ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n'
-
-   static OptionsClearJS = {
-      parse: {  html5_comments:false},
-      compress: {drop_console:true,
-         keep_fargs:true, reduce_funcs: false},
-      output:  {indent_level:1, quote_style:3, semicolons: false}, 
-      ecma: 5,
-      mangle: false, 
-      keep_classnames: true,
-      keep_fnames: true
-   }
+   
    static CompOptionsCrypt = {
       parse: {  html5_comments:false},
-      compress: {drop_console:true,
+      compress: { drop_console:true,
          keep_fargs:true, reduce_funcs: false},
       output:  {indent_level:0, quote_style:0, semicolons: true}, 
       ecma: 5,

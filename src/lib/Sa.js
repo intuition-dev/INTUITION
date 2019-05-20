@@ -144,7 +144,7 @@ class MinJS {
                 .findSync();
             for (let fn of rec) {
                 try {
-                    await THIZ._minOne(fn);
+                    await THIZ._minOneJS(fn);
                 }
                 catch (err) {
                     logger.warn(err);
@@ -155,16 +155,20 @@ class MinJS {
             resolve('OK');
         });
     }
-    _minOne(fn) {
+    _minOneJS(fn) {
         return new Promise(async function (resolve, reject) {
             let result;
             try {
                 console.log(fn);
                 let code = fs.readFileSync(fn).toString('utf8');
+                let optionsClearJS = Object.assign({}, MinJS.CompOptionsCrypt);
+                let _output = { indent_level: 1, quote_style: 3, semicolons: false };
+                optionsClearJS['output'] = _output;
+                optionsClearJS['mangle'] = false;
                 if (fn.includes('-wcomp'))
                     result = Terser.minify(code, MinJS.CompOptionsCrypt);
                 else
-                    result = Terser.minify(code, MinJS.OptionsClearJS);
+                    result = Terser.minify(code, optionsClearJS);
                 let txt = result.code;
                 txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n');
                 txt = txt.replace(/\n\s*\n/g, '\n');
@@ -231,16 +235,6 @@ class MinJS {
     }
 }
 MinJS.ver = '// mB ' + Base_1.Ver.ver() + ' on ' + Base_1.Ver.date() + '\r\n';
-MinJS.OptionsClearJS = {
-    parse: { html5_comments: false },
-    compress: { drop_console: true,
-        keep_fargs: true, reduce_funcs: false },
-    output: { indent_level: 1, quote_style: 3, semicolons: false },
-    ecma: 5,
-    mangle: false,
-    keep_classnames: true,
-    keep_fnames: true
-};
 MinJS.CompOptionsCrypt = {
     parse: { html5_comments: false },
     compress: { drop_console: true,

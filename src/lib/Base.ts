@@ -3,7 +3,7 @@
 
 export class Ver {
    static ver() {
-      return 'v5.06.10'
+      return 'v5.06.11'
    }
    static date():string {
       return new Date().toISOString()
@@ -361,8 +361,11 @@ export class BakeWrk {
 
       let code = text.match(/^\s*\s*$/) ? '' : text
 
-      let pgOptions = MinJS.CompOptionsCrypt
+      let pgOptions = Object.assign({}, MinJS.CompOptionsCrypt) //clone 
       pgOptions['toplevel']=true
+      let _compress =  { drop_console:true, keep_fargs: false, reduce_funcs: true}
+      pgOptions['compress'] = _compress
+
       let result = Terser.minify(code, pgOptions)
       if (result.error) {
          console.info('Terser error:', result.error)
