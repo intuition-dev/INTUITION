@@ -353,23 +353,13 @@ export class BakeWrk {
       return html
    }
 
-   static OptionsPg = {
+   static CompOptionsCrypt = {
       parse: {  html5_comments:false},
-      compress: {drop_console:true, 
-         keep_fargs:false, reduce_funcs: true},
-      output: {beautify:false, indent_level:0, quote_style:3, semicolons: false}, 
-      ecma: 5,
-      mangle: false,
-      keep_classnames: true,
-      keep_fnames: true,
-      safari10: true
-   }
-   static CompOptionsSimple = {
       compress: {drop_console:true,
          keep_fargs:true, reduce_funcs: false},
       output:  {beautify:false, indent_level:0, quote_style:0, semicolons: true}, 
       ecma: 5,
-      mangle: true, // may need to be false for WebComp Modules
+      mangle: true, 
       keep_classnames: true,
       keep_fnames: true,
       safari10: true
@@ -379,7 +369,7 @@ export class BakeWrk {
 
       let code = text.match(/^\s*\s*$/) ? '' : text
 
-      let result = Terser.minify(code, BakeWrk.OptionsPg)
+      let result = Terser.minify(code, BakeWrk.CompOptionsCrypt)
       if (result.error) {
          console.info('Terser error:', result.error)
          beeper()
@@ -719,7 +709,7 @@ export class Comps {
          reject(err)
       }
       fs.writeFileSync(fn + '.js', js1)
-      let js2 = Terser.minify(js1, BakeWrk.CompOptionsSimple)
+      let js2 = Terser.minify(js1, BakeWrk.CompOptionsCrypt)
 
       let ugs
       try {

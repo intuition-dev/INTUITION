@@ -210,7 +210,7 @@ export class MinJS {//es5
       try {
       console.log(fn)
       let code:string = fs.readFileSync(fn).toString('utf8')
-      result = Terser.minify(code, MinJS.optionsTs)
+      result = Terser.minify(code, MinJS.OptionsTs)
 
       let txt = result.code
 
@@ -233,27 +233,17 @@ export class MinJS {//es5
 
    static ver = '// mB ' + new Ver().ver() + ' on ' + new Ver().date() + '\r\n'
 
-   static optionsTs = {
-      parse: { html5_comments: false},
-      compress: {
-         drop_console: true,
-         reduce_funcs: false,
-         keep_fargs:true
-      },
-      output: {
-         beautify: true,
-         indent_level: 1,
-         quote_style: 3,
-         semicolons: false,
-         max_line_len:70
-      },
+   static OptionsTs = {
+      parse: {  html5_comments:false},
+      compress: {drop_console:true,
+         keep_fargs:true, reduce_funcs: false},
+      output:  {beautify:true, indent_level:1, quote_style:3, semicolons: false}, 
       ecma: 5,
-      mangle: false,
+      mangle: false, 
       keep_classnames: true,
       keep_fnames: true,
       safari10: true
-
-   }//options
+   }
 
    compile (fileNames: string[], options_: ts.CompilerOptions): void { //http://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
       let program = ts.createProgram(fileNames, options_)
