@@ -3,7 +3,7 @@
 
 export class Ver {
    ver() {
-      return 'v5.06.09'
+      return 'v5.06.10'
    }
    date():string {
       return new Date().toISOString()
@@ -18,6 +18,8 @@ const logger = require('tracer').colorConsole({
       }
    ]
 })
+
+import { MinJS } from './Sa'
 
 import Marpit = require('@marp-team/marpit')
 const marpit = new Marpit.Marpit()
@@ -56,7 +58,6 @@ export class DownloadFrag {
 }
 
 import JavaScriptObfuscator = require('javascript-obfuscator')
-import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
 
 // code /////////////////////////////////////////////////////////////////////
 
@@ -353,23 +354,14 @@ export class BakeWrk {
       return html
    }
 
-   static CompOptionsCrypt = {
-      parse: {  html5_comments:false},
-      compress: {drop_console:true,
-         keep_fargs:true, reduce_funcs: false},
-      output:  {beautify:false, indent_level:0, quote_style:0, semicolons: true}, 
-      ecma: 5,
-      mangle: true, 
-      keep_classnames: true,
-      keep_fnames: true,
-      safari10: true
-   }
+
+
    //http://github.com/kangax/html-minifier/issues/843
    static minify_pg(text, inline) {
 
       let code = text.match(/^\s*\s*$/) ? '' : text
 
-      let result = Terser.minify(code, BakeWrk.CompOptionsCrypt)
+      let result = Terser.minify(code, MinJS.CompOptionsCrypt)
       if (result.error) {
          console.info('Terser error:', result.error)
          beeper()
@@ -667,27 +659,7 @@ export class Comps {
     })
    }//()
 
-   static getCompOptions(): TInputOptions {
-      let t = {
-         identifierNamesGenerator: 'hexadecimal' // for virus
-         , disableConsoleOutput: false // setting to true breaks things
-         , target: 'browser-no-eval'
-
-         , stringArray: true
-         , stringArrayThreshold: 1
-         , stringArrayEncoding: 'rc4' // breaks if not
-
-         , selfDefending: true
-
-         , controlFlowFlattening: true
-         , controlFlowFlatteningThreshold: 1
-
-         , deadCodeInjection: true
-         , deadCodeInjectionThreshold: 0.2
-      }
-      return t as TInputOptions
-   }
-
+  
    ver = '// mB ' + new Ver().ver() + ' on ' + new Ver().date() + '\r\n'
 
    process(s: string, dir: string, fn: string):Promise<string> {
@@ -709,12 +681,12 @@ export class Comps {
          reject(err)
       }
       fs.writeFileSync(fn + '.js', js1)
-      let js2 = Terser.minify(js1, BakeWrk.CompOptionsCrypt)
+      let js2 = Terser.minify(js1, MinJS.CompOptionsCrypt)
 
       let ugs
       try {
          logger.info('obs')
-         ugs = JavaScriptObfuscator.obfuscate(js2.code, Comps.getCompOptions())
+         ugs = JavaScriptObfuscator.obfuscate(js2.code, MinJS.getCompOptions())
 
       } catch (err) {
          logger.error('error')

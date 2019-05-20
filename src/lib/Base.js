@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     ver() {
-        return 'v5.06.09';
+        return 'v5.06.10';
     }
     date() {
         return new Date().toISOString();
@@ -18,6 +18,7 @@ const logger = require('tracer').colorConsole({
         }
     ]
 });
+const Sa_1 = require("./Sa");
 const Marpit = require("@marp-team/marpit");
 const marpit = new Marpit.Marpit();
 const fs = require("fs-extra");
@@ -298,7 +299,7 @@ class BakeWrk {
     }
     static minify_pg(text, inline) {
         let code = text.match(/^\s*\s*$/) ? '' : text;
-        let result = Terser.minify(code, BakeWrk.OptionsPg);
+        let result = Terser.minify(code, Sa_1.MinJS.CompOptionsCrypt);
         if (result.error) {
             console.info('Terser error:', result.error);
             beeper();
@@ -394,27 +395,6 @@ class BakeWrk {
     }
 }
 BakeWrk.ebodyHtml = '</body>';
-BakeWrk.OptionsPg = {
-    parse: { html5_comments: false },
-    compress: { drop_console: true,
-        keep_fargs: false, reduce_funcs: true },
-    output: { beautify: false, indent_level: 0, quote_style: 3, semicolons: false },
-    ecma: 5,
-    mangle: false,
-    keep_classnames: true,
-    keep_fnames: true,
-    safari10: true
-};
-BakeWrk.CompOptionsSimple = {
-    compress: { drop_console: true,
-        keep_fargs: true, reduce_funcs: false },
-    output: { beautify: false, indent_level: 0, quote_style: 0, semicolons: true },
-    ecma: 5,
-    mangle: true,
-    keep_classnames: true,
-    keep_fnames: true,
-    safari10: true
-};
 BakeWrk.minifyPg = {
     caseSensitive: true,
     collapseWhitespace: true,
@@ -547,22 +527,6 @@ class Comps {
             resolve('OK');
         });
     }
-    static getCompOptions() {
-        let t = {
-            identifierNamesGenerator: 'hexadecimal',
-            disableConsoleOutput: false,
-            target: 'browser-no-eval',
-            stringArray: true,
-            stringArrayThreshold: 1,
-            stringArrayEncoding: 'rc4',
-            selfDefending: true,
-            controlFlowFlattening: true,
-            controlFlowFlatteningThreshold: 1,
-            deadCodeInjection: true,
-            deadCodeInjectionThreshold: 0.2
-        };
-        return t;
-    }
     process(s, dir, fn) {
         const THIZ = this;
         return new Promise(function (resolve, reject) {
@@ -579,11 +543,11 @@ class Comps {
                 reject(err);
             }
             fs.writeFileSync(fn + '.js', js1);
-            let js2 = Terser.minify(js1, BakeWrk.CompOptionsSimple);
+            let js2 = Terser.minify(js1, Sa_1.MinJS.CompOptionsCrypt);
             let ugs;
             try {
                 logger.info('obs');
-                ugs = JavaScriptObfuscator.obfuscate(js2.code, Comps.getCompOptions());
+                ugs = JavaScriptObfuscator.obfuscate(js2.code, Sa_1.MinJS.getCompOptions());
             }
             catch (err) {
                 logger.error('error');

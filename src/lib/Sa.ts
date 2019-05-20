@@ -18,6 +18,9 @@ import FileHound = require('filehound')
 import sharp = require('sharp')
 import probe = require('probe-image-size')
 
+import JavaScriptObfuscator = require('javascript-obfuscator')
+import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"
+
 import * as ts from "typescript"
 const Terser = require("terser")
 
@@ -210,13 +213,30 @@ export class MinJS {//es5
       try {
       console.log(fn)
       let code:string = fs.readFileSync(fn).toString('utf8')
-      result = Terser.minify(code, MinJS.OptionsTs)
+
+      if(fn.includes('-wcomp')) 
+           result = Terser.minify(code, MinJS.CompOptionsCrypt)
+      else result = Terser.minify(code, MinJS.OptionsClearJS)
 
       let txt = result.code
 
       txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n')
       txt = txt.replace(/\n\s*\n/g, '\n')
       txt = txt.trim()
+
+      if(fn.includes('-wcomp')) {
+         let ugs
+         try {
+            logger.info('obs')
+            ugs = JavaScriptObfuscator.obfuscate(txt, MinJS.getCompOptions())
+            txt= ugs.getObfuscatedCode()
+
+         } catch (err) {
+            logger.error('error')
+            logger.error(err)
+            reject(err)
+         }
+      }
 
       txt = MinJS.ver + txt
 
@@ -231,15 +251,49 @@ export class MinJS {//es5
       })
    }//()
 
+
+   static getCompOptions(): TInputOptions {
+      let t = {
+         identifierNamesGenerator: 'hexadecimal' // for virus
+         , disableConsoleOutput: false // setting to true breaks things
+         , target: 'browser-no-eval'
+
+         , stringArray: true
+         , stringArrayThreshold: 1
+         , stringArrayEncoding: 'rc4' // breaks if not
+
+         , selfDefending: true
+
+         , controlFlowFlattening: true
+         , controlFlowFlatteningThreshold: 1
+
+         , deadCodeInjection: true
+         , deadCodeInjectionThreshold: 0.2
+      }
+      return t as TInputOptions
+   }
+
+
    static ver = '// mB ' + new Ver().ver() + ' on ' + new Ver().date() + '\r\n'
 
-   static OptionsTs = {
+   static OptionsClearJS = {
       parse: {  html5_comments:false},
       compress: {drop_console:true,
          keep_fargs:true, reduce_funcs: false},
       output:  {beautify:true, indent_level:1, quote_style:3, semicolons: false}, 
       ecma: 5,
       mangle: false, 
+      keep_classnames: true,
+      keep_fnames: true,
+      safari10: true
+   }
+   static CompOptionsCrypt = {
+      parse: {  html5_comments:false},
+      compress: {drop_console:true,
+         keep_fargs:true, reduce_funcs: false},
+      output:  {beautify:false, indent_level:0, quote_style:0, semicolons: true}, 
+      ecma: 5,
+      mangle: true, 
       keep_classnames: true,
       keep_fnames: true,
       safari10: true

@@ -19,6 +19,7 @@ const fs = require("fs-extra");
 const FileHound = require("filehound");
 const sharp = require("sharp");
 const probe = require("probe-image-size");
+const JavaScriptObfuscator = require("javascript-obfuscator");
 const ts = __importStar(require("typescript"));
 const Terser = require("terser");
 const execa = require('execa');
@@ -160,11 +161,27 @@ class MinJS {
             try {
                 console.log(fn);
                 let code = fs.readFileSync(fn).toString('utf8');
-                result = Terser.minify(code, MinJS.optionsTs);
+                if (fn.includes('-wcomp'))
+                    result = Terser.minify(code, MinJS.CompOptionsCrypt);
+                else
+                    result = Terser.minify(code, MinJS.OptionsClearJS);
                 let txt = result.code;
                 txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n');
                 txt = txt.replace(/\n\s*\n/g, '\n');
                 txt = txt.trim();
+                if (fn.includes('-wcomp')) {
+                    let ugs;
+                    try {
+                        logger.info('obs');
+                        ugs = JavaScriptObfuscator.obfuscate(txt, MinJS.getCompOptions());
+                        txt = ugs.getObfuscatedCode();
+                    }
+                    catch (err) {
+                        logger.error('error');
+                        logger.error(err);
+                        reject(err);
+                    }
+                }
                 txt = MinJS.ver + txt;
                 let fn2 = fn.slice(0, -3);
                 fn2 = fn2 + '.min.js';
@@ -176,6 +193,22 @@ class MinJS {
                 reject(err);
             }
         });
+    }
+    static getCompOptions() {
+        let t = {
+            identifierNamesGenerator: 'hexadecimal',
+            disableConsoleOutput: false,
+            target: 'browser-no-eval',
+            stringArray: true,
+            stringArrayThreshold: 1,
+            stringArrayEncoding: 'rc4',
+            selfDefending: true,
+            controlFlowFlattening: true,
+            controlFlowFlatteningThreshold: 1,
+            deadCodeInjection: true,
+            deadCodeInjectionThreshold: 0.2
+        };
+        return t;
     }
     compile(fileNames, options_) {
         let program = ts.createProgram(fileNames, options_);
@@ -198,22 +231,24 @@ class MinJS {
     }
 }
 MinJS.ver = '// mB ' + new Base_1.Ver().ver() + ' on ' + new Base_1.Ver().date() + '\r\n';
-MinJS.optionsTs = {
+MinJS.OptionsClearJS = {
     parse: { html5_comments: false },
-    compress: {
-        drop_console: true,
-        reduce_funcs: false,
-        keep_fargs: true
-    },
-    output: {
-        beautify: true,
-        indent_level: 1,
-        quote_style: 3,
-        semicolons: false,
-        max_line_len: 70
-    },
+    compress: { drop_console: true,
+        keep_fargs: true, reduce_funcs: false },
+    output: { beautify: true, indent_level: 1, quote_style: 3, semicolons: false },
     ecma: 5,
     mangle: false,
+    keep_classnames: true,
+    keep_fnames: true,
+    safari10: true
+};
+MinJS.CompOptionsCrypt = {
+    parse: { html5_comments: false },
+    compress: { drop_console: true,
+        keep_fargs: true, reduce_funcs: false },
+    output: { beautify: false, indent_level: 0, quote_style: 0, semicolons: true },
+    ecma: 5,
+    mangle: true,
     keep_classnames: true,
     keep_fnames: true,
     safari10: true
