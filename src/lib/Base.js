@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
-    ver() {
+    static ver() {
         return 'v5.06.10';
     }
-    date() {
+    static date() {
         return new Date().toISOString();
     }
 }
@@ -299,7 +299,9 @@ class BakeWrk {
     }
     static minify_pg(text, inline) {
         let code = text.match(/^\s*\s*$/) ? '' : text;
-        let result = Terser.minify(code, Sa_1.MinJS.CompOptionsCrypt);
+        let pgOptions = Sa_1.MinJS.CompOptionsCrypt;
+        pgOptions['toplevel'] = true;
+        let result = Terser.minify(code, pgOptions);
         if (result.error) {
             console.info('Terser error:', result.error);
             beeper();
@@ -387,7 +389,7 @@ class BakeWrk {
     }
     writeFilePg(source, options, target) {
         let html = pug.renderFile(source, options);
-        const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Ver().date() + ' -->';
+        const ver = '<!-- mB ' + Ver.ver() + ' on ' + Ver.date() + ' -->';
         if (!options['pretty'])
             html = minify(html, BakeWrk.minifyPg);
         html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
@@ -463,7 +465,7 @@ class Items {
             return;
         let y = yaml.load(fs.readFileSync((fn)));
         Items.clean(y);
-        y.mbVer = new Ver().ver();
+        y.mbVer = Ver.ver();
         this.feed = y;
         logger.warn(this.feed);
         for (let val of this.dirs) {
@@ -493,7 +495,7 @@ class Items {
 exports.Items = Items;
 class Comps {
     constructor(dir_) {
-        this.ver = '// mB ' + new Ver().ver() + ' on ' + new Ver().date() + '\r\n';
+        this.ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n';
         let dir = Dirs.slash(dir_);
         this.dir = dir;
     }

@@ -12,14 +12,13 @@ import { Resize, GitDown } from './lib/Sa'
 const cwd: string = process.cwd()
 
 function version () {
-   let b = new Ver();
-   console.info('mbakeX CLI version: ' + b.ver()) // tsc
+   console.info('mbakeX CLI version: ' + Ver.ver()) // tsc
 }
 
 function help () {
    let b = new Ver()
    console.info()
-   console.info('mbakeX CLI version: ' + b.ver()) // tsc
+   console.info('mbakeX CLI version: ' + Ver.ver()) // tsc
    console.info('  your node version is ' + process.version)
    console.info('  from ' + __dirname)
    console.info()

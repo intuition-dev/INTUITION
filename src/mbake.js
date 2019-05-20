@@ -9,19 +9,18 @@ const Sa_1 = require("./lib/Sa");
 clear();
 const cwd = process.cwd();
 function version() {
-    let b = new Base_1.Ver();
-    console.info('mbake CLI version: ' + b.ver());
+    console.info('mbake CLI version: ' + Base_1.Ver.ver());
 }
 function help() {
     let b = new Base_1.Ver();
     console.info();
-    console.info('mbake CLI version: ' + b.ver());
+    console.info('mbake CLI version: ' + Base_1.Ver.ver());
     console.info();
     console.info('Usage:');
     console.info('  To process any_dir Pug to html recursively:                 mbake .');
     console.info('  Process SASS/SCSS file into css, requires assets.yaml:      mbake -s .');
     console.info('     or path that has assets.yaml, or any sub-folder under /assets');
-    console.info('  Process .ts and .js file to .min:                           mbake -t .');
+    console.info('  Process .ts, .js and native web comps file to .min:         mbake -t .');
     console.info('  To process Pug and dat_i items to items.json:               mbake -i .');
     console.info('     or any sub-folder, where path is folder containing dat_i.yaml;');
     console.info('     also does regular mbake of Pug');

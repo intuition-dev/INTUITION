@@ -65,7 +65,7 @@ class GitDown {
         fs.removeSync(dirR);
         console.log('removed', dirR);
         console.log();
-        fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: new Base_1.Ver().date() });
+        fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: Base_1.Ver.date() });
         console.log('DONE!');
         console.log('Maybe time to make/bake', dirTo);
         console.log('and then point http server to', dirTo);
@@ -230,28 +230,26 @@ class MinJS {
         console.info(`status code '${exitCode}'.`);
     }
 }
-MinJS.ver = '// mB ' + new Base_1.Ver().ver() + ' on ' + new Base_1.Ver().date() + '\r\n';
+MinJS.ver = '// mB ' + Base_1.Ver.ver() + ' on ' + Base_1.Ver.date() + '\r\n';
 MinJS.OptionsClearJS = {
     parse: { html5_comments: false },
     compress: { drop_console: true,
         keep_fargs: true, reduce_funcs: false },
-    output: { beautify: true, indent_level: 1, quote_style: 3, semicolons: false },
+    output: { indent_level: 1, quote_style: 3, semicolons: false },
     ecma: 5,
     mangle: false,
     keep_classnames: true,
-    keep_fnames: true,
-    safari10: true
+    keep_fnames: true
 };
 MinJS.CompOptionsCrypt = {
     parse: { html5_comments: false },
     compress: { drop_console: true,
         keep_fargs: true, reduce_funcs: false },
-    output: { beautify: false, indent_level: 0, quote_style: 0, semicolons: true },
+    output: { indent_level: 0, quote_style: 0, semicolons: true },
     ecma: 5,
     mangle: true,
     keep_classnames: true,
-    keep_fnames: true,
-    safari10: true
+    keep_fnames: true
 };
 exports.MinJS = MinJS;
 class YamlConfig {
@@ -357,7 +355,7 @@ class Sas {
             res = res.replace(/ }/g, '}');
             res = res.replace(/ { /g, '{');
             res = res.replace(/, /g, ',');
-            const ver = ' /* mB ' + new Base_1.Ver().ver() + ' on ' + new Base_1.Ver().date() + " */";
+            const ver = ' /* mB ' + Base_1.Ver.ver() + ' on ' + Base_1.Ver.date() + " */";
             res = res + ver;
             let filename2 = path.basename(fn2);
             filename2 = filename2.split('.').slice(0, -1).join('.');

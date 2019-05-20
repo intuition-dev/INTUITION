@@ -16,14 +16,13 @@ const cwd: string = process.cwd()
 
 
 function version () {
-   let b = new Ver();
-   console.info('mbake CLI version: ' + b.ver()) // tsc
+   console.info('mbake CLI version: ' + Ver.ver()) // tsc
 }
 
 function help () {
    let b = new Ver()
    console.info();
-   console.info('mbake CLI version: ' + b.ver())
+   console.info('mbake CLI version: ' + Ver.ver())
    console.info()
    console.info('Usage:')
    console.info('  To process any_dir Pug to html recursively:                 mbake .')

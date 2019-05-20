@@ -2,10 +2,10 @@
 // NOTE: You can extend these classes!
 
 export class Ver {
-   ver() {
+   static ver() {
       return 'v5.06.10'
    }
-   date():string {
+   static date():string {
       return new Date().toISOString()
    }
 }
@@ -361,7 +361,9 @@ export class BakeWrk {
 
       let code = text.match(/^\s*\s*$/) ? '' : text
 
-      let result = Terser.minify(code, MinJS.CompOptionsCrypt)
+      let pgOptions = MinJS.CompOptionsCrypt
+      pgOptions['toplevel']=true
+      let result = Terser.minify(code, pgOptions)
       if (result.error) {
          console.info('Terser error:', result.error)
          beeper()
@@ -493,7 +495,7 @@ export class BakeWrk {
 
    writeFilePg(source, options, target) {
       let html = pug.renderFile(source, options)
-      const ver = '<!-- mB ' + new Ver().ver() + ' on ' + new Ver().date() + ' -->'
+      const ver = '<!-- mB ' + Ver.ver() + ' on ' + Ver.date() + ' -->'
       if (!options['pretty'])
          html = minify(html, BakeWrk.minifyPg)
       html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml)
@@ -580,7 +582,7 @@ export class Items {
       let y = yaml.load(fs.readFileSync((fn)))
 
       Items.clean(y)
-      y.mbVer = new Ver().ver()
+      y.mbVer = Ver.ver()
       this.feed = y
       logger.warn(this.feed)
 
@@ -660,7 +662,7 @@ export class Comps {
    }//()
 
   
-   ver = '// mB ' + new Ver().ver() + ' on ' + new Ver().date() + '\r\n'
+   ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n'
 
    process(s: string, dir: string, fn: string):Promise<string> {
       const THIZ = this

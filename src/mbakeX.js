@@ -8,13 +8,12 @@ const Wa_1 = require("./lib/Wa");
 const Sa_1 = require("./lib/Sa");
 const cwd = process.cwd();
 function version() {
-    let b = new Base_1.Ver();
-    console.info('mbakeX CLI version: ' + b.ver());
+    console.info('mbakeX CLI version: ' + Base_1.Ver.ver());
 }
 function help() {
     let b = new Base_1.Ver();
     console.info();
-    console.info('mbakeX CLI version: ' + b.ver());
+    console.info('mbakeX CLI version: ' + Base_1.Ver.ver());
     console.info('  your node version is ' + process.version);
     console.info('  from ' + __dirname);
     console.info();

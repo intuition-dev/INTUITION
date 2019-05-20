@@ -85,7 +85,7 @@ export class GitDown {
       console.log('removed', dirR)
       console.log()
       
-      fs.writeJsonSync(dirTo +'/branch.json', {branch: branch, syncedOn: new Ver().date() })
+      fs.writeJsonSync(dirTo +'/branch.json', {branch: branch, syncedOn: Ver.date() })
       console.log('DONE!')
       console.log('Maybe time to make/bake', dirTo)
       console.log('and then point http server to', dirTo)
@@ -274,29 +274,27 @@ export class MinJS {//es5
    }
 
 
-   static ver = '// mB ' + new Ver().ver() + ' on ' + new Ver().date() + '\r\n'
+   static ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n'
 
    static OptionsClearJS = {
       parse: {  html5_comments:false},
       compress: {drop_console:true,
          keep_fargs:true, reduce_funcs: false},
-      output:  {beautify:true, indent_level:1, quote_style:3, semicolons: false}, 
+      output:  {indent_level:1, quote_style:3, semicolons: false}, 
       ecma: 5,
       mangle: false, 
       keep_classnames: true,
-      keep_fnames: true,
-      safari10: true
+      keep_fnames: true
    }
    static CompOptionsCrypt = {
       parse: {  html5_comments:false},
       compress: {drop_console:true,
          keep_fargs:true, reduce_funcs: false},
-      output:  {beautify:false, indent_level:0, quote_style:0, semicolons: true}, 
+      output:  {indent_level:0, quote_style:0, semicolons: true}, 
       ecma: 5,
       mangle: true, 
       keep_classnames: true,
-      keep_fnames: true,
-      safari10: true
+      keep_fnames: true
    }
 
    compile (fileNames: string[], options_: ts.CompilerOptions): void { //http://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
@@ -455,7 +453,7 @@ export class Sas {
          res = res.replace(/, /g, ',')
 
          //add ver string
-         const ver = ' /* mB ' + new Ver().ver() + ' on ' + new Ver().date() + " */"
+         const ver = ' /* mB ' + Ver.ver() + ' on ' + Ver.date() + " */"
          res = res + ver
 
          // write the file
