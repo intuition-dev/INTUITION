@@ -1,0 +1,15 @@
+head
+   include headFrag
+   include devOps
+
+body
+   p #{ENV}
+   script.
+
+      loadQunit().then(function(){
+         console.log('qunit-ready')
+      })
+
+      loadFB().then(function(){
+         console.log('FB')
+      })

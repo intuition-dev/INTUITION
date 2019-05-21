@@ -1,0 +1,15 @@
+//- insert in layout AFTER headFrag
+script.
+   //window.ENV = '#{ENV}' // allows js
+script(src='devOps.js')
+
+// pug magic
+case ENV 
+   when 3
+      script.
+         console.log('DevOps ', 3)
+         // load some first like error logs...
+
+   default
+      script.
+         console.log('DevOps', 0)
