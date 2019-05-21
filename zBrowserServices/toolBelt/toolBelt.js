@@ -99,6 +99,7 @@ function addScript(src, callback, attr, attrValue, id) {
    if(attr) s.setAttribute( attr, attrValue )
    if(id) s.id = id
    if(callback) s.onload=callback
+   s.async = true // it does it anyway, as the script is async
    document.getElementsByTagName('head')[0].appendChild(s)
 }
 
