@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     static ver() {
-        return 'v5.06.17';
+        return 'v5.06.18';
     }
     static date() {
         return new Date().toISOString();
@@ -299,11 +299,10 @@ class BakeWrk {
     }
     static minify_pg(text, inline) {
         let code = text.match(/^\s*\s*$/) ? '' : text;
-        let pgOptions = Object.assign({}, Sa_1.MinJS.CompOptionsCrypt);
-        pgOptions['toplevel'] = true;
-        let _compress = { drop_console: true, keep_fargs: false, reduce_funcs: true };
-        pgOptions['compress'] = _compress;
-        let result = Terser.minify(code, pgOptions);
+        let optionsCompH = Object.assign({}, Sa_1.MinJS.CompOptionsJS);
+        let _output = { indent_level: 0, quote_style: 3, semicolons: false };
+        optionsCompH['output'] = _output;
+        let result = Terser.minify(code, optionsCompH);
         if (result.error) {
             console.info('Terser error:', result.error);
             beeper();
@@ -547,7 +546,11 @@ class Comps {
                 reject(err);
             }
             fs.writeFileSync(fn + '.js', js1);
-            let js2 = Terser.minify(js1, Sa_1.MinJS.CompOptionsCrypt);
+            let optionsCompR = Object.assign({}, Sa_1.MinJS.CompOptionsJS);
+            let _output = { indent_level: 0, quote_style: 0, semicolons: false };
+            _output['mangle'] = true;
+            optionsCompR['output'] = _output;
+            let js2 = Terser.minify(js1, optionsCompR);
             let ugs;
             try {
                 logger.info('obs');

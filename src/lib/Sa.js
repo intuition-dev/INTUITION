@@ -88,8 +88,6 @@ class GitDown {
         const { stdout2 } = await execa('git', ['remote', 'add', branch, this.remote], { cwd: dir });
         const { stdout3 } = await execa('git', ['checkout', '-b', branch], { cwd: dir });
         const { stdout4 } = await execa('git', ['push', '-u', 'origin', branch], { cwd: dir });
-        const { stdout10 } = await execa('git', ['log', '-8', '--oneline', 'origin/' + branch], { cwd: dir });
-        console.log('history', stdout10);
     }
     async _getEXISTINGRemoteBranch(branch) {
         const { stdout } = await execa('git', ['clone', this.remote]);
@@ -97,9 +95,6 @@ class GitDown {
         dir = this.dir + '/' + dir;
         const { stdout2 } = await execa('git', ['checkout', branch], { cwd: dir });
         console.log(dir, branch);
-        await execa('git', ['fetch'], { cwd: dir });
-        const { stdout10 } = await execa('git', ['log', '-8', '--oneline', 'origin/' + branch], { cwd: dir });
-        console.log('history', stdout10);
     }
     async _branchExists(branch) {
         let cmd = this.remote;
@@ -164,14 +159,14 @@ class MinJS {
             try {
                 console.log(fn);
                 let code = fs.readFileSync(fn).toString('utf8');
-                let optionsClearJS = Object.assign({}, MinJS.CompOptionsCrypt);
-                let _output = { indent_level: 1, quote_style: 3, semicolons: false };
-                optionsClearJS['output'] = _output;
-                optionsClearJS['mangle'] = false;
+                let optionsCompJS = Object.assign({}, MinJS.CompOptionsJS);
+                let _output = { indent_level: 0, quote_style: 0, semicolons: false };
+                _output['mangle'] = true;
+                optionsCompJS['output'] = _output;
                 if (fn.includes('-wcomp'))
-                    result = Terser.minify(code, MinJS.CompOptionsCrypt);
+                    result = Terser.minify(code, MinJS.CompOptionsJS);
                 else
-                    result = Terser.minify(code, optionsClearJS);
+                    result = Terser.minify(code, optionsCompJS);
                 let txt = result.code;
                 txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n');
                 txt = txt.replace(/\n\s*\n/g, '\n');
@@ -238,13 +233,13 @@ class MinJS {
     }
 }
 MinJS.ver = '// mB ' + Base_1.Ver.ver() + ' on ' + Base_1.Ver.date() + '\r\n';
-MinJS.CompOptionsCrypt = {
+MinJS.CompOptionsJS = {
     parse: { html5_comments: false },
     compress: { drop_console: true,
         keep_fargs: true, reduce_funcs: false },
-    output: { indent_level: 0, quote_style: 0, semicolons: true },
+    output: { indent_level: 1, quote_style: 3, semicolons: false },
     ecma: 5,
-    mangle: true,
+    mangle: false,
     keep_classnames: true,
     keep_fnames: true
 };
