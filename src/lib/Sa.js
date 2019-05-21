@@ -161,7 +161,6 @@ class MinJS {
                 let code = fs.readFileSync(fn).toString('utf8');
                 let optionsCompJS = Object.assign({}, MinJS.CompOptionsJS);
                 let _output = { indent_level: 0, quote_style: 0, semicolons: false };
-                _output['mangle'] = true;
                 optionsCompJS['output'] = _output;
                 if (fn.includes('-wcomp'))
                     result = Terser.minify(code, MinJS.CompOptionsJS);
@@ -239,7 +238,6 @@ MinJS.CompOptionsJS = {
         keep_fargs: true, reduce_funcs: false },
     output: { indent_level: 1, quote_style: 3, semicolons: false },
     ecma: 5,
-    mangle: false,
     keep_classnames: true,
     keep_fnames: true
 };
