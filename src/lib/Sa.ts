@@ -115,7 +115,8 @@ export class GitDown {
       // add to remote
       const {stdout4} = await execa('git', ['push', '-u','origin', branch], {cwd: dir})
 
-      // list history of the branch
+      /* list history of the new branch TODO
+      await execa('git', ['fetch'], {cwd: dir})
       const {stdout10} = await execa('git', ['log', '-8', '--oneline', 'origin/'+branch], {cwd: dir})
       console.log('history', stdout10)
       /*
@@ -135,7 +136,7 @@ export class GitDown {
       const {stdout2} = await execa('git', ['checkout', branch], {cwd: dir})
       console.log(dir, branch)
 
-      // list history of the branch
+      /* list history of the branch TODO
       await execa('git', ['fetch'], {cwd: dir})
       const {stdout10} = await execa('git', ['log', '-8', '--oneline', 'origin/'+branch], {cwd: dir})
       console.log('history', stdout10)
