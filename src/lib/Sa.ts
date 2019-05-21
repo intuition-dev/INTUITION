@@ -114,6 +114,10 @@ export class GitDown {
       const {stdout3} = await execa('git', ['checkout', '-b', branch], {cwd: dir})
       // add to remote
       const {stdout4} = await execa('git', ['push', '-u','origin', branch], {cwd: dir})
+
+      // list history of the branch
+      const {stdout5} = await execa('git', ['log', ,'-6', '--oneline'], {cwd: dir})
+      console.log('history', stdout5)
       /*
       git clone https://cekvenich:PASS@github.com/cekvenich/alan
       cd folder
@@ -132,7 +136,7 @@ export class GitDown {
       console.log(dir, branch)
 
       // list history of the branch
-      const {stdout3} = await execa('git', ['reflog', '--date=relative'], {cwd: dir})
+      const {stdout3} = await execa('git', ['log', ,'-6', '--oneline'], {cwd: dir})
       console.log('history', stdout3)
       /*
       git clone https://cekvenich:PASS@github.com/cekvenich/alan

@@ -88,6 +88,8 @@ class GitDown {
         const { stdout2 } = await execa('git', ['remote', 'add', branch, this.remote], { cwd: dir });
         const { stdout3 } = await execa('git', ['checkout', '-b', branch], { cwd: dir });
         const { stdout4 } = await execa('git', ['push', '-u', 'origin', branch], { cwd: dir });
+        const { stdout5 } = await execa('git', ['log', , '-6', '--oneline'], { cwd: dir });
+        console.log('history', stdout5);
     }
     async _getEXISTINGRemoteBranch(branch) {
         const { stdout } = await execa('git', ['clone', this.remote]);
@@ -95,7 +97,7 @@ class GitDown {
         dir = this.dir + '/' + dir;
         const { stdout2 } = await execa('git', ['checkout', branch], { cwd: dir });
         console.log(dir, branch);
-        const { stdout3 } = await execa('git', ['reflog', '--date=relative'], { cwd: dir });
+        const { stdout3 } = await execa('git', ['log', , '-6', '--oneline'], { cwd: dir });
         console.log('history', stdout3);
     }
     async _branchExists(branch) {
