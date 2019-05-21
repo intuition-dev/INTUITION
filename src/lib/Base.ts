@@ -687,7 +687,7 @@ export class Comps {
 
       let optionsCompR = Object.assign({}, MinJS.CompOptionsJS)
       let _output =   {indent_level:0, quote_style:0, semicolons: false}
-      _output['mangle'] = true
+      //_output['mangle'] = true
       optionsCompR['output'] = _output
       let js2 = Terser.minify(js1, optionsCompR)
 
