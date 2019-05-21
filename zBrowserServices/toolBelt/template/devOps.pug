@@ -1,9 +1,9 @@
-//- insert in layout AFTER headFrag
-script.
-   //window.ENV = '#{ENV}' // allows js
-script(src='devOps.js')
+//- insert in layout after headFrag
+//- data goes in head
+//- fonts and full style last
 
-// pug magic
+script(src='/layout/devOps.js',  defer='')
+
 case ENV 
    when 3
       script.

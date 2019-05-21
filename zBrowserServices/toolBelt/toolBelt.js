@@ -73,14 +73,16 @@ var webCompSupport = 'customElements' in window
 depp.require(['polly'], function () {
    if(webCompSupport) // modern 
       depp.require('es5-adapter', function () {
-         console.log('polly-wcompM', Date.now() - _start)
+         console.log('polly-wcompM')
          depp.done('polly-wcomp')
+         depp.done('READY', Date.now() - _start)
       })//depp
    else // ie 11
       depp.require('wcomp-loader', function () {
          WebComponents.waitFor(function() {
-            console.log('polly-wcomp11', Date.now() - _start)
+            console.log('polly-wcomp11')
             depp.done('polly-wcomp')
+            depp.done('READY', Date.now() - _start)
          })
       })//depp
 })
@@ -90,8 +92,8 @@ function pollycoreready() { // after asking for it, wait on this event.
    depp.done ('polly-core-ready')
 }
 
-//- eg addScript('bla.js', 'api-key', 'key123')
-function addScript(src, attr, attrValue, callback) {
+//- eg addScript('bla.js', null, 'api-key', 'key123')
+function addScript(src, callback, attr, attrValue) {
    var s = document.createElement( 'script' )
    s.setAttribute( 'src', src )
    if(attr)
