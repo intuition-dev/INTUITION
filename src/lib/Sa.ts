@@ -220,14 +220,14 @@ export class MinJS {
       console.log(fn)
       let code:string = fs.readFileSync(fn).toString('utf8')
 
-      let optionsClearJS = Object.assign({}, MinJS.CompOptionsCrypt)
-      let _output =   {indent_level:1, quote_style:3, semicolons: false}
-      optionsClearJS['output'] = _output
-      optionsClearJS['mangle'] = false
+      let optionsCompJS = Object.assign({}, MinJS.CompOptionsJS)
+      let _output =   {indent_level:0, quote_style:0, semicolons: false}
+      _output['mangle'] = true
+      optionsCompJS['output'] = _output
 
       if(fn.includes('-wcomp')) 
-           result = Terser.minify(code, MinJS.CompOptionsCrypt)
-      else result = Terser.minify(code, optionsClearJS)
+           result = Terser.minify(code, MinJS.CompOptionsJS)
+      else result = Terser.minify(code, optionsCompJS)
 
       let txt = result.code
 
@@ -286,13 +286,13 @@ export class MinJS {
 
    static ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n'
    
-   static CompOptionsCrypt = {
+   static CompOptionsJS = {
       parse: {  html5_comments:false},
       compress: { drop_console:true,
          keep_fargs:true, reduce_funcs: false},
-      output:  {indent_level:0, quote_style:0, semicolons: true}, 
+      output:  {indent_level:1, quote_style:3, semicolons: false}, 
       ecma: 5,
-      mangle: true, 
+      mangle: false, // this breaks things in pg
       keep_classnames: true,
       keep_fnames: true
    }

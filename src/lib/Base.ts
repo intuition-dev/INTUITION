@@ -355,18 +355,16 @@ export class BakeWrk {
    }
 
 
-
    //http://github.com/kangax/html-minifier/issues/843
    static minify_pg(text, inline) {
 
       let code = text.match(/^\s*\s*$/) ? '' : text
 
-      let pgOptions = Object.assign({}, MinJS.CompOptionsCrypt) //clone 
-      pgOptions['toplevel']=true
-      let _compress =  { drop_console:true, keep_fargs: false, reduce_funcs: true}
-      pgOptions['compress'] = _compress
+      let optionsCompH = Object.assign({}, MinJS.CompOptionsJS)
+      let _output =   {indent_level:0, quote_style:3, semicolons: false}
+      optionsCompH['output'] = _output
 
-      let result = Terser.minify(code, pgOptions)
+      let result = Terser.minify(code, optionsCompH)
       if (result.error) {
          console.info('Terser error:', result.error)
          beeper()
@@ -686,7 +684,12 @@ export class Comps {
          reject(err)
       }
       fs.writeFileSync(fn + '.js', js1)
-      let js2 = Terser.minify(js1, MinJS.CompOptionsCrypt)
+
+      let optionsCompR = Object.assign({}, MinJS.CompOptionsJS)
+      let _output =   {indent_level:0, quote_style:0, semicolons: false}
+      _output['mangle'] = true
+      optionsCompR['output'] = _output
+      let js2 = Terser.minify(js1, optionsCompR)
 
       let ugs
       try {
