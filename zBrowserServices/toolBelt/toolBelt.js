@@ -1,6 +1,6 @@
 // This file is a toolbelt, a curated list of libs to use when need arises. 
 
-console.log('Ver:','unpkg.com/mtool-belt@1.3.28/')
+console.log('Ver:','unpkg.com/mtool-belt@1.3.29/')
 
 // can use like this in comp:
 /*
@@ -56,11 +56,11 @@ var CESupported = (function () {
   }
 })()
 if (!CESupported) //custom events polly
-  depp.define({ 'has-CE': '//unpkg.com/mtool-belt@1.3.28/poly/EventListener.min.js' })
+  depp.define({ 'has-CE': '//unpkg.com/mtool-belt@1.3.29/poly/EventListener.min.js' })
 else
   depp.done('has-CE')
 if (!'fetch' in window)
-  depp.define({ 'has-Fetch': '//unpkg.com/mtool-belt@1.3.28/poly/fetch.min.js' })
+  depp.define({ 'has-Fetch': '//unpkg.com/mtool-belt@1.3.29/poly/fetch.min.js' })
 else
   depp.done('has-Fetch')
 depp.require(['has-Promise','has-CE','has-Fetch'], function () {
@@ -105,8 +105,8 @@ function addScript(src, callback, attr, attrValue, id) {
 
 
 depp.define({
-   'disableAutoFill' :['#jquery','//unpkg.com/mtool-belt@1.3.28/vendors/jquery.disableAutoFill.min.js']
-   ,'DEBUG'          :'//unpkg.com/mtool-belt@1.3.28/vendors/debug.css'
+   'disableAutoFill' :['#jquery','//unpkg.com/mtool-belt@1.3.29/vendors/jquery.disableAutoFill.min.js']
+   ,'DEBUG'          :'//unpkg.com/mtool-belt@1.3.29/vendors/debug.css'
 
    ,'WebAdmin': ['#RPC','//unpkg.com/metabake-web-admin-api@0.1.0/WebAdmin.min.js']
    ,'RPC': ['#polly', '//unpkg.com/http-rpc@1.0.6/httpRPC.min.js']
@@ -139,8 +139,8 @@ depp.define({
    ,'gridformsJS':['//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.js']
 
    ,'accordion': ['#jquery'
-                  ,'//unpkg.com/mtool-belt@1.3.28/vendors/jquery-accordion/js/jquery.accordion.min.js'
-                  ,'//unpkg.com/mtool-belt@1.3.28/vendors/jquery-accordion/css/jquery.accordion.css']
+                  ,'//unpkg.com/mtool-belt@1.3.29/vendors/jquery-accordion/js/jquery.accordion.min.js'
+                  ,'//unpkg.com/mtool-belt@1.3.29/vendors/jquery-accordion/css/jquery.accordion.css']
 
    ,'emailjs': ['//cdn.emailjs.com/sdk/2.3.2/email.min.js','#DOM']
 
@@ -157,7 +157,7 @@ depp.define({
    ,'offcanvasNav':  ['//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_js/js-offcanvas.pkgd.js'
                      ,'//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_css/prefixed/js-offcanvas.css']
 
-   ,'isJs': '//unpkg.com/mtool-belt@1.3.28/vendors/is.min.js'
+   ,'isJs': '//unpkg.com/mtool-belt@1.3.29/vendors/is.min.js'
 
    ,'vexAlert':['//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/js/vex.min.js'
                ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex-theme-default.css']
@@ -186,9 +186,9 @@ depp.define({
                ,'//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/jquery.onepage-scroll.min.js']
    
    ,'jqFAQ':[ '#jquery'
-             ,'//unpkg.com/mtool-belt@1.3.28/vendors/jquery-FAQ/jquery.quicksilver.min.js'
-             ,'//unpkg.com/mtool-belt@1.3.28/vendors/jquery-FAQ/jquery.simpleFAQ.css'
-             ,'//unpkg.com/mtool-belt@1.3.28/vendors/jquery-FAQ/jquery.simpleFAQ.min.js']
+             ,'//unpkg.com/mtool-belt@1.3.29/vendors/jquery-FAQ/jquery.quicksilver.min.js'
+             ,'//unpkg.com/mtool-belt@1.3.29/vendors/jquery-FAQ/jquery.simpleFAQ.css'
+             ,'//unpkg.com/mtool-belt@1.3.29/vendors/jquery-FAQ/jquery.simpleFAQ.min.js']
 
    // DO NOT USE THIS FOR DEVELOPMENT. local Sass should be used always, except if you do a quick prototype or a mockup, then use this
    ,'MOCKUPStyle': ['//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',
@@ -216,17 +216,17 @@ depp.define({
    ,'glfx'        :['//cdn.jsdelivr.net/npm/glfx@0.0.4/glfx.min.js'] // eg tilt shift
 
    //vid
-   ,'bideo' : '//unpkg.com/mtool-belt@1.3.28/vendors/bideo/bideo.min.js'
+   ,'bideo' : '//unpkg.com/mtool-belt@1.3.29/vendors/bideo/bideo.min.js'
 
    //FX section
-   ,'deli'  : ['//unpkg.com/mtool-belt@1.3.28/vendors/delighters.min.js',  '#DOM']
+   ,'deli'  : ['//unpkg.com/mtool-belt@1.3.29/vendors/delighters.min.js',  '#DOM']
    ,'GSAP'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenLite.min.js',
                '//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/plugins/CSSPlugin.min.js'] // plugin needs to animate css property
-   ,'clamp': ['//unpkg.com/mtool-belt@1.3.28/vendors/clamp.min.js']
+   ,'clamp': ['//unpkg.com/mtool-belt@1.3.29/vendors/clamp.min.js']
    ,'particles':'//cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'
    ,'scrollify':['#jquery','//cdn.jsdelivr.net/npm/jquery-scrollify@1.0.20/jquery.scrollify.min.js']
    ,'zenscroll':['//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js','#DOM']  
-   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.28/vendors/parallaxImg.min.js'
+   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.29/vendors/parallaxImg.min.js'
    ,'typewriter':'//cdn.jsdelivr.net/npm/typewriter-effect@2.5.3/dist/core.js'
 
       // the standard font, force to load last - via depp:
