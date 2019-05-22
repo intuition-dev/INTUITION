@@ -151,6 +151,7 @@ depp.define({
                ,'//cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.min.js'
                ,'//cdn.jsdelivr.net/npm/qunit-promises@0.2.0/qunit-promises.min.js']
 
+   //https://www.npmjs.com/package/collect.js
    ,'collect': '//cdn.jsdelivr.net/npm/collect.js@4.12.2/build/collect.min.js'
 
    //simplistic nav:
