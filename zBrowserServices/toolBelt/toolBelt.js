@@ -73,18 +73,22 @@ var webCompSupport = 'customElements' in window
 depp.require(['polly'], function () {
    if(webCompSupport) // modern 
       depp.require('es5-adapter', function () {
-         console.log('polly-wcompM')
+         console.log('polly-wcompM', Date.now() - _start)
          depp.done('polly-wcomp')
-         depp.done('READY', Date.now() - _start)
       })//depp
    else // ie 11
       depp.require('wcomp-loader', function () {
          WebComponents.waitFor(function() {
-            console.log('polly-wcomp11')
+            console.log('polly-wcomp11', Date.now() - _start)
             depp.done('polly-wcomp')
-            depp.done('READY', Date.now() - _start)
          })
       })//depp
+})
+
+// by default only load major polyfills and isJs lib are loaded, and the it is READY
+// I think collect should be default also, maybe state machine and a validator
+depp.require('polly','isJs', 'polly-wcomp',function(){
+   depp.done('READY', Date.now() - _start)
 })
 
 function pollycoreready() { // after asking for it, wait on this event.
@@ -115,7 +119,7 @@ depp.define({
    ,'wcomp-loader':'//unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js'
    ,'es5-adapter' :'//unpkg.com/@webcomponents/webcomponentsjs@2.2.10/custom-elements-es5-adapter.js'
 
-   //https://www.npmjs.com/package/collect.js
+   // https://www.npmjs.com/package/collect.js
    ,'collect': '//cdn.jsdelivr.net/npm/collect.js@4.12.2/build/collect.min.js'
    ,'isJs': '//unpkg.com/mtool-belt@1.3.31/vendors/is.min.js'
    // Commercial License # MetaBake LLC
