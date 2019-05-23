@@ -115,22 +115,27 @@ depp.define({
    ,'wcomp-loader':'//unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js'
    ,'es5-adapter' :'//unpkg.com/@webcomponents/webcomponentsjs@2.2.10/custom-elements-es5-adapter.js'
 
+   //https://www.npmjs.com/package/collect.js
+   ,'collect': '//cdn.jsdelivr.net/npm/collect.js@4.12.2/build/collect.min.js'
+   ,'isJs': '//unpkg.com/mtool-belt@1.3.31/vendors/is.min.js'
+   // Commercial License # MetaBake LLC
+   ,'state-machine': '//cdn.jsdelivr.net/npm/javascript-state-machine@3.1.0/lib/state-machine.min.js'
+
+   // use for validation. eg: check in VM and return 'OK' to view|binding; or return validation errors if found
+   ,'validate' :  '//cdn.jsdelivr.net/npm/validate.js@0.12.0/validate.min.js'
+   ,'validator': ['//cdn.jsdelivr.net/npm/validator@10.11.0/validator.min.js']
+
    ,'riotjs':'//cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js'
 
    ,'jquery': ['#polly', '//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js', '#DOM']
 
-   // Commercial License # MetaBake LLC
-   ,'state-machine': '//cdn.jsdelivr.net/npm/javascript-state-machine@3.1.0/lib/state-machine.min.js'
+   ,'fontloader':'//cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js'
 
    // INSIDE the project, also rebuild their sass when tabulator bumps version
    ,'tabulator': ['//cdn.jsdelivr.net/npm/tabulator-tables@4.2.7/dist/js/tabulator.min.js']
 
       // full polly ES5 request; listen to ready, but not tested w/ polly-wcomp
    ,'polly-core-req': ['#polly-wcomp','//polyfill.io/v3/polyfill.min.js?flags=gated&features=es2015%2Ces2016%2Ces2017&callback=pollycoreready']
-
-   // use for validation. eg: check in VM and return 'OK' to view|binding; or return validation errors if found
-   ,'validate' :  '//cdn.jsdelivr.net/npm/validate.js@0.12.0/validate.min.js'
-   ,'validator': ['//cdn.jsdelivr.net/npm/validator@10.11.0/validator.min.js']
 
    ,'split'       :'//cdn.jsdelivr.net/npm/split.js@1.5.10/dist/split.min.js'
    ,'progressBar' :'//cdn.jsdelivr.net/npm/progressbar.js@1.0.1/dist/progressbar.min.js'
@@ -151,14 +156,9 @@ depp.define({
                ,'//cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.min.js'
                ,'//cdn.jsdelivr.net/npm/qunit-promises@0.2.0/qunit-promises.min.js']
 
-   //https://www.npmjs.com/package/collect.js
-   ,'collect': '//cdn.jsdelivr.net/npm/collect.js@4.12.2/build/collect.min.js'
-
    //simplistic nav:
    ,'offcanvasNav':  ['//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_js/js-offcanvas.pkgd.js'
                      ,'//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_css/prefixed/js-offcanvas.css']
-
-   ,'isJs': '//unpkg.com/mtool-belt@1.3.31/vendors/is.min.js'
 
    ,'vexAlert':['//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/js/vex.min.js'
                ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex-theme-default.css']
@@ -272,7 +272,6 @@ function loadFB() {// requires polly, load FB w/ ie 11 support
       })//oute
    })//pro
 }//()
-
 
 function fetchItems(items) {// requires polly
    return new Promise(function (resolve, reject) {
