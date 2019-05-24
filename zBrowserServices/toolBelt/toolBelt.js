@@ -87,7 +87,7 @@ depp.require(['polly'], function () {
 
 // by default only load major polyfills and isJs lib are loaded, and the it is READY
 // I think collect should be default also, maybe state machine and a validator
-depp.require('polly','isJs', 'polly-wcomp',function(){
+depp.require('isJs', 'polly-wcomp',function(){
    depp.done('READY', Date.now() - _start)
 })
 
@@ -132,16 +132,12 @@ depp.define({
    //fts: 
    ,'fuzzyset':'//cdn.jsdelivr.net/npm/fuzzyset.js@0.0.8/index.min.js'
    ,'fuse':'//cdn.jsdelivr.net/npm/fuse.js@3.4.4/dist/fuse.min.js'
-   ,'lunr':'//cdn.jsdelivr.net/npm/lunr@2.3.6/lunr.min.js'
-   ,'wade':'//unpkg.com/wade@0.3.3/dist/wade.min.js'
 
    ,'autoComplete':'//cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@5.0.0/dist/js/autoComplete.min.js'
 
    ,'riotjs':'//cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js'
 
    ,'jquery': ['#polly', '//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js', '#DOM']
-
-   ,'fontloader':'//cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js'
 
    // INSIDE the project, also rebuild their sass when tabulator bumps version
    ,'tabulator': ['//cdn.jsdelivr.net/npm/tabulator-tables@4.2.7/dist/js/tabulator.min.js']
@@ -172,8 +168,12 @@ depp.define({
    ,'offcanvasNav':  ['//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_js/js-offcanvas.pkgd.js'
                      ,'//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_css/prefixed/js-offcanvas.css']
 
+   //TODO:
    ,'vexAlert':['//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/js/vex.min.js'
                ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex-theme-default.css']
+
+   // binding, eg
+   ,'jqForm': '//unpkg.com/mtool-belt@1.3.31/vendors/jquery-jsForm/jquery.jsForm.js'
 
    ,'codemirror': ['//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css'
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.min.js'
@@ -191,7 +191,6 @@ depp.define({
 
    // dates:
    // moment is very large, avoid. Do try to use 'long' / linuxtime on back end
-   ,'js-joda'  : '//cdn.jsdelivr.net/npm/js-joda@1.10.1/dist/js-joda.min.js'
    ,'luxon'    : '//cdn.jsdelivr.net/npm/luxon@1.13.0/build/global/luxon.min.js'
    ,'spacetime': '//cdn.jsdelivr.net/npm/spacetime@5.8.1/builds/spacetime.min.js'
 
@@ -207,11 +206,18 @@ depp.define({
    ,'MOCKUPStyle': ['//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',
                    ,'//cdn.jsdelivr.net/npm/spectre.css@0.5.8/dist/spectre.min.css']
 
+   // template-ing, could help webcomps
+   ,'doTempl':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
+
+   //
+   ,'bcrypt':'//cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js'
+
    //MetaCake comps:
    ,'flipcard-comp'  : ['//unpkg.com/metacake@1.2.25/flipcard/comps/flipcard-comp.min.js']
    ,'contactus-comp' : ['//unpkg.com/metacake@1.2.25/contactus/comps/contactus-comp.min.js']
    ,'surveyitem-comp': ['//unpkg.com/metacake@1.2.25/surveryitem/comps/surveyitem-comp.min.js']
-   ,'star-wcomp'     : ['//unpkg.com/metacake@1.2.25/starRating/comps/star-wcomp.js'] // todo min
+   // todo min-finish
+   ,'star-wcomp'     : ['#polly-wcomp', '//unpkg.com/metacake@1.2.25/starRating/comps/star-wcomp.js']
 
    ,'vega'  : ['//cdn.jsdelivr.net/npm/vega@5.3.5'
                ,'//cdn.jsdelivr.net/npm/vega-lite@3.2.1'
@@ -219,8 +225,6 @@ depp.define({
    ,'slickCarousel': ['//cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.min.js'
                      ,'//cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.css']
    ,'circles': '//cdn.jsdelivr.net/npm/circles.js@0.0.6/circles.min.js'
-
-   ,'mustache': ['//cdn.jsdelivr.net/npm/mustache@3.0.1/mustache.min.js']
 
    // images
    ,'svgloader'   : '//cdn.jsdelivr.net/npm/boomsvgloader@0.0.2/dist/js/boomsvgloader.min.js'
@@ -239,19 +243,13 @@ depp.define({
    ,'particles':'//cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'
    ,'scrollify':['#jquery','//cdn.jsdelivr.net/npm/jquery-scrollify@1.0.20/jquery.scrollify.min.js']
    ,'zenscroll':['//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js','#DOM']  
-   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.31/vendors/parallaxImg.min.js'
    ,'typewriter':'//cdn.jsdelivr.net/npm/typewriter-effect@2.5.3/dist/core.js'
+   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.31/vendors/parallaxImg.min.js'
 
    // OpenSans is the standard font
    ,'OpenSans'       :'css!//fonts.googleapis.com/css?family=Open+Sans'
    ,'Playfair-Display':'css!//fonts.googleapis.com/css?family=Playfair+Display'
    ,'OswaldFont'     : 'css!//fonts.googleapis.com/css?family=Oswald'
-
-   //
-   ,'bcrypt':'//cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js'
-
-   // array
-   ,'doTempl':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
 
    //experimental section, maybe deprecated in future:
    ,'sweetAlert'  : [ '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.css', // sweetAlert will be removed in future
