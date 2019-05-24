@@ -250,6 +250,8 @@ depp.define({
    //
    ,'bcrypt':'//cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js'
 
+   // array
+   ,'doTempl':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
 
    //experimental section, maybe deprecated in future:
    ,'sweetAlert'  : [ '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.css', // sweetAlert will be removed in future
