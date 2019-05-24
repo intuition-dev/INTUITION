@@ -119,6 +119,9 @@ depp.define({
    // Commercial License # MetaBake LLC
    ,'state-machine': '//cdn.jsdelivr.net/npm/javascript-state-machine@3.1.0/lib/state-machine.min.js'
 
+   //TODO:
+   ,'instantclick':'//cdn.jsdelivr.net/npm/@teamthread/instantclick@4.1.0/src/instantclick.min.js'
+
    // use for validation. eg: check in VM and return 'OK' to view|binding; or return validation errors if found
    ,'validate' :  '//cdn.jsdelivr.net/npm/validate.js@0.12.0/validate.min.js'
    ,'validator': ['//cdn.jsdelivr.net/npm/validator@10.11.0/validator.min.js']
@@ -191,6 +194,14 @@ depp.define({
    ,'luxon'    : '//cdn.jsdelivr.net/npm/luxon@1.13.0/build/global/luxon.min.js'
    ,'spacetime': '//cdn.jsdelivr.net/npm/spacetime@5.8.1/builds/spacetime.min.js'
 
+   // template-ing, could help webcomps
+   ,'doTempl':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
+
+   //
+   ,'bcrypt':'//cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js'
+
+   ,'tippy':'//cdn.jsdelivr.net/npm/tippy.js@4.3.1/umd/index.all.min.js'
+
    ,'onepage': ['//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/onepage-scroll.css'
                ,'//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/jquery.onepage-scroll.min.js']
    
@@ -198,12 +209,6 @@ depp.define({
              ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-FAQ/jquery.quicksilver.min.js'
              ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-FAQ/jquery.simpleFAQ.css'
              ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-FAQ/jquery.simpleFAQ.min.js']
-
-   // template-ing, could help webcomps
-   ,'doTempl':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
-
-   //
-   ,'bcrypt':'//cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js'
 
    //*** MetaCake comps:
    ,'flipcard-comp'  : ['//unpkg.com/metacake@1.2.25/flipcard/comps/flipcard-comp.min.js']
@@ -245,6 +250,9 @@ depp.define({
    ,'zenscroll'   :['//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js','#DOM']  
    ,'typewriter'  :'//cdn.jsdelivr.net/npm/typewriter-effect@2.5.3/dist/core.js'
    ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.32/vendors/parallaxImg.min.js'
+
+   ,'jqMapaEl':['#jquery', '#raphael', '//cdn.jsdelivr.net/npm/jquery-mapael@2.2.0/js/jquery.mapael.min.js']
+   ,'raphael':'//cdn.jsdelivr.net/npm/raphael@2.2.8/raphael.min.js'
 
    // OpenSans is the standard font
    ,'OpenSans'       :'css!//fonts.googleapis.com/css?family=Open+Sans'

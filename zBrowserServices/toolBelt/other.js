@@ -10,6 +10,8 @@ depp.define({
    ,'PacificoFont': 'css!//fonts.googleapis.com/css?family=Pacifico'
    ,'PoppinsFont' : 'css!//fonts.googleapis.com/css?family=Poppins'
 
+   ,'jqMousewheel':['#jquery','//cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js']
+
    // DO NOT USE THIS FOR DEVELOPMENT. local Sass should be used always, except if you do a quick prototype or a mockup, then use this
    ,'MOCKUPStyle': [ '//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',
                     ,'//cdn.jsdelivr.net/npm/spectre.css@0.5.8/dist/spectre.min.css']
@@ -28,6 +30,8 @@ depp.define({
    //fts
    ,'lunr':'//cdn.jsdelivr.net/npm/lunr@2.3.6/lunr.min.js'
    ,'wade':'//unpkg.com/wade@0.3.3/dist/wade.min.js'
+
+   ,'togetherjs':'//togetherjs.com/togetherjs-min.js'
 
    ,'reframe'     :['//cdn.jsdelivr.net/npm/reframe.js@2.2.5/dist/reframe.min.js', '#DOM']
    ,'backstretchJQ':['#jquery','//cdn.jsdelivr.net/npm/jquery-backstretch@2.1.17/jquery.backstretch.min.js']
