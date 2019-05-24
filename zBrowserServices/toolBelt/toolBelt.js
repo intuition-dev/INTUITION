@@ -129,6 +129,14 @@ depp.define({
    ,'validate' :  '//cdn.jsdelivr.net/npm/validate.js@0.12.0/validate.min.js'
    ,'validator': ['//cdn.jsdelivr.net/npm/validator@10.11.0/validator.min.js']
 
+   //fts: 
+   ,'fuzzyset':'//cdn.jsdelivr.net/npm/fuzzyset.js@0.0.8/index.min.js'
+   ,'fuse':'//cdn.jsdelivr.net/npm/fuse.js@3.4.4/dist/fuse.min.js'
+   ,'lunr':'//cdn.jsdelivr.net/npm/lunr@2.3.6/lunr.min.js'
+   ,'wade':'//unpkg.com/wade@0.3.3/dist/wade.min.js'
+
+   ,'autoComplete':'//cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@5.0.0/dist/js/autoComplete.min.js'
+
    ,'riotjs':'//cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js'
 
    ,'jquery': ['#polly', '//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js', '#DOM']
@@ -234,11 +242,15 @@ depp.define({
    ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.31/vendors/parallaxImg.min.js'
    ,'typewriter':'//cdn.jsdelivr.net/npm/typewriter-effect@2.5.3/dist/core.js'
 
-      // the standard font, force to load last - via depp:
+   // OpenSans is the standard font
    ,'OpenSans'       :'css!//fonts.googleapis.com/css?family=Open+Sans'
    ,'Playfair-Display':'css!//fonts.googleapis.com/css?family=Playfair+Display'
    ,'OswaldFont'     : 'css!//fonts.googleapis.com/css?family=Oswald'
-   
+
+   //
+   ,'bcrypt':'//cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js'
+
+
    //experimental section, maybe deprecated in future:
    ,'sweetAlert'  : [ '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.css', // sweetAlert will be removed in future
                       '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.min.js']
