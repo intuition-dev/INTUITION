@@ -1,6 +1,6 @@
 // This file is a toolbelt, a curated list of libs to use when need arises. 
 
-console.log('Ver:','unpkg.com/mtool-belt@1.3.31/')
+console.log('Ver:','unpkg.com/mtool-belt@1.3.32/')
 
 // can use like this in comp:
 /*
@@ -56,11 +56,11 @@ var CESupported = (function () {
   }
 })()
 if (!CESupported) //custom events polly
-  depp.define({ 'has-CE': '//unpkg.com/mtool-belt@1.3.31/poly/EventListener.min.js' })
+  depp.define({ 'has-CE': '//unpkg.com/mtool-belt@1.3.32/poly/EventListener.min.js' })
 else
   depp.done('has-CE')
 if (!'fetch' in window)
-  depp.define({ 'has-Fetch': '//unpkg.com/mtool-belt@1.3.31/poly/fetch.min.js' })
+  depp.define({ 'has-Fetch': '//unpkg.com/mtool-belt@1.3.32/poly/fetch.min.js' })
 else
   depp.done('has-Fetch')
 depp.require(['has-Promise','has-CE','has-Fetch'], function () {
@@ -85,12 +85,6 @@ depp.require(['polly'], function () {
       })//depp
 })
 
-// by default only load major polyfills and isJs lib are loaded, and the it is READY
-// I think collect should be default also, maybe state machine and a validator
-depp.require('isJs', 'polly-wcomp',function(){
-   depp.done('READY', Date.now() - _start)
-})
-
 function pollycoreready() { // after asking for it, wait on this event.
    console.log('polly-core-ready', Date.now() - _start)
    depp.done ('polly-core-ready')
@@ -109,8 +103,8 @@ function addScript(src, callback, attr, attrValue, id) {
 
 
 depp.define({
-   'disableAutoFill' :['#jquery','//unpkg.com/mtool-belt@1.3.31/vendors/jquery.disableAutoFill.min.js']
-   ,'DEBUG'          :'//unpkg.com/mtool-belt@1.3.31/vendors/debug.css'
+   'disableAutoFill' :['#jquery','//unpkg.com/mtool-belt@1.3.32/vendors/jquery.disableAutoFill.min.js']
+   ,'DEBUG'          :'//unpkg.com/mtool-belt@1.3.32/vendors/debug.css'
 
    ,'WebAdmin': ['#RPC','//unpkg.com/metabake-web-admin-api@0.1.0/WebAdmin.min.js']
    ,'RPC': ['#polly', '//unpkg.com/http-rpc@1.0.6/httpRPC.min.js']
@@ -121,13 +115,16 @@ depp.define({
 
    // https://www.npmjs.com/package/collect.js
    ,'collect': '//cdn.jsdelivr.net/npm/collect.js@4.12.2/build/collect.min.js'
-   ,'isJs': '//unpkg.com/mtool-belt@1.3.31/vendors/is.min.js'
+   ,'isJs': '//unpkg.com/mtool-belt@1.3.32/vendors/is.min.js'
    // Commercial License # MetaBake LLC
    ,'state-machine': '//cdn.jsdelivr.net/npm/javascript-state-machine@3.1.0/lib/state-machine.min.js'
 
    // use for validation. eg: check in VM and return 'OK' to view|binding; or return validation errors if found
    ,'validate' :  '//cdn.jsdelivr.net/npm/validate.js@0.12.0/validate.min.js'
    ,'validator': ['//cdn.jsdelivr.net/npm/validator@10.11.0/validator.min.js']
+
+   // gesture
+   ,'zingtouch':'//cdn.jsdelivr.net/npm/zingtouch@1.0.6/index.min.js'
 
    //fts: 
    ,'fuzzyset':'//cdn.jsdelivr.net/npm/fuzzyset.js@0.0.8/index.min.js'
@@ -152,8 +149,8 @@ depp.define({
    ,'gridformsJS':['//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.js']
 
    ,'accordion': ['#jquery'
-                  ,'//unpkg.com/mtool-belt@1.3.31/vendors/jquery-accordion/js/jquery.accordion.min.js'
-                  ,'//unpkg.com/mtool-belt@1.3.31/vendors/jquery-accordion/css/jquery.accordion.css']
+                  ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-accordion/js/jquery.accordion.min.js'
+                  ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-accordion/css/jquery.accordion.css']
 
    ,'emailjs': ['//cdn.emailjs.com/sdk/2.3.2/email.min.js','#DOM']
 
@@ -173,7 +170,7 @@ depp.define({
                ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex-theme-default.css']
 
    // binding, eg
-   ,'jqForm': '//unpkg.com/mtool-belt@1.3.31/vendors/jquery-jsForm/jquery.jsForm.js'
+   ,'jqForm': '//unpkg.com/mtool-belt@1.3.32/vendors/jquery-jsForm/jquery.jsForm.js'
 
    ,'codemirror': ['//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css'
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.min.js'
@@ -198,13 +195,9 @@ depp.define({
                ,'//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/jquery.onepage-scroll.min.js']
    
    ,'jqFAQ':[ '#jquery'
-             ,'//unpkg.com/mtool-belt@1.3.31/vendors/jquery-FAQ/jquery.quicksilver.min.js'
-             ,'//unpkg.com/mtool-belt@1.3.31/vendors/jquery-FAQ/jquery.simpleFAQ.css'
-             ,'//unpkg.com/mtool-belt@1.3.31/vendors/jquery-FAQ/jquery.simpleFAQ.min.js']
-
-   // DO NOT USE THIS FOR DEVELOPMENT. local Sass should be used always, except if you do a quick prototype or a mockup, then use this
-   ,'MOCKUPStyle': ['//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',
-                   ,'//cdn.jsdelivr.net/npm/spectre.css@0.5.8/dist/spectre.min.css']
+             ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-FAQ/jquery.quicksilver.min.js'
+             ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-FAQ/jquery.simpleFAQ.css'
+             ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-FAQ/jquery.simpleFAQ.min.js']
 
    // template-ing, could help webcomps
    ,'doTempl':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
@@ -212,7 +205,7 @@ depp.define({
    //
    ,'bcrypt':'//cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js'
 
-   //MetaCake comps:
+   //*** MetaCake comps:
    ,'flipcard-comp'  : ['//unpkg.com/metacake@1.2.25/flipcard/comps/flipcard-comp.min.js']
    ,'contactus-comp' : ['//unpkg.com/metacake@1.2.25/contactus/comps/contactus-comp.min.js']
    ,'surveyitem-comp': ['//unpkg.com/metacake@1.2.25/surveryitem/comps/surveyitem-comp.min.js']
@@ -230,21 +223,28 @@ depp.define({
    ,'svgloader'   : '//cdn.jsdelivr.net/npm/boomsvgloader@0.0.2/dist/js/boomsvgloader.min.js'
    ,'imagesloaded':['//cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.min.js']
    ,'load-image'  : '//cdn.jsdelivr.net/npm/blueimp-load-image@2.21.0/js/load-image.all.min.js'
+   ,'picturefill' : '//cdn.jsdelivr.net/npm/picturefill@3.0.3/dist/picturefill.min.js'
    ,'glfx'        :['//cdn.jsdelivr.net/npm/glfx@0.0.4/glfx.min.js'] // eg tilt shift
 
    //vid
-   ,'bideo' : '//unpkg.com/mtool-belt@1.3.31/vendors/bideo/bideo.min.js'
+   ,'mediaelement'   :[ '//cdn.jsdelivr.net/mediaelement/4.2.9/mediaelement-and-player.min.js'
+                       ,'//cdn.jsdelivr.net/mediaelement/4.2.9/mediaelementplayer.min.css']
+   ,'bideo' : '//unpkg.com/mtool-belt@1.3.32/vendors/bideo/bideo.min.js'
+
+   //voice cmd
+   ,'annYang'  :'//cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js'
+   ,'spoken'   :'//cdn.jsdelivr.net/npm/spoken@1.1.17/spoken.min.js'
 
    //FX section
-   ,'deli'  : ['//unpkg.com/mtool-belt@1.3.31/vendors/delighters.min.js',  '#DOM']
+   ,'deli'  : ['//unpkg.com/mtool-belt@1.3.32/vendors/delighters.min.js',  '#DOM']
    ,'GSAP'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenLite.min.js',
                '//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/plugins/CSSPlugin.min.js'] // plugin needs to animate css property
-   ,'clamp': ['//unpkg.com/mtool-belt@1.3.31/vendors/clamp.min.js']
-   ,'particles':'//cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'
-   ,'scrollify':['#jquery','//cdn.jsdelivr.net/npm/jquery-scrollify@1.0.20/jquery.scrollify.min.js']
-   ,'zenscroll':['//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js','#DOM']  
-   ,'typewriter':'//cdn.jsdelivr.net/npm/typewriter-effect@2.5.3/dist/core.js'
-   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.31/vendors/parallaxImg.min.js'
+   ,'clamp'       : ['//unpkg.com/mtool-belt@1.3.32/vendors/clamp.min.js']
+   ,'particles'   :'//cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'
+   ,'scrollify'   :['#jquery','//cdn.jsdelivr.net/npm/jquery-scrollify@1.0.20/jquery.scrollify.min.js']
+   ,'zenscroll'   :['//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js','#DOM']  
+   ,'typewriter'  :'//cdn.jsdelivr.net/npm/typewriter-effect@2.5.3/dist/core.js'
+   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.32/vendors/parallaxImg.min.js'
 
    // OpenSans is the standard font
    ,'OpenSans'       :'css!//fonts.googleapis.com/css?family=Open+Sans'
@@ -252,18 +252,9 @@ depp.define({
    ,'OswaldFont'     : 'css!//fonts.googleapis.com/css?family=Oswald'
 
    //experimental section, maybe deprecated in future:
-   ,'sweetAlert'  : [ '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.css', // sweetAlert will be removed in future
+   ,'sweetAlert'  : [ '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.css', // sweetAlert will be moved to other in future
                       '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.min.js']
-   ,'picturefill' : '//cdn.jsdelivr.net/npm/picturefill@3.0.3/dist/picturefill.min.js'
 
-})
-
-depp.require(['DOM', 'READY'], function () { // just show the time, that's all
-   console.log('toolBelt defs loaded', Date.now() - _start)
-   console.log('Native?', window.native)
-   setTimeout(function(){
-      depp.done ('postDOM') // this 'event' runs a bit after DOM, a cheat to load full stule or font
-  },100)
 })
 
 // common functions:

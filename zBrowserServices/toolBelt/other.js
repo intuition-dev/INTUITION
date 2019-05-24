@@ -10,6 +10,10 @@ depp.define({
    ,'PacificoFont': 'css!//fonts.googleapis.com/css?family=Pacifico'
    ,'PoppinsFont' : 'css!//fonts.googleapis.com/css?family=Poppins'
 
+   // DO NOT USE THIS FOR DEVELOPMENT. local Sass should be used always, except if you do a quick prototype or a mockup, then use this
+   ,'MOCKUPStyle': [ '//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',
+                    ,'//cdn.jsdelivr.net/npm/spectre.css@0.5.8/dist/spectre.min.css']
+   
    //removes FOUT
    ,'fontloader':'//cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js'
 
@@ -18,6 +22,8 @@ depp.define({
 
    //dates:
    ,'js-joda'  : '//cdn.jsdelivr.net/npm/js-joda@1.10.1/dist/js-joda.min.js'
+
+   ,'jqTransit':['#jquery','//cdn.jsdelivr.net/jquery.transit/0.9.12/jquery.transit.min.js']
 
    //fts
    ,'lunr':'//cdn.jsdelivr.net/npm/lunr@2.3.6/lunr.min.js'
@@ -28,6 +34,13 @@ depp.define({
    ,'vintage'   :'//cdn.jsdelivr.net/npm/vintagejs@2.2.0/dist/vintage.min.js'
 
 })
+
+// by default only load major polyfills and isJs lib are loaded, and the it is READY
+// I think collect should be default also, maybe state machine and a validator
+depp.require('isJs', 'polly-wcomp',function(){
+   depp.done('READY', Date.now() - _start)
+})
+
 
 
 /* how to load tricky things
