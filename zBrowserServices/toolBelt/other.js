@@ -10,6 +10,11 @@ depp.define({
    ,'PacificoFont': 'css!//fonts.googleapis.com/css?family=Pacifico'
    ,'PoppinsFont' : 'css!//fonts.googleapis.com/css?family=Poppins'
 
+   ,'mobi':'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/js/mobiscroll.javascript.min.js'
+
+   //webGL
+   ,'babylon':'//cdn.babylonjs.com/babylon.js'
+   
    ,'jqMousewheel':['#jquery','//cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js']
 
    // DO NOT USE THIS FOR DEVELOPMENT. local Sass should be used always, except if you do a quick prototype or a mockup, then use this
