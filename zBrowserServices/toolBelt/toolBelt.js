@@ -1,6 +1,8 @@
 // This file is a toolbelt, a curated list of libs to use when need arises. 
+// And it has auto polly fill for: promise, fetch, CustomEvents, and Standard Web Components - for IE 11 and Modern browsers
+// Also tries for a bit of prep in case of Electron or Cordova/PhoneGap
 
-console.log('Ver:','unpkg.com/mtool-belt@1.3.32/')
+console.log('Ver:','unpkg.com/mtool-belt@1.3.33/')
 
 // can use like this in comp:
 /*
@@ -12,7 +14,7 @@ and then you can depp.require(...)
 Don't use depp.js for events - use CustomEvents or state machine
 */
 
-// also contains any locally hosted lib is because we can't find it on a CDN or they have poor builds so we have to host
+//  any locally hosted lib is because we can't find it on a CDN or they have poor builds so we have to host
 
 // native helper:
 window.native = false
@@ -56,11 +58,11 @@ var CESupported = (function () {
   }
 })()
 if (!CESupported) //custom events polly
-  depp.define({ 'has-CE': '//unpkg.com/mtool-belt@1.3.32/poly/EventListener.min.js' })
+  depp.define({ 'has-CE': '//unpkg.com/mtool-belt@1.3.33/poly/EventListener.min.js' })
 else
   depp.done('has-CE')
 if (!'fetch' in window)
-  depp.define({ 'has-Fetch': '//unpkg.com/mtool-belt@1.3.32/poly/fetch.min.js' })
+  depp.define({ 'has-Fetch': '//unpkg.com/mtool-belt@1.3.33/poly/fetch.min.js' })
 else
   depp.done('has-Fetch')
 depp.require(['has-Promise','has-CE','has-Fetch'], function () {
@@ -90,7 +92,7 @@ function pollycoreready() { // after asking for it, wait on this event.
    depp.done ('polly-core-ready')
 }
 
-//- eg addScript('bla.js', null, 'api-key', 'key123')
+//- eg addScript('bla.js', null, 'api-key', 'key123') when they want you to use the tag: so you can in your own sequence
 function addScript(src, callback, attr, attrValue, id) {
    var s = document.createElement( 'script' )
    s.setAttribute( 'src', src )
@@ -103,8 +105,8 @@ function addScript(src, callback, attr, attrValue, id) {
 
 
 depp.define({
-   'disableAutoFill' :['#jquery','//unpkg.com/mtool-belt@1.3.32/vendors/jquery.disableAutoFill.min.js']
-   ,'DEBUG'          :'//unpkg.com/mtool-belt@1.3.32/vendors/debug.css'
+   'disableAutoFill' :['#jquery','//unpkg.com/mtool-belt@1.3.33/vendors/jquery.disableAutoFill.min.js']
+   ,'DEBUG'          :'//unpkg.com/mtool-belt@1.3.33/vendors/debug.css'
 
    ,'WebAdmin': ['#RPC','//unpkg.com/metabake-web-admin-api@0.1.0/WebAdmin.min.js']
    ,'RPC': ['#polly', '//unpkg.com/http-rpc@1.0.6/httpRPC.min.js']
@@ -115,7 +117,7 @@ depp.define({
 
    // https://www.npmjs.com/package/collect.js
    ,'collect': '//cdn.jsdelivr.net/npm/collect.js@4.12.2/build/collect.min.js'
-   ,'isJs': '//unpkg.com/mtool-belt@1.3.32/vendors/is.min.js'
+   ,'isJs': '//unpkg.com/mtool-belt@1.3.33/vendors/is.min.js'
    // Commercial License # MetaBake LLC
    ,'state-machine': '//cdn.jsdelivr.net/npm/javascript-state-machine@3.1.0/lib/state-machine.min.js'
 
@@ -142,7 +144,7 @@ depp.define({
    // INSIDE the project, also rebuild their sass when tabulator bumps version
    ,'tabulator': ['//cdn.jsdelivr.net/npm/tabulator-tables@4.2.7/dist/js/tabulator.min.js']
 
-      // full polly ES5 request; listen to ready, but not tested w/ polly-wcomp
+      // full polly ES5 request for FB in IE11; listen to ready, but not tested w/ polly-wcomp
    ,'polly-core-req': ['#polly-wcomp','//polyfill.io/v3/polyfill.min.js?flags=gated&features=es2015%2Ces2016%2Ces2017&callback=pollycoreready']
 
    ,'split'       :'//cdn.jsdelivr.net/npm/split.js@1.5.10/dist/split.min.js'
@@ -152,8 +154,8 @@ depp.define({
    ,'gridformsJS':['//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.js']
 
    ,'accordion': ['#jquery'
-                  ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-accordion/js/jquery.accordion.min.js'
-                  ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-accordion/css/jquery.accordion.css']
+                  ,'//unpkg.com/mtool-belt@1.3.33/vendors/jquery-accordion/js/jquery.accordion.min.js'
+                  ,'//unpkg.com/mtool-belt@1.3.33/vendors/jquery-accordion/css/jquery.accordion.css']
 
    ,'emailjs': ['//cdn.emailjs.com/sdk/2.3.2/email.min.js','#DOM']
 
@@ -172,8 +174,8 @@ depp.define({
    ,'vexAlert':['//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/js/vex.min.js'
                ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex-theme-default.css']
 
-   // binding, eg
-   ,'jqForm': '//unpkg.com/mtool-belt@1.3.32/vendors/jquery-jsForm/jquery.jsForm.js'
+   // binding - good to follow
+   ,'jqForm': '//unpkg.com/mtool-belt@1.3.33/vendors/jquery-jsForm/jquery.jsForm.js'
 
    ,'codemirror': ['//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css'
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.min.js'
@@ -194,7 +196,7 @@ depp.define({
    ,'luxon'    : '//cdn.jsdelivr.net/npm/luxon@1.13.0/build/global/luxon.min.js'
    ,'spacetime': '//cdn.jsdelivr.net/npm/spacetime@5.8.1/builds/spacetime.min.js'
 
-   // template-ing, could help webcomps
+   // template-ing help to webcomps
    ,'doTempl':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
 
    //
@@ -206,9 +208,9 @@ depp.define({
                ,'//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/jquery.onepage-scroll.min.js']
    
    ,'jqFAQ':[ '#jquery'
-             ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-FAQ/jquery.quicksilver.min.js'
-             ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-FAQ/jquery.simpleFAQ.css'
-             ,'//unpkg.com/mtool-belt@1.3.32/vendors/jquery-FAQ/jquery.simpleFAQ.min.js']
+             ,'//unpkg.com/mtool-belt@1.3.33/vendors/jquery-FAQ/jquery.quicksilver.min.js'
+             ,'//unpkg.com/mtool-belt@1.3.33/vendors/jquery-FAQ/jquery.simpleFAQ.css'
+             ,'//unpkg.com/mtool-belt@1.3.33/vendors/jquery-FAQ/jquery.simpleFAQ.min.js']
 
    //*** MetaCake comps:
    ,'flipcard-comp'  : ['//unpkg.com/metacake@1.2.25/flipcard/comps/flipcard-comp.min.js']
@@ -228,29 +230,27 @@ depp.define({
    ,'svgloader'   : '//cdn.jsdelivr.net/npm/boomsvgloader@0.0.2/dist/js/boomsvgloader.min.js'
    ,'imagesloaded':['//cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.min.js']
    ,'load-image'  : '//cdn.jsdelivr.net/npm/blueimp-load-image@2.21.0/js/load-image.all.min.js'
-   ,'picturefill' : '//cdn.jsdelivr.net/npm/picturefill@3.0.3/dist/picturefill.min.js'
    ,'glfx'        :['//cdn.jsdelivr.net/npm/glfx@0.0.4/glfx.min.js'] // eg tilt shift
 
    //vid
    ,'mediaelement'   :[ '//cdn.jsdelivr.net/mediaelement/4.2.9/mediaelement-and-player.min.js'
                        ,'//cdn.jsdelivr.net/mediaelement/4.2.9/mediaelementplayer.min.css']
-   ,'bideo' : '//unpkg.com/mtool-belt@1.3.32/vendors/bideo/bideo.min.js'
+   ,'bideo' : '//unpkg.com/mtool-belt@1.3.33/vendors/bideo/bideo.min.js'
 
    //voice cmd
    ,'annYang'  :'//cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js'
    ,'spoken'   :'//cdn.jsdelivr.net/npm/spoken@1.1.17/spoken.min.js'
 
    //FX section
-   ,'deli'  : ['//unpkg.com/mtool-belt@1.3.32/vendors/delighters.min.js',  '#DOM']
+   ,'deli'  : ['//unpkg.com/mtool-belt@1.3.33/vendors/delighters.min.js',  '#DOM']
    ,'GSAP'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenLite.min.js',
                '//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/plugins/CSSPlugin.min.js'] // plugin needs to animate css property
    ,'polly-ani'   :'//cdn.jsdelivr.net/npm/web-animations-js@2.3.1/web-animations.min.js'
-   ,'clamp'       : ['//unpkg.com/mtool-belt@1.3.32/vendors/clamp.min.js']
+   ,'clamp'       : ['//unpkg.com/mtool-belt@1.3.33/vendors/clamp.min.js']
    ,'particles'   :'//cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'
-   ,'scrollify'   :['#jquery','//cdn.jsdelivr.net/npm/jquery-scrollify@1.0.20/jquery.scrollify.min.js']
    ,'zenscroll'   :['//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js','#DOM']  
    ,'typewriter'  :'//cdn.jsdelivr.net/npm/typewriter-effect@2.5.3/dist/core.js'
-   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.32/vendors/parallaxImg.min.js'
+   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.33/vendors/parallaxImg.min.js'
 
    ,'jqMapaEl':['#jquery', '#raphael', '//cdn.jsdelivr.net/npm/jquery-mapael@2.2.0/js/jquery.mapael.min.js']
    ,'raphael':'//cdn.jsdelivr.net/npm/raphael@2.2.8/raphael.min.js'
@@ -321,7 +321,7 @@ function loadQunit() { // you have to wait on -ready and manually start qunit
    })//pro
 }//()
 
-// loads module, then returns 
+// loads module, then returns promise
 function req(module) {
   return new Promise(function (resolve, reject) {
     depp.require(module, function () {
@@ -355,7 +355,7 @@ function getLang() {
   return navigator.language || navigator.userLanguage
 }
 
-// this async dispatch can help
+// this async dispatch can help, for example in promise
 function disE(evtName, msg) {
    setTimeout(function(){
      dispatchEvent(new CustomEvent(evtName, { detail: msg }))
@@ -418,6 +418,6 @@ function onBrowser(evt) { // just an example
 }
  var modOnBrowser = throttleF(function (evt) { // because it returns a function !!!, we define the modified function here
   disE('onBrowser', evt)
-}, 200)// delay
+}, 150)// delay
 
 

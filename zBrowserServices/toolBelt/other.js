@@ -21,6 +21,7 @@ depp.define({
    ,'physics2':'https://cdn.jsdelivr.net/npm/p2@0.7.1/src/p2.min.js'
    
    ,'jqMousewheel':['#jquery','//cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js']
+   ,'scrollify'   :['#jquery','//cdn.jsdelivr.net/npm/jquery-scrollify@1.0.20/jquery.scrollify.min.js']
 
    // DO NOT USE THIS FOR DEVELOPMENT. local Sass should be used always, except if you do a quick prototype or a mockup, then use this
    ,'MOCKUPStyle': [ '//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',
@@ -43,15 +44,17 @@ depp.define({
 
    ,'togetherjs':'//togetherjs.com/togetherjs-min.js'
 
+   ,'picturefill' : '//cdn.jsdelivr.net/npm/picturefill@3.0.3/dist/picturefill.min.js'
+
    ,'reframe'     :['//cdn.jsdelivr.net/npm/reframe.js@2.2.5/dist/reframe.min.js', '#DOM']
    ,'backstretchJQ':['#jquery','//cdn.jsdelivr.net/npm/jquery-backstretch@2.1.17/jquery.backstretch.min.js']
    ,'vintage'   :'//cdn.jsdelivr.net/npm/vintagejs@2.2.0/dist/vintage.min.js'
 
 })
 
-// by default only load major polyfills and isJs lib are loaded, and the it is READY
-// I think collect should be default also, maybe state machine and a validator
-depp.require('isJs', 'polly-wcomp',function(){
+// by default only load major polyfills 
+depp.require(['isJs', 'polly-wcomp', 'RPC'], function(){
+   depp.require('polly-ani')
    depp.done('READY', Date.now() - _start)
 })
 
@@ -75,13 +78,12 @@ addEventListener('onBrowser', function (evt) {
  
  // just an example that loads some frequently needed libs
  depp.require('DOM', function() {
-    setTimeout(function () {
-       depp.require(['isJs', 'OpenSans', 'feather-icons'], function () {
-         if (is.ie()) console.log('ie')
-         if (is.mobile()) console.log('mobile')
-         if (is.touchDevice()) console.log('touch')
-       })
-    }, 5*1000)    
+   depp.require(['OpenSans', 'feather-icons', 'collect', 'instantclick'])
+   depp.require(['isJs'], function () {
+      if (is.ie()) console.log('ie')
+      if (is.mobile()) console.log('mobile')
+      if (is.touchDevice()) console.log('touch')
+   })
  })
- // $('.delayShowing').removeClass('delayShowing') // show
+ // $('.delayShowing').removeClass('delayShowing') // show parts in middle
  
