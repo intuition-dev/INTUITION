@@ -244,6 +244,7 @@ depp.define({
    ,'deli'  : ['//unpkg.com/mtool-belt@1.3.32/vendors/delighters.min.js',  '#DOM']
    ,'GSAP'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenLite.min.js',
                '//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/plugins/CSSPlugin.min.js'] // plugin needs to animate css property
+   ,'polly-ani'   :'//cdn.jsdelivr.net/npm/web-animations-js@2.3.1/web-animations.min.js'
    ,'clamp'       : ['//unpkg.com/mtool-belt@1.3.32/vendors/clamp.min.js']
    ,'particles'   :'//cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'
    ,'scrollify'   :['#jquery','//cdn.jsdelivr.net/npm/jquery-scrollify@1.0.20/jquery.scrollify.min.js']

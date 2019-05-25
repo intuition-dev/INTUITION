@@ -4,6 +4,8 @@
 
 console.log('lang', getLang())
 
+// https://webkit.org/status
+
 depp.define({
 
     'Noto-Sans'      : 'css!//fonts.googleapis.com/css?family=Noto+Sans'
@@ -11,9 +13,12 @@ depp.define({
    ,'PoppinsFont' : 'css!//fonts.googleapis.com/css?family=Poppins'
 
    ,'mobi':'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/js/mobiscroll.javascript.min.js'
+   ,'mobiCSS':'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/css/mobiscroll.css'
 
    //webGL
    ,'babylon':'//cdn.babylonjs.com/babylon.js'
+
+   ,'physics2':'https://cdn.jsdelivr.net/npm/p2@0.7.1/src/p2.min.js'
    
    ,'jqMousewheel':['#jquery','//cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js']
 

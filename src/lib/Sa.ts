@@ -267,7 +267,7 @@ export class MinJS {
       let t = {
          identifierNamesGenerator: 'hexadecimal' // for virus
          , disableConsoleOutput: false // setting to true breaks things
-         , target: 'browser-no-eval'
+         , target: 'browser' //-no-eval'
 
          , stringArray: true
          , stringArrayThreshold: 1
@@ -278,8 +278,7 @@ export class MinJS {
          , controlFlowFlattening: true
          , controlFlowFlatteningThreshold: 1
 
-         , deadCodeInjection: true
-         , deadCodeInjectionThreshold: 0.2
+         , deadCodeInjection: false
       }
       return t as TInputOptions
    }
