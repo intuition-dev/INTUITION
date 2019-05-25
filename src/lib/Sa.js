@@ -199,15 +199,14 @@ class MinJS {
         let t = {
             identifierNamesGenerator: 'hexadecimal',
             disableConsoleOutput: false,
-            target: 'browser-no-eval',
+            target: 'browser',
             stringArray: true,
             stringArrayThreshold: 1,
             stringArrayEncoding: 'rc4',
             selfDefending: true,
             controlFlowFlattening: true,
             controlFlowFlatteningThreshold: 1,
-            deadCodeInjection: true,
-            deadCodeInjectionThreshold: 0.2
+            deadCodeInjection: false
         };
         return t;
     }
