@@ -181,9 +181,9 @@ depp.define({
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/yaml/yaml.js']
 
    ,'firestore': [ '#polly-core-req' // request and check when polly-core-ready
-                  ,'//www.gstatic.com/firebasejs/6.0.1/firebase-app.js'
-                  ,'//www.gstatic.com/firebasejs/6.0.1/firebase-auth.js'
-                  ,'//www.gstatic.com/firebasejs/6.0.1/firebase-firestore.js' ]
+                  ,'//www.gstatic.com/firebasejs/6.0.4/firebase-app.js'
+                  ,'//www.gstatic.com/firebasejs/6.0.4/firebase-auth.js'
+                  ,'//www.gstatic.com/firebasejs/6.0.4/firebase-firestore.js' ]
 
    ,'chosenSelect': ['#jquery','//cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js']
 
