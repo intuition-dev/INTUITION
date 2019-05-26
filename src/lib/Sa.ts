@@ -276,7 +276,7 @@ export class MinJS {
          , selfDefending: false // low sec
 
          , controlFlowFlattening: true
-         , controlFlowFlatteningThreshold: 1
+         , controlFlowFlatteningThreshold: .6 // low sec
 
          , deadCodeInjection: false
       }

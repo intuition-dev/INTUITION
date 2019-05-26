@@ -3,7 +3,7 @@
 
 export class Ver {
    static ver() {
-      return 'v5.06.24'
+      return 'v5.06.25'
    }
    static date():string {
       return new Date().toISOString()
@@ -43,14 +43,14 @@ import beeper = require('beeper');
 export class DownloadFrag {
    constructor(dir, devops:boolean) {
       console.log('Extracting to',dir)
-      if(!devops) download('https://unpkg.com/mtool-belt@1.3.33/template/headFrag.pug').then(data => {
+      if(!devops) download('https://unpkg.com/mtool-belt@1.3.34/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir+'/headFrag.pug', data)
      })
      if(devops) {
-         download('https://unpkg.com/mtool-belt@1.3.33/template/devOps.pug').then(data => {
+         download('https://unpkg.com/mtool-belt@1.3.34/template/devOps.pug').then(data => {
                fs.writeFileSync(dir+'/devOps.pug', data)
          })
-         download('https://unpkg.com/mtool-belt@1.3.33/template/devOps.js').then(data => {
+         download('https://unpkg.com/mtool-belt@1.3.34/template/devOps.js').then(data => {
                fs.writeFileSync(dir+'/devOps.js', data)
          })
    }//fi

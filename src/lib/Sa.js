@@ -203,7 +203,7 @@ class MinJS {
             stringArray: true,
             stringArrayThreshold: 1,
             stringArrayEncoding: 'rc4',
-            selfDefending: true,
+            selfDefending: false,
             controlFlowFlattening: true,
             controlFlowFlatteningThreshold: 1,
             deadCodeInjection: false
