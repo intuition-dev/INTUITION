@@ -121,9 +121,6 @@ depp.define({
    // Commercial License # MetaBake LLC
    ,'state-machine': '//cdn.jsdelivr.net/npm/javascript-state-machine@3.1.0/lib/state-machine.min.js'
 
-   //TODO:
-   ,'instantclick':'//cdn.jsdelivr.net/npm/@teamthread/instantclick@4.1.0/src/instantclick.min.js'
-
    // use for validation. eg: check in VM and return 'OK' to view|binding; or return validation errors if found
    ,'validate' :  '//cdn.jsdelivr.net/npm/validate.js@0.12.0/validate.min.js'
    ,'validator': ['//cdn.jsdelivr.net/npm/validator@10.11.0/validator.min.js']

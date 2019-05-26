@@ -22,11 +22,13 @@ depp.define({
    
    ,'jqMousewheel':['#jquery','//cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js']
    ,'scrollify'   :['#jquery','//cdn.jsdelivr.net/npm/jquery-scrollify@1.0.20/jquery.scrollify.min.js']
-
    // DO NOT USE THIS FOR DEVELOPMENT. local Sass should be used always, except if you do a quick prototype or a mockup, then use this
    ,'MOCKUPStyle': [ '//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',
                     ,'//cdn.jsdelivr.net/npm/spectre.css@0.5.8/dist/spectre.min.css']
    
+                       //TODO:
+   ,'instantclickX':'//cdn.jsdelivr.net/npm/@teamthread/instantclick@4.1.0/src/instantclick.min.js'
+
    //removes FOUT
    ,'fontloader':'//cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js'
 
@@ -78,7 +80,7 @@ addEventListener('onBrowser', function (evt) {
  
  // just an example that loads some frequently needed libs
  depp.require('DOM', function() {
-   depp.require(['OpenSans', 'feather-icons', 'collect', 'instantclick'])
+   depp.require(['OpenSans', 'feather-icons', 'collect'])
    depp.require(['isJs'], function () {
       if (is.ie()) console.log('ie')
       if (is.mobile()) console.log('mobile')
