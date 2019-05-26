@@ -271,7 +271,7 @@ function loadVexAlertFlat() { // since it has extra call at end
       vex.defaultOptions.className = 'vex-theme-flat-attack'
       console.log('vex')
       depp.done('loadedVexAlertFlat')
-      resolve('OK')
+      resolve('OK') // now you can vex.dialog.confirm({ message: msg })//vexAlert
    })//req
    })//pro
 }//()

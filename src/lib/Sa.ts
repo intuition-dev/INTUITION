@@ -273,7 +273,7 @@ export class MinJS {
          , stringArrayThreshold: 1
          , stringArrayEncoding: 'rc4' // breaks if not
 
-         , selfDefending: true
+         , selfDefending: false // low sec
 
          , controlFlowFlattening: true
          , controlFlowFlatteningThreshold: 1
