@@ -167,9 +167,10 @@ depp.define({
    ,'offcanvasNav':  ['//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_js/js-offcanvas.pkgd.js'
                      ,'//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_css/prefixed/js-offcanvas.css']
 
-   //TODO:
-   ,'vexAlert':['//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/js/vex.min.js'
-               ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex-theme-default.css']
+   // request - 2 steps: or just use the function below
+   ,'vexAlertFlatReq'  :['//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/js/vex.combined.min.js'
+                        ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex.css'
+                        ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex-theme-flat-attack.css']
 
    // binding - good to follow
    ,'jqForm': '//unpkg.com/mtool-belt@1.3.33/vendors/jquery-jsForm/jquery.jsForm.js'
@@ -264,6 +265,17 @@ depp.define({
 })
 
 // common functions:
+function loadVexAlertFlat() { // since it has extra call at end
+   return new Promise(function (resolve, reject) {
+   depp.require('vexAlertFlatReq', function(){
+      vex.defaultOptions.className = 'vex-theme-flat-attack'
+      console.log('vex')
+      depp.done('loadedVexAlertFlat')
+      resolve('OK')
+   })//req
+   })//pro
+}//()
+
 function loadSnipCart(key) {
    return new Promise(function (resolve, reject) {
       depp.require('jquery', function(){

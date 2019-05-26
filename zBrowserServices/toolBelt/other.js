@@ -27,7 +27,7 @@ depp.define({
                     ,'//cdn.jsdelivr.net/npm/spectre.css@0.5.8/dist/spectre.min.css']
    
                        //TODO:
-   ,'instantclickX':'//cdn.jsdelivr.net/npm/@teamthread/instantclick@4.1.0/src/instantclick.min.js'
+   ,'instantclick':'//cdn.jsdelivr.net/npm/@teamthread/instantclick@4.1.0/src/instantclick.min.js'
 
    //removes FOUT
    ,'fontloader':'//cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js'
