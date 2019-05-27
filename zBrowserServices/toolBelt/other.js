@@ -12,6 +12,8 @@ depp.define({
    ,'PacificoFont': 'css!//fonts.googleapis.com/css?family=Pacifico'
    ,'PoppinsFont' : 'css!//fonts.googleapis.com/css?family=Poppins'
 
+   ,'GSAPMax'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenMax.min.js']
+
    ,'mobi':'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/js/mobiscroll.javascript.min.js'
    ,'mobiCSS':'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/css/mobiscroll.css'
 

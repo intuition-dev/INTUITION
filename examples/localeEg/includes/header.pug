@@ -13,7 +13,7 @@ header
         var form = document.forms[0];
         var select = form.elements.lang;
         
-        var lang = window.localStorage.getItem('lang');
+        var lang = window.sessionStorage.getItem('lang');
         
         if(lang != null){
             select.value = lang
@@ -25,7 +25,7 @@ header
             var option = event.target.selectedOptions[0]
             select.value = option.value
             
-            window.localStorage.setItem('lang', option.value);
+            window.sessionStorage.setItem('lang', option.value);
             
             //get all .links, and replace its language
             var links = document.querySelectorAll('a.links')
