@@ -258,6 +258,9 @@ depp.define({
    ,'Playfair-Display':'css!//fonts.googleapis.com/css?family=Playfair+Display'
    ,'OswaldFont'     : 'css!//fonts.googleapis.com/css?family=Oswald'
 
+   // devOps
+   ,'sentry':'//browser.sentry-cdn.com/5.3.0/bundle.min.js'
+   
    //experimental section, maybe deprecated in future:
    ,'sweetAlert'  : [ '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.css', // sweetAlert will be moved to other in future
                       '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.min.js']
