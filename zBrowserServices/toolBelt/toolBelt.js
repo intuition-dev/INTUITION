@@ -225,6 +225,8 @@ depp.define({
                      ,'//cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.css']
    ,'circles': '//cdn.jsdelivr.net/npm/circles.js@0.0.6/circles.min.js'
 
+   // prefer their SASS:
+   ,'imagehover'  :'//cdn.jsdelivr.net/npm/imagehover.css@1.0.0/css/imagehover.css'
    // images
    ,'svgloader'   : '//cdn.jsdelivr.net/npm/boomsvgloader@0.0.2/dist/js/boomsvgloader.min.js'
    ,'imagesloaded':['//cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.min.js']
