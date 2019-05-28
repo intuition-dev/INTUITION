@@ -92,6 +92,7 @@ function pollycoreready() { // after asking for it, wait on this event.
    depp.done ('polly-core-ready')
 }
 
+// only if script is strange, else use depp
 //- eg addScript('bla.js', null, 'api-key', 'key123') when they want you to use the tag: so you can in your own sequence
 function addScript(src, callback, attr, attrValue, id) {
    var s = document.createElement( 'script' )
@@ -100,7 +101,7 @@ function addScript(src, callback, attr, attrValue, id) {
    if(id) s.id = id
    if(callback) s.onload=callback
    s.async = true // it does it anyway, as the script is async
-   document.getElementsByTagName('head')[0].appendChild(s)
+   document.getElementsByTagName('body')[0].appendChild(s)
 }
 
 
@@ -259,11 +260,8 @@ depp.define({
    ,'OswaldFont'     : 'css!//fonts.googleapis.com/css?family=Oswald'
 
    // devOps
-   ,'sentry':'//browser.sentry-cdn.com/5.3.0/bundle.min.js'
-   
-   //experimental section, maybe deprecated in future:
-   ,'sweetAlert'  : [ '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.css', // sweetAlert will be moved to other in future
-                      '//cdn.jsdelivr.net/npm/sweetalert2@8.9.0/dist/sweetalert2.min.js']
+   ,'sentry'   :'//browser.sentry-cdn.com/5.3.0/bundle.min.js'
+
 
 })
 
