@@ -3,9 +3,9 @@
 
 export class Ver {
    static ver() {
-      return 'v5.06.25'
+      return 'v5.06.26'
    }
-   static date():string {
+   static date(): string {
       return new Date().toISOString()
    }
 }
@@ -41,19 +41,19 @@ import beeper = require('beeper');
 ////////////////////////////
 
 export class DownloadFrag {
-   constructor(dir, devops:boolean) {
-      console.log('Extracting to',dir)
-      if(!devops) download('https://unpkg.com/mtool-belt@1.3.34/template/headFrag.pug').then(data => {
-         fs.writeFileSync(dir+'/headFrag.pug', data)
-     })
-     if(devops) {
+   constructor(dir, devops: boolean) {
+      console.log('Extracting to', dir)
+      if (!devops) download('https://unpkg.com/mtool-belt@1.3.34/template/headFrag.pug').then(data => {
+         fs.writeFileSync(dir + '/headFrag.pug', data)
+      })
+      if (devops) {
          download('https://unpkg.com/mtool-belt@1.3.34/template/devOps.pug').then(data => {
-               fs.writeFileSync(dir+'/devOps.pug', data)
+            fs.writeFileSync(dir + '/devOps.pug', data)
          })
          download('https://unpkg.com/mtool-belt@1.3.34/template/devOps.js').then(data => {
-               fs.writeFileSync(dir+'/devOps.js', data)
+            fs.writeFileSync(dir + '/devOps.js', data)
          })
-   }//fi
+      }//fi
    }//()
 }
 
@@ -204,7 +204,7 @@ export class Dat {
 
 export class MBake {
 
-   bake(path_, prod:number): Promise<string> {
+   bake(path_, prod: number): Promise<string> {
       return new Promise(function (resolve, reject) {
          if (!path_ || path_.length < 1) {
             console.info('no path_ arg passed')
@@ -236,7 +236,7 @@ export class MBake {
       })//pro
    }//()
 
-   compsNBake(path_, prod:number): Promise<string> {
+   compsNBake(path_, prod: number): Promise<string> {
       let _this = this
       return new Promise(async function (resolve, reject) {
 
@@ -253,8 +253,9 @@ export class MBake {
             await t.comps(lst)
 
             _this.bake(path_, prod)
-               .then(function () { 
-                  resolve('OK') })
+               .then(function () {
+                  resolve('OK')
+               })
                .catch(function (err) {
                   logger.info(err)
                   reject(err)
@@ -270,38 +271,38 @@ export class MBake {
 
    clearToProd(path_): Promise<string> {
       return new Promise(function (resolve, reject) {
-      if (!path_ || path_.length < 1) {
-         console.info('no path_ arg passed')
-         reject(('no path_ arg passed'))
-      }
-      try {
+         if (!path_ || path_.length < 1) {
+            console.info('no path_ arg passed')
+            reject(('no path_ arg passed'))
+         }
+         try {
 
-         console.info(' Clearing ' + path_)
-         let dir = Dirs.slash(path_)
+            console.info(' Clearing ' + path_)
+            let dir = Dirs.slash(path_)
 
-         const rec = FileHound.create() //recursive
-            .paths(dir)
-            .ext(['pug', 'yaml', 'js', 'ts', 'scss'])
-            .findSync()
+            const rec = FileHound.create() //recursive
+               .paths(dir)
+               .ext(['pug', 'yaml', 'js', 'ts', 'scss'])
+               .findSync()
 
-         rec.forEach(file => {
-            const min = file.split('.')[file.split('.').length - 2] === 'min';
+            rec.forEach(file => {
+               const min = file.split('.')[file.split('.').length - 2] === 'min';
 
-            if (!min) {
-               console.info(' Removing ' + file)
-               fs.removeSync(file)
-            }
-         });
-      } catch (err) {
-         logger.warn(err)
-         reject(err)
-      }
-      resolve('OK')
-    })
+               if (!min) {
+                  console.info(' Removing ' + file)
+                  fs.removeSync(file)
+               }
+            });
+         } catch (err) {
+            logger.warn(err)
+            reject(err)
+         }
+         resolve('OK')
+      })
    }
 
    // itemize and bake
-   itemizeNBake(ppath_, prod:number): Promise<string> {
+   itemizeNBake(ppath_, prod: number): Promise<string> {
       let _this = this
       return new Promise(function (resolve, reject) {
          if (!ppath_ || ppath_.length < 1) {
@@ -361,7 +362,7 @@ export class BakeWrk {
       let code = text.match(/^\s*\s*$/) ? '' : text
 
       let optionsCompH = Object.assign({}, MinJS.CompOptionsJS)
-      let _output =   {indent_level:0, quote_style:3, semicolons: false}
+      let _output = { indent_level: 0, quote_style: 3, semicolons: false }
       optionsCompH['output'] = _output
 
       let result = Terser.minify(code, optionsCompH)
@@ -403,7 +404,7 @@ export class BakeWrk {
       sortClassName: true
    }
 
-   bake(prod:number) {
+   bake(prod: number) {
       let tstFile = this.dir + '/index.pug'
       if (!fs.existsSync(tstFile)) {
          return
@@ -419,8 +420,8 @@ export class BakeWrk {
          marp: BakeWrk.marp
       }
 
-      options['ENV'] =  prod
- 
+      options['ENV'] = prod
+
       if (this.locAll(options)) // if locale, we are not writing here, but in sub folders.
          return ' '
 
@@ -646,65 +647,65 @@ export class Comps {
       const THIZ = this
       return new Promise(async function (resolve, reject) {
 
-      console.info('Looking for comps: *-comp ' + THIZ.dir)
-      for (let val of list) {//clean the strings
-         let s: string = fs.readFileSync(val).toString()
+         console.info('Looking for comps: *-comp ' + THIZ.dir)
+         for (let val of list) {//clean the strings
+            let s: string = fs.readFileSync(val).toString()
 
-         let n = val.lastIndexOf('/')
-         let dir: string = val.substring(0, n)
-         let name: string = val.substring(n)
-         let p = name.lastIndexOf('.')
-         name = name.substring(0, p)
-         console.info(' ' + dir + name);
-         await THIZ.process(s, dir, dir + name)
-      }
-      resolve('OK')
-    })
+            let n = val.lastIndexOf('/')
+            let dir: string = val.substring(0, n)
+            let name: string = val.substring(n)
+            let p = name.lastIndexOf('.')
+            name = name.substring(0, p)
+            console.info(' ' + dir + name);
+            await THIZ.process(s, dir, dir + name)
+         }
+         resolve('OK')
+      })
    }//()
 
-  
+
    ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n'
 
-   process(s: string, dir: string, fn: string):Promise<string> {
+   process(s: string, dir: string, fn: string): Promise<string> {
       const THIZ = this
-      return new Promise(function (resolve, reject) {   
-      
-      const r_options = { 'template': 'pug', 'basedir' : dir }
+      return new Promise(function (resolve, reject) {
 
-      logger.info('compiling', fn )
-      let js1
-      try {
+         const r_options = { 'template': 'pug', 'basedir': dir }
 
-         js1 = riotc.compile(s, r_options, fn) //tagpath
+         logger.info('compiling', fn)
+         let js1
+         try {
 
-      } catch (err) {
-         beeper(1);
-         logger.error('compiler error')
-         logger.error(err)
-         reject(err)
-      }
-      fs.writeFileSync(fn + '.js', js1)
+            js1 = riotc.compile(s, r_options, fn) //tagpath
 
-      let optionsCompR = Object.assign({}, MinJS.CompOptionsJS)
-      let _output =   {indent_level:0, quote_style:0, semicolons: false}
-      //_output['mangle'] = true
-      optionsCompR['output'] = _output
-      let js2 = Terser.minify(js1, optionsCompR)
+         } catch (err) {
+            beeper(1);
+            logger.error('compiler error')
+            logger.error(err)
+            reject(err)
+         }
+         fs.writeFileSync(fn + '.js', js1)
 
-      let ugs
-      try {
-         logger.info('obs')
-         ugs = JavaScriptObfuscator.obfuscate(js2.code, MinJS.getCompOptions())
+         let optionsCompR = Object.assign({}, MinJS.CompOptionsJS)
+         let _output = { indent_level: 0, quote_style: 0, semicolons: false }
+         //_output['mangle'] = true
+         optionsCompR['output'] = _output
+         let js2 = Terser.minify(js1, optionsCompR)
 
-      } catch (err) {
-         logger.error('error')
-         logger.error(err)
-         reject(err)
-      }
+         let ugs
+         try {
+            logger.info('obs')
+            ugs = JavaScriptObfuscator.obfuscate(js2.code, MinJS.getCompOptions())
 
-      let obCode = THIZ.ver + ugs.getObfuscatedCode()
-      fs.writeFileSync(fn + '.min.js', obCode)
-      resolve('OK')
+         } catch (err) {
+            logger.error('error')
+            logger.error(err)
+            reject(err)
+         }
+
+         let obCode = THIZ.ver + ugs.getObfuscatedCode()
+         fs.writeFileSync(fn + '.min.js', obCode)
+         resolve('OK')
       })
    }
 }//class

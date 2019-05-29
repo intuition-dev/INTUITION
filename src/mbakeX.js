@@ -37,6 +37,8 @@ function help() {
     console.info('  To download branch from git, in folder with gitdown.yaml:   mbakeX --gitDown GIT-PSWD');
     console.info('     passing the git password of gitdown user');
     console.info('  To recursively remove source files:                         mbakeX --prod .');
+    console.info('  To export Firestore Database needs two arguments separated with ":" : mbakeX --ExportDB serviceAccountKey:name_of_the_file');
+    console.info('  To import Firestore Database needs two arguments separated with ":" : mbakeX --ImportDB serviceAccountKey:name_of_the_json_exported_file');
     console.info('    Note: . is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');
     console.info();

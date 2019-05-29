@@ -480,11 +480,16 @@ export class Sas {
 
 // //////////////////////////////////////////////////////////////////
 export class ExportFS {
-   config
-   collectionRef
+   args: string
+   serviceAccountConfig: string
+   collectionRef: any
+   name: string
+   config: string
    constructor(config) {
-      this.config = require(config);
-
+      this.args = config.split(':')
+      this.serviceAccountConfig = this.args[0]
+      this.name = this.args[1]
+      this.config = require(this.serviceAccountConfig + '.json');
 
       firebase.initializeApp({
          credential: firebase.credential.cert(this.config),
@@ -496,31 +501,27 @@ export class ExportFS {
 
 
    export() {
+      let _this = this
       firestoreExport(this.collectionRef)
          .then(data => {
             console.log(data)
-            fs.writeJsonSync('dbexport.json', data, 'utf8')
-            // fs.writeFile('dbexport.json', JSON.stringify(data), 'utf8', err => {
-            //    if (err) console.log(err);
-            //    console.log("Successfully Written to File.");
-            // });
+            fs.writeJsonSync(_this.name + '.json', data, 'utf8')
          });
    }
 }
 
 export class ImportFS {
-   args
-   config
-   collectionRef
-   pathToData
-   serviceAccountConfig
-   pathToImportedFile
+   args: string
+   config: string
+   collectionRef: any
+   pathToData: string
+   serviceAccountConfig: string
+   pathToImportedFile: string
    constructor(config) {
-      console.info("--config:", config)
       this.args = config.split(':')
       this.serviceAccountConfig = this.args[0]
       this.pathToImportedFile = this.args[1]
-      this.config = require(this.serviceAccountConfig);
+      this.config = require(this.serviceAccountConfig + '.json');
 
 
       firebase.initializeApp({
@@ -533,8 +534,7 @@ export class ImportFS {
 
    import() {
       let _this = this
-      fs.readJson(this.pathToImportedFile, function (err, result) {
-         console.info("--result:", result)
+      fs.readJson(this.pathToImportedFile + '.json', function (err, result) {
 
          firestoreImport(result, _this.collectionRef)
             .then(() => {

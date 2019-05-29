@@ -362,28 +362,31 @@ class Sas {
 exports.Sas = Sas;
 class ExportFS {
     constructor(config) {
-        this.config = require(config);
+        this.args = config.split(':');
+        this.serviceAccountConfig = this.args[0];
+        this.name = this.args[1];
+        this.config = require(this.serviceAccountConfig + '.json');
         firebase.initializeApp({
             credential: firebase.credential.cert(this.config),
         });
         this.collectionRef = firebase.firestore();
     }
     export() {
+        let _this = this;
         node_firestore_import_export_1.firestoreExport(this.collectionRef)
             .then(data => {
             console.log(data);
-            fs.writeJsonSync('dbexport.json', data, 'utf8');
+            fs.writeJsonSync(_this.name + '.json', data, 'utf8');
         });
     }
 }
 exports.ExportFS = ExportFS;
 class ImportFS {
     constructor(config) {
-        console.info("--config:", config);
         this.args = config.split(':');
         this.serviceAccountConfig = this.args[0];
         this.pathToImportedFile = this.args[1];
-        this.config = require(this.serviceAccountConfig);
+        this.config = require(this.serviceAccountConfig + '.json');
         firebase.initializeApp({
             credential: firebase.credential.cert(this.config),
         });
@@ -391,8 +394,7 @@ class ImportFS {
     }
     import() {
         let _this = this;
-        fs.readJson(this.pathToImportedFile, function (err, result) {
-            console.info("--result:", result);
+        fs.readJson(this.pathToImportedFile + '.json', function (err, result) {
             node_firestore_import_export_1.firestoreImport(result, _this.collectionRef)
                 .then(() => {
                 console.log('Data was imported.');
