@@ -164,16 +164,12 @@ depp.define({
                ,'//cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.min.js'
                ,'//cdn.jsdelivr.net/npm/qunit-promises@0.2.0/qunit-promises.min.js']
 
-   //simplistic nav:
-   ,'offcanvasNav':  ['//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_js/js-offcanvas.pkgd.js'
-                     ,'//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_css/prefixed/js-offcanvas.css']
-
    // request - 2 steps: or just use the function below
    ,'vexAlertFlatReq'  :['//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/js/vex.combined.min.js'
                         ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex.css'
                         ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex-theme-flat-attack.css']
 
-   // binding - good to follow
+   // binding - good example
    ,'jqForm': '//unpkg.com/mtool-belt@1.3.34/vendors/jquery-jsForm/jquery.jsForm.js'
 
    ,'codemirror': ['//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css'
@@ -195,7 +191,7 @@ depp.define({
    ,'luxon'    : '//cdn.jsdelivr.net/npm/luxon@1.13.0/build/global/luxon.min.js'
    ,'spacetime': '//cdn.jsdelivr.net/npm/spacetime@5.8.1/builds/spacetime.min.js'
 
-   // template-ing help to webcomps
+   // template-ing, eg for webcomps
    ,'doTempl':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
 
    //
@@ -226,7 +222,8 @@ depp.define({
    ,'circles': '//cdn.jsdelivr.net/npm/circles.js@0.0.6/circles.min.js'
 
    // prefer their SASS:
-   ,'imagehover'  :'//cdn.jsdelivr.net/npm/imagehover.css@1.0.0/css/imagehover.css'
+   ,'ihover'  :'//cdn.jsdelivr.net/npm/imagehover.css@1.0.0/css/imagehover.css'
+
    // images
    ,'svgloader'   : '//cdn.jsdelivr.net/npm/boomsvgloader@0.0.2/dist/js/boomsvgloader.min.js'
    ,'imagesloaded':['//cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.min.js']
@@ -263,7 +260,6 @@ depp.define({
 
    // devOps
    ,'sentry'   :'//browser.sentry-cdn.com/5.3.0/bundle.min.js'
-
 
 })
 
