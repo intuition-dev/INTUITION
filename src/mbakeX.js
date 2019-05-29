@@ -63,6 +63,8 @@ const optionDefinitions = [
     { name: 'bakeD', type: Boolean },
     { name: 'devOps', type: Boolean },
     { name: 'gitDown', type: Boolean },
+    { name: 'ExportFS', type: Boolean },
+    { name: 'ImportFS', type: Boolean },
     { name: 'map', alias: 'm', type: Boolean },
     { name: 'img', alias: 'i', type: Boolean },
     { name: 'csv2Json', alias: 'l', type: Boolean },
@@ -78,6 +80,14 @@ console.info();
 function git(arg) {
     let gg = new Sa_1.GitDown(arg);
     gg.process();
+}
+function exportFS(arg) {
+    let ef = new Sa_1.ExportFS(arg);
+    ef.export();
+}
+function importFS(arg) {
+    let ef = new Sa_1.ImportFS(arg);
+    ef.import();
 }
 function frag(arg) {
     new Base_1.DownloadFrag(arg, true);
@@ -214,6 +224,10 @@ else if (argsParsed.devOps)
     frag(arg);
 else if (argsParsed.gitDown)
     git(arg);
+else if (argsParsed.ExportFS)
+    exportFS(arg);
+else if (argsParsed.ImportFS)
+    importFS(arg);
 else if (argsParsed.version)
     version();
 else if (argsParsed.help)

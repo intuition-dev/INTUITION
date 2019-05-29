@@ -24,6 +24,9 @@ const ts = __importStar(require("typescript"));
 const Terser = require("terser");
 const execa = require('execa');
 const logger = require('tracer').console();
+const node_firestore_import_export_1 = require("node-firestore-import-export");
+const firebase = __importStar(require("firebase-admin"));
+const util = require('util');
 class GitDown {
     constructor(pass_) {
         const last = pass_.lastIndexOf('/');
@@ -205,7 +208,7 @@ class MinJS {
             stringArrayEncoding: 'rc4',
             selfDefending: false,
             controlFlowFlattening: true,
-            controlFlowFlatteningThreshold: 1,
+            controlFlowFlatteningThreshold: .6,
             deadCodeInjection: false
         };
         return t;
@@ -233,8 +236,10 @@ class MinJS {
 MinJS.ver = '// mB ' + Base_1.Ver.ver() + ' on ' + Base_1.Ver.date() + '\r\n';
 MinJS.CompOptionsJS = {
     parse: { html5_comments: false },
-    compress: { drop_console: true,
-        keep_fargs: true, reduce_funcs: false },
+    compress: {
+        drop_console: true,
+        keep_fargs: true, reduce_funcs: false
+    },
     output: { indent_level: 1, quote_style: 3, semicolons: false },
     ecma: 5,
     keep_classnames: true,
@@ -355,6 +360,47 @@ class Sas {
     }
 }
 exports.Sas = Sas;
+class ExportFS {
+    constructor(config) {
+        this.config = require(config);
+        firebase.initializeApp({
+            credential: firebase.credential.cert(this.config),
+        });
+        this.collectionRef = firebase.firestore();
+    }
+    export() {
+        node_firestore_import_export_1.firestoreExport(this.collectionRef)
+            .then(data => {
+            console.log(data);
+            fs.writeJsonSync('dbexport.json', data, 'utf8');
+        });
+    }
+}
+exports.ExportFS = ExportFS;
+class ImportFS {
+    constructor(config) {
+        console.info("--config:", config);
+        this.args = config.split(':');
+        this.serviceAccountConfig = this.args[0];
+        this.pathToImportedFile = this.args[1];
+        this.config = require(this.serviceAccountConfig);
+        firebase.initializeApp({
+            credential: firebase.credential.cert(this.config),
+        });
+        this.collectionRef = firebase.firestore();
+    }
+    import() {
+        let _this = this;
+        fs.readJson(this.pathToImportedFile, function (err, result) {
+            console.info("--result:", result);
+            node_firestore_import_export_1.firestoreImport(result, _this.collectionRef)
+                .then(() => {
+                console.log('Data was imported.');
+            });
+        });
+    }
+}
+exports.ImportFS = ImportFS;
 module.exports = {
-    Sas, Resize, YamlConfig, MinJS, GitDown
+    Sas, Resize, YamlConfig, MinJS, GitDown, ExportFS, ImportFS
 };

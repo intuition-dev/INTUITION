@@ -28,27 +28,34 @@ const execa = require('execa')
 
 //import colors = require('colors');
 const logger = require('tracer').console()
+import { firestoreExport, firestoreImport } from 'node-firestore-import-export';
+
+import * as firebase from 'firebase-admin';
+import { read } from 'fs';
+
+const util = require('util');
+
 
 
 // //////////////////////////////////////////////////////////////////
-export class GitDown { 
+export class GitDown {
    config
    remote
-   pass:string
-   git : any
-   dir:string 
-   constructor(pass_:string) {
+   pass: string
+   git: any
+   dir: string
+   constructor(pass_: string) {
       const last = pass_.lastIndexOf('/')
-      this.pass = pass_.substring(last+1)
-      this.dir = pass_.substring(0,last)
+      this.pass = pass_.substring(last + 1)
+      this.dir = pass_.substring(0, last)
 
       this.config = yaml.load(fs.readFileSync('gitdown.yaml'))
       console.log(this.dir, this.config.BRANCH)
       logger.trace(this.config)
-      
-      this.remote =  'https://'+this.config.LOGINName +':'
-      this.remote += this.pass +'@'
-      this.remote += this.config.REPO +'/'
+
+      this.remote = 'https://' + this.config.LOGINName + ':'
+      this.remote += this.pass + '@'
+      this.remote += this.config.REPO + '/'
       this.remote += this.config.PROJECT
 
       this._emptyFolders()
@@ -60,11 +67,11 @@ export class GitDown {
          await this._branchExists(b)
          console.log(this.exists)
 
-         if(this.exists) await this. _getEXISTINGRemoteBranch(b)
+         if (this.exists) await this._getEXISTINGRemoteBranch(b)
          else await this._getNEWRemoteBranch(b)
 
          this._moveTo(b)
-      } catch(err) {
+      } catch (err) {
          console.error(err)
       }
    }
@@ -80,12 +87,12 @@ export class GitDown {
       fs.moveSync(dir, dirTo)
 
       let dirR = this.config.PROJECT
-      dirR = this.dir + '/' + dirR 
+      dirR = this.dir + '/' + dirR
       fs.removeSync(dirR)
       console.log('removed', dirR)
       console.log()
-      
-      fs.writeJsonSync(dirTo +'/branch.json', {branch: branch, syncedOn: Ver.date() })
+
+      fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: Ver.date() })
       console.log('DONE!')
       console.log('Maybe time to make/bake', dirTo)
       console.log('and then point http server to', dirTo)
@@ -94,7 +101,7 @@ export class GitDown {
 
    _emptyFolders() {
       let dirR = this.config.PROJECT
-      dirR = this.dir + '/' + dirR 
+      dirR = this.dir + '/' + dirR
       console.log('remove', dirR)
       fs.removeSync(dirR)
 
@@ -104,16 +111,16 @@ export class GitDown {
       fs.removeSync(dirTo)
    }
 
-   async _getNEWRemoteBranch(branch){
-      const {stdout} = await execa('git', ['clone', this.remote])
+   async _getNEWRemoteBranch(branch) {
+      const { stdout } = await execa('git', ['clone', this.remote])
 
       let dir = this.config.PROJECT
       dir = this.dir + '/' + dir
       //make a branch
-      const {stdout2} = await execa('git', ['remote', 'add', branch, this.remote], {cwd: dir})
-      const {stdout3} = await execa('git', ['checkout', '-b', branch], {cwd: dir})
+      const { stdout2 } = await execa('git', ['remote', 'add', branch, this.remote], { cwd: dir })
+      const { stdout3 } = await execa('git', ['checkout', '-b', branch], { cwd: dir })
       // add to remote
-      const {stdout4} = await execa('git', ['push', '-u','origin', branch], {cwd: dir})
+      const { stdout4 } = await execa('git', ['push', '-u', 'origin', branch], { cwd: dir })
 
       /* list history of the new branch TODO
       await execa('git', ['fetch'], {cwd: dir})
@@ -128,12 +135,12 @@ export class GitDown {
       */
    }
 
-   async _getEXISTINGRemoteBranch(branch){ // if null, master
-      const {stdout} = await execa('git', ['clone', this.remote])
+   async _getEXISTINGRemoteBranch(branch) { // if null, master
+      const { stdout } = await execa('git', ['clone', this.remote])
 
       let dir = this.config.PROJECT
       dir = this.dir + '/' + dir
-      const {stdout2} = await execa('git', ['checkout', branch], {cwd: dir})
+      const { stdout2 } = await execa('git', ['checkout', branch], { cwd: dir })
       console.log(dir, branch)
 
       /* list history of the branch TODO
@@ -147,13 +154,13 @@ export class GitDown {
       */
    }
 
-   exists:boolean
+   exists: boolean
    async _branchExists(branch) {
       let cmd = this.remote
       cmd += '.git'
       logger.info(cmd)
 
-      const {stdout} = await execa('git', ['ls-remote', cmd])
+      const { stdout } = await execa('git', ['ls-remote', cmd])
       this.exists = stdout.includes(branch)
 
       logger.trace(stdout)
@@ -165,7 +172,7 @@ export class GitDown {
 
 export class MinJS {
 
-   ts (dir):Promise<string> {
+   ts(dir): Promise<string> {
       logger.info(dir)
       const THIZ = this
       return new Promise(function (resolve, reject) {
@@ -180,85 +187,85 @@ export class MinJS {
             //noEmitOnError: true,
             removeComments: true
          })
-      resolve('OK')
+         resolve('OK')
       })
    }
 
-   min (dir):Promise<string> { 
+   min(dir): Promise<string> {
       const THIZ = this
       return new Promise(async function (resolve, reject) {
-      const rec = FileHound.create() //recursive
-         .paths(dir)
-         .ext("js")
-         .addFilter(function (fn) {
-            if (fn._pathname.endsWith('.min.js')) {
-               return false
+         const rec = FileHound.create() //recursive
+            .paths(dir)
+            .ext("js")
+            .addFilter(function (fn) {
+               if (fn._pathname.endsWith('.min.js')) {
+                  return false
+               }
+               if (fn._pathname.endsWith('-comp.js')) { // no riot comps
+                  return false
+               }
+               return true
+            })
+            .findSync()
+         for (let fn of rec) {//clean the strings
+            try {
+               await THIZ._minOneJS(fn)
+            } catch (err) {
+               logger.warn(err)
+               reject(err)
             }
-            if (fn._pathname.endsWith('-comp.js')) { // no riot comps
-               return false
-            }
-            return true
-         })
-         .findSync()
-      for (let fn of rec) {//clean the strings
-         try {
-            await THIZ._minOneJS(fn)
-         } catch (err) {
-            logger.warn(err)
-            reject(err)
          }
-      }
-      console.info('Done!'.green)
-      resolve('OK')
+         console.info('Done!'.green)
+         resolve('OK')
       })
    }
 
-   _minOneJS (fn) {
+   _minOneJS(fn) {
       return new Promise(async function (resolve, reject) {
-      let result
-      try {
-      console.log(fn)
-      let code:string = fs.readFileSync(fn).toString('utf8')
-
-      let optionsCompJS = Object.assign({}, MinJS.CompOptionsJS)
-      let _output =   {indent_level:0, quote_style:0, semicolons: false}
-      //_output['mangle'] = true
-      optionsCompJS['output'] = _output
-
-      if(fn.includes('-wcomp')) 
-           result = Terser.minify(code, MinJS.CompOptionsJS)
-      else result = Terser.minify(code, optionsCompJS)
-
-      let txt = result.code
-
-      txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n')
-      txt = txt.replace(/\n\s*\n/g, '\n')
-      txt = txt.trim()
-
-      if(fn.includes('-wcomp')) {
-         let ugs
+         let result
          try {
-            logger.info('obs')
-            ugs = JavaScriptObfuscator.obfuscate(txt, MinJS.getCompOptions())
-            txt= ugs.getObfuscatedCode()
+            console.log(fn)
+            let code: string = fs.readFileSync(fn).toString('utf8')
 
+            let optionsCompJS = Object.assign({}, MinJS.CompOptionsJS)
+            let _output = { indent_level: 0, quote_style: 0, semicolons: false }
+            //_output['mangle'] = true
+            optionsCompJS['output'] = _output
+
+            if (fn.includes('-wcomp'))
+               result = Terser.minify(code, MinJS.CompOptionsJS)
+            else result = Terser.minify(code, optionsCompJS)
+
+            let txt = result.code
+
+            txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n')
+            txt = txt.replace(/\n\s*\n/g, '\n')
+            txt = txt.trim()
+
+            if (fn.includes('-wcomp')) {
+               let ugs
+               try {
+                  logger.info('obs')
+                  ugs = JavaScriptObfuscator.obfuscate(txt, MinJS.getCompOptions())
+                  txt = ugs.getObfuscatedCode()
+
+               } catch (err) {
+                  logger.error('error')
+                  logger.error(err)
+                  reject(err)
+               }
+            }
+
+            txt = MinJS.ver + txt
+
+            let fn2 = fn.slice(0, -3)
+            fn2 = fn2 + '.min.js'
+            fs.writeFileSync(fn2, txt)
+            resolve('OK')
          } catch (err) {
-            logger.error('error')
-            logger.error(err)
+            logger.warn(err, result)
             reject(err)
          }
-      }
-
-      txt = MinJS.ver + txt
-
-      let fn2 = fn.slice(0, -3)
-      fn2 = fn2 + '.min.js'
-      fs.writeFileSync(fn2, txt)
-      resolve('OK')
-      } catch (err) {
-         logger.warn(err, result)
-         reject(err)
-      }
       })
    }//()
 
@@ -284,19 +291,21 @@ export class MinJS {
    }
 
    static ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n'
-   
+
    static CompOptionsJS = {
-      parse: {  html5_comments:false},
-      compress: { drop_console:true,
-         keep_fargs:true, reduce_funcs: false},
-      output:  {indent_level:1, quote_style:3, semicolons: false}, 
+      parse: { html5_comments: false },
+      compress: {
+         drop_console: true,
+         keep_fargs: true, reduce_funcs: false
+      },
+      output: { indent_level: 1, quote_style: 3, semicolons: false },
       ecma: 5,
       //mangle: false, // this breaks things in pg
       keep_classnames: true,
       keep_fnames: true
    }
 
-   compile (fileNames: string[], options_: ts.CompilerOptions): void { //http://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
+   compile(fileNames: string[], options_: ts.CompilerOptions): void { //http://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
       let program = ts.createProgram(fileNames, options_)
       let emitResult = program.emit();
 
@@ -313,16 +322,16 @@ export class MinJS {
                diagnostic.messageText,
                "\n"
             );
-            console.info(`${ diagnostic.file.fileName }:`.cyan, `${ line + 1 }:${ character + 1 }`.yellow, `${ message }`);
+            console.info(`${diagnostic.file.fileName}:`.cyan, `${line + 1}:${character + 1}`.yellow, `${message}`);
          } else {
             console.info(
-               `${ ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n") }`
+               `${ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n")}`
             );
          }
       });
 
       let exitCode = emitResult.emitSkipped ? 1 : 0;
-      console.info(`status code '${ exitCode }'.`);
+      console.info(`status code '${exitCode}'.`);
    }//()
 
 }//class
@@ -338,7 +347,7 @@ export class YamlConfig {
 // //////////////////////////////////////////////////////////////////
 export class Resize {
 
-   do (dir) {
+   do(dir) {
       logger.info(dir)
 
       const rec = FileHound.create() //recursive
@@ -358,17 +367,17 @@ export class Resize {
       }
    }
 
-   isWide(file):boolean {
+   isWide(file): boolean {
       let data = fs.readFileSync(file + '.jpg')
       let p = probe.sync(data)
-      if(p.width && p.width > 3200) return true
+      if (p.width && p.width > 3200) return true
       logger.info(file, ' is low res')
       return false
    }
 
-   smaller (file) {
+   smaller(file) {
       logger.info(file)
-      if(!this.isWide(file)) return
+      if (!this.isWide(file)) return
       sharp(file + '.jpg')
          .resize(1680 * 1.9)
          .jpeg({
@@ -398,36 +407,36 @@ export class Sas {
     * @param dir 
     * Find assets.yaml and process each css in the assets.yaml array
     */
-   css (dir):Promise<string> {
+   css(dir): Promise<string> {
       const THIZ = this
       return new Promise(async function (resolve, reject) {
 
-      let a
-      let fn = dir + '/assets.yaml'
-      if (fs.existsSync(fn))
-         a = yaml.load(fs.readFileSync(fn))
-      else {
-         let dir2: string = findUp.sync('assets.yaml', { cwd: dir })
-         a = yaml.load(fs.readFileSync(dir2))
-         dir = dir2.slice(0, -12)
-      }
-      logger.info(dir)
+         let a
+         let fn = dir + '/assets.yaml'
+         if (fs.existsSync(fn))
+            a = yaml.load(fs.readFileSync(fn))
+         else {
+            let dir2: string = findUp.sync('assets.yaml', { cwd: dir })
+            a = yaml.load(fs.readFileSync(dir2))
+            dir = dir2.slice(0, -12)
+         }
+         logger.info(dir)
 
-      const css: string[] = a.css
-      const set: Set<string> = new Set(css)
-      logger.info(set)
+         const css: string[] = a.css
+         const set: Set<string> = new Set(css)
+         logger.info(set)
 
-      for (let item of set) {
-         await THIZ._trans(item, dir)
-      }
+         for (let item of set) {
+            await THIZ._trans(item, dir)
+         }
 
-      console.info()
-      console.info(' Done!'.green)
-      resolve('OK')
+         console.info()
+         console.info(' Done!'.green)
+         resolve('OK')
       })
    }//()
 
-   _trans (fn2, dir) {
+   _trans(fn2, dir) {
       let css = sass.renderSync({
          file: dir + '/' + fn2
          , outputStyle: 'compact'
@@ -469,6 +478,71 @@ export class Sas {
 
 }//class
 
+// //////////////////////////////////////////////////////////////////
+export class ExportFS {
+   config
+   collectionRef
+   constructor(config) {
+      this.config = require(config);
+
+
+      firebase.initializeApp({
+         credential: firebase.credential.cert(this.config),
+      });
+
+      this.collectionRef = firebase.firestore()
+
+   }//()
+
+
+   export() {
+      firestoreExport(this.collectionRef)
+         .then(data => {
+            console.log(data)
+            fs.writeJsonSync('dbexport.json', data, 'utf8')
+            // fs.writeFile('dbexport.json', JSON.stringify(data), 'utf8', err => {
+            //    if (err) console.log(err);
+            //    console.log("Successfully Written to File.");
+            // });
+         });
+   }
+}
+
+export class ImportFS {
+   args
+   config
+   collectionRef
+   pathToData
+   serviceAccountConfig
+   pathToImportedFile
+   constructor(config) {
+      console.info("--config:", config)
+      this.args = config.split(':')
+      this.serviceAccountConfig = this.args[0]
+      this.pathToImportedFile = this.args[1]
+      this.config = require(this.serviceAccountConfig);
+
+
+      firebase.initializeApp({
+         credential: firebase.credential.cert(this.config),
+      });
+
+      this.collectionRef = firebase.firestore()
+
+   }//()
+
+   import() {
+      let _this = this
+      fs.readJson(this.pathToImportedFile, function (err, result) {
+         console.info("--result:", result)
+
+         firestoreImport(result, _this.collectionRef)
+            .then(() => {
+               console.log('Data was imported.')
+            });
+      })
+   }
+}
 module.exports = {
-   Sas, Resize, YamlConfig, MinJS, GitDown
+   Sas, Resize, YamlConfig, MinJS, GitDown, ExportFS, ImportFS
 }

@@ -69,7 +69,8 @@
       "tracer": ">=0.9.8",
       "traverse": ">=0.6.6",
       "typescript": ">=3.4.5",
-      "unfluff": ">=3.2.0"
+      "unfluff": ">=3.2.0",
+      "node-firestore-import-export": "0.13.2"
    },
    "bundledDependencies": [
       "express",
