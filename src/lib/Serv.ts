@@ -7,7 +7,8 @@ const formidable = require('express-formidable')
 
 const logger = require('tracer').console()
 
-export class CustomCors { // deprecated , use the class under here: ExpressRPC
+export class CustomCors {
+
    constructor(validOrigins:Array<string>) {
 
       return (request, response, next) => {
@@ -31,8 +32,18 @@ export class CustomCors { // deprecated , use the class under here: ExpressRPC
          //else
          response.status(403).end()
       }
+   }//()
+   
+   static getReqAsOrigin(req):string {
+      let proto = req.connection.encrypted ? 'https' : 'http'
+      const host = req.hostname
+      let original = req.originalUrl
+      logger.trace(original)
+
+      let origin = proto + '://' + host
+      return origin
    }
-}
+}//class
 
 export class ExpressRPC {
    /**
