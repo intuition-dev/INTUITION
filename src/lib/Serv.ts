@@ -13,6 +13,10 @@ export class CustomCors { // deprecated , use the class under here: ExpressRPC
       return (request, response, next) => {
    
          const origin = request.get('origin')
+         if (!origin) {
+            return next();
+         }
+
          let approved = false
          validOrigins.forEach( function(ori) { 
             if(ori=='*')  approved = true
