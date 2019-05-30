@@ -17,8 +17,6 @@ depp.define({
    ,'mobi'     :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/js/mobiscroll.javascript.min.js'
    ,'mobiCSS'  :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/css/mobiscroll.css'
 
-   //webGL
-   ,'babylon'  :'//cdn.babylonjs.com/babylon.js'
 
    ,'physics2' :'//cdn.jsdelivr.net/npm/p2@0.7.1/src/p2.min.js'
    
@@ -28,9 +26,13 @@ depp.define({
    // DO NOT USE THIS FOR DEVELOPMENT. local Sass should be used always, except if you do a quick prototype or a mockup, then use this
    ,'MOCKUPStyle': [ '//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',
                     ,'//cdn.jsdelivr.net/npm/spectre.css@0.5.8/dist/spectre.min.css']
-   
+
    //TODO: test
    ,'instantclick':'//cdn.jsdelivr.net/npm/@teamthread/instantclick@4.1.0/src/instantclick.min.js'
+
+   // 
+   ,'croppie': ['//cdn.jsdelivr.net/npm/croppie@2.6.4/croppie.min.js'
+               ,'//cdn.jsdelivr.net/npm/croppie@2.6.4/croppie.css' ]
 
    //removes FOUT
    ,'fontloader':'//cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js'

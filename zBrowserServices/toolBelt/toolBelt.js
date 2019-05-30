@@ -126,6 +126,10 @@ depp.define({
    ,'validate' :  '//cdn.jsdelivr.net/npm/validate.js@0.12.0/validate.min.js'
    ,'validator': ['//cdn.jsdelivr.net/npm/validator@10.11.0/validator.min.js']
 
+   //Commercial license
+   ,'intro' :['//cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js'
+             ,'//cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.css']
+
    // gesture
    ,'zingtouch':'//cdn.jsdelivr.net/npm/zingtouch@1.0.6/index.min.js'
 
@@ -199,6 +203,9 @@ depp.define({
 
    ,'tippy':'//cdn.jsdelivr.net/npm/tippy.js@4.3.1/umd/index.all.min.js'
 
+   // layout, needs CSS
+   ,'bricklayer':'//cdn.jsdelivr.net/npm/bricklayer@0.4.3/dist/bricklayer-node.min.js'
+
    ,'onepage': ['//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/onepage-scroll.css'
                ,'//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/jquery.onepage-scroll.min.js']
    
@@ -252,6 +259,9 @@ depp.define({
 
    ,'jqMapaEl':['#jquery', '#raphael', '//cdn.jsdelivr.net/npm/jquery-mapael@2.2.0/js/jquery.mapael.min.js']
    ,'raphael':'//cdn.jsdelivr.net/npm/raphael@2.2.8/raphael.min.js'
+
+   //webGL
+   ,'babylon'  :'//cdn.babylonjs.com/babylon.js'
 
    // OpenSans is the standard font
    ,'OpenSans'       :'css!//fonts.googleapis.com/css?family=Open+Sans'
