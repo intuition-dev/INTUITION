@@ -4,8 +4,3 @@ mbake -t .
 bump package.json
 npm publish
 no need to do a mbake release, people can just edit the headFrag.
-
-
-removed sweet
-added sentry
-hover

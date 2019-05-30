@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     static ver() {
-        return 'v5.06.30';
+        return 'v5.06.31';
     }
     static date() {
         return new Date().toISOString();
@@ -33,18 +33,19 @@ const Terser = require("terser");
 const download = require("download");
 const beeper = require("beeper");
 class DownloadFrag {
-    constructor(dir, devops) {
+    constructor(dir, ops) {
         console.log('Extracting to', dir);
-        if (!devops)
+        if (!ops)
             download('https://unpkg.com/mtool-belt@1.3.35/template/headFrag.pug').then(data => {
                 fs.writeFileSync(dir + '/headFrag.pug', data);
             });
-        if (devops) {
+        if (ops) {
+            console.log('Ops');
             download('https://unpkg.com/mtool-belt@1.3.35/template/ops.pug').then(data => {
-                fs.writeFileSync(dir + '/devOps.pug', data);
+                fs.writeFileSync(dir + '/ops.pug', data);
             });
             download('https://unpkg.com/mtool-belt@1.3.35/template/ops.js').then(data => {
-                fs.writeFileSync(dir + '/devOps.js', data);
+                fs.writeFileSync(dir + '/ops.js', data);
             });
         }
     }
