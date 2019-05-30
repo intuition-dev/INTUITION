@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     static ver() {
-        return 'v5.06.26';
+        return 'v5.06.28';
     }
     static date() {
         return new Date().toISOString();
@@ -36,14 +36,14 @@ class DownloadFrag {
     constructor(dir, devops) {
         console.log('Extracting to', dir);
         if (!devops)
-            download('https://unpkg.com/mtool-belt@1.3.34/template/headFrag.pug').then(data => {
+            download('https://unpkg.com/mtool-belt@1.3.35/template/headFrag.pug').then(data => {
                 fs.writeFileSync(dir + '/headFrag.pug', data);
             });
         if (devops) {
-            download('https://unpkg.com/mtool-belt@1.3.34/template/devOps.pug').then(data => {
+            download('https://unpkg.com/mtool-belt@1.3.35/template/ops.pug').then(data => {
                 fs.writeFileSync(dir + '/devOps.pug', data);
             });
-            download('https://unpkg.com/mtool-belt@1.3.34/template/devOps.js').then(data => {
+            download('https://unpkg.com/mtool-belt@1.3.35/template/ops.js').then(data => {
                 fs.writeFileSync(dir + '/devOps.js', data);
             });
         }

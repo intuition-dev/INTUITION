@@ -37,7 +37,7 @@ function help() {
    console.info('  To bake with production ENV flag(3) in prod:                mbakeX --bakeP .')
 
    console.info()
-   console.info('  Download fragment to setup the app devOps:                  mbake --devOps .')
+   console.info('  Download fragment to setup the app devOps:                  mbake --ops .')
 
    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .')
    console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbakeX -i .')
@@ -85,7 +85,7 @@ const optionDefinitions = [
    { name: 'bakeS', type: Boolean },
    { name: 'bakeD', type: Boolean },
 
-   { name: 'devOps', type: Boolean },
+   { name: 'ops', type: Boolean },
    { name: 'gitDown', type: Boolean },
    { name: 'ExportFS', type: Boolean },
    { name: 'ImportFS', type: Boolean },
@@ -264,7 +264,7 @@ if (argsParsed.comps) {
       bakeS(arg)
    else if (argsParsed.bakeD)
       bakeD(arg)
-   else if (argsParsed.devOps)
+   else if (argsParsed.ops)
       frag(arg)
    else if (argsParsed.gitDown)
       git(arg)
