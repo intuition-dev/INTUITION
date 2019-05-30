@@ -5,7 +5,7 @@ card-comp
             .blog-item.col-4.col-md-6.col-xs-12
                 .blog-item__inside(href='{url}')
                     a.img(href='{url}')
-                        img.img__inside(src="{image}")
+                        img.img__inside(src="{image}{author.img}")
                     .desc
                         .post-header.d-flex
                             a(href='#').category { category }
@@ -52,7 +52,7 @@ card-comp
             for(i = 0; i < sz; i++) {
                 var item = thiz.items[i]
 
-                item.image = ROOT + 'blog/' + item.url + '/who.jpg'
+                item.image = ROOT + 'blog/' + item.url + '/'
                 item.url = ROOT + 'blog/' + item.url
                 console.info(item.url)
             }

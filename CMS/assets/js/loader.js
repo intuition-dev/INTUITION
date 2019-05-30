@@ -30,7 +30,6 @@ depp.define({
     'axios': [
         '#hasPromise' 
         , '//unpkg.com/axios@0.18.0/dist/axios.min.js'
-        , ROOT + 'assets/3rd/collections.js'
     ],
     'fonts': [
         '#axios'
@@ -45,7 +44,6 @@ depp.define({
         , '//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
         , '//cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
         
-        , '/assets/3rd/jquery.disableAutoFill.js'
         , ROOT + 'assets/js/ui.js'
     ]
 })//define
