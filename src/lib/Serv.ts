@@ -34,7 +34,7 @@ export class CustomCors {
       }
    }//()
    
-   static getReqAsOrigin(req):string {
+   static getReqAsOrigin(req):string {// no used
       let proto = req.connection.encrypted ? 'https' : 'http'
       const host = req.hostname
       let original = req.originalUrl
