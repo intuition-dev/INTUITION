@@ -45,6 +45,13 @@ export class ExpressRPC {
 
       return appInst
    }
+
+   /**
+    * @param path The path
+    */
+   static serveStatic(path:string) {
+      return express.static(path);
+   }
 }
 
 module.exports = {
