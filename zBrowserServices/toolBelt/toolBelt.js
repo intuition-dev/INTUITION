@@ -126,10 +126,10 @@ depp.define({
    ,'validate' :  '//cdn.jsdelivr.net/npm/validate.js@0.12.0/validate.min.js'
    ,'validator': ['//cdn.jsdelivr.net/npm/validator@10.11.0/validator.min.js']
 
-   //Commercial license
-   ,'intro' :['//cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js'
-             ,'//cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.css']
-
+   //intro
+   ,'hopscotch'   :['//cdn.jsdelivr.net/npm/hopscotch@0.3.1/dist/js/hopscotch.min.js'
+                  ,'//cdn.jsdelivr.net/npm/hopscotch@0.3.1/dist/css/hopscotch.css']
+   
    // gesture
    ,'zingtouch':'//cdn.jsdelivr.net/npm/zingtouch@1.0.6/index.min.js'
 
@@ -252,7 +252,6 @@ depp.define({
                '//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/plugins/CSSPlugin.min.js'] // plugin needs to animate css property
    ,'polly-ani'   :'//cdn.jsdelivr.net/npm/web-animations-js@2.3.1/web-animations.min.js'
    ,'clamp'       :['//unpkg.com/mtool-belt@1.3.35/vendors/clamp.min.js']
-   ,'particles'   :'//cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'
    ,'zenscroll'   :['//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js','#DOM']  
    ,'typewriter'  :'//cdn.jsdelivr.net/npm/typewriter-effect@2.5.3/dist/core.js'
    ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.35/vendors/parallaxImg.min.js'

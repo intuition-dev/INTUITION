@@ -17,6 +17,8 @@ depp.define({
    ,'mobi'     :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/js/mobiscroll.javascript.min.js'
    ,'mobiCSS'  :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/css/mobiscroll.css'
 
+   ,'DEBUG' :['//unpkg.com/mtool-belt@1.3.35/vendors/jquery-impromptu/jquery-impromptu.css', '#jquery'
+            ,'//unpkg.com/mtool-belt@1.3.35/vendors//jquery-impromptu/jquery-impromptu.min.js']
 
    ,'physics2' :'//cdn.jsdelivr.net/npm/p2@0.7.1/src/p2.min.js'
    
@@ -34,7 +36,11 @@ depp.define({
    ,'croppie': ['//cdn.jsdelivr.net/npm/croppie@2.6.4/croppie.min.js'
                ,'//cdn.jsdelivr.net/npm/croppie@2.6.4/croppie.css' ]
 
-   //removes FOUT
+   //Commercial license
+   ,'intro' :['//cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js'
+             ,'//cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.css']
+                     
+   //removes FOUT if you put font name in top
    ,'fontloader':'//cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js'
 
    //for AMP
@@ -52,13 +58,15 @@ depp.define({
 
    //simplistic nav:
    ,'offcanvasNav':  ['//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_js/js-offcanvas.pkgd.js'
-   ,'//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_css/prefixed/js-offcanvas.css']
+                     ,'//cdn.jsdelivr.net/npm/js-offcanvas@1.2.9/dist/_css/prefixed/js-offcanvas.css']
+
+   ,'particles'   :'//cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'
 
 })
 
 // by default only load major polyfills 
-depp.require(['isJs', 'polly-wcomp', 'RPC'], function(){
-   depp.require('polly-ani')
+depp.require(['isJs', 'polly-wcomp', 'RPC', 'OpenSans'], function(){
+   depp.require(['polly-ani', 'SPA', 'state-machine', 'collect', 'tabulator', 'pagination', 'feather-icons'])
    depp.done('READY', Date.now() - _start)
 })
 
