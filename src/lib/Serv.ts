@@ -15,7 +15,7 @@ export class CustomCors {
    
          const origin = request.get('origin')
          if (!origin) {
-            return next();
+            return next()
          }
 
          let approved = false
@@ -65,7 +65,7 @@ export class ExpressRPC {
     * @param path The path
     */
    static serveStatic(path:string) {
-      return express.static(path);
+      return express.static(path)
    }
 }
 
