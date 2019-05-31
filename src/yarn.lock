@@ -303,9 +303,9 @@
     "@types/node" "*"
 
 "@types/lodash@^4.14.34":
-  version "4.14.132"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.132.tgz#8ce45ca8745ff2e004fac0de0ab46f61e390ffa0"
-  integrity sha512-RNUU1rrh85NgUJcjOOr96YXr+RHwInGbaQCZmlitqOaCKXffj8bh+Zxwuq5rjDy5OgzFldDVoqk4pyLEDiwxIw==
+  version "4.14.133"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.133.tgz#430721c96da22dd1694443e68e6cec7ba1c1003d"
+  integrity sha512-/3JqnvPnY58GLzG3Y7fpphOhATV1DDZ/Ak3DQufjlRK5E4u+s0CfClfNFtAGBabw+jDGtRFbOZe+Z02ZMWCBNQ==
 
 "@types/long@^4.0.0":
   version "4.0.0"
@@ -1749,9 +1749,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.137:
-  version "1.3.140"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.140.tgz#8b554dd0fdccdf1d8eb5a67426e610fef42fdd7f"
-  integrity sha512-gznkq18tTzRWd/nHdmt9CQ/AC9Xv/TWstqKb6bhuVWE+koLg9NFlnXMwvQAUYKxIjPI2lS5TsuqqlRsCVuVdTg==
+  version "1.3.141"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.141.tgz#5858d3a74ceafe71e7824e7c809ea2cc59c8e104"
+  integrity sha512-DdQaeP8yQNYFdivOrp37UNAZMvyZP//+SWYMVJD31A/3gbI1J6olQs8tuRaHL2ij7dubhCDXhlE4F97mrT8KGQ==
 
 encodeurl@~1.0.2:
   version "1.0.2"
@@ -3810,6 +3810,11 @@ mute-stream@~0.0.4:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
+
+n@>=4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/n/-/n-4.1.0.tgz#016beaa84b9d454a56a17e29afbceeec54effd9b"
+  integrity sha512-mxQCssMwxWKj5TIVfDJZgFpqs9sH02Y2QfMOx1g2M1c0SCTBOa6HDOb5KZvpY4SwhzpLXMrPFP+OzCc75FJK2g==
 
 nan@^2.12.1, nan@^2.13.2:
   version "2.14.0"
