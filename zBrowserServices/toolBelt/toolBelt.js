@@ -128,14 +128,14 @@ depp.define({
 
    //intro
    ,'hopscotch'   :['//cdn.jsdelivr.net/npm/hopscotch@0.3.1/dist/js/hopscotch.min.js'
-                  ,'//cdn.jsdelivr.net/npm/hopscotch@0.3.1/dist/css/hopscotch.css']
+                   ,'//cdn.jsdelivr.net/npm/hopscotch@0.3.1/dist/css/hopscotch.css']
    
    // gesture
    ,'zingtouch':'//cdn.jsdelivr.net/npm/zingtouch@1.0.6/index.min.js'
 
    //fts: 
-   ,'fuzzyset':'//cdn.jsdelivr.net/npm/fuzzyset.js@0.0.8/index.min.js'
-   ,'fuse':'//cdn.jsdelivr.net/npm/fuse.js@3.4.4/dist/fuse.min.js'
+   ,'fuzzyset' :'//cdn.jsdelivr.net/npm/fuzzyset.js@0.0.8/index.min.js'
+   ,'fuse'     :'//cdn.jsdelivr.net/npm/fuse.js@3.4.4/dist/fuse.min.js'
 
    ,'autoComplete':'//cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@5.0.0/dist/js/autoComplete.min.js'
 
@@ -164,7 +164,7 @@ depp.define({
    ,'pagination': ['//cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.min.js']
 
    // load after jquery is ready
-   ,'qunit': [ '#jquery', '//cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.css' 
+   ,'qunit': [ '//cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.css', '#jquery' 
                ,'//cdn.jsdelivr.net/npm/qunit@2.9.2/qunit/qunit.min.js'
                ,'//cdn.jsdelivr.net/npm/qunit-promises@0.2.0/qunit-promises.min.js']
 
@@ -176,7 +176,7 @@ depp.define({
    // binding - good example
    ,'jqForm': '//unpkg.com/mtool-belt@1.3.35/vendors/jquery-jsForm/jquery.jsForm.js'
 
-   ,'codemirror': ['//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css'
+   ,'codemirror': [   '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css'
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.min.js'
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/markdown/markdown.js'
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/yaml/yaml.js']
@@ -221,7 +221,7 @@ depp.define({
    // todo min-finish
    ,'star-wcomp'     : ['#polly-wcomp', '//unpkg.com/metacake@1.2.25/starRating/comps/star-wcomp.js']
 
-   ,'vega'  : ['//cdn.jsdelivr.net/npm/vega@5.3.5'
+   ,'vega'  : [ '//cdn.jsdelivr.net/npm/vega@5.3.5'
                ,'//cdn.jsdelivr.net/npm/vega-lite@3.2.1'
                ,'//cdn.jsdelivr.net/npm/vega-embed@4.0.0']
    ,'slickCarousel': ['//cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.min.js'
