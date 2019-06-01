@@ -6,7 +6,7 @@ const commandLineArgs = require("command-line-args");
 const Base_1 = require("./lib/Base");
 const Wa_1 = require("./lib/Wa");
 const Spider_1 = require("./lib/Spider");
-const Sa_1 = require("./lib/Sa");
+const Extra_1 = require("./lib/Extra");
 const FileOps_1 = require("./lib/FileOps");
 const cwd = process.cwd();
 function version() {
@@ -141,7 +141,7 @@ function map(arg) {
     new Spider_1.Map(arg).gen();
 }
 function img(arg) {
-    new Sa_1.Resize().do(arg);
+    new Extra_1.Resize().do(arg);
 }
 function comps(arg) {
     let pro = new Base_1.MBake().compsNBake(arg, 0);

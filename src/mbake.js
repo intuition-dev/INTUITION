@@ -5,7 +5,7 @@ const AdmZip = require("adm-zip");
 const commandLineArgs = require("command-line-args");
 const clear = require("cli-clear");
 const Base_1 = require("./lib/Base");
-const Sa_1 = require("./lib/Sa");
+const Extra_1 = require("./lib/Extra");
 const FileOps_1 = require("./lib/FileOps");
 clear();
 const cwd = process.cwd();
@@ -116,14 +116,14 @@ function itemize(arg) {
     });
 }
 function css(arg) {
-    let pro = new Sa_1.Sas().css(arg);
+    let pro = new Extra_1.Sas().css(arg);
     pro.then(function (val) {
         console.log(val);
         process.exit();
     });
 }
 function minJS(arg) {
-    let min = new Sa_1.MinJS();
+    let min = new Extra_1.MinJS();
     let pro = min.ts(arg);
     pro.then(function (val) {
         console.log(val);

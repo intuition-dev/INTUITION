@@ -18,7 +18,8 @@ const logger = require('tracer').colorConsole({
         }
     ]
 });
-const Sa_1 = require("./Sa");
+const Extra_1 = require("./Extra");
+const FileOps_1 = require("./FileOps");
 const Marpit = require("@marp-team/marpit");
 const marpit = new Marpit.Marpit();
 const fs = require("fs-extra");
@@ -29,7 +30,6 @@ const riotc = require("riot-compiler");
 const pug = require("pug");
 const minify = require('html-minifier').minify;
 const Terser = require("terser");
-const FileOps_1 = require("./FileOps");
 const beeper = require("beeper");
 const JavaScriptObfuscator = require("javascript-obfuscator");
 const markdownItCont = require("markdown-it-container");
@@ -177,7 +177,7 @@ class BakeWrk {
     }
     static minify_pg(text, inline) {
         let code = text.match(/^\s*\s*$/) ? '' : text;
-        let optionsCompH = Object.assign({}, Sa_1.MinJS.CompOptionsJS);
+        let optionsCompH = Object.assign({}, Extra_1.MinJS.CompOptionsJS);
         let _output = { indent_level: 0, quote_style: 3, semicolons: false };
         optionsCompH['output'] = _output;
         let result = Terser.minify(code, optionsCompH);
@@ -424,14 +424,14 @@ class Comps {
                 reject(err);
             }
             fs.writeFileSync(fn + '.js', js1);
-            let optionsCompR = Object.assign({}, Sa_1.MinJS.CompOptionsJS);
+            let optionsCompR = Object.assign({}, Extra_1.MinJS.CompOptionsJS);
             let _output = { indent_level: 0, quote_style: 0, semicolons: false };
             optionsCompR['output'] = _output;
             let js2 = Terser.minify(js1, optionsCompR);
             let ugs;
             try {
                 logger.info('obs');
-                ugs = JavaScriptObfuscator.obfuscate(js2.code, Sa_1.MinJS.getCompOptions());
+                ugs = JavaScriptObfuscator.obfuscate(js2.code, Extra_1.MinJS.getCompOptions());
             }
             catch (err) {
                 logger.error('error');

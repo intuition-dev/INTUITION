@@ -19,7 +19,7 @@ const logger = require('tracer').colorConsole({
    ]
 })
 
-import { MinJS } from './Sa'
+import { MinJS } from './Extra'
 import { Dirs, Dat} from './FileOps'
 
 import Marpit = require('@marp-team/marpit')

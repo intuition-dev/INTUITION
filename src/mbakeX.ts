@@ -7,7 +7,7 @@ import commandLineArgs = require('command-line-args')
 import { Ver,  MBake,  } from './lib/Base'
 import { Wa,  } from './lib/Wa'
 import { Map } from './lib/Spider'
-import { Resize, } from './lib/Sa'
+import { Resize, } from './lib/Extra'
 
 import {Dirs, CSV2Json, DownloadFrag, GitDown, ExportFS, ImportFS  } from './lib/FileOps'
 

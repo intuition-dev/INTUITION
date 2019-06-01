@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Base_1 = require("./Base");
-const Sa_1 = require("./Sa");
+const Extra_1 = require("./Extra");
 const FileOps_1 = require("./FileOps");
 const express = require("express");
 const chokidar = require("chokidar");
@@ -110,11 +110,11 @@ class MetaPro {
         return this.b.itemizeNBake(this.mount + '/' + dir, 0);
     }
     css(dir) {
-        return new Sa_1.Sas().css(this.mount + '/' + dir);
+        return new Extra_1.Sas().css(this.mount + '/' + dir);
     }
     ts(dir) {
         const folder = this.mount + '/' + dir;
-        const js = new Sa_1.MinJS();
+        const js = new Extra_1.MinJS();
         return js.ts(folder);
     }
     async autoBake(folder__, file) {

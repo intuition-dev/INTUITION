@@ -7,6 +7,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Base_1 = require("./Base");
 const FileHound = require("filehound");
 const execa = require('execa');
 const logger = require('tracer').console();
@@ -17,7 +18,6 @@ const yaml = require("js-yaml");
 const path = require("path");
 const node_firestore_import_export_1 = require("node-firestore-import-export");
 const firebase = __importStar(require("firebase-admin"));
-const Base_1 = require("./Base");
 class DownloadFrag {
     constructor(dir, ops) {
         console.log('Extracting to', dir);

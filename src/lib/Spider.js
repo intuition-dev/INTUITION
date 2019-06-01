@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const FileOps_1 = require("./FileOps");
 const probe = require("probe-image-size");
 const extractor = require("unfluff");
 const axios_1 = __importDefault(require("axios"));
@@ -13,7 +14,6 @@ const lunr = require("lunr");
 const yaml = require("js-yaml");
 const fs = require("fs-extra");
 const FileHound = require("filehound");
-const FileOps_1 = require("./FileOps");
 class Map {
     constructor(root) {
         if (!root || root.length < 1) {
