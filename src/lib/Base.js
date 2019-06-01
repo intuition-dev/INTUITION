@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     static ver() {
-        return 'v5.06.34';
+        return 'v5.06.35';
     }
     static date() {
         return new Date().toISOString();
@@ -19,7 +19,7 @@ const logger = require('tracer').colorConsole({
     ]
 });
 const Extra_1 = require("./Extra");
-const FileOps_1 = require("./FileOps");
+const FileOpsBase_1 = require("./FileOpsBase");
 const Marpit = require("@marp-team/marpit");
 const marpit = new Marpit.Marpit();
 const fs = require("fs-extra");
@@ -59,12 +59,12 @@ class MBake {
             }
             try {
                 console.info(' Baking ' + path_);
-                let d = new FileOps_1.Dirs(path_);
+                let d = new FileOpsBase_1.Dirs(path_);
                 let dirs = d.getFolders();
                 if (!dirs || dirs.length < 1) {
-                    path_ = FileOps_1.Dirs.goUpOne(path_);
+                    path_ = FileOpsBase_1.Dirs.goUpOne(path_);
                     console.info(' New Dir: ', path_);
-                    d = new FileOps_1.Dirs(path_);
+                    d = new FileOpsBase_1.Dirs(path_);
                     dirs = d.getFolders();
                 }
                 for (let val of dirs) {
@@ -114,7 +114,7 @@ class MBake {
             }
             try {
                 console.info(' Clearing ' + path_);
-                let dir = FileOps_1.Dirs.slash(path_);
+                let dir = FileOpsBase_1.Dirs.slash(path_);
                 const rec = FileHound.create()
                     .paths(dir)
                     .ext(['pug', 'yaml', 'js', 'ts', 'scss'])
@@ -162,7 +162,7 @@ class MBake {
 exports.MBake = MBake;
 class BakeWrk {
     constructor(dir_) {
-        let dir = FileOps_1.Dirs.slash(dir_);
+        let dir = FileOpsBase_1.Dirs.slash(dir_);
         this.dir = dir;
         console.info(' processing: ' + this.dir);
     }
@@ -206,7 +206,7 @@ class BakeWrk {
             return;
         }
         process.chdir(this.dir);
-        let dat = new FileOps_1.Dat(this.dir);
+        let dat = new FileOpsBase_1.Dat(this.dir);
         let options = dat.getAll();
         options['filters'] = {
             metaMD: BakeWrk.metaMD,
@@ -293,7 +293,7 @@ BakeWrk.minifyPg = {
 exports.BakeWrk = BakeWrk;
 class Items {
     constructor(dir_) {
-        let dir = FileOps_1.Dirs.slash(dir_);
+        let dir = FileOpsBase_1.Dirs.slash(dir_);
         let fn = dir + '/dat_i.yaml';
         if (!fs.existsSync(fn)) {
             let dir2 = findUp.sync('dat_i.yaml', { cwd: dir });
@@ -302,7 +302,7 @@ class Items {
             }
         }
         this.dir = dir;
-        let d = new FileOps_1.Dirs(dir);
+        let d = new FileOpsBase_1.Dirs(dir);
         this.dirs = d.getFolders();
     }
     _addAnItem(dn) {
@@ -375,7 +375,7 @@ exports.Items = Items;
 class Comps {
     constructor(dir_) {
         this.ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n';
-        let dir = FileOps_1.Dirs.slash(dir_);
+        let dir = FileOpsBase_1.Dirs.slash(dir_);
         this.dir = dir;
     }
     get() {

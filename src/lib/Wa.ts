@@ -3,7 +3,7 @@
 
 import { MBake} from './Base'
 import { Sas, MinJS } from './Extra'
-import { Dirs } from './FileOps'
+import { Dirs } from './FileOpsBase'
 
 import express = require('express')
 

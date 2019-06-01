@@ -7,7 +7,8 @@ import clear = require("cli-clear")
 
 import { Ver, MBake } from './lib/Base'
 import { MinJS,  Sas } from './lib/Extra'
-import { Dirs, DownloadFrag } from './lib/FileOps'
+import { Dirs } from './lib/FileOpsBase'
+import { DownloadFrag } from './lib/FileOpsExtra'
 
 clear()
 

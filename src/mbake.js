@@ -6,7 +6,8 @@ const commandLineArgs = require("command-line-args");
 const clear = require("cli-clear");
 const Base_1 = require("./lib/Base");
 const Extra_1 = require("./lib/Extra");
-const FileOps_1 = require("./lib/FileOps");
+const FileOpsBase_1 = require("./lib/FileOpsBase");
+const FileOpsExtra_1 = require("./lib/FileOpsExtra");
 clear();
 const cwd = process.cwd();
 function version() {
@@ -80,16 +81,16 @@ function unzipE() {
     process.exit();
 }
 function frag(arg) {
-    new FileOps_1.DownloadFrag(arg, false);
+    new FileOpsExtra_1.DownloadFrag(arg, false);
 }
 if (arg) {
-    arg = FileOps_1.Dirs.slash(arg);
+    arg = FileOpsBase_1.Dirs.slash(arg);
     if (arg.startsWith('/')) {
     }
     else if (arg.startsWith('..')) {
         arg = arg.substring(2);
         let d = cwd;
-        d = FileOps_1.Dirs.slash(d);
+        d = FileOpsBase_1.Dirs.slash(d);
         let n = d.lastIndexOf('/');
         d = d.substring(0, n);
         arg = d + arg;

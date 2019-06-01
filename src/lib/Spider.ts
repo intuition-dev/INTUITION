@@ -1,7 +1,7 @@
 // All rights reserved by Metabake (Metabake.org) | Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 
-import { Dirs, Dat} from './FileOps'
+import { Dirs, Dat} from './FileOpsBase'
 
 import probe = require('probe-image-size')
 

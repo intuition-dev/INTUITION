@@ -3,7 +3,7 @@
 
 export class Ver {
    static ver() {
-      return 'v5.06.34'
+      return 'v5.06.35'
    }
    static date(): string {
       return new Date().toISOString()
@@ -20,7 +20,7 @@ const logger = require('tracer').colorConsole({
 })
 
 import { MinJS } from './Extra'
-import { Dirs, Dat} from './FileOps'
+import { Dirs, Dat} from './FileOpsBase'
 
 import Marpit = require('@marp-team/marpit')
 const marpit = new Marpit.Marpit()

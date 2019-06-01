@@ -8,8 +8,8 @@ import { Ver,  MBake,  } from './lib/Base'
 import { Wa,  } from './lib/Wa'
 import { Map } from './lib/Spider'
 import { Resize, } from './lib/Extra'
-
-import {Dirs, CSV2Json, DownloadFrag, GitDown, ExportFS, ImportFS  } from './lib/FileOps'
+import {Dirs } from './lib/FileOpsBase'
+import {CSV2Json, DownloadFrag, GitDown, ExportFS, ImportFS  } from './lib/FileOpsExtra'
 
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()

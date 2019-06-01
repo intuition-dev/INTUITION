@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const FileOps_1 = require("./FileOps");
+const FileOpsBase_1 = require("./FileOpsBase");
 const probe = require("probe-image-size");
 const extractor = require("unfluff");
 const axios_1 = __importDefault(require("axios"));
@@ -37,7 +37,7 @@ class Map {
             }, []);
             let itemsRoot = m['itemsRoot'];
             if (itemsRoot) {
-                const d = new FileOps_1.Dirs(this._root + itemsRoot);
+                const d = new FileOpsBase_1.Dirs(this._root + itemsRoot);
                 leaves = leaves.concat(d.getFolders());
             }
             let arrayLength = leaves.length;
@@ -48,7 +48,7 @@ class Map {
                     if (path.includes(this._root))
                         path = path.replace(this._root, '');
                     let fullPath = this._root + path;
-                    let dat = new FileOps_1.Dat(fullPath);
+                    let dat = new FileOpsBase_1.Dat(fullPath);
                     let props = dat.getAll();
                     logger.info(path);
                     let priority = props['priority'];
@@ -103,7 +103,7 @@ class Map {
                     .findSync();
                 let text = '';
                 for (let val of rec) {
-                    val = FileOps_1.Dirs.slash(val);
+                    val = FileOpsBase_1.Dirs.slash(val);
                     console.info(val);
                     let txt1 = fs.readFileSync(val, "utf8");
                     text = text + ' ' + txt1;
