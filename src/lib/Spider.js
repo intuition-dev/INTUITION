@@ -13,7 +13,7 @@ const lunr = require("lunr");
 const yaml = require("js-yaml");
 const fs = require("fs-extra");
 const FileHound = require("filehound");
-const Base_1 = require("./Base");
+const FileOps_1 = require("./FileOps");
 class Map {
     constructor(root) {
         if (!root || root.length < 1) {
@@ -37,7 +37,7 @@ class Map {
             }, []);
             let itemsRoot = m['itemsRoot'];
             if (itemsRoot) {
-                const d = new Base_1.Dirs(this._root + itemsRoot);
+                const d = new FileOps_1.Dirs(this._root + itemsRoot);
                 leaves = leaves.concat(d.getFolders());
             }
             let arrayLength = leaves.length;
@@ -48,7 +48,7 @@ class Map {
                     if (path.includes(this._root))
                         path = path.replace(this._root, '');
                     let fullPath = this._root + path;
-                    let dat = new Base_1.Dat(fullPath);
+                    let dat = new FileOps_1.Dat(fullPath);
                     let props = dat.getAll();
                     logger.info(path);
                     let priority = props['priority'];
@@ -103,7 +103,7 @@ class Map {
                     .findSync();
                 let text = '';
                 for (let val of rec) {
-                    val = Base_1.Dirs.slash(val);
+                    val = FileOps_1.Dirs.slash(val);
                     console.info(val);
                     let txt1 = fs.readFileSync(val, "utf8");
                     text = text + ' ' + txt1;

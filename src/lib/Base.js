@@ -24,33 +24,13 @@ const marpit = new Marpit.Marpit();
 const fs = require("fs-extra");
 const FileHound = require("filehound");
 const yaml = require("js-yaml");
-const path = require("path");
 const findUp = require("find-up");
 const riotc = require("riot-compiler");
 const pug = require("pug");
 const minify = require('html-minifier').minify;
 const Terser = require("terser");
-const download = require("download");
+const FileOps_1 = require("./FileOps");
 const beeper = require("beeper");
-class DownloadFrag {
-    constructor(dir, ops) {
-        console.log('Extracting to', dir);
-        if (!ops)
-            download('https://unpkg.com/mtool-belt@1.3.35/template/headFrag.pug').then(data => {
-                fs.writeFileSync(dir + '/headFrag.pug', data);
-            });
-        if (ops) {
-            console.log('Ops');
-            download('https://unpkg.com/mtool-belt@1.3.35/template/ops.pug').then(data => {
-                fs.writeFileSync(dir + '/ops.pug', data);
-            });
-            download('https://unpkg.com/mtool-belt@1.3.35/template/ops.js').then(data => {
-                fs.writeFileSync(dir + '/ops.js', data);
-            });
-        }
-    }
-}
-exports.DownloadFrag = DownloadFrag;
 const JavaScriptObfuscator = require("javascript-obfuscator");
 const markdownItCont = require("markdown-it-container");
 const md = require('markdown-it')({
@@ -70,109 +50,6 @@ md.use(markdownItCont, 'dynamic', {
         }
     }
 });
-class Dirs {
-    constructor(dir_) {
-        let dir = Dirs.slash(dir_);
-        this.dir = dir;
-    }
-    static slash(path_) {
-        return path_.replace(/\\/g, '/');
-    }
-    static goUpOne(dir) {
-        return path.resolve(dir, '..');
-    }
-    getInDir(sub) {
-        const rec = FileHound.create()
-            .paths(this.dir + sub)
-            .not().glob("*.js")
-            .findSync();
-        let ret = [];
-        const ll = this.dir.length + sub.length;
-        for (let s of rec) {
-            let n = s.substr(ll);
-            if (n.includes('index.html'))
-                continue;
-            if (n.includes('index.pug'))
-                continue;
-            ret.push(n);
-        }
-        return ret;
-    }
-    getShort() {
-        let lst = this.getFolders();
-        let ret = [];
-        const ll = this.dir.length;
-        logger.info(this.dir, ll);
-        for (let s of lst) {
-            let n = s.substr(ll);
-            ret.push(n);
-        }
-        return ret;
-    }
-    getFolders() {
-        logger.info(this.dir);
-        const rec = FileHound.create()
-            .paths(this.dir)
-            .ext('pug')
-            .findSync();
-        let ret = [];
-        for (let val of rec) {
-            val = Dirs.slash(val);
-            let n = val.lastIndexOf('/');
-            let s = val.substring(0, n);
-            if (!fs.existsSync(s + '/dat.yaml'))
-                continue;
-            ret.push(s);
-        }
-        return Array.from(new Set(ret));
-    }
-}
-exports.Dirs = Dirs;
-class Dat {
-    constructor(path__) {
-        let path_ = Dirs.slash(path__);
-        this._path = path_;
-        let y;
-        if (fs.existsSync(path_ + '/dat.yaml'))
-            y = yaml.load(fs.readFileSync(path_ + '/dat.yaml'));
-        if (!y)
-            y = {};
-        this.props = y;
-        let keys = Object.keys(y);
-        if (keys.includes('include'))
-            this._addData();
-    }
-    write() {
-        try {
-            let y = yaml.dump(this.props, {
-                skipInvalid: true,
-                noRefs: true,
-                noCompatMode: true,
-                condenseFlow: true
-            });
-            let p = this._path + '/dat.yaml';
-            logger.info(p);
-            fs.writeFileSync(p, y);
-        }
-        catch (err) {
-            logger.info(err);
-        }
-    }
-    set(key, val) {
-        this.props[key] = val;
-    }
-    _addData() {
-        let jn = this.props.include;
-        let fn = this._path + '/' + jn;
-        logger.info(fn);
-        let jso = fs.readFileSync(fn);
-        Object.assign(this.props, JSON.parse(jso.toString()));
-    }
-    getAll() {
-        return this.props;
-    }
-}
-exports.Dat = Dat;
 class MBake {
     bake(path_, prod) {
         return new Promise(function (resolve, reject) {
@@ -182,12 +59,12 @@ class MBake {
             }
             try {
                 console.info(' Baking ' + path_);
-                let d = new Dirs(path_);
+                let d = new FileOps_1.Dirs(path_);
                 let dirs = d.getFolders();
                 if (!dirs || dirs.length < 1) {
-                    path_ = Dirs.goUpOne(path_);
+                    path_ = FileOps_1.Dirs.goUpOne(path_);
                     console.info(' New Dir: ', path_);
-                    d = new Dirs(path_);
+                    d = new FileOps_1.Dirs(path_);
                     dirs = d.getFolders();
                 }
                 for (let val of dirs) {
@@ -237,7 +114,7 @@ class MBake {
             }
             try {
                 console.info(' Clearing ' + path_);
-                let dir = Dirs.slash(path_);
+                let dir = FileOps_1.Dirs.slash(path_);
                 const rec = FileHound.create()
                     .paths(dir)
                     .ext(['pug', 'yaml', 'js', 'ts', 'scss'])
@@ -285,7 +162,7 @@ class MBake {
 exports.MBake = MBake;
 class BakeWrk {
     constructor(dir_) {
-        let dir = Dirs.slash(dir_);
+        let dir = FileOps_1.Dirs.slash(dir_);
         this.dir = dir;
         console.info(' processing: ' + this.dir);
     }
@@ -329,7 +206,7 @@ class BakeWrk {
             return;
         }
         process.chdir(this.dir);
-        let dat = new Dat(this.dir);
+        let dat = new FileOps_1.Dat(this.dir);
         let options = dat.getAll();
         options['filters'] = {
             metaMD: BakeWrk.metaMD,
@@ -416,7 +293,7 @@ BakeWrk.minifyPg = {
 exports.BakeWrk = BakeWrk;
 class Items {
     constructor(dir_) {
-        let dir = Dirs.slash(dir_);
+        let dir = FileOps_1.Dirs.slash(dir_);
         let fn = dir + '/dat_i.yaml';
         if (!fs.existsSync(fn)) {
             let dir2 = findUp.sync('dat_i.yaml', { cwd: dir });
@@ -425,7 +302,7 @@ class Items {
             }
         }
         this.dir = dir;
-        let d = new Dirs(dir);
+        let d = new FileOps_1.Dirs(dir);
         this.dirs = d.getFolders();
     }
     _addAnItem(dn) {
@@ -498,7 +375,7 @@ exports.Items = Items;
 class Comps {
     constructor(dir_) {
         this.ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n';
-        let dir = Dirs.slash(dir_);
+        let dir = FileOps_1.Dirs.slash(dir_);
         this.dir = dir;
     }
     get() {
@@ -569,5 +446,5 @@ class Comps {
 }
 exports.Comps = Comps;
 module.exports = {
-    DownloadFrag, Dat, Dirs, BakeWrk, Items, Comps, Ver, MBake
+    BakeWrk, Items, Comps, Ver, MBake
 };

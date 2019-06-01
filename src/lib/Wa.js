@@ -2,15 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Base_1 = require("./Base");
 const Sa_1 = require("./Sa");
-const fs = require("fs-extra");
-const FileHound = require("filehound");
+const FileOps_1 = require("./FileOps");
 const express = require("express");
 const chokidar = require("chokidar");
 const reload = require("reload");
 const cheerio = require("cheerio");
 const interceptor = require("express-interceptor");
 const logger = require('tracer').console();
-const csv2JsonV2 = require("csvtojson");
 const opn = require("open");
 class Wa {
     static watch(dir, port, reloadPort) {
@@ -26,34 +24,6 @@ class Wa {
     }
 }
 exports.Wa = Wa;
-class CSV2Json {
-    constructor(dir_) {
-        if (!dir_ || dir_.length < 1) {
-            console.info('no path arg passed');
-            return;
-        }
-        this.dir = Base_1.Dirs.slash(dir_);
-    }
-    convert() {
-        return new Promise(function (resolve, reject) {
-            let fn = this.dir + '/list.csv';
-            if (!fs.existsSync(fn)) {
-                console.info('not found');
-                reject('not found');
-            }
-            let thiz = this;
-            logger.info('1');
-            csv2JsonV2({ noheader: true }).fromFile(fn)
-                .then(function (jsonO) {
-                logger.info(jsonO);
-                let fj = thiz.dir + '/list.json';
-                fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3));
-                resolve('OK');
-            });
-        });
-    }
-}
-exports.CSV2Json = CSV2Json;
 class Watch {
     constructor(mp_, mount) {
         this.mp = mp_;
@@ -101,7 +71,7 @@ class Watch {
     }
     async autoNT(path_, wa) {
         console.log(wa);
-        let path = Base_1.Dirs.slash(path_);
+        let path = FileOps_1.Dirs.slash(path_);
         let p = path.lastIndexOf('/');
         let folder = '';
         let fn = path;
@@ -148,7 +118,7 @@ class MetaPro {
         return js.ts(folder);
     }
     async autoBake(folder__, file) {
-        const folder = Base_1.Dirs.slash(folder__);
+        const folder = FileOps_1.Dirs.slash(folder__);
         const ext = file.split('.').pop();
         logger.info('WATCHED2:', folder, ext);
         if (ext == 'scss' || ext == 'sass')
@@ -220,53 +190,6 @@ class MDevSrv {
     }
 }
 exports.MDevSrv = MDevSrv;
-class FileOps {
-    constructor(root_) {
-        this.root = Base_1.Dirs.slash(root_);
-    }
-    count(fileAndExt) {
-        const files = FileHound.create()
-            .paths(this.root)
-            .depth(0)
-            .match(fileAndExt + '*')
-            .findSync();
-        return files.length;
-    }
-    clone(src, dest) {
-        return new Promise((resolve, reject) => {
-            logger.info('copy?');
-            fs.copySync(this.root + src, this.root + dest);
-            let p = this.root + dest;
-            logger.info(p);
-            const d = new Base_1.Dat(p);
-            d.write();
-            logger.info('copy!');
-            resolve('OK');
-        });
-    }
-    write(destFile, txt) {
-        logger.info(this.root + destFile);
-        fs.writeFileSync(this.root + destFile, txt);
-    }
-    read(file) {
-        return fs.readFileSync(this.root + file).toString();
-    }
-    remove(path) {
-        let dir_path = this.root + path;
-        logger.info('remove:' + dir_path);
-        if (fs.existsSync(dir_path)) {
-            fs.readdirSync(dir_path).forEach(function (entry) {
-                fs.unlinkSync(dir_path + '/' + entry);
-            });
-            fs.rmdirSync(dir_path);
-        }
-    }
-    removeFile(path) {
-        let file_path = this.root + path;
-        fs.unlinkSync(file_path);
-    }
-}
-exports.FileOps = FileOps;
 module.exports = {
-    Wa, MetaPro, Watch, FileOps, MDevSrv, CSV2Json
+    Wa, MetaPro, Watch, MDevSrv
 };

@@ -3,11 +3,11 @@
 
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
-
-import { Ver, MBake, Dirs, DownloadFrag } from './lib/Base'
 import clear = require("cli-clear")
 
+import { Ver, MBake } from './lib/Base'
 import { MinJS,  Sas } from './lib/Sa'
+import { Dirs, DownloadFrag } from './lib/FileOps'
 
 clear()
 

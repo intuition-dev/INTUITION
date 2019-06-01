@@ -3,9 +3,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const AdmZip = require("adm-zip");
 const commandLineArgs = require("command-line-args");
-const Base_1 = require("./lib/Base");
 const clear = require("cli-clear");
+const Base_1 = require("./lib/Base");
 const Sa_1 = require("./lib/Sa");
+const FileOps_1 = require("./lib/FileOps");
 clear();
 const cwd = process.cwd();
 function version() {
@@ -79,16 +80,16 @@ function unzipE() {
     process.exit();
 }
 function frag(arg) {
-    new Base_1.DownloadFrag(arg, false);
+    new FileOps_1.DownloadFrag(arg, false);
 }
 if (arg) {
-    arg = Base_1.Dirs.slash(arg);
+    arg = FileOps_1.Dirs.slash(arg);
     if (arg.startsWith('/')) {
     }
     else if (arg.startsWith('..')) {
         arg = arg.substring(2);
         let d = cwd;
-        d = Base_1.Dirs.slash(d);
+        d = FileOps_1.Dirs.slash(d);
         let n = d.lastIndexOf('/');
         d = d.substring(0, n);
         arg = d + arg;

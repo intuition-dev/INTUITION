@@ -7,6 +7,7 @@ const Base_1 = require("./lib/Base");
 const Wa_1 = require("./lib/Wa");
 const Spider_1 = require("./lib/Spider");
 const Sa_1 = require("./lib/Sa");
+const FileOps_1 = require("./lib/FileOps");
 const cwd = process.cwd();
 function version() {
     console.info('mbakeX CLI version: ' + Base_1.Ver.ver());
@@ -84,19 +85,19 @@ const argsParsed = commandLineArgs(optionDefinitions);
 let arg = argsParsed.mbakeX;
 console.info();
 function git(arg) {
-    let gg = new Sa_1.GitDown(arg);
+    let gg = new FileOps_1.GitDown(arg);
     gg.process();
 }
 function exportFS(arg) {
-    let ef = new Sa_1.ExportFS(arg);
+    let ef = new FileOps_1.ExportFS(arg);
     ef.export();
 }
 function importFS(arg) {
-    let ef = new Sa_1.ImportFS(arg);
+    let ef = new FileOps_1.ImportFS(arg);
     ef.import();
 }
 function frag(arg) {
-    new Base_1.DownloadFrag(arg, true);
+    new FileOps_1.DownloadFrag(arg, true);
 }
 function unzipG() {
     let src = __dirname + '/PGap.zip';
@@ -134,7 +135,7 @@ function unzipH() {
     process.exit();
 }
 function csv2Json(arg) {
-    new Wa_1.CSV2Json(arg).convert();
+    new FileOps_1.CSV2Json(arg).convert();
 }
 function map(arg) {
     new Spider_1.Map(arg).gen();
@@ -175,13 +176,13 @@ function bakeD(arg) {
     });
 }
 if (arg) {
-    arg = Base_1.Dirs.slash(arg);
+    arg = FileOps_1.Dirs.slash(arg);
     if (arg.startsWith('/')) {
     }
     else if (arg.startsWith('..')) {
         arg = arg.substring(2);
         let d = cwd;
-        d = Base_1.Dirs.slash(d);
+        d = FileOps_1.Dirs.slash(d);
         let n = d.lastIndexOf('/');
         d = d.substring(0, n);
         arg = d + arg;

@@ -1,11 +1,9 @@
 // All rights reserved by Metabake (Metabake.org) | Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 
-import {MBake, Dirs, Dat} from './Base'
-import {Sas, MinJS} from './Sa'
-
-import fs = require('fs-extra')
-import FileHound = require('filehound')
+import { MBake} from './Base'
+import { Sas, MinJS } from './Sa'
+import { Dirs } from './FileOps'
 
 import express = require('express')
 
@@ -15,8 +13,6 @@ import reload = require('reload')
 import cheerio = require('cheerio')
 import interceptor = require('express-interceptor')
 const logger = require('tracer').console()
-
-import csv2JsonV2 = require('csvtojson')
 
 import opn = require('open')
 
@@ -36,40 +32,8 @@ export class Wa {
       console.info('')
       opn('http://localhost:' + port)
    }//()
-
 }
 
-export class CSV2Json { // TODO: get to work with watcher
-   dir: string
-   constructor(dir_: string) {
-      if (!dir_ || dir_.length < 1) {
-         console.info('no path arg passed')
-         return
-      }
-      this.dir = Dirs.slash(dir_)
-   }
-
-   convert(): Promise<string> {
-      return new Promise(function (resolve, reject) {
-      let fn: string = this.dir + '/list.csv'
-      if (!fs.existsSync(fn)) { //if it does not exist, go up a level
-         console.info('not found')
-         reject('not found')
-      }
-      let thiz = this
-      logger.info('1')
-
-      csv2JsonV2({noheader: true}).fromFile(fn)
-         .then(function (jsonO) {
-            logger.info(jsonO)
-            let fj: string = thiz.dir + '/list.json'
-
-            fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
-            resolve('OK')
-         })
-      })
-   }//()
-}
 
 export class Watch {
    root
@@ -287,65 +251,6 @@ export class MDevSrv {
 }//class
 
 
-export class FileOps {
-   root
-   constructor(root_) {
-      this.root = Dirs.slash(root_)
-   }
-
-   /** returns # of files with the name, used for edit ver */
-   count(fileAndExt):number {
-
-      const files = FileHound.create()
-         .paths(this.root)
-         .depth(0)
-         .match(fileAndExt+'*')
-         .findSync()
-
-      return files.length
-   }
-
-   clone(src, dest): Promise<string> {
-      return new Promise( (resolve, reject) => {
-      logger.info('copy?')
-
-      fs.copySync(this.root + src, this.root + dest)
-
-      let p = this.root + dest
-      logger.info(p)
-      const d = new Dat(p)
-      d.write()
-      logger.info('copy!')
-      resolve('OK')
-      })
-   }//()
-
-   write(destFile, txt) {
-      logger.info(this.root + destFile)
-      fs.writeFileSync(this.root + destFile, txt)
-   }
-
-   read(file): string {
-      return fs.readFileSync(this.root + file).toString()
-   }
-
-   remove(path) {
-      let dir_path = this.root + path
-      logger.info('remove:' + dir_path)
-      if (fs.existsSync(dir_path)) {
-         fs.readdirSync(dir_path).forEach(function (entry) {
-            fs.unlinkSync(dir_path + '/' + entry)
-         })
-         fs.rmdirSync(dir_path)
-      }
-   }
-   removeFile(path) {
-      let file_path = this.root + path
-      fs.unlinkSync(file_path)
-   }
-}//class
-
-
 module.exports = {
-   Wa, MetaPro, Watch, FileOps, MDevSrv, CSV2Json
+   Wa, MetaPro, Watch, MDevSrv
 }

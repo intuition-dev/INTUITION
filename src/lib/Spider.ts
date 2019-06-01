@@ -1,3 +1,8 @@
+// All rights reserved by Metabake (Metabake.org) | Cekvenich, licensed under LGPL 3.0
+// NOTE: You can extend these classes!
+
+import { Dirs, Dat} from './FileOps'
+
 import probe = require('probe-image-size')
 
 import extractor = require('unfluff')//scrape
@@ -14,9 +19,6 @@ import yaml = require('js-yaml')
 
 import fs = require('fs-extra')
 import FileHound = require('filehound')
-
-import { Dirs, Dat} from './Base'
-
 
 
 export class Map {
