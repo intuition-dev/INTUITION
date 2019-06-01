@@ -28,13 +28,9 @@ const execa = require('execa')
 
 //import colors = require('colors');
 const logger = require('tracer').console()
+
 import { firestoreExport, firestoreImport } from 'node-firestore-import-export';
-
 import * as firebase from 'firebase-admin';
-import { read } from 'fs';
-
-const util = require('util');
-
 
 
 // //////////////////////////////////////////////////////////////////

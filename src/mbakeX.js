@@ -5,6 +5,7 @@ const AdmZip = require("adm-zip");
 const commandLineArgs = require("command-line-args");
 const Base_1 = require("./lib/Base");
 const Wa_1 = require("./lib/Wa");
+const Spider_1 = require("./lib/Spider");
 const Sa_1 = require("./lib/Sa");
 const cwd = process.cwd();
 function version() {
@@ -37,8 +38,11 @@ function help() {
     console.info('  To download branch from git, in folder with gitdown.yaml:   mbakeX --gitDown GIT-PSWD');
     console.info('     passing the git password of gitdown user');
     console.info('  To recursively remove source files:                         mbakeX --prod .');
-    console.info('  To export Firestore Database needs two arguments separated with ":" : mbakeX --ExportDB serviceAccountKey:name_of_the_file');
-    console.info('  To import Firestore Database needs two arguments separated with ":" : mbakeX --ImportDB serviceAccountKey:name_of_the_json_exported_file');
+    console.info('  To export Firestore Database, it needs two arguments separated ');
+    console.info('   with ":" :                                                 mbakeX --ExportDB serviceAccountKey:name_of_the_file');
+    console.info('  To import Firestore Database, it needs two arguments separated  ');
+    console.info('  with ":":                                                   mbakeX --ImportDB serviceAccountKey:name_of_the_json_exported_file');
+    console.info();
     console.info('    Note: . is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');
     console.info();
@@ -133,7 +137,7 @@ function csv2Json(arg) {
     new Wa_1.CSV2Json(arg).convert();
 }
 function map(arg) {
-    new Wa_1.Map(arg).gen();
+    new Spider_1.Map(arg).gen();
 }
 function img(arg) {
     new Sa_1.Resize().do(arg);

@@ -5,7 +5,10 @@ import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
 import { Ver, Dirs, MBake, DownloadFrag } from './lib/Base'
-import { Wa, CSV2Json, Map } from './lib/Wa'
+import { Wa, CSV2Json } from './lib/Wa'
+
+import { Map } from './lib/Spider'
+
 import { Resize, GitDown, ExportFS, ImportFS } from './lib/Sa'
 
 // imports done /////////////////////////////////////////////

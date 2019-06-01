@@ -26,7 +26,6 @@ const execa = require('execa');
 const logger = require('tracer').console();
 const node_firestore_import_export_1 = require("node-firestore-import-export");
 const firebase = __importStar(require("firebase-admin"));
-const util = require('util');
 class GitDown {
     constructor(pass_) {
         const last = pass_.lastIndexOf('/');
