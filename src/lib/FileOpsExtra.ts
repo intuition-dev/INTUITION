@@ -73,8 +73,17 @@ export class Download {
       let zip = new AdmZip(this.targetDir + '/' + fn)
       zip.extractAllTo(this.targetDir, /*overwrite*/true)
    }
-
 }//class
+
+
+//makes dat.yaml in folders.
+export class Static {
+   constructor(jsonUrl:string, partentFodler:string, templatePg:string) {
+
+   }
+
+
+}
 
 export class YamlConfig {
    constructor(fn) {
@@ -375,6 +384,6 @@ export class ImportFB {
 }
 
 module.exports = {
-   FileOps, CSV2Json, GitDown,  ExportFB, ImportFB, DownloadFrag, Dat, Dirs,  YamlConfig
+   FileOps, CSV2Json, GitDown,  ExportFB, ImportFB, DownloadFrag, YamlConfig, Download, Static
 }
 

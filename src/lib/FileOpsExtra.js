@@ -70,6 +70,11 @@ class Download {
 }
 Download.truth = 'https://metabake.github.io/mbakeCLIDocs/versions.yaml';
 exports.Download = Download;
+class Static {
+    constructor(jsonUrl, partentFodler, templatePg) {
+    }
+}
+exports.Static = Static;
 class YamlConfig {
     constructor(fn) {
         let cfg = yaml.load(fs.readFileSync(fn));
@@ -279,5 +284,5 @@ class ImportFB {
 }
 exports.ImportFB = ImportFB;
 module.exports = {
-    FileOps, CSV2Json, GitDown, ExportFB, ImportFB, DownloadFrag, Dat: FileOpsBase_1.Dat, Dirs: FileOpsBase_1.Dirs, YamlConfig
+    FileOps, CSV2Json, GitDown, ExportFB, ImportFB, DownloadFrag, YamlConfig, Download, Static
 };
