@@ -37,6 +37,25 @@ class DownloadFrag {
     }
 }
 exports.DownloadFrag = DownloadFrag;
+class Download {
+    constructor(key_, targetDir_) {
+        this.key = key_;
+        this.targetDir = targetDir_;
+    }
+    getVal() {
+        return new Promise(function (resolve, reject) {
+            download('truth').then(data => {
+                let dic = yaml.load(data);
+                resolve(dic[this.key]);
+            });
+        });
+    }
+    getFn(url) {
+        return '';
+    }
+}
+Download.truth = 'https://metabake.github.io/mbakeCLIDocs/versions.yaml';
+exports.Download = Download;
 class YamlConfig {
     constructor(fn) {
         let cfg = yaml.load(fs.readFileSync(fn));
@@ -202,7 +221,7 @@ class GitDown {
     }
 }
 exports.GitDown = GitDown;
-class ExportFS {
+class ExportFB {
     constructor(config) {
         this.args = config.split(':');
         this.serviceAccountConfig = this.args[0];
@@ -222,8 +241,8 @@ class ExportFS {
         });
     }
 }
-exports.ExportFS = ExportFS;
-class ImportFS {
+exports.ExportFB = ExportFB;
+class ImportFB {
     constructor(config) {
         this.args = config.split(':');
         this.serviceAccountConfig = this.args[0];
@@ -244,7 +263,7 @@ class ImportFS {
         });
     }
 }
-exports.ImportFS = ImportFS;
+exports.ImportFB = ImportFB;
 module.exports = {
-    FileOps, CSV2Json, GitDown, ExportFS, ImportFS, DownloadFrag, Dat: FileOpsBase_1.Dat, Dirs: FileOpsBase_1.Dirs, YamlConfig
+    FileOps, CSV2Json, GitDown, ExportFB, ImportFB, DownloadFrag, Dat: FileOpsBase_1.Dat, Dirs: FileOpsBase_1.Dirs, YamlConfig
 };

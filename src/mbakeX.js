@@ -40,10 +40,10 @@ function help() {
     console.info('  To download branch from git, in folder with gitdown.yaml:   mbakeX --gitDown GIT-PSWD');
     console.info('     passing the git password of gitdown user');
     console.info('  To recursively remove source files:                         mbakeX --prod .');
-    console.info('  To export Firestore Database, it needs two arguments separated ');
-    console.info('   with ":" :                                                 mbakeX --ExportDB serviceAccountKey:name_of_the_file');
-    console.info('  To import Firestore Database, it needs two arguments separated  ');
-    console.info('  with ":":                                                   mbakeX --ImportDB serviceAccountKey:name_of_the_json_exported_file');
+    console.info('  To export FiresBase data, it needs two arguments separated ');
+    console.info('   with ":" :                                                 mbakeX --ExportFB serviceAccountKey:name_of_the_file');
+    console.info('  To import FireBase data, it needs two arguments separated  ');
+    console.info('  with ":":                                                   mbakeX --ImportFB serviceAccountKey:name_of_the_json_exported_file');
     console.info();
     console.info('    Note: . is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');
@@ -71,8 +71,8 @@ const optionDefinitions = [
     { name: 'bakeD', type: Boolean },
     { name: 'ops', type: Boolean },
     { name: 'gitDown', type: Boolean },
-    { name: 'ExportFS', type: Boolean },
-    { name: 'ImportFS', type: Boolean },
+    { name: 'ExportFB', type: Boolean },
+    { name: 'ImportFB', type: Boolean },
     { name: 'map', alias: 'm', type: Boolean },
     { name: 'img', alias: 'i', type: Boolean },
     { name: 'csv2Json', alias: 'l', type: Boolean },
@@ -89,12 +89,12 @@ function git(arg) {
     let gg = new FileOpsExtra_1.GitDown(arg);
     gg.process();
 }
-function exportFS(arg) {
-    let ef = new FileOpsExtra_1.ExportFS(arg);
+function exportFB(arg) {
+    let ef = new FileOpsExtra_1.ExportFB(arg);
     ef.export();
 }
-function importFS(arg) {
-    let ef = new FileOpsExtra_1.ImportFS(arg);
+function importFB(arg) {
+    let ef = new FileOpsExtra_1.ImportFB(arg);
     ef.import();
 }
 function frag(arg) {
@@ -232,10 +232,10 @@ else if (argsParsed.ops)
     frag(arg);
 else if (argsParsed.gitDown)
     git(arg);
-else if (argsParsed.ExportFS)
-    exportFS(arg);
-else if (argsParsed.ImportFS)
-    importFS(arg);
+else if (argsParsed.ExportFB)
+    exportFB(arg);
+else if (argsParsed.ImportFB)
+    importFB(arg);
 else if (argsParsed.version)
     version();
 else if (argsParsed.help)

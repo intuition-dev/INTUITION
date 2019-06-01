@@ -34,6 +34,31 @@ export class DownloadFrag {
    }//()
 }
 
+export class Download {
+   static truth:string = 'https://metabake.github.io/mbakeCLIDocs/versions.yaml'
+   key:string
+   targetDir:string
+   constructor(key_:string, targetDir_:string) {
+      this.key = key_
+      this.targetDir = targetDir_
+   }// cons
+
+   getVal() {
+      return new Promise(function (resolve, reject) {
+         download('truth').then(data => {
+            let dic = yaml.load(data)
+            resolve (dic[this.key])
+         })
+      })//pro
+   }
+
+   getFn(url:string):string {
+
+      return ''
+   }
+
+}//class
+
 export class YamlConfig {
    constructor(fn) {
       let cfg = yaml.load(fs.readFileSync(fn))
