@@ -8,3 +8,4 @@ no need to do a mbake release, people can just edit the headFrag.
 ---
 font awsome
 hotkeys
+test if webAni is modern

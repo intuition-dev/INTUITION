@@ -87,6 +87,14 @@ depp.require(['polly'], function () {
       })//depp
 })
 
+var webAniSupport = false
+try {
+   if(document.body.animate) 
+   webAniSupport = true
+} catch(err) {
+   console.log(err)
+ }
+
 function pollycoreready() { // after asking for it, wait on this event.
    console.log('polly-core-ready', Date.now() - _start)
    depp.done ('polly-core-ready')
