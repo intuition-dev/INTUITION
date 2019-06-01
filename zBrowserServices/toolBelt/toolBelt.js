@@ -181,6 +181,8 @@ depp.define({
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/markdown/markdown.js'
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/yaml/yaml.js']
 
+   ,'hotkeys':'//cdn.jsdelivr.net/npm/hotkeys-js@3.6.11/index.min.js'
+
    ,'firestore': [ '#polly-core-req' // request and check when polly-core-ready
                   ,'//www.gstatic.com/firebasejs/6.0.4/firebase-app.js'
                   ,'//www.gstatic.com/firebasejs/6.0.4/firebase-auth.js'
