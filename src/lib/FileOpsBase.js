@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const FileHound = require("filehound");
 const logger = require('tracer').console();
 const fs = require("fs-extra");
-const csv2JsonV2 = require("csvtojson");
 const yaml = require("js-yaml");
 const path = require("path");
 class Dirs {
@@ -109,34 +108,6 @@ class Dat {
     }
 }
 exports.Dat = Dat;
-class CSV2Json {
-    constructor(dir_) {
-        if (!dir_ || dir_.length < 1) {
-            console.info('no path arg passed');
-            return;
-        }
-        this.dir = Dirs.slash(dir_);
-    }
-    convert() {
-        return new Promise(function (resolve, reject) {
-            let fn = this.dir + '/list.csv';
-            if (!fs.existsSync(fn)) {
-                console.info('not found');
-                reject('not found');
-            }
-            let thiz = this;
-            logger.info('1');
-            csv2JsonV2({ noheader: true }).fromFile(fn)
-                .then(function (jsonO) {
-                logger.info(jsonO);
-                let fj = thiz.dir + '/list.json';
-                fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3));
-                resolve('OK');
-            });
-        });
-    }
-}
-exports.CSV2Json = CSV2Json;
 module.exports = {
     Dat, Dirs
 };

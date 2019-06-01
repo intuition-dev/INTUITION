@@ -2,14 +2,9 @@
 import FileHound = require('filehound')
 
 const logger = require('tracer').console()
-
 import fs = require('fs-extra')
 
-import csv2JsonV2 = require('csvtojson')
-
-
 import yaml = require('js-yaml')
-
 import path = require("path")
 
 
@@ -130,39 +125,6 @@ export class Dat {
       return this.props
    }//()
 }//class
-
-export class CSV2Json { // TODO: get to work with watcher
-   dir: string
-   constructor(dir_: string) {
-      if (!dir_ || dir_.length < 1) {
-         console.info('no path arg passed')
-         return
-      }
-      this.dir = Dirs.slash(dir_)
-   }
-
-   convert(): Promise<string> {
-      return new Promise(function (resolve, reject) {
-      let fn: string = this.dir + '/list.csv'
-      if (!fs.existsSync(fn)) { //if it does not exist, go up a level
-         console.info('not found')
-         reject('not found')
-      }
-      let thiz = this
-      logger.info('1')
-
-      csv2JsonV2({noheader: true}).fromFile(fn)
-         .then(function (jsonO) {
-            logger.info(jsonO)
-            let fj: string = thiz.dir + '/list.json'
-
-            fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
-            resolve('OK')
-         })
-      })
-   }//()
-}
-
 
 module.exports = {
   Dat, Dirs

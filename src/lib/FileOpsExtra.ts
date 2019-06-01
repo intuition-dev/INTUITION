@@ -4,9 +4,7 @@ import { Dat, Dirs} from './FileOpsBase'
 
 import FileHound = require('filehound')
 const execa = require('execa')
-
 const logger = require('tracer').console()
-
 import fs = require('fs-extra')
 
 import csv2JsonV2 = require('csvtojson')
@@ -21,15 +19,15 @@ import * as firebase from 'firebase-admin';
 export class DownloadFrag {
    constructor(dir, ops: boolean) {
       console.log('Extracting to', dir)
-      if (!ops) download('https://unpkg.com/mtool-belt@1.3.35/template/headFrag.pug').then(data => {
+      if (!ops) download('https://unpkg.com/mtool-belt@1.3.36/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir + '/headFrag.pug', data)
       })
       if (ops) {
          console.log('Ops')
-         download('https://unpkg.com/mtool-belt@1.3.35/template/ops.pug').then(data => {
+         download('https://unpkg.com/mtool-belt@1.3.36/template/ops.pug').then(data => {
             fs.writeFileSync(dir + '/ops.pug', data)
          })
-         download('https://unpkg.com/mtool-belt@1.3.35/template/ops.js').then(data => {
+         download('https://unpkg.com/mtool-belt@1.3.36/template/ops.js').then(data => {
             fs.writeFileSync(dir + '/ops.js', data)
          })
       }//fi
@@ -43,8 +41,6 @@ export class YamlConfig {
       return cfg
    }//()
 }//class
-
-
 
 export class CSV2Json { // TODO: get to work with watcher
    dir: string
@@ -270,11 +266,8 @@ export class GitDown {
    }//()
 }//class
 
-
-
-
 // //////////////////////////////////////////////////////////////////
-export class ExportFS {
+export class ExportFB {
    args: string
    serviceAccountConfig: string
    collectionRef: any
@@ -305,7 +298,7 @@ export class ExportFS {
    }
 }
 
-export class ImportFS {
+export class ImportFB {
    args: string
    config: string
    collectionRef: any
@@ -340,6 +333,6 @@ export class ImportFS {
 }
 
 module.exports = {
-   FileOps, CSV2Json, GitDown,  ExportFS, ImportFS, DownloadFrag, Dat, Dirs,  YamlConfig
+   FileOps, CSV2Json, GitDown,  ExportFB, ImportFB, DownloadFrag, Dat, Dirs,  YamlConfig
 }
 
