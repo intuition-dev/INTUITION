@@ -218,8 +218,10 @@ depp.define({
    ,'flipcard-comp'  : ['//unpkg.com/metacake@1.2.25/flipcard/comps/flipcard-comp.min.js']
    ,'contactus-comp' : ['//unpkg.com/metacake@1.2.27/contactus/comps/contactus-comp.min.js']
    ,'surveyitem-comp': ['//unpkg.com/metacake@1.2.25/surveryitem/comps/surveyitem-comp.min.js']
+   ,'marq-comp'      : ['//unpkg.com/metacake@1.2.28/smoothMarq/comps/marq-comp.min.js']
    // todo min-finish
    ,'star-wcomp'     : ['#polly-wcomp', '//unpkg.com/metacake@1.2.25/starRating/comps/star-wcomp.js']
+
 
    ,'vega'  : [ '//cdn.jsdelivr.net/npm/vega@5.3.5'
                ,'//cdn.jsdelivr.net/npm/vega-lite@3.2.1'
@@ -230,6 +232,9 @@ depp.define({
 
    // prefer their SASS:
    ,'ihover'  :'//cdn.jsdelivr.net/npm/imagehover.css@1.0.0/css/imagehover.css'
+
+   // https://fontawesome.com/v4.7.0/icons
+   ,'font-awesome':'//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
 
    // images
    ,'svgloader'   : '//cdn.jsdelivr.net/npm/boomsvgloader@0.0.2/dist/js/boomsvgloader.min.js'
