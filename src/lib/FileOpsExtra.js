@@ -14,6 +14,7 @@ const execa = require('execa');
 const logger = require('tracer').console();
 const fs = require("fs-extra");
 const csv2JsonV2 = require("csvtojson");
+const AdmZip = require("adm-zip");
 const download = require("download");
 const yaml = require("js-yaml");
 const node_firestore_import_export_1 = require("node-firestore-import-export");
@@ -51,7 +52,20 @@ class Download {
         });
     }
     getFn(url) {
-        return '';
+        const pos = url.lastIndexOf('/');
+        return url.substring(pos);
+    }
+    down(url, fn) {
+        return new Promise(function (resolve, reject) {
+            download(url).then(data => {
+                fs.writeFileSync(this.targetDir + '/' + fn, data);
+                resolve('OK');
+            });
+        });
+    }
+    unzip(fn) {
+        let zip = new AdmZip(this.targetDir + '/' + fn);
+        zip.extractAllTo(this.targetDir, true);
     }
 }
 Download.truth = 'https://metabake.github.io/mbakeCLIDocs/versions.yaml';

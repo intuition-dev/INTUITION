@@ -9,6 +9,8 @@ import fs = require('fs-extra')
 
 import csv2JsonV2 = require('csvtojson')
 
+import AdmZip = require('adm-zip')
+
 import download = require('download')
 
 import yaml = require('js-yaml')
@@ -35,6 +37,7 @@ export class DownloadFrag {
 }
 
 export class Download {
+   // in docs root via git
    static truth:string = 'https://metabake.github.io/mbakeCLIDocs/versions.yaml'
    key:string
    targetDir:string
@@ -43,18 +46,32 @@ export class Download {
       this.targetDir = targetDir_
    }// cons
 
-   getVal() {
+   getVal() { // from truth
       return new Promise(function (resolve, reject) {
          download('truth').then(data => {
             let dic = yaml.load(data)
             resolve (dic[this.key])
          })
       })//pro
-   }
+   }//()
 
    getFn(url:string):string {
+      const pos = url.lastIndexOf('/')
+      return url.substring(pos)
+   }
 
-      return ''
+   down(url, fn) {
+      return new Promise(function (resolve, reject) {
+         download(url).then(data => {
+            fs.writeFileSync(this.targetDir + '/' + fn, data)
+            resolve('OK')
+         })
+      })//pro
+   }//()
+
+   unzip(fn) {
+      let zip = new AdmZip(this.targetDir + '/' + fn)
+      zip.extractAllTo(this.targetDir, /*overwrite*/true)
    }
 
 }//class

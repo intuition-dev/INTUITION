@@ -3,7 +3,7 @@
 
 export class Ver {
    static ver() {
-      return 'v5.06.35'
+      return 'v5.07.00'
    }
    static date(): string {
       return new Date().toISOString()
@@ -38,7 +38,6 @@ const Terser = require("terser")
 
 import beeper = require('beeper');
 ////////////////////////////
-
 
 import JavaScriptObfuscator = require('javascript-obfuscator')
 
