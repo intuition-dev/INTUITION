@@ -68,7 +68,7 @@ class Download {
         zip.extractAllTo(this.targetDir, true);
     }
 }
-Download.truth = 'https://metabake.github.io/mbakeCLIDocs/versions.yaml';
+Download.truth = 'https://metabake.github.io/metaDocs/versions.yaml';
 exports.Download = Download;
 class Static {
     constructor(jsonUrl, partentFodler, templatePg) {
@@ -240,7 +240,7 @@ class GitDown {
     }
 }
 exports.GitDown = GitDown;
-class ExportFB {
+class ExportFS {
     constructor(config) {
         this.args = config.split(':');
         this.serviceAccountConfig = this.args[0];
@@ -260,8 +260,8 @@ class ExportFB {
         });
     }
 }
-exports.ExportFB = ExportFB;
-class ImportFB {
+exports.ExportFS = ExportFS;
+class ImportFS {
     constructor(config) {
         this.args = config.split(':');
         this.serviceAccountConfig = this.args[0];
@@ -282,7 +282,7 @@ class ImportFB {
         });
     }
 }
-exports.ImportFB = ImportFB;
+exports.ImportFS = ImportFS;
 module.exports = {
-    FileOps, CSV2Json, GitDown, ExportFB, ImportFB, DownloadFrag, YamlConfig, Download, Static
+    FileOps, CSV2Json, GitDown, ExportFS, ImportFS, DownloadFrag, YamlConfig, Download, Static
 };

@@ -195,6 +195,7 @@ depp.define({
                   ,'//www.gstatic.com/firebasejs/6.0.4/firebase-app.js'
                   ,'//www.gstatic.com/firebasejs/6.0.4/firebase-auth.js'
                   ,'//www.gstatic.com/firebasejs/6.0.4/firebase-firestore.js' ]
+   ,'firebase-storage':['#firestore','//www.gstatic.com/firebasejs/6.0.4/firebase-storage.js']
 
    ,'chosenSelect': ['#jquery','//cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js']
 

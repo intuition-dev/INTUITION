@@ -9,7 +9,7 @@ import { Wa,  } from './lib/Wa'
 import { Map } from './lib/Spider'
 import { Resize, } from './lib/Extra'
 import {Dirs } from './lib/FileOpsBase'
-import {CSV2Json, DownloadFrag, GitDown, ExportFB, ImportFB  } from './lib/FileOpsExtra'
+import {CSV2Json, DownloadFrag, GitDown, ExportFS, ImportFS  } from './lib/FileOpsExtra'
 
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
@@ -48,10 +48,10 @@ function help() {
    console.info('  To download branch from git, in folder with gitdown.yaml:   mbakeX --gitDown GIT-PSWD')
    console.info('     passing the git password of gitdown user')
    console.info('  To recursively remove source files:                         mbakeX --prod .')
-   console.info('  To export FiresBase data, it needs two arguments separated ')
-   console.info('   with ":" :                                                 mbakeX --ExportFB serviceAccountKey:name_of_the_file')
-   console.info('  To import FireBase data, it needs two arguments separated  ')
-   console.info('  with ":":                                                   mbakeX --ImportFB serviceAccountKey:name_of_the_json_exported_file')
+   console.info('  To export FiresStore data, it needs two arguments separated ')
+   console.info('   with ":" :                                                 mbakeX --exportFS serviceAccountKey:name_of_the_file')
+   console.info('  To import FireStore data, it needs two arguments separated  ')
+   console.info('  with ":":                                                   mbakeX --importFS serviceAccountKey:name_of_the_json_exported_file')
    console.info()
 
    console.info('    Note: . is current directory, or use any path instead of .')
@@ -94,8 +94,8 @@ const optionDefinitions = [
 
    { name: 'ops', type: Boolean },
    { name: 'gitDown', type: Boolean },
-   { name: 'ExportFB', type: Boolean },
-   { name: 'ImportFB', type: Boolean },
+   { name: 'exportFS', type: Boolean },
+   { name: 'importFS', type: Boolean },
 
    { name: 'map', alias: 'm', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
@@ -118,13 +118,13 @@ function git(arg) {
    gg.process()
 }//()
 
-function exportFB(arg) {
-   let ef = new ExportFB(arg)
+function exportFS(arg) {
+   let ef = new ExportFS(arg)
    ef.export()
 }//()
 
-function importFB(arg) {
-   let ef = new ImportFB(arg)
+function importFS(arg) {
+   let ef = new ImportFS(arg)
    ef.import()
 }//()
 
@@ -275,10 +275,10 @@ if (argsParsed.comps) {
       frag(arg)
    else if (argsParsed.gitDown)
       git(arg)
-   else if (argsParsed.ExportFB)
-      exportFB(arg)
-   else if (argsParsed.ImportFB)
-      importFB(arg)
+   else if (argsParsed.exportFS)
+      exportFS(arg)
+   else if (argsParsed.importFS)
+      importFS(arg)
    else if (argsParsed.version)
       version()
    else if (argsParsed.help)

@@ -38,7 +38,7 @@ export class DownloadFrag {
 
 export class Download {
    // in docs root via git
-   static truth:string = 'https://metabake.github.io/mbakeCLIDocs/versions.yaml'
+   static truth:string = 'https://metabake.github.io/metaDocs/versions.yaml'
    key:string
    targetDir:string
    constructor(key_:string, targetDir_:string) {
@@ -318,7 +318,7 @@ export class GitDown {
 }//class
 
 // //////////////////////////////////////////////////////////////////
-export class ExportFB {
+export class ExportFS {
    args: string
    serviceAccountConfig: string
    collectionRef: any
@@ -349,7 +349,7 @@ export class ExportFB {
    }
 }
 
-export class ImportFB {
+export class ImportFS {
    args: string
    config: string
    collectionRef: any
@@ -384,6 +384,6 @@ export class ImportFB {
 }
 
 module.exports = {
-   FileOps, CSV2Json, GitDown,  ExportFB, ImportFB, DownloadFrag, YamlConfig, Download, Static
+   FileOps, CSV2Json, GitDown,  ExportFS, ImportFS, DownloadFrag, YamlConfig, Download, Static
 }
 
