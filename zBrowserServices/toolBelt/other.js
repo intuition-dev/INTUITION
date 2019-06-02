@@ -64,6 +64,8 @@ depp.define({
 
 })
 
+// https://www.mixamo.com/#/?page=1&type=Character
+
 // by default only load major polyfills 
 depp.require(['isJs', 'polly-wcomp', 'RPC', 'OpenSans'], function(){
    depp.require(['polly-ani', 'SPA', 'state-machine', 'collect', 'tabulator', 'pagination', 'feather-icons'])

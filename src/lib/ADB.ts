@@ -3,6 +3,9 @@
 import sqlite from 'sqlite'
 import SQL from 'sql-template-strings';
 
+// guid for pk client side 
+// eg: bcrypt randomBytes(16).toString("hex") or base64, or Math.random to make base64 char 16 times
+
 export class ADB {
    // emailjs is client side api
    db
@@ -17,6 +20,7 @@ export class ADB {
       // run some code and:
       return 'editor'
    }
+
 
 
 }

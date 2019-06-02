@@ -276,7 +276,7 @@ depp.define({
    ,'raphael':'//cdn.jsdelivr.net/npm/raphael@2.2.8/raphael.min.js'
 
    //webGL
-   ,'babylon'  :'//cdn.babylonjs.com/babylon.js'
+   ,'babylon'  :'//cdn.jsdelivr.net/npm/babylonjs@4.0.3/babylon.js' // is min
 
    // OpenSans is the standard font
    ,'OpenSans'       :'css!//fonts.googleapis.com/css?family=Open+Sans'
