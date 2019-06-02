@@ -3,7 +3,7 @@
 
 export class Ver {
    static ver() {
-      return 'v5.07.00'
+      return 'v5.07.01'
    }
    static date(): string {
       return new Date().toISOString()
@@ -574,5 +574,5 @@ export class Comps {
 
 
 module.exports = {
-BakeWrk, Items, Comps, Ver, MBake
+   BakeWrk, Items, Comps, Ver, MBake
 }
