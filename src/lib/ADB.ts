@@ -2,7 +2,7 @@
 
 import sqlite from 'sqlite'
 import SQL from 'sql-template-strings';
-import emailjs from 'emailjs-com' // to send a 3 char validation code
+import axios from 'axios'  // to send a 3 char validation code
 const bcrypt = require('bcryptjs') // to hash pswdws
 
 // include in API for WebAdmin
