@@ -13,6 +13,10 @@ depp.define({
 
    ,'GSAPMax'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenMax.min.js']
 
+   // use for file uploads
+   ,'axios': '//unpkg.com/axios@0.19.0/dist/axios.min.js'
+
+
    ,'mobi'     :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/js/mobiscroll.javascript.min.js'
    ,'mobiCSS'  :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/css/mobiscroll.css'
 
