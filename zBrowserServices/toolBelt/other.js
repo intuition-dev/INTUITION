@@ -62,6 +62,8 @@ depp.define({
 
    ,'particles'   :'//cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'
 
+   ,'faker': '//cdn.jsdelivr.net/npm/faker@4.1.0/index.min.js'
+
 })
 
 // https://www.mixamo.com/#/?page=1&type=Character
