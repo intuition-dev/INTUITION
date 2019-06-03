@@ -11,7 +11,7 @@ const bcrypt = require('bcryptjs') // to hash pswdws
 // eg: bcrypt randomBytes(16).toString("hex") or base64, or Math.random to make base64 char 16 times
 // also to email a random # 
 
-export class ADB {
+export class ADB { // auth & auth DB
    // emailjs is client side api
    db
    async createNewADBwSchema(adminEmail, emailJsCode) { // the admin db is set to 'P@ssw0rd!' and you have to change it first time on DB create
