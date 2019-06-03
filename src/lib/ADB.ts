@@ -2,7 +2,8 @@
 
 import sqlite from 'sqlite'
 import SQL from 'sql-template-strings';
-import emailjs from 'emailjs-com'
+import emailjs from 'emailjs-com' // to send a 3 char validation code
+const bcrypt = require('bcryptjs') // to hash pswdws
 
 // include in API for WebAdmin
 
@@ -13,14 +14,14 @@ import emailjs from 'emailjs-com'
 export class ADB {
    // emailjs is client side api
    db
-   async createNewADBwSchema() { // the admin db is set to 'P@ssw0rd!' and you have to change it first time on DB create
+   async createNewADBwSchema(adminEmail, emailJsCode) { // the admin db is set to 'P@ssw0rd!' and you have to change it first time on DB create
       const dbPro = sqlite.open('./db/ADB.sqlite')
       this.db = await dbPro
       this.db.configure('busyTimeout', 2*1000)
 
    }
 
-   isUserAuth(userEmail, pswd) {
+   isUserAuth(userEmail, pswdHash) { // yes the pswds are a hash
       // run some code and:
       return 'editor'
    }
