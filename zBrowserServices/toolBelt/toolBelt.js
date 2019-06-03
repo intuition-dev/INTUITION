@@ -1,7 +1,9 @@
-// This file is a toolbelt, a curated list of libs to use when need arises. 
-// And it has auto polly fill for: promise, fetch, CustomEvents, and Standard Web Components - for IE 11 and Modern browsers
-// Also tries for a bit of prep in case of Electron or Cordova/PhoneGap
+//Thanos has a glove. We just gave you a tool belt
 
+/* This file is a toolbelt, a curated list of libs to use when need arises. 
+ And it has auto polly fill for: promise, fetch, CustomEvents, and Standard Web Components - for IE 11 and Modern browsers
+ Also tries for a bit of prep in case of Electron or Cordova/PhoneGap
+*/
 console.log('Ver:','unpkg.com/mtool-belt@1.3.36/')
 
 // can use like this in comp:
