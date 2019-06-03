@@ -21,15 +21,15 @@ import * as firebase from 'firebase-admin';
 export class DownloadFrag {
    constructor(dir, ops: boolean) {
       console.log('Extracting to', dir)
-      if (!ops) download('https://unpkg.com/mtool-belt@1.3.36/template/headFrag.pug').then(data => {
+      if (!ops) download('https://unpkg.com/mtool-belt@1.3.37/template/headFrag.pug').then(data => {
          fs.writeFileSync(dir + '/headFrag.pug', data)
       })
       if (ops) {
          console.log('Ops')
-         download('https://unpkg.com/mtool-belt@1.3.36/template/ops.pug').then(data => {
+         download('https://unpkg.com/mtool-belt@1.3.37/template/ops.pug').then(data => {
             fs.writeFileSync(dir + '/ops.pug', data)
          })
-         download('https://unpkg.com/mtool-belt@1.3.36/template/ops.js').then(data => {
+         download('https://unpkg.com/mtool-belt@1.3.37/template/ops.js').then(data => {
             fs.writeFileSync(dir + '/ops.js', data)
          })
       }//fi

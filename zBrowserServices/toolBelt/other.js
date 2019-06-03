@@ -7,7 +7,6 @@ console.log('lang', getLang())
 // https://webkit.org/status
 
 depp.define({
-
     'Noto-Sans'      : 'css!//fonts.googleapis.com/css?family=Noto+Sans'
    ,'PacificoFont': 'css!//fonts.googleapis.com/css?family=Pacifico'
    ,'PoppinsFont' : 'css!//fonts.googleapis.com/css?family=Poppins'
@@ -17,8 +16,8 @@ depp.define({
    ,'mobi'     :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/js/mobiscroll.javascript.min.js'
    ,'mobiCSS'  :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/css/mobiscroll.css'
 
-   ,'DEBUG' :['//unpkg.com/mtool-belt@1.3.36/vendors/jquery-impromptu/jquery-impromptu.css', '#jquery'
-            ,'//unpkg.com/mtool-belt@1.3.36/vendors//jquery-impromptu/jquery-impromptu.min.js']
+   ,'impromptu' :['//unpkg.com/mtool-belt@1.3.37/vendors/jquery-impromptu/jquery-impromptu.css', '#jquery'
+            ,'//unpkg.com/mtool-belt@1.3.37/vendors//jquery-impromptu/jquery-impromptu.min.js']
 
    ,'physics2' :'//cdn.jsdelivr.net/npm/p2@0.7.1/src/p2.min.js'
    
@@ -35,7 +34,7 @@ depp.define({
    // 
    ,'croppie': ['//cdn.jsdelivr.net/npm/croppie@2.6.4/croppie.min.js'
                ,'//cdn.jsdelivr.net/npm/croppie@2.6.4/croppie.css' ]
-
+            
    //Commercial license
    ,'intro' :['//cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js'
              ,'//cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.css']
