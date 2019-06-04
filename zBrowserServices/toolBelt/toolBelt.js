@@ -1,4 +1,4 @@
-//Thanos has a glove. We just gave you a tool belt
+//Thanos has a glove. We just gave you a tool belt:
 
 /* This file is a toolbelt, a curated list of libs to use when need arises. 
  And it has auto polly fill for: promise, fetch, CustomEvents, and Standard Web Components - for IE 11 and Modern browsers
@@ -114,7 +114,6 @@ function addScript(src, callback, attr, attrValue, id) {
    document.getElementsByTagName('body')[0].appendChild(s)
 }
 
-
 depp.define({
    'disableAutoFill' :['#jquery','//unpkg.com/mtool-belt@1.3.37/vendors/jquery.disableAutoFill.min.js']
    ,'DEBUG'          :'//unpkg.com/mtool-belt@1.3.37/vendors/debug.css'
@@ -136,7 +135,7 @@ depp.define({
    ,'validate' :  '//cdn.jsdelivr.net/npm/validate.js@0.12.0/validate.min.js'
    ,'validator': ['//cdn.jsdelivr.net/npm/validator@10.11.0/validator.min.js']
 
-   //intro
+   //intro steps
    ,'hopscotch'   :['//cdn.jsdelivr.net/npm/hopscotch@0.3.1/dist/js/hopscotch.min.js'
                    ,'//cdn.jsdelivr.net/npm/hopscotch@0.3.1/dist/css/hopscotch.css']
    
@@ -186,10 +185,12 @@ depp.define({
    // binding - good example
    ,'jqForm': '//unpkg.com/mtool-belt@1.3.37/vendors/jquery-jsForm/jquery.jsForm.js'
 
-   ,'codemirror': [   '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css'
-                     ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.min.js'
-                     ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/markdown/markdown.js'
-                     ,'//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/yaml/yaml.js']
+   ,'codemirror': [   '//cdn.jsdelivr.net/npm/codemirror@5.47.0/lib/codemirror.css'
+                     ,'//cdn.jsdelivr.net/npm/codemirror@5.47.0/lib/codemirror.min.js'
+                     ,'//cdn.jsdelivr.net/npm/codemirror@5.47.0/mode/markdown/markdown.js'
+                     ,'//cdn.jsdelivr.net/npm/codemirror@5.47.0/mode/yaml/yaml.js'
+                     ,'//cdn.jsdelivr.net/npm/codemirror@5.47.0/mode/pug/pug.js'
+                   ]
 
    ,'hotkeys':'//cdn.jsdelivr.net/npm/hotkeys-js@3.6.11/index.min.js'
 
