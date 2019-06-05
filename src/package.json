@@ -78,12 +78,11 @@
       "express-formidable",
       "express-interceptor",
       "node-firestore-import-export",
-      "firebase-admin",
-      "command-line-args"
+      "firebase-admin"
    ],
    "devDependencies": {
       "@firebase/app-types": ">=0.4.0",
-      "@types/node": ">=12.0.4",
+      "@types/node": ">=12.0.5",
       "firebase-admin": ">=8.0.0",
       "handbrake-js": ">=3.0.8",
       "ipinfo": ">=1.3.9",
