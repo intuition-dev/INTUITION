@@ -160,17 +160,30 @@ class FileOps {
 exports.FileOps = FileOps;
 class GitDown {
     constructor(pass_) {
-        const last = pass_.lastIndexOf('/');
-        this.pass = pass_.substring(last + 1);
-        this.dir = pass_.substring(0, last);
-        this.config = yaml.load(fs.readFileSync('gitdown.yaml'));
-        console.log(this.dir, this.config.BRANCH);
-        logger.trace(this.config);
-        this.remote = 'https://' + this.config.LOGINName + ':';
-        this.remote += this.pass + '@';
-        this.remote += this.config.REPO + '/';
-        this.remote += this.config.PROJECT;
-        this._emptyFolders();
+        var standard_input = process.stdin;
+        standard_input.setEncoding('utf-8');
+        console.log("Please input text in command line.");
+        standard_input.on('data', (password) => {
+            if (password === 'exit\n') {
+                console.log("Please, enter your git password.");
+                process.exit();
+            }
+            else {
+                console.log('password', password);
+                const last = pass_.lastIndexOf('/');
+                this.pass = password.replace(/\n/g, '');
+                this.dir = pass_.substring(0, last);
+                this.config = yaml.load(fs.readFileSync('gitdown.yaml'));
+                console.log(this.dir, this.config.BRANCH);
+                logger.trace(this.config);
+                this.remote = 'https://' + this.config.LOGINName + ':';
+                this.remote += this.pass + '@';
+                this.remote += this.config.REPO + '/';
+                this.remote += this.config.PROJECT;
+                this._emptyFolders();
+                this.process();
+            }
+        });
     }
     async process() {
         try {
@@ -185,6 +198,7 @@ class GitDown {
         }
         catch (err) {
             console.error(err);
+            process.exit();
         }
     }
     _moveTo(branch) {
@@ -204,6 +218,7 @@ class GitDown {
         console.log('Maybe time to make/bake', dirTo);
         console.log('and then point http server to', dirTo);
         console.log();
+        process.exit();
     }
     _emptyFolders() {
         let dirR = this.config.PROJECT;

@@ -115,7 +115,7 @@ console.info()
 // ///////////////////////////////////////////////////////////////////////////////////////////
 function git(arg) {
    let gg = new GitDown(arg)
-   gg.process()
+   // gg.process()
 }//()
 
 function exportFS(arg) {

@@ -87,7 +87,6 @@ let arg = argsParsed.mbakeX;
 console.info();
 function git(arg) {
     let gg = new FileOpsExtra_1.GitDown(arg);
-    gg.process();
 }
 function exportFS(arg) {
     let ef = new FileOpsExtra_1.ExportFS(arg);

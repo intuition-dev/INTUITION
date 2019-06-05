@@ -1,6 +1,6 @@
 
 import { Ver } from './Base'
-import { Dat, Dirs} from './FileOpsBase'
+import { Dat, Dirs } from './FileOpsBase'
 
 import FileHound = require('filehound')
 const execa = require('execa')
@@ -38,10 +38,10 @@ export class DownloadFrag {
 
 export class Download {
    // in docs root via git
-   static truth:string = 'https://metabake.github.io/metaDocs/versions.yaml'
-   key:string
-   targetDir:string
-   constructor(key_:string, targetDir_:string) {
+   static truth: string = 'https://metabake.github.io/metaDocs/versions.yaml'
+   key: string
+   targetDir: string
+   constructor(key_: string, targetDir_: string) {
       this.key = key_
       this.targetDir = targetDir_
    }// cons
@@ -50,12 +50,12 @@ export class Download {
       return new Promise(function (resolve, reject) {
          download('truth').then(data => {
             let dic = yaml.load(data)
-            resolve (dic[this.key])
+            resolve(dic[this.key])
          })
       })//pro
    }//()
 
-   getFn(url:string):string {
+   getFn(url: string): string {
       const pos = url.lastIndexOf('/')
       return url.substring(pos)
    }
@@ -78,7 +78,7 @@ export class Download {
 
 //makes dat.yaml in folders.
 export class Static {
-   constructor(jsonUrl:string, partentFodler:string, templatePg:string) {
+   constructor(jsonUrl: string, partentFodler: string, templatePg: string) {
 
    }
 
@@ -105,22 +105,22 @@ export class CSV2Json { // TODO: get to work with watcher
 
    convert(): Promise<string> {
       return new Promise(function (resolve, reject) {
-      let fn: string = this.dir + '/list.csv'
-      if (!fs.existsSync(fn)) { //if it does not exist, go up a level
-         console.info('not found')
-         reject('not found')
-      }
-      let thiz = this
-      logger.info('1')
+         let fn: string = this.dir + '/list.csv'
+         if (!fs.existsSync(fn)) { //if it does not exist, go up a level
+            console.info('not found')
+            reject('not found')
+         }
+         let thiz = this
+         logger.info('1')
 
-      csv2JsonV2({noheader: true}).fromFile(fn)
-         .then(function (jsonO) {
-            logger.info(jsonO)
-            let fj: string = thiz.dir + '/list.json'
+         csv2JsonV2({ noheader: true }).fromFile(fn)
+            .then(function (jsonO) {
+               logger.info(jsonO)
+               let fj: string = thiz.dir + '/list.json'
 
-            fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
-            resolve('OK')
-         })
+               fs.writeFileSync(fj, JSON.stringify(jsonO, null, 3))
+               resolve('OK')
+            })
       })
    }//()
 }
@@ -132,29 +132,29 @@ export class FileOps {
    }
 
    /** returns # of files with the name, used for edit ver */
-   count(fileAndExt):number {
+   count(fileAndExt): number {
 
       const files = FileHound.create()
          .paths(this.root)
          .depth(0)
-         .match(fileAndExt+'*')
+         .match(fileAndExt + '*')
          .findSync()
 
       return files.length
    }
 
    clone(src, dest): Promise<string> {
-      return new Promise( (resolve, reject) => {
-      logger.info('copy?')
+      return new Promise((resolve, reject) => {
+         logger.info('copy?')
 
-      fs.copySync(this.root + src, this.root + dest)
+         fs.copySync(this.root + src, this.root + dest)
 
-      let p = this.root + dest
-      logger.info(p)
-      const d = new Dat(p)
-      d.write()
-      logger.info('copy!')
-      resolve('OK')
+         let p = this.root + dest
+         logger.info(p)
+         const d = new Dat(p)
+         d.write()
+         logger.info('copy!')
+         resolve('OK')
       })
    }//()
 
@@ -191,21 +191,42 @@ export class GitDown {
    pass: string
    git: any
    dir: string
-   constructor(pass_: string) {
-      const last = pass_.lastIndexOf('/')
-      this.pass = pass_.substring(last + 1)
-      this.dir = pass_.substring(0, last)
+   constructor(pass_) {
+      var standard_input = process.stdin;
 
-      this.config = yaml.load(fs.readFileSync('gitdown.yaml'))
-      console.log(this.dir, this.config.BRANCH)
-      logger.trace(this.config)
+      // Set input character encoding.
+      standard_input.setEncoding('utf-8');
 
-      this.remote = 'https://' + this.config.LOGINName + ':'
-      this.remote += this.pass + '@'
-      this.remote += this.config.REPO + '/'
-      this.remote += this.config.PROJECT
+      // Prompt user to input data in console.
+      console.log("Please input text in command line.");
 
-      this._emptyFolders()
+      // When user input data and click enter key.
+      standard_input.on('data', (password) => {
+
+         // User input exit.
+         if (password === 'exit\n') {
+            console.log("Please, enter your git password.");
+            process.exit();
+         } else {
+            console.log('password', password);
+
+            const last = pass_.lastIndexOf('/')
+            this.pass = password.replace(/\n/g, '');
+            this.dir = pass_.substring(0, last);
+      
+            this.config = yaml.load(fs.readFileSync('gitdown.yaml'))
+            console.log(this.dir, this.config.BRANCH)
+            logger.trace(this.config)
+      
+            this.remote = 'https://' + this.config.LOGINName + ':'
+            this.remote += this.pass + '@'
+            this.remote += this.config.REPO + '/'
+            this.remote += this.config.PROJECT
+      
+            this._emptyFolders();
+            this.process();
+         }
+      });
    }//()
 
    async process() {
@@ -219,7 +240,8 @@ export class GitDown {
 
          this._moveTo(b)
       } catch (err) {
-         console.error(err)
+         console.error(err);
+         process.exit();
       }
    }
 
@@ -244,6 +266,7 @@ export class GitDown {
       console.log('Maybe time to make/bake', dirTo)
       console.log('and then point http server to', dirTo)
       console.log()
+      process.exit()
    }
 
    _emptyFolders() {
@@ -257,6 +280,7 @@ export class GitDown {
       console.log('remove', dirTo)
       fs.removeSync(dirTo)
    }
+
 
    async _getNEWRemoteBranch(branch) {
       const { stdout } = await execa('git', ['clone', this.remote])
@@ -384,6 +408,5 @@ export class ImportFS {
 }
 
 module.exports = {
-   FileOps, CSV2Json, GitDown,  ExportFS, ImportFS, DownloadFrag, YamlConfig, Download, Static
+   FileOps, CSV2Json, GitDown, ExportFS, ImportFS, DownloadFrag, YamlConfig, Download, Static
 }
-
