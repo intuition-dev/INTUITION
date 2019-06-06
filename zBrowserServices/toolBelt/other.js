@@ -93,7 +93,7 @@ addEventListener('onBrowser', function (evt) {
  // https://www.mixamo.com/#/?page=1&type=Character
 
 
-/* LOADS; and after that returns a promise array of riot js components, one for each element on a page ( but sometimes there is only one [0] )
+//LOADS; and after that returns a promise array of riot js components, one for each element on a page ( but sometimes there is only one [0] )
 function mountComp(compName) {
   return new Promise(function (resolve, reject) {
     depp.require(compName, function () { // load comp
@@ -101,4 +101,4 @@ function mountComp(compName) {
       resolve(riot.mount(compName))
     })
   })//pro
-} */
+} 
