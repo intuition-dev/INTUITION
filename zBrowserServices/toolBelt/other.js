@@ -66,15 +66,17 @@ depp.define({
 
 })
 
-// https://www.mixamo.com/#/?page=1&type=Character
-
 // by default only load major polyfills 
-depp.require(['isJs', 'polly-wcomp', 'RPC', 'OpenSans'], function(){
-   depp.require(['polly-ani', 'SPA', 'state-machine', 'collect', 'tabulator', 'pagination', 'feather-icons'])
-   depp.done('READY', Date.now() - _start)
-})
-
-
+ // just an example that loads some frequently needed libs
+ depp.require(['DOM','polly-wcomp'], function() {
+   depp.require(['isJs'], function () {
+      if (is.ie()) console.log('ie')
+      if (is.mobile()) console.log('mobile')
+      if (is.touchDevice()) console.log('touch')
+   })
+ })
+ // $('.delayShowing').removeClass('delayShowing') // show parts in middle
+ 
 
 /* how to load tricky things
    loadQunit().then(function(){
@@ -86,20 +88,10 @@ depp.require(['isJs', 'polly-wcomp', 'RPC', 'OpenSans'], function(){
    })
 */
 
-
 // use Custom Events example:
 addEventListener('onBrowser', function (evt) {
    console.log(evt.detail)
- })
+})
+
  
- // just an example that loads some frequently needed libs
- depp.require('DOM', function() {
-   depp.require(['OpenSans', 'feather-icons', 'collect'])
-   depp.require(['isJs'], function () {
-      if (is.ie()) console.log('ie')
-      if (is.mobile()) console.log('mobile')
-      if (is.touchDevice()) console.log('touch')
-   })
- })
- // $('.delayShowing').removeClass('delayShowing') // show parts in middle
- 
+ // https://www.mixamo.com/#/?page=1&type=Character

@@ -91,8 +91,8 @@ depp.require(['polly'], function () {
 
 var webAniSupport = false
 try {
-   if(document.body.animate) 
-   webAniSupport = true
+  if(Element.animate) 
+    webAniSupport = true
 } catch(err) {
    console.log(err)
  }
@@ -363,7 +363,7 @@ function req(module) {
   })//pro
 }
 
-// LOADS; and after that returns a promise array of riot js components, one for each element on a page ( but sometimes there is only one [0] )
+/* LOADS; and after that returns a promise array of riot js components, one for each element on a page ( but sometimes there is only one [0] )
 function mountComp(compName) {
   return new Promise(function (resolve, reject) {
     depp.require(compName, function () { // load comp
@@ -371,7 +371,7 @@ function mountComp(compName) {
       resolve(riot.mount(compName))
     })
   })//pro
-}
+} */
 
  function getUrlVars() {
    var vars = [], hash
@@ -441,7 +441,10 @@ function debounceF(callback, time) { //returns a modified function!!!
 }
 
 //scroll and resize example
-depp.require(['DOM'], function () {
+depp.require(['DOM', 'polly-wcomp'], function () {
+  setTimeout(function(){
+    depp.done('DOMDelayed')
+  },100)
   window.addEventListener('scroll', onBrowser)
   window.addEventListener('resize', onBrowser)
   onBrowser()//call it once to layout
@@ -453,4 +456,11 @@ function onBrowser(evt) { // just an example
   disE('onBrowser', evt)
 }, 150)// delay
 
+
+depp.require(['DOMDelayed'], function() {
+  depp.require(['fontloader'], function () {
+    console.log('fontloaderReady')
+    depp.done('fontloaderReady')
+  })
+})
 

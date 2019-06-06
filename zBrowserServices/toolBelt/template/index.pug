@@ -1,11 +1,17 @@
 head
    include headFrag
-   include ops
+   //include ops
 
 body
    p #{ENV}
    script.
 
+      depp.require('fontloaderReady', function() {
+         console.log('fontloaderReady')
+         
+      })
+
+      /*
       loadQunit().then(function(){
          console.log('qunit-ready')
       })
@@ -13,3 +19,4 @@ body
       loadFB().then(function(){
          console.log('FB')
       })
+      */
