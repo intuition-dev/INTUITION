@@ -1,6 +1,6 @@
 
 mbake: v5.06.34
 
-headFrag: https://unpkg.com/mtool-belt@1.3.37/template/headFrag.pug
-opsPug: https://unpkg.com/mtool-belt@1.3.37/template/ops.pug
-opsJs: https://unpkg.com/mtool-belt@1.3.37/template/ops.js
+headFrag: https://unpkg.com/mtool-belt@1.3.38/template/headFrag.pug
+opsPug: https://unpkg.com/mtool-belt@1.3.38/template/ops.pug
+opsJs: https://unpkg.com/mtool-belt@1.3.38/template/ops.js

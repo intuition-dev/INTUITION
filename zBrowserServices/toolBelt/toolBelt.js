@@ -4,7 +4,7 @@
  And it has auto polly fill for: promise, fetch, CustomEvents, and Standard Web Components - for IE 11 and Modern browsers
  Also tries for a bit of prep in case of Electron or Cordova/PhoneGap
 */
-console.log('Ver:','unpkg.com/mtool-belt@1.3.37/')
+console.log('Ver:','unpkg.com/mtool-belt@1.3.38/')
 
 // can use like this in comp:
 /*
@@ -60,11 +60,11 @@ var CESupported = (function () {
   }
 })()
 if (!CESupported) //custom events polly
-  depp.define({ 'has-CE': '//unpkg.com/mtool-belt@1.3.37/poly/EventListener.min.js' })
+  depp.define({ 'has-CE': '//unpkg.com/mtool-belt@1.3.38/poly/EventListener.min.js' })
 else
   depp.done('has-CE')
 if (!'fetch' in window)
-  depp.define({ 'has-Fetch': '//unpkg.com/mtool-belt@1.3.37/poly/fetch.min.js' })
+  depp.define({ 'has-Fetch': '//unpkg.com/mtool-belt@1.3.38/poly/fetch.min.js' })
 else
   depp.done('has-Fetch')
 depp.require(['has-Promise','has-CE','has-Fetch'], function () {
@@ -115,8 +115,8 @@ function addScript(src, callback, attr, attrValue, id) {
 }
 
 depp.define({
-   'disableAutoFill' :['#jquery','//unpkg.com/mtool-belt@1.3.37/vendors/jquery.disableAutoFill.min.js']
-   ,'DEBUG'          :'//unpkg.com/mtool-belt@1.3.37/vendors/debug.css'
+   'disableAutoFill' :['#jquery','//unpkg.com/mtool-belt@1.3.38/vendors/jquery.disableAutoFill.min.js']
+   ,'DEBUG'          :'//unpkg.com/mtool-belt@1.3.38/vendors/debug.css'
 
    ,'WebAdmin': ['#RPC','//unpkg.com/metabake-web-admin-api@0.1.0/WebAdmin.min.js']
    ,'RPC': ['#polly', '//unpkg.com/http-rpc@1.0.6/httpRPC.min.js']
@@ -125,9 +125,12 @@ depp.define({
    ,'wcomp-loader':'//unpkg.com/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js'
    ,'es5-adapter' :'//unpkg.com/@webcomponents/webcomponentsjs@2.2.10/custom-elements-es5-adapter.js'
 
+   //removes FOUT if you don't put font family in top (then load other, then font, after font: full style)
+   ,'fontloader':'//cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js'
+
    // https://www.npmjs.com/package/collect.js
    ,'collect': '//cdn.jsdelivr.net/npm/collect.js@4.12.2/build/collect.min.js'
-   ,'isJs': '//unpkg.com/mtool-belt@1.3.37/vendors/is.min.js'
+   ,'isJs': '//unpkg.com/mtool-belt@1.3.38/vendors/is.min.js'
    // Commercial License # MetaBake LLC
    ,'state-machine': '//cdn.jsdelivr.net/npm/javascript-state-machine@3.1.0/lib/state-machine.min.js'
 
@@ -165,8 +168,8 @@ depp.define({
    ,'gridformsJS':['//cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.js']
 
    ,'accordion': ['#jquery'
-                  ,'//unpkg.com/mtool-belt@1.3.37/vendors/jquery-accordion/js/jquery.accordion.min.js'
-                  ,'//unpkg.com/mtool-belt@1.3.37/vendors/jquery-accordion/css/jquery.accordion.css']
+                  ,'//unpkg.com/mtool-belt@1.3.38/vendors/jquery-accordion/js/jquery.accordion.min.js'
+                  ,'//unpkg.com/mtool-belt@1.3.38/vendors/jquery-accordion/css/jquery.accordion.css']
 
    ,'emailjs': ['//cdn.emailjs.com/sdk/2.3.2/email.min.js','#DOM']
 
@@ -183,7 +186,7 @@ depp.define({
                         ,'//cdn.jsdelivr.net/npm/vex-js@4.1.0/dist/css/vex-theme-flat-attack.css']
 
    // binding - good example
-   ,'jqForm': '//unpkg.com/mtool-belt@1.3.37/vendors/jquery-jsForm/jquery.jsForm.js'
+   ,'jqForm': '//unpkg.com/mtool-belt@1.3.38/vendors/jquery-jsForm/jquery.jsForm.js'
 
    ,'codemirror': [   '//cdn.jsdelivr.net/npm/codemirror@5.47.0/lib/codemirror.css'
                      ,'//cdn.jsdelivr.net/npm/codemirror@5.47.0/lib/codemirror.min.js'
@@ -224,9 +227,9 @@ depp.define({
                ,'//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/jquery.onepage-scroll.min.js']
    
    ,'jqFAQ':[ '#jquery'
-             ,'//unpkg.com/mtool-belt@1.3.37/vendors/jquery-FAQ/jquery.quicksilver.min.js'
-             ,'//unpkg.com/mtool-belt@1.3.37/vendors/jquery-FAQ/jquery.simpleFAQ.css'
-             ,'//unpkg.com/mtool-belt@1.3.37/vendors/jquery-FAQ/jquery.simpleFAQ.min.js']
+             ,'//unpkg.com/mtool-belt@1.3.38/vendors/jquery-FAQ/jquery.quicksilver.min.js'
+             ,'//unpkg.com/mtool-belt@1.3.38/vendors/jquery-FAQ/jquery.simpleFAQ.css'
+             ,'//unpkg.com/mtool-belt@1.3.38/vendors/jquery-FAQ/jquery.simpleFAQ.min.js']
 
    //*** MetaCake comps:
    ,'flipcard-comp'  : ['//unpkg.com/metacake@1.2.25/flipcard/comps/flipcard-comp.min.js']
@@ -259,21 +262,21 @@ depp.define({
    //vid
    ,'mediaelement'   :[ '//cdn.jsdelivr.net/mediaelement/4.2.9/mediaelement-and-player.min.js'
                        ,'//cdn.jsdelivr.net/mediaelement/4.2.9/mediaelementplayer.min.css']
-   ,'bideo' : '//unpkg.com/mtool-belt@1.3.37/vendors/bideo/bideo.min.js'
+   ,'bideo' : '//unpkg.com/mtool-belt@1.3.38/vendors/bideo/bideo.min.js'
 
    //voice cmd
    ,'annYang'  :'//cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js'
    ,'spoken'   :'//cdn.jsdelivr.net/npm/spoken@1.1.17/spoken.min.js'
 
    //FX section
-   ,'deli'  : ['//unpkg.com/mtool-belt@1.3.37/vendors/delighters.min.js',  '#DOM']
+   ,'deli'  : ['//unpkg.com/mtool-belt@1.3.38/vendors/delighters.min.js',  '#DOM']
    ,'GSAP'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenLite.min.js',
                '//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/plugins/CSSPlugin.min.js'] // plugin needs to animate css property
    ,'polly-ani'   :'//cdn.jsdelivr.net/npm/web-animations-js@2.3.1/web-animations.min.js'
-   ,'clamp'       :['//unpkg.com/mtool-belt@1.3.37/vendors/clamp.min.js']
+   ,'clamp'       :['//unpkg.com/mtool-belt@1.3.38/vendors/clamp.min.js']
    ,'zenscroll'   :['//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js','#DOM']  
    ,'typewriter'  :'//cdn.jsdelivr.net/npm/typewriter-effect@2.5.3/dist/core.js'
-   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.37/vendors/parallaxImg.min.js'
+   ,'parallaxImg' :'//unpkg.com/mtool-belt@1.3.38/vendors/parallaxImg.min.js'
 
    ,'jqMapaEl':['#jquery', '#raphael', '//cdn.jsdelivr.net/npm/jquery-mapael@2.2.0/js/jquery.mapael.min.js']
    ,'raphael':'//cdn.jsdelivr.net/npm/raphael@2.2.8/raphael.min.js'

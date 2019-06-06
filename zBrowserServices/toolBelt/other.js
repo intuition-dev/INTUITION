@@ -20,8 +20,8 @@ depp.define({
    ,'mobi'     :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/js/mobiscroll.javascript.min.js'
    ,'mobiCSS'  :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/css/mobiscroll.css'
 
-   ,'impromptu' :['//unpkg.com/mtool-belt@1.3.37/vendors/jquery-impromptu/jquery-impromptu.css', '#jquery'
-            ,'//unpkg.com/mtool-belt@1.3.37/vendors//jquery-impromptu/jquery-impromptu.min.js']
+   ,'impromptu' :['//unpkg.com/mtool-belt@1.3.38/vendors/jquery-impromptu/jquery-impromptu.css', '#jquery'
+            ,'//unpkg.com/mtool-belt@1.3.38/vendors//jquery-impromptu/jquery-impromptu.min.js']
 
    ,'physics2' :'//cdn.jsdelivr.net/npm/p2@0.7.1/src/p2.min.js'
    
@@ -42,9 +42,6 @@ depp.define({
    //Commercial license
    ,'intro' :['//cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js'
              ,'//cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.css']
-                     
-   //removes FOUT if you put font name in top
-   ,'fontloader':'//cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js'
 
    //for AMP
    ,'mustache': ['//cdn.jsdelivr.net/npm/mustache@3.0.1/mustache.min.js']
