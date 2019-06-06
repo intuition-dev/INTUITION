@@ -71,9 +71,14 @@ function help() {
    console.info()
 
    VersionNag.isCurrent().then(function(isCurrent_:boolean){
-      if(!isCurrent_) console.log('There is a newer version of mbake CLI, please update.')
-      else('You have the current version of mbake CLI')
-      process.exit()   
+      try{
+      if(!isCurrent_) 
+         console.log('There is a newer version of mbake CLI, please update.')
+      else
+         console.log('You have the current version of mbake CLI')
+      } catch(err) {
+         console.log(err)
+      }
    })// pro
 }//()
 
