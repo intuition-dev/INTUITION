@@ -213,8 +213,9 @@ depp.define({
    ,'spacetime': '//cdn.jsdelivr.net/npm/spacetime@5.8.1/builds/spacetime.min.js'
 
    // template-ing, eg for webcomps
-   ,'doTempl':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
-
+   ,'doTempl1':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
+   ,'doTempl': '//cdn.jsdelivr.net/npm/dot@2.0.0-beta.0/doT.js'
+   
    //
    ,'bcrypt':'//cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js'
 
@@ -238,7 +239,6 @@ depp.define({
    ,'marq-comp'      : ['//unpkg.com/metacake@1.2.28/smoothMarq/comps/marq-comp.min.js']
    // todo min-finish
    ,'star-wcomp'     : ['#polly-wcomp', '//unpkg.com/metacake@1.2.25/starRating/comps/star-wcomp.js']
-
 
    ,'vega'  : [ '//cdn.jsdelivr.net/npm/vega@5.3.5'
                ,'//cdn.jsdelivr.net/npm/vega-lite@3.2.1'
