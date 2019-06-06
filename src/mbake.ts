@@ -8,7 +8,7 @@ import clear = require("cli-clear")
 import { Ver, MBake } from './lib/Base'
 import { MinJS,  Sas } from './lib/Extra'
 import { Dirs } from './lib/FileOpsBase'
-import { DownloadFrag } from './lib/FileOpsExtra'
+import { DownloadFrag, Download } from './lib/FileOpsExtra'
 
 clear()
 
@@ -90,22 +90,19 @@ function unzipCRUD () {
    let src: string = __dirname + '/CRUD.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted an example CRUD to ./CRUD')
+   console.info('Extracting an example CRUD to ./CRUD')
    process.exit()
 }
 function unzipS () {
    let src: string = __dirname + '/website.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted a starter website to ./website')
+   console.info('Extracting a starter website to ./website')
    process.exit()
 }
 function unzipE () {
-   let src: string = __dirname + '/CMS.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted a starter CMS app to ./CMS')
-   process.exit()
+   new Download('CMS', __dirname).autoZ()
+   console.info('Extracting a starter CMS app to ./CMS')
 }
 function frag(arg) {
    new DownloadFrag(arg, false)

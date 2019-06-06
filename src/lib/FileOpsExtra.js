@@ -44,11 +44,22 @@ class Download {
         this.key = key_;
         this.targetDir = targetDir_;
     }
+    autoZ() {
+        const THIZ = this;
+        this.getVal().then(function (url) {
+            logger.trace(url);
+            const fn = THIZ.getFn(url);
+            logger.trace(fn);
+            THIZ.down(url, fn).then(function () {
+                THIZ.unzip(fn);
+            });
+        });
+    }
     auto() {
         const THIZ = this;
         this.getVal().then(function (url) {
-            const fn1 = THIZ.getFn(url);
-            THIZ.down(url, fn1);
+            const fn = THIZ.getFn(url);
+            THIZ.down(url, fn);
         });
     }
     checkVer() {
@@ -68,6 +79,7 @@ class Download {
         return new Promise(function (resolve, reject) {
             download(Download.truth).then(data => {
                 let dic = yaml.load(data);
+                logger.trace(THIZ.key, dic);
                 resolve(dic[THIZ.key]);
             });
         });

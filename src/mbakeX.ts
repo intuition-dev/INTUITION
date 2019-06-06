@@ -145,14 +145,14 @@ function unzipG() {
    let src: string = __dirname + '/PGap.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted a starter Phonegap app to ./PG')
+   console.info('Extracting a starter Phonegap app to ./PG')
    process.exit()
 }
 function unzipE() {
    let src: string = __dirname + '/elect.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted a starter Electron app to ./elect')
+   console.info('Extracting a starter Electron app to ./elect')
    process.exit()
 }
 
@@ -160,7 +160,7 @@ function unzipD() {
    let src: string = __dirname + '/ad.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted an example ad  ./ad')
+   console.info('Extracting an example ad  ./ad')
    process.exit()
 }
 
@@ -168,14 +168,14 @@ function unzipL() {
    let src: string = __dirname + '/slidesEx.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted example of markdown slides to ./slidesEx')
+   console.info('Extracting example of markdown slides to ./slidesEx')
    process.exit()
 }
 function unzipH() {
    let src: string = __dirname + '/dash.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracted an starter Dash web app to ./dash')
+   console.info('Extracting an starter Dash web app to ./dash')
    process.exit()
 }
 

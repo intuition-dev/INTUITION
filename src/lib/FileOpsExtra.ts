@@ -47,11 +47,23 @@ export class Download {
       this.targetDir = targetDir_
    }// cons
 
-   auto() {
-      const THIZ = this     
+   autoZ() { // and unzip
+      const THIZ = this
       this.getVal().then(function(url:string){
-         const fn1 = THIZ.getFn(url)
-         THIZ.down(url, fn1)
+         logger.trace(url)
+         const fn = THIZ.getFn(url)
+         logger.trace(fn)
+         THIZ.down(url, fn).then(function(){
+            THIZ.unzip(fn) 
+         })
+      })
+   }
+
+   auto() {
+      const THIZ = this
+      this.getVal().then(function(url:string){
+         const fn = THIZ.getFn(url)
+         THIZ.down(url, fn)
       })
    }
 
@@ -71,6 +83,7 @@ export class Download {
       return new Promise(function (resolve, reject) {
          download(Download.truth).then(data => {
             let dic = yaml.load(data)
+            logger.trace(THIZ.key, dic)
             resolve(dic[THIZ.key])
          })
       })//pro
@@ -88,7 +101,6 @@ export class Download {
          })
       })//pro
    }//()
-
    unzip(fn) {
       let zip = new AdmZip(this.targetDir + '/' + fn)
       zip.extractAllTo(this.targetDir, /*overwrite*/true)

@@ -4,3 +4,6 @@ mbake: v5.07.06
 headFrag: https://unpkg.com/mtool-belt@1.5.0/template/headFrag.pug
 opsPug: https://unpkg.com/mtool-belt@1.5.0/template/ops.pug
 opsJs: https://unpkg.com/mtool-belt@1.5.0/template/ops.js
+
+
+CMS: https://github.com/metabake/mBakeCLI/raw/master/CMS.zip

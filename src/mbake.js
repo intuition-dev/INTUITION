@@ -63,22 +63,19 @@ function unzipCRUD() {
     let src = __dirname + '/CRUD.zip';
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
-    console.info('Extracted an example CRUD to ./CRUD');
+    console.info('Extracting an example CRUD to ./CRUD');
     process.exit();
 }
 function unzipS() {
     let src = __dirname + '/website.zip';
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
-    console.info('Extracted a starter website to ./website');
+    console.info('Extracting a starter website to ./website');
     process.exit();
 }
 function unzipE() {
-    let src = __dirname + '/CMS.zip';
-    let zip = new AdmZip(src);
-    zip.extractAllTo(cwd, true);
-    console.info('Extracted a starter CMS app to ./CMS');
-    process.exit();
+    new FileOpsExtra_1.Download('CMS', __dirname).autoZ();
+    console.info('Extracting a starter CMS app to ./CMS');
 }
 function frag(arg) {
     new FileOpsExtra_1.DownloadFrag(arg, false);
