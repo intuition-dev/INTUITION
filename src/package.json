@@ -78,7 +78,8 @@
       "express-formidable",
       "express-interceptor",
       "node-firestore-import-export",
-      "firebase-admin"
+      "firebase-admin",
+      "@marp-team/marpit"
    ],
    "devDependencies": {
       "@firebase/app-types": ">=0.4.0",
