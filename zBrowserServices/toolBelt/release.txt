@@ -11,5 +11,5 @@ removed function mountComp(compName) {}
 
    'OpenSans'       :'css!//fonts.googleapis.com/css?family=Open+Sans'
 
-unpkg.com/mtool-belt@1.3.38
+unpkg.com/mtool-belt@1.5.0
 
