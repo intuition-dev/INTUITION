@@ -210,7 +210,6 @@ depp.define({
    // dates:
    // moment is very large, avoid. Do try to use 'long' / linuxtime on back end
    ,'luxon'    : '//cdn.jsdelivr.net/npm/luxon@1.13.0/build/global/luxon.min.js'
-   ,'spacetime': '//cdn.jsdelivr.net/npm/spacetime@5.8.1/builds/spacetime.min.js'
 
    // template-ing, eg for webcomps
    ,'doTempl1':'//cdn.jsdelivr.net/npm/dot@1.1.2/doT.min.js'
@@ -266,7 +265,6 @@ depp.define({
 
    //voice cmd
    ,'annYang'  :'//cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js'
-   ,'spoken'   :'//cdn.jsdelivr.net/npm/spoken@1.1.17/spoken.min.js'
 
    //FX section
    ,'deli'  : ['//unpkg.com/mtool-belt@1.5.0/vendors/delighters.min.js',  '#DOM']
@@ -279,7 +277,7 @@ depp.define({
    ,'parallaxImg' :'//unpkg.com/mtool-belt@1.5.0/vendors/parallaxImg.min.js'
 
    ,'jqMapaEl':['#jquery', '#raphael', '//cdn.jsdelivr.net/npm/jquery-mapael@2.2.0/js/jquery.mapael.min.js']
-   ,'raphael':'//cdn.jsdelivr.net/npm/raphael@2.2.8/raphael.min.js'
+   ,'raphael' :'//cdn.jsdelivr.net/npm/raphael@2.2.8/raphael.min.js'
 
    //webGL
    ,'babylon'  :'//cdn.jsdelivr.net/npm/babylonjs@4.0.3/babylon.js' // is min

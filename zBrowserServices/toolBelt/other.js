@@ -10,6 +10,9 @@ depp.define({
 
    'GSAPMax'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenMax.min.js']
 
+   ,'spoken'   :'//cdn.jsdelivr.net/npm/spoken@1.1.17/spoken.min.js'
+   ,'spacetime': '//cdn.jsdelivr.net/npm/spacetime@5.8.1/builds/spacetime.min.js'
+
    // use for file uploads
    ,'axios': '//unpkg.com/axios@0.19.0/dist/axios.min.js'
 
