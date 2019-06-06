@@ -33,7 +33,7 @@ export class DownloadFrag {
 
 export class Download {
    // in docs root via git
-   static truth: string = 'https://metabake.github.io/metaDocs/versions.yaml'
+   static truth: string = 'https://metabake.github.io/mBakeCLI/versions.yaml'
    key: string
    targetDir: string
    constructor(key_: string, targetDir_: string) {
@@ -42,17 +42,20 @@ export class Download {
    }// cons
 
    auto() {
+      const THIZ = this     
       this.getVal().then(function(url:string){
-         const fn1 = this.getFn(url)
-         this.down(url, fn1)
+         const fn1 = THIZ.getFn(url)
+         THIZ.down(url, fn1)
       })
    }
 
    getVal() { // from truth
+      const THIZ = this
       return new Promise(function (resolve, reject) {
-         download('truth').then(data => {
+         download(Download.truth).then(data => {
             let dic = yaml.load(data)
-            resolve(dic[this.key])
+            logger.trace(dic)
+            resolve(dic[THIZ.key])
          })
       })//pro
    }//()
@@ -63,9 +66,10 @@ export class Download {
    }
 
    down(url, fn) {
+      const THIZ = this
       return new Promise(function (resolve, reject) {
          download(url).then(data => {
-            fs.writeFileSync(this.targetDir + '/' + fn, data)
+            fs.writeFileSync(THIZ.targetDir + '/' + fn, data)
             resolve('OK')
          })
       })//pro

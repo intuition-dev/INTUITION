@@ -22,18 +22,12 @@ const firebase = __importStar(require("firebase-admin"));
 class DownloadFrag {
     constructor(dir, ops) {
         console.log('Extracting to', dir);
-        if (!ops)
-            download('https://unpkg.com/mtool-belt@1.3.37/template/headFrag.pug').then(data => {
-                fs.writeFileSync(dir + '/headFrag.pug', data);
-            });
+        if (!ops) {
+            new Download('headFrag', dir).auto();
+        }
         if (ops) {
-            console.log('Ops');
-            download('https://unpkg.com/mtool-belt@1.3.37/template/ops.pug').then(data => {
-                fs.writeFileSync(dir + '/ops.pug', data);
-            });
-            download('https://unpkg.com/mtool-belt@1.3.37/template/ops.js').then(data => {
-                fs.writeFileSync(dir + '/ops.js', data);
-            });
+            new Download('opsPug', dir).auto();
+            new Download('opsJs', dir).auto();
         }
     }
 }
@@ -43,11 +37,20 @@ class Download {
         this.key = key_;
         this.targetDir = targetDir_;
     }
+    auto() {
+        const THIZ = this;
+        this.getVal().then(function (url) {
+            const fn1 = THIZ.getFn(url);
+            THIZ.down(url, fn1);
+        });
+    }
     getVal() {
+        const THIZ = this;
         return new Promise(function (resolve, reject) {
-            download('truth').then(data => {
+            download(Download.truth).then(data => {
                 let dic = yaml.load(data);
-                resolve(dic[this.key]);
+                logger.trace(dic);
+                resolve(dic[THIZ.key]);
             });
         });
     }
@@ -56,9 +59,10 @@ class Download {
         return url.substring(pos);
     }
     down(url, fn) {
+        const THIZ = this;
         return new Promise(function (resolve, reject) {
             download(url).then(data => {
-                fs.writeFileSync(this.targetDir + '/' + fn, data);
+                fs.writeFileSync(THIZ.targetDir + '/' + fn, data);
                 resolve('OK');
             });
         });
@@ -68,7 +72,7 @@ class Download {
         zip.extractAllTo(this.targetDir, true);
     }
 }
-Download.truth = 'https://metabake.github.io/metaDocs/versions.yaml';
+Download.truth = 'https://metabake.github.io/mBakeCLI/versions.yaml';
 exports.Download = Download;
 class Static {
     constructor(jsonUrl, partentFodler, templatePg) {
