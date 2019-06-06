@@ -7,15 +7,11 @@ console.log('lang', getLang())
 // https://webkit.org/status
 
 depp.define({
-    'Noto-Sans'      : 'css!//fonts.googleapis.com/css?family=Noto+Sans'
-   ,'PacificoFont': 'css!//fonts.googleapis.com/css?family=Pacifico'
-   ,'PoppinsFont' : 'css!//fonts.googleapis.com/css?family=Poppins'
 
-   ,'GSAPMax'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenMax.min.js']
+   'GSAPMax'  : ['//cdn.jsdelivr.net/npm/gsap@2.1.2/src/minified/TweenMax.min.js']
 
    // use for file uploads
    ,'axios': '//unpkg.com/axios@0.19.0/dist/axios.min.js'
-
 
    ,'mobi'     :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/js/mobiscroll.javascript.min.js'
    ,'mobiCSS'  :'//cdn.jsdelivr.net/npm/@mobiscroll/javascript-lite@4.6.3/dist/css/mobiscroll.css'
@@ -95,3 +91,14 @@ addEventListener('onBrowser', function (evt) {
 
  
  // https://www.mixamo.com/#/?page=1&type=Character
+
+
+/* LOADS; and after that returns a promise array of riot js components, one for each element on a page ( but sometimes there is only one [0] )
+function mountComp(compName) {
+  return new Promise(function (resolve, reject) {
+    depp.require(compName, function () { // load comp
+      console.log('ENV', window.ENV)
+      resolve(riot.mount(compName))
+    })
+  })//pro
+} */

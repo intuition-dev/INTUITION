@@ -6,11 +6,19 @@ body
    p #{ENV}
    script.
 
+
+      //after all other data, images, etc, you can require font
       depp.require('fontloaderReady', function() {
-         console.log('fontloaderReady')
-         
+         loadFonts('Open Sans') // note it uses space, can be array of font family
       })
 
+      depp.require('FontsLoaded', function(){
+         console.log('FontsLoaded')
+         //now that font is loaded, you can require the bottom style sheet
+      })
+
+
+      //old stuff
       /*
       loadQunit().then(function(){
          console.log('qunit-ready')

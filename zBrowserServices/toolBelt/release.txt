@@ -9,4 +9,7 @@ no need to do a mbake release, people can just edit the headFrag.
 
 removed function mountComp(compName) {}
 
+   'OpenSans'       :'css!//fonts.googleapis.com/css?family=Open+Sans'
+
+unpkg.com/mtool-belt@1.3.38
 

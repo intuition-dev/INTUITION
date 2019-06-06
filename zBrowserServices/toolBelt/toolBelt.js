@@ -284,11 +284,6 @@ depp.define({
    //webGL
    ,'babylon'  :'//cdn.jsdelivr.net/npm/babylonjs@4.0.3/babylon.js' // is min
 
-   // OpenSans is the standard font
-   ,'OpenSans'       :'css!//fonts.googleapis.com/css?family=Open+Sans'
-   ,'Playfair-Display':'css!//fonts.googleapis.com/css?family=Playfair+Display'
-   ,'OswaldFont'     : 'css!//fonts.googleapis.com/css?family=Oswald'
-
 })
 
 // common functions:
@@ -362,17 +357,6 @@ function req(module) {
     })
   })//pro
 }
-
-/* LOADS; and after that returns a promise array of riot js components, one for each element on a page ( but sometimes there is only one [0] )
-function mountComp(compName) {
-  return new Promise(function (resolve, reject) {
-    depp.require(compName, function () { // load comp
-      console.log('ENV', window.ENV)
-      resolve(riot.mount(compName))
-    })
-  })//pro
-} */
-
  function getUrlVars() {
    var vars = [], hash
    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&')
@@ -390,9 +374,9 @@ function getLang() {
 
 // this async dispatch can help, for example in promise
 function disE(evtName, msg) {
-   setTimeout(function(){
-     dispatchEvent(new CustomEvent(evtName, { detail: msg }))
-   },1)
+    setTimeout(function(){
+      dispatchEvent(new CustomEvent(evtName, { detail: msg }))
+    },1)
 }
 
 function inView(el) { // is element in view?
@@ -464,3 +448,21 @@ depp.require(['DOMDelayed'], function() {
   })
 })
 
+// FOUT section
+addEventListener('onFontsLoaded', function (evt) {
+  depp.done('FontsLoaded')
+})
+function loadFonts(fonts) {
+  var fontConfig = {
+     classes: false,
+     google: {
+        families: [ fonts ]
+     },
+     active: function() {
+        console.log('aF')
+        disE('onFontsLoaded')
+     }
+  }
+  WebFont.load(fontConfig)
+}
+// END FOUNT section
