@@ -8,8 +8,8 @@ import { Ver,  MBake,  } from './lib/Base'
 import { Wa,  } from './lib/Wa'
 import { Map } from './lib/Spider'
 import { Resize, } from './lib/Extra'
-import {Dirs } from './lib/FileOpsBase'
-import {CSV2Json, DownloadFrag, GitDown, ExportFS, ImportFS  } from './lib/FileOpsExtra'
+import { Dirs } from './lib/FileOpsBase'
+import { CSV2Json, DownloadFrag, GitDown, ExportFS, ImportFS, VersionNag  } from './lib/FileOpsExtra'
 
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
@@ -70,8 +70,12 @@ function help() {
    //TODO: check latest version via open of browser to npm
    console.info()
 
-   process.exit()
-}
+   VersionNag.isCurrent().then(function(isCurrent_:boolean){
+      if(!isCurrent_) console.log('There is a newer version of mbake CLI, please update.')
+      else('You have the current version of mbake CLI')
+      process.exit()   
+   })// pro
+}//()
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [

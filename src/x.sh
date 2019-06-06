@@ -2,7 +2,7 @@
 clear
 tsc
 
-node mbake.js -f scssTst
+node mbakeX.js 
 
 # node mbakeX.js -c /Users/code/Documents/GitHub/mbakeCake/metaCake/surveryitem/comps
 

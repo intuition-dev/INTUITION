@@ -30,12 +30,18 @@ export class DownloadFrag {
       }//fi
    }//()
 }
-
+export class VersionNag {
+   static isCurrent():Promise<boolean> {
+      const down = new Download('mbake', null)
+      return down.checkVer()
+   }
+}
 export class Download {
    // in docs root via git
    static truth: string = 'https://metabake.github.io/mBakeCLI/versions.yaml'
    key: string
    targetDir: string
+   
    constructor(key_: string, targetDir_: string) {
       this.key = key_
       this.targetDir = targetDir_
@@ -49,22 +55,30 @@ export class Download {
       })
    }
 
+   checkVer():Promise<boolean> {
+      const THIZ = this     
+      return new Promise(function (resolve, reject) {
+         THIZ.getVal().then(function(ver:string){
+            logger.trace(ver)
+            if(ver == Ver.ver()) resolve(true)
+            else resolve(false)
+         })
+      })//pro
+   }
+
    getVal() { // from truth
       const THIZ = this
       return new Promise(function (resolve, reject) {
          download(Download.truth).then(data => {
             let dic = yaml.load(data)
-            logger.trace(dic)
             resolve(dic[THIZ.key])
          })
       })//pro
    }//()
-
    getFn(url: string): string {
       const pos = url.lastIndexOf('/')
       return url.substring(pos)
    }
-
    down(url, fn) {
       const THIZ = this
       return new Promise(function (resolve, reject) {
@@ -414,5 +428,5 @@ export class ImportFS {
 }
 
 module.exports = {
-   FileOps, CSV2Json, GitDown, ExportFS, ImportFS, DownloadFrag, YamlConfig, Download, Static
+   FileOps, CSV2Json, GitDown, ExportFS, ImportFS, DownloadFrag, YamlConfig, Download, Static, VersionNag
 }

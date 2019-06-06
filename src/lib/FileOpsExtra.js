@@ -32,6 +32,13 @@ class DownloadFrag {
     }
 }
 exports.DownloadFrag = DownloadFrag;
+class VersionNag {
+    static isCurrent() {
+        const down = new Download('mbake', null);
+        return down.checkVer();
+    }
+}
+exports.VersionNag = VersionNag;
 class Download {
     constructor(key_, targetDir_) {
         this.key = key_;
@@ -44,12 +51,23 @@ class Download {
             THIZ.down(url, fn1);
         });
     }
+    checkVer() {
+        const THIZ = this;
+        return new Promise(function (resolve, reject) {
+            THIZ.getVal().then(function (ver) {
+                logger.trace(ver);
+                if (ver == Base_1.Ver.ver())
+                    resolve(true);
+                else
+                    resolve(false);
+            });
+        });
+    }
     getVal() {
         const THIZ = this;
         return new Promise(function (resolve, reject) {
             download(Download.truth).then(data => {
                 let dic = yaml.load(data);
-                logger.trace(dic);
                 resolve(dic[THIZ.key]);
             });
         });
@@ -303,5 +321,5 @@ class ImportFS {
 }
 exports.ImportFS = ImportFS;
 module.exports = {
-    FileOps, CSV2Json, GitDown, ExportFS, ImportFS, DownloadFrag, YamlConfig, Download, Static
+    FileOps, CSV2Json, GitDown, ExportFS, ImportFS, DownloadFrag, YamlConfig, Download, Static, VersionNag
 };
