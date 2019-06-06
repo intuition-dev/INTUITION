@@ -100,6 +100,7 @@ class Download {
     unzip(fn) {
         let zip = new AdmZip(this.targetDir + '/' + fn);
         zip.extractAllTo(this.targetDir, true);
+        fs.remove(this.targetDir + '/' + fn);
     }
 }
 Download.truth = 'https://metabake.github.io/mBakeCLI/versions.yaml';

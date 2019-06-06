@@ -104,6 +104,7 @@ export class Download {
    unzip(fn) {
       let zip = new AdmZip(this.targetDir + '/' + fn)
       zip.extractAllTo(this.targetDir, /*overwrite*/true)
+      fs.remove(this.targetDir + '/' + fn)
    }
 }//class
 
