@@ -21,17 +21,12 @@ import * as firebase from 'firebase-admin';
 export class DownloadFrag {
    constructor(dir, ops: boolean) {
       console.log('Extracting to', dir)
-      if (!ops) download('https://unpkg.com/mtool-belt@1.3.37/template/headFrag.pug').then(data => {
-         fs.writeFileSync(dir + '/headFrag.pug', data)
-      })
+      if (!ops)  {
+         new Download('headFrag', dir).auto()
+      }         
       if (ops) {
-         console.log('Ops')
-         download('https://unpkg.com/mtool-belt@1.3.37/template/ops.pug').then(data => {
-            fs.writeFileSync(dir + '/ops.pug', data)
-         })
-         download('https://unpkg.com/mtool-belt@1.3.37/template/ops.js').then(data => {
-            fs.writeFileSync(dir + '/ops.js', data)
-         })
+         new Download('opsPug', dir).auto()
+         new Download('opsJs', dir).auto()
       }//fi
    }//()
 }
@@ -45,6 +40,13 @@ export class Download {
       this.key = key_
       this.targetDir = targetDir_
    }// cons
+
+   auto() {
+      this.getVal().then(function(url:string){
+         const fn1 = this.getFn(url)
+         this.down(url, fn1)
+      })
+   }
 
    getVal() { // from truth
       return new Promise(function (resolve, reject) {
