@@ -12,7 +12,6 @@
    },
    "license": "LGPL-3.0-only",
    "author": "http://www.Metabake.org",
-   "bugs": "http://github.com/Metabake/mbake/issues",
    "homepage": "http://www.Metabake.org",
    "repository": {
       "type": "git",
