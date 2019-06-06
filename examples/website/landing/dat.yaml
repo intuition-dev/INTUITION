@@ -1,9 +1,0 @@
-basedir: ../
-
-pretty: false
-
-title: About
-image: >-
-  http://Metabake.org/assets/img/slide-3.jpg
-content_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-keywords: low-code, building, software
