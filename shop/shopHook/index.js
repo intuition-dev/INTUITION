@@ -7,6 +7,21 @@ const fs = require('fs');
 let config = yaml.load(fs.readFileSync('config.yaml'))[process.env.NODE_ENV || 'local'];
 const app = Serv_1.ExpressRPC.makeInstance(config.cors);
 const port = 3000;
+app.post('/test', function (req, res) {
+    const method = req.fields.method;
+    console.info("--method:", method);
+    const params = JSON.parse(req.fields.params);
+    console.info("--params:", params);
+    const resp = {};
+    if ('test-connection' == method) {
+    }
+    else {
+        resp.errorLevel = -1;
+        resp.errorMessage = 'mismatch';
+        console.log('noway', resp);
+        res.json(resp);
+    }
+});
 app.post('/printify-rate', function (req, res) {
     console.info("--res:", res);
     console.log('--req.fields', req.fields);
