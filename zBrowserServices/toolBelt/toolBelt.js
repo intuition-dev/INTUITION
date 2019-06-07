@@ -63,7 +63,7 @@ if (!CESupported) //custom events polly
   depp.define({ 'has-CE': '//unpkg.com/mtool-belt@1.5.0/poly/EventListener.min.js' })
 else
   depp.done('has-CE')
-if (!'fetch' in window)
+if (!('fetch' in window))
   depp.define({ 'has-Fetch': '//unpkg.com/mtool-belt@1.5.0/poly/fetch.min.js' })
 else
   depp.done('has-Fetch')
