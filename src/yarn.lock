@@ -2101,7 +2101,7 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
-firebase-admin@>=8.0.0:
+firebase-admin@*:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-8.0.0.tgz#9e7651c7788750f2fdc39eeeda81b26b51638e04"
   integrity sha512-+EdWEzdE8iWclu9gmuPB/jheeITmulu4DDqYi4gJVkXkftvZYoc5Vc0rEbVkgLJwelRuwELepmWJBPRcVOSVmw==
@@ -3438,10 +3438,10 @@ markdown-it@>=8.4.2, markdown-it@^8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=5.7.6:
-  version "5.7.6"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-5.7.6.tgz#13a8c9ca87e039b398fabeed8d27ea4dd7df401e"
-  integrity sha512-Md1+KaSGcewWiV8K8ySorHlbs+5OgkDdAC14AJze8klOH6V3ciMb05Pl/91w1Ao2IyouY2GZ8ayPPMrEC1Qnpw==
+mbake@>=6.6.1:
+  version "6.6.1"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.1.tgz#0e3d018ce5d1c591488f2d320605932e061cc4ec"
+  integrity sha512-KR8qxdq1d+UrbVzzYkQ9mykpyfNY/BQ55A6nyS6Qmr9kx1boCnpzaZhwj5v8k5waG9FA6M5ZAzh09A7GgKSZTQ==
   dependencies:
     "@firebase/app-types" ">=0.4.0"
     "@marp-team/marpit" ">=1.1.0"
@@ -3462,7 +3462,6 @@ mbake@>=5.7.6:
     express-interceptor ">=1.2.0"
     filehound ">=1.17.0"
     find-up ">=4.0.0"
-    firebase-admin ">=8.0.0"
     fs-extra ">=8.0.1"
     html-minifier ">=4.0.0"
     javascript-obfuscator ">=0.18.1"

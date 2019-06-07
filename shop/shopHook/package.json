@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "js-yaml": ">=3.13.1",
-    "mbake": ">=5.7.6",
+    "mbake": ">=6.6.1",
     "meta-intuition": ">=0.5.5"
   },
   "devDependencies": {
