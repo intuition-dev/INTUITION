@@ -1,96 +1,94 @@
 {
-   "name": "mbake",
-   "version": "5.07.06",
-   "description": "*All my friends KNOW the low-coder*; Metabake(mbake) is open source and extensible low-code productivity tool for programmers.",
-   "main": "mbake.js",
-   "scripts": {
-      "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""
-   },
-   "bin": {
-      "mbake": "mbake.js",
-      "mbakeX": "mbakeX.js"
-   },
-   "license": "LGPL-3.0-only",
-   "author": "http://www.Metabake.org",
-   "homepage": "http://www.Metabake.org",
-   "repository": {
-      "type": "git",
-      "url": "https://github.com/metabake"
-   },
-   "keywords": [
-      "pug",
-      "static gen",
-      "low-code",
-      "riotjs",
-      "cms"
-   ],
-   "engines": {
-      "node": ">=10.16.0",
-      "yarn": ">=1.16.0"
-   },
-   "dependencies": {
-      "@firebase/app-types": ">=0.4.0",
-      "@marp-team/marpit": ">=1.1.0",
-      "adm-zip": ">=0.4.13",
-      "autoprefixer": ">=9.6.0",
-      "axios": ">=0.19.0",
-      "beeper": ">=2.0.0",
-      "cheerio": ">=1.0.0-rc.2",
-      "chokidar": ">=3.0.1",
-      "cli-clear": ">=1.0.4",
-      "colors": ">=1.3.3",
-      "command-line-args": ">=5.1.1",
-      "csvtojson": ">=2.0.8",
-      "download": ">=7.1.0",
-      "execa": ">=1.0.0",
-      "express": ">=4.17.1",
-      "express-formidable": ">=1.2.0",
-      "express-interceptor": ">=1.2.0",
-      "filehound": ">=1.17.0",
-      "find-up": ">=4.0.0",
-      "firebase-admin": ">=8.0.0",
-      "fs-extra": ">=8.0.1",
-      "html-minifier": ">=4.0.0",
-      "javascript-obfuscator": ">=0.18.1",
-      "js-yaml": ">=3.13.1",
-      "lunr": ">=2.3.6",
-      "markdown-it": ">=8.4.2",
-      "markdown-it-container": ">=2.0.0",
-      "node-firestore-import-export": ">=0.13.2",
-      "node-sass": ">=4.12.0",
-      "open": ">=6.3.0",
-      "probe-image-size": ">=4.0.0",
-      "pug": ">=2.0.3",
-      "reload": ">=3.0.1",
-      "riot-compiler": "^3.6.0",
-      "sharp": ">=0.22.1",
-      "sitemap": ">=2.2.0",
-      "strip-css-comments": ">=4.0.0",
-      "terser": ">=4.0.0",
-      "tracer": ">=0.9.8",
-      "traverse": ">=0.6.6",
-      "typescript": ">=3.5.1",
-      "unfluff": ">=3.2.0"
-   },
-   "bundledDependencies": [
-      "express",
-      "express-formidable",
-      "express-interceptor",
-      "node-firestore-import-export",
-      "firebase-admin",
-      "@marp-team/marpit"
-   ],
-   "devDependencies": {
-      "@firebase/app-types": ">=0.4.0",
-      "@types/node": ">=12.0.7",
-      "firebase-admin": ">=8.0.0",
-      "handbrake-js": ">=3.0.8",
-      "ipinfo": ">=1.3.9",
-      "n": ">=4.1.0",
-      "npm-check-updates": ">=3.1.10",
-      "sql-template-strings": ">=2.2.2",
-      "sqlite": ">=3.0.3",
-      "ttypescript": ">=1.5.7",
-      "yarn": ">=1.16.0"
-   }
+    "name": "mbake",
+    "version": "5.07.07",
+    "description": "*All my friends KNOW the low-coder*; Metabake(mbake) is open source and extensible low-code productivity tool for programmers.",
+    "main": "mbake.js",
+    "scripts": {
+        "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""
+    },
+    "bin": {
+        "mbake": "mbake.js",
+        "mbakeX": "mbakeX.js"
+    },
+    "license": "LGPL-3.0-only",
+    "author": "http://www.Metabake.org",
+    "homepage": "http://www.Metabake.org",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/metabake"
+    },
+    "keywords": [
+        "pug",
+        "static gen",
+        "low-code",
+        "riotjs",
+        "cms"
+    ],
+    "engines": {
+        "node": ">=10.16.0",
+        "yarn": ">=1.16.0"
+    },
+    "dependencies": {
+        "@firebase/app-types": ">=0.4.0",
+        "@marp-team/marpit": ">=1.1.0",
+        "adm-zip": ">=0.4.13",
+        "autoprefixer": ">=9.6.0",
+        "axios": ">=0.19.0",
+        "beeper": ">=2.0.0",
+        "cheerio": ">=1.0.0-rc.2",
+        "chokidar": ">=3.0.1",
+        "cli-clear": ">=1.0.4",
+        "colors": ">=1.3.3",
+        "command-line-args": ">=5.1.1",
+        "csvtojson": ">=2.0.8",
+        "download": ">=7.1.0",
+        "execa": ">=1.0.0",
+        "express": ">=4.17.1",
+        "express-formidable": ">=1.2.0",
+        "express-interceptor": ">=1.2.0",
+        "filehound": ">=1.17.0",
+        "find-up": ">=4.0.0",
+        "fs-extra": ">=8.0.1",
+        "html-minifier": ">=4.0.0",
+        "javascript-obfuscator": ">=0.18.1",
+        "js-yaml": ">=3.13.1",
+        "lunr": ">=2.3.6",
+        "markdown-it": ">=8.4.2",
+        "markdown-it-container": ">=2.0.0",
+        "node-firestore-import-export": ">=0.13.2",
+        "node-sass": ">=4.12.0",
+        "open": ">=6.3.0",
+        "probe-image-size": ">=4.0.0",
+        "pug": ">=2.0.3",
+        "reload": ">=3.0.1",
+        "riot-compiler": "^3.6.0",
+        "sharp": ">=0.22.1",
+        "sitemap": ">=2.2.0",
+        "strip-css-comments": ">=4.0.0",
+        "terser": ">=4.0.0",
+        "tracer": ">=0.9.8",
+        "traverse": ">=0.6.6",
+        "typescript": ">=3.5.1",
+        "unfluff": ">=3.2.0"
+    },
+    "bundledDependencies": [
+        "express",
+        "express-formidable",
+        "express-interceptor",
+        "node-firestore-import-export",
+        "firebase-admin",
+        "@marp-team/marpit"
+    ],
+    "devDependencies": {
+        "@firebase/app-types": ">=0.4.0",
+        "@types/node": ">=12.0.7",
+        "handbrake-js": ">=3.0.8",
+        "ipinfo": ">=1.3.9",
+        "n": ">=4.1.0",
+        "npm-check-updates": ">=3.1.10",
+        "sql-template-strings": ">=2.2.2",
+        "sqlite": ">=3.0.3",
+        "ttypescript": ">=1.5.7",
+        "yarn": ">=1.16.0"
+    }
 }
