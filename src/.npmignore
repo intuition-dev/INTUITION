@@ -1,9 +1,8 @@
 
 node_modules/
 
-*.sh
-*.cmd
+
+*.sqlite
 
 .DS_Store
 
-gitdown.yaml

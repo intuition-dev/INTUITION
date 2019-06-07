@@ -1,0 +1,74 @@
+extends /layout/layout
+block header
+    header
+        .col-settings.container
+            div
+                .site-brand Site Name
+            ul.user-area
+                li
+                    a(href='#').sign-out#sign-out Sign out 
+                li.user-name
+
+block content
+    .loader.lds-css.ng-scope
+        .text Deploying
+        .lds-ellipsis(style='width:100%;height:100%')
+            div
+                div
+            div
+                div
+            div
+                div
+            div
+                div
+            div
+                div
+    .page-content.container.edit-blog-page
+        .columns
+
+            .col-sidebar
+                .blog-list
+                    .blog-list__inside
+                        .blog-list-wrap
+                .logo-wrap
+                    div.logo.js-enable-pug Your Logo Here
+                    .easter-pug You can edit pug
+                        i.i-arrow-right
+                                
+            .col-editor
+                .editor-wrapper
+                    h1 Editing  
+                        span.js-file-name Choose file to edit
+                    .icons-row
+                        .icon-wrap
+                            i.upload.disabled(title='file upload')
+                        .icon-wrap 
+                            i.i-calendar.disabled.publish-date(title='Set publish date')
+                        .icon-wrap
+                            i.icono-sync(title='Refresh')
+                        .icon-wrap
+                            i.i-plusCircle.disabled.create-post(title='Clone page')
+                    textarea#cms1(rows='400' )
+                    div.errors.d-hide(data-js="errors").toast.toast-error.mt-2
+                    .btns-wrap
+                        button.save.btn-custom.btn-primary(href='#', disabled='disabled') save
+                        a(href='#', target='_blank', disabled='disabled').view-page.btn-custom.btn-secondary
+                            span view page
+        .notification.d-hide
+            .text
+        form.post-name-wrap.d-hide
+            label Enter new page name:
+            .input-wrap
+                input(name='post-name', type='text', required)
+                button(type='submit')
+                    i.icono-checkCircle
+        form(action='upload', method="post", encType="multipart/form-data").file-upload.dropzone.d-hide#file-upload
+            | Select file:
+            input#file-upload-input.file-upload-input(type='file', name='sampleFile', multiple='')
+            input(type='submit')
+        form.publish-date-form.d-hide
+            label Select date:
+            .input-wrap
+                input.publish-date-input.datepicker(type='text')
+                button(type='submit')
+                    i.icono-checkCircle

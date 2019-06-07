@@ -1,0 +1,23 @@
+extends /layout/layout
+
+block main
+    .contaner
+        .columns
+            .col-10.col-mx-auto
+                //- shopitem-comp(images=images,
+                //-     title=title,
+                //-     subtitle=subtitle,
+                //-     desc=desc,
+                //-     variant_id=variant_id,
+                //-     product_name=name,
+                //-     price=retail_price,
+                //-     weight=weight,
+                //-     url="itemTwo")
+    
+    script.
+        depp.require(['shop-item'], function() {
+            riot.mount('shopitem-comp')[0]
+        })
+    //http://76548b73.ngrok.io
+    
+    //api: http://7935e312.ngrok.io

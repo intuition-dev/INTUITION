@@ -1,0 +1,96 @@
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    font-weight: 400;
+    color: #333;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 1.4rem 0;
+    span {
+        display: inline-block;
+        margin: 0 5px;
+        padding: 6px 10px;
+        background: #f3f3f3;
+        border-radius: 3px;
+        font-style: italic;
+    }
+}
+
+a {
+    transition: all .2s ease-in-out;
+    &, &:visited {
+        color: $text-color-light;
+    }
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        text-decoration: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+        color: rgba($text-color-light, .8);
+    }
+
+    &.inactive {
+        color: #888888;
+
+        &:hover {
+            text-decoration: none;
+            cursor: default;
+        }
+    }
+}
+
+p, ul, .grid-form fieldset legend {
+    color: #333;
+    font-size: $font-size-global;
+    line-height: 1.45;
+}
+
+p {
+    margin: 0 0 1rem 0;
+    font-weight: 200;
+    &:last-of-type {
+        margin: 0;
+    }
+}
+
+ul {
+    list-style-type: none;
+}
+
+.notification {
+    font-weight: 400;
+    background: rgba(#252a3a,.9);
+    border-radius: 4px;
+    padding: 30px 40px;
+    font-size: $font-size-global;
+    position: absolute;
+    z-index: 999;
+    top: 38%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    align-self: center;
+    &::first-letter { 
+        text-transform: uppercase;
+    }
+    &.error-msg {
+        background: rgba($color,.75);
+    }
+}

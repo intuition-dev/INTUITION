@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        include headFrag
+
+        script.
+            window.ROOT = '#{ROOT}';
+
+        script.
+            window.apiProtocol = 'http';
+            window.apiHost = '0.0.0.0';
+            window.apiPort = '9081';
+
+            window.appMount = 'http://0.0.0.0:9082';
+            window.siteName = 'Metabake';
+
+        link(rel='stylesheet', href= ROOT +'editors/assets/css/spectreTop.css')
+
+    body
+        script(src=ROOT +'editors/assets/js/loader.js')
+
+        block header
+        block content

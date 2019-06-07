@@ -1,0 +1,41 @@
+doctype html
+html
+   head
+      meta(name='viewport', content='initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no')
+
+      style.
+         #\31{
+            background: url(phones.png) no-repeat center -150px ;
+         }
+         #\32{
+            background: #555557 url(back-phone.png) no-repeat center -150px ;
+         }
+         #\33{
+            background: url(tilted-phone.png) no-repeat 156px -150px ;
+         }
+         .onepage-pagination {
+            display: none ;
+         }
+      script(src='//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.slim.min.js')
+
+   body
+      link(href='//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/onepage-scroll.css', rel='stylesheet')
+      script(src='//cdn.jsdelivr.net/npm/onepage-scroll@1.3.0/jquery.onepage-scroll.min.js')
+      link(href= '/assets/custom.css', rel='stylesheet')
+
+      .wrapper
+         .main
+            include:marp slides.md
+
+      script.
+         $(document).ready(function(){
+            console.info('ready')
+            $(".main").onepage_scroll({
+               sectionContainer: "section",
+               responsiveFallback: 600
+            })
+         })
+      
+      link(href='//fonts.googleapis.com/css?family=Open+Sans:300,400,700', rel='stylesheet', type='text/css')
+      link(href='//fonts.googleapis.com/css?family=Pacifico:400', rel='stylesheet', type='text/css')
+

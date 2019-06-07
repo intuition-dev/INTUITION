@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        include headFrag
+
+        script.
+            window.ROOT = '#{ROOT}';
+        
+        script.
+            window.rpcProtocol = 'http';
+            window.rpcHost = '0.0.0.0';
+            window.rpcPort = '9081';
+
+            window.siteName = 'Metabake';
+
+        link(rel='stylesheet', href= ROOT +'admin/assets/css/spectreTop.css')
+
+    body
+        script(src=ROOT +'admin/assets/js/loader.js')
+
+        block content

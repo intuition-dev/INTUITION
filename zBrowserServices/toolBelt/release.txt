@@ -1,8 +1,0 @@
-(once you release component - you have to register it here)
-rename unpkg.com/mtool-belt@1.0.9 globally via VS Code. It should be like 20 places in all of git.
-mbake -t .
-bump package.json
-npm publish
-no need to do a mbake release, people can just edit the headFrag.
-
----

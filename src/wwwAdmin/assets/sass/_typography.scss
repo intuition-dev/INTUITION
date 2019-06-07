@@ -1,0 +1,100 @@
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    font-weight: 200;
+    color: $text-color-dark-2;
+    &.light {
+        color: $text-color-light;
+        
+    }
+}
+
+a {
+    color: $text-color-light;
+    transition: all .2s ease-in-out;
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        text-decoration: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+        color: rgba($text-color-light, .8);
+    }
+
+    &:visited {
+        color: $text-color-light;
+    }
+
+    &.inactive {
+        color: #888888;
+
+        &:hover {
+            text-decoration: none;
+            cursor: default;
+        }
+    }
+}
+
+p, ul, .grid-form fieldset legend {
+    color: $text-color-dark-2;
+    font-size: $font-size-global;
+    line-height: 1.45;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.notification {
+    font-weight: 400;
+    background: rgba(#252a3a,.9);
+    border-radius: 4px;
+    padding: 30px 40px;
+    font-size: $font-size-global;
+    position: absolute;
+    z-index: 999;
+    top: 38%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    align-self: center;
+    &::first-letter { 
+        text-transform: uppercase;
+    }
+    &.error-msg {
+        background: rgba($color,.75);
+    }
+}
+
+// spaces
+.space {
+	&-1v {
+	    margin-top: 1rem;
+	    margin-bottom: 1rem;
+	}
+	&-2v {
+	    margin-top: 2rem;
+	    margin-bottom: 2rem;
+	}
+	&-12v {
+		margin-top: 1rem;
+	    margin-bottom: 2rem;
+	}
+	&-21v {
+		margin-top: 2rem;
+	    margin-bottom: 1rem;
+	}
+}

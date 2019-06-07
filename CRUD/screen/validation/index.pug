@@ -1,0 +1,53 @@
+extends /layout/layout
+
+block main
+   -// field names must mach table cols
+   .pad
+      h3 Validation
+      #form1.grid-form(autocomplete="off")
+         fieldset
+            legend Form
+            div(data-row-span='2')
+               div(data-field-span='1')
+                  label Field 1
+                  input(name='col1', type='text')
+               div(data-field-span='1')
+                  label Field 2
+                  input(name='col2', type='text')
+         input(hidden='', name='id')
+
+      .buts.text-right
+         button#validate.btn.btn-primary Validate
+
+   style.
+      .h3_extra {
+         font-size: 12px;
+         display: inline-block;
+         margin-left: 8px;
+      }
+      .buts button {
+         margin: .5rem;
+      }
+
+   script.
+      depp.define({
+         'bindLoad': [
+            ROOT + 'assets/models/ValidationViewModel.js',
+            'ValidationBind.js',
+            '//cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.min.js',
+            '//cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.css',
+         ]
+      })
+      depp.require(['pre','bindLoad'], setupForm)
+
+      function setupForm() {
+
+         var validationBind = new ValidationBind()
+         
+         $('#validate').click(function(){
+            let row = validationBind.getFields()
+            validationBind.validation(row)
+         })//click
+
+      } //()
+

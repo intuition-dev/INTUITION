@@ -1,0 +1,10 @@
+host: 'http://www.Metabake .net'
+
+changefreq: monthly
+
+menu:
+   - Home: /home
+   - Blog: /blog
+   - Forum: /forum
+
+itemsRoot: /blog

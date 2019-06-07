@@ -1,0 +1,147 @@
+@import "../spectre/_buttons.scss";
+.btn {
+    &-custom {
+        @extend .btn;
+        text-transform: uppercase;
+        border-radius: $border-radius-theme1;
+        border: 0;
+        font-size: 12px;
+        min-width: 100px;
+        padding: 12px 20px;
+        transition: all .2s ease-in-out;
+        display: table;
+
+        &:hover, &:active, &:focus {
+            outline: none;
+            text-decoration: none;
+            box-shadow: none;
+        }
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                margin-left: 1rem;
+                width: 30px;
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    &-secondary {
+        background: linear-gradient(to right, $button-secondary-theme1-hover 50%,$button-secondary-theme1 50%) no-repeat scroll right bottom / 210% 100% $button-secondary-theme1;
+
+        &, &:hover, &:active, &:focus {
+            &, svg {
+                color: $button-secondary-theme1-color;
+                fill: $button-secondary-theme1-color;
+            }
+        }
+
+        &.dark {
+            background: linear-gradient(to right, $button-secondary-theme1-hover 50%,rgba($button-secondary-theme1,.3) 50%) no-repeat scroll right bottom / 210% 100% rgba($button-secondary-theme1,.3);
+            &, &:hover, &:active, &:focus {
+                color: white;
+                svg {
+                    fill: $background-light-theme1;
+                }
+            }
+        }
+        &.invert {
+            background: linear-gradient(to right, $button-secondary-theme1 50%,$button-secondary-theme1-hover 50%) no-repeat scroll right bottom / 210% 100% $button-secondary-theme1-hover;
+        }
+    }
+    &-primary, &-secondary {
+        -webkit-transition: color 0.3s ease, border-color 0.3s ease, background-position 0.3s ease, background-color 0 linear 0.3s; 
+        -ms-transition: color 0.3s ease, border-color 0.3s ease, background-position 0.3s ease, background-color 0 linear 0.3s; 
+        transition: color 0.3s ease, border-color 0.3s ease, background-position 0.3s ease, background-color 0 linear 0.3s; 
+        &:hover, &:active, &:focus {
+            background-position: left bottom;
+        }
+    }
+}
+
+.link {
+    &-primary {
+        color: $color-secondary-theme1;
+        &:hover, &:active, &:focus {
+            color: $color-theme1;
+        }
+    }
+    &-secondary {
+        color: $color-theme1;
+        &:hover, &:active, &:focus {
+            color: $color-secondary-theme1;
+        }
+    }
+}
+
+.social-icons {
+    svg {
+        width: 14px;
+        height: 14px;
+        fill: $color-theme1;
+        flex-shrink: 0;
+    }
+
+    .btn-custom {
+        width: 40px;
+        min-width: initial;
+        height: 40px;
+        border-radius: 0;
+        margin: 0 10px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transform: rotate(30deg);
+        transition: transform .2s linear, background .2s linear;
+        &.btn-secondary {
+            background: linear-gradient(to right, #151f2b 50%,#fff 50%) no-repeat scroll right bottom / 210% 100% #fff;
+            & {
+                &, svg {
+                    color: #384752;
+                    fill: #384752;
+                }
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background-position: left bottom;
+            transform: none;
+            &, svg {
+                color: #fff;
+                fill: #fff;
+            }
+        }
+
+        &:last-of-type {
+            margin: 0;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .social-icons {
+        .btn-custom {
+            width: 30px;
+            max-width: 30px;
+            min-width: 30px;
+            padding: 0;
+            height: 30px;
+            margin: 0 5px 0 0;
+        }
+        svg {
+            width: 10px;
+            height: 10px;
+        }
+    }
+}
+
+.srch-btn {
+    &, &:hover, &:active, &:focus, &:visited {
+        box-shadow: none;
+        outline: none;
+        background: transparent;
+    }
+}

@@ -1,9 +1,0 @@
-
-mbake: v5.07.06
-
-headFrag: https://unpkg.com/mtool-belt@1.5.2/template/headFrag.pug
-opsPug: https://unpkg.com/mtool-belt@1.5.2/template/ops.pug
-opsJs: https://unpkg.com/mtool-belt@1.5.2/template/ops.js
-
-
-CMS: https://github.com/metabake/metaIntuition/raw/master/CMS.zip

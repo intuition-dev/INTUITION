@@ -1,0 +1,5 @@
+basedir: .
+
+pretty: false
+
+ROOT: '/'

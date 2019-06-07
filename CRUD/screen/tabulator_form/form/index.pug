@@ -1,0 +1,68 @@
+extends /layout/layout
+
+block main
+   -// field names must mach table cols
+   .pad
+      #form1.grid-form(autocomplete="off")
+         fieldset
+            legend Form
+            div(data-row-span='2')
+               div(data-field-span='1')
+                  label Field 1
+                  input(name='col1', type='text')
+               div(data-field-span='1')
+                  label Field 2
+                  input(name='col2', type='text')
+         input(hidden='', name='id')
+
+      .buts
+         button#clearBut.btn.btn-primary Clear
+         button#saveBut.btn.btn-primary Add data
+         button#updateBut.btn.btn-primary Update data
+         button#deleteBut.btn.btn-error Delete data
+         button#backBut.btn Back
+
+   style.
+      .buts button {
+         margin: .5rem;
+      }
+
+   script.
+      depp.define({
+         'bindLoad': [
+            ROOT + 'assets/models/service/TabulatorService.js',
+            ROOT + 'assets/models/FormViewModel.js',
+            'FormBind.js',
+         ]
+      })
+      depp.require(['pre','bindLoad'], setupForm)
+
+      function setupForm() {
+
+         var formBind = new FormBind()
+         formBind.init('form1');
+
+         $('#clearBut').click(function(){
+            formBind.clearFields()
+         })//click
+
+         $('#saveBut').click(function(){
+            let row = formBind.getFields()
+            formBind.add(row) //do the validation in .js
+         })//click
+
+         $('#updateBut').click(function(ev){
+            let row = formBind.getFields()
+            formBind.update(row)
+         })//click
+
+         $('#deleteBut').click(function(){
+            let row = formBind.getFields()
+            formBind.delete(row)
+         })//click
+
+         $('#backBut').click(function(){
+            window.location.replace('/screen/tabulator_form')
+         })
+      } //()
+

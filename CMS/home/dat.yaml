@@ -1,0 +1,15 @@
+basedir: ../
+
+ROOT: '/'
+
+pretty: false
+publish1: false
+
+pageTitleTop: Blog
+
+pageTitle: Metabake 
+title: Lorem Ipsum
+image: >-
+  http://scontent-frx5-1.cdninstagram.com/vp/854e9db2929fe6bc50974f29a1682e9b/5C43A90C/t51.2885-15/e35/42115761_1624273044414819_8394293278859251262_n.jpg
+content_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+summary: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

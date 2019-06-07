@@ -1,0 +1,18 @@
+extends /layout/layout
+
+block main
+    script(src=ROOT+ 'store/comps/card-comp.js')
+    div(data-is="card-comp").container
+    
+    script.
+        fetch('../items/items.json')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(myJson) {
+            console.log(JSON.stringify(myJson));
+            var items = new Object(myJson.items);
+            
+            var comp = riot.mount('card-comp')[0]; //- mount the first comp
+            comp.render(items);
+        });

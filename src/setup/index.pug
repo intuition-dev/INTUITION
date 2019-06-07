@@ -1,0 +1,53 @@
+extends layout/layout
+block header
+block content
+	.container.grid-lg.pl-setup-admin
+		.columns
+			.column.col-10.col-mx-auto
+				h2 Welcome!
+				p On the following page you will be able to setup your webadmin!
+				form.grid-form(id="setup-config-form")
+					fieldset
+						legend To setup your webadmin, you need to add email, password and setup emailJs account
+						div(data-row-span='2')
+							div(data-field-span='1')
+								label Email
+								input(type='email', autocomplete="email", name="email")
+							div(data-field-span='1')
+								label Password
+								input(type='password', autocomplete="current-password", name="password")
+						div(data-row-span='1')
+							div(data-field-span='1')
+								///Users/melikyants/Documents/websites/myBlog
+								label Path of the site that webadmin should run for
+								input(type='text', name="path")
+						div(data-row-span='1')
+							div(data-field-span='1')
+								label EmailJS 
+									b service_id
+								input(type='text', name="service_id")
+						div(data-row-span='1')
+							div(data-field-span='1')
+								label EmailJS 
+									b template_id
+								input(type='text', name="template_id")
+						div(data-row-span='1')
+							div(data-field-span='1')
+								label EmailJS 
+									b user_id
+								input(type='text', name="user_id")
+					button.btn.btn-primary.js-btn-setup.mt-2 Setup
+				//- button.btn.btn-error.js-btn-delete.mt-2 Delete tables
+	script.
+		depp.require(['setup'], function(){
+			var bindSetup = new BindSetup()
+			
+			$('.js-btn-delete').on('click', function(){
+				bindSetup.deleteTable()
+			})
+			
+			$('form#setup-config-form').on('submit',function(ev){
+				ev.preventDefault()
+				bindSetup.createConfig(this)
+			})
+		})

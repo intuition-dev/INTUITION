@@ -1,0 +1,37 @@
+basedir: ../../
+ROOT: /
+
+title: Women's short sleeve t-shirt
+external_id: "5cd1457e933e96"
+id: 1281588427
+sync_product_id: 113470717
+name: "Women's short sleeve t-shirt - S"
+variant_id: 4897
+retail_price: "18.20"
+currency: "EUR"
+product: {
+    variant_id: 4897,
+    product_id: 110,
+    image: "https://d1yg28hrivmbqm.cloudfront.net/products/110/4897_1537351149.jpg",
+    name: "Anvil 880 Ladies Ringspun Fashion Fit T-Shirt with Tear Away Label (White / S)"
+}
+
+# {
+#   id: 1281588428,
+#   external_id: "5cd144f40094f7",
+#   sync_product_id: 113470717,
+#   name: "Women's short sleeve t-shirt - M",
+#   variant_id: 4898,
+#   retail_price: "18.20",
+#   currency: "EUR",
+#   product: {
+#     variant_id: 4898,
+#     product_id: 110,
+#     image: "https://d1yg28hrivmbqm.cloudfront.net/products/110/4898_1537351147.jpg",
+#     name: "Anvil 880 Ladies Ringspun Fashion Fit T-Shirt with Tear Away Label (White / M)"
+#   },
+# }
+# ]
+image: metabake-tshirt_mockup_Front_Womens-2_White.png
+images: mockup-903f657c.jpg, metabake-tshirt_mockup_Front_Womens-2_White.png
+desc: Metabake T-Shirt

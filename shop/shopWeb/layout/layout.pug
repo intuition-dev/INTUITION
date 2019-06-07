@@ -1,0 +1,14 @@
+doctype html
+html(lang='en_US')
+    head
+        include /includes/headFrag
+        include ../includes/devOps
+        include /includes/head
+        block head2
+
+    body.delayShowing.blur
+        include /includes/top-nav
+        +top-nav(header_class)
+
+        main
+            block main

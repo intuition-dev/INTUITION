@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        include headFrag
+
+        script.
+            window.ROOT = '#{ROOT}setup/';
+
+        link(rel='stylesheet', href= ROOT +'setup/assets/css/spectreTop.css')
+
+    body
+        script(src=ROOT +'setup/assets/js/loader.js')
+
+        block header
+        block content

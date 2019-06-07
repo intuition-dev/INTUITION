@@ -1,0 +1,25 @@
+.js here and min.js are linked. You can just edit in WebAdmin/www/assets.
+
+.js Api ver must match server-side WebAdmin.
+
+Then build docs and release /API via npm publish. Files are linked (ln without -s).
+Then, change to not use local WebAdmin.min.js - get it from CDN. Via defs-setup.
+Then npm publish WebAdmin. 
+
+# API documentaion
+
+1. To generate human readable documentation install npm documentation globally (`-g`):
+
+```
+  npm -g i documentation
+```
+2. There should be `documentation.yml` file.
+    Do command from this folder:
+
+```
+  documentation build --config documentation.yml WebAdmin.js -f html -o docs
+```
+
+It will generate `docs` folder with the human readable documentation.
+
+Copy .nojekyll into docs

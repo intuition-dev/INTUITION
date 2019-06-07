@@ -1,0 +1,96 @@
+{
+  "prefix": "/items/",
+  "mbVer": "v5.06.25",
+  "items": [
+    {
+      "title": "Short-Sleeve Unisex T-Shirt",
+      "id": 113827625,
+      "name": "Short-Sleeve Unisex T-Shirt",
+      "retail_price": "16,39",
+      "weight": 0,
+      "currency": "USD",
+      "image": "mockup-be571ea6.jpg",
+      "images": [
+        "mockup-be571ea6.jpg",
+        "9997_1551357780.jpg"
+      ],
+      "url": "itemOne",
+      "profit": 1,
+      "shipping_coverage": 4,
+      "desc": "Short-Sleeve Unisex T-Shirt",
+      "sync_variants": [
+        {
+          "sync_variant_id": 1285717312,
+          "variant_id": 473,
+          "price": "11.39",
+          "name": "Short-Sleeve Unisex T-Shirt - S",
+          "size": "S",
+          "hide": ""
+        },
+        {
+          "sync_variant_id": 1285717313,
+          "variant_id": 504,
+          "price": "11.39",
+          "name": "Short-Sleeve Unisex T-Shirt - M",
+          "size": "M",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1285717314,
+          "variant_id": 535,
+          "price": "11.39",
+          "name": "Short-Sleeve Unisex T-Shirt - L",
+          "size": "L",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1285717315,
+          "variant_id": 566,
+          "price": "11.39",
+          "name": "Short-Sleeve Unisex T-Shirt - XL",
+          "size": "XL",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1285717316,
+          "variant_id": 597,
+          "price": "12.85",
+          "name": "Short-Sleeve Unisex T-Shirt - 2XL",
+          "size": "L",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1285717317,
+          "variant_id": 628,
+          "price": "14.30",
+          "name": "Short-Sleeve Unisex T-Shirt - 3XL",
+          "size": "3XL",
+          "hide": "none"
+        }
+      ],
+      "index": 0
+    },
+    {
+      "title": "Women's short sleeve t-shirt",
+      "external_id": "5cd1457e933e96",
+      "id": 1281588427,
+      "sync_product_id": 113470717,
+      "name": "Women's short sleeve t-shirt - S",
+      "variant_id": 4897,
+      "retail_price": "18.20",
+      "currency": "EUR",
+      "product": {
+        "variant_id": 4897,
+        "product_id": 110,
+        "image": "https://d1yg28hrivmbqm.cloudfront.net/products/110/4897_1537351149.jpg",
+        "name": "Anvil 880 Ladies Ringspun Fashion Fit T-Shirt with Tear Away Label (White / S)"
+      },
+      "image": "metabake-tshirt_mockup_Front_Womens-2_White.png",
+      "images": "mockup-903f657c.jpg, metabake-tshirt_mockup_Front_Womens-2_White.png",
+      "desc": "Metabake T-Shirt",
+      "url": "itemTwo",
+      "index": 1
+    }
+  ],
+  "count": 2
+}
