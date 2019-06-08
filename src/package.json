@@ -1,11 +1,11 @@
 {
-    "name": "meta-intuition",
-    "version": "0.05.05",
+    "name": "intu",
+    "version": "0.9.06",
     "description": "Web Admin for web apps written in MetaBake",
     "main": "index.js",
 
     "bin": {
-        "metaI": "index.js"
+        "intu": "index.js"
     },
 
     "license": "LGPL-3.0-only",

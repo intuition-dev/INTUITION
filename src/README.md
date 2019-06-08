@@ -16,3 +16,5 @@
 
 4. Optional: Use HTTP server (eg: Caddy) to proxy :9081 to get https
 
+
+  yarn cache clean
