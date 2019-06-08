@@ -16,4 +16,3 @@
 
 4. Optional: Use HTTP server (eg: Caddy) to proxy :9081 to get https
 
-Notes: It was not clear to me what to do after setup. It took me to a login screen. I expected an email to tell me ... something.
