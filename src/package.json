@@ -1,7 +1,7 @@
 {
     "name": "intu",
     "version": "0.9.06",
-    "description": "Web Admin for web apps written in MetaBake",
+    "description": "'It will lead YOU in the right direction'. WebAdmin Screen to CMS, e-Com, et al. ",
     "main": "index.js",
 
     "bin": {
@@ -23,6 +23,7 @@
         "mbake": ">=6.6.5",
         "sqlite": ">=3.0.3"
     },
+    
     "devDependencies": {
         "@types/node": ">=12.0.7"
     }
