@@ -1,10 +1,14 @@
 
-# Install WebAdmin
+# Install WebAdmin Meta 'Intuition'
+
+#### 'It will lead YOU in the right direction'
 
 1. Before you run, create free emailJs ( https://www.emailjs.com ) account: so Meta Intuition accounts can be validated via email.
-Also create a email template, and note your emailJs id.
+Also create a email template, and note your emailJs id, needed to send emails.
 
-2. Create a (linux) instance in the cloud, for example on Digital Ocean.
+2. Create a (linux) instance in the cloud, for example on Digital Ocean. 
+
+2. Optional: If you will run a large site with terabytes and petabytes, create a NAS, or you can migrate later.
 
 3. Install node, yarn
 
@@ -13,7 +17,7 @@ Also create a email template, and note your emailJs id.
 5. In Terminal: `intu`
 
 6. Setup configurations in the browser window `:9081/setup`
-Remember your email and password.
+Remember your admin email and password. (TODO: Validate admin code)
 
 7. Fast URL's
    `:9081/admin` - to add users
@@ -21,3 +25,4 @@ Remember your email and password.
 
 8. Optional: Use HTTP server (eg: Caddy) to proxy :9081 to get https
 
+(TODO: Change path, change port, extract CMS, eCom, Website. At install pick a sample)
