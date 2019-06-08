@@ -26,3 +26,6 @@ Remember your admin email and password. (TODO: Validate admin code)
 8. Optional: Use HTTP server (eg: Caddy) to proxy :9081 to get https
 
 (TODO: Change path, change port, extract CMS, eCom, Website. At install pick a sample)
+
+(TODO: a lot of noise on logger, add editor screen has 'old data', make admin be editor auto, even if not listed, changed admin command: for admin )
+(TODO: add editor does nothing, no logo - our logo only, adding an editor: no password!. during code they set password, list does not work )
