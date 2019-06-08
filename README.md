@@ -1,5 +1,5 @@
-# WebAdmin
+# WebAdmin 'Intuition'
 
-Can be installed via yarn install, go to WebAdmin to see that.
+Can be installed via yarn install, go to src to see.
 
-Has an API, docs in api.
+Also, it has an API
