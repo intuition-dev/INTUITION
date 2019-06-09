@@ -1,6 +1,6 @@
 /**
      * 
-     * All rights reserved by Metabake (Metabake.org), licensed under LGPL 3.0
+     * All rights reserved by MetaBake (MetaBake.org), licensed under LGPL 3.0
      *
 */
 

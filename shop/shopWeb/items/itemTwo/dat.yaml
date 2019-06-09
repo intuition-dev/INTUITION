@@ -32,6 +32,6 @@ product: {
 #   },
 # }
 # ]
-image: metabake-tshirt_mockup_Front_Womens-2_White.png
-images: mockup-903f657c.jpg, metabake-tshirt_mockup_Front_Womens-2_White.png
-desc: Metabake T-Shirt
+image: MetaBake-tshirt_mockup_Front_Womens-2_White.png
+images: mockup-903f657c.jpg, MetaBake-tshirt_mockup_Front_Womens-2_White.png
+desc: MetaBake T-Shirt
