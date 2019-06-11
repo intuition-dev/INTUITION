@@ -7,15 +7,13 @@ import { ExpressRPC } from 'mbake/lib/Serv';
 
 export class EditorRoutes {
     routes(adbDB) {
-        const bodyParser = require("body-parser");
         const fs = require('fs');
         const path = require('path');
-        const fileUpload = require('express-fileupload');
         let mountPath = '';
 
         const appE = ExpressRPC.makeInstance(['http://localhost:9081']);
 
-        appE.use(fileUpload());
+        // appE.use(fileUpload());
         appE.use((request, response, next) => {
             const params = JSON.parse(request.fields.params)
             const resp: any = {}
@@ -44,14 +42,9 @@ export class EditorRoutes {
                 });
         });
 
-
-        appE.use(bodyParser.json());
-        appE.use(bodyParser.text());
-        appE.use(bodyParser.urlencoded({ extended: true })); //To handle HTTP POST request in Express
-
         appE.post('/checkEditor', (req, res) => {
             const method = req.fields.method;
-            let params = JSON.parse(req.fields.params)
+            // let params = JSON.parse(req.fields.params)
             let resp: any = {};
 
             if ('check-editor' == method) {
@@ -225,8 +218,6 @@ export class EditorRoutes {
 
                 let post_id = params.post_id;
                 let pathPrefix = params.pathPrefix;
-                // let content = params.content;
-                // content = Buffer.from(content,'base64');
 
                 if (typeof post_id !== 'undefined') {
 
@@ -322,43 +313,36 @@ export class EditorRoutes {
 
         });
 
-        // upload file
+        // file upload
         appE.post("/upload", (req, res) => {
             const method = req.fields.method;
             let resp: any = {}; // new response that will be set via the specific method passed
             let params = JSON.parse(req.fields.params);
 
             if ('post' == method) {
-
                 let uploadPath;
                 let pathPrefix = params.pathPrefix;
-                let fileupload = params.fileupload;
 
-                // TODO
                 if (Object.keys(req.files).length == 0) {
-                    return res.status(400).send('No files were uploaded.');
+                    res.status(400);
+                    resp.result = { error: 'no file was uploaded' };
+                    return res.json(resp);
                 }
 
                 // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
                 let sampleFile = req.files.sampleFile;
                 uploadPath = mountPath + '/' + pathPrefix + '/' + sampleFile.name;
 
-                // Use the mv() method to place the file somewhere on your server
-                sampleFile.mv(uploadPath, function (err) {
-                    if (err) {
-                        return res.status(500).send(err);
-                    }
-
+                // console.log('UPLOAD', uploadPath, sampleFile.path);
+                fs.rename(sampleFile.path, uploadPath, function (err) {
+                    if (err) throw err;
+                    
                     resp.result = { data: 'File uploaded!' };
-                    res.json(resp);
+                    res.json(resp);    
                 });
-
             } else {
-
                 return res.json(resp);
-
             }
-
         });
 
         // set publish date
