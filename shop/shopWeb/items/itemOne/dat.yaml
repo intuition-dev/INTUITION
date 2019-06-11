@@ -2,479 +2,64 @@ basedir: ../../
 ROOT: /
 
 title: Short-Sleeve Unisex T-Shirt
-id: 113827625
+id: 118054659 #sync_product id
 name: "Short-Sleeve Unisex T-Shirt"
-retail_price: "16,39"
+retail_price: "16,32"
 weight: 0
 currency: "USD"
 
-image: mockup-be571ea6.jpg
-images: [mockup-be571ea6.jpg, 9997_1551357780.jpg]
+image: mockup-e4d14921.jpg
+images: [mockup-e4d14921.jpg, mockup-be571ea6.jpg, 9997_1551357780.jpg]
 url: itemOne
 profit: 1
 shipping_coverage: 4
 
 desc: Short-Sleeve Unisex T-Shirt
 "sync_variants": [{
-  sync_variant_id: 1285717312,
-  variant_id: 473,
-  price: "11.39",
+  sync_variant_id: 1331762077, #sync_product_id
+  variant_id: 473, #variant_id
+  price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - S,
   size: S,
   hide: ''
 },{
-  sync_variant_id: 1285717313,
+  sync_variant_id: 1331762078,
   variant_id: 504,
-  price: "11.39",
+  price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - M,
   size: M,
   hide: "none"
 },
 {
-  sync_variant_id: 1285717314,
+  sync_variant_id: 1331762079,
   variant_id: 535,
-  price: "11.39",
+  price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - L,
   size: L,
   hide: "none"
 },
 {
-  sync_variant_id: 1285717315,
+  sync_variant_id: 1331762080,
   variant_id: 566,
-  price: "11.39",
+  price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - XL,
   size: XL,
   hide: "none"
 },
 {
-  sync_variant_id: 1285717316,
+  sync_variant_id: 1331762081,
   variant_id: 597,
-  price: "12.85",
+  price: "12.76",
   name: Short-Sleeve Unisex T-Shirt - 2XL,
-  size: L,
+  size: 2XL,
   hide: "none"
 },
 {
-  sync_variant_id: 1285717317,
+  sync_variant_id: 1331762082,
   variant_id: 628,
-  price: "14.30",
+  price: "14.21",
   name: Short-Sleeve Unisex T-Shirt - 3XL,
   size: 3XL,
   hide: "none"
 }
 ]
-# "sync_variantss": [{
-#         id: 1285717312,
-#         external_id: "5cd504b59c1743",
-#         "sync_product_id": 113827625,
-#         "name": "Short-Sleeve Unisex T-Shirt - S",
-#         "synced": true,
-#         "variant_id": 473,
-#         "retail_price": "11.39",
-#         "currency": "USD",
-#         "product": {
-#             "variant_id": 473,
-#             "product_id": 12,
-#             "image": "https://d1yg28hrivmbqm.cloudfront.net/products/12/473_1517916597.jpg",
-#             "name": "Gildan 64000 Unisex Softstyle T-Shirt with Tear Away (White / S)"
-#         },
-#         "files": [
-#             {
-#                 "id": 110650949,
-#                 "type": "default",
-#                 "hash": "43e57eb8d50054b23a711566b2bf8709",
-#                 "url": null,
-#                 "filename": "MetaBake-tshirt.png",
-#                 "mime_type": "image/png",
-#                 "size": 194883,
-#                 "width": 3840,
-#                 "height": 2160,
-#                 "dpi": 72,
-#                 "status": "ok",
-#                 "created": 1555421319,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_preview.png",
-#                 "visible": true
-#             },
-#             {
-#                 "id": 114690291,
-#                 "type": "sleeve_right",
-#                 "hash": "3964542a197d7ea97c1016e5dd75647d",
-#                 "url": null,
-#                 "filename": "printfile-6964d049.png",
-#                 "mime_type": "image/png",
-#                 "size": 7404,
-#                 "width": 600,
-#                 "height": 525,
-#                 "dpi": 150,
-#                 "status": "ok",
-#                 "created": 1557464241,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_preview.png",
-#                 "visible": false
-#             },
-#             {
-#                 "id": 114690312,
-#                 "type": "preview",
-#                 "hash": "5dc5ffd5171bee3880147b059a77eb73",
-#                 "url": null,
-#                 "filename": "mockup-01fabecd.jpg",
-#                 "mime_type": "image/jpeg",
-#                 "size": 44552,
-#                 "width": 600,
-#                 "height": 600,
-#                 "dpi": 43,
-#                 "status": "ok",
-#                 "created": 1557464245,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_preview.png",
-#                 "visible": false
-#             }
-#         ],
-#     },
-#     {
-#         "id": 1285717313,
-#         "external_id": "5cd504b59c17b2",
-#         "sync_product_id": 113827625,
-#         "name": "Short-Sleeve Unisex T-Shirt - M",
-#         "synced": true,
-#         "variant_id": 504,
-#         "retail_price": "11.39",
-#         "currency": "USD",
-#         "product": {
-#             "variant_id": 504,
-#             "product_id": 12,
-#             "image": "https://d1yg28hrivmbqm.cloudfront.net/products/12/504_1517916596.jpg",
-#             "name": "Gildan 64000 Unisex Softstyle T-Shirt with Tear Away (White / M)"
-#         },
-#         "files": [
-#             {
-#                 "id": 110650949,
-#                 "type": "default",
-#                 "hash": "43e57eb8d50054b23a711566b2bf8709",
-#                 "url": null,
-#                 "filename": "MetaBake-tshirt.png",
-#                 "mime_type": "image/png",
-#                 "size": 194883,
-#                 "width": 3840,
-#                 "height": 2160,
-#                 "dpi": 72,
-#                 "status": "ok",
-#                 "created": 1555421319,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_preview.png",
-#                 "visible": true
-#             },
-#             {
-#                 "id": 114690291,
-#                 "type": "sleeve_right",
-#                 "hash": "3964542a197d7ea97c1016e5dd75647d",
-#                 "url": null,
-#                 "filename": "printfile-6964d049.png",
-#                 "mime_type": "image/png",
-#                 "size": 7404,
-#                 "width": 600,
-#                 "height": 525,
-#                 "dpi": 150,
-#                 "status": "ok",
-#                 "created": 1557464241,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_preview.png",
-#                 "visible": false
-#             },
-#             {
-#                 "id": 114690312,
-#                 "type": "preview",
-#                 "hash": "5dc5ffd5171bee3880147b059a77eb73",
-#                 "url": null,
-#                 "filename": "mockup-01fabecd.jpg",
-#                 "mime_type": "image/jpeg",
-#                 "size": 44552,
-#                 "width": 600,
-#                 "height": 600,
-#                 "dpi": 43,
-#                 "status": "ok",
-#                 "created": 1557464245,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_preview.png",
-#                 "visible": false
-#             }
-#         ],
-#     },
-#     {
-#         "id": 1285717314,
-#         "external_id": "5cd504b59c1808",
-#         "sync_product_id": 113827625,
-#         "name": "Short-Sleeve Unisex T-Shirt - L",
-#         "synced": true,
-#         "variant_id": 535,
-#         "retail_price": "11.39",
-#         "currency": "USD",
-#         "product": {
-#             "variant_id": 535,
-#             "product_id": 12,
-#             "image": "https://d1yg28hrivmbqm.cloudfront.net/products/12/535_1517916594.jpg",
-#             "name": "Gildan 64000 Unisex Softstyle T-Shirt with Tear Away (White / L)"
-#         },
-#         "files": [
-#             {
-#                 "id": 110650949,
-#                 "type": "default",
-#                 "hash": "43e57eb8d50054b23a711566b2bf8709",
-#                 "url": null,
-#                 "filename": "MetaBake-tshirt.png",
-#                 "mime_type": "image/png",
-#                 "size": 194883,
-#                 "width": 3840,
-#                 "height": 2160,
-#                 "dpi": 72,
-#                 "status": "ok",
-#                 "created": 1555421319,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_preview.png",
-#                 "visible": true
-#             },
-#             {
-#                 "id": 114690291,
-#                 "type": "sleeve_right",
-#                 "hash": "3964542a197d7ea97c1016e5dd75647d",
-#                 "url": null,
-#                 "filename": "printfile-6964d049.png",
-#                 "mime_type": "image/png",
-#                 "size": 7404,
-#                 "width": 600,
-#                 "height": 525,
-#                 "dpi": 150,
-#                 "status": "ok",
-#                 "created": 1557464241,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_preview.png",
-#                 "visible": false
-#             },
-#             {
-#                 "id": 114690312,
-#                 "type": "preview",
-#                 "hash": "5dc5ffd5171bee3880147b059a77eb73",
-#                 "url": null,
-#                 "filename": "mockup-01fabecd.jpg",
-#                 "mime_type": "image/jpeg",
-#                 "size": 44552,
-#                 "width": 600,
-#                 "height": 600,
-#                 "dpi": 43,
-#                 "status": "ok",
-#                 "created": 1557464245,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_preview.png",
-#                 "visible": false
-#             }
-#         ],
-#     },
-#     {
-#         "id": 1285717315,
-#         "external_id": "5cd504b59c1844",
-#         "sync_product_id": 113827625,
-#         "name": "Short-Sleeve Unisex T-Shirt - XL",
-#         "synced": true,
-#         "variant_id": 566,
-#         "retail_price": "11.39",
-#         "currency": "USD",
-#         "product": {
-#             "variant_id": 566,
-#             "product_id": 12,
-#             "image": "https://d1yg28hrivmbqm.cloudfront.net/products/12/566_1517916600.jpg",
-#             "name": "Gildan 64000 Unisex Softstyle T-Shirt with Tear Away (White / XL)"
-#         },
-#         "files": [
-#             {
-#                 "id": 110650949,
-#                 "type": "default",
-#                 "hash": "43e57eb8d50054b23a711566b2bf8709",
-#                 "url": null,
-#                 "filename": "MetaBake-tshirt.png",
-#                 "mime_type": "image/png",
-#                 "size": 194883,
-#                 "width": 3840,
-#                 "height": 2160,
-#                 "dpi": 72,
-#                 "status": "ok",
-#                 "created": 1555421319,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_preview.png",
-#                 "visible": true
-#             },
-#             {
-#                 "id": 114690291,
-#                 "type": "sleeve_right",
-#                 "hash": "3964542a197d7ea97c1016e5dd75647d",
-#                 "url": null,
-#                 "filename": "printfile-6964d049.png",
-#                 "mime_type": "image/png",
-#                 "size": 7404,
-#                 "width": 600,
-#                 "height": 525,
-#                 "dpi": 150,
-#                 "status": "ok",
-#                 "created": 1557464241,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_preview.png",
-#                 "visible": false
-#             },
-#             {
-#                 "id": 114690312,
-#                 "type": "preview",
-#                 "hash": "5dc5ffd5171bee3880147b059a77eb73",
-#                 "url": null,
-#                 "filename": "mockup-01fabecd.jpg",
-#                 "mime_type": "image/jpeg",
-#                 "size": 44552,
-#                 "width": 600,
-#                 "height": 600,
-#                 "dpi": 43,
-#                 "status": "ok",
-#                 "created": 1557464245,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_preview.png",
-#                 "visible": false
-#             }
-#         ],
-#     },
-#     {
-#         "id": 1285717316,
-#         "external_id": "5cd504b59c1882",
-#         "sync_product_id": 113827625,
-#         "name": "Short-Sleeve Unisex T-Shirt - 2XL",
-#         "synced": true,
-#         "variant_id": 597,
-#         "retail_price": "12.85",
-#         "currency": "USD",
-#         "product": {
-#             "variant_id": 597,
-#             "product_id": 12,
-#             "image": "https://d1yg28hrivmbqm.cloudfront.net/products/12/597_1517916587.jpg",
-#             "name": "Gildan 64000 Unisex Softstyle T-Shirt with Tear Away (White / 2XL)"
-#         },
-#         "files": [
-#             {
-#                 "id": 110650949,
-#                 "type": "default",
-#                 "hash": "43e57eb8d50054b23a711566b2bf8709",
-#                 "url": null,
-#                 "filename": "MetaBake-tshirt.png",
-#                 "mime_type": "image/png",
-#                 "size": 194883,
-#                 "width": 3840,
-#                 "height": 2160,
-#                 "dpi": 72,
-#                 "status": "ok",
-#                 "created": 1555421319,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_preview.png",
-#                 "visible": true
-#             },
-#             {
-#                 "id": 114690291,
-#                 "type": "sleeve_right",
-#                 "hash": "3964542a197d7ea97c1016e5dd75647d",
-#                 "url": null,
-#                 "filename": "printfile-6964d049.png",
-#                 "mime_type": "image/png",
-#                 "size": 7404,
-#                 "width": 600,
-#                 "height": 525,
-#                 "dpi": 150,
-#                 "status": "ok",
-#                 "created": 1557464241,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_preview.png",
-#                 "visible": false
-#             },
-#             {
-#                 "id": 114690312,
-#                 "type": "preview",
-#                 "hash": "5dc5ffd5171bee3880147b059a77eb73",
-#                 "url": null,
-#                 "filename": "mockup-01fabecd.jpg",
-#                 "mime_type": "image/jpeg",
-#                 "size": 44552,
-#                 "width": 600,
-#                 "height": 600,
-#                 "dpi": 43,
-#                 "status": "ok",
-#                 "created": 1557464245,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_preview.png",
-#                 "visible": false
-#             }
-#         ],
-#     },
-#     {
-#         "id": 1285717317,
-#         "external_id": "5cd504b59c18b8",
-#         "sync_product_id": 113827625,
-#         "name": "Short-Sleeve Unisex T-Shirt - 3XL",
-#         "synced": true,
-#         "variant_id": 628,
-#         "retail_price": "14.30",
-#         "currency": "USD",
-#         "product": {
-#             "variant_id": 628,
-#             "product_id": 12,
-#             "image": "https://d1yg28hrivmbqm.cloudfront.net/products/12/628_1517916592.jpg",
-#             "name": "Gildan 64000 Unisex Softstyle T-Shirt with Tear Away (White / 3XL)"
-#         },
-#         "files": [
-#             {
-#                 "id": 110650949,
-#                 "type": "default",
-#                 "hash": "43e57eb8d50054b23a711566b2bf8709",
-#                 "url": null,
-#                 "filename": "MetaBake-tshirt.png",
-#                 "mime_type": "image/png",
-#                 "size": 194883,
-#                 "width": 3840,
-#                 "height": 2160,
-#                 "dpi": 72,
-#                 "status": "ok",
-#                 "created": 1555421319,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/43e/43e57eb8d50054b23a711566b2bf8709_preview.png",
-#                 "visible": true
-#             },
-#             {
-#                 "id": 114690291,
-#                 "type": "sleeve_right",
-#                 "hash": "3964542a197d7ea97c1016e5dd75647d",
-#                 "url": null,
-#                 "filename": "printfile-6964d049.png",
-#                 "mime_type": "image/png",
-#                 "size": 7404,
-#                 "width": 600,
-#                 "height": 525,
-#                 "dpi": 150,
-#                 "status": "ok",
-#                 "created": 1557464241,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/396/3964542a197d7ea97c1016e5dd75647d_preview.png",
-#                 "visible": false
-#             },
-#             {
-#                 "id": 114690312,
-#                 "type": "preview",
-#                 "hash": "5dc5ffd5171bee3880147b059a77eb73",
-#                 "url": null,
-#                 "filename": "mockup-01fabecd.jpg",
-#                 "mime_type": "image/jpeg",
-#                 "size": 44552,
-#                 "width": 600,
-#                 "height": 600,
-#                 "dpi": 43,
-#                 "status": "ok",
-#                 "created": 1557464245,
-#                 "thumbnail_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_thumb.png",
-#                 "preview_url": "https://d1yg28hrivmbqm.cloudfront.net/files/5dc/5dc5ffd5171bee3880147b059a77eb73_preview.png",
-#                 "visible": false
-#             }
-#         ],
-#     }
-# ]

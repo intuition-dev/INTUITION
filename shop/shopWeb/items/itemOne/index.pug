@@ -1,62 +1,55 @@
 extends /layout/layout
 
 block main
-    .contaner
-        .columns
-            .col-10.col-mx-auto
-                .card
-                    .card-image
-                        .carousel
-                            // carousel locator
-                            each img, index in images
-                                input.carousel-locator(type='radio', name='carousel-radio', hidden='', checked='', id="slide-{index}")
-                            // carousel container
-                            .carousel-container
-                                // carousel item
-                                each img, index in images
-                                    figure.carousel-item
-                                        label.item-prev.btn.btn-action.btn-lg(for='slide-'+(index==0 ? images.length-1: index-1))
-                                            i.icon.icon-arrow-left
-                                        label.item-next.btn.btn-action.btn-lg(for='slide-'+(index == images.length-1 ? 0 : index))
-                                            i.icon.icon-arrow-right
-                                        img.img-responsive.rounded(src=img, alt='t-shirt')
-                            // carousel navigation
-                            .carousel-nav
-                                label.nav-item.text-hide.c-hand(each='{img, index in images}' for='slide-{index}') {index}
-                    .card-header
-                        .card-title.h5 #{title}
-                        .card-subtitle.text-gray #{subtitle}
-                    .card-body
-                        | #{desc}
-                        select(name="select-size")#select-size.form-select
-                            each variant, index in sync_variants
-                                option(value=variant.variant_id) #{variant.size}
-                    .card-footer
+   .contaner
+      .columns
+         .col-10.col-mx-auto
+            .card
+               .card-image
+                  .carousel
+                        // carousel locator
+                        each img, index in images
+                           input.carousel-locator(type='radio', name='carousel-radio', hidden='', checked='', id="slide-{index}")
+                        // carousel container
+                        .carousel-container
+                           // carousel item
+                           each img, index in images
+                              figure.carousel-item
+                                    label.item-prev.btn.btn-action.btn-lg(for='slide-'+(index==0 ? images.length-1: index-1))
+                                       i.icon.icon-arrow-left
+                                    label.item-next.btn.btn-action.btn-lg(for='slide-'+(index == images.length-1 ? 0 : index))
+                                       i.icon.icon-arrow-right
+                                    img.img-responsive.rounded(src=img, alt='t-shirt')
+                        // carousel navigation
+                        .carousel-nav
+                           label.nav-item.text-hide.c-hand(each='{img, index in images}' for='slide-{index}') {index}
+               .card-header
+                  .card-title.h5 #{title}
+                  .card-subtitle.text-gray #{subtitle}
+               .card-body
+                  | #{desc}
+                  select(name="select-size")#select-size.form-select
                         each variant, index in sync_variants
-                            button.btn.btn-primary(
-                                class="snipcart-add-item"
-                                data-item-id=variant.variant_id
-                                data-item-name=variant.name
-                                data-item-url="/items/"+url
-                                data-item-price=(+variant.price+ +shipping_coverage + +profit)
-                                data-item-weight="1"
-                                data-item-metadata='{"sync_variant_id": '+ variant.sync_variant_id+ '}'
-                                style="display:"+variant.hide
-                                )#my-button Buy if for #{(+variant.price+ +shipping_coverage + +profit)} USD
-                    button#test-connection Test Connection
+                           option(value=variant.variant_id) #{variant.size}
+               .card-footer
+                  each variant, index in sync_variants
+                        button.btn.btn-primary(
+                           class="snipcart-add-item"
+                           data-item-id=variant.variant_id
+                           data-item-name=variant.name
+                           data-item-url="/items/"+url
+                           data-item-price=(+variant.price+ +shipping_coverage + +profit)
+                           data-item-weight="1"
+                           data-item-metadata='{"sync_variant_id": '+ variant.sync_variant_id+ '}'
+                           style="display:"+variant.hide
+                           )#my-button Buy if for #{Math.round((+variant.price+ +shipping_coverage + +profit)*100)  /100} USD
 
-    script.
-        depp.require(['shop-item'], function() {
-            $('#select-size').change(function() {
-                $('.snipcart-add-item').hide();
-                
-                var s = $('.snipcart-add-item[data-item-id="' + $(this).val() + '"]');
-                s.show();
-            });
-            
-            //- var serviceRPC = new httpRPC('http', 'localhost', '3000')
-            
-            //- $('#test-connection').on('click', function(ev){
-            //-     serviceRPC.invoke('/test', 'test-connection', {id: 1})
-            //- })
-        })
+   script.
+      depp.require(['shop-item'], function() {
+         $('#select-size').change(function() {
+               $('.snipcart-add-item').hide();
+               
+               var s = $('.snipcart-add-item[data-item-id="' + $(this).val() + '"]');
+               s.show();
+         });
+      })
