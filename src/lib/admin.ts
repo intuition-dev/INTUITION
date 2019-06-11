@@ -1,7 +1,6 @@
-import { ExpressRPC, RPCBasicAuth } from 'mbake/lib/Serv';
+import { ExpressRPC } from 'mbake/lib/Serv';
 import { Email } from './Email';
 import { ADB } from '../lib/ADB';
-const adbDB = new ADB();
 
 export class AdminRoutes {
    routes(adbDB) {

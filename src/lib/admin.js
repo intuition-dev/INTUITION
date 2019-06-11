@@ -2,8 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
 const Email_1 = require("./Email");
-const ADB_1 = require("../lib/ADB");
-const adbDB = new ADB_1.ADB();
 class AdminRoutes {
     routes(adbDB) {
         const emailJs = new Email_1.Email();
