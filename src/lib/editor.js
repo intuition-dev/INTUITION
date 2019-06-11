@@ -132,7 +132,7 @@ class EditorRoutes {
                 content = Buffer.from(content, 'base64');
                 if (typeof post_id !== 'undefined') {
                     let md = '/' + pathPrefix + post_id;
-                    let fileOps = new FileOpsExtra_1.FileOps(mountPath);
+                    let fileOps = new FileOpsBase_1.FileOps(mountPath);
                     fileOps.write(md, content);
                     let dirCont = new FileOpsBase_1.Dirs(mountPath);
                     let substring = '/';
@@ -142,7 +142,7 @@ class EditorRoutes {
                         if (!fs.existsSync(mountPath + archivePath)) {
                             fs.mkdirSync(mountPath + archivePath);
                         }
-                        let archiveFileOps = new FileOpsExtra_1.FileOps(mountPath + archivePath);
+                        let archiveFileOps = new FileOpsBase_1.FileOps(mountPath + archivePath);
                         let extension = path.extname(post_id);
                         let fileName = path.basename(post_id, extension);
                         let count = archiveFileOps.count(path.basename(post_id));
@@ -230,7 +230,7 @@ class EditorRoutes {
                     else {
                         newPost = mountPath + '/' + post_id;
                     }
-                    let fileOps = new FileOpsExtra_1.FileOps('/');
+                    let fileOps = new FileOpsBase_1.FileOps('/');
                     fileOps.clone(postPath, newPost);
                     resp.result = { data: 'OK' };
                     res.json(resp);
