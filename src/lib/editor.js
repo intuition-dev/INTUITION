@@ -6,13 +6,10 @@ const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const Serv_1 = require("mbake/lib/Serv");
 class EditorRoutes {
     routes(adbDB) {
-        const bodyParser = require("body-parser");
         const fs = require('fs');
         const path = require('path');
-        const fileUpload = require('express-fileupload');
         let mountPath = '';
         const appE = Serv_1.ExpressRPC.makeInstance(['http://localhost:9081']);
-        appE.use(fileUpload());
         appE.use((request, response, next) => {
             const params = JSON.parse(request.fields.params);
             const resp = {};
@@ -39,12 +36,8 @@ class EditorRoutes {
                 return response.json(resp);
             });
         });
-        appE.use(bodyParser.json());
-        appE.use(bodyParser.text());
-        appE.use(bodyParser.urlencoded({ extended: true }));
         appE.post('/checkEditor', (req, res) => {
             const method = req.fields.method;
-            let params = JSON.parse(req.fields.params);
             let resp = {};
             if ('check-editor' == method) {
                 resp.result = {};
@@ -259,16 +252,16 @@ class EditorRoutes {
             if ('post' == method) {
                 let uploadPath;
                 let pathPrefix = params.pathPrefix;
-                let fileupload = params.fileupload;
                 if (Object.keys(req.files).length == 0) {
-                    return res.status(400).send('No files were uploaded.');
+                    res.status(400);
+                    resp.result = { error: 'no file was uploaded' };
+                    return res.json(resp);
                 }
                 let sampleFile = req.files.sampleFile;
                 uploadPath = mountPath + '/' + pathPrefix + '/' + sampleFile.name;
-                sampleFile.mv(uploadPath, function (err) {
-                    if (err) {
-                        return res.status(500).send(err);
-                    }
+                fs.rename(sampleFile.path, uploadPath, function (err) {
+                    if (err)
+                        throw err;
                     resp.result = { data: 'File uploaded!' };
                     res.json(resp);
                 });
