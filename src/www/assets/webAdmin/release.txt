@@ -1,6 +1,4 @@
-.js here and min.js are linked. You can just edit in WebAdmin/www/assets.
 
-.js Api ver must match server-side WebAdmin.
 
 Then build docs and release /API via npm publish. Files are linked (ln without -s).
 Then, change to not use local WebAdmin.min.js - get it from CDN. Via defs-setup.
