@@ -65,30 +65,40 @@ export class AdminRoutes {
          }
       });
 
-      adminApp.post('/setup-shop', (req, res)=>{
+      adminApp.post('/setup-app', async (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
-         let pathToShop = params.pathToShop
-         let snipcartApi = params.snipcartApi
+         let item = params.item
 
          let resp: any = {};
 
          console.log('-------res.locals', res.locals.email)
-         if ('setup-shop' == method) {
+         if ('setup-app' == method) {
             resp.result = {}
             try {
-               
-               new Download('CMS', path.join(__dirname,'../')).autoZ()
-               // adbDB.getAdminId(res.locals.email)
-               //    .then(function(result){
-               //       console.log("TCL: AdminRoutes -> routes -> result", result)
-               //       adbDB.setupShop(pathToShop, snipcartApi, result[0].id)
-               //    })
+               var setupItem = ''
+               switch (item) {
+                  case 'blog':
+                     setupItem = 'CMS'
+                     await new Download('CMS', path.join(__dirname, '../')).autoZ()
+                     break;
+                  case 'shop':
+                     setupItem = 'SHOP'
+                     await new Download('SHOP', path.join(__dirname, '../')).autoZ()
+                     break;
+                  case 'website':
+                     setupItem = 'website'
+                     await new Download('website', path.join(__dirname, '../')).autoZ()
+                     break;
+               }
 
-
-               resp.result = true
-               return res.json(resp)
-
+               let adminId = await adbDB.getAdminId(res.locals.email)
+               await adbDB.setupApp(path.join(__dirname, '../' + setupItem), adminId[0].id)
+                  .then(function (result) {
+                     console.log("TCL: AdminRoutes -> routes -> result", result)
+                     resp.result = true;
+                     return res.json(resp);
+                  })
             } catch (err) {
                // next(err);
             }

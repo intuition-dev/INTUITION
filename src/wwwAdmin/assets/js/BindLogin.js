@@ -13,32 +13,12 @@ class BindLogin {
                     window.sessionStorage.setItem('username', email);
                     window.sessionStorage.setItem('password', pass);
 
-                    window.location = '/admin/home';
+                    window.location = '/admin/setup';
                 } else {
                     window.location = '/admin'
                 }
             })
     }
-
-    setupShop(shopConfigs) {
-        console.log("TCL: BindLogin -> setupShop -> shopConfigs", shopConfigs)
-        var pathToShop = shopConfigs.filter(function(config) {
-            if (config.name == 'path') {
-                return config
-            }
-        })[0].value
-        var snipcartApi = shopConfigs.filter(function(config) {
-            if (config.name == 'snipcart') {
-                return config
-            }
-        })[0].value
-
-        this.AdminWebAdmin.setupShop(pathToShop, snipcartApi)
-            .then(function(result) {
-                console.info("--result:", result)
-            })
-    }
-
     signOut() {
         sessionStorage.removeItem('username');
         console.info("--sessionStorage:", sessionStorage)

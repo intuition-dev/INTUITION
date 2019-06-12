@@ -153,8 +153,8 @@ class ADB {
             return rows;
         });
     }
-    setupShop(pathToShop, snipcartApi, adminId) {
-        return this.db.all(`UPDATE configs SET pathToSite='${pathToShop}', snipcartAPI='${snipcartApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+    setupApp(pathToShop, adminId) {
+        return this.db.all(`UPDATE configs SET pathToSite='${pathToShop}' WHERE adminId='${adminId}'`, [], function (err, rows) {
             if (err) {
             }
             return rows;

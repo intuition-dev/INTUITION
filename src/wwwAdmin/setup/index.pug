@@ -1,0 +1,55 @@
+extends ../layout/layout
+block content
+   .loader.lds-css.ng-scope
+      .text Deploying
+      .lds-ellipsis(style='width:100%;height:100%')
+         div
+            div
+         div
+            div
+         div
+            div
+         div
+            div
+         div
+            div
+   .page-content.container
+
+      .columns
+         .col-settings
+               ul.user-area
+                  li.site-brand.divider Site Name
+                  li.user-name
+                  li
+                     a(href='#').sign-out#sign-out Sign out
+               div.logo.js-enable-pug Your Logo Here
+         
+         .col-content
+            h1.table-header Users
+            .table-wrap
+               #editors-table.table-custom
+               .space-2v
+               .columns
+                  button.btn.mr-2#setup-website Install Website
+                  button.btn.mr-2#setup-blog Install Blog
+                  button.btn#setup-shop Install Shop
+      .notification.d-hide
+         .text
+   script.
+      depp.require('setup-page', function () {
+         var bindSetup = new BindSetup()
+         
+         $('#sign-out').off('click').on('click',function (e) {
+               bindSetup.signOut()
+         });
+
+         $('#setup-shop').off('click').on('click', function(e){
+               bindSetup.setupApp('shop')
+         })
+         $('#setup-blog').off('click').on('click', function(e){
+               bindSetup.setupApp('blog')
+         })
+         $('#setup-website').off('click').on('click', function(e){
+               bindSetup.setupApp('website')
+         })
+      })

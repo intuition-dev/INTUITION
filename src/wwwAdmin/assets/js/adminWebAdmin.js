@@ -32,8 +32,8 @@ class AdminWebAdmin {
             })
     }
 
-    setupShop(pathToShop, snipcartApi) {
-        return this.serviceRpc.invoke('/api/admin/setup-shop', 'setup-shop', { pathToShop: pathToShop, snipcartApi: snipcartApi, admin_email: window.sessionStorage.getItem('username'), admin_pass: window.sessionStorage.getItem('password') });
+    setupApp(item) {
+        return this.serviceRpc.invoke('/api/admin/setup-app', 'setup-app', { item: item, admin_email: window.sessionStorage.getItem('username'), admin_pass: window.sessionStorage.getItem('password') });
     }
 
     /**

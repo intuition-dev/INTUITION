@@ -37,7 +37,7 @@ export class ADB { // auth & auth DB
       });
    }
 
-   checkDB(path){
+   checkDB(path) {
       return fs.existsSync(path)
    }
 
@@ -49,11 +49,11 @@ export class ADB { // auth & auth DB
             }
             return row
          }).then(function (row) {
-            if(typeof row !='undefined'){
+            if (typeof row != 'undefined') {
                bcrypt.compare(password, row.password, function (err, res) {
                   resolve(res)
                })
-            }else{
+            } else {
                resolve(false)
             }
          })
@@ -85,7 +85,7 @@ export class ADB { // auth & auth DB
                         resolve(temp)
                      })
                   });
-            }else{
+            } else {
                let temp = {}
                temp['pass'] = false
                resolve(temp)
@@ -93,7 +93,7 @@ export class ADB { // auth & auth DB
          })
       })
    }
-   
+
    getEditors() {
       return this.db.all(`SELECT id, name, email FROM editors`, [], function (err, rows) {
          if (err) {
@@ -166,7 +166,7 @@ export class ADB { // auth & auth DB
    }
 
    //get admin id, to use it later on updating configs, when setting up the shop
-   getAdminId(email){
+   getAdminId(email) {
       return this.db.all(`SELECT id FROM admin WHERE email='${email}'`, [], function (err, rows) {
          if (err) {
          }
@@ -174,8 +174,8 @@ export class ADB { // auth & auth DB
       })
    }
 
-   setupShop(pathToShop, snipcartApi, adminId){
-      return this.db.all(`UPDATE configs SET pathToSite='${pathToShop}', snipcartAPI='${snipcartApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+   setupApp(pathToShop, adminId) {
+      return this.db.all(`UPDATE configs SET pathToSite='${pathToShop}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
          }
          return rows

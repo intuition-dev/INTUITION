@@ -47,9 +47,6 @@ block content
                   a(href='#')#edit-editor.btn-custom.btn-primary Edit
                   a(href='#')#delete-editor.btn-custom.btn-secondary
                      span Delete
-               .columns
-                  button.btn.mr-2 Setup Blog
-                  button.btn#setup-shop Setup Shop
       .notification.d-hide
          .text
       #modal-shop.modal
@@ -76,13 +73,4 @@ block content
          $('#sign-out').off('click').on('click',function (e) {
                bindLogin.signOut()
          });
-
-         $('#setup-shop').off('click').on('click', function(e){
-            $('#modal-shop').addClass('active')
-            $('#save-shop-config').off('click').on('click', function(e){
-               var shop_configs = $('#form-shop-configs').serializeArray()
-               bindLogin.setupShop(shop_configs)
-               $('#modal-shop').removeClass('active')
-            })
-         })
       })
