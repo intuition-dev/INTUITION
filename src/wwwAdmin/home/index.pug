@@ -29,27 +29,10 @@ block content
             .table-wrap
                #editors-table.table-custom
                .space-2v
-               form#editor-form.grid-form
-                  fieldset
-                     legend Select row to edit/remove editor, to add editor type in new editor's login credentials
-                     div(data-row-span='3')
-                        div(data-field-span='1')
-                           label Email
-                           input(type='text', name='email')
-                        div(data-field-span='1')
-                           label Name
-                           input(type='text', name='name')
-                        div(data-field-span='1')
-                           label Password
-                           input(type='password', name='password', required='required', minlength='6')
-               .btn-row.space-2v
-                  a(href='#')#add-editor.btn-custom.btn-primary Add
-                  a(href='#')#edit-editor.btn-custom.btn-primary Edit
-                  a(href='#')#delete-editor.btn-custom.btn-secondary
-                     span Delete
                .columns
-                  button.btn.mr-2 Setup Blog
-                  button.btn#setup-shop Setup Shop
+                  button.btn.mr-2 Install Website
+                  button.btn.mr-2 Install Blog
+                  button.btn#setup-shop Install Shop
       .notification.d-hide
          .text
       #modal-shop.modal
@@ -78,11 +61,11 @@ block content
          });
 
          $('#setup-shop').off('click').on('click', function(e){
-            $('#modal-shop').addClass('active')
-            $('#save-shop-config').off('click').on('click', function(e){
+            //- $('#modal-shop').addClass('active')
                var shop_configs = $('#form-shop-configs').serializeArray()
                bindLogin.setupShop(shop_configs)
-               $('#modal-shop').removeClass('active')
-            })
+            //- $('#save-shop-config').off('click').on('click', function(e){
+            //-    $('#modal-shop').removeClass('active')
+            //- })
          })
       })

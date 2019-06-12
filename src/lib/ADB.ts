@@ -19,19 +19,19 @@ export class ADB { // auth & auth DB
       // run some code and:
       return 'editor'
    }
-   async addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite) {
+   async addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
       let randomID = '_' + Math.random().toString(36).substr(2, 9)
       var salt = bcrypt.genSaltSync(10);
       var hashPass = bcrypt.hashSync(password, salt);
 
       await this.db.run(`CREATE TABLE admin(id, email, password, vcode)`);
-      await this.db.run(`CREATE TABLE configs(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite)`);
+      await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi)`);
       await this.db.run(`CREATE TABLE editors(id, email, password, name, vcode)`);
       await this.db.run(`INSERT INTO admin(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
          if (err) {
          }
       });
-      await this.db.run(`INSERT INTO configs(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite) VALUES('${emailjsService_id}', '${emailjsTemplate_id}', '${emailjsUser_id}', '${pathToSite}')`, function (err) {
+      await this.db.run(`INSERT INTO configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id) VALUES('${randomID}', '${emailjsService_id}', '${emailjsTemplate_id}', '${emailjsUser_id}')`, function (err) {
          if (err) {
          }
       });
@@ -159,6 +159,23 @@ export class ADB { // auth & auth DB
 
    getEmailJsSettings() {
       return this.db.all(`SELECT emailjsService_id, emailjsTemplate_id, emailjsUser_id FROM configs`, [], function (err, rows) {
+         if (err) {
+         }
+         return rows
+      })
+   }
+
+   //get admin id, to use it later on updating configs, when setting up the shop
+   getAdminId(email){
+      return this.db.all(`SELECT id FROM admin WHERE email='${email}'`, [], function (err, rows) {
+         if (err) {
+         }
+         return rows
+      })
+   }
+
+   setupShop(pathToShop, snipcartApi, adminId){
+      return this.db.all(`UPDATE configs SET pathToSite='${pathToShop}', snipcartAPI='${snipcartApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
          }
          return rows

@@ -11,23 +11,6 @@ const app = ExpressRPC.makeInstance(config.cors);
 
 const port = 3000
 
-app.post('/test', function (req, res) {
-   const method = req.fields.method
-   console.info("--method:", method)
-   const params = JSON.parse(req.fields.params)
-   console.info("--params:", params)
-   const resp: any = {} // new response that will be set via the specific method passed
-
-   if ('test-connection' == method) {
-   } else {
-      resp.errorLevel = -1
-      resp.errorMessage = 'mismatch'
-      console.log('noway', resp)
-      res.json(resp)
-   }
-
-})
-
 app.post('/printful-rate', function (req, res) {
    console.info("1)-------printful-rate req:", req.fields)
 

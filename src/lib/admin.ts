@@ -1,6 +1,8 @@
 import { ExpressRPC } from 'mbake/lib/Serv';
+import { Download } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
-import { ADB } from '../lib/ADB';
+
+var path = require('path');
 
 export class AdminRoutes {
    routes(adbDB) {
@@ -25,6 +27,7 @@ export class AdminRoutes {
             .then(function (pass) {
                resp.result = {}
                if (pass) {
+                  response.locals.email = email
                   return next()
                } else {
                   resp.errorLevel = -1
@@ -61,6 +64,38 @@ export class AdminRoutes {
             return res.json(resp);
          }
       });
+
+      adminApp.post('/setup-shop', (req, res)=>{
+         const method = req.fields.method;
+         let params = JSON.parse(req.fields.params)
+         let pathToShop = params.pathToShop
+         let snipcartApi = params.snipcartApi
+
+         let resp: any = {};
+
+         console.log('-------res.locals', res.locals.email)
+         if ('setup-shop' == method) {
+            resp.result = {}
+            try {
+               
+               new Download('CMS', path.join(__dirname,'../')).autoZ()
+               // adbDB.getAdminId(res.locals.email)
+               //    .then(function(result){
+               //       console.log("TCL: AdminRoutes -> routes -> result", result)
+               //       adbDB.setupShop(pathToShop, snipcartApi, result[0].id)
+               //    })
+
+
+               resp.result = true
+               return res.json(resp)
+
+            } catch (err) {
+               // next(err);
+            }
+         } else {
+            return res.json(resp);
+         }
+      })
 
       adminApp.post('/resetPassword', (req, res) => {
          const method = req.fields.method;

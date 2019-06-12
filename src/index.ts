@@ -15,17 +15,8 @@ import { VersionNag  } from 'mbake/lib/FileOpsExtra'
 const dbName = 'ADB.sqlite'
 const pathToDb = path.join(__dirname,dbName)
 
-// why this line?
-const bodyParser = require("body-parser");
 const appPORT = '9081';
 const mainApp = ExpressRPC.makeInstance(['http://localhost:'+appPORT]);
-
-// why this line?
-mainApp.use(bodyParser.json());
-// why this line?
-mainApp.use(bodyParser.text());
-// why this line?
-mainApp.use(bodyParser.urlencoded({ extended: true })); //To handle HTTP POST request in Express
 
 import opn = require('open')
 const emailJs = new Email();
@@ -90,7 +81,6 @@ mainApp.post("/setup", async (req, res) => {
    let emailjsService_id = params.emailjsService_id
    let emailjsTemplate_id = params.emailjsTemplate_id
    let emailjsUser_id = params.emailjsUser_id
-   let pathToSite = params.pathToSite
 
    let resp: any = {}; // new response that will be set via the specific method passed
    if ('setup' == method) {
@@ -98,7 +88,7 @@ mainApp.post("/setup", async (req, res) => {
       // res.send(resp)
       try {
          console.info('setup called ...');
-         adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite);
+         adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id);
          console.info('db cretated  ...');
          let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
          emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);

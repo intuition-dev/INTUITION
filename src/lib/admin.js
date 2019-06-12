@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
+const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const Email_1 = require("./Email");
+var path = require('path');
 class AdminRoutes {
     routes(adbDB) {
         const emailJs = new Email_1.Email();
@@ -20,6 +22,7 @@ class AdminRoutes {
                 .then(function (pass) {
                 resp.result = {};
                 if (pass) {
+                    response.locals.email = email;
                     return next();
                 }
                 else {
@@ -43,6 +46,27 @@ class AdminRoutes {
             if ('check-admin' == method) {
                 resp.result = {};
                 try {
+                    resp.result = true;
+                    return res.json(resp);
+                }
+                catch (err) {
+                }
+            }
+            else {
+                return res.json(resp);
+            }
+        });
+        adminApp.post('/setup-shop', (req, res) => {
+            const method = req.fields.method;
+            let params = JSON.parse(req.fields.params);
+            let pathToShop = params.pathToShop;
+            let snipcartApi = params.snipcartApi;
+            let resp = {};
+            console.log('-------res.locals', res.locals.email);
+            if ('setup-shop' == method) {
+                resp.result = {};
+                try {
+                    new FileOpsExtra_1.Download('CMS', path.join(__dirname, '../')).autoZ();
                     resp.result = true;
                     return res.json(resp);
                 }

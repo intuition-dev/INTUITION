@@ -12,12 +12,8 @@ const adbDB = new ADB_1.ADB();
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const dbName = 'ADB.sqlite';
 const pathToDb = path.join(__dirname, dbName);
-const bodyParser = require("body-parser");
 const appPORT = '9081';
 const mainApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + appPORT]);
-mainApp.use(bodyParser.json());
-mainApp.use(bodyParser.text());
-mainApp.use(bodyParser.urlencoded({ extended: true }));
 const opn = require("open");
 const emailJs = new Email_1.Email();
 FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
@@ -65,13 +61,12 @@ mainApp.post("/setup", async (req, res) => {
     let emailjsService_id = params.emailjsService_id;
     let emailjsTemplate_id = params.emailjsTemplate_id;
     let emailjsUser_id = params.emailjsUser_id;
-    let pathToSite = params.pathToSite;
     let resp = {};
     if ('setup' == method) {
         resp.result = {};
         try {
             console.info('setup called ...');
-            adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite);
+            adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id);
             console.info('db cretated  ...');
             let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
             emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
