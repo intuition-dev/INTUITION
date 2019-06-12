@@ -10,13 +10,9 @@
   },
   "dependencies": {
     "js-yaml": ">=3.13.1",
-    "mbake": ">=6.6.5",
-    "intu": ">=0.9.6"
+    "intu": ">=0.9.8"
   },
-  "bundledDependencies": [
-   "mbake"
-],
   "devDependencies": {
-    "@types/node": ">=12.0.7"
+    "@types/node": ">=12.0.8"
   }
 }

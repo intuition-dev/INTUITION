@@ -9,16 +9,28 @@ const Email_1 = require("./lib/Email");
 var path = require('path');
 const fs = require('fs-extra');
 const adbDB = new ADB_1.ADB();
+const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
+const dbName = 'ADB.sqlite';
+const pathToDb = path.join(__dirname, dbName);
 const bodyParser = require("body-parser");
 const appPORT = '9081';
 const mainApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + appPORT]);
-const dbName = 'ADB.sqlite';
-const pathToDb = path.join(__dirname, dbName);
 mainApp.use(bodyParser.json());
 mainApp.use(bodyParser.text());
 mainApp.use(bodyParser.urlencoded({ extended: true }));
 const opn = require("open");
 const emailJs = new Email_1.Email();
+FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
+    try {
+        if (!isCurrent_)
+            console.log('There is a newer version of mbake CLI, please update.');
+        else
+            console.log('You have the current version of mbake CLI');
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 try {
     if (adbDB.checkDB(pathToDb)) {
         console.log('run admin');

@@ -39,7 +39,7 @@
   dependencies:
     "@types/babel-types" "*"
 
-"@types/node@*", "@types/node@>=12.0.7":
+"@types/node@*", "@types/node@>=12.0.8":
   version "12.0.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.8.tgz#551466be11b2adc3f3d47156758f610bd9f6b1d8"
   integrity sha512-b8bbUOTwzIY3V5vDTY1fIJ+ePKDUBqt2hC2woVGotdQQhG/2Sh62HOKHrT7ab+VerXAcPyAiTEipPu/FsreUtg==
@@ -1908,17 +1908,17 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-intu@>=0.9.6:
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/intu/-/intu-0.9.6.tgz#10be51e37dc7d12962de7c0b55589fee03b58b20"
-  integrity sha512-2f1BoDCRGQeu237aTMSOakAWAaMpQ6w4luBZb3ie48JKJVoap6xQthVGJi5Ah1QzfvJxSiVE451Vkp8P/Wus4w==
+intu@>=0.9.8:
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/intu/-/intu-0.9.8.tgz#63ef809dde0e942ad0f75bec237ce24e229d40ec"
+  integrity sha512-gbrnw0pasHZC+jbk5P3kuTs8Dx04QjeXSVg6fy7xND+aJ6pLj6hZ0sMTKP4E7kb2wRJ2QZ7conGB6qyUY875jg==
   dependencies:
     axios ">=0.19.0"
     bcryptjs ">=2.4.3"
     express-fileupload ">=1.1.5"
     fs-extra ">=8.0.1"
     js-yaml ">=3.13.1"
-    mbake ">=6.6.5"
+    mbake ">=6.6.20"
     sqlite ">=3.0.3"
 
 inversify@4.13.0:
@@ -2424,10 +2424,10 @@ markdown-it@>=8.4.2, markdown-it@^8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.6.5:
-  version "6.6.9"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.9.tgz#ba65949d804aaa3e338686893749d1d9827ace34"
-  integrity sha512-pOjKY+LlUTXe8ThdeyXNK00yPgqVSjVL9TE1a3nQ2qEv0q3w4Xcdemoq9INimdXXYQupb1ev5ns070pnWRvgIQ==
+mbake@>=6.6.20:
+  version "6.6.20"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.20.tgz#444071f6f8d98bd10a795a33965449b0c91fd9bb"
+  integrity sha512-pf0zqJZhPpEihQ+O6b3fOb1QMmi9xLERXkgR513ef/9pWlXKXjOkMmE0FmtPwDmBvCcLS2tgJ389XtfL3D98hA==
   dependencies:
     "@marp-team/marpit" ">=1.1.0"
     adm-zip ">=0.4.13"
