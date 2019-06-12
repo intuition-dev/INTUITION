@@ -7,14 +7,11 @@ depp.define({
         'snipcart': [
             "//cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
         ],
-        //   'shop-item': [
-        //       '#snipLoaded',
-        //   ]
     }) //define
 
 depp.require(['DOM', 'pre', 'snipcart'], onLoaded) //d2
 
-loadSnipCart('MjAwOGYyNjAtYTJiOS00ZjgzLThjYmYtYzFjYjY5NDAwYjcxNjM2OTE4MzUyMzc4NzIxNjYx')
+loadSnipCart(SNIPCART_API)
     .then(function(res) {
         depp.done('shop-item')
     })

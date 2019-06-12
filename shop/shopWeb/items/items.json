@@ -3,12 +3,9 @@
   "mbVer": "v6.06.07",
   "items": [
     {
-      "title": "Short-Sleeve Unisex T-Shirt",
+      "snipcartApi": "YOURSNIPCART_API_HERE",
+      "title": "Short-Sleeve Unisex T-Shirt editables",
       "id": 118054659,
-      "name": "Short-Sleeve Unisex T-Shirt",
-      "retail_price": "16,32",
-      "weight": 0,
-      "currency": "USD",
       "image": "mockup-e4d14921.jpg",
       "images": [
         "mockup-e4d14921.jpg",
@@ -72,9 +69,10 @@
       "index": 0
     },
     {
+      "snipcartApi": "YOURSNIPCART_API_HERE",
       "title": "Short-Sleeve Unisex T-Shirt BLACK",
       "id": 118058993,
-      "name": "Short-Sleeve Unisex T-Shirt BLACK",
+      "name": "Short-Sleeve Unisex T-Shirt BLACKy",
       "retail_price": "16,32",
       "weight": 0,
       "currency": "USD",

@@ -1,5 +1,6 @@
 basedir: ../../
 ROOT: /
+snipcartApi: YOURSNIPCART_API_HERE
 
 title: Short-Sleeve Unisex T-Shirt editables
 id: 118054659 #sync_product id

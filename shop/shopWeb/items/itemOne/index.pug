@@ -45,6 +45,7 @@ block main
                            )#my-button Buy if for #{Math.round((+variant.price+ +shipping_coverage + +profit)*100)  /100} USD
 
    script.
+      //- window.snipcartID = '#{snipcartApi}'
       depp.require(['shop-item'], function() {
          $('#select-size').change(function() {
                $('.snipcart-add-item').hide();
