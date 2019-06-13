@@ -83,8 +83,8 @@ export class AdminRoutes {
                      await new Download('CMS', path.join(__dirname, '../')).autoZ()
                      break;
                   case 'shop':
-                     setupItem = 'SHOP'
-                     await new Download('shop', path.join(__dirname, '../')).autoZ()
+                     setupItem = 'shop'
+                     await new Download('SHOP', path.join(__dirname, '../')).autoZ()
                      break;
                   case 'website':
                      setupItem = 'website'

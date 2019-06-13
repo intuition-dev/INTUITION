@@ -56,14 +56,14 @@ class Posts {
     saveMd(id, md, pathPrefix) {
         return this.webAdmin.savePostMd(id, md, pathPrefix)
             .then(function(resp) {
-                return resp.data.data
+                return resp.data
             })
     }
 
     compile(id, md, pathPrefix) {
         return this.webAdmin.build(id, md, pathPrefix)
             .then(function(resp) {
-                return resp.data.data
+                return resp.data
             })
     }
 

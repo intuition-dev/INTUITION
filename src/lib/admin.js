@@ -72,8 +72,8 @@ class AdminRoutes {
                             await new FileOpsExtra_1.Download('CMS', path.join(__dirname, '../')).autoZ();
                             break;
                         case 'shop':
-                            setupItem = 'SHOP';
-                            await new FileOpsExtra_1.Download('shop', path.join(__dirname, '../')).autoZ();
+                            setupItem = 'shop';
+                            await new FileOpsExtra_1.Download('SHOP', path.join(__dirname, '../')).autoZ();
                             break;
                         case 'website':
                             setupItem = 'website';
