@@ -8,8 +8,8 @@ retail_price: "16,32"
 weight: 0
 currency: "USD"
 
-image: mockup-b1f2bfb1.jpg
-images: [mockup-b1f2bfb1.jpg]
+image: mockup.jpg
+images: [mockup.jpg]
 url: itemOne
 profit: 1
 shipping_coverage: 4

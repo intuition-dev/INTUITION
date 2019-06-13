@@ -9,7 +9,7 @@ let config = yaml.load(fs.readFileSync('config.yaml'))[process.env.NODE_ENV || '
 
 const app = ExpressRPC.makeInstance(config.cors);
 
-const port = 3000
+const port = 9081
 
 app.post('/printful-rate', function (req, res) {
    console.info("1)-------printful-rate req:", req.fields)

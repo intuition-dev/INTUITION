@@ -1,8 +1,0 @@
-local: {
-  apiKey: NTlucWw4NzctOXQ0eS04bHIyOnlmYjgteXY1NDVhenk0OWNh,
-  cors: ['*']
-}
-development: {
-  apiKey: NTlucWw4NzctOXQ0eS04bHIyOnlmYjgteXY1NDVhenk0OWNh,
-  cors: ['app.snipcart.com']
-}

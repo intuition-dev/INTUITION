@@ -4,8 +4,8 @@ GLO: ../../
 title: Short-Sleeve Unisex T-Shirt editables
 id: 118054659 #sync_product id
 
-image: mockup-e4d14921.jpg #main image of the site
-images: [mockup-e4d14921.jpg, mockup-be571ea6.jpg, 9997_1551357780.jpg] # images in carousel
+image: mockup.jpg #main image of the site
+images: [mockup.jpg] # images in carousel
 url: itemOne #url of the item to be added to snipcart
 profit: 1 # profit to make on top of the price, 1USD
 shipping_coverage: 4 #shipping, const = 4usd

@@ -6,11 +6,9 @@
       "GLO": "../../",
       "title": "Short-Sleeve Unisex T-Shirt editables",
       "id": 118054659,
-      "image": "mockup-e4d14921.jpg",
+      "image": "mockup.jpg",
       "images": [
-        "mockup-e4d14921.jpg",
-        "mockup-be571ea6.jpg",
-        "9997_1551357780.jpg"
+        "mockup.jpg"
       ],
       "url": "itemOne",
       "profit": 1,
@@ -76,9 +74,9 @@
       "retail_price": "16,32",
       "weight": 0,
       "currency": "USD",
-      "image": "mockup-b1f2bfb1.jpg",
+      "image": "mockup.jpg",
       "images": [
-        "mockup-b1f2bfb1.jpg"
+        "mockup.jpg"
       ],
       "url": "itemTwo",
       "profit": 1,
