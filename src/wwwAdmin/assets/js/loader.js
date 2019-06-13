@@ -7,9 +7,11 @@ depp.define({
     'scripts': [
         '#fb', '#jquery', '#tabulator', '#gridformsJS', ROOT + 'admin/assets/css/spectreBottom.css'
     ],
-    'httpRPC': [, '#RPC'],
+    'httpRPC': ['#RPC'],
     'webAdmin': [
-        '#scripts', '#httpRPC', ROOT + 'admin/assets/js/adminWebAdmin.js'
+        '#scripts',
+        '#httpRPC',
+        ROOT + 'admin/assets/IntuAPI/IntuAPI.js'
     ],
     'general': [
         '#webAdmin', ROOT + 'admin/assets/js/BindEditors.js'

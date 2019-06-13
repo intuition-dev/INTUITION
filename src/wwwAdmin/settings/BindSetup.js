@@ -1,11 +1,11 @@
 class BindSetup {
     constructor() {
-        this.AdminWebAdmin = new AdminWebAdmin()
+        this.WebAdmin = new WebAdmin()
     }
 
     setupApp(item) {
         $('.loader').addClass('active');
-        this.AdminWebAdmin.setupApp(item)
+        this.WebAdmin.setupApp(item)
             .then(function(result) {
                 console.info("--result:", result)
                 $('.loader').removeClass('active');
@@ -13,7 +13,7 @@ class BindSetup {
     }
 
     getForm() {
-        this.AdminWebAdmin.getConfigs()
+        this.WebAdmin.getConfigs()
             .then(function(result) {
                 console.info("--result:", result)
                 riot.mount('settings-comp', { pathToSite: result.pathToSite, port: result.port })

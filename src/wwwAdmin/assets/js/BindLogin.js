@@ -3,10 +3,10 @@
 **/
 class BindLogin {
     constructor() {
-        this.AdminWebAdmin = new AdminWebAdmin()
+        this.WebAdmin = new WebAdmin()
     }
     login(email, pass) {
-        this.AdminWebAdmin.checkAdmin(email, pass)
+        this.WebAdmin.checkAdmin(email, pass)
             .then(function(result) {
                 console.info("--result:", result)
                 if (result) {
@@ -30,7 +30,7 @@ class BindLogin {
 
     sendVcode(email) {
         if (email !== '') {
-            this.AdminWebAdmin.sendVcode(email)
+            this.WebAdmin.sendVcode(email)
                 .then(function(result) {
                     console.info("--result:", result)
                 })
@@ -39,7 +39,7 @@ class BindLogin {
 
     resetPass(email, code, pass) {
         if (email !== '' && pass !== '' && code !== '') {
-            this.AdminWebAdmin.resetPass(email, code, pass)
+            this.WebAdmin.resetPass(email, code, pass)
                 .then(function(result) {
                     if (result) {
                         alert("Password changed")

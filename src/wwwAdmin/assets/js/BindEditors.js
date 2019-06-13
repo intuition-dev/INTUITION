@@ -3,7 +3,7 @@ class Editors {
         this.drawTable = this.drawTable.bind(this);
         this.save = this.save.bind(this);
         this.remove = this.remove.bind(this);
-        this.webAdmin = new AdminWebAdmin();
+        this.webAdmin = new WebAdmin();
         this.table = null;
         this.activeRow = null;
     }
@@ -138,6 +138,6 @@ class Editors {
 //         console.info('unauthorized, redirecting to login page');
 //         window.location.replace('/');
 //     } else {
-//         return new AdminWebAdmin(username, password);
+//         return new WebAdmin(username, password);
 //     }
 // }
