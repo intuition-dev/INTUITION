@@ -4,7 +4,7 @@ const sqlite = require("sqlite");
 const bcrypt = require('bcryptjs');
 const fs = require('fs-extra');
 class ADB {
-    async createNewADBwSchema(dbPath) {
+    async connectToDb(dbPath) {
         const dbPro = sqlite.open(dbPath);
         this.db = await dbPro;
         this.db.configure('busyTimeout', 2 * 1000);
@@ -30,6 +30,9 @@ class ADB {
     }
     checkDB(path) {
         return fs.existsSync(path);
+    }
+    openDB(path, cb) {
+        fs.open(path, 'w', cb);
     }
     validateEmail(email, password) {
         let _this = this;

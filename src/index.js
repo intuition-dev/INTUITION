@@ -34,7 +34,7 @@ try {
     }
     else {
         console.log('open db');
-        fs.open(pathToDb, 'w', runSetup);
+        adbDB.openDB(pathToDb, runSetup);
     }
 }
 catch (err) {
@@ -45,7 +45,7 @@ function runSetup() {
     opn('http://localhost:' + appPORT + '/setup');
 }
 function servingFolders() {
-    adbDB.createNewADBwSchema(pathToDb);
+    adbDB.connectToDb(pathToDb);
     const editorRoutes = new editor_1.EditorRoutes();
     mainApp.use('/api/editors', editorRoutes.routes(adbDB));
     mainApp.use('/editors', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, 'www')));
