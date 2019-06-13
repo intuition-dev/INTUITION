@@ -13,7 +13,7 @@ depp.define({
     'webAdmin': [
         '#scripts'
         , '#httpRPC'
-        , ROOT + 'editors/assets/webAdmin/WebAdmin.js'
+        , ROOT + 'editors/assets/IntuAPI/IntuAPI.js'
     ],
     'edit': [
         '#webAdmin',
