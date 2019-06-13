@@ -1,2 +1,25 @@
-extends header
-block content
+doctype html
+html
+   head
+      include headFrag
+      include header
+   body
+      .loader.lds-css.ng-scope
+         .text Deploying
+         .lds-ellipsis(style='width:100%;height:100%')
+            div
+               div
+            div
+               div
+            div
+               div
+            div
+               div
+            div
+               div
+      .page-content.container
+         .columns
+            include ../includes/sidebar
+            block content
+      .notification.d-hide
+      .text

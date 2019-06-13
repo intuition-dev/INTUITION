@@ -1,72 +1,28 @@
-extends ../layout/layout
+extends /layout/layout
 block content
-   .loader.lds-css.ng-scope
-      .text Deploying
-      .lds-ellipsis(style='width:100%;height:100%')
-         div
-            div
-         div
-            div
-         div
-            div
-         div
-            div
-         div
-            div
-   .page-content.container
-
-      .columns
-         .col-settings
-               ul.user-area
-                  li.site-brand.divider Site Name
-                  li.user-name
-                  li
-                     a(href='#').sign-out#sign-out Sign out
-               div.logo.js-enable-pug Your Logo Here
-         
-         .col-content
-            h1.table-header Users
-            .table-wrap
-               #editors-table.table-custom
-               .space-2v
-               form#editor-form.grid-form
-                  fieldset
-                     legend Select row to edit/remove editor, to add editor type in new editor's login credentials
-                     div(data-row-span='3')
-                        div(data-field-span='1')
-                           label Email
-                           input(type='text', name='email')
-                        div(data-field-span='1')
-                           label Name
-                           input(type='text', name='name')
-                        div(data-field-span='1')
-                           label Password
-                           input(type='password', name='password', required='required', minlength='6')
-               .btn-row.space-2v
-                  a(href='#')#add-editor.btn-custom.btn-primary Add
-                  a(href='#')#edit-editor.btn-custom.btn-primary Edit
-                  a(href='#')#delete-editor.btn-custom.btn-secondary
-                     span Delete
-      .notification.d-hide
-         .text
-      #modal-shop.modal
-         a.modal-overlay(href='#close', aria-label='Close')
-         .modal-container
-            .modal-header
-               a.btn.btn-clear.float-right(href='#close', aria-label='Close')
-               .modal-title.h5 Setup Shop Configurations
-            .modal-body
-               .content
-                  form#form-shop-configs.grid-form
-                     fieldset
-                        div(data-row-span='1')
-                           label Snipcart API
-                           input(type='text', name='snipcart')
-                        div(data-row-span='1')
-                           label Add path to you shop folder
-                           input(type='text', name='path')
-            .modal-footer
-               button.btn#save-shop-config Save shop config
+   .col-content
+      h1.table-header Users
+      .table-wrap
+         #editors-table.table-custom
+         .space-2v
+         form#editor-form.grid-form
+            fieldset
+               legend Select row to edit/remove editor, to add editor type in new editor's login credentials
+               div(data-row-span='3')
+                  div(data-field-span='1')
+                     label Email
+                     input(type='text', name='email')
+                  div(data-field-span='1')
+                     label Name
+                     input(type='text', name='name')
+                  div(data-field-span='1')
+                     label Password
+                     input(type='password', name='password', required='required', minlength='6')
+         .btn-row.space-2v
+            a(href='#')#add-editor.btn-custom.btn-primary Add
+            a(href='#')#edit-editor.btn-custom.btn-primary Edit
+            a(href='#')#delete-editor.btn-custom.btn-secondary
+               span Delete
    script.
       depp.require('rw', function () {
          var bindLogin = new BindLogin()
