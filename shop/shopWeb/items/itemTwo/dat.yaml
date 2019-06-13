@@ -1,7 +1,6 @@
 basedir: ../../
 ROOT: /
-snipcartApi: YOURSNIPCART_API_HERE
-
+GLO: ../../
 title: Short-Sleeve Unisex T-Shirt BLACK
 id: 118058993 #sync_product id
 name: "Short-Sleeve Unisex T-Shirt BLACKy"

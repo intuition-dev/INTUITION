@@ -1,9 +1,9 @@
 {
   "prefix": "/items/",
-  "mbVer": "v6.06.07",
+  "mbVer": "v6.06.21",
   "items": [
     {
-      "snipcartApi": "YOURSNIPCART_API_HERE",
+      "GLO": "../../",
       "title": "Short-Sleeve Unisex T-Shirt editables",
       "id": 118054659,
       "image": "mockup-e4d14921.jpg",
@@ -69,7 +69,7 @@
       "index": 0
     },
     {
-      "snipcartApi": "YOURSNIPCART_API_HERE",
+      "GLO": "../../",
       "title": "Short-Sleeve Unisex T-Shirt BLACK",
       "id": 118058993,
       "name": "Short-Sleeve Unisex T-Shirt BLACKy",

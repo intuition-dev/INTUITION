@@ -2,6 +2,7 @@ link(rel='amphtml', href='m.html')
 script.
     ROOT = '#{ROOT}' //- sets global pug and .js from dat.yaml
     window.SNIPCART_API = '#{snipcartApi}'
+    console.log("TCL: window.SNIPCART_API", window.SNIPCART_API)
 
 link(rel='shortcut icon', href= ROOT + 'favicon.ico', type='image/x-icon')
 
