@@ -1,20 +1,21 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset='utf-8' />
-  <title>  | Documentation</title>
+  <meta charset='utf-8'>
+  <title>intu 0.9.9 | Documentation</title>
+  <meta name='description' content='&#39;It will lead YOU in the right direction&#39;. WebAdmin &#39;Intuition&#39; screens to CMS, e-Com, et al. '>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
-  <link href='assets/bass.css' rel='stylesheet' />
-  <link href='assets/style.css' rel='stylesheet' />
-  <link href='assets/github.css' rel='stylesheet' />
-  <link href='assets/split.css' rel='stylesheet' />
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
 </head>
 <body class='documentation m0'>
     <div class='flex'>
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
-          <h3 class='mb0 no-anchor'></h3>
-          <div class='mb1'><code></code></div>
+          <h3 class='mb0 no-anchor'>intu</h3>
+          <div class='mb1'><code>0.9.9</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -198,32 +199,19 @@
   </div>
   
 
-  <p>All rights reserved by Metabake (Metabake.org), licensed under LGPL 3.0</p>
+  <p>All rights reserved by MetaBake (MetaBake.org), licensed under LGPL 3.0</p>
 
-    <div class='pre p1 fill-light mt0'>new WebAdmin(baseURL_: any)</div>
-  
-  
-
-  
-  
-  
-  
+    <div class='pre p1 fill-light mt0'>new WebAdmin()</div>
   
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>baseURL_</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
+  
+  
+  
+  
+  
+
   
 
   
@@ -798,7 +786,7 @@
 
   
 
-  <p>get list of directories</p>
+  <p>get mbake version</p>
 
     <div class='pre p1 fill-light mt0'>getMbakeVersion()</div>
   
@@ -860,7 +848,7 @@
 
   <p>CRUD .md files and post creation from blog mounted app</p>
 
-    <div class='pre p1 fill-light mt0'>new WebAdmin(baseURL_: any)</div>
+    <div class='pre p1 fill-light mt0'>new WebAdmin(apiProtocol: any, apiHost: any, apiPort: any)</div>
   
   
 
@@ -877,10 +865,26 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>baseURL_</span> <code class='quiet'>(any)</code>
-	    base api url (example: 
-<a href="http://0.0.0.0:3030/">http://0.0.0.0:3030/</a>
-)
+            <span class='code bold'>apiProtocol</span> <code class='quiet'>(any)</code>
+	    api protocol (example: http)
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiHost</span> <code class='quiet'>(any)</code>
+	    api host (example: 0.0.0.0)
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiPort</span> <code class='quiet'>(any)</code>
+	    api port (example: 9081)
 
           </div>
           
@@ -1461,7 +1465,7 @@
 
   
 
-  <p>get list of directories</p>
+  <p>get mbake version</p>
 
     <div class='pre p1 fill-light mt0'>getMbakeVersion()</div>
   
