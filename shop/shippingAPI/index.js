@@ -6,22 +6,7 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 let config = yaml.load(fs.readFileSync('config.yaml'))[process.env.NODE_ENV || 'local'];
 const app = Serv_1.ExpressRPC.makeInstance(config.cors);
-const port = 3000;
-app.post('/test', function (req, res) {
-    const method = req.fields.method;
-    console.info("--method:", method);
-    const params = JSON.parse(req.fields.params);
-    console.info("--params:", params);
-    const resp = {};
-    if ('test-connection' == method) {
-    }
-    else {
-        resp.errorLevel = -1;
-        resp.errorMessage = 'mismatch';
-        console.log('noway', resp);
-        res.json(resp);
-    }
-});
+const port = 9081;
 app.post('/printful-rate', function (req, res) {
     console.info("1)-------printful-rate req:", req.fields);
     const method = req.fields.mode;
