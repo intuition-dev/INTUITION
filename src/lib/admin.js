@@ -73,7 +73,7 @@ class AdminRoutes {
                             break;
                         case 'shop':
                             setupItem = 'SHOP';
-                            await new FileOpsExtra_1.Download('SHOP', path.join(__dirname, '../')).autoZ();
+                            await new FileOpsExtra_1.Download('shop', path.join(__dirname, '../')).autoZ();
                             break;
                         case 'website':
                             setupItem = 'website';

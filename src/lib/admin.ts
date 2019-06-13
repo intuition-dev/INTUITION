@@ -84,7 +84,7 @@ export class AdminRoutes {
                      break;
                   case 'shop':
                      setupItem = 'SHOP'
-                     await new Download('SHOP', path.join(__dirname, '../')).autoZ()
+                     await new Download('shop', path.join(__dirname, '../')).autoZ()
                      break;
                   case 'website':
                      setupItem = 'website'
