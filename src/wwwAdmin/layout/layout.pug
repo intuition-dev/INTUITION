@@ -23,3 +23,10 @@ html
             block content
       .notification.d-hide
       .text
+      script.
+         depp.require('rw', function(){
+            var bindLogin = new BindLogin()
+            $('#sign-out').off('click').on('click',function (e) {
+                  bindLogin.signOut()
+            });
+         })

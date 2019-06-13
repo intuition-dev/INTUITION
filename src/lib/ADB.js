@@ -17,7 +17,7 @@ class ADB {
         var salt = bcrypt.genSaltSync(10);
         var hashPass = bcrypt.hashSync(password, salt);
         await this.db.run(`CREATE TABLE admin(id, email, password, vcode)`);
-        await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi)`);
+        await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi, port, setupInit)`);
         await this.db.run(`CREATE TABLE editors(id, email, password, name, vcode)`);
         await this.db.run(`INSERT INTO admin(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
             if (err) {
@@ -158,6 +158,13 @@ class ADB {
     }
     setupApp(pathToShop, adminId) {
         return this.db.all(`UPDATE configs SET pathToSite='${pathToShop}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+            if (err) {
+            }
+            return rows;
+        });
+    }
+    getConfigs(adminId) {
+        return this.db.get(`SELECT pathToSite, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
             if (err) {
             }
             return rows;

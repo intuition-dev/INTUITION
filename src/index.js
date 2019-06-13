@@ -12,8 +12,9 @@ const adbDB = new ADB_1.ADB();
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const dbName = 'ADB.sqlite';
 const pathToDb = path.join(__dirname, dbName);
-const appPORT = '9081';
-const mainApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + appPORT]);
+var config = JSON.parse(fs.readFileSync('./config.json'));
+var appPort = config.port;
+const mainApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + appPort]);
 const opn = require("open");
 const emailJs = new Email_1.Email();
 FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
@@ -42,7 +43,7 @@ catch (err) {
 function runSetup() {
     mainApp.use('/setup', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, 'setup')));
     servingFolders();
-    opn('http://localhost:' + appPORT + '/setup');
+    opn('http://localhost:' + appPort + '/setup');
 }
 function servingFolders() {
     adbDB.connectToDb(pathToDb);
@@ -80,8 +81,8 @@ mainApp.post("/setup", async (req, res) => {
         return res.json(resp);
     }
 });
-mainApp.listen(appPORT, () => {
+mainApp.listen(appPort, () => {
     console.log(`======================================================`);
-    console.log(`App is running at http://localhost:${appPORT}/editors/`);
+    console.log(`App is running at http://localhost:${appPort}/editors/`);
     console.log(`======================================================`);
 });

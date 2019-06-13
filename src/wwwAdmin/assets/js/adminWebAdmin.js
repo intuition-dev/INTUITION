@@ -35,6 +35,9 @@ class AdminWebAdmin {
     setupApp(item) {
         return this.serviceRpc.invoke('/api/admin/setup-app', 'setup-app', { item: item, admin_email: window.sessionStorage.getItem('username'), admin_pass: window.sessionStorage.getItem('password') });
     }
+    getConfigs() {
+        return this.serviceRpc.invoke('/api/admin/get-configs', 'get-configs', { admin_email: window.sessionStorage.getItem('username'), admin_pass: window.sessionStorage.getItem('password') });
+    }
 
     /**
      * get data for editors table

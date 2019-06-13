@@ -15,8 +15,9 @@ import { VersionNag } from 'mbake/lib/FileOpsExtra'
 const dbName = 'ADB.sqlite'
 const pathToDb = path.join(__dirname, dbName)
 
-const appPORT = '9081';
-const mainApp = ExpressRPC.makeInstance(['http://localhost:' + appPORT]);
+var config = JSON.parse(fs.readFileSync('./config.json'))
+var appPort = config.port
+const mainApp = ExpressRPC.makeInstance(['http://localhost:' + appPort]);
 
 import opn = require('open')
 const emailJs = new Email();
@@ -47,10 +48,11 @@ try {
 function runSetup() {
    mainApp.use('/setup', ExpressRPC.serveStatic(path.join(__dirname, 'setup')));
    servingFolders()
-   opn('http://localhost:' + appPORT + '/setup')
+   opn('http://localhost:' + appPort + '/setup')
 }
 
 function servingFolders() {
+
    /*
    * E D I T O R S
    */
@@ -102,9 +104,9 @@ mainApp.post("/setup", async (req, res) => {
    }
 })
 
-mainApp.listen(appPORT, () => {
+mainApp.listen(appPort, () => {
 
    console.log(`======================================================`);
-   console.log(`App is running at http://localhost:${appPORT}/editors/`);
+   console.log(`App is running at http://localhost:${appPort}/editors/`);
    console.log(`======================================================`);
 })

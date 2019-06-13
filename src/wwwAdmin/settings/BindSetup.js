@@ -4,13 +4,19 @@ class BindSetup {
     }
 
     setupApp(item) {
-        console.log("TCL: BindLogin -> setupShop -> shopConfigs", item)
         $('.loader').addClass('active');
         this.AdminWebAdmin.setupApp(item)
             .then(function(result) {
                 console.info("--result:", result)
                 $('.loader').removeClass('active');
-                window.location = '/admin/crudEditors';
+            })
+    }
+
+    getForm() {
+        this.AdminWebAdmin.getConfigs()
+            .then(function(result) {
+                console.info("--result:", result)
+                riot.mount('settings-comp', { pathToSite: result.pathToSite, port: result.port })
             })
     }
 }

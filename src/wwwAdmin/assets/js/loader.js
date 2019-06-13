@@ -18,7 +18,9 @@ depp.define({
         '#general', ROOT + 'admin/assets/js/BindLogin.js', ROOT + 'admin/assets/js/ui.js'
     ],
     'setup-page': [
-        '#webAdmin', ROOT + 'admin/setup/BindSetup.js'
+        '#webAdmin',
+        ROOT + 'admin/settings/settings-comp.js',
+        ROOT + 'admin/settings/BindSetup.js'
     ],
     'crud': [
         '#rw', ROOT + 'admin/assets/js/crud.js'

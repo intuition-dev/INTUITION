@@ -106,6 +106,34 @@ export class AdminRoutes {
             return res.json(resp);
          }
       })
+      adminApp.post('/get-configs', (req, res) => {
+         const method = req.fields.method;
+         let params = JSON.parse(req.fields.params)
+         let item = params.item
+
+         let resp: any = {};
+         if ('get-configs' == method) {
+            resp.result = {}
+            try {
+               var setupItem = ''
+
+               adbDB.getAdminId(res.locals.email)
+                  .then(function (adminId) {
+                     adbDB.getConfigs(adminId[0].id)
+                        .then(function (result) {
+                           console.log("TCL: AdminRoutes -> routes -> result", result)
+                           resp.result = result;
+                           return res.json(resp);
+                        })
+
+                  })
+            } catch (err) {
+               // next(err);
+            }
+         } else {
+            return res.json(resp);
+         }
+      })
 
       adminApp.post('/resetPassword', (req, res) => {
          const method = req.fields.method;

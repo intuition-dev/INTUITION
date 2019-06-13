@@ -3,20 +3,20 @@ block content
    .col-content
       h1.table-header Settings
       .table-wrap
-         #editors-table.table-custom
-         .space-2v
          .columns
-            button.btn.mr-2#setup-website Install Website
-            button.btn.mr-2#setup-blog Install Blog
-            button.btn#setup-shop Install Shop
+            .column
+               settings-comp
+            .divider-vert(data-content='OR')
+            .column
+               h3 Install:
+               button.btn.mr-2#setup-website + Website
+               button.btn.mr-2#setup-blog + Blog
+               button.btn#setup-shop + Shop
    
    script.
       depp.require('setup-page', function () {
          var bindSetup = new BindSetup()
-         
-         $('#sign-out').off('click').on('click',function (e) {
-               bindSetup.signOut()
-         });
+         bindSetup.getForm()
 
          $('#setup-shop').off('click').on('click', function(e){
                bindSetup.setupApp('shop')

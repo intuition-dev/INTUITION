@@ -1,0 +1,15 @@
+settings-comp
+   form#settings-form.grid-form
+      fieldset
+         div(data-row-span='1')
+            div(data-field-span='1')
+               label Add Path to existed site
+               input(type='text', name='path' value="{(typeof this.pathToSite !='undefined') ? this.pathToSite : ''}")
+         div(data-row-span='1')
+            div(data-field-span='1')
+               label Port
+               input(type='text', name='port' value="{(typeof this.port !='undefined') ? this.port : ''}")
+         button.btn.mt-2#save-settings Save Settings
+   script.
+      this.pathToSite = opts.pathToSite
+      this.port = opts.port

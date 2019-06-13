@@ -13,7 +13,7 @@ class BindLogin {
                     window.sessionStorage.setItem('username', email);
                     window.sessionStorage.setItem('password', pass);
 
-                    window.location = '/admin/setup';
+                    window.location = '/admin/settings';
                 } else {
                     window.location = '/admin'
                 }
