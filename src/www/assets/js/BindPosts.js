@@ -43,7 +43,7 @@ class Posts {
 
     showMd(id, pathPrefix) {
         // render .md file content in textarea
-        this.webAdmin.getPostMd(id, pathPrefix)
+        this.webAdmin.getFile(id, pathPrefix)
             .then(post => {
                 if (post) {
                     myCodeMirror.setValue(post);
@@ -54,21 +54,21 @@ class Posts {
     }
 
     saveMd(id, md, pathPrefix) {
-        return this.webAdmin.savePostMd(id, md, pathPrefix)
+        return this.webAdmin.saveFile(id, md, pathPrefix)
             .then(function(resp) {
                 return resp.data
             })
     }
 
     compile(id, md, pathPrefix) {
-        return this.webAdmin.build(id, md, pathPrefix)
+        return this.webAdmin.mbakeCompile(id, md, pathPrefix)
             .then(function(resp) {
                 return resp.data
             })
     }
 
     addPost(id, pathPrefix) {
-        return this.webAdmin.createPost(id, pathPrefix);
+        return this.webAdmin.clonePage(id, pathPrefix);
     }
 
     uploadFile(input, pathPrefix) {

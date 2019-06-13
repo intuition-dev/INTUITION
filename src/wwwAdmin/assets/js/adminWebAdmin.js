@@ -9,10 +9,6 @@
  * CRUD users for Editors App
  */
 class AdminWebAdmin {
-    /**
-     * @param username user name
-     * @param password user password
-     */
     constructor() {
 
         this.serviceRpc = new httpRPC(rpcProtocol, rpcHost, rpcPort);
