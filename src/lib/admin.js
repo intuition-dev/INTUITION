@@ -3,10 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const Email_1 = require("./Email");
+const Base_1 = require("mbake/lib/Base");
+const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const fs = require('fs-extra');
 var path = require('path');
 var config = JSON.parse(fs.readFileSync('./config.json'));
 var appPort = config.port;
+let runMbake = new Base_1.MBake();
+let dirCont = new FileOpsBase_1.Dirs(__dirname);
 class AdminRoutes {
     routes(adbDB) {
         const emailJs = new Email_1.Email();
@@ -143,6 +147,7 @@ class AdminRoutes {
                     });
                     console.log("TCL: AdminRoutes -> routes -> temp_port", temp_port);
                     fs.writeFile('./config.json', temp_port, 'utf8');
+                    fs.writeFile('./GLO.yaml', "PORT: " + port, 'utf8');
                     adbDB.getAdminId(res.locals.email)
                         .then(function (adminId) {
                         adbDB.setupApp(path, adminId[0].id)
@@ -151,9 +156,15 @@ class AdminRoutes {
                             temp['port'] = config.port;
                             temp['pathToSite'] = result.pathToSite;
                             resp.result = temp;
-                            adbDB.close();
-                            process.exit();
-                            return res.json(resp);
+                            runMbake.bake(path.join(__dirname, '/admin'), 3)
+                                .then(function (response) {
+                                resp.result = { data: 'OK' };
+                                res.json(resp);
+                                process.exit();
+                            }, function (error) {
+                                resp.result = { data: error };
+                                res.json(resp);
+                            });
                         });
                     });
                 }
@@ -163,6 +174,9 @@ class AdminRoutes {
             else {
                 return res.json(resp);
             }
+        });
+        process.on('exit', function () {
+            adbDB.close();
         });
         adminApp.post('/resetPassword', (req, res) => {
             const method = req.fields.method;

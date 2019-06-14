@@ -1,3 +1,4 @@
+console.log("TCL: window.apiPort", window.apiPort)
 class BindSetup {
     constructor() {
         this.services = new WebAdmin()

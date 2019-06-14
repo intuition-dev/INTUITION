@@ -7,6 +7,7 @@ const fs = require('fs-extra')
 // import { FirebaseAdmin } from "./firebaseAdmin";
 var config = JSON.parse(fs.readFileSync('./config.json'))
 var appPort = config.port
+
 export class EditorRoutes {
    routes(adbDB) {
       const fs = require('fs');
