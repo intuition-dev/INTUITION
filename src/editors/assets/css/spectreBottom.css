@@ -490,4 +490,4 @@ i:hover{color:#1b98f8;}
 .login-wrapper p span{display:block;margin:0 0 3px 0;font-weight:400;}
 .login-wrapper .isError,.login-wrapper .message{color:#f70e0e;text-align:center;margin-top:10px;font-size:13px;}
 .login-wrapper .message-info{color:#333;}
-.login-bg{background:#929292;background:-moz-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:-webkit-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:-o-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:linear-gradient(45deg,#929292 0%,#f5f5f5 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-from',endColorstr='$color-to',GradientType=1 );} /* mB v5.07.01 on 2019-06-04T10:22:13.635Z */
+.login-bg{background:#929292;background:-moz-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:-webkit-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:-o-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:linear-gradient(45deg,#929292 0%,#f5f5f5 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-from',endColorstr='$color-to',GradientType=1 );} /* mB v6.06.21 on 2019-06-14T09:28:19.581Z */
