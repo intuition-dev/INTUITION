@@ -253,10 +253,17 @@ class WebAdmin {
 
     /**
      * get data for editors table
+     * @param admin_email admin user email, eg: 'example@example.com'
+     * @param admin_pass admin user password, eg: '123456'
      */
     getEditorsList() {
-        console.info("--window.sessionStorage.getItem('username'):", window.sessionStorage.getItem('username'))
-        return this.serviceRPC.invoke('/api/admin/editors', 'get', { admin_email: window.sessionStorage.getItem('username'), admin_pass: window.sessionStorage.getItem('password') });
+        let admin_email = window.sessionStorage.getItem('username');
+        let admin_pass = window.sessionStorage.getItem('password');
+        console.info("--admin_email:", admin_email)
+        return this.serviceRPC.invoke('/api/admin/editors', 'get', {
+            admin_email: admin_email,
+            admin_pass: admin_pass
+        });
     }
 
     /**
@@ -270,8 +277,8 @@ class WebAdmin {
             name: name,
             email: email,
             password: password,
-            admin_email: window.sessionStorage.getItem('username'),
-            admin_pass: window.sessionStorage.getItem('password')
+            admin_email: window.sessionStorage.getItem('username'), //TODO ?
+            admin_pass: window.sessionStorage.getItem('password') //TODO ?
         });
     }
 
@@ -279,6 +286,8 @@ class WebAdmin {
      * edit user name
      * @param uid user id, eg: 'I3fE7p5NjtV1Y1m5pWBsZlyi4W62'
      * @param name user name, eg: 'Jane Doe'
+     * @param admin_email admin user email, eg: 'example@example.com'
+     * @param admin_pass admin user password, eg: '123456'
      */
     editEditor(uid, name) {
         return this.serviceRPC.invoke('/api/admin/editors-edit', 'put', {
@@ -292,6 +301,8 @@ class WebAdmin {
     /**
      * remove user 
      * @param uid user id, eg: 'I3fE7p5NjtV1Y1m5pWBsZlyi4W62'
+     * @param admin_email admin user email, eg: 'example@example.com'
+     * @param admin_pass admin user password, eg: '123456'
      */
     deleteEditor(uid) {
         return this.serviceRPC.invoke('/api/admin/editors-delete', 'delete', {
@@ -303,7 +314,7 @@ class WebAdmin {
 
     /**
      * TODO 
-     * 
+     * @param email admin user email, eg: 'example@example.com'
      */
     sendVcode(email) {
         return this.serviceRPC.invoke('/api/admin/resetPassword', 'code', { admin_email: email })
@@ -314,14 +325,30 @@ class WebAdmin {
 
     /**
      * TODO 
-     * 
+     * @param email admin user email, eg: 'example@example.com'
+     * @param pass admin user password, eg: '123456'
+     * @param code verification code, eg: '1234'
      */
     resetPass(email, code, pass) {
         return this.serviceRPC.invoke('/api/admin/resetPassword', 'reset-password', {
-            admin_email: email,
-            code: code,
-            password: pass
-        })
+                admin_email: email,
+                code: code,
+                password: pass
+            })
+    }
+
+    /**
+     * TODO 
+     * @param admin_email admin user email, eg: 'example@example.com'
+     * @param admin_pass admin user password, eg: '123456'
+     */
+    getConfigs() {
+        let admin_email = window.sessionStorage.getItem('username');
+        let admin_pass = window.sessionStorage.getItem('password');
+        return this.serviceRPC.invoke('/api/admin/get-configs', 'get-configs', {
+                admin_email: admin_email,
+                admin_pass: admin_pass
+            });
     }
 
 }
