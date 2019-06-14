@@ -2,6 +2,10 @@
 var s=new BindLogin
 $(document).on('submit','#login-form',function(s){s.preventDefault()
 let a=$("#login-form input[name='login']").val(),n=$("#login-form input[name='password']").val()
-e.checkUser(a,n)}),$(document).on('click','[data="reset-password"]',function(e){e.preventDefault(),$('#login-form, #btn-login, [data="reset-password"]').addClass('d-hide'),$("[name='reset-pass-form']").removeClass('d-hide')}),$(document).on('submit','[name="reset-pass-form"]',function(e){e.preventDefault(),$("[name='reset-pass-form']").addClass('d-hide'),$("[name='reset-pass-form-2']").removeClass('d-hide'),window.resetEmail=$("[name='reset-password-email']").val(),$('.v-code').html('Verification code was sent to '+resetEmail),s.sendVcode(resetEmail)}),$(document).on('submit','[name="reset-pass-form-2"]',function(){$("[name='reset-pass-form-2']").addClass('d-hide')
+e.checkUser(a,n)}),$(document).on('click','[data="reset-password"]',function(e){e.preventDefault(),$('#login-form, #btn-login, [data="reset-password"]').addClass('d-hide'),$("[name='reset-pass-form']").removeClass('d-hide')}),$(document).on('submit','[name="reset-pass-form"]',function(e){e.preventDefault(),$("[name='reset-pass-form']").addClass('d-hide'),$("[name='reset-pass-form-2']").removeClass('d-hide'),window.resetEmail=$("[name='reset-password-email']").val(),$('.v-code').html('Verification code was sent to '+resetEmail),s.sendVcode(resetEmail)})
+let a=new URL(location.href).searchParams.get("email")
+null!==a&&''!==a?($('#login-form, #btn-login, [data="reset-password"]').addClass('d-hide'),$("[name='reset-pass-form-2']").removeClass('d-hide'),$('.v-code').html('Verification code was sent to '+a),s.sendVcode(a),$(document).on('submit','[name="reset-pass-form-2"]',function(){$("[name='reset-pass-form-2']").addClass('d-hide')
+let e=$("[name='new-password']").val(),n=$("[name='v-code']").val()
+s.resetPass(a,n,e)})):$(document).on('submit','[name="reset-pass-form-2"]',function(){$("[name='reset-pass-form-2']").addClass('d-hide')
 let e=$("[name='new-password']").val(),a=$("[name='v-code']").val()
-s.resetPass(resetEmail,a,e)})})</script><!-- mB v6.06.21 on 2019-06-14T17:10:28.087Z --></body></html>
+s.resetPass(resetEmail,a,e)})})</script><!-- mB v6.06.21 on 2019-06-14T18:03:42.719Z --></body></html>

@@ -30,17 +30,6 @@ block content
 						p
 							a.reset-password(href='#', data="reset-password") Forgot password?
 
-					//- form#reset-password-form.grid-form.d-hide(action="#")
-					//- 	fieldset
-					//- 		legend Reset Password
-					//- 		div.input-wrap
-					//- 			label Enter your email address
-					//- 			input(type='email', name='email', required='required')
-
-					//- 	.message.message-info.d-hide
-					//- 	.message.message-warning.d-hide
-
-					//- 	button.btn-custom.btn-primary.btn-center.space-21v Reset
 					form#reset-password.d-hide.grid-form(action="#", name='reset-pass-form')
 						fieldset
 							.input-wrap
@@ -80,46 +69,6 @@ block content
 			/*
 			* editor password reset
 			*/
-
-			//- $(document).on('click', '#reset-password-link', function () {
-
-			//- 	$('#reset-password-form').removeClass('d-hide');
-			//- 	$('#login-form').addClass('d-hide');
-
-			//- });
-
-			//- $('#reset-password-form').submit(function (e) {
-
-			//- 	e.preventDefault();
-
-			//- 	$('[class^="message"]').addClass('d-hide');
-
-			//- 	let email = $(this).find('input[type="email"]').val();
-
-			//- 	auth.sendPasswordResetEmail(email)
-			//- 		.then(() => {
-
-			//- 			$(this).find('fieldset, button').addClass('d-hide');
-			//- 			$(this).find('.message-info').removeClass('d-hide').text('An email with the password reset link has been sent to your email address');
-
-			//- 			setTimeout(function () {
-
-			//- 				$('#reset-password-form fieldset, #reset-password-form .btn-group, #login-form').removeClass('d-hide');
-			//- 				$('#reset-password-form, #reset-password-form p').addClass('d-hide');
-
-			//- 			}, 5000);
-
-			//- 		})
-			//- 		.catch(function (error) {
-
-			//- 			console.info('email hasn\'t been sent to user', error);
-			//- 			$('.message-warning').removeClass('d-hide').text('No user exists with such email');
-
-			//- 		});
-
-			//- });
-
-	
 			$(document).on('click', '[data="reset-password"]', function (e) {
 				e.preventDefault();
 				$('#login-form, #btn-login, [data="reset-password"]').addClass('d-hide');
@@ -135,11 +84,32 @@ block content
 				bindLogin.sendVcode(resetEmail);
 			});
 
-			$(document).on('submit', '[name="reset-pass-form-2"]', function () {
-				$("[name='reset-pass-form-2']").addClass('d-hide');
-				let password = $("[name='new-password']").val();
-				let vCode = $("[name='v-code']").val();
-				bindLogin.resetPass(resetEmail, vCode, password);
-			});
+			let url = new URL(location.href);
+			let urlEmail = url.searchParams.get("email");
+
+			if (urlEmail !== null && urlEmail !== '') {
+
+				$('#login-form, #btn-login, [data="reset-password"]').addClass('d-hide');
+				$("[name='reset-pass-form-2']").removeClass('d-hide');
+				$('.v-code').html('Verification code was sent to ' + urlEmail);
+				bindLogin.sendVcode(urlEmail);
+
+				$(document).on('submit', '[name="reset-pass-form-2"]', function () {
+					$("[name='reset-pass-form-2']").addClass('d-hide');
+					let password = $("[name='new-password']").val();
+					let vCode = $("[name='v-code']").val();
+					bindLogin.resetPass(urlEmail, vCode, password);
+				});
+
+			} else {
+
+				$(document).on('submit', '[name="reset-pass-form-2"]', function () {
+					$("[name='reset-pass-form-2']").addClass('d-hide');
+					let password = $("[name='new-password']").val();
+					let vCode = $("[name='v-code']").val();
+					bindLogin.resetPass(resetEmail, vCode, password);
+				});
+
+			}
 
 		});
