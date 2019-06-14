@@ -31,6 +31,10 @@ export class ADB { // auth & auth DB
          if (err) {
          }
       });
+      await this.db.run(`INSERT INTO editors(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
+         if (err) {
+         }
+      });
       await this.db.run(`INSERT INTO configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id) VALUES('${randomID}', '${emailjsService_id}', '${emailjsTemplate_id}', '${emailjsUser_id}')`, function (err) {
          if (err) {
          }
