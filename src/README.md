@@ -3,6 +3,15 @@
 
 #### 'It will lead YOU in the right direction'
 
+
+- Docs: https://docs.MetaBake.org
+
+
+# Features
+
+## Short Installation
+
+
 1. Before you run, create free [emailJs](https://www.emailjs.com) account: so Meta Intuition accounts can be validated via email.
 Also create a email template, and note your emailJs `user_id` and `template_id`, needed to send emails to users.
 
@@ -39,3 +48,10 @@ website's content. But it will remove all the editor: you have to add them again
 
 (TODO: a lot of noise on logger, add editor screen has 'old data', ~~tmake admin be editor auto~~, even if not listed, changed admin command: for admin )
 (TODO: add editor does nothing, no logo - our logo only, adding an editor: no password!. during code they set password, list does not work )
+
+
+# API for MetaBake and WebAdmin
+
+- Use via https://unpkg.com/intu@0.9.12/www/assets/IntuAPI/IntuAPI.min.js
+- or better via https://github.com/metabake/mBakeCli/tree/master/zBrowserServices/toolBelt
+
