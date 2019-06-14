@@ -84,13 +84,7 @@ class SignOut {
 	}
 	signOut() {
 		sessionStorage.clear();
-		auth
-			.signOut()
-			.then(function () {
-				window.location = ('/');
-			}).catch(function (error) {
-				console.info('Something went wrong:', error);
-			});
+		window.location = ('/editors');
 	}
 }
 
