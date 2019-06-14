@@ -237,7 +237,8 @@ class WebAdmin {
     }
 
     /**
-     * TODO: @param item item, eg: ''
+     * set up starter application type
+     * @param item item, eg: 'blog'
      * @param admin_email admin user email, eg: 'example@example.com'
      * @param admin_pass admin user password, eg: '123456'
      */
@@ -268,17 +269,21 @@ class WebAdmin {
 
     /**
      * add new user
-     * @param name user name, eg: 'Jane Doe'
-     * @param email user email, eg: 'example@example.com'
-     * @param password user password, eg: 'dfgsdgdsfg' 
+     * @param name new user name, eg: 'Jane Doe'
+     * @param email new user email, eg: 'example@example.com'
+     * @param password new user password, eg: 'dfgsdgdsfg' 
+     * @param admin_email admin user email, eg: 'example@example.com'
+     * @param admin_pass admin user password, eg: '123456'
      */
     addEditor(name, email, password) {
+        let admin_email = window.sessionStorage.getItem('username');
+        let admin_pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/admin/editors-add', 'post', {
             name: name,
             email: email,
             password: password,
-            admin_email: window.sessionStorage.getItem('username'), //TODO ?
-            admin_pass: window.sessionStorage.getItem('password') //TODO ?
+            admin_email: admin_email,
+            admin_pass: admin_pass
         });
     }
 
@@ -313,7 +318,7 @@ class WebAdmin {
     }
 
     /**
-     * TODO 
+     * send verification code 
      * @param email admin user email, eg: 'example@example.com'
      */
     sendVcode(email) {
@@ -324,7 +329,7 @@ class WebAdmin {
     }
 
     /**
-     * TODO 
+     * admin reset password 
      * @param email admin user email, eg: 'example@example.com'
      * @param pass admin user password, eg: '123456'
      * @param code verification code, eg: '1234'
@@ -338,7 +343,7 @@ class WebAdmin {
     }
 
     /**
-     * TODO 
+     * get config files 
      * @param admin_email admin user email, eg: 'example@example.com'
      * @param admin_pass admin user password, eg: '123456'
      */
