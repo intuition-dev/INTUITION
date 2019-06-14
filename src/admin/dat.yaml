@@ -1,5 +1,6 @@
 basedir: .
 
 ROOT: '/'
+GLO: '/'
 
 pretty: false

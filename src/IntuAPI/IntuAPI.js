@@ -15,6 +15,7 @@ class WebAdmin {
      * @param apiPort api port (eg: 9081)
      */
     constructor() {
+        console.log("TCL: WebAdmin -> constructor -> apiPort", apiPort)
         this.serviceRPC = new httpRPC(apiProtocol, apiHost, apiPort);
     }
 
@@ -347,13 +348,47 @@ class WebAdmin {
      * @param admin_email admin user email, eg: 'example@example.com'
      * @param admin_pass admin user password, eg: '123456'
      */
-    getConfigs() {
+    getConfig() {
         let admin_email = window.sessionStorage.getItem('username');
         let admin_pass = window.sessionStorage.getItem('password');
-        return this.serviceRPC.invoke('/api/admin/get-configs', 'get-configs', {
+        return this.serviceRPC.invoke('/api/admin/get-config', 'get-config', {
             admin_email: admin_email,
             admin_pass: admin_pass
         });
+    }
+
+    saveConfig(port, path) {
+        let admin_email = window.sessionStorage.getItem('username');
+        let admin_pass = window.sessionStorage.getItem('password');
+        return this.serviceRPC.invoke('/api/admin/save-config', 'save-config', {
+            admin_email: admin_email,
+            admin_pass: admin_pass,
+            port: port,
+            path: path
+        });
+    }
+
+    createConfig(serialised) {
+
+        var email = serialised.filter(email => email.name == 'email')[0].value
+        var password = serialised.filter(password => password.name == 'password')[0].value
+        var emailjsService_id = serialised.filter(emailjsService_id => emailjsService_id.name == 'service_id')[0].value
+        var emailjsTemplate_id = serialised.filter(emailjsTemplate_id => emailjsTemplate_id.name == 'template_id')[0].value
+        var emailjsUser_id = serialised.filter(emailjsUser_id => emailjsUser_id.name == 'user_id')[0].value
+        console.info("--email:", email)
+        return this.serviceRPC.invoke('/setup', 'setup', {
+                email: email,
+                password: password,
+                emailjsService_id: emailjsService_id,
+                emailjsTemplate_id: emailjsTemplate_id,
+                emailjsUser_id: emailjsUser_id,
+            })
+            .then((result) => {
+                console.info('test api: ', result);
+                return result;
+            }).catch((error) => {
+                console.info("--error:", error)
+            })
     }
 
 }

@@ -4,12 +4,15 @@ const Base_1 = require("mbake/lib/Base");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const Serv_1 = require("mbake/lib/Serv");
+const fs = require('fs-extra');
+var config = JSON.parse(fs.readFileSync('./config.json'));
+var appPort = config.port;
 class EditorRoutes {
     routes(adbDB) {
         const fs = require('fs');
         const path = require('path');
         let mountPath = '';
-        const appE = Serv_1.ExpressRPC.makeInstance(['http://localhost:9081']);
+        const appE = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + appPort]);
         appE.use((request, response, next) => {
             const params = JSON.parse(request.fields.params);
             const resp = {};

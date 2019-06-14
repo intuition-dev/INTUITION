@@ -2,14 +2,17 @@ import { ExpressRPC } from 'mbake/lib/Serv';
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
 
-var path = require('path');
+const fs = require('fs-extra')
 
+var path = require('path');
+var config = JSON.parse(fs.readFileSync('./config.json'))
+var appPort = config.port
 export class AdminRoutes {
    routes(adbDB) {
       const emailJs = new Email();
       const bodyParser = require("body-parser");
 
-      const adminApp = ExpressRPC.makeInstance(['http://localhost:9081']);
+      const adminApp = ExpressRPC.makeInstance(['http://localhost:' + appPort]);
       adminApp.use(bodyParser.json());
 
       adminApp.use((request, response, next) => {
@@ -106,13 +109,17 @@ export class AdminRoutes {
             return res.json(resp);
          }
       })
-      adminApp.post('/get-configs', (req, res) => {
+      adminApp.post('/get-config', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
+
+         var config = JSON.parse(fs.readFileSync('./config.json'))
+         console.log("TCL: AdminRoutes -> routes -> config", config)
+
          let item = params.item
 
          let resp: any = {};
-         if ('get-configs' == method) {
+         if ('get-config' == method) {
             resp.result = {}
             try {
                var setupItem = ''
@@ -121,8 +128,54 @@ export class AdminRoutes {
                   .then(function (adminId) {
                      adbDB.getConfigs(adminId[0].id)
                         .then(function (result) {
-                           console.log("TCL: AdminRoutes -> routes -> result", result)
-                           resp.result = result;
+                           let temp = {}
+                           temp['port'] = config.port
+                           temp['pathToSite'] = result.pathToSite
+                           resp.result = temp;
+                           return res.json(resp);
+                        })
+
+                  })
+            } catch (err) {
+               // next(err);
+            }
+         } else {
+            return res.json(resp);
+         }
+      })
+
+      adminApp.post('/save-config', (req, res) => {
+         const method = req.fields.method;
+         let params = JSON.parse(req.fields.params)
+
+         var config = JSON.parse(fs.readFileSync('./config.json'))
+
+         let path = params.path
+         let port = params.port
+
+         let resp: any = {};
+
+         if ('save-config' == method) {
+            resp.result = {}
+            try {
+
+               let temp_port = JSON.stringify({
+                  port: port
+               })
+               console.log("TCL: AdminRoutes -> routes -> temp_port", temp_port)
+
+               fs.writeFile('./config.json', temp_port, 'utf8');
+
+               adbDB.getAdminId(res.locals.email)
+                  .then(function (adminId) {
+                     adbDB.setupApp(path, adminId[0].id)
+                        .then(function (result) {
+                           let temp = {}
+                           temp['port'] = config.port
+                           temp['pathToSite'] = result.pathToSite
+                           resp.result = temp;
+                           adbDB.close();
+                           process.exit();
                            return res.json(resp);
                         })
 

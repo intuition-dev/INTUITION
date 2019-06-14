@@ -15,16 +15,16 @@ block content
    
    script.
       depp.require('setup-page', function () {
-         var bindSetup = new BindSetup()
-         bindSetup.getForm()
+         var bindSettings = new BindSettings()
+         bindSettings.getForm()
 
          $('#setup-shop').off('click').on('click', function(e){
-               bindSetup.setupApp('shop')
+               bindSettings.setupApp('shop')
          })
          $('#setup-blog').off('click').on('click', function(e){
-               bindSetup.setupApp('blog')
+               bindSettings.setupApp('blog')
          })
          $('#setup-website').off('click').on('click', function(e){
-               bindSetup.setupApp('website')
+               bindSettings.setupApp('website')
          })
       })

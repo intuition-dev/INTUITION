@@ -22,7 +22,7 @@ depp.define({
     'setup-page': [
         '#webAdmin',
         ROOT + 'admin/settings/settings-comp.js',
-        ROOT + 'admin/settings/BindSetup.js'
+        ROOT + 'admin/settings/BindSettings.js'
     ],
     'crud': [
         '#rw', ROOT + 'admin/assets/js/crud.js'

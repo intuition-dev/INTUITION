@@ -1,6 +1,6 @@
 class BindSetup {
     constructor() {
-        this.services = new Services(['http', 'localhost', '9081'])
+        this.services = new WebAdmin()
     }
 
     createConfig(form) {
@@ -8,7 +8,7 @@ class BindSetup {
         let serialised = $(form).serializeArray();
         console.info("--serialised:", serialised)
         this.services.createConfig(serialised)
-            .then(function (result) {
+            .then(function(result) {
                 if (result) {
                     window.location = '/admin';
                 }

@@ -1,21 +1,15 @@
 depp.define({
-    'scripts': [
-        , '#jquery'
-        , ROOT + 'assets/css/spectreBottom.css'
-    ],
-    'httpRPC': [
-        , '#RPC',
+    'scripts': [, '#jquery', ROOT + 'assets/css/spectreBottom.css'],
+    'httpRPC': [, '#RPC',
         ROOT + 'assets/js/BindSetup.js',
-        ROOT + 'assets/js/Services.js',
+        ROOT + '../IntuAPI/IntuAPI.js',
     ],
     'setup': [
-        '#scripts'
-        , '#httpRPC'
+        '#scripts', '#httpRPC'
     ],
 
     'fonts': [
-        '#rw'
-        , '#OpenSans'
+        '#rw', '#OpenSans'
     ]
 });
 

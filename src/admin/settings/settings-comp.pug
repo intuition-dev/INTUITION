@@ -7,9 +7,20 @@ settings-comp
                input(type='text', name='path' value="{(typeof this.pathToSite !='undefined') ? this.pathToSite : ''}")
          div(data-row-span='1')
             div(data-field-span='1')
-               label Port
+               label App is running on port:
                input(type='text', name='port' value="{(typeof this.port !='undefined') ? this.port : ''}")
          button.btn.mt-2#save-settings Save Settings
    script.
+      var _this = this
       this.pathToSite = opts.pathToSite
       this.port = opts.port
+      this.bindSetup = opts.bindSetup
+      
+      this.on('mount', function(){
+         $('#save-settings').on('click', function(ev){
+            ev.preventDefault()
+            var serialize = $('#settings-form').serializeArray()
+            _this.bindSetup.saveConfig(serialize)
+            console.log("TCL: serialize", serialize)
+         })
+      })
