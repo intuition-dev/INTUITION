@@ -116,6 +116,7 @@ export class ADB { // auth & auth DB
          return this.lastID
       });
    }
+
    editEditor(name, id) {
       return this.db.run(`UPDATE editors SET name='${name}' WHERE id='${id}'`, function (err) {
          if (err) {
@@ -124,6 +125,7 @@ export class ADB { // auth & auth DB
          return this.lastID
       });
    }
+   
    deleteEditor(id) {
       return this.db.run(`DELETE FROM editors WHERE id='${id}'`, function (err) {
          if (err) {

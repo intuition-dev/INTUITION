@@ -117,6 +117,7 @@ export class AdminRoutes {
             return res.json(resp);
          }
       })
+
       adminApp.post('/get-config', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
@@ -283,7 +284,7 @@ export class AdminRoutes {
 
       });
 
-      // // add user
+      // add user
       adminApp.post("/editors-add", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
@@ -304,8 +305,24 @@ export class AdminRoutes {
                      let response = {
                         id: editorId
                      }
-                     resp.result = response;
-                     return res.json(resp);
+                     adbDB.getEmailJsSettings()
+                        .then(settings => {
+                           let setting = settings[0];
+                           //TODO: port hardcoded
+                           let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: http://localhost:9081/editors&email=' + email;
+
+                           emailJs.send(
+                              email,
+                              setting.emailjsService_id,
+                              setting.emailjsTemplate_id,
+                              setting.emailjsUser_id,
+                              msg
+                           )
+      
+                           resp.result = response;
+                           return res.json(resp);
+                          
+                        });
                   })
             } else {
                res.status(400);
