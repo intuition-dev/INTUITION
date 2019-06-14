@@ -72,7 +72,7 @@ class AdminRoutes {
                             await new FileOpsExtra_1.Download('CMS', path.join(__dirname, '../')).autoZ();
                             break;
                         case 'shop':
-                            setupItem = 'shop';
+                            setupItem = 'e-com';
                             await new FileOpsExtra_1.Download('SHOP', path.join(__dirname, '../')).autoZ();
                             break;
                         case 'website':
