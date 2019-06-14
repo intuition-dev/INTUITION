@@ -123,13 +123,14 @@
         }
         .reset-password {
             cursor: pointer;
-            color: #ff000091;
-            font-size: 14px;
+            color: $color-secondary;
+            font-size: 10px;
         }
         .v-code {
             font-size: 10px;
             text-align: left;
             font-weight: 600;
+            padding: 1rem 0;
         }
     }
 

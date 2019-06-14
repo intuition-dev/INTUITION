@@ -11,7 +11,10 @@ depp.define({
         ROOT + 'editors/assets/js/edit.js'
     ],
     'general': [
-        '#edit', ROOT + 'editors/assets/js/BindPosts.js', ROOT + 'editors/assets/js/login.js'
+        '#edit',
+        ROOT + 'editors/assets/js/BindPosts.js',
+        ROOT + 'editors/assets/js/BindLogin.js',
+        ROOT + 'editors/assets/js/login.js'
     ],
     'rw': [
         '#general',

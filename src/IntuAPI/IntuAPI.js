@@ -19,7 +19,9 @@ class WebAdmin {
         this.serviceRPC = new httpRPC(apiProtocol, apiHost, apiPort);
     }
 
-    // Editor App requests
+    /**
+     ********************* EDITOR APP REQUESTS ************************
+    */
 
     /** editor users authentication
      * @param email user email, eg: 'example@example.com'
@@ -212,8 +214,35 @@ class WebAdmin {
             });
     }
 
+    /**
+     * editor send verification code
+     * @param email editor user email, eg: 'example@example.com'
+     */
+    sendVcodEditor(email) {
+        return this.serviceRPC.invoke('/api/editors/resetPassword', 'code', { admin_email: email })
+            .then(function() {
+                return true;
+            })
+    }
 
-    // Admin App requests
+    /**
+     * editor reset password 
+     * @param email admin user email, eg: 'example@example.com'
+     * @param pass admin user password, eg: '123456'
+     * @param code verification code, eg: '1234'
+     */
+    resetPassEditor(email, code, pass) {
+        return this.serviceRPC.invoke('/api/editors/resetPassword', 'reset-password', {
+            admin_email: email,
+            code: code,
+            password: pass
+        })
+    }
+
+
+    /**
+     ********************* ADMIN APP REQUESTS ************************
+    */
 
     /**
      * admin authentication
@@ -319,7 +348,7 @@ class WebAdmin {
     }
 
     /**
-     * send verification code 
+     * admin send verification code 
      * @param email admin user email, eg: 'example@example.com'
      */
     sendVcode(email) {

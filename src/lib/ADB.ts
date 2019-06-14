@@ -31,7 +31,7 @@ export class ADB { // auth & auth DB
          if (err) {
          }
       });
-      await this.db.run(`INSERT INTO editors(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
+      await this.db.run(`INSERT INTO editors(id, email, password, name) VALUES('${randomID}','${email}', '${hashPass}', 'Admin')`, function (err) {
          if (err) {
          }
       });
@@ -138,6 +138,7 @@ export class ADB { // auth & auth DB
       });
    }
 
+   // admin send verification code
    async sendVcode(email) {
       let vcode = Math.floor(1000 + Math.random() * 9000);
       await this.db.run(`UPDATE admin SET vcode='${vcode}' WHERE email='${email}'`, function (err, rows) {
@@ -149,11 +150,42 @@ export class ADB { // auth & auth DB
       return vcode;
    }
 
+   // editor send verification code
+   async sendVcodeEditor(email) {
+      let vcode = Math.floor(1000 + Math.random() * 9000);
+      await this.db.run(`UPDATE editors SET vcode='${vcode}' WHERE email='${email}'`, function (err, rows) {
+         if (err) {
+         }
+         return rows
+      });
+
+      return vcode;
+   }
+
+   // admin password reset
    resetPassword(email, vcode, password) {
       var salt = bcrypt.genSaltSync(10);
       let hashPass = bcrypt.hashSync(password, salt);
 
       return this.db.run(`UPDATE admin SET password='${hashPass}' WHERE email='${email}' AND vcode='${vcode}'`)
+         .then(res => {
+            if (res.changes > 0) {
+               return true;
+            } else {
+               return false;
+            }
+         })
+         .catch(err => {
+            return false;
+         })
+   }
+
+   // editors password reset
+   resetPasswordEditor(email, vcode, password) {
+      var salt = bcrypt.genSaltSync(10);
+      let hashPass = bcrypt.hashSync(password, salt);
+
+      return this.db.run(`UPDATE editors SET password='${hashPass}' WHERE email='${email}' AND vcode='${vcode}'`)
          .then(res => {
             if (res.changes > 0) {
                return true;

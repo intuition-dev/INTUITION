@@ -45,6 +45,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#webadmincheckeditor'
+                        class='regular pre-open'>
+                        #checkEditor
+                      </a></li>
+                      
+                      <li><a
                         href='#webadmingetdirslist'
                         class='regular pre-open'>
                         #getDirsList
@@ -96,6 +102,24 @@
                         href='#webadmingetmbakeversion'
                         class='regular pre-open'>
                         #getMbakeVersion
+                      </a></li>
+                      
+                      <li><a
+                        href='#webadminsendvcodeditor'
+                        class='regular pre-open'>
+                        #sendVcodEditor
+                      </a></li>
+                      
+                      <li><a
+                        href='#webadminresetpasseditor'
+                        class='regular pre-open'>
+                        #resetPassEditor
+                      </a></li>
+                      
+                      <li><a
+                        href='#webadmincheckadmin'
+                        class='regular pre-open'>
+                        #checkAdmin
                       </a></li>
                       
                       <li><a
@@ -181,6 +205,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#webadmincheckeditor'
+                        class='regular pre-open'>
+                        #checkEditor
+                      </a></li>
+                      
+                      <li><a
                         href='#webadmingetdirslist'
                         class='regular pre-open'>
                         #getDirsList
@@ -232,6 +262,24 @@
                         href='#webadmingetmbakeversion'
                         class='regular pre-open'>
                         #getMbakeVersion
+                      </a></li>
+                      
+                      <li><a
+                        href='#webadminsendvcodeditor'
+                        class='regular pre-open'>
+                        #sendVcodEditor
+                      </a></li>
+                      
+                      <li><a
+                        href='#webadminresetpasseditor'
+                        class='regular pre-open'>
+                        #resetPassEditor
+                      </a></li>
+                      
+                      <li><a
+                        href='#webadmincheckadmin'
+                        class='regular pre-open'>
+                        #checkAdmin
                       </a></li>
                       
                       <li><a
@@ -360,6 +408,74 @@
 
   
 
+  <p><strong><strong><strong><strong>****</strong></strong></strong></strong> EDITOR APP REQUESTS <strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></p>
+
+    <div class='pre p1 fill-light mt0'>checkEditor(email: any, pass: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>email</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pass</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='webadmincheckeditor'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>checkEditor(email, pass)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
   <p>editor users authentication</p>
 
     <div class='pre p1 fill-light mt0'>checkEditor(email: any, pass: any)</div>
@@ -380,7 +496,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>email</span> <code class='quiet'>(any)</code>
-	    :email user email, eg: 'example@example.com'
+	    user email, eg: 'example@example.com'
 
           </div>
           
@@ -389,7 +505,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>pass</span> <code class='quiet'>(any)</code>
-	    :string user password, eg: '123456'
+	    user password, eg: '123456'
 
           </div>
           
@@ -1183,6 +1299,214 @@
       </div>
     </div>
   
+    <div class='border-bottom' id='webadminsendvcodeditor'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>sendVcodEditor(email)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>editor send verification code</p>
+
+    <div class='pre p1 fill-light mt0'>sendVcodEditor(email: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>email</span> <code class='quiet'>(any)</code>
+	    editor user email, eg: 'example@example.com'
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='webadminresetpasseditor'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>resetPassEditor(email, code, pass)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>editor reset password</p>
+
+    <div class='pre p1 fill-light mt0'>resetPassEditor(email: any, code: any, pass: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>email</span> <code class='quiet'>(any)</code>
+	    admin user email, eg: 'example@example.com'
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>code</span> <code class='quiet'>(any)</code>
+	    verification code, eg: '1234'
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pass</span> <code class='quiet'>(any)</code>
+	    admin user password, eg: '123456'
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='webadmincheckadmin'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>checkAdmin(email, pass)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p><strong><strong><strong><strong>****</strong></strong></strong></strong> ADMIN APP REQUESTS <strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></p>
+
+    <div class='pre p1 fill-light mt0'>checkAdmin(email: any, pass: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>email</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pass</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='webadmincheckadmin'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -1678,7 +2002,7 @@
 
   
 
-  <p>send verification code</p>
+  <p>admin send verification code</p>
 
     <div class='pre p1 fill-light mt0'>sendVcode(email: any)</div>
   
@@ -1974,6 +2298,74 @@
 
   
 
+  <p><strong><strong><strong><strong>****</strong></strong></strong></strong> EDITOR APP REQUESTS <strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></p>
+
+    <div class='pre p1 fill-light mt0'>checkEditor(email: any, pass: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>email</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pass</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='webadmincheckeditor'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>checkEditor(email, pass)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
   <p>editor users authentication</p>
 
     <div class='pre p1 fill-light mt0'>checkEditor(email: any, pass: any)</div>
@@ -1994,7 +2386,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>email</span> <code class='quiet'>(any)</code>
-	    :email user email, eg: 'example@example.com'
+	    user email, eg: 'example@example.com'
 
           </div>
           
@@ -2003,7 +2395,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>pass</span> <code class='quiet'>(any)</code>
-	    :string user password, eg: '123456'
+	    user password, eg: '123456'
 
           </div>
           
@@ -2797,6 +3189,214 @@
       </div>
     </div>
   
+    <div class='border-bottom' id='webadminsendvcodeditor'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>sendVcodEditor(email)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>editor send verification code</p>
+
+    <div class='pre p1 fill-light mt0'>sendVcodEditor(email: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>email</span> <code class='quiet'>(any)</code>
+	    editor user email, eg: 'example@example.com'
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='webadminresetpasseditor'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>resetPassEditor(email, code, pass)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>editor reset password</p>
+
+    <div class='pre p1 fill-light mt0'>resetPassEditor(email: any, code: any, pass: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>email</span> <code class='quiet'>(any)</code>
+	    admin user email, eg: 'example@example.com'
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>code</span> <code class='quiet'>(any)</code>
+	    verification code, eg: '1234'
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pass</span> <code class='quiet'>(any)</code>
+	    admin user password, eg: '123456'
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='webadmincheckadmin'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>checkAdmin(email, pass)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p><strong><strong><strong><strong>****</strong></strong></strong></strong> ADMIN APP REQUESTS <strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></p>
+
+    <div class='pre p1 fill-light mt0'>checkAdmin(email: any, pass: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>email</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pass</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='webadmincheckadmin'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -3292,7 +3892,7 @@
 
   
 
-  <p>send verification code</p>
+  <p>admin send verification code</p>
 
     <div class='pre p1 fill-light mt0'>sendVcode(email: any)</div>
   

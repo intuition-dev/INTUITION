@@ -3,6 +3,8 @@ import { MBake, Ver } from 'mbake/lib/Base';
 import { Dat, FileOps, Dirs } from 'mbake/lib/FileOpsBase'
 import { CSV2Json } from 'mbake/lib/FileOpsExtra';
 import { ExpressRPC } from 'mbake/lib/Serv';
+import { Email } from './Email';
+
 const fs = require('fs-extra')
 // import { FirebaseAdmin } from "./firebaseAdmin";
 var config = JSON.parse(fs.readFileSync('./config.json'))
@@ -10,6 +12,7 @@ var appPort = config.port
 
 export class EditorRoutes {
    routes(adbDB) {
+      const emailJs = new Email();
       const fs = require('fs');
       const path = require('path');
       let mountPath = '';
@@ -18,6 +21,11 @@ export class EditorRoutes {
 
       // appE.use(fileUpload());
       appE.use((request, response, next) => {
+
+         if (request.path === '/resetPassword') {
+            next();
+         }
+
          const params = JSON.parse(request.fields.params)
          const resp: any = {}
 
@@ -397,6 +405,49 @@ export class EditorRoutes {
 
          }
 
+      });
+
+      appE.post('/resetPassword', (req, res) => {
+         const method = req.fields.method;
+         let params = JSON.parse(req.fields.params);
+         let email = params.admin_email;
+         let resp: any = {};
+
+         if ('code' == method) {
+            resp.result = {};
+
+            try {
+               var code = adbDB.sendVcodeEditor(email)
+                  .then(function (code) {
+                     adbDB.getEmailJsSettings()
+                        .then(settings => {
+                           let setting = settings[0];
+                           emailJs.send(
+                              email,
+                              setting.emailjsService_id,
+                              setting.emailjsTemplate_id,
+                              setting.emailjsUser_id,
+                              'your code: ' + code
+                           )
+                           resp.result = true;
+                           return res.json(resp);
+                        });
+                  })
+            } catch (err) {
+               return res.json(resp);
+            }
+
+         } else if ('reset-password' == method) {
+            resp.result = {};
+
+            adbDB.resetPasswordEditor(email, params.code, params.password)
+               .then(function (result) {
+                  resp.result = result;
+                  return res.json(resp);
+               })
+         } else {
+            return res.json(resp);
+         }
       });
 
       return appE;

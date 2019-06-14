@@ -37,5 +37,5 @@ website's content. But it will remove all the editor: you have to add them again
 
 (TODO: Change path, change port, extract CMS, eCom, Website, add existing app)
 
-(TODO: a lot of noise on logger, add editor screen has 'old data', make admin be editor auto, even if not listed, changed admin command: for admin )
+(TODO: a lot of noise on logger, add editor screen has 'old data', ~~tmake admin be editor auto~~, even if not listed, changed admin command: for admin )
 (TODO: add editor does nothing, no logo - our logo only, adding an editor: no password!. during code they set password, list does not work )

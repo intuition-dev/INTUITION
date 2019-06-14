@@ -23,6 +23,17 @@
         position: relative;
         z-index: 1;
 
+        .v-code {
+            font-size: 10px;
+            text-align: left;
+            font-weight: 600;
+            padding: 1rem 0;
+        }
+
+        .reset-password {
+            font-size: 10px;
+            color: $color-secondary;
+        }
 
         .site-brand {
             font-weight: 400;
