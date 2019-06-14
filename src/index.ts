@@ -46,31 +46,21 @@ try {
 
 
 function runSetup() {
-   mainApp.use('/setup', ExpressRPC.serveStatic(path.join(__dirname, 'setup')));
    servingFolders()
    opn('http://localhost:' + appPort + '/setup')
 }
 
 function servingFolders() {
 
-   /*
-   * E D I T O R S
-   */
    adbDB.connectToDb(pathToDb)
+
    const editorRoutes = new EditorRoutes();
-   mainApp.use('/api/editors', editorRoutes.routes(adbDB));
-   mainApp.use('/editors', ExpressRPC.serveStatic(path.join(__dirname, 'www')));
-
-
-   // Wa.watch('/Users/liza/work/mbakeCLI/CMS', 9082);
-
-   /*
-   * A D M I N
-   */
-
    const adminRoutes = new AdminRoutes();
+
+   mainApp.use('/api/editors', editorRoutes.routes(adbDB));
    mainApp.use('/api/admin', adminRoutes.routes(adbDB));
-   mainApp.use('/admin', ExpressRPC.serveStatic(path.join(__dirname, 'wwwAdmin')));
+
+   mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
 }
 
 mainApp.post("/setup", async (req, res) => {

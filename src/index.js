@@ -41,18 +41,16 @@ try {
 catch (err) {
 }
 function runSetup() {
-    mainApp.use('/setup', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, 'setup')));
     servingFolders();
     opn('http://localhost:' + appPort + '/setup');
 }
 function servingFolders() {
     adbDB.connectToDb(pathToDb);
     const editorRoutes = new editor_1.EditorRoutes();
-    mainApp.use('/api/editors', editorRoutes.routes(adbDB));
-    mainApp.use('/editors', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, 'www')));
     const adminRoutes = new admin_1.AdminRoutes();
+    mainApp.use('/api/editors', editorRoutes.routes(adbDB));
     mainApp.use('/api/admin', adminRoutes.routes(adbDB));
-    mainApp.use('/admin', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, 'wwwAdmin')));
+    mainApp.use('/', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, '/')));
 }
 mainApp.post("/setup", async (req, res) => {
     const method = req.fields.method;

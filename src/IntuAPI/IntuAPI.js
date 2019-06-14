@@ -51,9 +51,9 @@ class WebAdmin {
         let email = window.sessionStorage.getItem('username');
         let pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/editors/posts', 'get', {
-                editor_email: email,
-                editor_pass: pass
-            });
+            editor_email: email,
+            editor_pass: pass
+        });
     }
 
     /**
@@ -66,10 +66,10 @@ class WebAdmin {
         let email = window.sessionStorage.getItem('username');
         let pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/editors/files', 'get', {
-                post_id: id,
-                editor_email: email,
-                editor_pass: pass
-            });
+            post_id: id,
+            editor_email: email,
+            editor_pass: pass
+        });
     }
 
     /**
@@ -83,11 +83,11 @@ class WebAdmin {
         let email = window.sessionStorage.getItem('username');
         let pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/editors/post-get', 'get', {
-                post_id: id,
-                pathPrefix: pathPrefix,
-                editor_email: email,
-                editor_pass: pass
-            });
+            post_id: id,
+            pathPrefix: pathPrefix,
+            editor_email: email,
+            editor_pass: pass
+        });
     }
 
     /**
@@ -102,12 +102,12 @@ class WebAdmin {
         let email = window.sessionStorage.getItem('username');
         let pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/editors/post-put', 'put', {
-                post_id: id,
-                pathPrefix: pathPrefix,
-                content: btoa(md),
-                editor_email: email,
-                editor_pass: pass
-            });
+            post_id: id,
+            pathPrefix: pathPrefix,
+            content: btoa(md),
+            editor_email: email,
+            editor_pass: pass
+        });
     }
 
     /**
@@ -122,16 +122,16 @@ class WebAdmin {
         let email = window.sessionStorage.getItem('username');
         let pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/editors/post-build', 'put', {
-                post_id: id,
-                pathPrefix: pathPrefix,
-                content: btoa(md),
-                editor_email: email,
-                editor_pass: pass
-            }).then(function(response) {
-                return response;
-            }).catch(function(error) {
-                return error;
-            });
+            post_id: id,
+            pathPrefix: pathPrefix,
+            content: btoa(md),
+            editor_email: email,
+            editor_pass: pass
+        }).then(function(response) {
+            return response;
+        }).catch(function(error) {
+            return error;
+        });
     }
 
     /**
@@ -145,11 +145,11 @@ class WebAdmin {
         let email = window.sessionStorage.getItem('username');
         let pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/editors/new-post', 'post', {
-                post_id: id,
-                pathPrefix: pathPrefix,
-                editor_email: email,
-                editor_pass: pass
-            });
+            post_id: id,
+            pathPrefix: pathPrefix,
+            editor_email: email,
+            editor_pass: pass
+        });
     }
 
     /**
@@ -186,11 +186,11 @@ class WebAdmin {
         let email = window.sessionStorage.getItem('username');
         let pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/editors/set-publish-date', 'put', {
-                publish_date: publish_date,
-                post_id: pathPrefix,
-                editor_email: email,
-                editor_pass: pass
-            });
+            publish_date: publish_date,
+            post_id: pathPrefix,
+            editor_email: email,
+            editor_pass: pass
+        });
     }
 
     /**
@@ -221,9 +221,9 @@ class WebAdmin {
      */
     checkAdmin(email, pass) {
         let _this = this
-        return this.serviceRPC.invoke('/api/admin/checkAdmin', 'check-admin', { 
+        return this.serviceRPC.invoke('/api/admin/checkAdmin', 'check-admin', {
                 admin_email: email,
-                admin_pass: pass 
+                admin_pass: pass
             })
             .then(function(result) {
                 console.info("--result:", result)
@@ -245,10 +245,10 @@ class WebAdmin {
         let admin_email = window.sessionStorage.getItem('username');
         let admin_pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/admin/setup-app', 'setup-app', {
-                item: item,
-                admin_email: admin_email,
-                admin_pass: admin_pass
-            });
+            item: item,
+            admin_email: admin_email,
+            admin_pass: admin_pass
+        });
     }
 
     /**
@@ -331,10 +331,10 @@ class WebAdmin {
      */
     resetPass(email, code, pass) {
         return this.serviceRPC.invoke('/api/admin/resetPassword', 'reset-password', {
-                admin_email: email,
-                code: code,
-                password: pass
-            })
+            admin_email: email,
+            code: code,
+            password: pass
+        })
     }
 
     /**
@@ -346,9 +346,9 @@ class WebAdmin {
         let admin_email = window.sessionStorage.getItem('username');
         let admin_pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/api/admin/get-configs', 'get-configs', {
-                admin_email: admin_email,
-                admin_pass: admin_pass
-            });
+            admin_email: admin_email,
+            admin_pass: admin_pass
+        });
     }
 
 }

@@ -11,7 +11,7 @@ depp.define({
     'webAdmin': [
         '#scripts',
         '#httpRPC',
-        ROOT + 'admin/assets/IntuAPI/IntuAPI.js'
+        ROOT + 'IntuAPI/IntuAPI.js'
     ],
     'general': [
         '#webAdmin', ROOT + 'admin/assets/js/BindEditors.js'
