@@ -18,11 +18,14 @@ block content
                   div(data-field-span='1')
                      label Password
                      input(type='password', name='password', required='required', minlength='6')
-         .btn-row.space-2v
-            a(href='#')#add-editor.btn-custom.btn-primary Add
-            a(href='#')#edit-editor.btn-custom.btn-primary Edit
-            a(href='#')#delete-editor.btn-custom.btn-secondary
-               span Delete
+         .d-flex.bl_button_row.space-2v
+            .btn-row
+               a(href='#')#add-editor.btn-custom.btn-primary Add
+               a(href='#')#edit-editor.btn-custom.btn-primary Edit
+               a(href='#')#delete-editor.btn-custom.btn-secondary
+                  span Delete
+            a(href="http://localhost:9081/editors/").goto-editors.btn-custom.btn-secondary
+               span Edit content
    script.
       depp.require('rw', function () {
          var bindLogin = new BindLogin()

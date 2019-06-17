@@ -13,9 +13,12 @@
         padding: 8px 15px;
         transition: all .2s ease-in-out;
         display: inline-block;
-        color: #fff;
         height: initial;
         line-height: 1.5;
+        
+        &, &:visited {
+            color: #fff;
+        }
 
         &::first-letter {
             text-transform: uppercase;
