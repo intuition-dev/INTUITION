@@ -10,6 +10,8 @@ url: itemOne #url of the item to be added to snipcart
 profit: 1 # profit to make on top of the price, 1USD
 shipping_coverage: 4 #shipping, const = 4usd
 
+
+
 desc: Short-Sleeve Unisex T-Shirt #description of the item
 
 #product items with variants

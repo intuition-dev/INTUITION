@@ -95,6 +95,7 @@ export class AdminRoutes {
                      break;
                   case 'shop':
                      setupItem = 'e-com'
+                     console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem)
                      await new Download('SHOP', path.join(__dirname, '../')).autoZ()
                      break;
                   case 'website':
@@ -103,6 +104,7 @@ export class AdminRoutes {
                      break;
                }
 
+               //update configs with admin id
                let adminId = await adbDB.getAdminId(res.locals.email)
                await adbDB.setupApp(path.join(__dirname, '../' + setupItem), adminId[0].id)
                   .then(function (result) {
@@ -318,10 +320,10 @@ export class AdminRoutes {
                               setting.emailjsUser_id,
                               msg
                            )
-      
+
                            resp.result = response;
                            return res.json(resp);
-                          
+
                         });
                   })
             } else {

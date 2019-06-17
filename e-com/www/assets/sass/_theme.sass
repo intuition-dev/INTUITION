@@ -1,7 +1,7 @@
 .shop-list
     & .card
         border: 0
-        box-shadow: 0 .5rem 1rem rgba(48, 55, 66, .5)
+        box-shadow: 0 0.5rem 1rem rgba(48, 55, 66, 0.5)
         height: 100%
 
     & .card-image
@@ -68,7 +68,7 @@ header
                 left: 0
                 bottom: -4px
                 width: 0
-                transition: width .5s linear
+                transition: width 0.5s linear
 
             &.active
                 text-decoration: none
@@ -86,7 +86,7 @@ header
             background: $primary-color
             opacity: 0
             transform: scaleY(0)
-            transition: transform .5s linear, opacity .5s linear
+            transition: transform 0.5s linear, opacity 0.5s linear
             transform-origin: 0% 0%
             text-align: right
             transform-style: preserve-3d
@@ -127,7 +127,7 @@ header
             position: relative
             margin: 0
             transform: rotate(0deg)
-            transition: .5s ease-in-out
+            transition: 0.5s ease-in-out
             cursor: pointer
 
         #nav-icon span
@@ -140,7 +140,7 @@ header
             opacity: 1
             left: 0
             transform: rotate(0deg)
-            transition: .5s ease-in-out
+            transition: 0.5s ease-in-out
 
         #nav-icon span:nth-child(1)
             top: 0px
@@ -166,3 +166,44 @@ header
             top: 18px
             width: 0%
             left: 50%
+
+.carousel
+   img
+      margin: auto
+      display: block
+
+.bl-shopping-cart
+   position: relative
+   .bl-shopping-cart__svg
+      svg
+         width: 24px
+         height: 24px
+         fill: #6b6b6b
+         
+   .snipcart-total-items
+      display: block
+      position: absolute
+      background: $primary-color
+      width: 18px
+      height: 18px
+      border-radius: 100%
+      color: white
+      font-size: 11px
+      line-height: 1.6
+      top: 0px
+      right: -8px
+   .clean-cart
+      display: flex
+      cursor: pointer
+      justify-content: space-between
+      align-items: center
+      &:hover
+         svg
+            fill: white
+            background: $error-color
+      svg
+         width: 12px
+         height: 12px
+         fill: $error-color
+         border-radius: 100%
+         transition: .15s linear all

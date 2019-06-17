@@ -80,6 +80,7 @@ class AdminRoutes {
                             break;
                         case 'shop':
                             setupItem = 'e-com';
+                            console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem);
                             await new FileOpsExtra_1.Download('SHOP', path.join(__dirname, '../')).autoZ();
                             break;
                         case 'website':

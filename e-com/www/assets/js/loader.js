@@ -14,6 +14,17 @@ depp.require(['DOM', 'pre', 'snipcart'], onLoaded) //d2
 loadSnipCart(SNIPCART_API)
     .then(function(res) {
         depp.done('shop-item')
+
+        //handle snipcart remove all items
+        document.addEventListener('snipcart.ready', function() {
+            var count = Snipcart.api.items.count();
+            $('.js-clean-cart').on('click', function(ev) {
+                ev.preventDefault()
+                console.log("TCL: ev", ev)
+                Snipcart.api.items.clear()
+            })
+        });
+
     })
 
 function onLoaded() {

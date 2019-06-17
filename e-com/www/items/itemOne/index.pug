@@ -19,7 +19,7 @@ block main
                                        i.icon.icon-arrow-left
                                     label.item-next.btn.btn-action.btn-lg(for='slide-'+(index == images.length-1 ? 0 : index))
                                        i.icon.icon-arrow-right
-                                    img.img-responsive.rounded(src=img, alt='t-shirt')
+                                    img(src=img, alt='t-shirt')
                         // carousel navigation
                         .carousel-nav
                            label.nav-item.text-hide.c-hand(each='{img, index in images}' for='slide-{index}') {index}
