@@ -2412,10 +2412,10 @@ markdown-it@>=8.4.2, markdown-it@^8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.6.21:
-  version "6.6.22"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.22.tgz#ca5df05904d4a7e24435aa2cd1607eaac28ace06"
-  integrity sha512-tQV376/tbGX6T5Zle7H6ETC9C9qAxWGVrzd1ayBF4SjBpRsPLovZWrGrspwNxFG3ApV7cwurl2OMyV4ob5YFXw==
+mbake@>=6.6.23:
+  version "6.6.23"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.23.tgz#56871b0e9dfd1ff506bb05586f2a935613b0d52d"
+  integrity sha512-VpCooKEj3kv0aLLmctOHpzjkLVaMTiDv89qIdryvSyJrGME+yA+Jlp4XEpbZEQ6I/GWzdiacsaBxgxJhSUASBw==
   dependencies:
     "@marp-team/marpit" ">=1.1.0"
     adm-zip ">=0.4.13"
