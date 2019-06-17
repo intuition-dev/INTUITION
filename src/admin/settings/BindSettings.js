@@ -1,12 +1,12 @@
 class BindSettings {
     constructor() {
-        this.WebAdmin = new WebAdmin()
+        this.IntuAPI = new IntuAPI()
     }
 
     //install e-com, website or blog, buttons handle
     setupApp(item) {
         $('.loader').addClass('active');
-        this.WebAdmin.setupApp(item)
+        this.IntuAPI.setupApp(item)
             .then(function(result) {
                 console.info("--result:", result)
                 $('.loader').removeClass('active');
@@ -16,7 +16,7 @@ class BindSettings {
     //get data for the settings form
     getForm() {
         var _this = this
-        this.WebAdmin.getConfig()
+        this.IntuAPI.getConfig()
             .then(function(result) {
                 console.info("--result:", result)
                 riot.mount('settings-comp', { pathToSite: result.pathToSite, port: result.port, bindSetup: _this })
@@ -36,7 +36,7 @@ class BindSettings {
             }
         })[0].value
 
-        this.WebAdmin.saveConfig(port, path)
+        this.IntuAPI.saveConfig(port, path)
             .then(function(result) {
                 console.info("--result:", result)
 

@@ -2,12 +2,12 @@ class Login {
 	constructor() {
 		// this.checkUser = this.checkUser.bind(this);
 		// this.auth = this.auth.bind(this);
-		this.WebAdmin = new WebAdmin()
+		this.IntuAPI = new IntuAPI()
 	}
 
 	checkUser(formLogin, formPassw) {
-		console.info("--this.WebAdmin:", this.WebAdmin)
-		this.WebAdmin.checkEditor(formLogin, formPassw)
+		console.info("--this.IntuAPI:", this.IntuAPI)
+		this.IntuAPI.checkEditor(formLogin, formPassw)
 			.then(function (result) {
 				console.info("--result:", result)
 				if (result) {

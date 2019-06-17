@@ -3,13 +3,13 @@ class Editors {
         this.drawTable = this.drawTable.bind(this);
         this.save = this.save.bind(this);
         this.remove = this.remove.bind(this);
-        this.webAdmin = new WebAdmin();
+        this.intuAPI = new IntuAPI();
         this.table = null;
         this.activeRow = null;
     }
     drawTable() {
         // render editors table
-        this.webAdmin.getEditorsList()
+        this.intuAPI.getEditorsList()
             .then(editors => {
                 console.info("--editors:", editors)
                 if (Array.isArray(editors)) {
@@ -47,7 +47,7 @@ class Editors {
         let email = $("#editor-form input[name='email']").val();
         let name = $("#editor-form input[name='name']").val();
         if (id) { // edit user
-            return this.webAdmin.editEditor(id, name) //id of user is gonna be the same if edit, so we are updating only name
+            return this.intuAPI.editEditor(id, name) //id of user is gonna be the same if edit, so we are updating only name
                 .then((documentRef) => {
                     $('.notification').removeClass('d-hide').find('.text').text('user was successfully updated');
                     $('.grid-form input').val('');
@@ -68,7 +68,7 @@ class Editors {
                         });
                 });
         } else { // add user
-            return this.webAdmin.addEditor(name, email, password)
+            return this.intuAPI.addEditor(name, email, password)
                 .then((documentRef) => {
                     console.info("--documentRef:", documentRef)
                     $('.notification').removeClass('d-hide').find('.text').text('new user was created');
@@ -103,7 +103,7 @@ class Editors {
     }
 
     remove(id) {
-        return this.webAdmin.deleteEditor(id)
+        return this.intuAPI.deleteEditor(id)
             .then(() => {
                 $('.notification').removeClass('d-hide').find('.text').text(' The user was successfully deleted');
                 $('.grid-form input').val('');
@@ -129,7 +129,7 @@ class Editors {
 }
 
 // admin login&password
-// function getAdminWebAdmin() {
+// function getAdminIntuAPI() {
 //     let username = sessionStorage.getItem('username');
 //     let password = sessionStorage.getItem('password');
 //     if ((username === null || password === null) &&
@@ -138,6 +138,6 @@ class Editors {
 //         console.info('unauthorized, redirecting to login page');
 //         window.location.replace('/');
 //     } else {
-//         return new WebAdmin(username, password);
+//         return new IntuAPI(username, password);
 //     }
 // }

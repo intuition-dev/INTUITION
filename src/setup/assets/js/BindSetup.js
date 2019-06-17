@@ -1,7 +1,7 @@
 console.log("TCL: window.apiPort", window.apiPort)
 class BindSetup {
     constructor() {
-        this.services = new WebAdmin()
+        this.services = new IntuAPI()
     }
 
     createConfig(form) {

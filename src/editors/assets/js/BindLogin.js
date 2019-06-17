@@ -3,12 +3,12 @@
 **/
 class BindLogin {
     constructor() {
-        this.WebAdmin = new WebAdmin();
+        this.IntuAPI = new IntuAPI();
     }
 
     sendVcode(email) {
         if (email !== '') {
-            this.WebAdmin.sendVcodEditor(email)
+            this.IntuAPI.sendVcodEditor(email)
                 .then(function(result) {
                     console.info("--result:", result);
                 });
@@ -17,7 +17,7 @@ class BindLogin {
 
     resetPass(email, code, pass) {
         if (email !== '' && pass !== '' && code !== '') {
-            this.WebAdmin.resetPassEditor(email, code, pass)
+            this.IntuAPI.resetPassEditor(email, code, pass)
                 .then(function(result) {
                     if (result) {
                         alert("Password changed");

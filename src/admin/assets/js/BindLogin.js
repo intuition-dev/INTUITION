@@ -3,10 +3,10 @@
 **/
 class BindLogin {
     constructor() {
-        this.WebAdmin = new WebAdmin()
+        this.IntuAPI = new IntuAPI()
     }
     login(email, pass) {
-        this.WebAdmin.checkAdmin(email, pass)
+        this.IntuAPI.checkAdmin(email, pass)
             .then(function(result) {
                 console.info("--result:", result)
                 if (result) {
@@ -30,7 +30,7 @@ class BindLogin {
 
     sendVcode(email) {
         if (email !== '') {
-            this.WebAdmin.sendVcode(email)
+            this.IntuAPI.sendVcode(email)
                 .then(function(result) {
                     console.info("--result:", result)
                 })
@@ -39,7 +39,7 @@ class BindLogin {
 
     resetPass(email, code, pass) {
         if (email !== '' && pass !== '' && code !== '') {
-            this.WebAdmin.resetPass(email, code, pass)
+            this.IntuAPI.resetPass(email, code, pass)
                 .then(function(result) {
                     if (result) {
                         alert("Password changed")

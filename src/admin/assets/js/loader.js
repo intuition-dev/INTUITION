@@ -8,19 +8,19 @@ depp.define({
         '#fb', '#jquery', '#tabulator', '#gridformsJS', ROOT + 'admin/assets/css/spectreBottom.css'
     ],
     'httpRPC': ['#RPC'],
-    'webAdmin': [
+    'intuAPI': [
         '#scripts',
         '#httpRPC',
         ROOT + 'IntuAPI/IntuAPI.js'
     ],
     'general': [
-        '#webAdmin', ROOT + 'admin/assets/js/BindEditors.js'
+        '#intuAPI', ROOT + 'admin/assets/js/BindEditors.js'
     ],
     'rw': [
         '#general', ROOT + 'admin/assets/js/BindLogin.js', ROOT + 'admin/assets/js/ui.js'
     ],
     'setup-page': [
-        '#webAdmin',
+        '#intuAPI',
         ROOT + 'admin/settings/settings-comp.js',
         ROOT + 'admin/settings/BindSettings.js'
     ],

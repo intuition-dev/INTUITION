@@ -3,11 +3,11 @@ var responces = [];
 depp.define({
     'scripts': [, '#jquery', '#gridformsJS', '#zebraDate', ROOT + 'editors/assets/css/spectreBottom.css'],
     'httpRPC': [, '#RPC'],
-    'webAdmin': [
+    'intuAPI': [
         '#scripts', '#httpRPC', ROOT + 'IntuAPI/IntuAPI.js'
     ],
     'edit': [
-        '#webAdmin',
+        '#intuAPI',
         ROOT + 'editors/assets/js/edit.js'
     ],
     'general': [

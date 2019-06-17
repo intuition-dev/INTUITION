@@ -6,12 +6,12 @@ class Posts {
     constructor() {
         this.showDirs = this.showDirs.bind(this);
         this.showMd = this.showMd.bind(this);
-        this.webAdmin = new WebAdmin();
+        this.intuAPI = new IntuAPI();
     }
     showDirs() {
         // render folders list
         let listTemp = '';
-        return this.webAdmin.getDirsList()
+        return this.intuAPI.getDirsList()
             .then(posts => {
                 if (Array.isArray(posts)) {
                     posts.forEach(el => {
@@ -28,7 +28,7 @@ class Posts {
     showSubDirs(id) {
         // render sub folders list
         let listTemp = '';
-        return this.webAdmin.getSubDirsList(id)
+        return this.intuAPI.getSubDirsList(id)
             .then(dirs => {
                 if (Array.isArray(dirs)) {
                     dirs.forEach(el => {
@@ -43,7 +43,7 @@ class Posts {
 
     showMd(id, pathPrefix) {
         // render .md file content in textarea
-        this.webAdmin.getFile(id, pathPrefix)
+        this.intuAPI.getFile(id, pathPrefix)
             .then(post => {
                 if (post) {
                     myCodeMirror.setValue(post);
@@ -54,36 +54,36 @@ class Posts {
     }
 
     saveMd(id, md, pathPrefix) {
-        return this.webAdmin.saveFile(id, md, pathPrefix)
+        return this.intuAPI.saveFile(id, md, pathPrefix)
             .then(function(resp) {
                 return resp.data
             })
     }
 
     compile(id, md, pathPrefix) {
-        return this.webAdmin.mbakeCompile(id, md, pathPrefix)
+        return this.intuAPI.mbakeCompile(id, md, pathPrefix)
             .then(function(resp) {
                 return resp.data
             })
     }
 
     addPost(id, pathPrefix) {
-        return this.webAdmin.clonePage(id, pathPrefix);
+        return this.intuAPI.clonePage(id, pathPrefix);
     }
 
     uploadFile(input, pathPrefix) {
         var data = new FormData();
         data.append('sampleFile', input);
 
-        return this.webAdmin.upload(data, pathPrefix);
+        return this.intuAPI.upload(data, pathPrefix);
     }
 
     setPublishDate(publishDate, pathPrefix) {
-        return this.webAdmin.setPublishDate(publishDate, pathPrefix);
+        return this.intuAPI.setPublishDate(publishDate, pathPrefix);
     }
 
     MbakeVersion() {
-        return this.webAdmin.getMbakeVersion();
+        return this.intuAPI.getMbakeVersion();
     }
 
 }
