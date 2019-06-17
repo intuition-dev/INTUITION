@@ -1,5 +1,5 @@
 
-# WebAdmin Meta 'Intuition'
+# Meta 'Intuition' WebAdmin
 
 #### 'It will lead YOU in the right direction'
 
@@ -10,11 +10,8 @@ In WebAdmin, you can edit pages' content using markdown which won't let you page
 WebAdmin generates starter site to edit, eg: Website, CMS, Shop or you can choose your existing site. Application has **Admin screen** for all the settings and **Editor screen** where you can perform operations with the content. There is available multiple editors users support, which can be added in Admin screen and users will be notified about it via email.
 
 
-
-# Docs
-
-https://metabake.github.io/metaDocs
-
+#### Please star our main project here:
+- https://github.com/metabake/metaIntuition
 
 # Features
 
@@ -24,6 +21,10 @@ https://metabake.github.io/metaDocs
 - generates starter site to edit, eg: Website, CMS, Shop
 - set publish date to posts
 - files upload
+
+# Full Docs
+
+https://metabake.github.io/metaDocs
 
 
 ## Short Installation
