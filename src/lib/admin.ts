@@ -209,9 +209,9 @@ export class AdminRoutes {
          }
       })
 
-      process.on('exit', function () {
-         adbDB.close();
-      })
+      // process.on('exit', function () {
+      //    adbDB.close();
+      // })
 
       adminApp.post('/resetPassword', (req, res) => {
          const method = req.fields.method;

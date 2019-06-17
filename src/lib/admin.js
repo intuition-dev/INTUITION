@@ -176,9 +176,6 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        process.on('exit', function () {
-            adbDB.close();
-        });
         adminApp.post('/resetPassword', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
