@@ -7,7 +7,7 @@
 /**
  * CRUD users for admin app and files operations for editor app
  */
-class WebAdmin {
+class IntuAPI {
 
     /**
      * @param apiProtocol api protocol (eg: http)
@@ -15,7 +15,7 @@ class WebAdmin {
      * @param apiPort api port (eg: 9081)
      */
     constructor() {
-        console.log("TCL: WebAdmin -> constructor -> apiPort", apiPort)
+        console.log("TCL: IntuAPI -> constructor -> apiPort", apiPort)
         this.serviceRPC = new httpRPC(apiProtocol, apiHost, apiPort);
     }
 
