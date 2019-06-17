@@ -1,5 +1,5 @@
 
-# Install WebAdmin Meta 'Intuition'
+# WebAdmin Meta 'Intuition'
 
 #### 'It will lead YOU in the right direction'
 
