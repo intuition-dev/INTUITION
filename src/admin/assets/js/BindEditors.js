@@ -47,6 +47,10 @@ class Editors {
         let email = $("#editor-form input[name='email']").val();
         let name = $("#editor-form input[name='name']").val();
         if (id) { // edit user
+            if (typeof id === 'undefined' || id === '' || name === '') {
+                throw new Error("no user selected to edit");
+            }
+
             return this.intuAPI.editEditor(id, name) //id of user is gonna be the same if edit, so we are updating only name
                 .then((documentRef) => {
                     $('.notification').removeClass('d-hide').find('.text').text('user was successfully updated');
