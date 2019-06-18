@@ -49,7 +49,6 @@ depp.require(['general'], function () {
 
                 $(this).attr("disabled", "disabled");
                 $('.loader').addClass('active');
-                debugger;
                 editors
                     .remove(rowUid)
                     .then(() => {
