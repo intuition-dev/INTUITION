@@ -1,18 +1,11 @@
 import { ExpressRPC } from 'mbake/lib/Serv';
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
-
-import { MBake, Ver } from 'mbake/lib/Base';
-import { Dat, FileOps, Dirs } from 'mbake/lib/FileOpsBase'
+import { ShippingRoutes } from '../e-com/api/lib/shipping';
 
 const fs = require('fs-extra')
 
 var path = require('path');
-
-let runMbake = new MBake();
-let dirCont = new Dirs(__dirname);
-
-const { spawn } = require('child_process');
 
 export class AdminRoutes {
 
@@ -100,6 +93,9 @@ export class AdminRoutes {
                   case 'shop':
                      setupItem = 'e-com'
                      console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem)
+
+                     const shippingRoutes = new ShippingRoutes();
+                     adminApp.use('/', shippingRoutes.routes(appPort))
                      await new Download('SHOP', path.join(__dirname, '../')).autoZ()
                      break;
                   case 'website':
@@ -353,20 +349,6 @@ export class AdminRoutes {
                      return res.json(resp);
                   })
 
-               // firebaseAdmin.get().auth().updateUser(userId, {
-               //    displayName: name
-               // }).then(function (userRecord) { // send response to client
-               //    // See the UserRecord reference doc for the contents of userRecord.
-               //    let response = {
-               //       id: userRecord.uid
-               //    }
-               //    resp.result = response;
-               //    res.json(resp);
-               // }).catch(function (error) {
-               //    res.status(400);
-               //    resp.result = { error: error.message };
-               //    res.json(resp);
-               // });
             } else {
                res.status(400);
                resp.result = { error: 'parameters missing' };
