@@ -1,6 +1,6 @@
 {
     "name": "intu",
-    "version": "0.9.12",
+    "version": "0.9.14",
     "description": "'It will lead YOU in the right direction'. WebAdmin 'Intuition' screens to CMS, e-Com, et al. ",
     "main": "index.js",
     "scripts": {

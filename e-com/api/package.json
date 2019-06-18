@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "js-yaml": ">=3.13.1",
-    "intu": ">=0.9.8"
+    "intu": ">=0.9.14"
   },
   "devDependencies": {
     "@types/node": ">=12.0.8"
