@@ -39,7 +39,9 @@ class BindSettings {
         this.IntuAPI.updateConfig(port, path)
             .then(function(result) {
                 console.info("--result:", result)
-
+                if (port != window.apiPort) {
+                    window.location.href = "/admin"
+                }
                 //update form
                 //  riot.mount('settings-comp', { pathToSite: result.pathToSite, port: result.port, bindSetup: _this })
             })

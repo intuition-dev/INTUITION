@@ -12,13 +12,15 @@ var path = require('path');
 let runMbake = new MBake();
 let dirCont = new Dirs(__dirname);
 
+const { spawn } = require('child_process');
+
 export class AdminRoutes {
 
-   routes(adbDB, port) {
+   routes(adbDB, appPort) {
       const emailJs = new Email();
       const bodyParser = require("body-parser");
 
-      const adminApp = ExpressRPC.makeInstance(['http://localhost:' + port]);
+      const adminApp = ExpressRPC.makeInstance(['http://localhost:' + appPort]);
       adminApp.use(bodyParser.json());
 
       adminApp.use((request, response, next) => {
@@ -74,6 +76,10 @@ export class AdminRoutes {
          }
       });
 
+      /**
+       * this one only downloads the site and write the path of it to the db
+       * happends only on CLICK INSTALL button on the settings page at admin
+       *  */
       adminApp.post('/setup-app', async (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
@@ -102,11 +108,10 @@ export class AdminRoutes {
                      break;
                }
 
-               //update configs with admin id
+               //write path of new folder to the db
                let adminId = await adbDB.getAdminId(res.locals.email)
                await adbDB.setupApp(path.join(__dirname, '../' + setupItem), adminId[0].id)
                   .then(function (result) {
-                     console.log("TCL: AdminRoutes -> routes -> result", result)
                      resp.result = true;
                      return res.json(resp);
                   })
@@ -149,6 +154,11 @@ export class AdminRoutes {
          }
       })
 
+      /**
+       * Update configs happens on 'Save Settings' click, on the admin/settings
+       * Writes the path of the folder to db and
+       * the port of node where the app is running
+       **/
       adminApp.post('/update-config', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
@@ -164,25 +174,19 @@ export class AdminRoutes {
                adbDB.getAdminId(res.locals.email)
                   .then(function (adminId) {
                      //set new port and path to db
-                     adbDB.setupApp(path, port, adminId[0].id)
+                     adbDB.updateConfig(path, port, adminId[0].id)
                         .then(function (result) {
                            console.log("TCL: AdminRoutes -> routes -> result", result)
                            let temp = {}
-                           temp['port'] = result.port
-                           temp['pathToSite'] = result.pathToSite
+                           temp['port'] = port
+                           temp['pathToSite'] = path
                            resp.result = temp;
+                           if (port != appPort) {
+                              res.json(resp);
+                              process.exit()
+                           }
                            res.json(resp);
-                           // runMbake.bake(path.join(__dirname, '/admin'), 3)
-                           //    .then(function (response) {
-                           //       resp.result = { data: 'OK' };
-                           //       // res.json(resp);
 
-                           //       res.json(resp);
-                           //       process.exit();
-                           //    }, function (error) {
-                           //       resp.result = { data: error };
-                           //       res.json(resp);
-                           //    })
                         })
 
                   })

@@ -51,14 +51,6 @@ class ADB {
     openDB(path, cb) {
         fs.open(path, 'w', cb);
     }
-    getPort(resolve) {
-        let _this = this;
-        this.db.get(`SELECT port FROM configs`, function (err, row) {
-            if (err) {
-            }
-            resolve(row);
-        });
-    }
     validateEmail(email, password) {
         let _this = this;
         return new Promise(function (resolve, reject) {
@@ -206,11 +198,19 @@ class ADB {
             return rows;
         });
     }
-    setupApp(pathToSite, port, adminId) {
-        return this.db.all(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+    setupApp(pathToSite, adminId) {
+        return this.db.all(`UPDATE configs SET pathToSite='${pathToSite}' WHERE adminId='${adminId}'`, [], function (err, rows) {
             if (err) {
             }
             return rows;
+        });
+    }
+    updateConfig(pathToSite, port, adminId) {
+        return this.db.run(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+            if (err) {
+                return console.error('erros:', err.message);
+            }
+            return rows.changes;
         });
     }
     getConfigs(adminId) {

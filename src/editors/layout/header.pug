@@ -9,9 +9,10 @@ html
         script.
             window.apiProtocol = 'http';
             window.apiHost = '0.0.0.0';
-            window.apiPort = '9081';
+            //Return the port number of the current URL
+            window.apiPort = location.port
 
-            window.appMount = 'http://0.0.0.0:9081';
+            window.appMount = 'http://0.0.0.0:'+location.port;
             window.siteName = 'MetaBake';
 
         link(rel='stylesheet', href= ROOT +'editors/assets/css/spectreTop.css')

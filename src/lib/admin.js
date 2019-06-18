@@ -9,11 +9,12 @@ const fs = require('fs-extra');
 var path = require('path');
 let runMbake = new Base_1.MBake();
 let dirCont = new FileOpsBase_1.Dirs(__dirname);
+const { spawn } = require('child_process');
 class AdminRoutes {
-    routes(adbDB, port) {
+    routes(adbDB, appPort) {
         const emailJs = new Email_1.Email();
         const bodyParser = require("body-parser");
-        const adminApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + port]);
+        const adminApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + appPort]);
         adminApp.use(bodyParser.json());
         adminApp.use((request, response, next) => {
             if (request.path === '/resetPassword') {
@@ -89,7 +90,6 @@ class AdminRoutes {
                     let adminId = await adbDB.getAdminId(res.locals.email);
                     await adbDB.setupApp(path.join(__dirname, '../' + setupItem), adminId[0].id)
                         .then(function (result) {
-                        console.log("TCL: AdminRoutes -> routes -> result", result);
                         resp.result = true;
                         return res.json(resp);
                     });
@@ -140,13 +140,17 @@ class AdminRoutes {
                 try {
                     adbDB.getAdminId(res.locals.email)
                         .then(function (adminId) {
-                        adbDB.setupApp(path, port, adminId[0].id)
+                        adbDB.updateConfig(path, port, adminId[0].id)
                             .then(function (result) {
                             console.log("TCL: AdminRoutes -> routes -> result", result);
                             let temp = {};
-                            temp['port'] = result.port;
-                            temp['pathToSite'] = result.pathToSite;
+                            temp['port'] = port;
+                            temp['pathToSite'] = path;
                             resp.result = temp;
+                            if (port != appPort) {
+                                res.json(resp);
+                                process.exit();
+                            }
                             res.json(resp);
                         });
                     });

@@ -1,6 +1,8 @@
 script.
    window.ROOT = '#{ROOT}';
-   window.apiPort = '9081'
+
+   //Return the port number of the current URL
+   window.apiPort = location.port
    
    window.apiProtocol = 'http';
    window.apiHost = '0.0.0.0';

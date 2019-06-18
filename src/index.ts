@@ -41,7 +41,6 @@ try {
          .then(function (port) {
             runAdmin(port)
          })
-      // adbDB.getPort(runAdmin)
    } else {
       console.log('open db and run setup')
 
