@@ -82,8 +82,8 @@ function runAdmin(port) {
 function mainAppsetup(mainApp, port) {
     const editorRoutes = new editor_1.EditorRoutes();
     const adminRoutes = new admin_1.AdminRoutes();
-    mainApp.use('/api/editors', editorRoutes.routes(adbDB));
-    mainApp.use('/api/admin', adminRoutes.routes(adbDB));
+    mainApp.use('/api/editors', editorRoutes.routes(adbDB, port));
+    mainApp.use('/api/admin', adminRoutes.routes(adbDB, port));
     mainApp.use('/', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, '/')));
     mainApp.listen(port, () => {
         console.log(`======================================================`);

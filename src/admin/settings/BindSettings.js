@@ -36,7 +36,7 @@ class BindSettings {
             }
         })[0].value
 
-        this.IntuAPI.saveConfig(port, path)
+        this.IntuAPI.updateConfig(port, path)
             .then(function(result) {
                 console.info("--result:", result)
 

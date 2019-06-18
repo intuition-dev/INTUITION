@@ -21,7 +21,7 @@ class IntuAPI {
 
     /**
      ********************* EDITOR APP REQUESTS ************************
-    */
+     */
 
     /** editor users authentication
      * @param email user email, eg: 'example@example.com'
@@ -242,7 +242,7 @@ class IntuAPI {
 
     /**
      ********************* ADMIN APP REQUESTS ************************
-    */
+     */
 
     /**
      * admin authentication
@@ -386,10 +386,15 @@ class IntuAPI {
         });
     }
 
-    saveConfig(port, path) {
+    /**
+     * update config files 
+     * @param admin_email admin user email, eg: 'example@example.com'
+     * @param admin_pass admin user password, eg: '123456'
+     */
+    updateConfig(port, path) {
         let admin_email = window.sessionStorage.getItem('username');
         let admin_pass = window.sessionStorage.getItem('password');
-        return this.serviceRPC.invoke('/api/admin/save-config', 'save-config', {
+        return this.serviceRPC.invoke('/api/admin/update-config', 'update-config', {
             admin_email: admin_email,
             admin_pass: admin_pass,
             port: port,

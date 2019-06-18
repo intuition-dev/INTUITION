@@ -8,19 +8,17 @@ import { Dat, FileOps, Dirs } from 'mbake/lib/FileOpsBase'
 const fs = require('fs-extra')
 
 var path = require('path');
-var config = JSON.parse(fs.readFileSync('./config.json'))
-var appPort = config.port
-
 
 let runMbake = new MBake();
 let dirCont = new Dirs(__dirname);
 
 export class AdminRoutes {
-   routes(adbDB) {
+
+   routes(adbDB, port) {
       const emailJs = new Email();
       const bodyParser = require("body-parser");
 
-      const adminApp = ExpressRPC.makeInstance(['http://localhost:' + appPort]);
+      const adminApp = ExpressRPC.makeInstance(['http://localhost:' + port]);
       adminApp.use(bodyParser.json());
 
       adminApp.use((request, response, next) => {
@@ -123,10 +121,6 @@ export class AdminRoutes {
       adminApp.post('/get-config', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
-
-         var config = JSON.parse(fs.readFileSync('./config.json'))
-         console.log("TCL: AdminRoutes -> routes -> config", config)
-
          let item = params.item
 
          let resp: any = {};
@@ -140,7 +134,7 @@ export class AdminRoutes {
                      adbDB.getConfigs(adminId[0].id)
                         .then(function (result) {
                            let temp = {}
-                           temp['port'] = config.port
+                           temp['port'] = result.port
                            temp['pathToSite'] = result.pathToSite
                            resp.result = temp;
                            return res.json(resp);
@@ -155,49 +149,40 @@ export class AdminRoutes {
          }
       })
 
-      adminApp.post('/save-config', (req, res) => {
+      adminApp.post('/update-config', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
-
-         var config = JSON.parse(fs.readFileSync('./config.json'))
 
          let path = params.path
          let port = params.port
 
          let resp: any = {};
 
-         if ('save-config' == method) {
+         if ('update-config' == method) {
             resp.result = {}
             try {
-
-               let temp_port = JSON.stringify({
-                  port: port
-               })
-               console.log("TCL: AdminRoutes -> routes -> temp_port", temp_port)
-
-               fs.writeFile('./config.json', temp_port, 'utf8');
-               fs.writeFile('./GLO.yaml', "PORT: " + port, 'utf8');
-
                adbDB.getAdminId(res.locals.email)
                   .then(function (adminId) {
-                     adbDB.setupApp(path, adminId[0].id)
+                     //set new port and path to db
+                     adbDB.setupApp(path, port, adminId[0].id)
                         .then(function (result) {
+                           console.log("TCL: AdminRoutes -> routes -> result", result)
                            let temp = {}
-                           temp['port'] = config.port
+                           temp['port'] = result.port
                            temp['pathToSite'] = result.pathToSite
                            resp.result = temp;
+                           res.json(resp);
+                           // runMbake.bake(path.join(__dirname, '/admin'), 3)
+                           //    .then(function (response) {
+                           //       resp.result = { data: 'OK' };
+                           //       // res.json(resp);
 
-                           runMbake.bake(path.join(__dirname, '/admin'), 3)
-                              .then(function (response) {
-                                 resp.result = { data: 'OK' };
-                                 // res.json(resp);
-
-                                 res.json(resp);
-                                 process.exit();
-                              }, function (error) {
-                                 resp.result = { data: error };
-                                 res.json(resp);
-                              })
+                           //       res.json(resp);
+                           //       process.exit();
+                           //    }, function (error) {
+                           //       resp.result = { data: error };
+                           //       res.json(resp);
+                           //    })
                         })
 
                   })

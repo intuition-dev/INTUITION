@@ -6,15 +6,13 @@ const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const Serv_1 = require("mbake/lib/Serv");
 const Email_1 = require("./Email");
 const fs = require('fs-extra');
-var config = JSON.parse(fs.readFileSync('./config.json'));
-var appPort = config.port;
 class EditorRoutes {
-    routes(adbDB) {
+    routes(adbDB, port) {
         const emailJs = new Email_1.Email();
         const fs = require('fs');
         const path = require('path');
         let mountPath = '';
-        const appE = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + appPort]);
+        const appE = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + port]);
         appE.use((request, response, next) => {
             if (request.path === '/resetPassword') {
                 next();

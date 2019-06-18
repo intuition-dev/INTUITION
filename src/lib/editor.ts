@@ -7,17 +7,17 @@ import { Email } from './Email';
 
 const fs = require('fs-extra')
 // import { FirebaseAdmin } from "./firebaseAdmin";
-var config = JSON.parse(fs.readFileSync('./config.json'))
-var appPort = config.port
+// var config = JSON.parse(fs.readFileSync('./config.json'))
+// var appPort = config.port
 
 export class EditorRoutes {
-   routes(adbDB) {
+   routes(adbDB, port) {
       const emailJs = new Email();
       const fs = require('fs');
       const path = require('path');
       let mountPath = '';
 
-      const appE = ExpressRPC.makeInstance(['http://localhost:' + appPort]);
+      const appE = ExpressRPC.makeInstance(['http://localhost:' + port]);
 
       // appE.use(fileUpload());
       appE.use((request, response, next) => {

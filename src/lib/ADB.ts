@@ -245,8 +245,8 @@ export class ADB { // auth & auth DB
       })
    }
 
-   setupApp(pathToSite, adminId) {
-      return this.db.all(`UPDATE configs SET pathToSite='${pathToSite}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+   setupApp(pathToSite, port, adminId) {
+      return this.db.all(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
          }
          return rows

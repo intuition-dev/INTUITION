@@ -103,13 +103,12 @@ function mainAppsetup(mainApp, port) {
    const editorRoutes = new EditorRoutes();
    const adminRoutes = new AdminRoutes();
 
-   mainApp.use('/api/editors', editorRoutes.routes(adbDB));
-   mainApp.use('/api/admin', adminRoutes.routes(adbDB));
+   mainApp.use('/api/editors', editorRoutes.routes(adbDB, port));
+   mainApp.use('/api/admin', adminRoutes.routes(adbDB, port));
 
    mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
 
    mainApp.listen(port, () => {
-
       console.log(`======================================================`);
       console.log(`App is running at http://localhost:${port}/editors/`);
       console.log(`======================================================`);
