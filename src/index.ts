@@ -12,16 +12,13 @@ const adbDB = new ADB()
 
 import { VersionNag } from 'mbake/lib/FileOpsExtra'
 
-const dbName = 'ADB.sqlite'
-const pathToDb = path.join(__dirname, dbName)
-
-var config = JSON.parse(fs.readFileSync('./config.json'))
-var appPort = config.port
-const mainApp = ExpressRPC.makeInstance(['http://localhost:' + appPort]);
-
 import opn = require('open')
 const emailJs = new Email();
 
+const dbName = 'ADB.sqlite'
+const pathToDb = path.join(__dirname, dbName)
+
+//mbake versionning check
 VersionNag.isCurrent().then(function (isCurrent_: boolean) {
    try {
       if (!isCurrent_)
@@ -33,26 +30,76 @@ VersionNag.isCurrent().then(function (isCurrent_: boolean) {
    }
 })// 
 
+
+//try catch of init setup vs running app
 try {
-   if (adbDB.checkDB(pathToDb)) {//if db exist
+   let _this = this
+   //check if the file of database exist
+   if (adbDB.checkDB(pathToDb)) {
       console.log('run admin')
-      servingFolders()
+      adbDB.connectToDbOnPort(pathToDb)
+         .then(function (port) {
+            runAdmin(port)
+         })
+      // adbDB.getPort(runAdmin)
    } else {
-      console.log('open db')
+      console.log('open db and run setup')
+
+      //create db file
       adbDB.openDB(pathToDb, runSetup)
    }
 } catch (err) {
 }
 
-
 function runSetup() {
-   servingFolders()
-   opn('http://localhost:' + appPort + '/setup')
+   const port = '9081' //init port
+   adbDB.connectToDb(pathToDb) //connect to db
+
+   const mainApp = ExpressRPC.makeInstance(['http://localhost:' + port]);
+   mainApp.post("/setup", async (req, res) => {
+      const method = req.fields.method;
+      let params = JSON.parse(req.fields.params)
+
+      let email = params.email
+      let password = params.password
+      let emailjsService_id = params.emailjsService_id
+      let emailjsTemplate_id = params.emailjsTemplate_id
+      let emailjsUser_id = params.emailjsUser_id
+
+      let resp: any = {}; // new response that will be set via the specific method passed
+      if ('setup' == method) {
+         resp.result = {}
+         // res.send(resp)
+         try {
+            console.info('setup called ...');
+            adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, '9081');
+            console.info('db cretated  ...');
+            let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
+            emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
+            resp['result'] = 'OK'
+            return res.json(resp)
+
+         } catch (err) {
+            // next(err);
+         }
+      } else {
+         return res.json(resp);
+      }
+   })
+   mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
+
+   mainApp.listen(port, () => {
+
+      console.log(`======================================================`);
+      console.log(`App is running at http://localhost:${port}/editors/`);
+      console.log(`======================================================`);
+   })
+   opn('http://localhost:' + port + '/setup')
 }
 
-function servingFolders() {
-
-   adbDB.connectToDb(pathToDb)
+function runAdmin(port) {
+   let portString = port.toString()
+   const mainApp = ExpressRPC.makeInstance(['http://localhost:' + portString]);
 
    const editorRoutes = new EditorRoutes();
    const adminRoutes = new AdminRoutes();
@@ -61,42 +108,11 @@ function servingFolders() {
    mainApp.use('/api/admin', adminRoutes.routes(adbDB));
 
    mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
+
+   mainApp.listen(portString, () => {
+
+      console.log(`======================================================`);
+      console.log(`App is running at http://localhost:${portString}/editors/`);
+      console.log(`======================================================`);
+   })
 }
-
-mainApp.post("/setup", async (req, res) => {
-   const method = req.fields.method;
-   let params = JSON.parse(req.fields.params)
-
-   let email = params.email
-   let password = params.password
-   let emailjsService_id = params.emailjsService_id
-   let emailjsTemplate_id = params.emailjsTemplate_id
-   let emailjsUser_id = params.emailjsUser_id
-
-   let resp: any = {}; // new response that will be set via the specific method passed
-   if ('setup' == method) {
-      resp.result = {}
-      // res.send(resp)
-      try {
-         console.info('setup called ...');
-         adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id);
-         console.info('db cretated  ...');
-         let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
-         emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
-         resp['result'] = 'OK'
-         return res.json(resp)
-
-      } catch (err) {
-         // next(err);
-      }
-   } else {
-      return res.json(resp);
-   }
-})
-
-mainApp.listen(appPort, () => {
-
-   console.log(`======================================================`);
-   console.log(`App is running at http://localhost:${appPort}/editors/`);
-   console.log(`======================================================`);
-})

@@ -9,15 +9,28 @@ class ADB {
         this.db = await dbPro;
         this.db.configure('busyTimeout', 2 * 1000);
     }
+    async connectToDbOnPort(dbPath) {
+        let _this = this;
+        await _this.connectToDb(dbPath);
+        return new Promise(function (resolve, reject) {
+            return _this.db.get(`SELECT port FROM configs`, function (err, row) {
+                if (err) {
+                }
+                return row;
+            }).then(function (row) {
+                resolve(row.port);
+            });
+        });
+    }
     isUserAuth(userEmail, pswdHash) {
         return 'editor';
     }
-    async addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+    async addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) {
         let randomID = '_' + Math.random().toString(36).substr(2, 9);
         var salt = bcrypt.genSaltSync(10);
         var hashPass = bcrypt.hashSync(password, salt);
         await this.db.run(`CREATE TABLE admin(id, email, password, vcode)`);
-        await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi, setupInit)`);
+        await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi, port)`);
         await this.db.run(`CREATE TABLE editors(id, email, password, name, vcode)`);
         await this.db.run(`INSERT INTO admin(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
             if (err) {
@@ -27,7 +40,7 @@ class ADB {
             if (err) {
             }
         });
-        await this.db.run(`INSERT INTO configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id) VALUES('${randomID}', '${emailjsService_id}', '${emailjsTemplate_id}', '${emailjsUser_id}')`, function (err) {
+        await this.db.run(`INSERT INTO configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES('${randomID}', '${emailjsService_id}', '${emailjsTemplate_id}', '${emailjsUser_id}', '${port}')`, function (err) {
             if (err) {
             }
         });
@@ -37,6 +50,14 @@ class ADB {
     }
     openDB(path, cb) {
         fs.open(path, 'w', cb);
+    }
+    getPort(resolve) {
+        let _this = this;
+        this.db.get(`SELECT port FROM configs`, function (err, row) {
+            if (err) {
+            }
+            resolve(row);
+        });
     }
     validateEmail(email, password) {
         let _this = this;
@@ -194,7 +215,7 @@ class ADB {
     }
     getConfigs(adminId) {
         console.log("TCL: getConfigs -> adminId", adminId);
-        return this.db.get(`SELECT pathToSite FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
+        return this.db.get(`SELECT pathToSite, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
             if (err) {
             }
             return rows;
