@@ -72,6 +72,17 @@ class Editors {
                         });
                 });
         } else { // add user
+
+            if (email === '' || password === '') {
+                $('.js-add-editor').removeAttr("disabled");
+                $('.loader').removeClass('active');
+                $('.notification').removeClass('d-hide').find('.text').text('User email and password can\'t be blank');
+                setTimeout(function() {
+                    $('.notification').addClass('d-hide').find('.text').text('');
+                }, 2000);
+                throw new Error("user data is empty");
+            }
+
             return this.intuAPI.addEditor(name, email, password)
                 .then((documentRef) => {
                     console.info("--documentRef:", documentRef)
