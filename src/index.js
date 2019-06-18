@@ -72,26 +72,22 @@ function runSetup() {
             return res.json(resp);
         }
     });
-    mainApp.use('/', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, '/')));
-    mainApp.listen(port, () => {
-        console.log(`======================================================`);
-        console.log(`App is running at http://localhost:${port}/editors/`);
-        console.log(`======================================================`);
-    });
+    mainAppsetup(mainApp, port);
     opn('http://localhost:' + port + '/setup');
 }
 function runAdmin(port) {
-    console.log("TCL: runAdmin -> port", port);
-    let portString = port.toString();
-    const mainApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + portString]);
+    const mainApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + port]);
+    mainAppsetup(mainApp, port);
+}
+function mainAppsetup(mainApp, port) {
     const editorRoutes = new editor_1.EditorRoutes();
     const adminRoutes = new admin_1.AdminRoutes();
     mainApp.use('/api/editors', editorRoutes.routes(adbDB));
     mainApp.use('/api/admin', adminRoutes.routes(adbDB));
     mainApp.use('/', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, '/')));
-    mainApp.listen(portString, () => {
+    mainApp.listen(port, () => {
         console.log(`======================================================`);
-        console.log(`App is running at http://localhost:${portString}/editors/`);
+        console.log(`App is running at http://localhost:${port}/editors/`);
         console.log(`======================================================`);
     });
 }

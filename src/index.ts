@@ -86,21 +86,20 @@ function runSetup() {
          return res.json(resp);
       }
    })
-   mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
 
-   mainApp.listen(port, () => {
+   mainAppsetup(mainApp, port)
 
-      console.log(`======================================================`);
-      console.log(`App is running at http://localhost:${port}/editors/`);
-      console.log(`======================================================`);
-   })
    opn('http://localhost:' + port + '/setup')
 }
 
 function runAdmin(port) {
-   let portString = port.toString()
-   const mainApp = ExpressRPC.makeInstance(['http://localhost:' + portString]);
 
+   const mainApp = ExpressRPC.makeInstance(['http://localhost:' + port]);
+   mainAppsetup(mainApp, port)
+}
+
+
+function mainAppsetup(mainApp, port) {
    const editorRoutes = new EditorRoutes();
    const adminRoutes = new AdminRoutes();
 
@@ -109,10 +108,10 @@ function runAdmin(port) {
 
    mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
 
-   mainApp.listen(portString, () => {
+   mainApp.listen(port, () => {
 
       console.log(`======================================================`);
-      console.log(`App is running at http://localhost:${portString}/editors/`);
+      console.log(`App is running at http://localhost:${port}/editors/`);
       console.log(`======================================================`);
    })
 }
