@@ -142,17 +142,3 @@ class Editors {
             });
     }
 }
-
-// admin login&password
-// function getAdminIntuAPI() {
-//     let username = sessionStorage.getItem('username');
-//     let password = sessionStorage.getItem('password');
-//     if ((username === null || password === null) &&
-//         window.location.pathname !== '/'
-//     ) {
-//         console.info('unauthorized, redirecting to login page');
-//         window.location.replace('/');
-//     } else {
-//         return new IntuAPI(username, password);
-//     }
-// }

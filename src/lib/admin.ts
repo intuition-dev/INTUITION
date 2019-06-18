@@ -221,6 +221,7 @@ export class AdminRoutes {
                               setting.emailjsUser_id,
                               'your code: ' + code
                            )
+                           console.info('code', code);
                            resp.result = true;
                            return res.json(resp);
                         });
@@ -294,20 +295,30 @@ export class AdminRoutes {
                      }
                      adbDB.getEmailJsSettings()
                         .then(settings => {
-                           let setting = settings[0];
-                           //TODO: port hardcoded
-                           let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: http://localhost:9081/editors/?email=' + email;
+                           adbDB.getAdminId(res.locals.email)
+                              .then(function (adminId) {
+                                 adbDB.getConfigs(adminId[0].id)
+                                    .then(function (result) {
+                                       let port = result.port;
+                                       let setting = settings[0];
+                                       let link = 'http://localhost:' + port + '/editors/?email=' + encodeURIComponent(email);
+                                       let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: ' + link;
+            
+                                       emailJs.send(
+                                          email,
+                                          setting.emailjsService_id,
+                                          setting.emailjsTemplate_id,
+                                          setting.emailjsUser_id,
+                                          msg
+                                       )
+            
+                                       resp.result = response;
+                                       return res.json(resp);
+                                      
+                                    })
 
-                           emailJs.send(
-                              email,
-                              setting.emailjsService_id,
-                              setting.emailjsTemplate_id,
-                              setting.emailjsUser_id,
-                              msg
-                           )
+                              })
 
-                           resp.result = response;
-                           return res.json(resp);
 
                         });
                   })
@@ -325,7 +336,7 @@ export class AdminRoutes {
 
       });
 
-      // // edit user
+      // edit user
       adminApp.post("/editors-edit", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed

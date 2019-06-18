@@ -23,6 +23,14 @@ class BindSettings {
             })
     }
 
+    //get port
+    getPort() {
+        this.IntuAPI.getConfig()
+            .then(function(result) {
+                $('.js-goto-editors').attr('href', 'http://localhost:' + result.port +  '/editors/');
+            });
+    }
+
     //save path and/or port
     saveConfig(serialize) {
         var port = serialize.filter(function(ser) {

@@ -24,12 +24,18 @@ block content
                a(href='#')#edit-editor.btn-custom.btn-primary Edit
                a(href='#')#delete-editor.btn-custom.btn-secondary
                   span Delete
-            a(href="http://localhost:9081/editors/").goto-editors.btn-custom.btn-secondary
+            a(href="http://localhost:9081/editors/").goto-editors.js-goto-editors.btn-custom.btn-secondary
                span Edit content
+
    script.
-      depp.require('rw', function () {
-         var bindLogin = new BindLogin()
+      depp.require(['rw', 'setup-page'], function () {
+
+         var bindLogin = new BindLogin();
+         let bindSettings = new BindSettings();
+         bindSettings.getPort();
+
          $('#sign-out').off('click').on('click',function (e) {
                bindLogin.signOut()
          });
+
       })
