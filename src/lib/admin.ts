@@ -1,7 +1,7 @@
 import { ExpressRPC } from 'mbake/lib/Serv';
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
-import { ShippingRoutes } from '../e-com/api/lib/shipping';
+// import { ShippingRoutes } from '../e-com/api/lib/shipping';
 
 const fs = require('fs-extra')
 
@@ -94,8 +94,8 @@ export class AdminRoutes {
                      setupItem = 'e-com'
                      console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem)
 
-                     const shippingRoutes = new ShippingRoutes();
-                     adminApp.use('/', shippingRoutes.routes(appPort))
+                     // const shippingRoutes = new ShippingRoutes();
+                     // adminApp.use('/', shippingRoutes.routes(appPort))
                      await new Download('SHOP', path.join(__dirname, '../')).autoZ()
                      break;
                   case 'website':

@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const Email_1 = require("./Email");
-const shipping_1 = require("../e-com/api/lib/shipping");
 const fs = require('fs-extra');
 var path = require('path');
 class AdminRoutes {
@@ -76,8 +75,6 @@ class AdminRoutes {
                         case 'shop':
                             setupItem = 'e-com';
                             console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem);
-                            const shippingRoutes = new shipping_1.ShippingRoutes();
-                            adminApp.use('/', shippingRoutes.routes(appPort));
                             await new FileOpsExtra_1.Download('SHOP', path.join(__dirname, '../')).autoZ();
                             break;
                         case 'website':

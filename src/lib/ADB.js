@@ -105,7 +105,7 @@ class ADB {
         });
     }
     getEditors() {
-        return this.db.run(`SELECT id, name, email FROM editors`, [], function (err, rows) {
+        return this.db.all(`SELECT id, name, email FROM editors`, [], function (err, rows) {
             if (err) {
             }
             return rows;
