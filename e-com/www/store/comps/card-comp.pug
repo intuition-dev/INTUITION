@@ -4,6 +4,8 @@ card-comp
       <virtual each="{item, index in items}">
          .column.col-4.col-xs-12
             .card
+               .bl-shirt-colors
+                  span(each="{color, index in item.colors}" class="{color}")
                .card-image
                   a(href="{item.url}")
                      img.img-responsive(src="{item.url}" + "/{item.image}")

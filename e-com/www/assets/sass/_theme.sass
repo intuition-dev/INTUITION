@@ -5,6 +5,7 @@
       border: 0
       box-shadow: 0 0rem 1px rgba(48, 55, 66, 0.69)
       height: 100%
+      position: relative
       &:hover
          & .card-image
             img
@@ -190,6 +191,24 @@ header
       margin: auto
       display: block
       width: 100%
+
+.bl-shirt-colors
+   display: flex
+   position: absolute
+   top: 8px
+   right: 8px
+   & span
+      display: block
+      width: 18px
+      height: 18px
+      border-radius: 18px
+      box-shadow: 0 0 0 1px #d9d9d9
+      &:not(:last-child)
+         margin-right: 8px
+      &.white
+         background: white
+      &.black
+         background: black
 
 .bl-colors
    display: flex

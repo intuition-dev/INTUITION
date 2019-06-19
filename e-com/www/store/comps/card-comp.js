@@ -1,5 +1,5 @@
 
-riot.tag2('card-comp', '<div class="bl-shop-list columns"><virtual each="{item, index in items}"> <div class="column col-4 col-xs-12"> <div class="card"> <div class="card-image"><a href="{item.url}"><img class="img-responsive" riot-src="{item.url}/{item.image}"></a></div> <div class="card-header"> <div class="card-title h5">{item.title}</div> <div class="card-subtitle text-gray">{item.subtitle}</div> </div> <div class="card-body">{item.desc}</div> <div class="card-footer"><a class="btn btn-primary" href="{item.url}">View</a></div> </div> </div></virtual> </div>', '', '', function(opts) {
+riot.tag2('card-comp', '<div class="bl-shop-list columns"><virtual each="{item, index in items}"> <div class="column col-4 col-xs-12"> <div class="card"> <div class="bl-shirt-colors"><span class="{color}" each="{color, index in item.colors}"></span></div> <div class="card-image"><a href="{item.url}"><img class="img-responsive" riot-src="{item.url}/{item.image}"></a></div> <div class="card-header"> <div class="card-title h5">{item.title}</div> <div class="card-subtitle text-gray">{item.subtitle}</div> </div> <div class="card-body">{item.desc}</div> <div class="card-footer"><a class="btn btn-primary" href="{item.url}">View</a></div> </div> </div></virtual> </div>', '', '', function(opts) {
     this.on('*', function(evt) {
        console.info('riot', evt)
     })
