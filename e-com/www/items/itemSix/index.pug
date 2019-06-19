@@ -1,0 +1,61 @@
+extends /layout/layout
+
+block main
+   .container.grid-lg
+      .columns
+         .column.col-6
+            .carousel.carousel-custom
+               // carousel locator
+               each img, index in images
+                  input.carousel-locator(type='radio', name='carousel-radio', hidden='', checked='', id=`slide-${index}`)
+               // carousel container
+               .carousel-container
+                  // carousel item
+                  each img, index in images
+                     figure.carousel-item
+                           label.item-prev.btn.btn-action.btn-lg(for='slide-'+(index==0 ? images.length-1: index-1))
+                              i.icon.icon-arrow-left
+                           label.item-next.btn.btn-action.btn-lg(for='slide-'+(index == images.length-1 ? 0 : index+1))
+                              i.icon.icon-arrow-right
+                           img(src=img, alt='t-shirt')
+               // carousel navigation
+               .carousel-nav
+                  each img, index in images
+                     label.nav-item.text-hide.c-hand(for=`slide-${index}`) {index}
+         .column.col-6
+            .card.bl-card-item
+               .card-header
+                  .card-title.h5 #{title}
+                  .card-subtitle.text-gray #{subtitle}
+                  //- .bl-price.js-price
+               .card-body
+                  | #{desc}
+                  ul
+                  each d_list in desc_list
+                     li #{d_list}
+                  div.bl-colors
+                     label Color:
+                     div.bl-colors--item
+                        each color, index in colors
+                           span(class=`${index==0 ? color +' selected' : color}` , data-tooltip=color, data-class=color).tooltip.js-color
+                  div.bl-size
+                     label Size:
+                     div.bl-size--item
+                        each variant, index in variants
+                           span(data-id=variant.id, data-class=variant.color, data-tooltip=variant.size, class=`${index==0 && ' selected'}`).tooltip.js-size #{variant.size}
+                  div.bl-price
+                     label Price:
+                     div.js-price
+               
+               .card-footer
+                  each variant, index in variants
+                        button.btn.btn-link.js-snipcart-btn(
+                           class="snipcart-add-item"
+                           data-item-id=variant.id
+                           data-item-name=variant.name
+                           data-item-url="/items/"+url
+                           data-item-price=(Math.round((+variant.price+ +shipping_coverage + +profit)*100)  /100)
+                           data-item-weight="1"
+                           data-item-metadata='{"sync_variant_id": '+ variant.id+ '}'
+                           style=`${index!==0 && 'display: none'}` 
+                           ) Add to cart

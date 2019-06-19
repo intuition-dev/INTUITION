@@ -1,0 +1,86 @@
+basedir: ../../
+ROOT: /
+GLO: ../../
+
+
+title: Long Sleeve T-Shirt
+subtitle: All my friends KNOW the low-coder
+
+image: know-b.png #main image of the site
+images: [know-b.png, know-w.png] # images in carousel
+url: itemFive #url of the item to be added to snipcart
+colors: [white, black]
+profit: 1 # profit to make on top of the price, 1USD
+shipping_coverage: 4 #shipping, const = 4usd
+
+desc: >-
+   This long-sleeve tee has ribbed cuffs for a snug fit, while the shirt is classic-fit.
+desc_list: [
+   100% jersey knit,
+   Fabric weight 6.0 oz.,
+   Pre-shrunk,
+   Classic fit,
+   Double-needle ⅞” collar,
+   Taped neck and shoulders,
+   Long sleeve, rib cuffs,
+   Quarter-turned to eliminate center crease,
+   ]
+
+
+#product items with variants
+variants: [{
+  id: 1342894638, #sync_product_id with printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - S,
+  size: S,
+  color: white
+},{
+  id: 1342894639,
+  price: "21.02",
+  name: Long Sleeve T-Shirt - M,
+  size: M,
+  color: white
+},
+{
+  id: 1342894640,
+  price: "21.02",
+  name: Long Sleeve T-Shirt - L,
+  size: L,
+  color: white
+},
+{
+  id: 1342894641,
+  price: "21.02",
+  name: Long Sleeve T-Shirt - XL,
+  size: XL,
+  color: white
+},
+{
+  id: 1342895319,
+  price: "21.02",
+  name: Long Sleeve T-Shirt - S,
+  size: S,
+  color: black
+},
+{
+  id: 1342895320,
+  price: "21.02",
+  name: Long Sleeve T-Shirt - M,
+  size: M,
+  color: black
+},
+{
+  id: 1342895321,
+  price: "21.02",
+  name: Long Sleeve T-Shirt - L,
+  size: L,
+  color: black
+},
+{
+  id: 1342895322,
+  price: "21.02",
+  name: Long Sleeve T-Shirt - XL,
+  size: XL,
+  color: black
+}
+]

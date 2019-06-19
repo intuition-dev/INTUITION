@@ -1,32 +1,31 @@
 
-riot.tag2('card-comp', '<div class="columns shop-list"><virtual each="{items}"> <div class="column col-4 col-xs-12"> <div class="card"> <div class="card-image"><img class="img-responsive" riot-src="{url}/{image}"></div> <div class="card-header"> <div class="card-title h5">{title}</div> <div class="card-subtitle text-gray">{subtitle}</div> </div> <div class="card-body">{desc}</div> <div class="card-footer"><a class="btn btn-primary" href="{url}">View</a></div> </div> </div></virtual> </div><br>', '', '', function(opts) {
-    console.info('oh hii tag')
+riot.tag2('card-comp', '<div class="bl-shop-list columns"><virtual each="{item, index in items}"> <div class="column col-4 col-xs-12"> <div class="card"> <div class="card-image"><a href="{item.url}"><img class="img-responsive" riot-src="{item.url}/{item.image}"></a></div> <div class="card-header"> <div class="card-title h5">{item.title}</div> <div class="card-subtitle text-gray">{item.subtitle}</div> </div> <div class="card-body">{item.desc}</div> <div class="card-footer"><a class="btn btn-primary" href="{item.url}">View</a></div> </div> </div></virtual> </div>', '', '', function(opts) {
     this.on('*', function(evt) {
-        console.info('riot', evt)
+       console.info('riot', evt)
     })
     this.items = []
     _this = this
 
     this.render = function(data) {
-        console.info(data);
-        if(!data ) {
-            _this.items = []
-            _this.update()
-            return
-        }
+       console.info(data);
+       if(!data ) {
+             _this.items = []
+             _this.update()
+             return
+       }
 
-        var cloned = JSON.parse(JSON.stringify(data))
-        _this.items = cloned
+       var cloned = JSON.parse(JSON.stringify(data))
+       _this.items = cloned
 
-        var sz = _this.items.length
-        for(i = 0; i < sz; i++) {
-            var item = _this.items[i]
+       var sz = _this.items.length
+       for(i = 0; i < sz; i++) {
+             var item = _this.items[i]
 
-            item.url = ROOT + 'items/' + item.url
-            console.info(item.url)
-        }
+             item.url = ROOT + 'items/' + item.url
+             console.info(item.url)
+       }
 
-        _this.update()
+       _this.update()
 
     }.bind(this)
 });

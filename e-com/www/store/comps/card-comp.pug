@@ -1,50 +1,47 @@
 
 card-comp
-    .columns.shop-list
-        <virtual each={items}>
-            .column.col-4.col-xs-12
-                .card
-                    .card-image
-                        img.img-responsive(src="{url}" + "/{image}")
-                    .card-header
-                        .card-title.h5 { title }
-                        .card-subtitle.text-gray {subtitle}
-                    .card-body
-                        | { desc }
-                    .card-footer
-                        //- button.btn.btn-primary Buy
-                        a.btn.btn-primary(href="{url}") View
+   .bl-shop-list.columns
+      <virtual each="{item, index in items}">
+         .column.col-4.col-xs-12
+            .card
+               .card-image
+                  a(href="{item.url}")
+                     img.img-responsive(src="{item.url}" + "/{item.image}")
+               .card-header
+                  .card-title.h5 { item.title }
+                  .card-subtitle.text-gray {item.subtitle}
+               .card-body
+                  | { item.desc }
+               .card-footer
+                  a.btn.btn-primary(href="{item.url}") View
+      </virtual>
 
-        </virtual>
-    br
+   script.
+      this.on('*', function(evt) {
+         console.info('riot', evt)
+      })
+      this.items = []
+      _this = this
 
-    script.
-        console.info('oh hii tag')
-        this.on('*', function(evt) {
-            console.info('riot', evt)
-        })
-        this.items = []
-        _this = this
+      render(data) {// public
+         console.info(data);
+         if(!data ) {
+               _this.items = []
+               _this.update()
+               return
+         }
+         //- clone
+         var cloned = JSON.parse(JSON.stringify(data))
+         _this.items = cloned
 
-        render(data) {// public
-            console.info(data);
-            if(!data ) {
-                _this.items = []
-                _this.update()
-                return
-            }
-            //- clone
-            var cloned = JSON.parse(JSON.stringify(data))
-            _this.items = cloned
+         var sz = _this.items.length
+         for(i = 0; i < sz; i++) {
+               var item = _this.items[i]
 
-            var sz = _this.items.length
-            for(i = 0; i < sz; i++) {
-                var item = _this.items[i]
+               item.url = ROOT + 'items/' + item.url
+               console.info(item.url)
+         }
 
-                item.url = ROOT + 'items/' + item.url
-                console.info(item.url)
-            }
+         _this.update()
 
-            _this.update()
-
-        }
+      }

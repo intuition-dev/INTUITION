@@ -4,6 +4,269 @@
   "items": [
     {
       "GLO": "../../",
+      "title": "Long Sleeve T-Shirt",
+      "subtitle": "It will lead YOU in the right direction",
+      "image": "you-w.png",
+      "images": [
+        "you-b.png",
+        "you-w.png"
+      ],
+      "url": "itemEight",
+      "colors": [
+        "white",
+        "black"
+      ],
+      "profit": 1,
+      "shipping_coverage": 4,
+      "desc": "This long-sleeve tee has ribbed cuffs for a snug fit, while the shirt is classic-fit.",
+      "desc_list": [
+        "100% jersey knit",
+        "Fabric weight 6.0 oz.",
+        "Pre-shrunk",
+        "Classic fit",
+        "Double-needle ⅞” collar",
+        "Taped neck and shoulders",
+        "Long sleeve",
+        "rib cuffs",
+        "Quarter-turned to eliminate center crease"
+      ],
+      "variants": [
+        {
+          "id": 1342900180,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - S",
+          "size": "S",
+          "color": "black"
+        },
+        {
+          "id": 1342900181,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - M",
+          "size": "M",
+          "color": "black"
+        },
+        {
+          "id": 1342900182,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - L",
+          "size": "L",
+          "color": "black"
+        },
+        {
+          "id": 1342900183,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - XL",
+          "size": "XL",
+          "color": "black"
+        },
+        {
+          "id": 1342900596,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - S",
+          "size": "S",
+          "color": "white"
+        },
+        {
+          "id": 1342900597,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - M",
+          "size": "M",
+          "color": "white"
+        },
+        {
+          "id": 1342900598,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - L",
+          "size": "L",
+          "color": "white"
+        },
+        {
+          "id": 1342900598,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - XL",
+          "size": "XL",
+          "color": "white"
+        }
+      ],
+      "id": "itemEight",
+      "index": 0
+    },
+    {
+      "GLO": "../../",
+      "title": "Long Sleeve T-Shirt",
+      "subtitle": "All my friends KNOW the low-coder",
+      "image": "know-b.png",
+      "images": [
+        "know-b.png",
+        "know-w.png"
+      ],
+      "url": "itemFive",
+      "colors": [
+        "white",
+        "black"
+      ],
+      "profit": 1,
+      "shipping_coverage": 4,
+      "desc": "This long-sleeve tee has ribbed cuffs for a snug fit, while the shirt is classic-fit.",
+      "desc_list": [
+        "100% jersey knit",
+        "Fabric weight 6.0 oz.",
+        "Pre-shrunk",
+        "Classic fit",
+        "Double-needle ⅞” collar",
+        "Taped neck and shoulders",
+        "Long sleeve",
+        "rib cuffs",
+        "Quarter-turned to eliminate center crease"
+      ],
+      "variants": [
+        {
+          "id": 1342894638,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - S",
+          "size": "S",
+          "color": "white"
+        },
+        {
+          "id": 1342894639,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - M",
+          "size": "M",
+          "color": "white"
+        },
+        {
+          "id": 1342894640,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - L",
+          "size": "L",
+          "color": "white"
+        },
+        {
+          "id": 1342894641,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - XL",
+          "size": "XL",
+          "color": "white"
+        },
+        {
+          "id": 1342895319,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - S",
+          "size": "S",
+          "color": "black"
+        },
+        {
+          "id": 1342895320,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - M",
+          "size": "M",
+          "color": "black"
+        },
+        {
+          "id": 1342895321,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - L",
+          "size": "L",
+          "color": "black"
+        },
+        {
+          "id": 1342895322,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - XL",
+          "size": "XL",
+          "color": "black"
+        }
+      ],
+      "id": "itemFive",
+      "index": 1
+    },
+    {
+      "GLO": "../../",
+      "title": "Short-Sleeve Unisex T-Shirt",
+      "subtitle": "Don’t do what I SAY, watch what I do",
+      "image": "say-b.png",
+      "images": [
+        "say-b.png",
+        "say-w.png"
+      ],
+      "url": "itemFour",
+      "colors": [
+        "white",
+        "black"
+      ],
+      "profit": 1,
+      "shipping_coverage": 4,
+      "desc": "The Gildan 64000 makes for a great staple t-shirt that compliments any outfit. It's made of a heavier cotton and the double-stitched neckline and sleeves give it more durability, so it can become an everyday favorite.",
+      "desc_list": [
+        "100% ring-spun cotton*",
+        "Fabric weight: 4.5 oz/y² (153 g/m²)",
+        "Pre-shrunk for extra durability",
+        "Shoulder-to-shoulder taping",
+        "Quarter-turned to avoid crease down the center"
+      ],
+      "variants": [
+        {
+          "id": 1342878891,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - S",
+          "size": "S",
+          "color": "black"
+        },
+        {
+          "id": 1342878892,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - M",
+          "size": "M",
+          "color": "black"
+        },
+        {
+          "id": 1342878893,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - L",
+          "size": "L",
+          "color": "black"
+        },
+        {
+          "id": 1342878894,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - XL",
+          "size": "XL",
+          "color": "black"
+        },
+        {
+          "id": 1342881002,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - S",
+          "size": "S",
+          "color": "white"
+        },
+        {
+          "id": 1342881003,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - M",
+          "size": "M",
+          "color": "white"
+        },
+        {
+          "id": 1342881004,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - L",
+          "size": "L",
+          "color": "white"
+        },
+        {
+          "id": 1342881005,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - XL",
+          "size": "XL",
+          "color": "white"
+        }
+      ],
+      "id": "itemFour",
+      "index": 2
+    },
+    {
+      "GLO": "../../",
       "title": "Short-Sleeve Unisex T-Shirt",
       "subtitle": "All my friends KNOW the low-coder",
       "image": "mockup.jpg",
@@ -33,60 +296,323 @@
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - S",
           "size": "S",
-          "color": "white"
+          "color": "Black"
         },
         {
           "id": 1342860021,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - M",
           "size": "M",
-          "color": "white"
+          "color": "Black"
         },
         {
           "id": 1342860022,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - L",
           "size": "L",
-          "color": "white"
+          "color": "Black"
         },
         {
           "id": 1342860023,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - XL",
           "size": "XL",
-          "color": "white"
+          "color": "Black"
         },
         {
           "id": 1342865646,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - S",
           "size": "S",
-          "color": "black"
+          "color": "white"
         },
         {
           "id": 1342865648,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - M",
           "size": "M",
-          "color": "black"
+          "color": "white"
         },
         {
           "id": 1342865649,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - L",
           "size": "L",
-          "color": "black"
+          "color": "white"
         },
         {
           "id": 1342865650,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - XL",
           "size": "XL",
-          "color": "black"
+          "color": "white"
         }
       ],
       "id": "itemOne",
-      "index": 0
+      "index": 3
+    },
+    {
+      "GLO": "../../",
+      "title": "Long Sleeve T-Shirt",
+      "subtitle": "Don’t do what I SAY, watch what I do",
+      "image": "say-b.png",
+      "images": [
+        "say-b.png",
+        "say-w.png"
+      ],
+      "url": "itemSeven",
+      "colors": [
+        "white",
+        "black"
+      ],
+      "profit": 1,
+      "shipping_coverage": 4,
+      "desc": "This long-sleeve tee has ribbed cuffs for a snug fit, while the shirt is classic-fit.",
+      "desc_list": [
+        "100% jersey knit",
+        "Fabric weight 6.0 oz.",
+        "Pre-shrunk",
+        "Classic fit",
+        "Double-needle ⅞” collar",
+        "Taped neck and shoulders",
+        "Long sleeve",
+        "rib cuffs",
+        "Quarter-turned to eliminate center crease"
+      ],
+      "variants": [
+        {
+          "id": 1342898675,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - S",
+          "size": "S",
+          "color": "white"
+        },
+        {
+          "id": 1342898676,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - M",
+          "size": "M",
+          "color": "white"
+        },
+        {
+          "id": 1342898677,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - L",
+          "size": "L",
+          "color": "white"
+        },
+        {
+          "id": 1342898678,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - XL",
+          "size": "XL",
+          "color": "white"
+        },
+        {
+          "id": 1342899385,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - S",
+          "size": "S",
+          "color": "black"
+        },
+        {
+          "id": 1342899386,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - M",
+          "size": "M",
+          "color": "black"
+        },
+        {
+          "id": 1342899387,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - L",
+          "size": "L",
+          "color": "black"
+        },
+        {
+          "id": 1342899388,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - XL",
+          "size": "XL",
+          "color": "black"
+        }
+      ],
+      "id": "itemSeven",
+      "index": 4
+    },
+    {
+      "GLO": "../../",
+      "title": "Long Sleeve T-Shirt",
+      "subtitle": "It's a piece of CAKE to bake",
+      "image": "cake-w.png",
+      "images": [
+        "cake-b.png",
+        "cake-w.png"
+      ],
+      "url": "itemSix",
+      "colors": [
+        "white",
+        "black"
+      ],
+      "profit": 1,
+      "shipping_coverage": 4,
+      "desc": "This long-sleeve tee has ribbed cuffs for a snug fit, while the shirt is classic-fit.",
+      "desc_list": [
+        "100% jersey knit",
+        "Fabric weight 6.0 oz.",
+        "Pre-shrunk",
+        "Classic fit",
+        "Double-needle ⅞” collar",
+        "Taped neck and shoulders",
+        "Long sleeve",
+        "rib cuffs",
+        "Quarter-turned to eliminate center crease"
+      ],
+      "variants": [
+        {
+          "id": 1342896956,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - S",
+          "size": "S",
+          "color": "black"
+        },
+        {
+          "id": 1342896957,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - M",
+          "size": "M",
+          "color": "black"
+        },
+        {
+          "id": 1342896958,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - L",
+          "size": "L",
+          "color": "black"
+        },
+        {
+          "id": 1342896959,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - XL",
+          "size": "XL",
+          "color": "black"
+        },
+        {
+          "id": 1342897780,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - S",
+          "size": "S",
+          "color": "white"
+        },
+        {
+          "id": 1342897781,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - M",
+          "size": "M",
+          "color": "white"
+        },
+        {
+          "id": 1342897782,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - L",
+          "size": "L",
+          "color": "white"
+        },
+        {
+          "id": 1342897783,
+          "price": "21.02",
+          "name": "Long Sleeve T-Shirt - XL",
+          "size": "XL",
+          "color": "white"
+        }
+      ],
+      "id": "itemSix",
+      "index": 5
+    },
+    {
+      "GLO": "../../",
+      "title": "Short-Sleeve Unisex T-Shirt",
+      "subtitle": "It's a piece of CAKE to bake",
+      "image": "cake-b.png",
+      "images": [
+        "cake-b.png",
+        "cake-w.png"
+      ],
+      "url": "itemThree",
+      "colors": [
+        "white",
+        "black"
+      ],
+      "profit": 1,
+      "shipping_coverage": 4,
+      "desc": "The Gildan 64000 makes for a great staple t-shirt that compliments any outfit. It's made of a heavier cotton and the double-stitched neckline and sleeves give it more durability, so it can become an everyday favorite.",
+      "desc_list": [
+        "100% ring-spun cotton*",
+        "Fabric weight: 4.5 oz/y² (153 g/m²)",
+        "Pre-shrunk for extra durability",
+        "Shoulder-to-shoulder taping",
+        "Quarter-turned to avoid crease down the center"
+      ],
+      "variants": [
+        {
+          "id": 1342875405,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - S",
+          "size": "S",
+          "color": "white"
+        },
+        {
+          "id": 1342875406,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - M",
+          "size": "M",
+          "color": "white"
+        },
+        {
+          "id": 1342875407,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - L",
+          "size": "L",
+          "color": "white"
+        },
+        {
+          "id": 1342875408,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - XL",
+          "size": "XL",
+          "color": "white"
+        },
+        {
+          "id": 1342877303,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - S",
+          "size": "S",
+          "color": "black"
+        },
+        {
+          "id": 1342877304,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - M",
+          "size": "M",
+          "color": "black"
+        },
+        {
+          "id": 1342877305,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - L",
+          "size": "L",
+          "color": "black"
+        },
+        {
+          "id": 1342877306,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - XL",
+          "size": "XL",
+          "color": "black"
+        }
+      ],
+      "id": "itemThree",
+      "index": 6
     },
     {
       "GLO": "../../",
@@ -114,56 +640,56 @@
       ],
       "variants": [
         {
-          "id": 1342860020,
+          "id": 1342872696,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - S",
           "size": "S",
           "color": "white"
         },
         {
-          "id": 1342860021,
+          "id": 1342872697,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - M",
           "size": "M",
           "color": "white"
         },
         {
-          "id": 1342860022,
+          "id": 1342872698,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - L",
           "size": "L",
           "color": "white"
         },
         {
-          "id": 1342860023,
+          "id": 1342872699,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - XL",
           "size": "XL",
           "color": "white"
         },
         {
-          "id": 1342865646,
+          "id": 1342873417,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - S",
           "size": "S",
           "color": "black"
         },
         {
-          "id": 1342865648,
+          "id": 1342873418,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - M",
           "size": "M",
           "color": "black"
         },
         {
-          "id": 1342865649,
+          "id": 1342873419,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - L",
           "size": "L",
           "color": "black"
         },
         {
-          "id": 1342865650,
+          "id": 1342873420,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - XL",
           "size": "XL",
@@ -171,8 +697,8 @@
         }
       ],
       "id": "itemTwo",
-      "index": 1
+      "index": 7
     }
   ],
-  "count": 2
+  "count": 8
 }

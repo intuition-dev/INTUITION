@@ -30,54 +30,54 @@ variants: [{
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - S,
   size: S,
-  color: white
+  color: Black
 },{
   id: 1342860021,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - M,
   size: M,
-  color: white
+  color: Black
 },
 {
   id: 1342860022,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - L,
   size: L,
-  color: white
+  color: Black
 },
 {
   id: 1342860023,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - XL,
   size: XL,
-  color: white
+  color: Black
 },
 {
   id: 1342865646,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - S,
   size: S,
-  color: black
+  color: white
 },
 {
   id: 1342865648,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - M,
   size: M,
-  color: black
+  color: white
 },
 {
   id: 1342865649,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - L,
   size: L,
-  color: black
+  color: white
 },
 {
   id: 1342865650,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - XL,
   size: XL,
-  color: black
+  color: white
 }
 ]

@@ -719,14 +719,18 @@ a.text-error:visited{color:#ff6003;}
     -moz-transform:translateX(-50%);
      -o-transform:translateX(-50%);
       transform:translateX(-50%);}}
-.bl-shop-list .card{border:0;-webkit-box-shadow:0 0.5rem 1rem rgba(48,55,66,0.5);-moz-box-shadow:0 0.5rem 1rem rgba(48,55,66,0.5);box-shadow:0 0.5rem 1rem rgba(48,55,66,0.5);height:100%;}
-.bl-shop-list .card-image img{margin:auto;max-height:300px;}
-main{padding-top:100px;}
+.bl-shop-list .column{padding:18px;}
+.bl-shop-list .card{border:0;-webkit-box-shadow:0 0rem 1px rgba(48,55,66,0.69);-moz-box-shadow:0 0rem 1px rgba(48,55,66,0.69);box-shadow:0 0rem 1px rgba(48,55,66,0.69);height:100%;}
+.bl-shop-list .card:hover .card-image img{-webkit-transform:scale(1.1);-moz-transform:scale(1.1);-ms-transform:scale(1.1);-o-transform:scale(1.1);transform:scale(1.1);}
+.bl-shop-list .card-image{overflow:hidden;height:300px;}
+.bl-shop-list .card-image img{-webkit-transition:all .15s linear;-o-transition:all .15s linear;-moz-transition:all .15s linear;transition:all .15s linear;margin:auto;max-height:300px;}
+main{padding-top:80px;}
 .modal .modal-footer{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-moz-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;}
 .total{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;}
 header{position:absolute;top:0;left:0;height:60px;z-index:10;width:100%;}
 header.dark{background:black;}
 header .l-nav{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;}
+header .header-inner .navbar-brand{color:black;font-weight:bold;}
 header .header-inner a{display:inline-block;font-weight:300;margin:0 24px 0 0;position:relative;}
 header .header-inner a:last-child{margin-right:0;}
 header .header-inner a:hover{text-decoration:none;}
@@ -781,4 +785,4 @@ header .header-inner #nav-icon.open span:nth-child(4){top:18px;width:0%;left:50%
 .bl-shopping-cart .clean-cart:hover svg{fill:white;background:#e85600;}
 .bl-shopping-cart .clean-cart svg{width:12px;height:12px;fill:#e85600;-webkit-border-radius:100%;-moz-border-radius:100%;border-radius:100%;-webkit-transition:.15s linear all;-o-transition:.15s linear all;-moz-transition:.15s linear all;transition:.15s linear all;}
 .bl-card-item .card-header{position:relative;}
-.bl-card-item .card-footer{background:#f0f0f0;margin-top:24px;} /* mB v6.06.21 on 2019-06-19T11:16:06.979Z */
+.bl-card-item .card-footer{background:#f0f0f0;margin-top:24px;} /* mB v6.06.21 on 2019-06-19T12:10:38.864Z */

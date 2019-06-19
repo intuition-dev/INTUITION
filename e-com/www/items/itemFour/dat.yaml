@@ -4,11 +4,11 @@ GLO: ../../
 
 
 title: Short-Sleeve Unisex T-Shirt
-subtitle: It will lead YOU in the right direction
+subtitle: Don’t do what I SAY, watch what I do
 
-image: you-b.jpg #main image of the site
-images: [you-b.jpg, you-w.jpg] # images in carousel
-url: itemTwo #url of the item to be added to snipcart
+image: say-b.png #main image of the site
+images: [say-b.png, say-w.png] # images in carousel
+url: itemFour #url of the item to be added to snipcart
 colors: [white, black]
 profit: 1 # profit to make on top of the price, 1USD
 shipping_coverage: 4 #shipping, const = 4usd
@@ -26,58 +26,58 @@ desc_list: [
 
 #product items with variants
 variants: [{
-  id: 1342872696, #sync_product_id with printful
+  id: 1342878891, #sync_product_id with printful
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - S,
   size: S,
-  color: white
+  color: black
 },{
-  id: 1342872697,
+  id: 1342878892,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - M,
   size: M,
-  color: white
+  color: black
 },
 {
-  id: 1342872698,
+  id: 1342878893,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - L,
   size: L,
-  color: white
+  color: black
 },
 {
-  id: 1342872699,
+  id: 1342878894,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - XL,
   size: XL,
-  color: white
+  color: black
 },
 {
-  id: 1342873417,
+  id: 1342881002,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - S,
   size: S,
-  color: black
+  color: white
 },
 {
-  id: 1342873418,
+  id: 1342881003,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - M,
   size: M,
-  color: black
+  color: white
 },
 {
-  id: 1342873419,
+  id: 1342881004,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - L,
   size: L,
-  color: black
+  color: white
 },
 {
-  id: 1342873420,
+  id: 1342881005,
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - XL,
   size: XL,
-  color: black
+  color: white
 }
 ]

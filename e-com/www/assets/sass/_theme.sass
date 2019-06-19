@@ -1,18 +1,27 @@
 .bl-shop-list
-    & .card
-        border: 0
-        box-shadow: 0 0.5rem 1rem rgba(48, 55, 66, 0.5)
-        height: 100%
+   & .column
+      padding: 18px
+   & .card
+      border: 0
+      box-shadow: 0 0rem 1px rgba(48, 55, 66, 0.69)
+      height: 100%
+      &:hover
+         & .card-image
+            img
+               transform: scale(1.1)
 
-    & .card-image
-        img
-            margin: auto
-            max-height: 300px
+   & .card-image
+      overflow: hidden
+      height: 300px
+      img
+         transition: all .15s linear
+         margin: auto
+         max-height: 300px
 
 
 //Main
 main
-    padding-top: 100px
+    padding-top: 80px
 
 .modal
     .modal-footer
@@ -40,6 +49,9 @@ header
         display: flex
 
     .header-inner
+        .navbar-brand
+          color: black
+          font-weight: bold
         & a
             // color: white
             display: inline-block
