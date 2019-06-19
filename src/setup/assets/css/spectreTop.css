@@ -302,4 +302,4 @@ a.text-error:visited{color:#ff6003;}
 .text-large{font-size:1.2em;}
 .text-ellipsis{overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis;white-space:nowrap;}
 .text-clip{overflow:hidden;-o-text-overflow:clip;text-overflow:clip;white-space:nowrap;}
-.text-break{-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;word-break:break-word;word-wrap:break-word;} /* mB v6.06.21 on 2019-06-17T16:05:55.891Z */
+.text-break{-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;word-break:break-word;word-wrap:break-word;} /* mB v6.06.23 on 2019-06-19T08:24:41.563Z */

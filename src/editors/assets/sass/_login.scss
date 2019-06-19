@@ -15,7 +15,7 @@
 
     .login-form {
         width: 340px;
-        min-height: 250px;
+        // min-height: 250px;
         border-radius: 4px;
         padding: 30px;
         text-align: center;
@@ -175,4 +175,22 @@
 
 .login-bg {
     @include gradient(#929292, #f5f5f5); 
+}
+
+.bl_pass-changed-notification {
+    &--err {
+        h1 {
+            color: $color-secondary;
+        }
+    }
+    h1 {
+        font-size: 20px;
+        font-weight: 200;
+        margin-bottom: .5em;
+    }
+    p {
+        font-size: 12px;
+        text-align: center;
+        color: rgba($text-color-dark-2, .5);
+    }
 }

@@ -468,7 +468,7 @@ i:hover{color:#1b98f8;}
 .i-arrow-right:before{border-style:solid;border-width:8px 0 8px 8px;border-color:transparent;border-left-color:inherit;left:100%;right:auto;position:absolute;top:50%;-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);-o-transform:translateY(-50%);transform:translateY(-50%);}
 .login-wrapper{padding:2rem 0;width:70%;min-height:100vh;margin:0 auto;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-moz-box-pack:center;-ms-flex-pack:center;justify-content:center;color:#333;}
 .login-wrapper.login{min-height:100vh;padding:0;}
-.login-wrapper .login-form{width:340px;min-height:250px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;padding:30px;text-align:center;background:#fff;position:relative;z-index:1;}
+.login-wrapper .login-form{width:340px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;padding:30px;text-align:center;background:#fff;position:relative;z-index:1;}
 .login-wrapper .login-form .v-code{font-size:10px;text-align:left;font-weight:600;padding:1rem 0;}
 .login-wrapper .login-form .reset-password{font-size:10px;color:#e65740;}
 .login-wrapper .login-form .site-brand{font-weight:400;font-size:14px;}
@@ -492,4 +492,7 @@ i:hover{color:#1b98f8;}
 .login-wrapper p span{display:block;margin:0 0 3px 0;font-weight:400;}
 .login-wrapper .isError,.login-wrapper .message{color:#f70e0e;text-align:center;margin-top:10px;font-size:13px;}
 .login-wrapper .message-info{color:#333;}
-.login-bg{background:#929292;background:-moz-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:-webkit-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:-o-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:linear-gradient(45deg,#929292 0%,#f5f5f5 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-from',endColorstr='$color-to',GradientType=1 );} /* mB v6.06.21 on 2019-06-17T14:04:26.169Z */
+.login-bg{background:#929292;background:-moz-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:-webkit-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:-o-linear-gradient(45deg,#929292 0%,#f5f5f5 100%);background:linear-gradient(45deg,#929292 0%,#f5f5f5 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-from',endColorstr='$color-to',GradientType=1 );}
+.bl_pass-changed-notification--err h1{color:#e65740;}
+.bl_pass-changed-notification h1{font-size:20px;font-weight:200;margin-bottom:.5em;}
+.bl_pass-changed-notification p{font-size:12px;text-align:center;color:rgba(51,51,51,0.5);} /* mB v6.06.23 on 2019-06-19T16:43:08.489Z */

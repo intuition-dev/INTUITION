@@ -47,6 +47,14 @@ block content
 								label Enter verification code
 								input(type='number', name='v-code', required='required')
 						button.btn-custom.btn-primary.btn-center.space-21v(name="reset-password-btn-2", type='submit') Reset Password
+
+					.bl_pass-changed-notification.d-hide.js-pass-changed-notification
+						h1 Password changed
+						p You can now sign in with your new password
+
+					.bl_pass-changed-notification.bl_pass-changed-notification--err.d-hide.js-pass-changed-notification-err
+						h1 Password hasn't been changed
+						p Something went wrong
 	
 	script.
 		depp.require(['rw'], function () {
@@ -94,7 +102,8 @@ block content
 				$('.v-code').html('Verification code was sent to ' + urlEmail);
 				bindLogin.sendVcode(urlEmail);
 
-				$(document).on('submit', '[name="reset-pass-form-2"]', function () {
+				$(document).on('submit', '[name="reset-pass-form-2"]', function (e) {
+					e.preventDefault();
 					$("[name='reset-pass-form-2']").addClass('d-hide');
 					let password = $("[name='new-password']").val();
 					let vCode = $("[name='v-code']").val();
@@ -103,7 +112,8 @@ block content
 
 			} else {
 
-				$(document).on('submit', '[name="reset-pass-form-2"]', function () {
+				$(document).on('submit', '[name="reset-pass-form-2"]', function (e) {
+					e.preventDefault();
 					$("[name='reset-pass-form-2']").addClass('d-hide');
 					let password = $("[name='new-password']").val();
 					let vCode = $("[name='v-code']").val();

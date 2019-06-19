@@ -20,9 +20,9 @@ class BindLogin {
             this.IntuAPI.resetPassEditor(email, code, pass)
                 .then(function(result) {
                     if (result) {
-                        alert("Password changed");
+                        $('.js-pass-changed-notification').removeClass('d-hide');
                     } else {
-                        alert("Error");
+                        $('.js-pass-changed-notification-err').removeClass('d-hide');
                     }
                     console.info("--result:", result);
                 });
