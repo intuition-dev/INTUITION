@@ -7,7 +7,7 @@ title: Short-Sleeve Unisex T-Shirt
 subtitle: All my friends KNOW the low-coder
 
 image: mockup.jpg #main image of the site
-images: [mockup.jpg] # images in carousel
+images: [know-b.jpg, know-w.jpg, mockup.jpg] # images in carousel
 url: itemOne #url of the item to be added to snipcart
 colors: [white, black]
 profit: 1 # profit to make on top of the price, 1USD

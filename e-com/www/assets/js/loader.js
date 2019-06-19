@@ -16,7 +16,9 @@ loadSnipCart(SNIPCART_API)
     .then(function(res) {
         depp.done('shop-item')
 
-        snipCartRelatedStuff()
+        depp.require(['snipcart'], function() {
+            snipCartRelatedStuff()
+        })
 
     })
 

@@ -174,10 +174,16 @@ header
             width: 0%
             left: 50%
 
+%carousel-nav-checked
+    color: $secondary-color
+
 .carousel
+   height: 100%
+   background: white
    img
       margin: auto
       display: block
+      width: 100%
 
 .bl-colors
    display: flex
@@ -236,20 +242,10 @@ header
          &:hover
             box-shadow: 0 0 2px 0 $primary-color
 
-// .bl-price
-//    position: absolute
-//    right: 0
-//    top: 0
-//    background: #ec8a0a
-//    color: white
-//    padding: 10px 16px
-//    border-bottom-left-radius: 4px
-//    text-transform: uppercase
-//    font-weight: bold
 .bl-price
    @extend .bl-colors
    & div
-      color: #f60
+      color: $secondary-color
       font-size: 24px
       font-weight: bold
       & span

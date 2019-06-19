@@ -4,10 +4,10 @@ block main
    .container.grid-lg
       .columns
          .column.col-6
-            .carousel
+            .carousel.carousel-custom
                // carousel locator
                each img, index in images
-                  input.carousel-locator(type='radio', name='carousel-radio', hidden='', checked='', id="slide-{index}")
+                  input.carousel-locator(type='radio', name='carousel-radio', hidden='', checked='', id=`slide-${index}`)
                // carousel container
                .carousel-container
                   // carousel item
@@ -15,12 +15,13 @@ block main
                      figure.carousel-item
                            label.item-prev.btn.btn-action.btn-lg(for='slide-'+(index==0 ? images.length-1: index-1))
                               i.icon.icon-arrow-left
-                           label.item-next.btn.btn-action.btn-lg(for='slide-'+(index == images.length-1 ? 0 : index))
+                           label.item-next.btn.btn-action.btn-lg(for='slide-'+(index == images.length-1 ? 0 : index+1))
                               i.icon.icon-arrow-right
                            img(src=img, alt='t-shirt')
                // carousel navigation
                .carousel-nav
-                  label.nav-item.text-hide.c-hand(each='{img, index in images}' for='slide-{index}') {index}
+                  each img, index in images
+                     label.nav-item.text-hide.c-hand(for=`slide-${index}`) {index}
          .column.col-6
             .card.bl-card-item
                .card-header
