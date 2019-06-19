@@ -3,7 +3,7 @@
 
 #### 'It will lead YOU in the right direction'
 
-Meta Intuition is WebAdmin Screen to CMS, e-Com, et al. It is based on JavaScript and SQLite. It is using [markdown](https://daringfireball.net/projects/markdown/syntax), and is written on [pug](https://pugjs.org/api/getting-started.html).
+Meta Intuition is WebAdmin Screen to CMS, e-Com, et al. It is based on JavaScript and SQLite. It is using [markdown](https://daringfireball.net/projects/markdown/syntax), and is written in [pug](https://pugjs.org/api/getting-started.html).
 
 In WebAdmin, you can edit pages' content using markdown which won't let you page become broken, you only edit the content/text itself and all other things is done for you after you click "save". It allows you clone existing pages to write another post/page, upload images and set publish date to posts. 
 
@@ -66,3 +66,9 @@ website's content. But it will remove all the editor: you have to add them again
 
 - Use via https://unpkg.com/intu@0.9.12/www/assets/IntuAPI/IntuAPI.min.js
 - or better via https://github.com/metabake/mBakeCli/tree/master/zBrowserServices/toolBelt
+
+# Links
+
+- [MetaBake.org](https://www.MetaBake.org)
+- [blog.MetaBake.net](http://blog.MetaBake.net)
+- [Github](http://git.MetaBake.org)
