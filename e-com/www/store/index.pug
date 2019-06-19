@@ -2,7 +2,7 @@ extends /layout/layout
 
 block main
     script(src=ROOT+ 'store/comps/card-comp.js')
-    div(data-is="card-comp").container
+    div(data-is="card-comp").container.size-xl
     
     script.
         fetch('../items/items.json')

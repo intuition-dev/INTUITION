@@ -37,7 +37,7 @@
         },
         {
           "id": 1342860021,
-          "price": "14.32",
+          "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - M",
           "size": "M",
           "color": "white"
@@ -90,70 +90,87 @@
     },
     {
       "GLO": "../../",
-      "title": "Short-Sleeve Unisex T-Shirt BLACK",
-      "id": 118058993,
-      "name": "Short-Sleeve Unisex T-Shirt BLACKy",
-      "retail_price": "16,32",
-      "weight": 0,
-      "currency": "USD",
-      "image": "mockup.jpg",
+      "title": "Short-Sleeve Unisex T-Shirt",
+      "subtitle": "It will lead YOU in the right direction",
+      "image": "you-b.jpg",
       "images": [
-        "mockup.jpg"
+        "you-b.jpg",
+        "you-w.jpg"
       ],
       "url": "itemTwo",
+      "colors": [
+        "white",
+        "black"
+      ],
       "profit": 1,
       "shipping_coverage": 4,
-      "desc": "Short-Sleeve Unisex T-Shirt BLACK",
-      "sync_variants": [
+      "desc": "The Gildan 64000 makes for a great staple t-shirt that compliments any outfit. It's made of a heavier cotton and the double-stitched neckline and sleeves give it more durability, so it can become an everyday favorite.",
+      "desc_list": [
+        "100% ring-spun cotton*",
+        "Fabric weight: 4.5 oz/y² (153 g/m²)",
+        "Pre-shrunk for extra durability",
+        "Shoulder-to-shoulder taping",
+        "Quarter-turned to avoid crease down the center"
+      ],
+      "variants": [
         {
-          "sync_variant_id": 1331796641,
-          "variant_id": 474,
+          "id": 1342860020,
           "price": "11.32",
-          "name": "Short-Sleeve Unisex T-Shirt Black - S",
+          "name": "Short-Sleeve Unisex T-Shirt - S",
           "size": "S",
-          "hide": ""
+          "color": "white"
         },
         {
-          "sync_variant_id": 1331796642,
-          "variant_id": 505,
+          "id": 1342860021,
           "price": "11.32",
-          "name": "Short-Sleeve Unisex T-Shirt Black - M",
+          "name": "Short-Sleeve Unisex T-Shirt - M",
           "size": "M",
-          "hide": "none"
+          "color": "white"
         },
         {
-          "sync_variant_id": 1331796644,
-          "variant_id": 536,
+          "id": 1342860022,
           "price": "11.32",
-          "name": "Short-Sleeve Unisex T-Shirt Black - L",
+          "name": "Short-Sleeve Unisex T-Shirt - L",
           "size": "L",
-          "hide": "none"
+          "color": "white"
         },
         {
-          "sync_variant_id": 1331796646,
-          "variant_id": 567,
+          "id": 1342860023,
           "price": "11.32",
-          "name": "Short-Sleeve Unisex T-Shirt Black - XL",
+          "name": "Short-Sleeve Unisex T-Shirt - XL",
           "size": "XL",
-          "hide": "none"
+          "color": "white"
         },
         {
-          "sync_variant_id": 1331796647,
-          "variant_id": 598,
-          "price": "12.76",
-          "name": "Short-Sleeve Unisex T-Shirt Black - 2XL",
-          "size": "2XL",
-          "hide": "none"
+          "id": 1342865646,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - S",
+          "size": "S",
+          "color": "black"
         },
         {
-          "sync_variant_id": 1331796649,
-          "variant_id": 629,
-          "price": "14.21",
-          "name": "Short-Sleeve Unisex T-Shirt Black - 3XL",
-          "size": "3XL",
-          "hide": "none"
+          "id": 1342865648,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - M",
+          "size": "M",
+          "color": "black"
+        },
+        {
+          "id": 1342865649,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - L",
+          "size": "L",
+          "color": "black"
+        },
+        {
+          "id": 1342865650,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - XL",
+          "size": "XL",
+          "color": "black"
         }
       ],
+      "id": "itemTwo",
       "index": 1
     }
   ],

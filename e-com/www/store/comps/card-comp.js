@@ -1,5 +1,5 @@
 
-riot.tag2('card-comp', '<div class="columns shop-list"><virtual each="{items}"> <div class="column col-6 col-xs-12"> <div class="card"> <div class="card-image"><img class="img-responsive" riot-src="{url}/{image}"></div> <div class="card-header"> <div class="card-title h5">{title}</div> <div class="card-subtitle text-gray">{subtitle}</div> </div> <div class="card-body">{desc}</div> <div class="card-footer"><a class="btn btn-primary" href="{url}">View</a></div> </div> </div></virtual> </div><br>', '', '', function(opts) {
+riot.tag2('card-comp', '<div class="columns shop-list"><virtual each="{items}"> <div class="column col-4 col-xs-12"> <div class="card"> <div class="card-image"><img class="img-responsive" riot-src="{url}/{image}"></div> <div class="card-header"> <div class="card-title h5">{title}</div> <div class="card-subtitle text-gray">{subtitle}</div> </div> <div class="card-body">{desc}</div> <div class="card-footer"><a class="btn btn-primary" href="{url}">View</a></div> </div> </div></virtual> </div><br>', '', '', function(opts) {
     console.info('oh hii tag')
     this.on('*', function(evt) {
         console.info('riot', evt)
