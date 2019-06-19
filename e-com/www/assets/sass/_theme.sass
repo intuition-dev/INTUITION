@@ -1,4 +1,4 @@
-.shop-list
+.bl-shop-list
     & .card
         border: 0
         box-shadow: 0 0.5rem 1rem rgba(48, 55, 66, 0.5)
@@ -9,6 +9,13 @@
             margin: auto
             max-height: 300px
 
+.btn
+   @extend .btn
+   &.btn-add-cart
+      // font-size: 18px
+      padding: .5rem .8rem
+      height: auto
+      // border-radius: 4px
 //Main
 main
     padding-top: 100px
@@ -172,6 +179,84 @@ header
       margin: auto
       display: block
 
+.bl-colors
+   display: flex
+   align-items: center
+   margin-top: 24px
+   label
+      width: 60px
+      padding-right: 8px
+   &--item
+      display: flex
+      & span
+         width: 24px
+         height: 24px
+         box-shadow: 0 0 0px 1px #dadee4
+         position: relative
+         cursor: pointer
+         border-radius: 2px
+         transition: all .15s linear
+         &.white
+            background: white
+         &.black
+            background: black
+         &.selected
+            box-shadow: 0 0 0 2px $primary-color
+            &:hover
+               box-shadow: 0 0 0 2px $primary-color
+         &:not(:last-child)
+            margin-right: 12px
+         &:hover
+            box-shadow: 0 0 2px 0 $primary-color
+.bl-size
+   @extend .bl-colors
+   &--item
+      display: flex
+      & span
+         width: 24px
+         height: 24px
+         box-shadow: 0 0 0px 1px #dadee4
+         position: relative
+         cursor: pointer
+         border-radius: 2px
+         text-align: center
+         font-size: 14px
+         line-height: 24px
+         transition: all .15s linear
+         &.white
+            background: white
+         &.black
+            background: black
+         &.selected
+            box-shadow: 0 0 0 2px $primary-color
+            &:hover
+               box-shadow: 0 0 0 2px $primary-color
+         &:not(:last-child)
+            margin-right: 12px
+         &:hover
+            box-shadow: 0 0 2px 0 $primary-color
+
+// .bl-price
+//    position: absolute
+//    right: 0
+//    top: 0
+//    background: #ec8a0a
+//    color: white
+//    padding: 10px 16px
+//    border-bottom-left-radius: 4px
+//    text-transform: uppercase
+//    font-weight: bold
+.bl-price
+   @extend .bl-colors
+   & div
+      color: #f60
+      font-size: 24px
+      font-weight: bold
+      & span
+         color: grey
+         font-size: 16px
+         font-weight: 300
+
 .bl-shopping-cart
    position: relative
    .bl-shopping-cart__svg
@@ -207,3 +292,10 @@ header
          fill: $error-color
          border-radius: 100%
          transition: .15s linear all
+
+.bl-card-item
+   .card-header
+      position: relative
+   // .card-footer
+   //    background: grey
+   //    text-align: left

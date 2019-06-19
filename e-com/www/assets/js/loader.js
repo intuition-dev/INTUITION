@@ -5,6 +5,7 @@ depp.define({
         ],
         'css': ['#pre', 'css!//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700', '/assets/css/style.css'],
         'snipcart': [
+            ROOT + 'assets/js/ui.js',
             "//cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
         ],
     }) //define
@@ -15,17 +16,10 @@ loadSnipCart(SNIPCART_API)
     .then(function(res) {
         depp.done('shop-item')
 
-        //handle snipcart remove all items
-        document.addEventListener('snipcart.ready', function() {
-            var count = Snipcart.api.items.count();
-            $('.js-clean-cart').on('click', function(ev) {
-                ev.preventDefault()
-                console.log("TCL: ev", ev)
-                Snipcart.api.items.clear()
-            })
-        });
+        snipCartRelatedStuff()
 
     })
+
 
 function onLoaded() {
     mobileMenu()
