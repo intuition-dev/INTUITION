@@ -2,7 +2,14 @@ button {
 	cursor: pointer;
 }
 .grid-form fieldset legend {
-	font-weight: 300;
+    font-weight: 300;
+    a {
+        color: #333;
+        font-weight: 600;
+        &:hover {
+            color: #1b98f8;
+        }
+    }
 }
 
 /* Change the white to any color ;) */
@@ -181,4 +188,8 @@ input:-webkit-autofill {
     font-size: 8px;
     letter-spacing: 0;
     font-weight: 400;
+}
+
+.bl_legend {
+    padding: 1rem 0 5px 0;
 }

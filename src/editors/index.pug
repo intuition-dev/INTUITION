@@ -5,7 +5,7 @@ block content
 		.login-wrapper
 			.login-form-wrap
 				.login-form
-					form#login-form.grid-form(action="#")
+					form#login-form.js-login-form.grid-form(action="#")
 						fieldset
 							legend 
 								.site-brand Site Name
@@ -18,7 +18,7 @@ block content
 								label Password
 								input(type='password', name='password', required='required')
 						#error.d-hide.isError
-						button#btn-login.btn-custom.btn-primary.btn-center.space-21v Login
+						button#btn-login.js-btn-login.btn-custom.btn-primary.btn-center.space-21v Login
 
 						p 	Get
 							a.upper(href='/readme.md') Chrome extension
