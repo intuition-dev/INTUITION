@@ -72,6 +72,7 @@ export class EditorRoutes {
             return res.json(resp);
          }
       })
+
       // get dirs list
       appE.post("/posts", (req, res) => {
          const method = req.fields.method;
@@ -80,7 +81,7 @@ export class EditorRoutes {
          if ('get' == method) {
 
             let dirs = new Dirs(mountPath);
-            let dirsToIgnore = ['', '.', '..'];
+            let dirsToIgnore = ['.', '..'];
             resp.result = dirs.getShort()
                .map(el => el.replace(/^\/+/g, ''))
                .filter(el => !dirsToIgnore.includes(el));
@@ -105,6 +106,10 @@ export class EditorRoutes {
             if (typeof post_id !== 'undefined') {
                let dirs = new Dirs(mountPath);
                resp.result = dirs.getInDir(post_id);
+               // if root directory, remove all dirs from output, leave only files:
+               if (post_id === '/') {
+                  resp.result = resp.result.filter(file => file.indexOf('/') === -1 && !fs.lstatSync(mountPath + '/' + file).isDirectory() );
+               }
                res.json(resp);
             } else {
                res.status(400);
