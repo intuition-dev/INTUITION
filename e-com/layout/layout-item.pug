@@ -66,6 +66,6 @@ html(lang='en_US')
                                     data-item-url="/items/"+url
                                     data-item-price=(Math.round((+variant.price+ +shipping_coverage + +profit)*100)  /100)
                                     data-item-weight="1"
-                                    data-item-metadata='{"sync_variant_id": '+ variant.id+ '}'
+                                    data-item-metadata='{"sync_variant_id": '+ variant.sync_id+ '}'
                                     style=`${index!==0 && 'display: none'}` 
                                     ) Add to cart
