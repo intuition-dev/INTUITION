@@ -41,7 +41,7 @@ if (window.location.href.indexOf('editors/edit') > -1) {
 
     depp.require(['general'], function() {
 
-        $(document).on('click', '.view-page', function(e) {
+        $(document).on('click', '.js-view-page', function(e) {
 
             if ($(this).hasAttribute('disabled')) {
                 e.preventDefault();
@@ -69,11 +69,11 @@ if (window.location.href.indexOf('editors/edit') > -1) {
                     $('.blog-item').removeClass('active');
                     $(currentPage).addClass('active');
                     $('.btn-custom.save').attr("disabled", "disabled");
-                    $('.view-page').removeAttr("disabled");
+                    $('.js-view-page').removeAttr("disabled");
 
                     let postId = $(currentPage).find('span').text();
 
-                    $('.view-page').attr('href', appMount + '/' + postId);
+                    $('.js-view-page').attr('href', appMount + '/' + postId);
 
                     if ($(currentPage).find('ul').length === 0) {
                         posts
@@ -102,9 +102,10 @@ if (window.location.href.indexOf('editors/edit') > -1) {
             });
 
 
-        let appMount = window.appMount[0];
+        let appMount = window.appMount;
+        console.info('appmoutn', appMount);
 
-        $('.view-page').attr('href', appMount);
+        $('.js-view-page').attr('href', appMount);
 
         /*
          * show sub directories
@@ -120,13 +121,13 @@ if (window.location.href.indexOf('editors/edit') > -1) {
             $('.blog-item').removeClass('active');
             $(this).addClass('active');
             $('.btn-custom.save').attr("disabled", "disabled");
-            $('.view-page').removeAttr("disabled");
+            $('.js-view-page').removeAttr("disabled");
 
             let postId = $(this).find('span').text();
 
             window.location.hash = postId;
 
-            $('.view-page').attr('href', appMount + '/' + postId);
+            $('.js-view-page').attr('href', appMount + '/' + postId);
 
             if ($(this).find('ul').length === 0) {
                 posts

@@ -264,6 +264,14 @@ export class ADB { // auth & auth DB
       })
    }
 
+   getSitePath() {
+      return this.db.all(`SELECT pathToSite FROM configs`, [], function (err, rows) {
+         if (err) {
+         }
+         return rows
+      })
+   }
+
 }
 
 module.exports = {
