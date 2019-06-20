@@ -6,6 +6,7 @@ const editor_1 = require("./lib/editor");
 const admin_1 = require("./lib/admin");
 const ADB_1 = require("./lib/ADB");
 const Email_1 = require("./lib/Email");
+const Wa_1 = require("mbake/lib/Wa");
 var ip = require('ip');
 var ipAddres = ip.address();
 const hostIP = 'http://' + ipAddres + ':';
@@ -33,7 +34,6 @@ FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
 try {
     let _this = this;
     if (adbDB.checkDB(pathToDb)) {
-        console.log('run admin');
         adbDB.connectToDbOnPort(pathToDb)
             .then(function (port) {
             runAdmin(port);
@@ -104,4 +104,12 @@ function mainAppsetup(mainApp, port) {
         console.log(`App is running at http://localhost:${port}/editors/`);
         console.log(`======================================================`);
     });
+    runMBake();
+}
+function runMBake() {
+    if (typeof adbDB.db !== 'undefined') {
+        adbDB
+            .getSitePath()
+            .then(path => Wa_1.Wa.watch(path[0].pathToSite, 3000));
+    }
 }

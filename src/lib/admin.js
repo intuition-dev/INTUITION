@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const Email_1 = require("./Email");
+const Wa_1 = require("mbake/lib/Wa");
 const fs = require('fs-extra');
 var path = require('path');
 class AdminRoutes {
@@ -87,6 +88,8 @@ class AdminRoutes {
                         .then(function (result) {
                         resp.result = true;
                         return res.json(resp);
+                    }).then(() => {
+                        Wa_1.Wa.watch(path.join(__dirname, '../' + setupItem), 3000);
                     });
                 }
                 catch (err) {

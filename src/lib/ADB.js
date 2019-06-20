@@ -228,6 +228,13 @@ class ADB {
             return rows;
         });
     }
+    getSitePath() {
+        return this.db.all(`SELECT pathToSite FROM configs`, [], function (err, rows) {
+            if (err) {
+            }
+            return rows;
+        });
+    }
 }
 exports.ADB = ADB;
 module.exports = {
