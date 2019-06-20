@@ -17,7 +17,7 @@ export class EditorRoutes {
       const path = require('path');
       let mountPath = '';
 
-      const appE = ExpressRPC.makeInstance([host]);
+      const appE = ExpressRPC.makeInstance(host);
 
       // appE.use(fileUpload());
       appE.use((request, response, next) => {

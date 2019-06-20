@@ -12,9 +12,10 @@ const hostIP = 'http://' + ipAddres + ':';
 console.log("TCL: hostIP", hostIP);
 var path = require('path');
 const fs = require('fs-extra');
+const yaml = require('js-yaml');
+let config = yaml.load(fs.readFileSync(__dirname + '/config.yaml'));
 const adbDB = new ADB_1.ADB();
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
-const opn = require("open");
 const emailJs = new Email_1.Email();
 const dbName = 'ADB.sqlite';
 const pathToDb = path.join(__dirname, dbName);
@@ -48,9 +49,8 @@ catch (err) {
 function runSetup() {
     const port = '9081';
     adbDB.connectToDb(pathToDb);
-    const host = hostIP + port;
-    console.log("TCL: runSetup -> host", host);
-    const mainApp = Serv_1.ExpressRPC.makeInstance([host]);
+    const host = [hostIP + port, config.cors];
+    const mainApp = Serv_1.ExpressRPC.makeInstance(host);
     mainApp.post("/setup", async (req, res) => {
         const method = req.fields.method;
         let params = JSON.parse(req.fields.params);
@@ -79,17 +79,16 @@ function runSetup() {
         }
     });
     mainAppsetup(mainApp, port);
-    opn(host + '/setup');
 }
 function runAdmin(port) {
-    const host = hostIP + port;
-    const mainApp = Serv_1.ExpressRPC.makeInstance([host]);
+    const host = [hostIP + port, config.cors];
+    const mainApp = Serv_1.ExpressRPC.makeInstance(host);
     mainAppsetup(mainApp, port);
 }
 function mainAppsetup(mainApp, port) {
     const editorRoutes = new editor_1.EditorRoutes();
     const adminRoutes = new admin_1.AdminRoutes();
-    const host = hostIP + port;
+    const host = [hostIP + port, config.cors];
     mainApp.use('/api/editors', editorRoutes.routes(adbDB, host));
     mainApp.use('/api/admin', adminRoutes.routes(adbDB, host, port));
     mainApp.use('/', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, '/')));

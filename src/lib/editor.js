@@ -12,7 +12,7 @@ class EditorRoutes {
         const fs = require('fs');
         const path = require('path');
         let mountPath = '';
-        const appE = Serv_1.ExpressRPC.makeInstance([host]);
+        const appE = Serv_1.ExpressRPC.makeInstance(host);
         appE.use((request, response, next) => {
             if (request.path === '/resetPassword') {
                 next();

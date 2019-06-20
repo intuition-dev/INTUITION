@@ -15,6 +15,9 @@ console.log("TCL: hostIP", hostIP)
 
 var path = require('path');
 const fs = require('fs-extra')
+const yaml = require('js-yaml');
+let config = yaml.load(fs.readFileSync(__dirname + '/config.yaml'));
+
 const adbDB = new ADB()
 
 import { VersionNag } from 'mbake/lib/FileOpsExtra'
@@ -60,10 +63,9 @@ try {
 function runSetup() {
    const port = '9081' //init port
    adbDB.connectToDb(pathToDb) //connect to db
-   const host = hostIP + port
-   console.log("TCL: runSetup -> host", host)
+   const host = [hostIP + port, config.cors]
 
-   const mainApp = ExpressRPC.makeInstance([host]);
+   const mainApp = ExpressRPC.makeInstance(host);
    mainApp.post("/setup", async (req, res) => {
       const method = req.fields.method;
       let params = JSON.parse(req.fields.params)
@@ -96,20 +98,18 @@ function runSetup() {
    })
 
    mainAppsetup(mainApp, port)
-
-   opn(host+'/setup')
 }
 
 function runAdmin(port) {
-   const host = hostIP + port
-   const mainApp = ExpressRPC.makeInstance([host]);
+   const host = [hostIP + port, config.cors]
+   const mainApp = ExpressRPC.makeInstance(host);
    mainAppsetup(mainApp, port)
 }
 
 function mainAppsetup(mainApp, port) {
    const editorRoutes = new EditorRoutes();
    const adminRoutes = new AdminRoutes();
-   const host = hostIP + port
+   const host = [hostIP + port, config.cors]
 
    mainApp.use('/api/editors', editorRoutes.routes(adbDB, host));
    mainApp.use('/api/admin', adminRoutes.routes(adbDB, host, port));

@@ -9,7 +9,7 @@ class AdminRoutes {
     routes(adbDB, host, appPort) {
         const emailJs = new Email_1.Email();
         const bodyParser = require("body-parser");
-        const adminApp = Serv_1.ExpressRPC.makeInstance([host]);
+        const adminApp = Serv_1.ExpressRPC.makeInstance(host);
         adminApp.use(bodyParser.json());
         adminApp.use((request, response, next) => {
             if (request.path === '/resetPassword') {

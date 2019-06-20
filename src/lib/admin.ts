@@ -12,7 +12,7 @@ export class AdminRoutes {
       const emailJs = new Email();
       const bodyParser = require("body-parser");
 
-      const adminApp = ExpressRPC.makeInstance([host]);
+      const adminApp = ExpressRPC.makeInstance(host);
       adminApp.use(bodyParser.json());
 
 
