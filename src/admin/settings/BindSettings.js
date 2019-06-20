@@ -27,12 +27,13 @@ class BindSettings {
     getPort() {
         this.IntuAPI.getConfig()
             .then(function(result) {
-                $('.js-goto-editors').attr('href', 'http://localhost:' + result.port +  '/editors/');
+                $('.js-goto-editors').attr('href', 'http://localhost:' + result.port + '/editors/');
             });
     }
 
     //save path and/or port
     saveConfig(serialize) {
+        console.log("TCL: BindSettings -> saveConfig -> serialize", serialize)
         var port = serialize.filter(function(ser) {
             if (ser.name == 'port') {
                 return ser
@@ -44,7 +45,14 @@ class BindSettings {
             }
         })[0].value
 
-        this.IntuAPI.updateConfig(port, path)
+        var printfulAPI = serialize.filter(function(ser) {
+            if (ser.name == 'printfulAPI') {
+                return ser
+            }
+        })[0].value
+        console.log("TCL: BindSettings -> saveConfig -> printfulApi", printfulAPI)
+
+        this.IntuAPI.updateConfig(port, path, printfulAPI)
             .then(function(result) {
                 console.info("--result:", result)
                 if (port != window.apiPort) {

@@ -1,0 +1,139 @@
+{
+  "prefix": "/items/",
+  "mbVer": "v6.06.21",
+  "items": [
+    {
+      "GLO": "../../",
+      "title": "Short-Sleeve Unisex T-Shirt editables",
+      "id": 118054659,
+      "image": "mockup.jpg",
+      "images": [
+        "mockup.jpg"
+      ],
+      "url": "itemOne",
+      "profit": 1,
+      "shipping_coverage": 4,
+      "desc": "Short-Sleeve Unisex T-Shirt",
+      "sync_variants": [
+        {
+          "sync_variant_id": 1331762077,
+          "variant_id": 473,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - S",
+          "size": "S",
+          "hide": ""
+        },
+        {
+          "sync_variant_id": 1331762078,
+          "variant_id": 504,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - M",
+          "size": "M",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1331762079,
+          "variant_id": 535,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - L",
+          "size": "L",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1331762080,
+          "variant_id": 566,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt - XL",
+          "size": "XL",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1331762081,
+          "variant_id": 597,
+          "price": "12.76",
+          "name": "Short-Sleeve Unisex T-Shirt - 2XL",
+          "size": "2XL",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1331762082,
+          "variant_id": 628,
+          "price": "14.21",
+          "name": "Short-Sleeve Unisex T-Shirt - 3XL",
+          "size": "3XL",
+          "hide": "none"
+        }
+      ],
+      "index": 0
+    },
+    {
+      "GLO": "../../",
+      "title": "Short-Sleeve Unisex T-Shirt BLACK",
+      "id": 118058993,
+      "name": "Short-Sleeve Unisex T-Shirt BLACKy",
+      "retail_price": "16,32",
+      "weight": 0,
+      "currency": "USD",
+      "image": "mockup.jpg",
+      "images": [
+        "mockup.jpg"
+      ],
+      "url": "itemTwo",
+      "profit": 1,
+      "shipping_coverage": 4,
+      "desc": "Short-Sleeve Unisex T-Shirt BLACK",
+      "sync_variants": [
+        {
+          "sync_variant_id": 1331796641,
+          "variant_id": 474,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt Black - S",
+          "size": "S",
+          "hide": ""
+        },
+        {
+          "sync_variant_id": 1331796642,
+          "variant_id": 505,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt Black - M",
+          "size": "M",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1331796644,
+          "variant_id": 536,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt Black - L",
+          "size": "L",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1331796646,
+          "variant_id": 567,
+          "price": "11.32",
+          "name": "Short-Sleeve Unisex T-Shirt Black - XL",
+          "size": "XL",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1331796647,
+          "variant_id": 598,
+          "price": "12.76",
+          "name": "Short-Sleeve Unisex T-Shirt Black - 2XL",
+          "size": "2XL",
+          "hide": "none"
+        },
+        {
+          "sync_variant_id": 1331796649,
+          "variant_id": 629,
+          "price": "14.21",
+          "name": "Short-Sleeve Unisex T-Shirt Black - 3XL",
+          "size": "3XL",
+          "hide": "none"
+        }
+      ],
+      "index": 1
+    }
+  ],
+  "count": 2
+}

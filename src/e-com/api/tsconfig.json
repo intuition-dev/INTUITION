@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "pretty": false,
+        "listEmittedFiles": true,
+        "module": "commonjs",
+        "target": "ES2017",
+        "lib": [
+            "es2015"
+        ],
+        
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        
+        "removeComments": true,
+        "outDir": ".",
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ]
+        }
+    },
+    "include": [
+        "**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

@@ -1,0 +1,34 @@
+script.
+    window.ENV = '#{ENV}' // allows js
+    
+// pug magic
+case ENV
+    when 3
+        -var EXT = ".min.js";
+        script.
+            console.log('DevOps ', 3)
+
+    when 2
+        -var EXT = ".min.js";
+        script.
+            console.log('DevOps ', 2)
+
+    when 1
+        -var EXT = ".js";
+        script.
+            console.log('DevOps ', 1)
+            window.API = {
+                "protocol": "https"
+                , "host": "shop-api.MetaBake.org"
+                , "port": ''
+            }
+
+    default
+        -var EXT = ".js";
+        script.
+            console.log('DevOps', 0)
+            window.API = {
+                "protocol": "http"
+                , "host": "0.0.0.0"
+                , "port": 3000
+            }

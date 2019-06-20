@@ -63,6 +63,14 @@ export class ADB { // auth & auth DB
       fs.open(path, 'w', cb);
    }
 
+   getPrintfulAPI() {
+      return this.db.all(`SELECT printfulApi FROM configs`, [], function (err, rows) {
+         if (err) {
+         }
+         return rows
+      })
+   }
+
    validateEmail(email, password) {
       let _this = this
       return new Promise(function (resolve, reject) {
@@ -238,8 +246,8 @@ export class ADB { // auth & auth DB
       })
    }
 
-   updateConfig(pathToSite, port, adminId) {
-      return this.db.run(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+   updateConfig(pathToSite, port, printfulApi, adminId) {
+      return this.db.run(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
             return console.error('erros:', err.message);
          }

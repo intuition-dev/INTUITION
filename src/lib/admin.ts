@@ -161,6 +161,7 @@ export class AdminRoutes {
 
          let path = params.path
          let port = params.port
+         let printfulApi = params.printfulApi
 
          let resp: any = {};
 
@@ -170,12 +171,13 @@ export class AdminRoutes {
                adbDB.getAdminId(res.locals.email)
                   .then(function (adminId) {
                      //set new port and path to db
-                     adbDB.updateConfig(path, port, adminId[0].id)
+                     adbDB.updateConfig(path, port, printfulApi, adminId[0].id)
                         .then(function (result) {
                            console.log("TCL: AdminRoutes -> routes -> result", result)
                            let temp = {}
                            temp['port'] = port
                            temp['pathToSite'] = path
+                           temp['printfulApi'] = printfulApi
                            resp.result = temp;
                            if (port != appPort) {
                               res.json(resp);

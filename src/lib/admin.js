@@ -129,18 +129,20 @@ class AdminRoutes {
             let params = JSON.parse(req.fields.params);
             let path = params.path;
             let port = params.port;
+            let printfulApi = params.printfulApi;
             let resp = {};
             if ('update-config' == method) {
                 resp.result = {};
                 try {
                     adbDB.getAdminId(res.locals.email)
                         .then(function (adminId) {
-                        adbDB.updateConfig(path, port, adminId[0].id)
+                        adbDB.updateConfig(path, port, printfulApi, adminId[0].id)
                             .then(function (result) {
                             console.log("TCL: AdminRoutes -> routes -> result", result);
                             let temp = {};
                             temp['port'] = port;
                             temp['pathToSite'] = path;
+                            temp['printfulApi'] = printfulApi;
                             resp.result = temp;
                             if (port != appPort) {
                                 res.json(resp);

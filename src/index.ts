@@ -110,7 +110,7 @@ function mainAppsetup(mainApp, port) {
    mainApp.use('/api/shipping/:name', function (req, res, next) {
       var shipping = require('./lib/shipping');
       var name = req.params.name;
-      shipping.init(mainApp, name, printfulApiID);
+      shipping.init(mainApp, name, adbDB);
       next()
    });
 

@@ -86,9 +86,9 @@ function mainAppsetup(mainApp, port) {
     mainApp.use('/api/admin', adminRoutes.routes(adbDB, port));
     mainApp.use('/', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, '/')));
     mainApp.use('/api/shipping/:name', function (req, res, next) {
-        var shipping = require('./e-com/api/lib/shipping');
+        var shipping = require('./lib/shipping');
         var name = req.params.name;
-        shipping.init(mainApp, name);
+        shipping.init(mainApp, name, adbDB);
         next();
     });
     mainApp.listen(port, () => {

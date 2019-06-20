@@ -1,5 +1,5 @@
 const request = require('request');
-export function init(mainApp, name, printfulApiID) {
+export function init(mainApp, name, adbDB) {
 
    mainApp.post('/api/shipping/' + name, function (req, res) {
       console.log("TCL: init -> name", name)
@@ -28,62 +28,73 @@ export function init(mainApp, name, printfulApiID) {
          resp.ispacked = false
          console.log(resp)
 
-         if (name == "printful-rate") {
-            items_g.map(function (item) {
-               let temp = {}
-               temp['quantity'] = item.quantity
-               temp['variant_id'] = item.id //variant_id for getting rates, and sync_variant_id for placing the order
-               elements.push(temp)
-            })
+         adbDB.getPrintfulAPI()
+            .then(function (printfulApiID) {
 
-            let send_order = Object.assign({ recipient: temp_shipping, items: elements })
-            console.info("1) --send_order:", send_order)
-            request({
-               url: "https://api.printful.com/shipping/rates",
-               headers: {
-                  'Authorization': 'Basic ' + printfulApiID,
-               },
-               method: 'POST',
-               json: send_order
+               if (name == "printful-rate") {
+                  items_g.map(function (item) {
+                     let temp = {}
+                     temp['quantity'] = item.quantity
+                     temp['variant_id'] = item.id //variant_id for getting rates, and sync_variant_id for placing the order
+                     elements.push(temp)
+                  })
 
-            }, function (error, response, body) {
-               // console.info("--response:", response)
-               console.info("--body printify-rate:", body)
-               var shippin_rates = {
-                  "rates": [{
-                     "cost": 1,
-                     "description": "1$ shipping"
-                  }
-                  ]
+                  let send_order = Object.assign({ recipient: temp_shipping, items: elements })
+                  console.info("1) --send_order:", send_order)
+                  request({
+                     url: "https://api.printful.com/shipping/rates",
+                     headers: {
+                        'Authorization': 'Basic ' + printfulApiID,
+                     },
+                     method: 'POST',
+                     json: send_order
+
+                  }, function (error, response, body) {
+                     // console.info("--response:", response)
+                     console.info("--body printify-rate:", body)
+                     var shippin_rates = {
+                        "rates": [{
+                           "cost": 1,
+                           "description": "1$ shipping"
+                        }
+                        ]
+                     }
+                     res.json(shippin_rates); //res is the response object, and it passes info back to client-side
+                  });
                }
-               res.json(shippin_rates); //res is the response object, and it passes info back to client-side
+
+               if (name == "printful-create-order" && params.eventName == 'order.completed') {
+                  items_g.map(function (item) {
+                     let temp = {}
+                     temp['quantity'] = item.quantity
+                     temp['sync_variant_id'] = item.id //variant_id for getting rates, and sync_variant_id for placing the order
+                     elements.push(temp)
+                  })
+
+                  let send_order = Object.assign({ recipient: temp_shipping, items: elements })
+                  console.info("2) --send_order:", send_order)
+
+                  request({
+                     url: "https://api.printful.com/orders",
+                     headers: {
+                        'Authorization': 'Basic ' + printfulApiID,
+                     },
+                     method: 'POST',
+                     json: send_order
+                  }, function (error, response, body) {
+                     console.info("--body:", body)
+                     res.json(body); //res is the response object, and it passes info back to client-side
+                  });
+               }
+
+
+
+            }).catch(function (error) {
+               resp.errorLevel = -1
+               resp.errorMessage = error
+               resp.result = false
+               return res.json(resp)
             });
-         }
-
-         if (name == "printful-create-order" && params.eventName == 'order.completed') {
-            items_g.map(function (item) {
-               let temp = {}
-               temp['quantity'] = item.quantity
-               temp['sync_variant_id'] = item.id //variant_id for getting rates, and sync_variant_id for placing the order
-               elements.push(temp)
-            })
-
-            let send_order = Object.assign({ recipient: temp_shipping, items: elements })
-            console.info("2) --send_order:", send_order)
-
-            request({
-               url: "https://api.printful.com/orders",
-               headers: {
-                  'Authorization': 'Basic ' + printfulApiID,
-               },
-               method: 'POST',
-               json: send_order
-            }, function (error, response, body) {
-               console.info("--body:", body)
-               res.json(body); //res is the response object, and it passes info back to client-side
-            });
-         }
-
 
       } else {
          resp.errorLevel = -1

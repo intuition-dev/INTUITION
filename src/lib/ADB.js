@@ -30,7 +30,7 @@ class ADB {
         var salt = bcrypt.genSaltSync(10);
         var hashPass = bcrypt.hashSync(password, salt);
         await this.db.run(`CREATE TABLE admin(id, email, password, vcode)`);
-        await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi, port)`);
+        await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi, port, printfulApi)`);
         await this.db.run(`CREATE TABLE editors(id, email, password, name, vcode)`);
         await this.db.run(`INSERT INTO admin(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
             if (err) {
@@ -50,6 +50,13 @@ class ADB {
     }
     openDB(path, cb) {
         fs.open(path, 'w', cb);
+    }
+    getPrintfulAPI() {
+        return this.db.all(`SELECT printfulApi FROM configs`, [], function (err, rows) {
+            if (err) {
+            }
+            return rows;
+        });
     }
     validateEmail(email, password) {
         let _this = this;
@@ -205,8 +212,8 @@ class ADB {
             return rows;
         });
     }
-    updateConfig(pathToSite, port, adminId) {
-        return this.db.run(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+    updateConfig(pathToSite, port, printfulApi, adminId) {
+        return this.db.run(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
             if (err) {
                 return console.error('erros:', err.message);
             }
