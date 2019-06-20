@@ -16,7 +16,7 @@ class IntuAPI {
     */
    constructor() {
       console.log("TCL: IntuAPI -> constructor -> apiPort", apiPort)
-      this.serviceRPC = new httpRPC(apiProtocol, apiHost, apiPort);
+      this.serviceRPC = new httpRPC(apiProtocol, apiHost, typeof apiPort != 'undefined' ? apiPort : "");
    }
 
    /**
