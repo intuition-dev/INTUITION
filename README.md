@@ -41,12 +41,12 @@ Also create a email template, and note your emailJs `user_id` and `template_id`,
 
 4. Then install the app:
     ```bash
-    $ yarn global add intu
+    $ yarn add intu
     ```
 
 5. In Terminal run command to start the app: 
     ```
-    $ intu
+    $ yarn run intu
     ```
 
 6. Setup configurations in the browser window `:9081/setup`
