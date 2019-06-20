@@ -1,6 +1,7 @@
 import { ExpressRPC } from 'mbake/lib/Serv';
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
+import { Wa } from 'mbake/lib/Wa';
 // import { ShippingRoutes } from '../e-com/api/lib/shipping';
 
 const fs = require('fs-extra')
@@ -110,7 +111,10 @@ export class AdminRoutes {
                   .then(function (result) {
                      resp.result = true;
                      return res.json(resp);
-                  })
+                  }).then(() => {
+                     // run site
+                     Wa.watch(path.join(__dirname, '../' + setupItem), 3000);
+                  });
             } catch (err) {
                // next(err);
             }

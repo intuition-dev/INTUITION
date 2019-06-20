@@ -5,28 +5,6 @@
     {
       "author": {
         "name": "Author 1",
-        "avatar": "https://icstravelgroup.com/wp-content/uploads/2017/07/icstravelgroup_clients_icons00001.png",
-        "desc": "Galanthus is a small genus of about 20 species of bulbous perennial herbaceous plants in the family Amaryllidaceae. The plants have two linear leaves and a single small white drooping bell shaped flower with six petal-like tepals in two circles. The smaller inner petals have green markings.",
-        "img": "image.jpg"
-      },
-      "title": "Snowdrop. Did you know: The Species name 'Galanthus' comes from the Greek",
-      "image": "http://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We",
-      "tags": "nature",
-      "date": "06.nov.2018",
-      "content_text": "Galanthus is a small genus of about 20 species of bulbous perennial herbaceous plants in the family Amaryllidaceae. The plants have two linear leaves and a single small white drooping bell shaped flower with six petal-like tepals in two circles. The smaller inner petals have green markings.",
-      "summary": "Galanthus is a small genus of about 20 species of bulbous perennial herbaceous plants in the family Amaryllidaceae. The plants have two linear leaves and a single small white drooping bell shaped flower with six petal-like tepals in two circles. The smaller inner petals have green markings.",
-      "publish": true,
-      "publishOrder": 3,
-      "publishDate": 1396361297,
-      "pageTitleTop": "Snowdrop",
-      "pageTitle": "Snowdrop",
-      "url": "new-post",
-      "id": "new-post",
-      "index": 0
-    },
-    {
-      "author": {
-        "name": "Author 1",
         "avatar": "//cdn5.vectorstock.com/i/1000x1000/73/04/female-avatar-profile-icon-round-woman-face-vector-18307304.jpg",
         "desc": "Integer iaculis, nisi id vehicula hendrerit, enim diam dignissim erat, non malesuada lorem ipsum vitae lacus. Aliquam interdum ante dolor, sit amet elementum lacus sodales quis. Aliquam erat volutpat. Praesent ut porta quam. Fusce pharetra eros lacinia elit efficitur, sed condimentum est efficitur.",
         "img": "who.jpg"
@@ -42,7 +20,7 @@
       "publishDate": 1519913297,
       "url": "post-1",
       "id": "post-1",
-      "index": 1
+      "index": 0
     },
     {
       "author": {
@@ -62,7 +40,7 @@
       "publishDate": 1519913297,
       "url": "post-2",
       "id": "post-2",
-      "index": 2
+      "index": 1
     },
     {
       "author": {
@@ -82,7 +60,7 @@
       "publishDate": 1519913297,
       "url": "post-3",
       "id": "post-3",
-      "index": 3
+      "index": 2
     },
     {
       "author": {
@@ -102,7 +80,7 @@
       "publishDate": 1519913297,
       "url": "post-4",
       "id": "post-4",
-      "index": 4
+      "index": 3
     },
     {
       "author": {
@@ -122,7 +100,7 @@
       "publishDate": 1519913297,
       "url": "test-77",
       "id": "test-77",
-      "index": 5
+      "index": 4
     },
     {
       "author": {
@@ -142,8 +120,8 @@
       "publishDate": 1519913297,
       "url": "test-88",
       "id": "test-88",
-      "index": 6
+      "index": 5
     }
   ],
-  "count": 7
+  "count": 6
 }

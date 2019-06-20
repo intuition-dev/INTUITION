@@ -6,11 +6,12 @@ import { EditorRoutes } from './lib/editor';
 import { AdminRoutes } from './lib/admin';
 import { ADB } from './lib/ADB';
 import { Email } from './lib/Email';
+import { Wa } from 'mbake/lib/Wa';
 
 var ip = require('ip');
 var ipAddres = ip.address()
 
-const hostIP = 'http://'+ipAddres+':'
+const hostIP = 'http://' + ipAddres + ':'
 console.log("TCL: hostIP", hostIP)
 
 var path = require('path');
@@ -46,14 +47,12 @@ try {
    let _this = this
    //check if the file of database exist
    if (adbDB.checkDB(pathToDb)) {
-      console.log('run admin')
       adbDB.connectToDbOnPort(pathToDb)
          .then(function (port) {
             runAdmin(port)
          })
    } else {
       console.log('open db and run setup')
-
       //create db file
       adbDB.openDB(pathToDb, runSetup)
    }
@@ -106,6 +105,7 @@ function runAdmin(port) {
    mainAppsetup(mainApp, port)
 }
 
+
 function mainAppsetup(mainApp, port) {
    const editorRoutes = new EditorRoutes();
    const adminRoutes = new AdminRoutes();
@@ -131,4 +131,15 @@ function mainAppsetup(mainApp, port) {
       console.log(`App is running at http://localhost:${port}/editors/`);
       console.log(`======================================================`);
    })
+
+   runMBake();
+}
+
+function runMBake() {
+   if (typeof adbDB.db !== 'undefined') {
+      // run site with mbake
+      adbDB
+         .getSitePath()
+         .then(path => Wa.watch(path[0].pathToSite, 3000));
+   }
 }

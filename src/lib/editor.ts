@@ -3,7 +3,6 @@ import { MBake, Ver } from 'mbake/lib/Base';
 import { Dat, FileOps, Dirs } from 'mbake/lib/FileOpsBase'
 import { CSV2Json } from 'mbake/lib/FileOpsExtra';
 import { ExpressRPC } from 'mbake/lib/Serv';
-import { Wa } from 'mbake/lib/Wa';
 import { Email } from './Email';
 
 const fs = require('fs-extra')
@@ -19,11 +18,6 @@ export class EditorRoutes {
       let mountPath = '';
       
       const appE = ExpressRPC.makeInstance(host);
-
-      // run site with mbake
-      adbDB
-         .getSitePath()
-         .then(path => Wa.watch(path[0].pathToSite, 3000));
 
       // appE.use(fileUpload());
       appE.use((request, response, next) => {
