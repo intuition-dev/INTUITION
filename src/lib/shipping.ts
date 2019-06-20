@@ -6,6 +6,7 @@ export function init(mainApp, name, adbDB) {
 
       const method = req.fields.mode
       const params = req.fields
+      console.log("TCL: init -> params", params)
 
       const resp: any = {} // new response
       let shippingAddress = params.content['shippingAddress']
@@ -22,7 +23,7 @@ export function init(mainApp, name, adbDB) {
 
       let elements = []
 
-      if ('Test' == method) {
+      if ('Live' == method) {
 
          resp.type = ''//eg array
          resp.ispacked = false

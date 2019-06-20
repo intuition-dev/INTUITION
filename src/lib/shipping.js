@@ -6,6 +6,7 @@ function init(mainApp, name, adbDB) {
         console.log("TCL: init -> name", name);
         const method = req.fields.mode;
         const params = req.fields;
+        console.log("TCL: init -> params", params);
         const resp = {};
         let shippingAddress = params.content['shippingAddress'];
         let items_g = params.content['items'];
@@ -18,7 +19,7 @@ function init(mainApp, name, adbDB) {
         temp_shipping['state_code'] = shippingAddress.province;
         temp_shipping['zip'] = shippingAddress.postalCode;
         let elements = [];
-        if ('Test' == method) {
+        if ('Live' == method) {
             resp.type = '';
             resp.ispacked = false;
             console.log(resp);
