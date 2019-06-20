@@ -110,6 +110,7 @@ function mainAppsetup(mainApp, port) {
    mainApp.use('/api/shipping/:name', function (req, res, next) {
       var shipping = require('./lib/shipping');
       var name = req.params.name;
+      console.log("TCL: mainAppsetup -> name", name)
       shipping.init(mainApp, name, adbDB);
       next()
    });

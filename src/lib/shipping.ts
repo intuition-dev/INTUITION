@@ -30,7 +30,8 @@ export function init(mainApp, name, adbDB) {
 
          adbDB.getPrintfulAPI()
             .then(function (printfulApiID) {
-
+               console.log("TCL: init -> printfulApiID", printfulApiID)
+               const printfulAPI = printfulApiID[0].printfulApi
                if (name == "printful-rate") {
                   items_g.map(function (item) {
                      let temp = {}
@@ -44,7 +45,7 @@ export function init(mainApp, name, adbDB) {
                   request({
                      url: "https://api.printful.com/shipping/rates",
                      headers: {
-                        'Authorization': 'Basic ' + printfulApiID,
+                        'Authorization': 'Basic ' + printfulAPI,
                      },
                      method: 'POST',
                      json: send_order
@@ -67,7 +68,7 @@ export function init(mainApp, name, adbDB) {
                   items_g.map(function (item) {
                      let temp = {}
                      temp['quantity'] = item.quantity
-                     temp['sync_variant_id'] = item.id //variant_id for getting rates, and sync_variant_id for placing the order
+                     temp['sync_variant_id'] = item.metadata.sync_variant_id //variant_id for getting rates, and sync_variant_id for placing the order
                      elements.push(temp)
                   })
 
@@ -77,7 +78,7 @@ export function init(mainApp, name, adbDB) {
                   request({
                      url: "https://api.printful.com/orders",
                      headers: {
-                        'Authorization': 'Basic ' + printfulApiID,
+                        'Authorization': 'Basic ' + printfulAPI,
                      },
                      method: 'POST',
                      json: send_order
