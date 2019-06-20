@@ -27,12 +27,14 @@ desc_list: [
 #product items with variants
 variants: [{
   id: 1342878891, #sync_product_id with printful
+  rate_id: 474,  #variant_id used in getting rates from printful
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - S,
   size: S,
   color: black
 },{
   id: 1342878892,
+  rate_id: 505, 
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - M,
   size: M,
@@ -40,6 +42,7 @@ variants: [{
 },
 {
   id: 1342878893,
+  rate_id: 536, 
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - L,
   size: L,
@@ -47,6 +50,7 @@ variants: [{
 },
 {
   id: 1342878894,
+  rate_id: 567, 
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - XL,
   size: XL,
@@ -54,6 +58,7 @@ variants: [{
 },
 {
   id: 1342881002,
+  rate_id: 473, 
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - S,
   size: S,
@@ -61,6 +66,7 @@ variants: [{
 },
 {
   id: 1342881003,
+  rate_id: 504, 
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - M,
   size: M,
@@ -68,6 +74,7 @@ variants: [{
 },
 {
   id: 1342881004,
+  rate_id: 535, 
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - L,
   size: L,
@@ -75,6 +82,7 @@ variants: [{
 },
 {
   id: 1342881005,
+  rate_id: 566, 
   price: "11.32",
   name: Short-Sleeve Unisex T-Shirt - XL,
   size: XL,

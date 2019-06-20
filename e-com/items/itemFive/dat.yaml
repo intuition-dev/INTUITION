@@ -30,12 +30,14 @@ desc_list: [
 #product items with variants
 variants: [{
   id: 1342894638, #sync_product_id with printful
+  rate_id: 3448,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - S,
   size: S,
   color: white
 },{
   id: 1342894639,
+  rate_id: 3449,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - M,
   size: M,
@@ -43,6 +45,7 @@ variants: [{
 },
 {
   id: 1342894640,
+  rate_id: 3450,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - L,
   size: L,
@@ -50,6 +53,7 @@ variants: [{
 },
 {
   id: 1342894641,
+  rate_id: 3451,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - XL,
   size: XL,
@@ -57,6 +61,7 @@ variants: [{
 },
 {
   id: 1342895319,
+  rate_id: 3456,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - S,
   size: S,
@@ -64,6 +69,7 @@ variants: [{
 },
 {
   id: 1342895320,
+  rate_id: 3457,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - M,
   size: M,
@@ -71,6 +77,7 @@ variants: [{
 },
 {
   id: 1342895321,
+  rate_id: 3458,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - L,
   size: L,
@@ -78,6 +85,7 @@ variants: [{
 },
 {
   id: 1342895322,
+  rate_id: 3459,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - XL,
   size: XL,

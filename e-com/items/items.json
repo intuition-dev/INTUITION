@@ -293,6 +293,7 @@
       "variants": [
         {
           "id": 1342860020,
+          "rate_id": 474,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - S",
           "size": "S",
@@ -300,6 +301,7 @@
         },
         {
           "id": 1342860021,
+          "rate_id": 505,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - M",
           "size": "M",
@@ -307,6 +309,7 @@
         },
         {
           "id": 1342860022,
+          "rate_id": 536,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - L",
           "size": "L",
@@ -314,6 +317,7 @@
         },
         {
           "id": 1342860023,
+          "rate_id": 567,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - XL",
           "size": "XL",
@@ -321,6 +325,7 @@
         },
         {
           "id": 1342865646,
+          "rate_id": 473,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - S",
           "size": "S",
@@ -328,6 +333,7 @@
         },
         {
           "id": 1342865648,
+          "rate_id": 504,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - M",
           "size": "M",
@@ -335,6 +341,7 @@
         },
         {
           "id": 1342865649,
+          "rate_id": 535,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - L",
           "size": "L",
@@ -342,6 +349,7 @@
         },
         {
           "id": 1342865650,
+          "rate_id": 566,
           "price": "11.32",
           "name": "Short-Sleeve Unisex T-Shirt - XL",
           "size": "XL",

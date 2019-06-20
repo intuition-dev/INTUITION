@@ -36,7 +36,7 @@ export function init(mainApp, name, adbDB) {
                   items_g.map(function (item) {
                      let temp = {}
                      temp['quantity'] = item.quantity
-                     temp['variant_id'] = item.id //variant_id for getting rates, and sync_variant_id for placing the order
+                     temp['variant_id'] = item.metadata.rate_id //variant_id for getting rates, and sync_variant_id for placing the order
                      elements.push(temp)
                   })
 
@@ -68,7 +68,7 @@ export function init(mainApp, name, adbDB) {
                   items_g.map(function (item) {
                      let temp = {}
                      temp['quantity'] = item.quantity
-                     temp['sync_variant_id'] = item.metadata.sync_variant_id //variant_id for getting rates, and sync_variant_id for placing the order
+                     temp['sync_variant_id'] = item.id //variant_id for getting rates, and sync_variant_id for placing the order
                      elements.push(temp)
                   })
 

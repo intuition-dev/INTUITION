@@ -30,7 +30,7 @@ function init(mainApp, name, adbDB) {
                     items_g.map(function (item) {
                         let temp = {};
                         temp['quantity'] = item.quantity;
-                        temp['variant_id'] = item.id;
+                        temp['variant_id'] = item.metadata.rate_id;
                         elements.push(temp);
                     });
                     let send_order = Object.assign({ recipient: temp_shipping, items: elements });
@@ -58,7 +58,7 @@ function init(mainApp, name, adbDB) {
                     items_g.map(function (item) {
                         let temp = {};
                         temp['quantity'] = item.quantity;
-                        temp['sync_variant_id'] = item.metadata.sync_variant_id;
+                        temp['sync_variant_id'] = item.id;
                         elements.push(temp);
                     });
                     let send_order = Object.assign({ recipient: temp_shipping, items: elements });
