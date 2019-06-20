@@ -97,7 +97,6 @@ function runAdmin(port) {
    mainAppsetup(mainApp, port)
 }
 
-
 function mainAppsetup(mainApp, port) {
    const editorRoutes = new EditorRoutes();
    const adminRoutes = new AdminRoutes();
@@ -106,6 +105,15 @@ function mainAppsetup(mainApp, port) {
    mainApp.use('/api/admin', adminRoutes.routes(adbDB, port));
 
    mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
+
+   //shipping stuff
+   mainApp.use('/api/shipping/:name', function (req, res, next) {
+      var shipping = require('./lib/shipping');
+      var name = req.params.name;
+      shipping.init(mainApp, name, printfulApiID);
+      next()
+   });
+
 
    mainApp.listen(port, () => {
       console.log(`======================================================`);

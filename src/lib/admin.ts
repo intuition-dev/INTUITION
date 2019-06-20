@@ -8,13 +8,13 @@ const fs = require('fs-extra')
 var path = require('path');
 
 export class AdminRoutes {
-
    routes(adbDB, appPort) {
       const emailJs = new Email();
       const bodyParser = require("body-parser");
 
       const adminApp = ExpressRPC.makeInstance(['http://localhost:' + appPort]);
       adminApp.use(bodyParser.json());
+
 
       adminApp.use((request, response, next) => {
          if (request.path === '/resetPassword') {
@@ -303,7 +303,7 @@ export class AdminRoutes {
                                        let setting = settings[0];
                                        let link = 'http://localhost:' + port + '/editors/?email=' + encodeURIComponent(email);
                                        let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: ' + link;
-            
+
                                        emailJs.send(
                                           email,
                                           setting.emailjsService_id,
@@ -311,10 +311,10 @@ export class AdminRoutes {
                                           setting.emailjsUser_id,
                                           msg
                                        )
-            
+
                                        resp.result = response;
                                        return res.json(resp);
-                                      
+
                                     })
 
                               })
@@ -335,6 +335,7 @@ export class AdminRoutes {
          }
 
       });
+
 
       // edit user
       adminApp.post("/editors-edit", (req, res) => {

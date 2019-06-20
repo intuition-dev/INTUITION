@@ -1,3 +1,0 @@
-tsc
-
-node index.js

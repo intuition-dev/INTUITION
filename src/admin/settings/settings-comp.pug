@@ -9,11 +9,16 @@ settings-comp
             div(data-field-span='1')
                label App is running on port:
                input(type='text', name='port' value="{(typeof this.port !='undefined') ? this.port : ''}")
+         div(data-row-span='1')
+            div(data-field-span='1')
+               label Do you have Printful API? place it here
+               input(type='text', name='printfulAPI' value="{(typeof this.printfulAPI !='undefined') ? this.printfulAPI : ''}")
          button.btn.mt-2#save-settings Save Settings
    script.
       var _this = this
       this.pathToSite = opts.pathToSite
       this.port = opts.port
+      this.printfulAPI = opts.printfulAPI
       this.bindSetup = opts.bindSetup
       
       this.on('mount', function(){

@@ -40,7 +40,7 @@ export class ADB { // auth & auth DB
       var hashPass = bcrypt.hashSync(password, salt);
 
       await this.db.run(`CREATE TABLE admin(id, email, password, vcode)`);
-      await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi, port)`);
+      await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi, port, printfulApi)`);
       await this.db.run(`CREATE TABLE editors(id, email, password, name, vcode)`);
       await this.db.run(`INSERT INTO admin(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
          if (err) {

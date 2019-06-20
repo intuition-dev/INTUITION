@@ -1,8 +1,0 @@
-local: {
-  apiKey: you_printful_api_if_needed, #printul api
-  cors: ['*']
-}
-development: {
-  apiKey: you_printful_api_if_needed,
-  cors: ['*']
-}
