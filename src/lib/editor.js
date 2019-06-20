@@ -63,7 +63,7 @@ class EditorRoutes {
             let resp = {};
             if ('get' == method) {
                 let dirs = new FileOpsBase_1.Dirs(mountPath);
-                let dirsToIgnore = ['', '.', '..'];
+                let dirsToIgnore = ['.', '..'];
                 resp.result = dirs.getShort()
                     .map(el => el.replace(/^\/+/g, ''))
                     .filter(el => !dirsToIgnore.includes(el));
@@ -82,6 +82,9 @@ class EditorRoutes {
                 if (typeof post_id !== 'undefined') {
                     let dirs = new FileOpsBase_1.Dirs(mountPath);
                     resp.result = dirs.getInDir(post_id);
+                    if (post_id === '/') {
+                        resp.result = resp.result.filter(file => file.indexOf('/') === -1 && !fs.lstatSync(mountPath + '/' + file).isDirectory());
+                    }
                     res.json(resp);
                 }
                 else {
