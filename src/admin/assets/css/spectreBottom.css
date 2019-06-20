@@ -640,4 +640,4 @@ input:-webkit-autofill{-webkit-text-fill-color:#333 !important;}
 .login-bg{background:#929292;background:-webkit-linear-gradient(-135deg,#929292,#f5f5f5);background:-o-linear-gradient(-135deg,#929292,#f5f5f5);background:-moz-linear-gradient(-135deg,#929292,#f5f5f5);background:-webkit-linear-gradient(225deg,#929292,#f5f5f5);background:-moz-linear-gradient(225deg,#929292,#f5f5f5);background:-o-linear-gradient(225deg,#929292,#f5f5f5);background:linear-gradient(-135deg,#929292,#f5f5f5);}
 .bl_pass-changed-notification{padding-top:1rem;}
 .bl_pass-changed-notification--err h1{color:#e65740;}
-.bl_pass-changed-notification h1{font-size:20px;} /* mB v6.06.23 on 2019-06-20T09:05:01.997Z */
+.bl_pass-changed-notification h1{font-size:20px;} /* mB v6.06.23 on 2019-06-20T11:44:45.111Z */

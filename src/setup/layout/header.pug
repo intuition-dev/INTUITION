@@ -5,10 +5,10 @@ html
 
         script.
             window.ROOT = '#{ROOT}setup/';
-            window.apiPort = '9081'
-   
-            window.apiProtocol = 'http';
-            window.apiHost = '0.0.0.0';
+            
+            window.apiPort = location.port
+            window.apiProtocol = location.protocol.split(':')[0];
+            window.apiHost = location.hostname;
 
         link(rel='stylesheet', href= ROOT +'setup/assets/css/spectreTop.css')
 

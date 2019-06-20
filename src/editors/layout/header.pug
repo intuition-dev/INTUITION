@@ -7,10 +7,9 @@ html
             window.ROOT = '#{ROOT}';
 
         script.
-            window.apiProtocol = 'http';
-            window.apiHost = '0.0.0.0';
-            //Return the port number of the current URL
             window.apiPort = location.port
+            window.apiProtocol = location.protocol.split(':')[0];
+            window.apiHost = location.hostname;
 
             window.appMount = 'http://0.0.0.0:'+location.port;
             window.siteName = 'MetaBake';

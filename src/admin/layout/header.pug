@@ -3,9 +3,8 @@ script.
 
    //Return the port number of the current URL
    window.apiPort = location.port
-   
-   window.apiProtocol = 'http';
-   window.apiHost = '0.0.0.0';
+   window.apiProtocol = location.protocol.split(':')[0];
+   window.apiHost = location.hostname;
 
    window.siteName = 'MetaBake';
 

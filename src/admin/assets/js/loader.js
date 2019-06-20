@@ -1,5 +1,7 @@
 var responces = [];
-
+            console.log("TCL: location.port", location.port)
+            console.log("TCL: location.protocol", location.protocol.split(':')[0])
+            console.log("TCL: location.hostname", location.hostname)
 depp.define({
     'fb': [
         '#polly-core-req', '#firestore'

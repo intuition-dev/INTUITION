@@ -11,13 +11,13 @@ const fs = require('fs-extra')
 // var appPort = config.port
 
 export class EditorRoutes {
-   routes(adbDB, port) {
+   routes(adbDB, host) {
       const emailJs = new Email();
       const fs = require('fs');
       const path = require('path');
       let mountPath = '';
 
-      const appE = ExpressRPC.makeInstance(['http://localhost:' + port]);
+      const appE = ExpressRPC.makeInstance([host]);
 
       // appE.use(fileUpload());
       appE.use((request, response, next) => {

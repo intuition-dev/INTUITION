@@ -7,12 +7,12 @@ const Serv_1 = require("mbake/lib/Serv");
 const Email_1 = require("./Email");
 const fs = require('fs-extra');
 class EditorRoutes {
-    routes(adbDB, port) {
+    routes(adbDB, host) {
         const emailJs = new Email_1.Email();
         const fs = require('fs');
         const path = require('path');
         let mountPath = '';
-        const appE = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + port]);
+        const appE = Serv_1.ExpressRPC.makeInstance([host]);
         appE.use((request, response, next) => {
             if (request.path === '/resetPassword') {
                 next();

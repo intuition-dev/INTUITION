@@ -6,6 +6,10 @@ const editor_1 = require("./lib/editor");
 const admin_1 = require("./lib/admin");
 const ADB_1 = require("./lib/ADB");
 const Email_1 = require("./lib/Email");
+var ip = require('ip');
+var ipAddres = ip.address();
+const hostIP = 'http://' + ipAddres + ':';
+console.log("TCL: hostIP", hostIP);
 var path = require('path');
 const fs = require('fs-extra');
 const adbDB = new ADB_1.ADB();
@@ -44,7 +48,9 @@ catch (err) {
 function runSetup() {
     const port = '9081';
     adbDB.connectToDb(pathToDb);
-    const mainApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + port]);
+    const host = hostIP + port;
+    console.log("TCL: runSetup -> host", host);
+    const mainApp = Serv_1.ExpressRPC.makeInstance([host]);
     mainApp.post("/setup", async (req, res) => {
         const method = req.fields.method;
         let params = JSON.parse(req.fields.params);
@@ -73,17 +79,19 @@ function runSetup() {
         }
     });
     mainAppsetup(mainApp, port);
-    opn('http://localhost:' + port + '/setup');
+    opn(host + '/setup');
 }
 function runAdmin(port) {
-    const mainApp = Serv_1.ExpressRPC.makeInstance(['http://localhost:' + port]);
+    const host = hostIP + port;
+    const mainApp = Serv_1.ExpressRPC.makeInstance([host]);
     mainAppsetup(mainApp, port);
 }
 function mainAppsetup(mainApp, port) {
     const editorRoutes = new editor_1.EditorRoutes();
     const adminRoutes = new admin_1.AdminRoutes();
-    mainApp.use('/api/editors', editorRoutes.routes(adbDB, port));
-    mainApp.use('/api/admin', adminRoutes.routes(adbDB, port));
+    const host = hostIP + port;
+    mainApp.use('/api/editors', editorRoutes.routes(adbDB, host));
+    mainApp.use('/api/admin', adminRoutes.routes(adbDB, host, port));
     mainApp.use('/', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, '/')));
     mainApp.use('/api/shipping/:name', function (req, res, next) {
         var shipping = require('./lib/shipping');

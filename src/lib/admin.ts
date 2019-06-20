@@ -8,11 +8,11 @@ const fs = require('fs-extra')
 var path = require('path');
 
 export class AdminRoutes {
-   routes(adbDB, appPort) {
+   routes(adbDB, host, appPort) {
       const emailJs = new Email();
       const bodyParser = require("body-parser");
 
-      const adminApp = ExpressRPC.makeInstance(['http://localhost:' + appPort]);
+      const adminApp = ExpressRPC.makeInstance([host]);
       adminApp.use(bodyParser.json());
 
 
