@@ -113,7 +113,9 @@ export class AdminRoutes {
                      return res.json(resp);
                   }).then(() => {
                      // run site
-                     Wa.watch(path.join(__dirname, '../' + setupItem), 3000);
+                     setTimeout(function() {
+                        Wa.watch(path.join(__dirname, '../' + setupItem), 3000);
+                     }, 10000);
                   });
             } catch (err) {
                // next(err);
