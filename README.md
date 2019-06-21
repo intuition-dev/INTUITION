@@ -3,7 +3,7 @@
 
 #### 'It will lead YOU in the right direction'
 
-Meta Intuition is WebAdmin Screen to CMS, e-Com, etc.  It is using [markdown](https://daringfireball.net/projects/markdown/syntax), and is written in [pug](https://pugjs.org/api/getting-started.html).
+Meta Intuition is WebAdmin Screen to CMS, e-Com, etc.  It is using [markdown](https://daringfireball.net/projects/markdown/syntax), and is written on [pug](https://pugjs.org/api/getting-started.html).
 
 In WebAdmin, you can edit page content using markdown - which won't let you page become broken. It allows you clone existing pages to write another post/page, upload images, custom write own layout in pug and set publish date to posts. 
 
