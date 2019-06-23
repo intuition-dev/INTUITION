@@ -5,7 +5,7 @@ const fs = require('fs-extra')
 
 export class Veri {
    static ver() {
-      return 'v0.9.25'
+      return 'v0.9.26'
    }
 }
 

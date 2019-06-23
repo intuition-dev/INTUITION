@@ -71,16 +71,16 @@ class AdminRoutes {
                     switch (item) {
                         case 'blog':
                             setupItem = 'CMS';
-                            await new FileOpsExtra_1.Download('CMS', path.join(__dirname, '../')).autoZ();
+                            await new FileOpsExtra_1.Download('CMS', path.join(__dirname, '../')).autoUZ();
                             break;
                         case 'shop':
                             setupItem = 'e-com';
                             console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem);
-                            await new FileOpsExtra_1.Download('SHOP', path.join(__dirname, '../')).autoZ();
+                            await new FileOpsExtra_1.Download('SHOP', path.join(__dirname, '../')).autoUZ();
                             break;
                         case 'website':
                             setupItem = 'website';
-                            await new FileOpsExtra_1.Download('website', path.join(__dirname, '../')).autoZ();
+                            await new FileOpsExtra_1.Download('website', path.join(__dirname, '../')).autoUZ();
                             break;
                     }
                     let adminId = await adbDB.getAdminId(res.locals.email);

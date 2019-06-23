@@ -2,7 +2,6 @@ import { ExpressRPC } from 'mbake/lib/Serv';
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
 import { Wa } from 'mbake/lib/Wa';
-// import { ShippingRoutes } from '../e-com/api/lib/shipping';
 
 const fs = require('fs-extra')
 
@@ -72,7 +71,7 @@ export class AdminRoutes {
 
       /**
        * this one only downloads the site and write the path of it to the db
-       * happends only on CLICK INSTALL button on the settings page at admin
+       * happens only on CLICK INSTALL button on the settings page at admin
        *  */
       adminApp.post('/setup-app', async (req, res) => {
          const method = req.fields.method;
@@ -89,7 +88,7 @@ export class AdminRoutes {
                switch (item) {
                   case 'blog':
                      setupItem = 'CMS'
-                     await new Download('CMS', path.join(__dirname, '../')).autoZ()
+                     await new Download('CMS', path.join(__dirname, '../')).autoUZ()
                      break;
                   case 'shop':
                      setupItem = 'e-com'
@@ -97,11 +96,11 @@ export class AdminRoutes {
 
                      // const shippingRoutes = new ShippingRoutes();
                      // adminApp.use('/', shippingRoutes.routes(appPort))
-                     await new Download('SHOP', path.join(__dirname, '../')).autoZ()
+                     await new Download('SHOP', path.join(__dirname, '../')).autoUZ()
                      break;
                   case 'website':
                      setupItem = 'website'
-                     await new Download('website', path.join(__dirname, '../')).autoZ()
+                     await new Download('website', path.join(__dirname, '../')).autoUZ()
                      break;
                }
 

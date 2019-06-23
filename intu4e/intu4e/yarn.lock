@@ -2677,16 +2677,15 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-intu@^0.9.25:
-  version "0.9.25"
-  resolved "https://registry.yarnpkg.com/intu/-/intu-0.9.25.tgz#31779a1267b8e0f154e2387f5cebff1fffcb561d"
-  integrity sha512-awTa+A62nEtZhxF+2B0Ebk0uPX1+M/nzOhOdboOspliVpcH+FEbekVNjujtcPPOlr/NNu9Ko/PrNVxhgWYsoPA==
+intu@^0.9.26:
+  version "0.9.26"
+  resolved "https://registry.yarnpkg.com/intu/-/intu-0.9.26.tgz#efd11448ce1e499eaa6d3e4bee4c9de0590c1489"
+  integrity sha512-dKTYKTWpZGXqfi5PQ6Z1TN44XBx6BFdB5O8vip5T9mvuPXZTILyPQJxSsCvST3st7ljVbLb/RKpkYRHrMd08Iw==
   dependencies:
     axios ">=0.19.0"
     bcryptjs ">=2.4.3"
     express-fileupload ">=1.1.5"
     fs-extra ">=8.0.1"
-    ip "^1.1.5"
     js-yaml ">=3.13.1"
     mbake ">=6.6.29"
     mbake-x ">=1.0.23"
@@ -2701,11 +2700,6 @@ invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
   integrity sha1-EEqOSqym09jNFXqO+L+rLXo//bY=
-
-ip@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
-  integrity sha1-vd7XARQpCCjAoDnnLvJfWq7ENUo=
 
 ipaddr.js@1.9.0:
   version "1.9.0"

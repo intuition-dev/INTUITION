@@ -19,9 +19,9 @@ var path = require('path');
 const fs = require('fs-extra')
 const yaml = require('js-yaml');
 let config = yaml.load(fs.readFileSync(__dirname + '/config.yaml'));
+// //////////////
 
 const adbDB = new ADB()
-
 
 import opn = require('open')
 const emailJs = new Email();
