@@ -3,6 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sqlite = require("sqlite");
 const bcrypt = require('bcryptjs');
 const fs = require('fs-extra');
+class Veri {
+    static ver() {
+        return 'v0.9.25';
+    }
+}
+exports.Veri = Veri;
 class ADB {
     async connectToDb(dbPath) {
         const dbPro = sqlite.open(dbPath);
@@ -238,5 +244,5 @@ class ADB {
 }
 exports.ADB = ADB;
 module.exports = {
-    ADB
+    ADB, Veri
 };

@@ -20,17 +20,6 @@ const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const emailJs = new Email_1.Email();
 const dbName = 'ADB.sqlite';
 const pathToDb = path.join(__dirname, dbName);
-FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
-    try {
-        if (!isCurrent_)
-            console.log('There is a newer version of mbake CLI, please update.');
-        else
-            console.log('You have the current version of mbake CLI');
-    }
-    catch (err) {
-        console.log(err);
-    }
-});
 try {
     let _this = this;
     if (adbDB.checkDB(pathToDb)) {
@@ -113,3 +102,14 @@ function runMBake() {
             .then(path => Wa_1.Wa.watch(path[0].pathToSite, 3000));
     }
 }
+FileOpsExtra_1.VersionNag.isCurrent('intu', ADB_1.Veri.ver()).then(function (isCurrent_) {
+    try {
+        if (!isCurrent_)
+            console.log('There is a newer version of mbake CLI, please update.');
+        else
+            console.log('You have the current version of mbake CLI');
+    }
+    catch (err) {
+        console.log(err);
+    }
+});

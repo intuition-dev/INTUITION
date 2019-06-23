@@ -4,7 +4,7 @@
 import { ExpressRPC } from 'mbake/lib/Serv';
 import { EditorRoutes } from './lib/editor';
 import { AdminRoutes } from './lib/admin';
-import { ADB } from './lib/ADB';
+import { ADB, Veri } from './lib/ADB';
 import { Email } from './lib/Email';
 import { Wa } from 'mbake/lib/Wa';
 
@@ -28,18 +28,6 @@ const emailJs = new Email();
 
 const dbName = 'ADB.sqlite'
 const pathToDb = path.join(__dirname, dbName)
-
-//mbake versionning check
-VersionNag.isCurrent().then(function (isCurrent_: boolean) {
-   try {
-      if (!isCurrent_)
-         console.log('There is a newer version of mbake CLI, please update.')
-      else
-         console.log('You have the current version of mbake CLI')
-   } catch (err) {
-      console.log(err)
-   }
-})// 
 
 
 //try catch of init setup vs running app
@@ -143,3 +131,14 @@ function runMBake() {
          .then(path => Wa.watch(path[0].pathToSite, 3000));
    }
 }
+
+VersionNag.isCurrent('intu', Veri.ver() ).then(function(isCurrent_:boolean){
+   try{
+   if(!isCurrent_) 
+      console.log('There is a newer version of mbake CLI, please update.')
+   else
+      console.log('You have the current version of mbake CLI')
+   } catch(err) {
+      console.log(err)
+   }
+})// 

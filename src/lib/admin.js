@@ -89,7 +89,9 @@ class AdminRoutes {
                         resp.result = true;
                         return res.json(resp);
                     }).then(() => {
-                        Wa_1.Wa.watch(path.join(__dirname, '../' + setupItem), 3000);
+                        setTimeout(function () {
+                            Wa_1.Wa.watch(path.join(__dirname, '../' + setupItem), 3000);
+                        }, 10000);
                     });
                 }
                 catch (err) {

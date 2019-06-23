@@ -3,7 +3,11 @@ import sqlite = require('sqlite')
 const bcrypt = require('bcryptjs') // to hash pswdws
 const fs = require('fs-extra')
 
-// include in API for WebAdmin
+export class Veri {
+   static ver() {
+      return 'v0.9.25'
+   }
+}
 
 export class ADB { // auth & auth DB
    // emailjs is client side api
@@ -275,5 +279,5 @@ export class ADB { // auth & auth DB
 }
 
 module.exports = {
-   ADB
+   ADB, Veri
 }
