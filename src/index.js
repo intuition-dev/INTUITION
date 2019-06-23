@@ -34,6 +34,7 @@ try {
     }
 }
 catch (err) {
+    console.warn(err);
 }
 function runSetup() {
     const port = '9081';
@@ -61,6 +62,7 @@ function runSetup() {
                 return res.json(resp);
             }
             catch (err) {
+                console.warn(err);
             }
         }
         else {
@@ -81,13 +83,6 @@ function mainAppsetup(mainApp, port) {
     mainApp.use('/api/editors', editorRoutes.routes(adbDB, host));
     mainApp.use('/api/admin', adminRoutes.routes(adbDB, host, port));
     mainApp.use('/', Serv_1.ExpressRPC.serveStatic(path.join(__dirname, '/')));
-    mainApp.use('/api/shipping/:name', function (req, res, next) {
-        var shipping = require('./lib/shipping');
-        var name = req.params.name;
-        console.log("TCL: mainAppsetup -> name", name);
-        shipping.init(mainApp, name, adbDB);
-        next();
-    });
     mainApp.listen(port, () => {
         console.log(`======================================================`);
         console.log(`App is running at http://localhost:${port}/editors/`);

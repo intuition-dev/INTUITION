@@ -10,7 +10,7 @@ var path = require('path');
 export class AdminRoutes {
    routes(adbDB, host, appPort) {
       const emailJs = new Email();
-      const bodyParser = require("body-parser");
+      const bodyParser = require('body-parser')
 
       const adminApp = ExpressRPC.makeInstance(host);
       adminApp.use(bodyParser.json());
@@ -200,10 +200,6 @@ export class AdminRoutes {
             return res.json(resp);
          }
       })
-
-      // process.on('exit', function () {
-      //    adbDB.close();
-      // })
 
       adminApp.post('/resetPassword', (req, res) => {
          const method = req.fields.method;

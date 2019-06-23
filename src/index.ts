@@ -19,11 +19,9 @@ var path = require('path');
 const fs = require('fs-extra')
 const yaml = require('js-yaml');
 let config = yaml.load(fs.readFileSync(__dirname + '/config.yaml'));
-// //////////////
+// ///////////////////////////////////////////////////////
 
 const adbDB = new ADB()
-
-import opn = require('open')
 const emailJs = new Email();
 
 const dbName = 'ADB.sqlite'
@@ -44,14 +42,16 @@ try {
       adbDB.openDB(pathToDb, runSetup)
    }
 } catch (err) {
+   console.warn(err)
 }
 
-function runSetup() {
+// TODO: should be in a class in lib
+function runSetup() { 
    const port = '9081' //init port
    adbDB.connectToDb(pathToDb) //connect to db
    const host = [hostIP + port, config.cors]
 
-   const mainApp = ExpressRPC.makeInstance(host);
+   const mainApp = ExpressRPC.makeInstance(host)
    mainApp.post("/setup", async (req, res) => {
       const method = req.fields.method;
       let params = JSON.parse(req.fields.params)
@@ -76,6 +76,7 @@ function runSetup() {
             return res.json(resp)
 
          } catch (err) {
+            console.warn(err)
             // next(err);
          }
       } else {
@@ -102,20 +103,11 @@ function mainAppsetup(mainApp, port) {
 
    mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
 
-   //shipping stuff
-   mainApp.use('/api/shipping/:name', function (req, res, next) {
-      var shipping = require('./lib/shipping');
-      var name = req.params.name;
-      console.log("TCL: mainAppsetup -> name", name)
-      shipping.init(mainApp, name, adbDB);
-      next()
-   });
-
-
+  
    mainApp.listen(port, () => {
-      console.log(`======================================================`);
-      console.log(`App is running at http://localhost:${port}/editors/`);
-      console.log(`======================================================`);
+      console.log(`======================================================`)
+      console.log(`App is running at http://localhost:${port}/editors/`)
+      console.log(`======================================================`)
    })
 
    runMBake()
@@ -126,7 +118,7 @@ function runMBake() {
       // run site with mbake
       adbDB
          .getSitePath()
-         .then(path => Wa.watch(path[0].pathToSite, 3000));
+         .then(path => Wa.watch(path[0].pathToSite, 3000))
    }
 }
 
