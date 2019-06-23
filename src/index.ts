@@ -7,8 +7,9 @@ import { AdminRoutes } from './lib/admin';
 import { ADB, Veri } from './lib/ADB';
 import { Email } from './lib/Email';
 import { Wa } from 'mbake/lib/Wa';
+import { VersionNag } from 'mbake/lib/FileOpsExtra'
 
-var ip = require('ip');
+var ip = require('ip')
 var ipAddres = ip.address()
 
 const hostIP = 'http://' + ipAddres + ':'
@@ -21,14 +22,12 @@ let config = yaml.load(fs.readFileSync(__dirname + '/config.yaml'));
 
 const adbDB = new ADB()
 
-import { VersionNag } from 'mbake/lib/FileOpsExtra'
 
 import opn = require('open')
 const emailJs = new Email();
 
 const dbName = 'ADB.sqlite'
 const pathToDb = path.join(__dirname, dbName)
-
 
 //try catch of init setup vs running app
 try {
@@ -93,7 +92,6 @@ function runAdmin(port) {
    mainAppsetup(mainApp, port)
 }
 
-
 function mainAppsetup(mainApp, port) {
    const editorRoutes = new EditorRoutes();
    const adminRoutes = new AdminRoutes();
@@ -120,7 +118,7 @@ function mainAppsetup(mainApp, port) {
       console.log(`======================================================`);
    })
 
-   runMBake();
+   runMBake()
 }
 
 function runMBake() {

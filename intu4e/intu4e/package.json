@@ -1,0 +1,14 @@
+{
+  "name": "intu4e",
+  "version": "0.5.1",
+  "description": "MetaBake's intu WebAdmin for e-com",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "dependencies": {
+    "intu": "^0.9.25"
+  }
+ , "devDependencies": {
+   "@types/node": ">=12.0.10"
+}
+}
