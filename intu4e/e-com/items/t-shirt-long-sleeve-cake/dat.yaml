@@ -8,7 +8,7 @@ subtitle: It's a piece of CAKE to bake
 
 image: cake-w.png #main image of the site
 images: [cake-b.png, cake-w.png] # images in carousel
-url: itemSix #url of the item to be added to snipcart
+url: t-shirt-long-sleeve-cake #url of the item to be added to snipcart
 colors: [white, black]
 profit: 1 # profit to make on top of the price, 1USD
 shipping_coverage: 4 #shipping, const = 4usd

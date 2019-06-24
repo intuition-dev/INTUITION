@@ -4,11 +4,11 @@ GLO: ../../
 
 
 title: Long Sleeve T-Shirt
-subtitle: 'It will lead YOU in the right direction'
+subtitle: All my friends KNOW the low-coder
 
-image: you-w.png #main image of the site
-images: [you-b.png, you-w.png] # images in carousel
-url: itemEight #url of the item to be added to snipcart
+image: know-b.png #main image of the site
+images: [know-b.png, know-w.png] # images in carousel
+url: t-shirt-long-sleeve-know #url of the item to be added to snipcart
 colors: [white, black]
 profit: 1 # profit to make on top of the price, 1USD
 shipping_coverage: 4 #shipping, const = 4usd
@@ -29,46 +29,14 @@ desc_list: [
 
 #product items with variants
 variants: [{
-  id: 1342900180, #sync_product_id with printful
-  rate_id: 3456,  #variant_id used in getting rates from printful
-  price: "21.02",
-  name: Long Sleeve T-Shirt - S,
-  size: S,
-  color: black
-},{
-  id: 1342900181,
-  rate_id: 3457,  #variant_id used in getting rates from printful
-  price: "21.02",
-  name: Long Sleeve T-Shirt - M,
-  size: M,
-  color: black
-},
-{
-  id: 1342900182,
-  rate_id: 3458,  #variant_id used in getting rates from printful
-  price: "21.02",
-  name: Long Sleeve T-Shirt - L,
-  size: L,
-  color: black
-},
-{
-  id: 1342900183,
-  rate_id: 3459,  #variant_id used in getting rates from printful
-  price: "21.02",
-  name: Long Sleeve T-Shirt - XL,
-  size: XL,
-  color: black
-},
-{
-  id: 1342900596,
+  id: 1342894638, #sync_product_id with printful
   rate_id: 3448,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - S,
   size: S,
   color: white
-},
-{
-  id: 1342900597,
+},{
+  id: 1342894639,
   rate_id: 3449,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - M,
@@ -76,7 +44,7 @@ variants: [{
   color: white
 },
 {
-  id: 1342900598,
+  id: 1342894640,
   rate_id: 3450,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - L,
@@ -84,11 +52,43 @@ variants: [{
   color: white
 },
 {
-  id: 1342900598,
+  id: 1342894641,
   rate_id: 3451,  #variant_id used in getting rates from printful
   price: "21.02",
   name: Long Sleeve T-Shirt - XL,
   size: XL,
   color: white
+},
+{
+  id: 1342895319,
+  rate_id: 3456,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - S,
+  size: S,
+  color: black
+},
+{
+  id: 1342895320,
+  rate_id: 3457,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - M,
+  size: M,
+  color: black
+},
+{
+  id: 1342895321,
+  rate_id: 3458,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - L,
+  size: L,
+  color: black
+},
+{
+  id: 1342895322,
+  rate_id: 3459,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - XL,
+  size: XL,
+  color: black
 }
 ]
