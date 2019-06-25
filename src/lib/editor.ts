@@ -6,9 +6,6 @@ import { ExpressRPC } from 'mbake/lib/Serv';
 import { Email } from './Email';
 
 const fs = require('fs-extra')
-// import { FirebaseAdmin } from "./firebaseAdmin";
-// var config = JSON.parse(fs.readFileSync('./config.json'))
-// var appPort = config.port
 
 export class EditorRoutes {
    routes(adbDB, host) {
@@ -321,13 +318,10 @@ export class EditorRoutes {
             }
 
          } else {
-
             return res.json(resp);
-
          }
 
-
-      });
+      })
 
       // file upload
       appE.post("/upload", (req, res) => {
@@ -387,12 +381,10 @@ export class EditorRoutes {
             }
 
          } else {
-
             return res.json(resp);
-
          }
 
-      });
+      })
 
       // get mbake version
       appE.post("/mbake-version", (req, res) => {
@@ -405,9 +397,7 @@ export class EditorRoutes {
             res.json(resp);
 
          } else {
-
             return res.json(resp);
-
          }
 
       });
@@ -453,7 +443,7 @@ export class EditorRoutes {
          } else {
             return res.json(resp);
          }
-      });
+      })
 
       return appE;
    };

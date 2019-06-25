@@ -102,7 +102,6 @@ function mainAppsetup(mainApp, port) {
    mainApp.use('/api/admin', adminRoutes.routes(adbDB, host, port));
 
    mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
-
   
    mainApp.listen(port, () => {
       console.log(`======================================================`)
