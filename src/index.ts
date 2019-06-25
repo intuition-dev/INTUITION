@@ -109,7 +109,21 @@ function mainAppsetup(mainApp, port) {
       console.log(`======================================================`)
    })
 
-   runMBake()
+   runMBake();
+
+   // endpoint for Uptime monitor
+   const monitorUp = ExpressRPC.makeInstance(host);
+   monitorUp.get("/", (req, res) => {
+      adbDB.monitor()
+         .then(res1 => {
+            return res.send('OK');
+         }).catch(error => {
+            console.info('errow', error);
+            res.status(400);
+            return res.send = (error);
+         });
+   });
+   mainApp.use('/monitor', monitorUp);
 }
 
 function runMBake() {

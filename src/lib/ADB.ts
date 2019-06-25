@@ -276,6 +276,14 @@ export class ADB { // auth & auth DB
       })
    }
 
+   /**
+    * this one is used for uptime server monitoring
+    * doesn't matter the count result, matter the response
+    **/
+   monitor(): any {
+      return this.db.all("SELECT COUNT(*) AS count FROM admin");
+   }
+
 }
 
 module.exports = {
