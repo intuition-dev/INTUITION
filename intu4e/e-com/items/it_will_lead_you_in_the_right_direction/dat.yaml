@@ -1,0 +1,174 @@
+basedir: ../../
+ROOT: /
+GLO: ../../
+
+
+title: Long Sleeve T-Shirt
+subtitle: 'It will lead YOU in the right direction'
+
+image: you-w.png #main image of the site
+images: [you-b.png, you-w.png, you-b.jpg, you-w.jpg] # images in carousel
+url: it_will_lead_you_in_the_right_direction #url of the item to be added to snipcart
+colors: [white, black]
+sleeves: [long, short]
+profit: 1 # profit to make on top of the price, 1USD
+shipping_coverage: 4 #shipping, const = 4usd
+
+desc: >-
+   This tee has ribbed cuffs for a snug fit, while the shirt is classic-fit.
+desc_list: [
+   100% jersey knit,
+   Fabric weight 6.0 oz.,
+   Pre-shrunk,
+   Classic fit,
+   Double-needle ⅞” collar,
+   Taped neck and shoulders,
+   Long or short sleeve, rib cuffs,
+   Quarter-turned to eliminate center crease,
+   ]
+
+
+#product items with variants
+variants: [{
+  id: 1342900180, #sync_product_id with printful
+  rate_id: 3456,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - S,
+  size: S,
+  color: black,
+  sleeve: long
+},{
+  id: 1342900181,
+  rate_id: 3457,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - M,
+  size: M,
+  color: black,
+  sleeve: long
+},
+{
+  id: 1342900182,
+  rate_id: 3458,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - L,
+  size: L,
+  color: black,
+  sleeve: long
+},
+{
+  id: 1342900183,
+  rate_id: 3459,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - XL,
+  size: XL,
+  color: black,
+  sleeve: long
+},
+{
+  id: 1342900596,
+  rate_id: 3448,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - S,
+  size: S,
+  color: white,
+  sleeve: long
+},
+{
+  id: 1342900597,
+  rate_id: 3449,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - M,
+  size: M,
+  color: white,
+  sleeve: long
+},
+{
+  id: 1342900598,
+  rate_id: 3450,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - L,
+  size: L,
+  color: white,
+  sleeve: long
+},
+{
+  id: 1342900598,
+  rate_id: 3451,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Long Sleeve T-Shirt - XL,
+  size: XL,
+  color: white,
+  sleeve: long
+},
+{
+  id: 1342900180, #sync_product_id with printful
+  rate_id: 3456,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Short Sleeve T-Shirt - S,
+  size: S,
+  color: black,
+  sleeve: short
+},{
+  id: 1342900181,
+  rate_id: 3457,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Short Sleeve T-Shirt - M,
+  size: M,
+  color: black,
+  sleeve: short
+},
+{
+  id: 1342900182,
+  rate_id: 3458,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Short Sleeve T-Shirt - L,
+  size: L,
+  color: black,
+  sleeve: short
+},
+{
+  id: 1342900183,
+  rate_id: 3459,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Short Sleeve T-Shirt - XL,
+  size: XL,
+  color: black,
+  sleeve: short
+},
+{
+  id: 1342900596,
+  rate_id: 3448,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Short Sleeve T-Shirt - S,
+  size: S,
+  color: white,
+  sleeve: short
+},
+{
+  id: 1342900597,
+  rate_id: 3449,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Short Sleeve T-Shirt - M,
+  size: M,
+  color: white,
+  sleeve: short
+},
+{
+  id: 1342900598,
+  rate_id: 3450,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Short Sleeve T-Shirt - L,
+  size: L,
+  color: white,
+  sleeve: short
+},
+{
+  id: 1342900598,
+  rate_id: 3451,  #variant_id used in getting rates from printful
+  price: "21.02",
+  name: Short Sleeve T-Shirt - XL,
+  size: XL,
+  color: white,
+  sleeve: short
+}
+]

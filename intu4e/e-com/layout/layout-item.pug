@@ -48,11 +48,16 @@ html(lang='en_US')
                               div.bl-colors--item
                                  each color, index in colors
                                     span(class=`${index==0 ? color +' selected' : color}` , data-tooltip=color, data-class=color).tooltip.js-color
+                           div.bl-sleeve
+                              label Sleeve:
+                              div.bl-sleeve--item
+                                 each sleeve, index in sleeves
+                                    span(class=`${index==0 ? sleeve +' selected' : sleeve}` , data-tooltip=sleeve, data-class=sleeve).tooltip.js-sleeve #{sleeve}
                            div.bl-size
                               label Size:
                               div.bl-size--item
                                  each variant, index in variants
-                                    span(data-id=variant.id, data-class=variant.color, data-tooltip=variant.size, class=`${index==0 && ' selected'}`).tooltip.js-size #{variant.size}
+                                    span(data-id=variant.id, data-class=[variant.color, variant.sleeve], data-tooltip=variant.size, class=`${index==0 && ' selected'}`).tooltip.js-size #{variant.size}
                            div.bl-price
                               label Price:
                               div.js-price

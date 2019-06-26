@@ -19,21 +19,41 @@ function snipCartRelatedStuff() {
 
     //shop item id is based on color and size
     var color = $('.js-color').data('class')
+    var sleeve = $('.js-sleeve').data('class')
     var item_id = $('.js-size.selected').data('id')
 
-    setSizeBasedOnColor(color)
+    setSizeBasedOnColorAndSleeve(color, sleeve);
     setPriceBasedOnSize(price, item_id)
 
     $('.js-color').off('click').on('click', function(ev) {
         ev.preventDefault()
         $('.js-size').removeClass('selected')
         $('.js-color').removeClass('selected')
+        // $('.js-sleeve').removeClass('selected')
         $(this).addClass('selected')
 
-        color = $(this).data('class')
-        setSizeBasedOnColor(color)
+        color = $(this).data('class');
+
+        setSizeBasedOnColorAndSleeve(color, sleeve)
 
         //if color changed, size == 0, get the id and set it to the button
+        var id = $('.js-size.selected').data('id')
+
+        setPriceBasedOnSize(price, id)
+    })
+
+    $('.js-sleeve').off('click').on('click', function(ev) {
+        ev.preventDefault()
+        $('.js-size').removeClass('selected')
+        // $('.js-color').removeClass('selected')
+        $('.js-sleeve').removeClass('selected')
+        $(this).addClass('selected')
+
+        sleeve = $(this).data('class')
+        
+        setSizeBasedOnColorAndSleeve(color, sleeve)
+
+        //if sleeve changed, size == 0, get the id and set it to the button
         var id = $('.js-size.selected').data('id')
 
         setPriceBasedOnSize(price, id)
@@ -51,38 +71,26 @@ function snipCartRelatedStuff() {
 }
 
 //hide sizes that doesnt match color
-function setSizeBasedOnColor(color) {
-    switch (color) {
-        case 'white':
-            $('.js-size').hide()
-            $('.js-size[data-class="white"]').show()
-            $('.js-size[data-class="white"]').each(function(index, el) {
-                if (index == 0) {
-                    $(el).addClass('selected')
-                }
-            })
-            break;
-        case 'black':
-            $('.js-size').hide()
-            $('.js-size[data-class="black"]').show()
-            $('.js-size[data-class="black"]').each(function(index, el) {
-                if (index == 0) {
-                    $(el).addClass('selected')
-                }
-            })
+function setSizeBasedOnColorAndSleeve(color, sleeve) {
+    let dataclassPrevent = false;
 
-            break;
-        default:
-            $('.js-size').hide()
-            $('.js-size[data-class="white"]').show()
-            $('.js-size[data-class="white"]').each(function(index, el) {
-                if (index == 0) {
-                    $(el).addClass('selected')
-                }
-            })
-            break;
-    }
+    $('.js-size').hide();
+    $('.js-size').each(function() {
+        let dataClass = $(this).data('class');
+
+        if (dataClass.includes(color) && dataClass.includes(sleeve)) {
+
+            $(this).show();
+
+            if(!dataclassPrevent) {
+                $(this).addClass('selected')
+                dataclassPrevent = true;
+            }
+        }
+    })
+      
 }
+
 //set the price on top
 function setPriceBasedOnSize(price, id) {
     //ui stuff
