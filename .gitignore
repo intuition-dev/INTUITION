@@ -4,6 +4,13 @@
 
 node_modules/
 *.sqlite
+*.html
+
+#ignore minified files:
+/**/*.min.js
+
+#ignore css files:
+/**/*.css
 
 src/CMS
 src/e-com
