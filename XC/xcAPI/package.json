@@ -3,8 +3,15 @@
   "version": "1.0.0",
   "description": "dev",
   "main": "index.js",
-
+  "engines": {
+   "node": ">=10.16.0",
+   "yarn": ">=1.16.0"
+},
   "dependencies": {
     "intu": ">=0.9.27"
   }
+  ,"devDependencies": {
+   "pm2": ">=3.5.1"
+}
+
 }
