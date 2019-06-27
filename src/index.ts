@@ -114,7 +114,7 @@ function mainAppsetup(mainEApp, port) {
    runMBake()
 
    // endpoint for Uptime monitor
-   mainEApp.appInst.get("/", (req, res) => {
+   mainEApp.appInst.get('/monitor', (req, res) => {
       adbDB.monitor()
          .then(res1 => {
             return res.send('OK');
