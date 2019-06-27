@@ -5,7 +5,7 @@ const mainEApp = new Serv_1.ExpressRPC();
 mainEApp.makeInstance(['*']);
 mainEApp.serveStatic('../xcEdit');
 mainEApp.serveStatic('../xcApp');
-mainEApp.appInst.post('/api1', function (req, res) {
+mainEApp.appInst.post('/api/editPg', function (req, res) {
     const resp = {};
     res.result = 'OK';
     res.json(resp);

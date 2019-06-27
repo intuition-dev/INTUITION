@@ -4,15 +4,16 @@ import { ExpressRPC } from 'mbake/lib/Serv'
 const mainEApp = new ExpressRPC()
 mainEApp.makeInstance(['*'])
 
-mainEApp.serveStatic('../xcEdit')
-mainEApp.serveStatic('../xcApp')
-
 // RPC
-mainEApp.appInst.post('/api1', function(req, res){
+mainEApp.appInst.post('/api/editPg', function(req, res){
+
    const resp:any= {} // new response
    res.result = 'OK'
    res.json(resp)
 })
+
+mainEApp.serveStatic('../xcEdit')
+mainEApp.serveStatic('../xcApp')
 
 // start
 mainEApp.appInst.listen(8888, () => {
