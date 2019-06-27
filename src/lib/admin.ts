@@ -1,4 +1,3 @@
-import { ExpressRPC } from 'mbake/lib/Serv';
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
 import { Wa } from 'mbake/lib/Wa';
@@ -11,8 +10,7 @@ export class AdminRoutes {
 
    appE
    constructor(appE) {
-      this.appE = new ExpressRPC();
-      this.appE.makeInstance(appE.host)
+      this.appE = appE;
    }
 
    routes(adbDB, host, appPort) {
@@ -48,7 +46,7 @@ export class AdminRoutes {
             });
       });
 
-      this.appE.appInst.post('/api/checkAdmin', (req, res) => {
+      this.appE.appInst.post('/api/admin/checkAdmin', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
          let email = params.admin_email
@@ -75,7 +73,7 @@ export class AdminRoutes {
        * this one only downloads the site and write the path of it to the db
        * happens only on CLICK INSTALL button on the settings page at admin
        *  */
-      this.appE.appInst.post('/api/setup-app', async (req, res) => {
+      this.appE.appInst.post('/api/admin/setup-app', async (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
          let item = params.item
@@ -126,7 +124,7 @@ export class AdminRoutes {
          }
       })
 
-      this.appE.appInst.post('/api/get-config', (req, res) => {
+      this.appE.appInst.post('/api/admin/get-config', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
          let item = params.item
@@ -162,7 +160,7 @@ export class AdminRoutes {
        * Writes the path of the folder to db and
        * the port of node where the app is running
        **/
-      this.appE.appInst.post('/api/update-config', (req, res) => {
+      this.appE.appInst.post('/api/admin/update-config', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
 
@@ -203,7 +201,7 @@ export class AdminRoutes {
          }
       })
 
-      this.appE.appInst.post('/api/resetPassword', (req, res) => {
+      this.appE.appInst.post('/api/admin/resetPassword', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
          let email = params.admin_email
@@ -249,7 +247,7 @@ export class AdminRoutes {
       })
 
       // get users
-      this.appE.appInst.post("/api/editors", (req, res) => {
+      this.appE.appInst.post("/api/admin/editors", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
 
@@ -278,7 +276,7 @@ export class AdminRoutes {
       });
 
       // add user
-      this.appE.appInst.post("/api/editors-add", (req, res) => {
+      this.appE.appInst.post("/api/admin/editors-add", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -342,7 +340,7 @@ export class AdminRoutes {
       })
 
       // edit user
-      this.appE.appInst.post("/api/editors-edit", (req, res) => {
+      this.appE.appInst.post("/api/admin/editors-edit", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -380,7 +378,7 @@ export class AdminRoutes {
       });
 
       // // delete user
-      this.appE.appInst.post("/api/editors-delete", (req, res) => {
+      this.appE.appInst.post("/api/admin/editors-delete", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
