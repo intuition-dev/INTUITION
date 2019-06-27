@@ -79,11 +79,21 @@ function runAdmin(port) {
     mainAppsetup(mainEApp, port);
 }
 function mainAppsetup(mainEApp, port) {
-    const editorRoutes = new editor_1.EditorRoutes();
+    const editorRoutes = new editor_1.EditorRoutes(mainEApp);
     const adminRoutes = new admin_1.AdminRoutes(mainEApp);
     const host = [hostIP + port, config.cors];
-    mainEApp.appInst.use('/api/editors', editorRoutes.routes(adbDB, host));
-    mainEApp.appInst.use('/', mainEApp.serveStatic(path.join(__dirname, '/')));
+    mainEApp.appInst.use('/api/editors', function (req, res, next) {
+        editorRoutes.routes(adbDB, host);
+        next();
+    });
+    mainEApp.appInst.use('/api/admin', function (req, res, next) {
+        adminRoutes.routes(adbDB, host, port);
+        next();
+    });
+    mainEApp.appInst.use('/', function (req, res, next) {
+        mainEApp.serveStatic(path.join(__dirname, '/'));
+        next();
+    });
     mainEApp.appInst.listen(port, () => {
         console.log(`======================================================`);
         console.log(`App is running at http://localhost:${port}/editors/`);

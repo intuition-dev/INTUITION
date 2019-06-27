@@ -40,7 +40,7 @@ class AdminRoutes {
                 return response.json(resp);
             });
         });
-        this.appE.appInst.post('/checkAdmin', (req, res) => {
+        this.appE.appInst.post('/api/checkAdmin', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let email = params.admin_email;
@@ -59,7 +59,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post('/setup-app', async (req, res) => {
+        this.appE.appInst.post('/api/setup-app', async (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let item = params.item;
@@ -102,7 +102,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post('/get-config', (req, res) => {
+        this.appE.appInst.post('/api/get-config', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let item = params.item;
@@ -130,7 +130,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post('/update-config', (req, res) => {
+        this.appE.appInst.post('/api/update-config', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let path = params.path;
@@ -165,7 +165,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post('/resetPassword', (req, res) => {
+        this.appE.appInst.post('/api/resetPassword', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let email = params.admin_email;
@@ -200,7 +200,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/editors", (req, res) => {
+        this.appE.appInst.post("/api/editors", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             if ('get' == method) {
@@ -223,7 +223,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/editors-add", (req, res) => {
+        this.appE.appInst.post("/api/editors-add", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -267,7 +267,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/editors-edit", (req, res) => {
+        this.appE.appInst.post("/api/editors-edit", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -296,7 +296,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/editors-delete", (req, res) => {
+        this.appE.appInst.post("/api/editors-delete", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
