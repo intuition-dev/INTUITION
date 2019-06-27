@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const Serv_1 = require("mbake/lib/Serv");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const Email_1 = require("./Email");
 const Wa_1 = require("mbake/lib/Wa");
@@ -7,7 +8,8 @@ const fs = require('fs-extra');
 var path = require('path');
 class AdminRoutes {
     constructor(appE) {
-        this.appE = appE;
+        this.appE = new Serv_1.ExpressRPC();
+        this.appE.makeInstance(appE.host);
     }
     routes(adbDB, host, appPort) {
         const emailJs = new Email_1.Email();

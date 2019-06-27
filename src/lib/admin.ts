@@ -11,7 +11,8 @@ export class AdminRoutes {
 
    appE
    constructor(appE) {
-      this.appE = appE
+      this.appE = new ExpressRPC();
+      this.appE.makeInstance(appE.host)
    }
 
    routes(adbDB, host, appPort) {
