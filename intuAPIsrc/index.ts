@@ -45,7 +45,7 @@ try {
    console.warn(err)
 }
 
-// TODO: should be in a class in lib
+// TODO: should be in a class file in lib folder
 function runSetup() { 
    const port = '9081' //init port
    adbDB.connectToDb(pathToDb) //connect to db
