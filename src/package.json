@@ -22,7 +22,7 @@
         "ip": "^1.1.5",
         "js-yaml": ">=3.13.1",
         "mbake": ">=6.7.1",
-        "mbake-x": ">=1.0.23",
+        "mbake-x": ">=1.7.1",
         "sqlite": ">=3.0.3"
     },
     "devDependencies": {

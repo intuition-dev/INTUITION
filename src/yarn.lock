@@ -1873,7 +1873,7 @@ event-target-shim@^5.0.0:
   resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
   integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
 
-execa@>=1.0.0:
+execa@>=2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/execa/-/execa-2.0.1.tgz#546a5be56388953409cbf24972d2fd1bb36dbfcd"
   integrity sha512-pHGXlV7S7ilDda3eaCTcr6zmFTMA3wJo7j+RtNg0uH9sbAasJfVug5RkYOTBLj5g4MOqlsaPUn3HKa/UfTDw8w==
@@ -3502,19 +3502,19 @@ markdown-it@>=8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake-x@>=1.0.23:
-  version "1.0.23"
-  resolved "https://registry.yarnpkg.com/mbake-x/-/mbake-x-1.0.23.tgz#296dab7f6625a0043caa41ddecd7026e4c7022dc"
-  integrity sha512-pksNpkyXQrcBMje/6NhDxUPK8E2PPK2cIGB1Ypl58kGWPb8KLhQN+SP74PrW05b8H4gQlKebd+wME5uvaMMujA==
+mbake-x@>=1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/mbake-x/-/mbake-x-1.7.1.tgz#7ff321ba96069508e3cebb80d7ebe63f6c27b00c"
+  integrity sha512-AGiwTqYQHQXxsMZHNBMy1E/cyUImKDcTIsDu9PdtC1Lkf7pjtX/Blo3sHzd2V8twNv3b7q+ynFfjyuLHaIu9RQ==
   dependencies:
     "@firebase/app-types" ">=0.4.0"
     axios ">=0.19.0"
     cheerio ">=1.0.0-rc.2"
-    execa ">=1.0.0"
+    execa ">=2.0.1"
     filehound ">=1.17.0"
     fs-extra ">=8.0.1"
     lunr ">=2.3.6"
-    mbake ">=6.6.29"
+    mbake ">=6.7.1"
     node-firestore-import-export ">=0.13.2"
     node-summarizer ">=1.0.7"
     probe-image-size ">=4.0.0"
@@ -3525,7 +3525,7 @@ mbake-x@>=1.0.23:
     typescript ">=3.5.2"
     unfluff ">=3.2.0"
 
-mbake@>=6.6.29, mbake@>=6.7.1:
+mbake@>=6.7.1:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.1.tgz#1fb704c1c1902e631a786b554da29cf3cf3c70ba"
   integrity sha512-XT6by3h7ceIpRBImEvAcVjfpvbnZP74dvLjnNIcHhRz+M6SvLaUBC8yIAlP034DjX/dPM9MyYP9NpzJsHqnKzg==
