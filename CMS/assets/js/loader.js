@@ -29,7 +29,7 @@ if (!window.Promise) {
 depp.define({
     'axios': [
         '#hasPromise' 
-        , '//unpkg.com/axios@0.18.0/dist/axios.min.js'
+        , '//unpkg.laska.io/axios@0.18.0/dist/axios.min.js'
     ],
     'fonts': [
         '#axios'
