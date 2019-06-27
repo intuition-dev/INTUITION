@@ -3,18 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Base_1 = require("mbake/lib/Base");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
+const Serv_1 = require("mbake/lib/Serv");
 const Email_1 = require("./Email");
 const fs = require('fs-extra');
 class EditorRoutes {
-    constructor(appE) {
-        this.appE = appE;
-    }
     routes(adbDB, host) {
         const emailJs = new Email_1.Email();
         const fs = require('fs');
         const path = require('path');
         let mountPath = '';
-        this.appE.appInst.use((request, response, next) => {
+        this.appE = (new Serv_1.ExpressRPC).makeInstance(host);
+        console.log('this.appE ---------------------------->', this.appE);
+        this.appE.use((request, response, next) => {
             if (request.path === '/resetPassword') {
                 next();
             }
@@ -43,7 +43,7 @@ class EditorRoutes {
                 return response.json(resp);
             });
         });
-        this.appE.appInst.post('/checkEditor', (req, res) => {
+        this.appE.post('/checkEditor', (req, res) => {
             const method = req.fields.method;
             let resp = {};
             if ('check-editor' == method) {
@@ -59,7 +59,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/posts", (req, res) => {
+        this.appE.post("/posts", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             if ('get' == method) {
@@ -74,7 +74,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/files", (req, res) => {
+        this.appE.post("/files", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -98,7 +98,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/post-get", (req, res) => {
+        this.appE.post("/post-get", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -131,7 +131,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/post-put", (req, res) => {
+        this.appE.post("/post-put", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -175,7 +175,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/post-build", (req, res) => {
+        this.appE.post("/post-build", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -221,7 +221,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/new-post", (req, res) => {
+        this.appE.post("/new-post", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -255,7 +255,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/upload", (req, res) => {
+        this.appE.post("/upload", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -280,7 +280,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/set-publish-date", (req, res) => {
+        this.appE.post("/set-publish-date", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -307,7 +307,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post("/mbake-version", (req, res) => {
+        this.appE.post("/mbake-version", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             if ('get' == method) {
@@ -318,7 +318,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        this.appE.appInst.post('/resetPassword', (req, res) => {
+        this.appE.post('/resetPassword', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let email = params.admin_email;
@@ -353,7 +353,7 @@ class EditorRoutes {
                 return res.json(resp);
             }
         });
-        return this.appE.appInst;
+        return this.appE;
     }
     ;
 }
