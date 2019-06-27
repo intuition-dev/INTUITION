@@ -51,8 +51,9 @@ function runSetup() {
    adbDB.connectToDb(pathToDb) //connect to db
    const host = [hostIP + port, config.cors]
 
-   const mainApp = ExpressRPC.makeInstance(host)
-   mainApp.post("/setup", async (req, res) => {
+   const mainEApp = new ExpressRPC()
+   mainEApp.makeInstance(host)
+   mainEApp.appInst.post("/setup", async (req, res) => {
       const method = req.fields.method;
       let params = JSON.parse(req.fields.params)
 
@@ -84,36 +85,36 @@ function runSetup() {
       }
    })
 
-   mainAppsetup(mainApp, port)
+   mainAppsetup(mainEApp, port)
 }
 
 function runAdmin(port) {
    const host = [hostIP + port, config.cors]
-   const mainApp = ExpressRPC.makeInstance(host);
-   mainAppsetup(mainApp, port)
+   const mainEApp = new ExpressRPC()
+   mainEApp.makeInstance(host)
+   mainAppsetup(mainEApp, port)
 }
 
-function mainAppsetup(mainApp, port) {
-   const editorRoutes = new EditorRoutes();
-   const adminRoutes = new AdminRoutes();
+function mainAppsetup(mainEApp, port) {
+   const editorRoutes = new EditorRoutes(mainEApp)
+   const adminRoutes = new AdminRoutes(mainEApp)
    const host = [hostIP + port, config.cors]
 
-   mainApp.use('/api/editors', editorRoutes.routes(adbDB, host));
-   mainApp.use('/api/admin', adminRoutes.routes(adbDB, host, port));
+   mainEApp.appInst.use('/api/editors', editorRoutes.routes(adbDB, host));
+   mainEApp.appInst.use('/api/admin', adminRoutes.routes(adbDB, host, port));
 
-   mainApp.use('/', ExpressRPC.serveStatic(path.join(__dirname, '/')));
+   mainEApp.appInst.use('/', mainEApp.serveStatic(path.join(__dirname, '/')));
   
-   mainApp.listen(port, () => {
+   mainEApp.appInst.listen(port, () => {
       console.log(`======================================================`)
       console.log(`App is running at http://localhost:${port}/editors/`)
       console.log(`======================================================`)
    })
 
-   runMBake();
+   runMBake()
 
    // endpoint for Uptime monitor
-   const monitorUp = ExpressRPC.makeInstance(host);
-   monitorUp.get("/", (req, res) => {
+   mainEApp.appInst.get("/", (req, res) => {
       adbDB.monitor()
          .then(res1 => {
             return res.send('OK');
@@ -123,7 +124,6 @@ function mainAppsetup(mainApp, port) {
             return res.send = (error);
          });
    });
-   mainApp.use('/monitor', monitorUp);
 }
 
 function runMBake() {

@@ -1,18 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Serv_1 = require("mbake/lib/Serv");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const Email_1 = require("./Email");
 const Wa_1 = require("mbake/lib/Wa");
 const fs = require('fs-extra');
 var path = require('path');
 class AdminRoutes {
+    constructor(appE) {
+        this.appE = appE;
+    }
     routes(adbDB, host, appPort) {
         const emailJs = new Email_1.Email();
-        const bodyParser = require("body-parser");
-        const adminApp = Serv_1.ExpressRPC.makeInstance(host);
-        adminApp.use(bodyParser.json());
-        adminApp.use((request, response, next) => {
+        this.appE.appInst.use((request, response, next) => {
             if (request.path === '/resetPassword') {
                 next();
             }
@@ -39,7 +38,7 @@ class AdminRoutes {
                 return response.json(resp);
             });
         });
-        adminApp.post('/checkAdmin', (req, res) => {
+        this.appE.appInst.post('/checkAdmin', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let email = params.admin_email;
@@ -58,7 +57,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        adminApp.post('/setup-app', async (req, res) => {
+        this.appE.appInst.post('/setup-app', async (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let item = params.item;
@@ -101,7 +100,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        adminApp.post('/get-config', (req, res) => {
+        this.appE.appInst.post('/get-config', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let item = params.item;
@@ -129,7 +128,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        adminApp.post('/update-config', (req, res) => {
+        this.appE.appInst.post('/update-config', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let path = params.path;
@@ -164,7 +163,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        adminApp.post('/resetPassword', (req, res) => {
+        this.appE.appInst.post('/resetPassword', (req, res) => {
             const method = req.fields.method;
             let params = JSON.parse(req.fields.params);
             let email = params.admin_email;
@@ -199,7 +198,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        adminApp.post("/editors", (req, res) => {
+        this.appE.appInst.post("/editors", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             if ('get' == method) {
@@ -222,7 +221,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        adminApp.post("/editors-add", (req, res) => {
+        this.appE.appInst.post("/editors-add", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -266,7 +265,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        adminApp.post("/editors-edit", (req, res) => {
+        this.appE.appInst.post("/editors-edit", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -295,7 +294,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        adminApp.post("/editors-delete", (req, res) => {
+        this.appE.appInst.post("/editors-delete", (req, res) => {
             const method = req.fields.method;
             let resp = {};
             let params = JSON.parse(req.fields.params);
@@ -324,7 +323,7 @@ class AdminRoutes {
                 return res.json(resp);
             }
         });
-        return adminApp;
+        return this.appE.appInst;
     }
     ;
 }

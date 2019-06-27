@@ -241,6 +241,9 @@ class ADB {
             return rows;
         });
     }
+    monitor() {
+        return this.db.all("SELECT COUNT(*) AS count FROM admin");
+    }
 }
 exports.ADB = ADB;
 module.exports = {

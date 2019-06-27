@@ -8,16 +8,21 @@ import { Email } from './Email';
 const fs = require('fs-extra')
 
 export class EditorRoutes {
+
+   appE
+   constructor(appE) {
+      this.appE = appE
+   }
+
    routes(adbDB, host) {
       const emailJs = new Email();
       const fs = require('fs');
       const path = require('path');
       let mountPath = '';
       
-      const appE = ExpressRPC.makeInstance(host);
 
-      // appE.use(fileUpload());
-      appE.use((request, response, next) => {
+      // appE.use(fileUpload())
+      this.appE.appInst.use((request, response, next) => {
 
          if (request.path === '/resetPassword') {
             next();
@@ -50,7 +55,7 @@ export class EditorRoutes {
             });
       });
 
-      appE.post('/checkEditor', (req, res) => {
+      this.appE.appInst.post('/checkEditor', (req, res) => {
          const method = req.fields.method;
          // let params = JSON.parse(req.fields.params)
          let resp: any = {};
@@ -71,7 +76,7 @@ export class EditorRoutes {
       })
 
       // get dirs list
-      appE.post("/posts", (req, res) => {
+      this.appE.appInst.post("/posts", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
 
@@ -92,7 +97,7 @@ export class EditorRoutes {
       });
 
       // get sub files in directory
-      appE.post("/files", (req, res) => {
+      this.appE.appInst.post("/files", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -123,7 +128,7 @@ export class EditorRoutes {
       });
 
       // get .md/.yaml/.csv/.pug/.css file 
-      appE.post("/post-get", (req, res) => {
+      this.appE.appInst.post("/post-get", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -160,7 +165,7 @@ export class EditorRoutes {
       });
 
       // update .md/.yaml/.csv/.pug/.css file and add archived files
-      appE.post("/post-put", (req, res) => {
+      this.appE.appInst.post("/post-put", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -214,15 +219,13 @@ export class EditorRoutes {
             }
 
          } else {
-
             return res.json(resp);
-
          }
 
       });
 
       // build/compile mbake
-      appE.post("/post-build", (req, res) => {
+      this.appE.appInst.post("/post-build", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -274,15 +277,13 @@ export class EditorRoutes {
             }
 
          } else {
-
             return res.json(resp);
-
          }
 
-      });
+      })
 
       // clone page
-      appE.post("/new-post", (req, res) => {
+      this.appE.appInst.post("/new-post", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -320,11 +321,10 @@ export class EditorRoutes {
          } else {
             return res.json(resp);
          }
-
       })
 
       // file upload
-      appE.post("/upload", (req, res) => {
+      this.appE.appInst.post("/upload", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -353,10 +353,10 @@ export class EditorRoutes {
          } else {
             return res.json(resp);
          }
-      });
+      })
 
       // set publish date
-      appE.post("/set-publish-date", (req, res) => {
+      this.appE.appInst.post("/set-publish-date", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -387,7 +387,7 @@ export class EditorRoutes {
       })
 
       // get mbake version
-      appE.post("/mbake-version", (req, res) => {
+      this.appE.appInst.post("/mbake-version", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
 
@@ -399,10 +399,9 @@ export class EditorRoutes {
          } else {
             return res.json(resp);
          }
+      })
 
-      });
-
-      appE.post('/resetPassword', (req, res) => {
+      this.appE.appInst.post('/resetPassword', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params);
          let email = params.admin_email;
@@ -445,7 +444,7 @@ export class EditorRoutes {
          }
       })
 
-      return appE;
+      return this.appE.appInst
    };
 }
 
