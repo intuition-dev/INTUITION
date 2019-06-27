@@ -27,31 +27,35 @@ export class EditorRoutes {
             next();
          }
 
-         const params = JSON.parse(request.fields.params)
-         const resp: any = {}
+         if (request.path.startsWith('/api/editors')) {
 
-         let email = params.editor_email
-         let password = params.editor_pass
+            const params = JSON.parse(request.fields.params)
+            const resp: any = {}
 
-         return adbDB.validateEditorEmail(email, password)
-            .then(function (result) {
-               console.info("--result:", result)
-               resp.result = {}
-               if (result.pass) {
-                  mountPath = result.pathToSite
-                  return next()
-               } else {
+            let email = params.editor_email
+            let password = params.editor_pass
+
+            return adbDB.validateEditorEmail(email, password)
+               .then(function (result) {
+                  console.info("--result:", result)
+                  resp.result = {}
+                  if (result.pass) {
+                     mountPath = result.pathToSite
+                     return next()
+                  } else {
+                     resp.errorLevel = -1
+                     resp.result = false
+                     return response.json(resp)
+                  }
+               }).catch(function (error) {
+                  console.info("--error:", error)
                   resp.errorLevel = -1
+                  resp.errorMessage = error
                   resp.result = false
                   return response.json(resp)
-               }
-            }).catch(function (error) {
-               console.info("--error:", error)
-               resp.errorLevel = -1
-               resp.errorMessage = error
-               resp.result = false
-               return response.json(resp)
-            });
+               });
+         }
+
       });
 
       this.appE.appInst.post('/api/editors/checkEditor', (req, res) => {

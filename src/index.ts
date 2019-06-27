@@ -116,9 +116,11 @@ function mainAppsetup(mainEApp, port) {
    });
   
    mainEApp.appInst.listen(port, () => {
-      console.log(`======================================================`)
-      console.log(`App is running at http://localhost:${port}/editors/`)
-      console.log(`======================================================`)
+      console.log(`======================================================`);
+      console.log('To setup Intuition first open: ', hostIP + port + '/setup/');
+      console.log('For Admin settings open http: ', hostIP + port + '/admin/');
+      console.log('For Editor app open http: ', hostIP + port + '/editors/');
+      console.log(`======================================================`);
    })
 
    runMBake()

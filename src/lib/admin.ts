@@ -21,29 +21,32 @@ export class AdminRoutes {
             next();
          }
 
-         const params = JSON.parse(request.fields.params)
-         const resp: any = {}
+         if (request.path.startsWith('/api/admin')) {
 
-         let email = params.admin_email
-         let password = params.admin_pass
+            const params = JSON.parse(request.fields.params)
+            const resp: any = {}
 
-         return adbDB.validateEmail(email, password)
-            .then(function (pass) {
-               resp.result = {}
-               if (pass) {
-                  response.locals.email = email
-                  return next()
-               } else {
+            let email = params.admin_email
+            let password = params.admin_pass
+
+            return adbDB.validateEmail(email, password)
+               .then(function (pass) {
+                  resp.result = {}
+                  if (pass) {
+                     response.locals.email = email
+                     return next()
+                  } else {
+                     resp.errorLevel = -1
+                     resp.result = false
+                     return response.json(resp)
+                  }
+               }).catch(function (error) {
                   resp.errorLevel = -1
+                  resp.errorMessage = error
                   resp.result = false
                   return response.json(resp)
-               }
-            }).catch(function (error) {
-               resp.errorLevel = -1
-               resp.errorMessage = error
-               resp.result = false
-               return response.json(resp)
-            });
+               });
+         }
       });
 
       this.appE.appInst.post('/api/admin/checkAdmin', (req, res) => {
