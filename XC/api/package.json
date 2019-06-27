@@ -1,0 +1,10 @@
+{
+  "name": "xc",
+  "version": "1.0.0",
+  "description": "dev",
+  "main": "index.js",
+
+  "dependencies": {
+    "intu": ">=0.9.27"
+  }
+}
