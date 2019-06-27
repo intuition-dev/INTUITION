@@ -4,3 +4,7 @@
 
 node_modules/
 *.sqlite
+
+src/CMS
+src/e-com
+src/website
