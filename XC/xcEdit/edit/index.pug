@@ -3,3 +3,15 @@ head
 body
    p oh hi editor
 
+   script.
+      
+      depp.require('RPC', foo)
+
+      function foo() {
+         const rpc = new httpRPC('http', 'localhost', 8888)
+         const pro = rpc.invoke('/api1', 'multiply', {a:5, b:2})
+         pro.then(function(resp) {
+            console.log(resp)
+         })
+      }
+
