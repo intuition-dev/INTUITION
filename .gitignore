@@ -4,6 +4,7 @@
 
 node_modules/
 *.sqlite
+yarn.lock
 *.html
 
 #ignore minified files:
@@ -11,6 +12,9 @@ node_modules/
 
 #ignore css files:
 /**/*.css
+
+intuAPIsrc/lib/*.js
+intuAPIsrc/index.js
 
 src/CMS
 src/e-com
