@@ -1,6 +1,7 @@
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
 import { Wa } from 'mbake/lib/Wa';
+import { ExpressRPC } from 'mbake/lib/Serv';
 
 const fs = require('fs-extra')
 
@@ -8,7 +9,8 @@ var path = require('path');
 
 export class AdminRoutes {
 
-   appE
+   appE:ExpressRPC
+
    constructor(appE) {
       this.appE = appE;
    }
@@ -16,7 +18,7 @@ export class AdminRoutes {
    routes(adbDB, host, appPort) {
       const emailJs = new Email();
 
-      this.appE.handleRRoute('/api/admin/checkAdmin', (req, res) => {
+      this.appE.handleRRoute('api/admin','checkAdmin', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
          let email = params.admin_email
@@ -43,7 +45,7 @@ export class AdminRoutes {
        * this one only downloads the site and write the path of it to the db
        * happens only on CLICK INSTALL button on the settings page at admin
        *  */
-      this.appE.handleRRoute('/api/admin/setup-app', async (req, res) => {
+      this.appE.handleRRoute('api/admin','setup-app', async (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
          let item = params.item
@@ -94,7 +96,7 @@ export class AdminRoutes {
          }
       })
 
-      this.appE.handleRRoute('/api/admin/get-config', (req, res) => {
+      this.appE.handleRRoute('api/admin','get-config', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
          let item = params.item
@@ -130,7 +132,7 @@ export class AdminRoutes {
        * Writes the path of the folder to db and
        * the port of node where the app is running
        **/
-      this.appE.handleRRoute('/api/admin/update-config', (req, res) => {
+      this.appE.handleRRoute('api/admin','update-config', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
 
@@ -171,7 +173,7 @@ export class AdminRoutes {
          }
       })
 
-      this.appE.handleRRoute('/api/admin/resetPassword', (req, res) => {
+      this.appE.handleRRoute('api/admin','resetPassword', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
          let email = params.admin_email
@@ -217,7 +219,7 @@ export class AdminRoutes {
       })
 
       // get users
-      this.appE.handleRRoute("/api/admin/editors", (req, res) => {
+      this.appE.handleRRoute('api/admin',"editors", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
 
@@ -246,7 +248,7 @@ export class AdminRoutes {
       });
 
       // add user
-      this.appE.handleRRoute("/api/admin/editors-add", (req, res) => {
+      this.appE.handleRRoute('api/admin',"editors-add", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -274,6 +276,7 @@ export class AdminRoutes {
                                     .then(function (result) {
                                        let port = result.port;
                                        let setting = settings[0];
+                                       // email a link to localhost. Really?
                                        let link = 'http://localhost:' + port + '/editors/?email=' + encodeURIComponent(email);
                                        let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: ' + link;
 
@@ -310,7 +313,7 @@ export class AdminRoutes {
       })
 
       // edit user
-      this.appE.handleRRoute("/api/admin/editors-edit", (req, res) => {
+      this.appE.handleRRoute('api/admin',"editors-edit", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -348,7 +351,7 @@ export class AdminRoutes {
       });
 
       // // delete user
-      this.appE.handleRRoute("/api/admin/editors-delete", (req, res) => {
+      this.appE.handleRRoute('api/admin',"editors-delete", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
