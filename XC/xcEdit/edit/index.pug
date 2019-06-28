@@ -1,5 +1,7 @@
 head
    include headFrag
+   script.
+      depp.define({'RPCx':'https://unpkg.laska.io/http-rpc@1.7.1/httpRPC.js'})
 body
    p oh hi editor
 
@@ -9,6 +11,7 @@ body
 
       function foo() {
          const rpc = new httpRPC('http', 'localhost', 8888)
+
          const pro = rpc.invoke('api', 'editPg', 'one', {a:5, b:2})
          pro.then(function(resp) {
             console.log(resp)

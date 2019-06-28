@@ -8,7 +8,7 @@ mainEApp.makeInstance(['*'])
 mainEApp.appInst.post('/api/editPg', function(req, res){
 
    const resp:any= {} // new response
-   res.result = 'OK'
+   resp.result = 'OK'
    res.json(resp)
 })
 
