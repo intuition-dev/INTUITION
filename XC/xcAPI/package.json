@@ -4,14 +4,14 @@
   "description": "dev",
   "main": "index.js",
   "engines": {
-   "node": ">=10.16.0",
-   "yarn": ">=1.16.0"
-},
+    "node": ">=10.16.0",
+    "yarn": ">=1.16.0"
+  },
   "dependencies": {
-    "intu": ">=0.9.27"
+    "intu": ">=0.9.27",
+    "mbake": ">=6.7.5"
+  },
+  "devDependencies": {
+    "pm2": ">=3.5.1"
   }
-  ,"devDependencies": {
-   "pm2": ">=3.5.1"
-}
-
 }

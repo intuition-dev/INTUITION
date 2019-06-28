@@ -4,7 +4,6 @@
 
 node_modules/
 *.sqlite
-yarn.lock
 *.html
 
 #ignore minified files:
@@ -16,6 +15,3 @@ yarn.lock
 intuAPIsrc/lib/*.js
 intuAPIsrc/index.js
 
-src/CMS
-src/e-com
-src/website

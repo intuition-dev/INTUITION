@@ -126,7 +126,7 @@ export class EditorRoutes {
       });
 
       // get sub files in directory
-      this.appE.handleRRoute("/api/editors/files", (req, res) => {
+      this.appE.handleRRoute('api',"editors/files", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
