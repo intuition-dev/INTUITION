@@ -17,11 +17,13 @@ export class AdminRoutes {
       const emailJs = new Email();
 
       this.appE.appInst.use((request, response, next) => {
-         if (request.path === '/resetPassword') {
+         if (request.path.includes('/resetPassword')) {
             next();
          }
 
+         console.log('request.path admin: ', request.path);
          if (request.path.startsWith('/api/admin')) {
+            console.log(request.path, 'admin login fired ------------------->')
 
             const params = JSON.parse(request.fields.params)
             const resp: any = {}
