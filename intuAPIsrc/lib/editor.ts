@@ -58,7 +58,7 @@ export class EditorRoutes {
 
       });
 
-      this.appE.appInst.post('/api/editors/checkEditor', (req, res) => {
+      this.appE.handleRRoute('/api/editors/checkEditor', (req, res) => {
          const method = req.fields.method;
          // let params = JSON.parse(req.fields.params)
          let resp: any = {};
@@ -79,7 +79,7 @@ export class EditorRoutes {
       })
 
       // get dirs list
-      this.appE.appInst.post("/api/editors/posts", (req, res) => {
+      this.appE.handleRRoute("/api/editors/items", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
 
@@ -100,7 +100,7 @@ export class EditorRoutes {
       });
 
       // get sub files in directory
-      this.appE.appInst.post("/api/editors/files", (req, res) => {
+      this.appE.handleRRoute("/api/editors/files", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -131,7 +131,7 @@ export class EditorRoutes {
       });
 
       // get .md/.yaml/.csv/.pug/.css file 
-      this.appE.appInst.post("/api/editors/post-get", (req, res) => {
+      this.appE.handleRRoute("/api/editors/item-get", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -168,7 +168,7 @@ export class EditorRoutes {
       });
 
       // update .md/.yaml/.csv/.pug/.css file and add archived files
-      this.appE.appInst.post("/api/editors/post-put", (req, res) => {
+      this.appE.handleRRoute("/api/editors/item-put", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -228,7 +228,7 @@ export class EditorRoutes {
       });
 
       // build/compile mbake
-      this.appE.appInst.post("/api/editors/post-build", (req, res) => {
+      this.appE.handleRRoute("/api/editors/item-build", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -286,7 +286,7 @@ export class EditorRoutes {
       })
 
       // clone page
-      this.appE.appInst.post("/api/editors/new-post", (req, res) => {
+      this.appE.handleRRoute("/api/editors/new-item", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -327,7 +327,7 @@ export class EditorRoutes {
       })
 
       // file upload
-      this.appE.appInst.post("/api/editors/upload", (req, res) => {
+      this.appE.handleRRoute("/api/editors/upload", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -359,7 +359,7 @@ export class EditorRoutes {
       })
 
       // set publish date
-      this.appE.appInst.post("/api/editors/set-publish-date", (req, res) => {
+      this.appE.handleRRoute("/api/editors/set-publish-date", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
@@ -390,7 +390,7 @@ export class EditorRoutes {
       })
 
       // get mbake version
-      this.appE.appInst.post("/api/editors/mbake-version", (req, res) => {
+      this.appE.handleRRoute("/api/editors/mbake-version", (req, res) => {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
 
@@ -404,7 +404,7 @@ export class EditorRoutes {
          }
       })
 
-      this.appE.appInst.post('/resetPassword', (req, res) => {
+      this.appE.handleRRoute('/resetPassword', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params);
          let email = params.admin_email;
