@@ -3,14 +3,14 @@ head
    script.
       depp.define({'RPCx':'https://unpkg.laska.io/http-rpc@1.7.1/httpRPC.js'})
 body
-   p oh hi editor
+   p oh hi editor v3
 
    script.
       
       depp.require('RPC', foo)
 
       function foo() {
-         const rpc = new httpRPC('http', 'localhost', 8888)
+         const rpc = new httpRPC('https', '1986525410.rsc.cdn77.org', 443)
 
          const pro = rpc.invoke('api', 'editPg', 'one', {a:5, b:2})
          pro.then(function(resp) {
