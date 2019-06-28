@@ -19,7 +19,6 @@ export class EditorRoutes {
       const path = require('path');
       let mountPath = '';
       
-
       // appE.use(fileUpload())
       this.appE.appInst.use((request, response, next) => {
 
@@ -27,9 +26,7 @@ export class EditorRoutes {
             next();
          }
 
-         console.log('request.path editor: ', request.path);
          if (request.path.startsWith('/api/editors')) {
-            console.log(request.path, 'editor login fired ------------------>')
 
             const params = JSON.parse(request.fields.params)
             const resp: any = {}
@@ -51,6 +48,33 @@ export class EditorRoutes {
                   }
                }).catch(function (error) {
                   console.info("--error:", error)
+                  resp.errorLevel = -1
+                  resp.errorMessage = error
+                  resp.result = false
+                  return response.json(resp)
+               });
+         }
+
+         if (request.path.startsWith('/api/admin')) {
+
+            const params = JSON.parse(request.fields.params)
+            const resp: any = {}
+
+            let email = params.admin_email
+            let password = params.admin_pass
+
+            return adbDB.validateEmail(email, password)
+               .then(function (pass) {
+                  resp.result = {}
+                  if (pass) {
+                     response.locals.email = email
+                     return next()
+                  } else {
+                     resp.errorLevel = -1
+                     resp.result = false
+                     return response.json(resp)
+                  }
+               }).catch(function (error) {
                   resp.errorLevel = -1
                   resp.errorMessage = error
                   resp.result = false

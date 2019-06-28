@@ -16,41 +16,6 @@ export class AdminRoutes {
    routes(adbDB, host, appPort) {
       const emailJs = new Email();
 
-      this.appE.appInst.use((request, response, next) => {
-         if (request.path.includes('/resetPassword')) {
-            next();
-         }
-
-         console.log('request.path admin: ', request.path);
-         if (request.path.startsWith('/api/admin')) {
-            console.log(request.path, 'admin login fired ------------------->')
-
-            const params = JSON.parse(request.fields.params)
-            const resp: any = {}
-
-            let email = params.admin_email
-            let password = params.admin_pass
-
-            return adbDB.validateEmail(email, password)
-               .then(function (pass) {
-                  resp.result = {}
-                  if (pass) {
-                     response.locals.email = email
-                     return next()
-                  } else {
-                     resp.errorLevel = -1
-                     resp.result = false
-                     return response.json(resp)
-                  }
-               }).catch(function (error) {
-                  resp.errorLevel = -1
-                  resp.errorMessage = error
-                  resp.result = false
-                  return response.json(resp)
-               });
-         }
-      });
-
       this.appE.handleRRoute('/api/admin/checkAdmin', (req, res) => {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)

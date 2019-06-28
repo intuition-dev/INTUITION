@@ -34,6 +34,7 @@ class IntuAPI {
             editor_pass: pass
          })
          .then(function (result) {
+            console.log('check editor, result: ', result);
             if (result) {
                _this.serviceRPC.setUser(email, pass);
                return true
