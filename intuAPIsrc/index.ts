@@ -52,8 +52,9 @@ function runSetup() {
    const host = [hostIP + port, config.cors]
 
    const mainEApp = new ExpressRPC()
-   mainEApp.makeInstance(host)
-   mainEApp.appInst.post("/setup", async (req, res) => {
+   mainEApp.makeInstance(host);
+
+   mainEApp.handleRRoute("/setup/setup", async (req, res) => {
       const method = req.fields.method;
       let params = JSON.parse(req.fields.params)
 
