@@ -1,0 +1,38 @@
+
+<head>
+  <script>
+    var _start = Date.now()
+    window.ENV = '0' // for comps, but it is also in scape for Pug for ENV logic
+    
+  </script>
+  <title></title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
+  <style>
+    html { touch-action: manipulation; }
+    .delayShowing { opacity: 0; }
+    .blur { -webkit-filter:blur(2px);filter:blur(2px); }
+    
+  </style>
+  <script src="https://unpkg.laska.io/mtool-belt@1.7.2/toolBelt.min.js"></script>
+  <!--script(src='toolBelt.js')-->
+  <!--script(src='other.js')-->
+  <script>depp.define({'RPCx':'https://unpkg.laska.io/http-rpc@1.7.1/httpRPC.js'})</script>
+</head>
+<body>
+  <p>oh hi editor v3</p>
+  <script>
+    depp.require('RPC', foo)
+    
+    function foo() {
+       const rpc = new httpRPC('https', '1986525410.rsc.cdn77.org', 443)
+    
+       const pro = rpc.invoke('api', 'editPg', 'one', {a:5, b:2})
+       pro.then(function(resp) {
+          console.log(resp)
+       })
+    
+    }//()
+  </script>
+<!-- mB v6.07.03 on 2019-06-28T00:59:50.961Z --></body>

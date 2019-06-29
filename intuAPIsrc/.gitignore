@@ -1,0 +1,8 @@
+*.sqlite
+*.html
+
+#ignore minified files:
+/**/*.min.js
+
+#ignore css files:
+/**/*.css

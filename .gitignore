@@ -3,15 +3,4 @@
 .DS_Store
 
 node_modules/
-*.sqlite
-*.html
-
-#ignore minified files:
-/**/*.min.js
-
-#ignore css files:
-/**/*.css
-
-intuAPIsrc/lib/*.js
-intuAPIsrc/index.js
 
