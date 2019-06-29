@@ -1,10 +1,8 @@
 
-depp.define({'oops':'https://cdn.jsdelivr.net/npm/tabulator-tables@4.2.7/dist/css/tabulator.css'})
 
 depp.require(['FontsLoaded', 'bsDefaultStyle', 'tabulatorDefaultStyle'], function() {
    console.log('styles')
 }) 
-//'tabulatorDefaultStyle'
 
 depp.require(['tabulator', 'DOM'], tab1)
 
