@@ -1,2 +1,51 @@
-<head><script>var _start=Date.now()
-window.ENV='0'</script><title></title><meta charset='utf-8'><meta content='width=device-width,initial-scale=1,shrink-to-fit=no' name='viewport'><script src='https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js'></script><style>html{touch-action:manipulation}.delayShowing{opacity:0}.blur{-webkit-filter:blur(2px);filter:blur(2px)}</style><link href='https://unpkg.laska.io/mtool-belt@1.7.5/bootStrap/css/bootstrapTop.css' rel='stylesheet'><script src='https://unpkg.laska.io/mtool-belt@1.7.5/toolBelt.min.js'></script><script src='/assets/js/loader.js' defer='true'></script><script src='/assets/js/data.js'></script></head><body><p>oh hi app</p><div id='table1'></div><style>.tabulator-col{height:40px}.tabulator-cell{height:40px}</style><!-- mB v6.07.08 on 2019-06-29T19:48:33.083Z --></body>
+
+<head>
+  <script>
+    var _start = Date.now()
+    window.ENV = '0' // for comps, but it is also in scope for Pug for ENV logic
+    
+  </script>
+  <title></title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
+  <style>
+    html { touch-action: manipulation; }
+    .delayShowing { opacity: 0; }
+    .blur { -webkit-filter:blur(2px);filter:blur(2px); }
+    
+  </style>
+  <link rel="stylesheet" href="https://unpkg.laska.io/mtool-belt@1.7.5/bootStrap/css/bootstrapTop.css"/>
+  <script src="https://unpkg.laska.io/mtool-belt@1.7.5/toolBelt.min.js"></script>
+  <script src="/assets/js/loader.js" defer="true"></script>
+  <script src="/assets/js/data.js"></script>
+</head>
+<body>
+  <p>oh hi app</p>
+  <div>
+    <form class="grid-form">
+      <fieldset>
+        <legend>Form Section</legend>
+        <div data-row-span="2">
+          <div data-field-span="1">
+            <label>Field 1</label>
+            <input type="text"/>
+          </div>
+          <div data-field-span="1">
+            <label>Field 2</label>
+            <input type="text"/>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="blur" id="table1"></div>
+  <style>
+    .tabulator-col {
+       height: 40px;
+    }
+    .tabulator-cell {
+       height: 40px;
+    }
+  </style>
+<!-- mB v6.07.08 on 2019-06-29T21:02:18.978Z --></body>

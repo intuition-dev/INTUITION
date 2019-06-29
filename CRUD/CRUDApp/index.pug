@@ -5,7 +5,20 @@ head
 body
    p oh hi app
 
-   div#table1   
+   div
+      form.grid-form
+         fieldset
+            legend Form Section
+            div(data-row-span='2')
+               div(data-field-span='1')
+                  label Field 1
+                  input(type='text')
+               div(data-field-span='1')
+                  label Field 2
+                  input(type='text')
+
+
+   div#table1.blur
    style.
       .tabulator-col {
          height: 40px;

@@ -1,15 +1,12 @@
 
-
-depp.require(['FontsLoaded', 'bsDefaultStyle', 'tabulatorDefaultStyle'], function() {
-   console.log('styles')
+depp.require(['FontsLoaded', 'bsDefaultStyle'], function() {
+   console.log('styles', Date.now() - _start)
 }) 
 
-depp.require(['tabulator', 'DOM', 'polly'], tab1)
+depp.require(['tabulator', 'tabulatorDefaultStyle', 'DOM', 'polly', 'jquery'], tab1)
 
 function tab1() {
-
-   var table = new Tabulator('#table1', {
-      data:tabledata, //assign data to table
+   window.table1 = new Tabulator('#table1', {
       layout:"fitColumns", //fit columns to width of table (optional)
 
       columns:[ //Define Table Columns
@@ -24,4 +21,21 @@ function tab1() {
    })
    console.log('tab1')
 
+   // 2 possibilities, imposable to predict
+   addEventListener('gotData', function(evt){
+      console.log(evt)   
+      onGotData(evt.detail)
+   })   
+   if(window.table1data) onGotData('data ahead')
 }
+
+function onGotData(evt) {
+   console.log('gotData1', evt)
+   window.table1.setData(window.table1data).then(function(){
+      console.log('gotData2')
+      $('.blur').removeClass('blur')
+   })
+}//()
+
+
+

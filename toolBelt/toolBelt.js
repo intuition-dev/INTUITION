@@ -10,12 +10,6 @@ Any locally hosted lib is because we can't find it on a CDN or they have poor bu
  */
 console.log('Ver:','unpkg.laska.io/mtool-belt@1.7.5/')
 
-/*
-if (!depp.isDefined('jquery')) {
-  // ... 
-}
-and then you can depp.require(...)
-*/
 
 function onDOM_() {
   console.log('DOM')
@@ -463,7 +457,7 @@ depp.require(['DOM'], function () {
   setTimeout(function(){
     depp.done('DOMDelayed')
     toolBeltDefault()
-  }, 150)
+  }, 50)
   window.addEventListener('scroll', onBrowser)
   window.addEventListener('resize', onBrowser)
   onBrowser()//call it once to layout

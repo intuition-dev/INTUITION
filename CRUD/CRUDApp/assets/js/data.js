@@ -1,5 +1,5 @@
   
-var tabledata = [
+window.table1data = [
    {id:2, name:"Mary May", age:"1", col:"blue" },
    {id:3, name:"Christine Lobowski", age:"42", col:"green"},
    {id:4, name:"Brendon Philips", age:"125", col:"orange" },
@@ -9,6 +9,6 @@ var tabledata = [
 depp.require(['RPC', 'polly'], onPoly)
 
 function onPoly() {
-   console.log('data')
-   disE('gotData')
+   console.log('data', Date.now() - _start)
+   disE('gotData', 'OK')
 }
