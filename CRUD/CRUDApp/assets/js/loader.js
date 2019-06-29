@@ -1,6 +1,6 @@
 
 depp.require(['bsDefaultStyle', 'tabulatorDefaultStyle', 'FontsLoaded'], function() {
-   console.log('ready')
+   console.log('styles')
 }) 
 
 depp.require('tabulator', function(){
