@@ -4,16 +4,9 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'tabulatorDefaultStyle'], functio
    console.log('styles')
 }) 
 
-depp.require(['tabulator', 'DOM'], tab1)
+depp.require(['tabulator', 'DOM', 'polly'], tab1)
 
 function tab1() {
-   
-   var tabledata = [
-      {id:2, name:"Mary May", age:"1", col:"blue" },
-      {id:3, name:"Christine Lobowski", age:"42", col:"green"},
-      {id:4, name:"Brendon Philips", age:"125", col:"orange" },
-      {id:5, name:"Margret Marmajuke", age:"16", col:"yellow" },
-   ]
 
    var table = new Tabulator('#table1', {
       data:tabledata, //assign data to table

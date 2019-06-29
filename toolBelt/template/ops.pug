@@ -1,0 +1,15 @@
+//- insert in layout after headFrag
+//- data goes in head
+//- fonts and full style last
+
+script(src='ops.js')
+
+case ENV 
+   when 3
+      script.
+         console.log('DevOps ', 3)
+         // load some first like error logs...
+
+   default
+      script.
+         console.log('DevOps', 0)

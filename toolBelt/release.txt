@@ -1,0 +1,6 @@
+(once you release component - you have to register it here)
+rename unpkg.laska.io/mtool-belt@1.7.5/ globally via VS Code. It should be like 100 places in all of git.
+mbake -t .
+bump package.json
+npm publish
+no need to do a mbake release, people can just edit the headFrag.

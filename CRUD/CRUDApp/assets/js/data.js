@@ -6,8 +6,9 @@ var tabledata = [
    {id:5, name:"Margret Marmajuke", age:"16", col:"yellow" },
 ]
 
-depp.require('RPC', onPoly)
+depp.require(['RPC', 'polly'], onPoly)
 
 function onPoly() {
    console.log('data')
+   disE('gotData')
 }
