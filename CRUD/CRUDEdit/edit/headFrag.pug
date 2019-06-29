@@ -1,6 +1,6 @@
 script.
    var _start = Date.now()
-   window.ENV = '#{ENV}' // for comps, but it is also in scape for Pug for ENV logic
+   window.ENV = '#{ENV}' // for comps, but it is also in scope for Pug for ENV logic
 
 title #{title}
 meta(charset='utf-8')
@@ -11,6 +11,8 @@ style.
    .delayShowing { opacity: 0; }
    .blur { -webkit-filter:blur(2px);filter:blur(2px); }
 
+link(rel='stylesheet', href='https://unpkg.laska.io/mtool-belt@1.7.4/bootStrap/css/bootstrapTop.css')
 script(src='https://unpkg.laska.io/mtool-belt@1.7.4/toolBelt.min.js')
-//script(src='toolBelt.js')
-//script(src='other.js')
+
+script(src='loader.js', defer='true')
+

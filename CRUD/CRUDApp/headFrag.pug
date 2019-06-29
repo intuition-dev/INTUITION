@@ -1,0 +1,17 @@
+script.
+   var _start = Date.now()
+   window.ENV = '#{ENV}' // for comps, but it is also in scope for Pug for ENV logic
+
+title #{title}
+meta(charset='utf-8')
+meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+script(src='https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js')
+style.
+   html { touch-action: manipulation; }
+   .delayShowing { opacity: 0; }
+   .blur { -webkit-filter:blur(2px);filter:blur(2px); }
+
+link(rel='stylesheet', href='https://unpkg.laska.io/mtool-belt@1.7.4/bootStrap/css/bootstrapTop.css')
+script(src='https://unpkg.laska.io/mtool-belt@1.7.4/toolBelt.min.js')
+
+script(src='loader.js', defer='true')
