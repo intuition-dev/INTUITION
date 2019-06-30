@@ -9,6 +9,6 @@ window.table1data = [
 depp.require(['RPC', 'polly'], onPoly)
 
 function onPoly() {
-   console.log('data', Date.now() - _start)
+   console.log('data in flight', Date.now() - _start)
    disE('gotData', 'OK')
 }

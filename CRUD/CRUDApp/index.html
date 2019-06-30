@@ -11,8 +11,6 @@
   <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
   <style>
     html { touch-action: manipulation; }
-    .delayShowing { opacity: 0; }
-    .blur { -webkit-filter:blur(2px);filter:blur(2px); }
     
   </style>
   <link rel="stylesheet" href="https://unpkg.laska.io/mtool-belt@1.7.5/bootStrap/css/bootstrapTop.css"/>
@@ -21,10 +19,11 @@
   <script src="/assets/js/data.js"></script>
 </head>
 <body>
-  <p>oh hi app</p>
-  <div>
+  <div class="container delayShowing">
+    <p></p>
+    <p>oh hi app</p>
     <form class="grid-form">
-      <fieldset>
+      <fieldset class="blurF">
         <legend>Form Section</legend>
         <div data-row-span="2">
           <div data-field-span="1">
@@ -38,14 +37,23 @@
         </div>
       </fieldset>
     </form>
+    <div class="blurT" id="table1"></div>
   </div>
-  <div class="blur" id="table1"></div>
   <style>
+    .delayShowing { opacity: .4; }
+    .blurT, .blurF { 
+       -webkit-filter:blur(2px);
+       filter:blur(2px); 
+    }
+    
     .tabulator-col {
        height: 40px;
     }
     .tabulator-cell {
        height: 40px;
     }
+    .grid-form > fieldset > legend {
+       margin: 0;
+    }
   </style>
-<!-- mB v6.07.08 on 2019-06-29T21:02:18.978Z --></body>
+<!-- mB v6.07.08 on 2019-06-30T01:05:23.515Z --></body>

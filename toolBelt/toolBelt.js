@@ -104,9 +104,10 @@ depp.define({
    ,'IntuAPI': ['#RPC','https://https://unpkg.laska.io/intu@0.9.12/www/assets/IntuAPI/IntuAPI.min.js']
 
    ,'bsDefaultStyle': ['https://unpkg.laska.io/mtool-belt@1.7.5/bootStrap/css/bootstrap.css'
-                      ,'https://cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css'
-                      ,'#bs', '#gridformsJS']
+                      ,'#bs' ]
 
+    ,'gridformsDefaultStyle': ['https://cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css']
+    ,'gridformsJS'          : ['https://cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.js']
 
    ,'wcomp-loader':'https://unpkg.laska.io/@webcomponents/webcomponentsjs@2.2.10/webcomponents-loader.js'
    ,'es5-adapter' :'https://unpkg.laska.io/@webcomponents/webcomponentsjs@2.2.10/custom-elements-es5-adapter.js'
@@ -174,7 +175,6 @@ depp.define({
    ,'progressBar' :'https://cdn.jsdelivr.net/npm/progressbar.js@1.0.1/dist/progressbar.min.js'
    ,'zebraDate'   :['https://cdn.jsdelivr.net/npm/zebra_datepicker@1.9.12/dist/css/bootstrap/zebra_datepicker.css',
                    'https://cdn.jsdelivr.net/npm/zebra_datepicker@1.9.12/dist/zebra_datepicker.min.js']
-   ,'gridformsJS':['https://cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.js']
 
    ,'accordion': ['#jquery'
                   ,'https://unpkg.laska.io/mtool-belt@1.7.5/vendors/jquery-accordion/js/jquery.accordion.min.js'

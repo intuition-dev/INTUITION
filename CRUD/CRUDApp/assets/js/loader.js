@@ -1,13 +1,22 @@
+depp.define({
+   'gridformsDefaultStyle': ['https://cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',  '#jquery' ]
+})
+depp.require('gridformsDefaultStyle', function(){
+   console.log('gf')
+   $('.blurF').removeClass('blurF')
+})
 
 depp.require(['FontsLoaded', 'bsDefaultStyle'], function() {
    console.log('styles', Date.now() - _start)
+   $('.delayShowing').removeClass('delayShowing')
+
 }) 
 
 depp.require(['tabulator', 'tabulatorDefaultStyle', 'DOM', 'polly', 'jquery'], tab1)
 
 function tab1() {
    window.table1 = new Tabulator('#table1', {
-      layout:"fitColumns", //fit columns to width of table (optional)
+      layout:"fitColumns", 
 
       columns:[ //Define Table Columns
          {title:"Name", field:"name", width:150},
@@ -15,13 +24,13 @@ function tab1() {
          {title:"Favourite Color", field:"col"},
       ],
 
-      rowClick:function(e, row){ //trigger an alert message when the row is clicked
+      rowClick:function(e, row){ d
          //alert("Row " + row.getData().id + " Clicked!!!!");
       }
    })
    console.log('tab1')
 
-   // 2 possibilities, imposable to predict
+   // 2 possibilities, impossible to predict
    addEventListener('gotData', function(evt){
       console.log(evt)   
       onGotData(evt.detail)
@@ -33,7 +42,7 @@ function onGotData(evt) {
    console.log('gotData1', evt)
    window.table1.setData(window.table1data).then(function(){
       console.log('gotData2')
-      $('.blur').removeClass('blur')
+      $('.blurT').removeClass('blurT')
    })
 }//()
 

@@ -3,11 +3,12 @@ head
    script(src='/assets/js/data.js')
 
 body
-   p oh hi app
+   .container.delayShowing
+      p
+      p oh hi app
 
-   div
       form.grid-form
-         fieldset
+         fieldset.blurF
             legend Form Section
             div(data-row-span='2')
                div(data-field-span='1')
@@ -18,11 +19,21 @@ body
                   input(type='text')
 
 
-   div#table1.blur
+      #table1.blurT
+
    style.
+      .delayShowing { opacity: .4; }
+      .blurT, .blurF { 
+         -webkit-filter:blur(2px);
+         filter:blur(2px); 
+      }
+
       .tabulator-col {
          height: 40px;
       }
       .tabulator-cell {
          height: 40px;
+      }
+      .grid-form > fieldset > legend {
+         margin: 0;
       }
