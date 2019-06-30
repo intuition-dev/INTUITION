@@ -1,32 +1,40 @@
 
 const sqlite3 = require('sqlite3').verbose()
-
 import { BaseDB } from 'mbake/lib/BaseDB'
 
-// const fs = require('fs-extra')
+const fs = require('fs-extra')
 
 /**
- * Example DB: to discuss topics
+ * Example CRUD DB: to discuss topics
  */
 export class CDB extends BaseDB { 
 
    static db
+
+   /* if DB does not exists, create it */
+   dbExists() {
+      return fs.existsSync('./CDB.sqlite')
+   }
 
    con() {
       if(CDB.db) {
          console.log('connection exists')
          return
       }
-
       console.log('new connection')
       CDB.db =  new sqlite3.Database('./CDB.sqlite')
    }
    
-   async initSchema() {
+   async init() {
+      if(this.dbExists())  {
+         // if db exists, connect an exit
+            this.con()
+         return
+      }//fi
       if(!(CDB.db)) {
          console.log('no connection made')
          this.con()
-      }
+      }//fi
 
       CDB.db.exec(`DROP TABLE IF EXISTS TOPIC`)
 
@@ -58,11 +66,14 @@ export class CDB extends BaseDB {
       this._run(stmt, guid, name, topics )
    }
 
-   select() {
+   async select() {
+      let sarg = 'victor' //searchable argument
+      const qry =  CDB.db.prepare('SELECT * FROM TOPIC WHERE TOPIC MATCH ? ') 
+      const rows = await this._qry(qry, sarg)
+      return rows
+   }//()
 
-   }
-
-}//()
+}//class
 
 module.exports = {
    CDB
