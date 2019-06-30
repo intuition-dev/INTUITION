@@ -3114,10 +3114,10 @@ markdown-it@>=8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.7.7:
-  version "6.7.7"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.7.tgz#949d2a71eebbf966a84323ff8863832f6e150104"
-  integrity sha512-EG8oD14ygiqnMIsX52cND03XuiPUAne3Z38sNG+EhmHxqolgeHyxaI/5JECjqKmuSJ1Mn87kNuIW0ZvZ8nXj9Q==
+mbake@>=6.7.8:
+  version "6.7.8"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.8.tgz#ebc62b166269a9b326a56b4bf03f815b039a433c"
+  integrity sha512-h8s+Gdj3+yNIHrV6kiWGJkWiNphaOAmmfOj2EcSLd1o8E8X9l+VaOoUWs1xdC4swt9o0JNGdSgIeJfrxkCAcYA==
   dependencies:
     adm-zip ">=0.4.13"
     autoprefixer ">=9.6.0"
@@ -3141,12 +3141,12 @@ mbake@>=6.7.7:
     markdown-it ">=8.4.2"
     markdown-it-container ">=2.0.0"
     node-sass ">=4.12.0"
-    open ">=6.3.0"
+    open ">=6.4.0"
     pug ">=2.0.4"
     reload ">=3.0.1"
     riot-compiler "^3.6.0"
     strip-css-comments ">=4.0.0"
-    terser ">=4.0.0"
+    terser ">=4.0.1"
     tracer ">=0.9.8"
     typescript ">=3.5.2"
 
@@ -3675,7 +3675,14 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-open@>=6.3.0, open@^6.1.0:
+open@>=6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/open/-/open-6.4.0.tgz#5c13e96d0dc894686164f18965ecfe889ecfc8a9"
+  integrity sha512-IFenVPgF70fSm1keSd2iDBIDIBZkroLeuffXq+wKTzTJlBpesFWojV9lb8mzOfaAzM1sr7HQHuO0vtV0zYekGg==
+  dependencies:
+    is-wsl "^1.1.0"
+
+open@^6.1.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/open/-/open-6.3.0.tgz#60d0b845ee38fae0631f5d739a21bd40e3d2a527"
   integrity sha512-6AHdrJxPvAXIowO/aIaeHZ8CeMdDf7qCyRNq8NwJpinmCdXhz+NZR7ie1Too94lpciCDsG+qHGO9Mt0svA4OqA==
@@ -5149,10 +5156,10 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.3"
 
-terser@>=4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-4.0.0.tgz#ef356f6f359a963e2cc675517f21c1c382877374"
-  integrity sha512-dOapGTU0hETFl1tCo4t56FN+2jffoKyER9qBGoUFyZ6y7WLoKT0bF+lAYi6B6YsILcGF3q1C2FBh8QcKSCgkgA==
+terser@>=4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-4.0.1.tgz#f2e90b453cff6fb317fc33bb277517753e3e2bef"
+  integrity sha512-27+kdMOAwb9HMtSfSL1wYDwbh+zKTSFrnT76g5M0LS14XFBEqBWvFuBCLXr0Ceoxp+nlBjCBF6GAma/aoj7COA==
   dependencies:
     commander "^2.19.0"
     source-map "~0.6.1"
