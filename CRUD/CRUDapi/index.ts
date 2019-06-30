@@ -3,7 +3,6 @@ import { ExpressRPC, iAuth } from 'mbake/lib/Serv'
 
 import { CDB } from './lib/CDB'
 
-CDB.con()
 CDB.initSchema()
 
 const mainEApp = new ExpressRPC()

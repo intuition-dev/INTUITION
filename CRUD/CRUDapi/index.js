@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
 const CDB_1 = require("./lib/CDB");
-CDB_1.CDB.con();
 CDB_1.CDB.initSchema();
 const mainEApp = new Serv_1.ExpressRPC();
 mainEApp.makeInstance(['*']);

@@ -1,52 +1,57 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const sqlite = require("sqlite");
-const fs = require('fs-extra');
+var sqlite3 = require('sqlite3').verbose();
 class CDB {
-    static async con() {
+    static con() {
         if (CDB.db) {
             console.log('connection exists');
             return;
         }
-        CDB.db = await sqlite.open('./CDB.sqlite');
-        CDB.db.pragma('cache_size = 32000');
-        console.log(CDB.db.pragma('cache_size', { simple: true }));
+        console.log('new connection');
+        CDB.db = new sqlite3.Database('./CDB.sqlite');
     }
-    static async initSchema() {
-        if (!CDB.db) {
+    static initSchema() {
+        if (!(CDB.db)) {
             console.log('no connection made');
-            return;
+            CDB.con();
         }
-        await CDB.db.run(`CREATE VIRTUAL TABLE TOPICS USING fts4 (
-          guid    VARCHAR(36) PRIMARY KEY NOT NULL
-         , name   VARCHAR(60) NOT NULL 
-         , topics VARCHAR(1024)
-         , notindexed=guid
-         , compress=zip, uncompress=unzip)
-      )`);
-        await CDB.db.run(`CREATE UNIQUE index 
-         iname on TOPICS (name COLLATE NOCASE)
-      )`);
+        CDB.db.exec(`DROP TABLE IF EXISTS TOPIC`);
+        CDB.db.exec(`CREATE VIRTUAL TABLE TOPIC using fts4(
+         guid varchar(36),
+         name varchar(60),
+         topics varchar(928)
+         )`, function (err) {
+            if (err)
+                console.log(err);
+        });
         let guid = '123';
         let name = 'victor';
-        let topics = 'needs to do a code review of design; review other tasks in company; schedule vacation';
-        const stmt = await CDB.db.prepare(`INSERT INTO TOPICS(guid, name, topics) 
-            VALUES( @guid, @name, @topics))`, function (err) {
-            if (err) {
-                console.log(err);
-            }
-        });
-        await stmt.run({
-            guid: guid,
-            name: name,
-            topics: topics
+        let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation';
+        const pro1 = CDB.prep();
+        pro1.then(function (stmt) {
+            stmt.run(guid, name, topics, function (err) {
+                if (err)
+                    console.log(err);
+                else
+                    console.log('ok2');
+            });
         });
         let sarg = 'vic';
-        const qry = await CDB.db.prepare('SELECT * FROM TOPICS WHERE name MATCH @sarg');
-        const results = qry.all({
-            sarg: sarg
+        const qry = CDB.db.prepare('SELECT * FROM TOPIC WHERE name MATCH ?');
+        qry.all(sarg, function (err, rows) {
+            console.log(rows);
         });
-        console.log(results);
+    }
+    static prep() {
+        return new Promise(function (resolve, reject) {
+            const stmt = CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) 
+               VALUES( ?, ?, ?)`, function (err) {
+                if (err)
+                    reject(err);
+                else
+                    resolve(stmt);
+            });
+        });
     }
 }
 exports.CDB = CDB;
