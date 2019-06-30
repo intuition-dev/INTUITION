@@ -44,10 +44,12 @@ export class CDB {
       const stmt =  await CDB.prep(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
       await CDB.run(stmt, guid, name, topics )
       
-      let sarg = 'vic' //searchable argument
-      const qry =  CDB.db.prepare('SELECT * FROM TOPIC WHERE name MATCH ?')
+
+      let sarg = 'victor' //searchable argument
+      const qry =  CDB.db.prepare('SELECT * FROM TOPIC WHERE name = ? ') //WHERE name MATCH ?
 
       qry.all(sarg, function(err, rows){
+         console.log(err)
          console.log(rows)
       })
 
@@ -58,8 +60,8 @@ export class CDB {
       return new Promise( function (resolve, reject) {
          stmt.run( args
             , function (err) {
-               if (err) console.log(err)
-               else console.log('ok2')
+               if (err) reject(err)
+               else resolve('ok2')
             })
       })
    }//()

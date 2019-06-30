@@ -29,9 +29,10 @@ class CDB {
         let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation';
         const stmt = await CDB.prep(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`);
         await CDB.run(stmt, guid, name, topics);
-        let sarg = 'vic';
-        const qry = CDB.db.prepare('SELECT * FROM TOPIC WHERE name MATCH ?');
+        let sarg = 'victor';
+        const qry = CDB.db.prepare('SELECT * FROM TOPIC WHERE name = ? ');
         qry.all(sarg, function (err, rows) {
+            console.log(err);
             console.log(rows);
         });
     }
@@ -39,9 +40,9 @@ class CDB {
         return new Promise(function (resolve, reject) {
             stmt.run(args, function (err) {
                 if (err)
-                    console.log(err);
+                    reject(err);
                 else
-                    console.log('ok2');
+                    resolve('ok2');
             });
         });
     }
