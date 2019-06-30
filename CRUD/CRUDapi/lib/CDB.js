@@ -10,7 +10,7 @@ class CDB {
         console.log('new connection');
         CDB.db = new sqlite3.Database('./CDB.sqlite');
     }
-    static initSchema() {
+    static async initSchema() {
         if (!(CDB.db)) {
             console.log('no connection made');
             CDB.con();
@@ -27,25 +27,27 @@ class CDB {
         let guid = '123';
         let name = 'victor';
         let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation';
-        const pro1 = CDB.prep();
-        pro1.then(function (stmt) {
-            stmt.run(guid, name, topics, function (err) {
-                if (err)
-                    console.log(err);
-                else
-                    console.log('ok2');
-            });
-        });
+        const stmt = await CDB.prep(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`);
+        await CDB.run(stmt, guid, name, topics);
         let sarg = 'vic';
         const qry = CDB.db.prepare('SELECT * FROM TOPIC WHERE name MATCH ?');
         qry.all(sarg, function (err, rows) {
             console.log(rows);
         });
     }
-    static prep() {
+    static run(stmt, ...args) {
         return new Promise(function (resolve, reject) {
-            const stmt = CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) 
-               VALUES( ?, ?, ?)`, function (err) {
+            stmt.run(args, function (err) {
+                if (err)
+                    console.log(err);
+                else
+                    console.log('ok2');
+            });
+        });
+    }
+    static prep(sql) {
+        return new Promise(function (resolve, reject) {
+            const stmt = CDB.db.prepare(sql, function (err) {
                 if (err)
                     reject(err);
                 else
