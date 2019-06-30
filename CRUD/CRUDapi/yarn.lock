@@ -3086,10 +3086,10 @@ markdown-it@>=8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.7.8:
-  version "6.7.8"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.8.tgz#ebc62b166269a9b326a56b4bf03f815b039a433c"
-  integrity sha512-h8s+Gdj3+yNIHrV6kiWGJkWiNphaOAmmfOj2EcSLd1o8E8X9l+VaOoUWs1xdC4swt9o0JNGdSgIeJfrxkCAcYA==
+mbake@>=6.7.9:
+  version "6.7.9"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.9.tgz#1ab91782f2d3bd8fac95258ad6abc2ca6421e8f8"
+  integrity sha512-EJkloda0BUaMcegSoR9aFZLWDvEHprNamL0g1EFk7Q9AQjIdjHAXWyAr4fBXySrIGOT/emHpCsM0RcWJUyVRSQ==
   dependencies:
     adm-zip ">=0.4.13"
     autoprefixer ">=9.6.0"
@@ -3118,7 +3118,7 @@ mbake@>=6.7.8:
     reload ">=3.0.1"
     riot-compiler "^3.6.0"
     strip-css-comments ">=4.0.0"
-    terser ">=4.0.1"
+    terser ">=4.0.2"
     tracer ">=0.9.8"
     typescript ">=3.5.2"
 
@@ -4883,7 +4883,7 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sqlite3@^4.0.9:
+sqlite3@>=4.0.9:
   version "4.0.9"
   resolved "https://registry.yarnpkg.com/sqlite3/-/sqlite3-4.0.9.tgz#cff74550fa5a1159956815400bdef69245557640"
   integrity sha512-IkvzjmsWQl9BuBiM4xKpl5X8WCR4w0AeJHRdobCdXZ8dT/lNc1XS6WqvY35N6+YzIIgzSBeY5prdFObID9F9tA==
@@ -5102,10 +5102,10 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.3"
 
-terser@>=4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-4.0.1.tgz#f2e90b453cff6fb317fc33bb277517753e3e2bef"
-  integrity sha512-27+kdMOAwb9HMtSfSL1wYDwbh+zKTSFrnT76g5M0LS14XFBEqBWvFuBCLXr0Ceoxp+nlBjCBF6GAma/aoj7COA==
+terser@>=4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-4.0.2.tgz#580cea06c4932f46a48ed13804c93bc93c275968"
+  integrity sha512-IWLuJqTvx97KP3uTYkFVn93cXO+EtlzJu8TdJylq+H0VBDlPMIfQA9MBS5Vc5t3xTEUG1q0hIfHMpAP2R+gWTw==
   dependencies:
     commander "^2.19.0"
     source-map "~0.6.1"

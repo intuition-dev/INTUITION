@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var sqlite3 = require('sqlite3').verbose();
-class CDB {
+const sqlite3 = require('sqlite3').verbose();
+const BaseDB_1 = require("mbake/lib/BaseDB");
+class CDB extends BaseDB_1.BaseDB {
     static con() {
         if (CDB.db) {
             console.log('connection exists');
@@ -16,10 +17,10 @@ class CDB {
             CDB.con();
         }
         CDB.db.exec(`DROP TABLE IF EXISTS TOPIC`);
-        CDB.db.exec(`CREATE VIRTUAL TABLE TOPIC using fts4(
-         guid varchar(36),
-         name varchar(60),
-         topics varchar(928)
+        CDB.db.exec(`CREATE VIRTUAL TABLE TOPIC using fts5(
+         guid ,
+         name ,
+         topics 
          )`, function (err) {
             if (err)
                 console.log(err);
@@ -27,34 +28,12 @@ class CDB {
         let guid = '123';
         let name = 'victor';
         let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation';
-        const stmt = await CDB.prep(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`);
-        await CDB.run(stmt, guid, name, topics);
+        const stmt = CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`);
+        await this.run(stmt, guid, name, topics);
         let sarg = 'victor';
-        const qry = CDB.db.prepare('SELECT * FROM TOPIC WHERE name = ? ');
-        qry.all(sarg, function (err, rows) {
-            console.log(err);
-            console.log(rows);
-        });
-    }
-    static run(stmt, ...args) {
-        return new Promise(function (resolve, reject) {
-            stmt.run(args, function (err) {
-                if (err)
-                    reject(err);
-                else
-                    resolve('ok2');
-            });
-        });
-    }
-    static prep(sql) {
-        return new Promise(function (resolve, reject) {
-            const stmt = CDB.db.prepare(sql, function (err) {
-                if (err)
-                    reject(err);
-                else
-                    resolve(stmt);
-            });
-        });
+        const qry = CDB.db.prepare('SELECT * FROM TOPIC WHERE TOPIC MATCH ? ');
+        const rows = await this.qry(qry, sarg);
+        console.log(rows);
     }
 }
 exports.CDB = CDB;

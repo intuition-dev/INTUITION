@@ -1,12 +1,14 @@
 
-var sqlite3 = require('sqlite3').verbose()
+const sqlite3 = require('sqlite3').verbose()
+
+import { BaseDB } from 'mbake/lib/BaseDB'
 
 // const fs = require('fs-extra')
 
 /**
  * Example DB: to discuss topics
  */
-export class CDB { 
+export class CDB extends BaseDB { 
 
    static db
 
@@ -29,10 +31,10 @@ export class CDB {
       CDB.db.exec(`DROP TABLE IF EXISTS TOPIC`)
 
       // FTS
-       CDB.db.exec(`CREATE VIRTUAL TABLE TOPIC using fts4(
-         guid varchar(36),
-         name varchar(60),
-         topics varchar(928)
+       CDB.db.exec(`CREATE VIRTUAL TABLE TOPIC using fts5(
+         guid 
+         ,name 
+         ,topics 
          )`, function (err) { if (err)  console.log(err)
       })
 
@@ -41,39 +43,14 @@ export class CDB {
       let name = 'victor'
       let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation'
 
-      const stmt =  await CDB.prep(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
-      await CDB.run(stmt, guid, name, topics )
-      
+      const stmt =  CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
+      await this.run(stmt, guid, name, topics )
 
       let sarg = 'victor' //searchable argument
-      const qry =  CDB.db.prepare('SELECT * FROM TOPIC WHERE name = ? ') //WHERE name MATCH ?
-
-      qry.all(sarg, function(err, rows){
-         console.log(err)
-         console.log(rows)
-      })
-
-   }//()
-
-   // ////////////////////////////////
-   static run(stmt, ...args):Promise<any> {
-      return new Promise( function (resolve, reject) {
-         stmt.run( args
-            , function (err) {
-               if (err) reject(err)
-               else resolve('ok2')
-            })
-      })
-   }//()
-
-
-   static prep(sql):Promise<any> {
-      return new Promise( function (resolve, reject) {
-         const stmt =  CDB.db.prepare( sql, function (err) {
-            if (err) reject(err)
-            else resolve(stmt)
-         }) 
-      })//pro
+      const qry =  CDB.db.prepare('SELECT * FROM TOPIC WHERE TOPIC MATCH ? ') 
+      const rows = await this.qry(qry, sarg)
+      console.log(rows)
+      
    }//()
 
 
