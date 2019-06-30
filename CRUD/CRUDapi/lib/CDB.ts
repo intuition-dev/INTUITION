@@ -12,7 +12,7 @@ export class CDB extends BaseDB {
 
    static db
 
-   static  con() {
+   con() {
       if(CDB.db) {
          console.log('connection exists')
          return
@@ -22,10 +22,10 @@ export class CDB extends BaseDB {
       CDB.db =  new sqlite3.Database('./CDB.sqlite')
    }
    
-   static  async initSchema() {
+   async initSchema() {
       if(!(CDB.db)) {
          console.log('no connection made')
-         CDB.con()
+         this.con()
       }
 
       CDB.db.exec(`DROP TABLE IF EXISTS TOPIC`)
@@ -44,15 +44,23 @@ export class CDB extends BaseDB {
       let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation'
 
       const stmt =  CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
-      await this.run(stmt, guid, name, topics )
+      await this._run(stmt, guid, name, topics )
 
       let sarg = 'victor' //searchable argument
       const qry =  CDB.db.prepare('SELECT * FROM TOPIC WHERE TOPIC MATCH ? ') 
-      const rows = await this.qry(qry, sarg)
+      const rows = await this._qry(qry, sarg)
       console.log(rows)
       
    }//()
 
+   insert(guid, name, topics) {
+      const stmt =  CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
+      this._run(stmt, guid, name, topics )
+   }
+
+   select() {
+
+   }
 
 }//()
 

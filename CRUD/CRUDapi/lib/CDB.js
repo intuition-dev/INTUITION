@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sqlite3 = require('sqlite3').verbose();
 const BaseDB_1 = require("mbake/lib/BaseDB");
 class CDB extends BaseDB_1.BaseDB {
-    static con() {
+    con() {
         if (CDB.db) {
             console.log('connection exists');
             return;
@@ -11,16 +11,16 @@ class CDB extends BaseDB_1.BaseDB {
         console.log('new connection');
         CDB.db = new sqlite3.Database('./CDB.sqlite');
     }
-    static async initSchema() {
+    async initSchema() {
         if (!(CDB.db)) {
             console.log('no connection made');
-            CDB.con();
+            this.con();
         }
         CDB.db.exec(`DROP TABLE IF EXISTS TOPIC`);
         CDB.db.exec(`CREATE VIRTUAL TABLE TOPIC using fts5(
-         guid ,
-         name ,
-         topics 
+         guid 
+         ,name 
+         ,topics 
          )`, function (err) {
             if (err)
                 console.log(err);
@@ -29,11 +29,17 @@ class CDB extends BaseDB_1.BaseDB {
         let name = 'victor';
         let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation';
         const stmt = CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`);
-        await this.run(stmt, guid, name, topics);
+        await this._run(stmt, guid, name, topics);
         let sarg = 'victor';
         const qry = CDB.db.prepare('SELECT * FROM TOPIC WHERE TOPIC MATCH ? ');
-        const rows = await this.qry(qry, sarg);
+        const rows = await this._qry(qry, sarg);
         console.log(rows);
+    }
+    insert(guid, name, topics) {
+        const stmt = CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`);
+        this._run(stmt, guid, name, topics);
+    }
+    select() {
     }
 }
 exports.CDB = CDB;
