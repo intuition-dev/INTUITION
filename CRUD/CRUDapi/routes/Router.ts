@@ -8,7 +8,7 @@ export class Router {
 
    constructor() {
       this.cdb =new CDB()
-      this..init()
+      this.cdb.init()
       /* for dev only
       .then(function(){
          cdb.selectAll()
@@ -16,7 +16,7 @@ export class Router {
       */
    }
 
-   CRUD(req, res) {
+   async CRUD(req, resp) {
 
       const user = req.fields.user // user, for example to check if allowed to work with company in params
       const pswd = req.fields.pswd
@@ -25,42 +25,51 @@ export class Router {
       const params = JSON.parse( req.fields.params )
    
       if('selectOne'==method) { // RPC for the page could handle several methods, eg one for each of CRUD
-         let a = params.a
-         let b = params.b
+         let id = params.id
 
          const resp:any= {} // new response
 
          resp.result = 0
    
-         resp.type = ''//eg array
-         resp.ispacked = false
-         console.log(resp)
-         res.json(resp)
+         this.ret(resp, await this.cdb.selectAll())
 
       } else if('selectAll'==method) { 
 
-         const resp:any= {} // new response
-         resp.result = await this.cdb.selectAll()
-         resp.type = ''//eg array
-         resp.ispacked = false
-         console.log(resp)
-         res.json(resp)
+         this.ret(resp, await this.cdb.selectAll())
 
       } else if('insert'==method) { 
       
       
       }
 
-      const resp:any= {} // new response
-      resp.errorLevel = -1
-      resp.errorMessage = 'mismatch'
-      console.log(resp)
-      res.json(resp)
-      
-      console.info()
+      this.retErr(resp, 'no such method')
+   }
+
+   /**
+    * returns a response
+    * @param resp http response
+    * @param result data
+    */
+   ret(resp, result) {
+      const ret:any= {} // new return
+      ret.result = result
+      resp.json(ret)
+   }
+
+   /**
+    * returns an error
+    * @param resp http response
+    * @param msg error msg
+    */
+   retErr(resp, msg) {
+      const ret:any= {} // new return
+      ret.errorLevel = -1
+      ret.errorMessage = msg
+      resp.json(resp)
    }
 
 }//class
+
 
 
 module.exports = {

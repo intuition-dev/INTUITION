@@ -1,6 +1,7 @@
 
+// spin
 
-depp.require('gridformsDefaultStyle', function(){
+depp.require(['gridformsDefaultStyle', 'jquery'], function(){
    console.log('gf')
    $('.blurF').removeClass('blurF')
 })
