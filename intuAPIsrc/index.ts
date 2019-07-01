@@ -103,16 +103,10 @@ function mainAppsetup(mainEApp, port) {
    const eA = new EditorRoutes(mainEApp, adbDB);
    const aA = new AdminRoutes(mainEApp, adbDB);
 
-   // eA.routes(adbDB, host);     
    mainEApp.handleRRoute('/api', 'editors', eA.ROUTES)
    mainEApp.handleRRoute('/api', 'admin', aA.ROUTES)
 
-   // mainEApp.appInst.use('/api/admin', function(req, res, next) {
-   //    console.log('==== admin route')
-   //    adminRoutes.routes(adbDB, host, port);
-   //    next();
-   // });
-   // adminRoutes(adbDB, host, port, mainEApp);
+   adminRoutes(adbDB, host, port, mainEApp);
 
    mainEApp.serveStatic(path.join(__dirname, '/'))
      
