@@ -101,6 +101,7 @@ function runAdmin(port) {
 function mainAppsetup(mainEApp, port) {
    const host = [hostIP + port, config.cors]
    const eA = new EditorRoutes(mainEApp);
+   const aA = new EditorRoutes(mainEApp);
 
    // eA.routes(adbDB, host);     
    mainEApp.handleRRoute('/api', 'editors', eA.ROUTES)

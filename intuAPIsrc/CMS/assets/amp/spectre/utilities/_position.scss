@@ -1,0 +1,54 @@
+// Position
+.clearfix {
+  @include clearfix();
+}
+
+.float-left {
+  float: left  ;
+}
+
+.float-right {
+  float: right  ;
+}
+
+.p-relative {
+  position: relative  ;
+}
+
+.p-absolute {
+  position: absolute  ;
+}
+
+.p-fixed {
+  position: fixed  ;
+}
+
+.p-sticky {
+  position: sticky  ;
+}
+
+.p-centered {
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-centered {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+// Spacing
+@include margin-variant(0, 0);
+
+@include margin-variant(1, $unit-1);
+
+@include margin-variant(2, $unit-2);
+
+@include padding-variant(0, 0);
+
+@include padding-variant(1, $unit-1);
+
+@include padding-variant(2, $unit-2);
