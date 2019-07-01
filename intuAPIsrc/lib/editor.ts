@@ -5,6 +5,7 @@ import { CSV2Json } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
 import { ExpressRPC, iAuth } from 'mbake/lib/Serv';
 import { ADB } from './ADB';
+import { Auth } from './Auth';
 
 const fs = require('fs-extra')
 
@@ -17,10 +18,10 @@ export class EditorRoutes {
    constructor(appE, adbDB) {
       this.appE = appE
       this.adbDB = adbDB
-      // this.iauth = new iAuth();
+      this.iauth = new Auth(appE, adbDB);
    }
 
-   ROUTES(req, res, ) {
+   ROUTES = (req, res, ) => {
       const emailJs = new Email();
       const fs = require('fs');
       const path = require('path');
@@ -68,7 +69,6 @@ export class EditorRoutes {
                return res.json(resp);
             })
       } else if (method === 'check-editor') {
-
          return this.iauth.auth(user, pswd, res).then(auth => {
 
             //    /*
@@ -103,11 +103,11 @@ export class EditorRoutes {
 
                if ('check-editor' == method) {
                   resp.result = {}
-      
+
                   try {
                      resp.result = true
                      return res.json(resp)
-      
+
                   } catch (err) {
                      // next(err);
                   }
@@ -195,17 +195,17 @@ export class EditorRoutes {
                let pathPrefix = params.pathPrefix;
                let content = params.content;
                content = Buffer.from(content, 'base64');
-               
+
                if (typeof post_id !== 'undefined') {
-               
+
                   let md = '/' + pathPrefix + post_id;
-               
+
                   let fileOps = new FileOps(mountPath);
                   fileOps.write(md, content);
-               
+
                   let dirCont = new Dirs(mountPath);
                   let substring = '/';
-               
+
                   // add /archive
                   let checkDat = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('dat.yaml'));
                   if (checkDat.length > 0) {
@@ -213,23 +213,23 @@ export class EditorRoutes {
                      if (!fs.existsSync(mountPath + archivePath)) {
                         fs.mkdirSync(mountPath + archivePath);
                      }
-               
+
                      let archiveFileOps = new FileOps(mountPath + archivePath);
-               
+
                      let extension = path.extname(post_id);
                      let fileName = path.basename(post_id, extension);
                      let count = archiveFileOps.count(path.basename(post_id));
                      let archiveFileName = '/' + fileName + extension + '.' + count;
                      archiveFileOps.write(archiveFileName, content);
                   }
-               
+
                   if (pathPrefix.includes(substring)) {
                      pathPrefix = pathPrefix.substr(0, pathPrefix.indexOf('/'));
                   }
-               
+
                   resp.result = { data: 'OK' };
                   res.json(resp);
-               
+
                } else {
                   res.status(400);
                   resp.result = { error: 'no post_id' };
@@ -245,20 +245,20 @@ export class EditorRoutes {
 
                let post_id = params.post_id;
                let pathPrefix = params.pathPrefix;
-      
+
                if (typeof post_id !== 'undefined') {
-      
+
                   let runMbake = new MBake();
                   let dirCont = new Dirs(mountPath);
-      
+
                   let checkCsv = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('.csv'));
                   if (checkCsv.length > 0) {
                      let compileCsv = new CSV2Json(mountPath + '/' + pathPrefix);
                      compileCsv.convert();
                   }
-      
+
                   let checkDat_i = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('dat_i.yaml'));
-      
+
                   //need to check what type of file is currently saving and run function based on it, eg: itemizeNbake, or comps
                   if (checkDat_i.length > 0) {
                      // this is for yaml
@@ -280,7 +280,7 @@ export class EditorRoutes {
                         res.json(resp);
                      })
                   }
-      
+
                } else {
                   res.status(400);
                   resp.result = { error: 'no post_id' };
@@ -297,7 +297,7 @@ export class EditorRoutes {
 
                let post_id = params.post_id;
                let pathPrefix = params.pathPrefix;
-      
+
                if (typeof post_id !== 'undefined'
                   && typeof pathPrefix !== 'undefined'
                ) {
@@ -313,7 +313,7 @@ export class EditorRoutes {
                   }
                   let fileOps = new FileOps('/');
                   fileOps.clone(postPath, newPost);
-      
+
                   resp.result = { data: 'OK' };
                   res.json(resp);
                } else {
@@ -332,21 +332,21 @@ export class EditorRoutes {
 
                let uploadPath;
                let pathPrefix = params.pathPrefix;
-      
+
                if (Object.keys(req.files).length == 0) {
                   res.status(400);
                   resp.result = { error: 'no file was uploaded' };
                   return res.json(resp);
                }
-      
+
                // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
                let sampleFile = req.files.sampleFile;
                uploadPath = mountPath + '/' + pathPrefix + '/' + sampleFile.name;
-      
+
                // console.log('UPLOAD', uploadPath, sampleFile.path);
                fs.rename(sampleFile.path, uploadPath, function (err) {
                   if (err) throw err;
-      
+
                   resp.result = { data: 'File uploaded!' };
                   res.json(resp);
                });
@@ -379,7 +379,7 @@ export class EditorRoutes {
             }
          });
 
-      } else if (method === 'mbake-version') { 
+      } else if (method === 'mbake-version') {
 
          resp.result = Ver.ver();
          res.json(resp);

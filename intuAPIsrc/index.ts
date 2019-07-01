@@ -99,7 +99,6 @@ function runAdmin(port) {
 }
 
 function mainAppsetup(mainEApp, port) {
-   const host = [hostIP + port, config.cors]
    const eA = new EditorRoutes(mainEApp, adbDB);
    const aA = new AdminRoutes(mainEApp, adbDB);
 
