@@ -3,15 +3,80 @@ import { MBake, Ver } from 'mbake/lib/Base';
 import { Dat, FileOps, Dirs } from 'mbake/lib/FileOpsBase'
 import { CSV2Json } from 'mbake/lib/FileOpsExtra';
 import { Email } from './Email';
-import { ExpressRPC } from 'mbake/lib/Serv';
+import { ExpressRPC, iAuth } from 'mbake/lib/Serv';
+import { ADB } from './ADB';
 
 const fs = require('fs-extra')
 
 export class EditorRoutes {
 
-   appE:ExpressRPC
-   constructor(appE) {
+   appE: ExpressRPC
+   adbDB: ADB;
+   iauth: iAuth;
+
+   constructor(appE, adbDB) {
       this.appE = appE
+      this.adbDB = adbDB
+      // this.iauth = new iAuth();
+   }
+
+   ROUTES(req, res, ) {
+      const emailJs = new Email();
+
+      const user = req.fields.user
+      const pswd = req.fields.pswd
+
+      const method = req.fields.method
+      const params = JSON.parse(req.fields.params)
+      const resp: any = {}
+
+      if (method === 'resetPasswordCode') {
+         let email = params.admin_email;
+         resp.result = {};
+
+         try {
+            return this.adbDB.sendVcodeEditor(email)
+               .then(function (code) {
+                  this.adbDB.getEmailJsSettings()
+                     .then(settings => {
+                        let setting = settings[0];
+                        emailJs.send(
+                           email,
+                           setting.emailjsService_id,
+                           setting.emailjsTemplate_id,
+                           setting.emailjsUser_id,
+                           'your code: ' + code
+                        )
+                        resp.result = true;
+                        return res.json(resp);
+                     });
+               })
+         } catch (err) {
+            return res.json(resp);
+         }
+
+      } else if (method === 'resetPassword') {
+         resp.result = {};
+         let email = params.admin_email;
+
+         return this.adbDB.resetPasswordEditor(email, params.code, params.password)
+            .then(function (result) {
+               resp.result = result;
+               return res.json(resp);
+            })
+      } else if (method === 'checkEditor') {
+         return this.iauth.auth(user, pswd, res).then(auth => {
+            if (auth === 'admin') {
+
+            } else if (auth === 'editor') {
+
+            }
+         });
+      }
+
+      resp.errorLevel = -1
+      resp.errorMessage = 'mismatch'
+      res.json(resp);
    }
 
    routes(adbDB, host) {
@@ -19,7 +84,7 @@ export class EditorRoutes {
       const fs = require('fs');
       const path = require('path');
       let mountPath = '';
-      
+
       // appE.use(fileUpload())
       this.appE.appInst.use((request, response, next) => {
 
@@ -140,7 +205,7 @@ export class EditorRoutes {
                resp.result = dirs.getInDir(post_id);
                // if root directory, remove all dirs from output, leave only files:
                if (post_id === '/') {
-                  resp.result = resp.result.filter(file => file.indexOf('/') === -1 && !fs.lstatSync(mountPath + '/' + file).isDirectory() );
+                  resp.result = resp.result.filter(file => file.indexOf('/') === -1 && !fs.lstatSync(mountPath + '/' + file).isDirectory());
                }
                res.json(resp);
             } else {

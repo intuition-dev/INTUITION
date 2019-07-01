@@ -102,12 +102,8 @@ function mainAppsetup(mainEApp, port) {
    const host = [hostIP + port, config.cors]
    const eA = new EditorRoutes(mainEApp);
 
-   mainEApp.appInst.use('/api/editors', function(req, res, next) {
-      eA.routes(adbDB, host);
-      console.log('==== editors route')
-      next();
-   });
-   // editorRoutes(adbDB, host, mainEApp);
+   // eA.routes(adbDB, host);     
+   mainEApp.handleRRoute('/api', 'editors', eA.ROUTES)
 
    // mainEApp.appInst.use('/api/admin', function(req, res, next) {
    //    console.log('==== admin route')
@@ -116,10 +112,8 @@ function mainAppsetup(mainEApp, port) {
    // });
    adminRoutes(adbDB, host, port, mainEApp);
 
-   mainEApp.appInst.use('/', function(req, res, next){
-      mainEApp.serveStatic(path.join(__dirname, '/'))
-      next();
-   });
+   mainEApp.serveStatic(path.join(__dirname, '/'))
+     
   
    mainEApp.appInst.listen(port, () => {
       console.log(`======================================================`);
