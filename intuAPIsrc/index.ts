@@ -3,7 +3,7 @@
 
 import { ExpressRPC } from 'mbake/lib/Serv';
 import { EditorRoutes } from './lib/editor';
-import { AdminRoutes } from './lib/admin';
+import { adminRoutes } from './lib/admin';
 import { ADB, Veri } from './lib/ADB';
 import { Email } from './lib/Email';
 import { Wa } from 'mbake/lib/Wa';
@@ -54,6 +54,8 @@ function runSetup() {
    const mainEApp = new ExpressRPC()
    mainEApp.makeInstance(host);
 
+
+   // mainEApp.handleRRoute("/setup/setup", async (req, res) => {
    mainEApp.handleRRoute('setup',"setup", async (req, res) => {
       const method = req.fields.method;
       let params = JSON.parse(req.fields.params)
@@ -97,19 +99,22 @@ function runAdmin(port) {
 }
 
 function mainAppsetup(mainEApp, port) {
-   const editorRoutes = new EditorRoutes(mainEApp)
-   const adminRoutes = new AdminRoutes(mainEApp)
    const host = [hostIP + port, config.cors]
+   const eA = new EditorRoutes(mainEApp);
 
    mainEApp.appInst.use('/api/editors', function(req, res, next) {
-      editorRoutes.routes(adbDB, host);
+      eA.routes(adbDB, host);
+      console.log('==== editors route')
       next();
    });
+   // editorRoutes(adbDB, host, mainEApp);
 
-   mainEApp.appInst.use('/api/admin', function(req, res, next) {
-      adminRoutes.routes(adbDB, host, port);
-      next();
-   });
+   // mainEApp.appInst.use('/api/admin', function(req, res, next) {
+   //    console.log('==== admin route')
+   //    adminRoutes.routes(adbDB, host, port);
+   //    next();
+   // });
+   adminRoutes(adbDB, host, port, mainEApp);
 
    mainEApp.appInst.use('/', function(req, res, next){
       mainEApp.serveStatic(path.join(__dirname, '/'))
