@@ -1,6 +1,5 @@
-depp.define({
-   'gridformsDefaultStyle': ['https://cdn.jsdelivr.net/npm/gridforms@1.0.6/gridforms/gridforms.css',  '#jquery' ]
-})
+
+
 depp.require('gridformsDefaultStyle', function(){
    console.log('gf')
    $('.blurF').removeClass('blurF')
