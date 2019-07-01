@@ -162,6 +162,10 @@ export class EditorRoutes {
                   res.json(resp);
                }
 
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
             }
          });
 
@@ -191,6 +195,10 @@ export class EditorRoutes {
                   res.json(resp);
                }
 
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
             }
          });
 
@@ -243,6 +251,10 @@ export class EditorRoutes {
                   resp.result = { error: 'no post_id' };
                   res.json(resp);
                }
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
             }
          });
 
@@ -295,6 +307,10 @@ export class EditorRoutes {
                   res.json(resp);
                }
 
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
             }
          });
 
@@ -330,6 +346,10 @@ export class EditorRoutes {
                   res.json(resp);
                }
 
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
             }
          });
 
@@ -359,6 +379,10 @@ export class EditorRoutes {
                   res.json(resp);
                });
 
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
             }
          });
 
@@ -384,6 +408,10 @@ export class EditorRoutes {
                   res.json(resp);
                }
 
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
             }
          });
 
