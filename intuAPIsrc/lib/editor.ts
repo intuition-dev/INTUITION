@@ -70,7 +70,7 @@ export class EditorRoutes {
       } else if (method === 'check-editor') {
 
          return this.iauth.auth(user, pswd, res).then(auth => {
-            
+
             //    /*
             //    * AUTH EDITORS
             //    */
@@ -129,9 +129,7 @@ export class EditorRoutes {
             //             return response.json(resp)
             //          });
 
-            if (auth === 'admin') {
-
-            } else if (auth === 'editor') {
+            if (auth === 'admin' || auth === 'editor') {
 
                if ('check-editor' == method) {
                   resp.result = {}
@@ -152,216 +150,264 @@ export class EditorRoutes {
 
       } else if (method === 'get-items') { // get dirs list
 
-         let dirs = new Dirs(mountPath);
-         let dirsToIgnore = ['.', '..'];
-         resp.result = dirs.getShort()
-            .map(el => el.replace(/^\/+/g, ''))
-            .filter(el => !dirsToIgnore.includes(el));
-         res.json(resp);
+         return this.iauth.auth(user, pswd, res).then(auth => {
+            if (auth === 'admin' || auth === 'editor') {
+
+               let dirs = new Dirs(mountPath);
+               let dirsToIgnore = ['.', '..'];
+               resp.result = dirs.getShort()
+                  .map(el => el.replace(/^\/+/g, ''))
+                  .filter(el => !dirsToIgnore.includes(el));
+               res.json(resp);
+
+            }
+         });
+
 
       } else if (method === 'get-files') { // get sub files in directory
 
-         let post_id = '/' + params.post_id;
-         if (typeof post_id !== 'undefined') {
-            let dirs = new Dirs(mountPath);
-            resp.result = dirs.getInDir(post_id);
-            // if root directory, remove all dirs from output, leave only files:
-            if (post_id === '/') {
-               resp.result = resp.result.filter(file => file.indexOf('/') === -1 && !fs.lstatSync(mountPath + '/' + file).isDirectory());
+         return this.iauth.auth(user, pswd, res).then(auth => {
+            if (auth === 'admin' || auth === 'editor') {
+
+               let post_id = '/' + params.post_id;
+               if (typeof post_id !== 'undefined') {
+                  let dirs = new Dirs(mountPath);
+                  resp.result = dirs.getInDir(post_id);
+                  // if root directory, remove all dirs from output, leave only files:
+                  if (post_id === '/') {
+                     resp.result = resp.result.filter(file => file.indexOf('/') === -1 && !fs.lstatSync(mountPath + '/' + file).isDirectory());
+                  }
+                  res.json(resp);
+               } else {
+                  res.status(400);
+                  resp.result = { error: 'no post_id' };
+                  res.json(resp);
+               }
+
             }
-            res.json(resp);
-         } else {
-            res.status(400);
-            resp.result = { error: 'no post_id' };
-            res.json(resp);
-         }
+         });
 
       } else if (method === 'get-file-content') { // get .md/.yaml/.csv/.pug/.css file 
 
-         let post_id = params.post_id;
-         let pathPrefix = params.pathPrefix;
-         if (typeof post_id !== 'undefined') {
-            let md = mountPath + '/' + pathPrefix + post_id;
-            let original_post_id = post_id.replace(/\.+\d+$/, "");
-            let fileExt = path.extname(original_post_id);
-            if (fs.existsSync(md) && (fileExt === '.md' || fileExt === '.yaml' || fileExt === '.csv' || fileExt === '.pug' || fileExt === '.css')) {
-               fs.readFile(md, 'utf8', function (err, data) {
-                  if (err) throw err;
-                  resp.result = data;
+         return this.iauth.auth(user, pswd, res).then(auth => {
+            if (auth === 'admin' || auth === 'editor') {
+
+               let post_id = params.post_id;
+               let pathPrefix = params.pathPrefix;
+               if (typeof post_id !== 'undefined') {
+                  let md = mountPath + '/' + pathPrefix + post_id;
+                  let original_post_id = post_id.replace(/\.+\d+$/, "");
+                  let fileExt = path.extname(original_post_id);
+                  if (fs.existsSync(md) && (fileExt === '.md' || fileExt === '.yaml' || fileExt === '.csv' || fileExt === '.pug' || fileExt === '.css')) {
+                     fs.readFile(md, 'utf8', function (err, data) {
+                        if (err) throw err;
+                        resp.result = data;
+                        res.json(resp);
+                     });
+                  } else {
+                     throw "Unknown file type!"
+                  }
+               } else {
+                  res.status(400);
+                  resp.result = { error: 'no post_id' };
                   res.json(resp);
-               });
-            } else {
-               throw "Unknown file type!"
+               }
+
             }
-         } else {
-            res.status(400);
-            resp.result = { error: 'no post_id' };
-            res.json(resp);
-         }
+         });
 
       } else if (method === 'save-file') { // update .md/.yaml/.csv/.pug/.css file and add archived files
 
-         let post_id = params.post_id;
-         let pathPrefix = params.pathPrefix;
-         let content = params.content;
-         content = Buffer.from(content, 'base64');
+         return this.iauth.auth(user, pswd, res).then(auth => {
+            if (auth === 'admin' || auth === 'editor') {
 
-         if (typeof post_id !== 'undefined') {
-
-            let md = '/' + pathPrefix + post_id;
-
-            let fileOps = new FileOps(mountPath);
-            fileOps.write(md, content);
-
-            let dirCont = new Dirs(mountPath);
-            let substring = '/';
-
-            // add /archive
-            let checkDat = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('dat.yaml'));
-            if (checkDat.length > 0) {
-               const archivePath = '/' + pathPrefix + '/archive';
-               if (!fs.existsSync(mountPath + archivePath)) {
-                  fs.mkdirSync(mountPath + archivePath);
+               let post_id = params.post_id;
+               let pathPrefix = params.pathPrefix;
+               let content = params.content;
+               content = Buffer.from(content, 'base64');
+               
+               if (typeof post_id !== 'undefined') {
+               
+                  let md = '/' + pathPrefix + post_id;
+               
+                  let fileOps = new FileOps(mountPath);
+                  fileOps.write(md, content);
+               
+                  let dirCont = new Dirs(mountPath);
+                  let substring = '/';
+               
+                  // add /archive
+                  let checkDat = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('dat.yaml'));
+                  if (checkDat.length > 0) {
+                     const archivePath = '/' + pathPrefix + '/archive';
+                     if (!fs.existsSync(mountPath + archivePath)) {
+                        fs.mkdirSync(mountPath + archivePath);
+                     }
+               
+                     let archiveFileOps = new FileOps(mountPath + archivePath);
+               
+                     let extension = path.extname(post_id);
+                     let fileName = path.basename(post_id, extension);
+                     let count = archiveFileOps.count(path.basename(post_id));
+                     let archiveFileName = '/' + fileName + extension + '.' + count;
+                     archiveFileOps.write(archiveFileName, content);
+                  }
+               
+                  if (pathPrefix.includes(substring)) {
+                     pathPrefix = pathPrefix.substr(0, pathPrefix.indexOf('/'));
+                  }
+               
+                  resp.result = { data: 'OK' };
+                  res.json(resp);
+               
+               } else {
+                  res.status(400);
+                  resp.result = { error: 'no post_id' };
+                  res.json(resp);
                }
-
-               let archiveFileOps = new FileOps(mountPath + archivePath);
-
-               let extension = path.extname(post_id);
-               let fileName = path.basename(post_id, extension);
-               let count = archiveFileOps.count(path.basename(post_id));
-               let archiveFileName = '/' + fileName + extension + '.' + count;
-               archiveFileOps.write(archiveFileName, content);
             }
-
-            if (pathPrefix.includes(substring)) {
-               pathPrefix = pathPrefix.substr(0, pathPrefix.indexOf('/'));
-            }
-
-            resp.result = { data: 'OK' };
-            res.json(resp);
-
-         } else {
-            res.status(400);
-            resp.result = { error: 'no post_id' };
-            res.json(resp);
-         }
+         });
 
       } else if (method === 'compile-code') { // build/compile mbake
 
-         let post_id = params.post_id;
-         let pathPrefix = params.pathPrefix;
+         return this.iauth.auth(user, pswd, res).then(auth => {
+            if (auth === 'admin' || auth === 'editor') {
 
-         if (typeof post_id !== 'undefined') {
-
-            let runMbake = new MBake();
-            let dirCont = new Dirs(mountPath);
-
-            let checkCsv = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('.csv'));
-            if (checkCsv.length > 0) {
-               let compileCsv = new CSV2Json(mountPath + '/' + pathPrefix);
-               compileCsv.convert();
-            }
-
-            let checkDat_i = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('dat_i.yaml'));
-
-            //need to check what type of file is currently saving and run function based on it, eg: itemizeNbake, or comps
-            if (checkDat_i.length > 0) {
-               // this is for yaml
-               runMbake.itemizeNBake(mountPath + '/' + pathPrefix, 3)
-                  .then(function (response) {
-                     resp.result = { data: 'OK' };
-                     res.json(resp);
-                  }, function (error) {
-                     resp.result = { data: error };
-                     res.json(resp);
-                  })
-            } else {
-               // TODO: When do we to do components? Why not just bake? md right.
-               runMbake.compsNBake(mountPath, 3).then(function (response) {
-                  resp.result = { data: 'OK' };
+               let post_id = params.post_id;
+               let pathPrefix = params.pathPrefix;
+      
+               if (typeof post_id !== 'undefined') {
+      
+                  let runMbake = new MBake();
+                  let dirCont = new Dirs(mountPath);
+      
+                  let checkCsv = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('.csv'));
+                  if (checkCsv.length > 0) {
+                     let compileCsv = new CSV2Json(mountPath + '/' + pathPrefix);
+                     compileCsv.convert();
+                  }
+      
+                  let checkDat_i = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('dat_i.yaml'));
+      
+                  //need to check what type of file is currently saving and run function based on it, eg: itemizeNbake, or comps
+                  if (checkDat_i.length > 0) {
+                     // this is for yaml
+                     runMbake.itemizeNBake(mountPath + '/' + pathPrefix, 3)
+                        .then(function (response) {
+                           resp.result = { data: 'OK' };
+                           res.json(resp);
+                        }, function (error) {
+                           resp.result = { data: error };
+                           res.json(resp);
+                        })
+                  } else {
+                     // TODO: When do we to do components? Why not just bake? md right.
+                     runMbake.compsNBake(mountPath, 3).then(function (response) {
+                        resp.result = { data: 'OK' };
+                        res.json(resp);
+                     }, function (error) {
+                        resp.result = { data: error };
+                        res.json(resp);
+                     })
+                  }
+      
+               } else {
+                  res.status(400);
+                  resp.result = { error: 'no post_id' };
                   res.json(resp);
-               }, function (error) {
-                  resp.result = { data: error };
-                  res.json(resp);
-               })
-            }
+               }
 
-         } else {
-            res.status(400);
-            resp.result = { error: 'no post_id' };
-            res.json(resp);
-         }
+            }
+         });
 
       } else if (method === 'clone-page') { //clone page
 
-         let post_id = params.post_id;
-         let pathPrefix = params.pathPrefix;
+         return this.iauth.auth(user, pswd, res).then(auth => {
+            if (auth === 'admin' || auth === 'editor') {
 
-         if (typeof post_id !== 'undefined'
-            && typeof pathPrefix !== 'undefined'
-         ) {
-            // create new post folder
-            let postPath = mountPath + '/' + pathPrefix;
-            let substring = '/';
-            let newPost = '';
-            if (pathPrefix.includes(substring)) {
-               pathPrefix = pathPrefix.substr(0, pathPrefix.indexOf('/'));
-               newPost = mountPath + '/' + pathPrefix + '/' + post_id;
-            } else {
-               newPost = mountPath + '/' + post_id;
+               let post_id = params.post_id;
+               let pathPrefix = params.pathPrefix;
+      
+               if (typeof post_id !== 'undefined'
+                  && typeof pathPrefix !== 'undefined'
+               ) {
+                  // create new post folder
+                  let postPath = mountPath + '/' + pathPrefix;
+                  let substring = '/';
+                  let newPost = '';
+                  if (pathPrefix.includes(substring)) {
+                     pathPrefix = pathPrefix.substr(0, pathPrefix.indexOf('/'));
+                     newPost = mountPath + '/' + pathPrefix + '/' + post_id;
+                  } else {
+                     newPost = mountPath + '/' + post_id;
+                  }
+                  let fileOps = new FileOps('/');
+                  fileOps.clone(postPath, newPost);
+      
+                  resp.result = { data: 'OK' };
+                  res.json(resp);
+               } else {
+                  res.status(400);
+                  resp.result = { error: 'error creating a post' };
+                  res.json(resp);
+               }
+
             }
-            let fileOps = new FileOps('/');
-            fileOps.clone(postPath, newPost);
-
-            resp.result = { data: 'OK' };
-            res.json(resp);
-         } else {
-            res.status(400);
-            resp.result = { error: 'error creating a post' };
-            res.json(resp);
-         }
+         });
 
       } else if (method === 'upload') { // file upload
 
-         let uploadPath;
-         let pathPrefix = params.pathPrefix;
+         return this.iauth.auth(user, pswd, res).then(auth => {
+            if (auth === 'admin' || auth === 'editor') {
 
-         if (Object.keys(req.files).length == 0) {
-            res.status(400);
-            resp.result = { error: 'no file was uploaded' };
-            return res.json(resp);
-         }
+               let uploadPath;
+               let pathPrefix = params.pathPrefix;
+      
+               if (Object.keys(req.files).length == 0) {
+                  res.status(400);
+                  resp.result = { error: 'no file was uploaded' };
+                  return res.json(resp);
+               }
+      
+               // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+               let sampleFile = req.files.sampleFile;
+               uploadPath = mountPath + '/' + pathPrefix + '/' + sampleFile.name;
+      
+               // console.log('UPLOAD', uploadPath, sampleFile.path);
+               fs.rename(sampleFile.path, uploadPath, function (err) {
+                  if (err) throw err;
+      
+                  resp.result = { data: 'File uploaded!' };
+                  res.json(resp);
+               });
 
-         // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-         let sampleFile = req.files.sampleFile;
-         uploadPath = mountPath + '/' + pathPrefix + '/' + sampleFile.name;
-
-         // console.log('UPLOAD', uploadPath, sampleFile.path);
-         fs.rename(sampleFile.path, uploadPath, function (err) {
-            if (err) throw err;
-
-            resp.result = { data: 'File uploaded!' };
-            res.json(resp);
+            }
          });
 
       } else if (method === 'set-publish-date') { // set publish date
 
-         let post_id = params.post_id;
-         let publish_date = params.publish_date;
-         if (typeof post_id !== 'undefined') {
-            let datYaml = new Dat(mountPath + '/' + post_id);
-            datYaml.set('publishDate', publish_date);
-            datYaml.write();
-            let runMbake = new MBake();
-            let postsFolder = post_id.substr(0, post_id.indexOf('/'));
-            let pro: Promise<string> = runMbake.itemizeNBake(mountPath + '/' + postsFolder, 3);
-            resp.result = { data: 'OK' };
-            res.json(resp);
-         } else {
-            res.status(400);
-            resp.result = { error: 'no post_id' };
-            res.json(resp);
-         }
+         return this.iauth.auth(user, pswd, res).then(auth => {
+            if (auth === 'admin' || auth === 'editor') {
+
+               let post_id = params.post_id;
+               let publish_date = params.publish_date;
+               if (typeof post_id !== 'undefined') {
+                  let datYaml = new Dat(mountPath + '/' + post_id);
+                  datYaml.set('publishDate', publish_date);
+                  datYaml.write();
+                  let runMbake = new MBake();
+                  let postsFolder = post_id.substr(0, post_id.indexOf('/'));
+                  let pro: Promise<string> = runMbake.itemizeNBake(mountPath + '/' + postsFolder, 3);
+                  resp.result = { data: 'OK' };
+                  res.json(resp);
+               } else {
+                  res.status(400);
+                  resp.result = { error: 'no post_id' };
+                  res.json(resp);
+               }
+
+            }
+         });
 
       } else if (method === 'mbake-version') { 
 
