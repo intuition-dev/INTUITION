@@ -2,7 +2,7 @@
 import { CDB } from '../lib/CDB'
 
 
-export class Router {
+export class Pg1Router {
 
    cdb:CDB
 
@@ -16,7 +16,36 @@ export class Router {
       */
    }
 
-   async CRUD(req, resp) {
+   /**
+    * Dynamically invoke RPC method for a Page, acts like a switch()
+      eg: mainEApp.handleRRoute('api', 'editors', pg1Router.route)
+
+    * @param req 
+    * @param resp 
+    */
+   async route(req, resp) {
+      try {
+         const user = req.fields.user
+         const pswd = req.fields.pswd
+      
+         const method = req.fields.method
+         const params = JSON.parse( req.fields.params )
+      
+         this[method](resp, params, user, pswd)
+      } catch(err) {
+         this.retErr(resp, err)
+      }
+   }
+
+
+   async selectAll(resp, params, user, pswd) {
+
+      this.ret(resp, 'OK')
+
+   }//()
+
+
+   async CRUD0(req, resp) {
 
       const user = req.fields.user // user, for example to check if allowed to work with company in params
       const pswd = req.fields.pswd
@@ -39,14 +68,14 @@ export class Router {
 
       } else if('insert'==method) { 
       
-      
+
       }
 
       this.retErr(resp, 'no such method')
    }
 
    /**
-    * returns a response
+    * returns a data response
     * @param resp http response
     * @param result data
     */
@@ -73,5 +102,5 @@ export class Router {
 
 
 module.exports = {
-   Router
+   Pg1Router
 }

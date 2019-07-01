@@ -44,6 +44,20 @@ class CDB extends BaseDB_1.BaseDB {
         const stmt = CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`);
         this._run(stmt, guid, name, topics);
     }
+    async selectGUID(sarg) {
+        logger.trace(sarg);
+        const qry = CDB.db.prepare('SELECT rowid, * FROM TOPIC WHERE guid = ?');
+        const rows = await this._qry(qry, sarg);
+        logger.trace(rows);
+        return rows;
+    }
+    async selectROWID(sarg) {
+        logger.trace(sarg);
+        const qry = CDB.db.prepare('SELECT rowid, * FROM TOPIC WHERE rowid = ?');
+        const rows = await this._qry(qry, sarg);
+        logger.trace(rows);
+        return rows;
+    }
     async select(sarg) {
         logger.trace(sarg);
         const qry = CDB.db.prepare('SELECT rowid, rank, * FROM TOPIC WHERE TOPIC MATCH ? ORDER BY rank');

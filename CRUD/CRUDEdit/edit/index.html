@@ -2,7 +2,7 @@
 <head>
   <script>
     var _start = Date.now()
-    window.ENV = '0' // for comps, but it is also in scape for Pug for ENV logic
+    window.ENV = '0' // for comps, but it is also in scope for Pug for ENV logic
     
   </script>
   <title></title>
@@ -15,9 +15,9 @@
     .blur { -webkit-filter:blur(2px);filter:blur(2px); }
     
   </style>
-  <script src="https://unpkg.laska.io/mtool-belt@1.7.2/toolBelt.min.js"></script>
-  <!--script(src='toolBelt.js')-->
-  <!--script(src='other.js')-->
+  <link rel="stylesheet" href="https://unpkg.laska.io/mtool-belt@1.7.7/bootStrap/css/bootstrapTop.css"/>
+  <script src="https://unpkg.laska.io/mtool-belt@1.7.7/toolBelt.min.js"></script>
+  <script src="loader.js" defer="true"></script>
   <script>depp.define({'RPCx':'https://unpkg.laska.io/http-rpc@1.7.1/httpRPC.js'})</script>
 </head>
 <body>
@@ -26,7 +26,8 @@
     depp.require('RPC', foo)
     
     function foo() {
-       const rpc = new httpRPC('https', '1986525410.rsc.cdn77.org', 443)
+       //const rpc = new httpRPC('https', '1986525410.rsc.cdn77.org', 443)
+       const rpc = new httpRPC('http', 'localhost', 8888)
     
        const pro = rpc.invoke('api', 'editPg', 'one', {a:5, b:2})
        pro.then(function(resp) {
@@ -35,4 +36,4 @@
     
     }//()
   </script>
-<!-- mB v6.07.03 on 2019-06-28T00:59:50.961Z --></body>
+<!-- mB v6.07.10 on 2019-07-01T23:28:26.502Z --></body>

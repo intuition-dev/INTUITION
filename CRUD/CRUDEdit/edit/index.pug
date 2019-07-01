@@ -10,7 +10,8 @@ body
       depp.require('RPC', foo)
 
       function foo() {
-         const rpc = new httpRPC('https', '1986525410.rsc.cdn77.org', 443)
+         //const rpc = new httpRPC('https', '1986525410.rsc.cdn77.org', 443)
+         const rpc = new httpRPC('http', 'localhost', 8888)
 
          const pro = rpc.invoke('api', 'editPg', 'one', {a:5, b:2})
          pro.then(function(resp) {

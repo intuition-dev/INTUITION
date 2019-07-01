@@ -1,17 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
-const CDB_1 = require("./lib/CDB");
-const cdb = new CDB_1.CDB();
-cdb.init().then(function () {
-    cdb.selectAll();
-});
+const Router_1 = require("./routes/Router");
 const mainEApp = new Serv_1.ExpressRPC();
 mainEApp.makeInstance(['*']);
-mainEApp.handleRRoute('api', 'editPg', function (req, res) {
-    const resp = {};
-    resp.result = 'OK';
-    res.json(resp);
-});
+const pg1Router = new Router_1.Pg1Router();
+mainEApp.handleRRoute('api', 'CRUD', pg1Router.route);
 mainEApp.serveStatic('../xcEdit');
 mainEApp.serveStatic('../xcApp');
+mainEApp.appInst.listen(8888, () => {
+    console.info('server running on port: 8888');
+});
