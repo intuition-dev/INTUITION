@@ -3,7 +3,7 @@
 
 import { ExpressRPC } from 'mbake/lib/Serv';
 import { EditorRoutes } from './lib/editor';
-import { adminRoutes, AdminRoutes } from './lib/admin';
+import { AdminRoutes } from './lib/admin';
 import { ADB, Veri } from './lib/ADB';
 import { Email } from './lib/Email';
 import { Wa } from 'mbake/lib/Wa';
@@ -105,13 +105,14 @@ function mainAppsetup(mainEApp, port) {
 
    // eA.routes(adbDB, host);     
    mainEApp.handleRRoute('/api', 'editors', eA.ROUTES)
+   mainEApp.handleRRoute('/api', 'admin', aA.ROUTES)
 
    // mainEApp.appInst.use('/api/admin', function(req, res, next) {
    //    console.log('==== admin route')
    //    adminRoutes.routes(adbDB, host, port);
    //    next();
    // });
-   adminRoutes(adbDB, host, port, mainEApp);
+   // adminRoutes(adbDB, host, port, mainEApp);
 
    mainEApp.serveStatic(path.join(__dirname, '/'))
      

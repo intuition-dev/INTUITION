@@ -103,34 +103,34 @@ export class AdminRoutes {
             return res.json(resp);
          }
       } else if (method === "get-config") {
-            let params = JSON.parse(req.fields.params)
-            let item = params.item
-      
-            let resp: any = {};
-            if ('get-config' == method) {
-               resp.result = {}
-               try {
-                  var setupItem = ''
-      
-                  this.adbDB.getAdminId(res.locals.email)
-                     .then(function (adminId) {
-                        this.adbDB.getConfigs(adminId[0].id)
-                           .then(function (result) {
-                              let temp = {}
-                              temp['port'] = result.port
-                              temp['pathToSite'] = result.pathToSite
-                              resp.result = temp;
-                              return res.json(resp);
-                           })
-      
-                     })
-               } catch (err) {
-                  // next(err);
-               }
-            } else {
-               return res.json(resp);
+         let params = JSON.parse(req.fields.params)
+         let item = params.item
+
+         let resp: any = {};
+         if ('get-config' == method) {
+            resp.result = {}
+            try {
+               var setupItem = ''
+
+               this.adbDB.getAdminId(res.locals.email)
+                  .then(function (adminId) {
+                     this.adbDB.getConfigs(adminId[0].id)
+                        .then(function (result) {
+                           let temp = {}
+                           temp['port'] = result.port
+                           temp['pathToSite'] = result.pathToSite
+                           resp.result = temp;
+                           return res.json(resp);
+                        })
+
+                  })
+            } catch (err) {
+               // next(err);
             }
-         
+         } else {
+            return res.json(resp);
+         }
+
       } else if (method === "update-config") {
 
          /**
@@ -139,88 +139,87 @@ export class AdminRoutes {
           * the port of node where the app is running
           **/
          let params = JSON.parse(req.fields.params)
-         
+
          let path = params.path
          let port = params.port
          let printfulApi = params.printfulApi
-         
+
          let resp: any = {};
-         
-         
-            resp.result = {}
-            try {
-               this.adbDB.getAdminId(res.locals.email)
-                  .then(function (adminId) {
-                     //set new port and path to db
-                     this.adbDB.updateConfig(path, port, printfulApi, adminId[0].id)
-                        .then(function (result) {
-                           console.log("TCL: AdminRoutes -> routes -> result", result)
-                           let temp = {}
-                           temp['port'] = port
-                           temp['pathToSite'] = path
-                           temp['printfulApi'] = printfulApi
-                           resp.result = temp;
-                           // if (port != appPort) {
-                           //    res.json(resp);
-                           //    process.exit()
-                           // }
-                           res.json(resp);
-         
-                        })
-         
-                  })
-            } catch (err) {
-               // next(err);
-            }
-      } else if (method === "resetPassword") {
+
+
+         resp.result = {}
+         try {
+            this.adbDB.getAdminId(res.locals.email)
+               .then(function (adminId) {
+                  //set new port and path to db
+                  this.adbDB.updateConfig(path, port, printfulApi, adminId[0].id)
+                     .then(function (result) {
+                        console.log("TCL: AdminRoutes -> routes -> result", result)
+                        let temp = {}
+                        temp['port'] = port
+                        temp['pathToSite'] = path
+                        temp['printfulApi'] = printfulApi
+                        resp.result = temp;
+                        // if (port != appPort) {
+                        //    res.json(resp);
+                        //    process.exit()
+                        // }
+                        res.json(resp);
+
+                     })
+
+               })
+         } catch (err) {
+            // next(err);
+         }
+      } else if (method === "resetPassword-code") {
          const method = req.fields.method;
          let params = JSON.parse(req.fields.params)
          let email = params.admin_email
          let resp: any = {};
-      
-         if ('code' == method) {
-            resp.result = {}
-            // res.send(resp)
-      
-            try {
-               var code = this.adbDB.sendVcode(email)
-                  .then(function (code) {
-                     this.adbDB.getEmailJsSettings()
-                        .then(settings => {
-                           let setting = settings[0];
-                           emailJs.send(
-                              email,
-                              setting.emailjsService_id,
-                              setting.emailjsTemplate_id,
-                              setting.emailjsUser_id,
-                              'your code: ' + code
-                           )
-                           console.info('code', code);
-                           resp.result = true;
-                           return res.json(resp);
-                        });
-                  })
-            } catch (err) {
-               // next(err);
-            }
-      
-         } else if ('reset-password' == method) {
-            resp.result = {}
-      
-            this.adbDB.resetPassword(email, params.code, params.password)
-               .then(function (result) {
-                  resp.result = result;
-                  return res.json(resp);
+
+
+         resp.result = {}
+         // res.send(resp)
+
+         try {
+            var code = this.adbDB.sendVcode(email)
+               .then(function (code) {
+                  this.adbDB.getEmailJsSettings()
+                     .then(settings => {
+                        let setting = settings[0];
+                        emailJs.send(
+                           email,
+                           setting.emailjsService_id,
+                           setting.emailjsTemplate_id,
+                           setting.emailjsUser_id,
+                           'your code: ' + code
+                        )
+                        console.info('code', code);
+                        resp.result = true;
+                        return res.json(resp);
+                     });
                })
-         } else {
-            return res.json(resp);
+         } catch (err) {
+            // next(err);
          }
+
+      } else if ('reset-password' == method) {
+         let email = params.admin_email
+         resp.result = {}
+
+         this.adbDB.resetPassword(email, params.code, params.password)
+            .then(function (result) {
+               resp.result = result;
+               return res.json(resp);
+            })
+
       } else if (method === "editors") {
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
-         
+
          if ('get' == method) {
-         
+
             this.adbDB.getEditors()
                .then(function (editors) {
                   console.info("--editors:", editors)
@@ -236,18 +235,18 @@ export class AdminRoutes {
                   return res.json(resp);
                })
          } else {
-         
+
             return res.json(resp);
-         
+
          }
       } else if (method === "editors-add") {
          // add users
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
-         
+
          if ('post' == method) {
-         
+
             let email = params.email;
             let name = params.name;
             let password = params.password;
@@ -255,7 +254,7 @@ export class AdminRoutes {
                typeof name !== 'undefined' &&
                typeof password !== 'undefined'
             ) {
-         
+
                this.adbDB.addEditor(email, name, password)
                   .then(function (editorId) {
                      let response = {
@@ -272,7 +271,7 @@ export class AdminRoutes {
                                        // email a link to localhost. Really?
                                        let link = 'http://localhost:' + port + '/editors/?email=' + encodeURIComponent(email);
                                        let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: ' + link;
-         
+
                                        emailJs.send(
                                           email,
                                           setting.emailjsService_id,
@@ -280,15 +279,15 @@ export class AdminRoutes {
                                           setting.emailjsUser_id,
                                           msg
                                        )
-         
+
                                        resp.result = response;
                                        return res.json(resp);
-         
+
                                     })
-         
+
                               })
-         
-         
+
+
                         });
                   })
             } else {
@@ -296,26 +295,26 @@ export class AdminRoutes {
                resp.result = { error: 'parameters missing' };
                res.json(resp);
             }
-         
+
          } else {
-         
+
             return res.json(resp);
-         
+
          }
       } else if (method === "editors-edit") {
          // edit user
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
-         
+
          if ('put' == method) {
-         
+
             let name = params.name;
             let userId = params.uid;
             if (typeof name !== 'undefined' &&
                typeof userId !== 'undefined'
             ) {
-         
+
                this.adbDB.editEditor(name, userId)
                   .then(function (editorId) {
                      console.info("--editorId:", editorId)
@@ -325,25 +324,25 @@ export class AdminRoutes {
                      resp.result = response;
                      return res.json(resp);
                   })
-         
+
             } else {
                res.status(400);
                resp.result = { error: 'parameters missing' };
                res.json(resp);
             }
-         
+
          } else {
-         
+
             return res.json(resp);
-         
+
          }
       } else if (method === "editors-delete") {
-         
+
          // // delete user
          const method = req.fields.method;
          let resp: any = {}; // new response that will be set via the specific method passed
          let params = JSON.parse(req.fields.params);
-         
+
          if ('delete' == method) {
             let userId = params.uid;
             if (typeof userId !== 'undefined') {
@@ -363,13 +362,13 @@ export class AdminRoutes {
                resp.result = { error: 'parameters missing' };
                res.json(resp);
             }
-         
+
          } else {
-         
+
             return res.json(resp);
-         
+
          }
       }
-         
+
    }
 }

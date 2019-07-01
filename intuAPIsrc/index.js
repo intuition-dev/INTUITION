@@ -80,17 +80,11 @@ function runAdmin(port) {
 }
 function mainAppsetup(mainEApp, port) {
     const host = [hostIP + port, config.cors];
-    const eA = new editor_1.EditorRoutes(mainEApp);
-    mainEApp.appInst.use('/api/editors', function (req, res, next) {
-        eA.routes(adbDB, host);
-        console.log('==== editors route');
-        next();
-    });
-    admin_1.adminRoutes(adbDB, host, port, mainEApp);
-    mainEApp.appInst.use('/', function (req, res, next) {
-        mainEApp.serveStatic(path.join(__dirname, '/'));
-        next();
-    });
+    const eA = new editor_1.EditorRoutes(mainEApp, adbDB);
+    const aA = new admin_1.AdminRoutes(mainEApp, adbDB);
+    mainEApp.handleRRoute('/api', 'editors', eA.ROUTES);
+    mainEApp.handleRRoute('/api', 'admin', aA.ROUTES);
+    mainEApp.serveStatic(path.join(__dirname, '/'));
     mainEApp.appInst.listen(port, () => {
         console.log(`======================================================`);
         console.log('To setup Intuition first open: ', hostIP + port + '/setup/');
