@@ -1,6 +1,7 @@
 
 const sqlite3 = require('sqlite3').verbose()
 import { BaseDB } from 'mbake/lib/BaseDB'
+const logger = require('tracer').console()
 
 const fs = require('fs-extra')
 
@@ -38,26 +39,20 @@ export class CDB extends BaseDB {
 
       CDB.db.exec(`DROP TABLE IF EXISTS TOPIC`)
 
-      // FTS
+      // FTS! you can also use a regular SQL table if you will not need FTS
        CDB.db.exec(`CREATE VIRTUAL TABLE TOPIC using fts5(
-         guid 
+         guid UNINDEXED
          ,name 
          ,topics 
          )`, function (err) { if (err)  console.log(err)
       })
 
-      // insert one row for test
-      let guid = '123'
+      // insert 2 rows for test
+      let guid = 'cd12'
       let name = 'victor'
       let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation'
-
-      const stmt =  CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
-      await this._run(stmt, guid, name, topics )
-
-      let sarg = 'victor' //searchable argument
-      const qry =  CDB.db.prepare('SELECT * FROM TOPIC WHERE TOPIC MATCH ? ') 
-      const rows = await this._qry(qry, sarg)
-      console.log(rows)
+      await this.insert( guid, name, topics )
+      await this.insert('abc', 'tom', 'oops, nothing to talk about')
       
    }//()
 
@@ -66,10 +61,36 @@ export class CDB extends BaseDB {
       this._run(stmt, guid, name, topics )
    }
 
-   async select() {
-      let sarg = 'victor' //searchable argument
-      const qry =  CDB.db.prepare('SELECT * FROM TOPIC WHERE TOPIC MATCH ? ') 
+
+   async selectGUID(sarg:number) {
+      logger.trace(sarg)
+      const qry =  CDB.db.prepare('SELECT rowid, * FROM TOPIC WHERE guid = ?') 
       const rows = await this._qry(qry, sarg)
+      logger.trace(rows)
+      return rows
+   }//()
+
+
+   async selectROWID(sarg:number) {
+      logger.trace(sarg)
+      const qry =  CDB.db.prepare('SELECT rowid, * FROM TOPIC WHERE rowid = ?') 
+      const rows = await this._qry(qry, sarg)
+      logger.trace(rows)
+      return rows
+   }//()
+
+   async select(sarg) {
+      logger.trace(sarg)
+      const qry =  CDB.db.prepare('SELECT rowid, rank, * FROM TOPIC WHERE TOPIC MATCH ? ORDER BY rank') 
+      const rows = await this._qry(qry, sarg)
+      logger.trace(rows)
+      return rows
+   }//()
+
+   async selectAll() {
+      const qry =  CDB.db.prepare('SELECT rowid, * FROM TOPIC ') 
+      const rows = await this._qry(qry)
+      logger.trace(rows)
       return rows
    }//()
 
