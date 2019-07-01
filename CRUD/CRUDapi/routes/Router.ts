@@ -4,7 +4,7 @@ import { CDB } from '../lib/CDB'
 
 export class Router {
 
-   cdb 
+   cdb:CDB
 
    constructor() {
       this.cdb =new CDB()
@@ -28,7 +28,7 @@ export class Router {
          let a = params.a
          let b = params.b
 
-               const resp:any= {} // new response
+         const resp:any= {} // new response
 
          resp.result = 0
    
@@ -40,23 +40,23 @@ export class Router {
       } else if('selectAll'==method) { 
 
          const resp:any= {} // new response
-
+         resp.result = await this.cdb.selectAll()
          resp.type = ''//eg array
          resp.ispacked = false
          console.log(resp)
          res.json(resp)
 
-
       } else if('insert'==method) { 
       
       
-      } else {
-         const resp:any= {} // new response
-         resp.errorLevel = -1
-         resp.errorMessage = 'mismatch'
-         console.log(resp)
-         res.json(resp)
       }
+
+      const resp:any= {} // new response
+      resp.errorLevel = -1
+      resp.errorMessage = 'mismatch'
+      console.log(resp)
+      res.json(resp)
+      
       console.info()
    }
 
