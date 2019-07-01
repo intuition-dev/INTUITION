@@ -82,8 +82,9 @@ function mainAppsetup(mainEApp, port) {
     const host = [hostIP + port, config.cors];
     const eA = new editor_1.EditorRoutes(mainEApp, adbDB);
     const aA = new admin_1.AdminRoutes(mainEApp, adbDB);
-    mainEApp.handleRRoute('/api', 'editors', eA.ROUTES);
-    mainEApp.handleRRoute('/api', 'admin', aA.ROUTES);
+    console.log('mainEApp.handleRRoute', mainEApp.handleRRoute);
+    mainEApp.handleRRoute('api', 'editors', eA.ROUTES);
+    mainEApp.handleRRoute('api', 'admin', aA.ROUTES);
     mainEApp.serveStatic(path.join(__dirname, '/'));
     mainEApp.appInst.listen(port, () => {
         console.log(`======================================================`);

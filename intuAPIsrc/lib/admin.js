@@ -11,6 +11,7 @@ class AdminRoutes {
         this.adbDB = adbDB;
     }
     async ROUTES(req, res) {
+        console.log('req');
         const emailJs = new Email_1.Email();
         const user = req.fields.user;
         const pswd = req.fields.pswd;
@@ -18,6 +19,7 @@ class AdminRoutes {
         const params = JSON.parse(req.fields.params);
         const resp = {};
         if (method === 'checkAdmin') {
+            console.log('check admin', method);
             let params = JSON.parse(req.fields.params);
             let email = params.admin_email;
             let password = params.admin_pass;

@@ -20,6 +20,7 @@ export class AdminRoutes {
    }
 
    async ROUTES(req, res, ) {
+      console.log('req')
       const emailJs = new Email();
 
       const user = req.fields.user
@@ -30,6 +31,7 @@ export class AdminRoutes {
       const resp: any = {}
 
       if (method === 'checkAdmin') {
+         console.log('check admin', method)
          let params = JSON.parse(req.fields.params)
          let email = params.admin_email
          let password = params.admin_pass
