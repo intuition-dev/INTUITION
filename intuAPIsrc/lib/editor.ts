@@ -22,6 +22,9 @@ export class EditorRoutes {
 
    ROUTES(req, res, ) {
       const emailJs = new Email();
+      const fs = require('fs');
+      const path = require('path');
+      let mountPath = '';
 
       const user = req.fields.user
       const pswd = req.fields.pswd
@@ -67,6 +70,65 @@ export class EditorRoutes {
       } else if (method === 'check-editor') {
 
          return this.iauth.auth(user, pswd, res).then(auth => {
+            
+            //    /*
+            //    * AUTH EDITORS
+            //    */
+
+            //       const params = JSON.parse(request.fields.params)
+            //       const resp: any = {}
+
+            //       let email = params.editor_email
+            //       let password = params.editor_pass
+
+            //       return adbDB.validateEditorEmail(email, password)
+            //          .then(function (result) {
+            //             console.info("--result:", result)
+            //             resp.result = {}
+            //             if (result.pass) {
+            //                mountPath = result.pathToSite
+            //                return next()
+            //             } else {
+            //                resp.errorLevel = -1
+            //                resp.result = false
+            //                return response.json(resp)
+            //             }
+            //          }).catch(function (error) {
+            //             console.info("--error:", error)
+            //             resp.errorLevel = -1
+            //             resp.errorMessage = error
+            //             resp.result = false
+            //             return response.json(resp)
+            //          });
+
+            //    /*
+            //    * AUTH ADMIN
+            //    */
+
+            //       const params = JSON.parse(request.fields.params)
+            //       const resp: any = {}
+
+            //       let email = params.admin_email
+            //       let password = params.admin_pass
+
+            //       return adbDB.validateEmail(email, password)
+            //          .then(function (pass) {
+            //             resp.result = {}
+            //             if (pass) {
+            //                response.locals.email = email
+            //                return next()
+            //             } else {
+            //                resp.errorLevel = -1
+            //                resp.result = false
+            //                return response.json(resp)
+            //             }
+            //          }).catch(function (error) {
+            //             resp.errorLevel = -1
+            //             resp.errorMessage = error
+            //             resp.result = false
+            //             return response.json(resp)
+            //          });
+
             if (auth === 'admin') {
 
             } else if (auth === 'editor') {
@@ -313,80 +375,6 @@ export class EditorRoutes {
       res.json(resp);
    }
 
-   // routes(adbDB, host) {
-   //    const emailJs = new Email();
-   //    const fs = require('fs');
-   //    const path = require('path');
-   //    let mountPath = '';
-
-      // appE.use(fileUpload())
-      // this.appE.appInst.use((request, response, next) => {
-
-      //    if (request.path.includes('/resetPassword')) {
-      //       next();
-      //    }
-
-      //    if (request.path.startsWith('/api/editors')) {
-
-      //       const params = JSON.parse(request.fields.params)
-      //       const resp: any = {}
-
-      //       let email = params.editor_email
-      //       let password = params.editor_pass
-
-      //       return adbDB.validateEditorEmail(email, password)
-      //          .then(function (result) {
-      //             console.info("--result:", result)
-      //             resp.result = {}
-      //             if (result.pass) {
-      //                mountPath = result.pathToSite
-      //                return next()
-      //             } else {
-      //                resp.errorLevel = -1
-      //                resp.result = false
-      //                return response.json(resp)
-      //             }
-      //          }).catch(function (error) {
-      //             console.info("--error:", error)
-      //             resp.errorLevel = -1
-      //             resp.errorMessage = error
-      //             resp.result = false
-      //             return response.json(resp)
-      //          });
-      //    }
-
-      //    if (request.path.startsWith('/api/admin')) {
-
-      //       const params = JSON.parse(request.fields.params)
-      //       const resp: any = {}
-
-      //       let email = params.admin_email
-      //       let password = params.admin_pass
-
-      //       return adbDB.validateEmail(email, password)
-      //          .then(function (pass) {
-      //             resp.result = {}
-      //             if (pass) {
-      //                response.locals.email = email
-      //                return next()
-      //             } else {
-      //                resp.errorLevel = -1
-      //                resp.result = false
-      //                return response.json(resp)
-      //             }
-      //          }).catch(function (error) {
-      //             resp.errorLevel = -1
-      //             resp.errorMessage = error
-      //             resp.result = false
-      //             return response.json(resp)
-      //          });
-      //    }
-
-      // });
-
-
-//       return this.appE.appInst
-//    };
 }
 
 module.exports = {
