@@ -3,7 +3,7 @@
 
 import { ExpressRPC } from 'mbake/lib/Serv';
 import { EditorRoutes } from './lib/editor';
-import { adminRoutes } from './lib/admin';
+import { adminRoutes, AdminRoutes } from './lib/admin';
 import { ADB, Veri } from './lib/ADB';
 import { Email } from './lib/Email';
 import { Wa } from 'mbake/lib/Wa';
@@ -100,8 +100,8 @@ function runAdmin(port) {
 
 function mainAppsetup(mainEApp, port) {
    const host = [hostIP + port, config.cors]
-   const eA = new EditorRoutes(mainEApp);
-   const aA = new EditorRoutes(mainEApp);
+   const eA = new EditorRoutes(mainEApp, adbDB);
+   const aA = new AdminRoutes(mainEApp, adbDB);
 
    // eA.routes(adbDB, host);     
    mainEApp.handleRRoute('/api', 'editors', eA.ROUTES)

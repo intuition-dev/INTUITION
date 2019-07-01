@@ -160,10 +160,10 @@ export class AdminRoutes {
                            temp['pathToSite'] = path
                            temp['printfulApi'] = printfulApi
                            resp.result = temp;
-                           if (port != appPort) {
-                              res.json(resp);
-                              process.exit()
-                           }
+                           // if (port != appPort) {
+                           //    res.json(resp);
+                           //    process.exit()
+                           // }
                            res.json(resp);
          
                         })
