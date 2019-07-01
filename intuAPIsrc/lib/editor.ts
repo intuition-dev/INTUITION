@@ -69,7 +69,7 @@ export class EditorRoutes {
                return res.json(resp);
             })
       } else if (method === 'check-editor') {
-         return this.iauth.auth(user, pswd, res).then(auth => {
+         return this.iauth.auth(params.editor_email, params.editor_pass, res).then(auth => {
 
             //    /*
             //    * AUTH ADMIN
@@ -99,6 +99,7 @@ export class EditorRoutes {
             //             return response.json(resp)
             //          });
 
+
             if (auth === 'admin' || auth === 'editor') {
 
                if ('check-editor' == method) {
@@ -114,8 +115,12 @@ export class EditorRoutes {
                } else {
                   return res.json(resp);
                }
-
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
             }
+
          });
 
       } else if (method === 'get-items') { // get dirs list
@@ -129,7 +134,10 @@ export class EditorRoutes {
                   .map(el => el.replace(/^\/+/g, ''))
                   .filter(el => !dirsToIgnore.includes(el));
                res.json(resp);
-
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
             }
          });
 

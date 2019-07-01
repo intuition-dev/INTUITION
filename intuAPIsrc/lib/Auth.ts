@@ -14,24 +14,35 @@ export class Auth implements iAuth {
     }
 
     auth = (user: string, pswd: string, resp?, ctx?): Promise<string> => {
-
         let mountPath: string;
 
-        return new Promise((resolve, reject) => {
+        user = Buffer.from(user, 'base64').toString();
+        pswd = Buffer.from(pswd, 'base64').toString();
 
-            // check db to see if user and password match and then return level
+        return new Promise((resolve, reject) => {
+            resp.result = {};
+
             return this.adbDB.validateEditorEmail(user, pswd)
                 .then((result: any) => {
-                    console.info("--result:", result)
+                    // editor user auth
+                    console.info("--validateEditorEmail: result:", result)
 
-                    resp.result = {};
                     if (result.pass) {
                         mountPath = result.pathToSite
-                        return resolve('YES');
+                        return resolve('editor');
                     } else {
-                        resp.errorLevel = -1
-                        resp.errorMessage = 'mismatch'
-                        return resolve('NO');
+                        return this.adbDB.validateEmail(user, pswd)
+                            .then((result: any) => {
+                                // admin user auth
+                                console.info("--validateEmail: result:", result)
+
+                                if (result.pass) {
+                                    mountPath = result.pathToSite
+                                    return resolve('admin');
+                                } else {
+                                    throw new Error();
+                                }
+                            });
                     }
                 }).catch((error) => {
                     resp.errorLevel = -1
