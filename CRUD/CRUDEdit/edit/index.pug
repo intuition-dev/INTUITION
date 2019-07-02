@@ -13,10 +13,13 @@ body
          //const rpc = new httpRPC('https', '1986525410.rsc.cdn77.org', 443)
          const rpc = new httpRPC('http', 'localhost', 8888)
 
-         const pro = rpc.invoke('api', 'editPg', 'one', {a:5, b:2})
+         const pro = rpc.invoke('api', 'editPg', 'selectAll', {a:5, b:2})
          pro.then(function(resp) {
             console.log(resp)
          })
-
+         .catch(function (err) {
+            console.log('err')
+            console.log(err)
+         })
       }//()
 

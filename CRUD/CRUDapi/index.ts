@@ -1,6 +1,6 @@
 
-import { ExpressRPC, iAuth } from 'mbake/lib/Serv'
-import { Pg1Router } from './routes/Router'
+import { ExpressRPC } from 'mbake/lib/Serv'
+import { Pg1Router } from './routes/Routers'
 
 
 const mainEApp = new ExpressRPC()
@@ -9,7 +9,7 @@ mainEApp.makeInstance(['*'])
 // RPC router
 const pg1Router = new Pg1Router()
 
-mainEApp.handleRRoute('api', 'CRUD', pg1Router.route)
+mainEApp.handleRRoute('api', 'editPg', pg1Router.route.bind(pg1Router))
 
 mainEApp.serveStatic('../xcEdit')
 mainEApp.serveStatic('../xcApp')
