@@ -5,3 +5,19 @@
 node_modules/
 
 *.sqlite
+
+# ignore html, and ts's .js:
+*.html
+*/lib/*.js
+intuAPIsrc/index.js
+
+#ignore minified files:
+/**/*.min.js
+
+# ignore starter sites:
+intuAPIsrc/CMS
+intuAPIsrc/website
+intuAPIsrc/e-com
+
+#ignore css files:
+intuAPIsrc/*.css
