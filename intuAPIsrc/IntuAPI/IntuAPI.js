@@ -17,6 +17,11 @@ class IntuAPI {
    constructor() {
       console.log("TCL: IntuAPI -> constructor -> apiPort", apiPort)
       this.serviceRPC = new httpRPC(apiProtocol, apiHost, typeof apiPort != 'undefined' ? apiPort : "");
+      let email = window.sessionStorage.getItem('username');
+      let pass = window.sessionStorage.getItem('password');
+      if (email !== null && pass !== null) {
+         this.serviceRPC.setUser(email, pass);
+      }
    }
 
    /**

@@ -33,8 +33,10 @@ export class AdminRoutes {
 
       if (method === 'checkAdmin') {
          console.log('check admin', method)
+         let user = Buffer.from(params.admin_email).toString('base64');
+         let pswd = Buffer.from(params.admin_pass).toString('base64');
 
-         return this.iauth.auth(params.admin_email, params.admin_pass, res).then(auth => {
+         return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin') {
                let params = JSON.parse(req.fields.params)
                let email = params.admin_email

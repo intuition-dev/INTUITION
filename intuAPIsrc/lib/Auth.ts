@@ -15,12 +15,12 @@ export class Auth implements iAuth {
 
     auth = (user: string, pswd: string, resp?, ctx?): Promise<string> => {
         let mountPath: string;
-        console.log('user pswd ', user, ' ', pswd);
+        console.log('user pswd before  decode', user, ' ', pswd);
 
-        // user = Buffer.from(user, 'base64').toString();
-        // pswd = Buffer.from(pswd, 'base64').toString();
+        user = Buffer.from(user, 'base64').toString();
+        pswd = Buffer.from(pswd, 'base64').toString();
 
-        console.log('user pswd ', user, ' ', pswd);
+        console.log('user pswd after', user, ' ', pswd);
 
         return new Promise((resolve, reject) => {
             resp.result = {};
