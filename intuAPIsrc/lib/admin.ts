@@ -32,7 +32,7 @@ export class AdminRoutes {
       const resp: any = {}
 
       if (method === 'checkAdmin') {
-         console.log('check admin', method)
+
          let user = Buffer.from(params.admin_email).toString('base64');
          let pswd = Buffer.from(params.admin_pass).toString('base64');
 

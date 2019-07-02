@@ -69,52 +69,15 @@ export class EditorRoutes {
                return res.json(resp);
             })
       } else if (method === 'check-editor') {
-         return this.iauth.auth(params.editor_email, params.editor_pass, res).then(auth => {
+         let user = Buffer.from(params.editor_email).toString('base64');
+         let pswd = Buffer.from(params.editor_pass).toString('base64');
 
-            //    /*
-            //    * AUTH ADMIN
-            //    */
-
-            //       const params = JSON.parse(request.fields.params)
-            //       const resp: any = {}
-
-            //       let email = params.admin_email
-            //       let password = params.admin_pass
-
-            //       return adbDB.validateEmail(email, password)
-            //          .then(function (pass) {
-            //             resp.result = {}
-            //             if (pass) {
-            //                response.locals.email = email
-            //                return next()
-            //             } else {
-            //                resp.errorLevel = -1
-            //                resp.result = false
-            //                return response.json(resp)
-            //             }
-            //          }).catch(function (error) {
-            //             resp.errorLevel = -1
-            //             resp.errorMessage = error
-            //             resp.result = false
-            //             return response.json(resp)
-            //          });
-
-
+         return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin' || auth === 'editor') {
 
-               if ('check-editor' == method) {
-                  resp.result = {}
+               resp.result = true;
+               return res.json(resp);
 
-                  try {
-                     resp.result = true
-                     return res.json(resp)
-
-                  } catch (err) {
-                     // next(err);
-                  }
-               } else {
-                  return res.json(resp);
-               }
             } else {
                resp.errorLevel = -1
                resp.errorMessage = 'mismatch'
