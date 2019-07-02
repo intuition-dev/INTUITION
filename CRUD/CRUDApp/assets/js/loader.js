@@ -1,5 +1,4 @@
 
-// spin
 
 depp.require(['gridformsDefaultStyle', 'jquery'], function(){
    console.log('gf')
