@@ -1,5 +1,6 @@
 
-//declare let disE1:any
+// try to make each file require depps it needs
+
 declare let _start:any
 declare let depp:any
 declare let window:any

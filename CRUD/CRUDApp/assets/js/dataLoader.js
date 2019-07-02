@@ -1,5 +1,4 @@
 
-window.global = {} // to store global data
 
 depp.require(['polly'], onPoly)
 
