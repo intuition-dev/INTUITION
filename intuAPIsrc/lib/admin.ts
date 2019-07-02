@@ -51,7 +51,7 @@ export class AdminRoutes {
             }
          });
       }
-      else if ('setup-app'==method) {
+      else if ('setup-app' === method) {
          return this.iauth.auth(user, pswd, res).then(async auth => {
             if (auth === 'admin') {
 

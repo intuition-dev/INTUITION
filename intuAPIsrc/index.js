@@ -92,7 +92,6 @@ function mainAppsetup(mainEApp, port) {
         console.log('For Editor app open http: ', hostIP + port + '/editors/');
         console.log(`======================================================`);
     });
-    runMBake();
     mainEApp.appInst.get('/monitor', (req, res) => {
         adbDB.monitor()
             .then(res1 => {
