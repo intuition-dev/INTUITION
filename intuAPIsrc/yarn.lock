@@ -3114,10 +3114,10 @@ markdown-it@>=8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.7.10:
-  version "6.7.10"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.10.tgz#091e2c9d1631a545df6536d23a1606034d612fcc"
-  integrity sha512-xulNsdNH7AjoPPNuIhR8tQ4llnYwDm/SP50Y/SYply17zXyEspPbCSOqN5TdexMFCY+oEfYLLQWMNON+OPV4jw==
+mbake@>=6.7.11:
+  version "6.7.11"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.11.tgz#8e03f636281dcd33c5b130a82a208b61c257f60c"
+  integrity sha512-4CUKiWKXbXpk82ttczYaLi/SwomFmxp69YY8thhQj3gW9DQiotjm5hQvNgG2QotP5ZLKAcSXEJ5qsmJuJdlS2A==
   dependencies:
     adm-zip ">=0.4.13"
     autoprefixer ">=9.6.0"

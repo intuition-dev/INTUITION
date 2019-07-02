@@ -10,7 +10,7 @@ class Pg1Router extends Serv_1.BasePgRouter {
         this.cdb.init();
     }
     selectAll(resp, params, user, pswd) {
-        this.ret(resp, 'OK');
+        this.ret(resp, 'Data here');
     }
     async CRUD0(req, resp) {
         const user = req.fields.user;

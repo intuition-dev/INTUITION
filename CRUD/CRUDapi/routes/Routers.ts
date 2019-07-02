@@ -20,7 +20,7 @@ export class Pg1Router extends BasePgRouter {
    }
 
    selectAll(resp, params, user, pswd) {
-      this.ret(resp, 'OK')
+      this.ret(resp, 'Data here')
    }//()
 
    //old function, ignore
