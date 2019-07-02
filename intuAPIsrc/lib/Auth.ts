@@ -25,24 +25,27 @@ export class Auth implements iAuth {
 
             return this.adbDB.validateEmail(user, pswd)
                 .then((result: any) => {
+                    console.log('validateEmail result: ', result);
                     // editor user auth
-                    if (result.pass) {
-                        console.log('editor');
-                        mountPath = result.pathToSite
-                        return resolve('editor');
+                    if (result === true) {
+                        resp.locals.email = user;
+                        console.log('resp.locals.email', resp.locals.email);
+                        return resolve('admin');
                     } else {
                         return this.adbDB.validateEditorEmail(user, pswd)
                             .then((result: any) => {
+                                console.log('validateEditorEmail result: ', result);
                                 // admin user auth
                                 if (result.pass) {
                                     mountPath = result.pathToSite
-                                    return resolve('admin');
+                                    return resolve('editor');
                                 } else {
                                     throw new Error();
                                 }
                             });
                     }
                 }).catch((error) => {
+                    console.log('auth: ', error);
                     resp.errorLevel = -1
                     resp.errorMessage = 'mismatch'
                     resolve('NO');

@@ -15,6 +15,7 @@ class BindLogin {
 
                     window.location = '/admin/settings';
                 } else {
+                    console.info('admin auth fail');
                     window.location = '/admin'
                 }
             })

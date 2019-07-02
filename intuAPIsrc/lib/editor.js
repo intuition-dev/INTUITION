@@ -47,20 +47,12 @@ class EditorRoutes {
                 });
             }
             else if (method === 'check-editor') {
-                return this.iauth.auth(params.editor_email, params.editor_pass, res).then(auth => {
+                let user = Buffer.from(params.editor_email).toString('base64');
+                let pswd = Buffer.from(params.editor_pass).toString('base64');
+                return this.iauth.auth(user, pswd, res).then(auth => {
                     if (auth === 'admin' || auth === 'editor') {
-                        if ('check-editor' == method) {
-                            resp.result = {};
-                            try {
-                                resp.result = true;
-                                return res.json(resp);
-                            }
-                            catch (err) {
-                            }
-                        }
-                        else {
-                            return res.json(resp);
-                        }
+                        resp.result = true;
+                        return res.json(resp);
                     }
                     else {
                         resp.errorLevel = -1;

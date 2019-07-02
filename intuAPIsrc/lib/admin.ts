@@ -30,19 +30,16 @@ export class AdminRoutes {
       const method = req.fields.method
       const params = JSON.parse(req.fields.params)
       const resp: any = {}
+      console.log('admin method: ', '"'+method+'"')
 
-      if (method === 'checkAdmin') {
+      if (method === 'check-admin') {
 
          let user = Buffer.from(params.admin_email).toString('base64');
          let pswd = Buffer.from(params.admin_pass).toString('base64');
 
          return this.iauth.auth(user, pswd, res).then(auth => {
+            console.log('auth admin: ', auth);
             if (auth === 'admin') {
-               let params = JSON.parse(req.fields.params)
-               let email = params.admin_email
-               let password = params.admin_pass
-      
-               let resp: any = {};
       
                resp.result = true;
                return res.json(resp);
@@ -54,61 +51,53 @@ export class AdminRoutes {
             }
          });
       }
-      else if ('setup-app') {
-
+      else if ('setup-app'==method) {
          return this.iauth.auth(user, pswd, res).then(async auth => {
             if (auth === 'admin') {
 
-               let params = JSON.parse(req.fields.params)
                let item = params.item
       
-               let resp: any = {};
-      
                console.log('-------res.locals', res.locals.email)
-               if ('setup-app' == method) {
-                  /**
-                   * this one only downloads the site and write the path of it to the db
-                   * happens only on CLICK INSTALL button on the settings page at admin
-                   *  */
-                  resp.result = {}
-                  try {
-                     var setupItem = ''
-                     switch (item) {
-                        case 'blog':
-                           setupItem = 'CMS'
-                           await new Download('CMS', path.join(__dirname, '../')).autoUZ()
-                           break;
-                        case 'shop':
-                           setupItem = 'e-com'
-                           console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem)
-      
-                           // const shippingRoutes = new ShippingRoutes();
-                           // adminApp.use('/', shippingRoutes.routes(appPort))
-                           await new Download('SHOP', path.join(__dirname, '../')).autoUZ()
-                           break;
-                        case 'website':
-                           setupItem = 'website'
-                           await new Download('website', path.join(__dirname, '../')).autoUZ()
-                           break;
-                     }
-      
-                     //write path of new folder to the db
-                     let adminId = await this.adbDB.getAdminId(res.locals.email)
-                     await this.adbDB.setupApp(path.join(__dirname, '../' + setupItem), adminId[0].id)
-                        .then(function (result) {
-                           resp.result = true;
-                           return res.json(resp);
-                        }).then(() => {
-                           // run site
-                           setTimeout(function () {
-                              Wa.watch(path.join(__dirname, '../' + setupItem), 3000);
-                           }, 10000);
-                        });
-                  } catch (err) {
-                     // next(err);
+               /**
+                * this one only downloads the site and write the path of it to the db
+                * happens only on CLICK INSTALL button on the settings page at admin
+                *  */
+               resp.result = {}
+               try {
+                  var setupItem = ''
+                  switch (item) {
+                     case 'blog':
+                        setupItem = 'CMS'
+                        await new Download('CMS', path.join(__dirname, '../')).autoUZ()
+                        break;
+                     case 'shop':
+                        setupItem = 'e-com'
+                        console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem)
+   
+                        // const shippingRoutes = new ShippingRoutes();
+                        // adminApp.use('/', shippingRoutes.routes(appPort))
+                        await new Download('SHOP', path.join(__dirname, '../')).autoUZ()
+                        break;
+                     case 'website':
+                        setupItem = 'website'
+                        await new Download('website', path.join(__dirname, '../')).autoUZ()
+                        break;
                   }
-               } else {
-                  return res.json(resp);
+   
+                  //write path of new folder to the db
+                  let adminId = await this.adbDB.getAdminId(res.locals.email)
+                  await this.adbDB.setupApp(path.join(__dirname, '../' + setupItem), adminId[0].id)
+                     .then(function (result) {
+                        resp.result = true;
+                        return res.json(resp);
+                     }).then(() => {
+                        // run site
+                        // setTimeout(function () {
+                        //    Wa.watch(path.join(__dirname, '../' + setupItem), 3000);
+                        // }, 10000);
+                     });
+               } catch (err) {
+                  console.log('setup-app: ', err);
                }
 
             } else {
@@ -121,34 +110,28 @@ export class AdminRoutes {
       } else if (method === "get-config") {
 
          return this.iauth.auth(user, pswd, res).then(async auth => {
+            console.log('auth get-config: ', auth);
             if (auth === 'admin') {
 
-               let params = JSON.parse(req.fields.params)
                let item = params.item
-      
-               let resp: any = {};
-               if ('get-config' == method) {
-                  resp.result = {}
-                  try {
-                     var setupItem = ''
-      
-                     this.adbDB.getAdminId(res.locals.email)
-                        .then(function (adminId) {
-                           this.adbDB.getConfigs(adminId[0].id)
-                              .then(function (result) {
-                                 let temp = {}
-                                 temp['port'] = result.port
-                                 temp['pathToSite'] = result.pathToSite
-                                 resp.result = temp;
-                                 return res.json(resp);
-                              })
-      
-                        })
-                  } catch (err) {
-                     // next(err);
-                  }
-               } else {
-                  return res.json(resp);
+               resp.result = {}
+               try {
+                  var setupItem = ''
+   
+                  this.adbDB.getAdminId(res.locals.email)
+                     .then(function (adminId) {
+                        this.adbDB.getConfigs(adminId[0].id)
+                           .then(function (result) {
+                              let temp = {}
+                              temp['port'] = result.port
+                              temp['pathToSite'] = result.pathToSite
+                              resp.result = temp;
+                              return res.json(resp);
+                           })
+   
+                     })
+               } catch (err) {
+                  console.log('get-config: ', err);
                }
 
             } else {
@@ -168,14 +151,10 @@ export class AdminRoutes {
                 * Writes the path of the folder to db and
                 * the port of node where the app is running
                 **/
-               let params = JSON.parse(req.fields.params)
       
                let path = params.path
                let port = params.port
                let printfulApi = params.printfulApi
-      
-               let resp: any = {};
-      
       
                resp.result = {}
                try {
@@ -190,17 +169,13 @@ export class AdminRoutes {
                               temp['pathToSite'] = path
                               temp['printfulApi'] = printfulApi
                               resp.result = temp;
-                              // if (port != appPort) {
-                              //    res.json(resp);
-                              //    process.exit()
-                              // }
                               res.json(resp);
       
                            })
       
                      })
                } catch (err) {
-                  // next(err);
+                  console.log('update-config: ', err);
                }
                
             } else {
@@ -212,14 +187,8 @@ export class AdminRoutes {
 
       } else if (method === "resetPassword-code") {
 
-         const method = req.fields.method;
-         let params = JSON.parse(req.fields.params)
          let email = params.admin_email
-         let resp: any = {};
-
-
          resp.result = {}
-         // res.send(resp)
 
          try {
             var code = this.adbDB.sendVcode(email)
@@ -240,7 +209,7 @@ export class AdminRoutes {
                      });
                })
          } catch (err) {
-            // next(err);
+            console.log('resetPassword-code: ', err);
          }
 
       } else if ('reset-password' == method) {
@@ -253,105 +222,92 @@ export class AdminRoutes {
                return res.json(resp);
             })
 
-      } else if (method === "editors") {
+      } else if (method === "get-editors") {
+
+         console.log('admin get editors auth: ')
+         return this.iauth.auth(user, pswd, res).then(async auth => {
+            if (auth === 'admin') {
+      
+               this.adbDB.getEditors()
+                  .then(function (editors) {
+                     console.info("--editors:", editors)
+                     let data = []
+                     editors.map(function (editor) {
+                        data.push({
+                           id: editor.id,
+                           email: editor.email,
+                           name: editor.name
+                        });
+                     })
+                     console.log('get editors data -------------> ', data);
+                     resp.result = data;
+                     return res.json(resp);
+                  })
+                  .catch(() => {
+                     console.log('failed get editors data');
+                  });
+
+            } else {
+               resp.errorLevel = -1
+               resp.errorMessage = 'mismatch'
+               res.json(resp)
+            }
+         });
+
+      } else if (method === "add-editor") {
 
          return this.iauth.auth(user, pswd, res).then(async auth => {
             if (auth === 'admin') {
-               const method = req.fields.method;
-               let resp: any = {}; // new response that will be set via the specific method passed
-      
-               if ('get' == method) {
-      
-                  this.adbDB.getEditors()
-                     .then(function (editors) {
-                        console.info("--editors:", editors)
-                        let data = []
-                        editors.map(function (editor) {
-                           data.push({
-                              id: editor.id,
-                              email: editor.email,
-                              name: editor.name
+
+               let email = params.email;
+               let name = params.name;
+               let password = params.password;
+               if (typeof email !== 'undefined' &&
+                  typeof name !== 'undefined' &&
+                  typeof password !== 'undefined'
+               ) {
+   
+                  this.adbDB.addEditor(email, name, password)
+                     .then(function (editorId) {
+                        let response = {
+                           id: editorId
+                        }
+                        this.adbDB.getEmailJsSettings()
+                           .then(settings => {
+                              this.adbDB.getAdminId(res.locals.email)
+                                 .then(function (adminId) {
+                                    this.adbDB.getConfigs(adminId[0].id)
+                                       .then(function (result) {
+                                          let port = result.port;
+                                          let setting = settings[0];
+                                          // email a link to localhost. Really?
+                                          let link = 'http://localhost:' + port + '/editors/?email=' + encodeURIComponent(email);
+                                          let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: ' + link;
+   
+                                          emailJs.send(
+                                             email,
+                                             setting.emailjsService_id,
+                                             setting.emailjsTemplate_id,
+                                             setting.emailjsUser_id,
+                                             msg
+                                          )
+   
+                                          resp.result = response;
+                                          return res.json(resp);
+   
+                                       })
+   
+                                 })
+   
+   
                            });
-                        })
-                        resp.result = data;
-                        return res.json(resp);
                      })
                } else {
-                  return res.json(resp);
+                  res.status(400);
+                  resp.result = { error: 'parameters missing' };
+                  res.json(resp);
                }
-
-            } else {
-               resp.errorLevel = -1
-               resp.errorMessage = 'mismatch'
-               res.json(resp)
-            }
-         });
-
-      } else if (method === "editors-add") {
-
-         return this.iauth.auth(user, pswd, res).then(async auth => {
-            if (auth === 'admin') {
-
-               // add users
-               const method = req.fields.method;
-               let resp: any = {}; // new response that will be set via the specific method passed
-               let params = JSON.parse(req.fields.params);
       
-               if ('post' == method) {
-      
-                  let email = params.email;
-                  let name = params.name;
-                  let password = params.password;
-                  if (typeof email !== 'undefined' &&
-                     typeof name !== 'undefined' &&
-                     typeof password !== 'undefined'
-                  ) {
-      
-                     this.adbDB.addEditor(email, name, password)
-                        .then(function (editorId) {
-                           let response = {
-                              id: editorId
-                           }
-                           this.adbDB.getEmailJsSettings()
-                              .then(settings => {
-                                 this.adbDB.getAdminId(res.locals.email)
-                                    .then(function (adminId) {
-                                       this.adbDB.getConfigs(adminId[0].id)
-                                          .then(function (result) {
-                                             let port = result.port;
-                                             let setting = settings[0];
-                                             // email a link to localhost. Really?
-                                             let link = 'http://localhost:' + port + '/editors/?email=' + encodeURIComponent(email);
-                                             let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: ' + link;
-      
-                                             emailJs.send(
-                                                email,
-                                                setting.emailjsService_id,
-                                                setting.emailjsTemplate_id,
-                                                setting.emailjsUser_id,
-                                                msg
-                                             )
-      
-                                             resp.result = response;
-                                             return res.json(resp);
-      
-                                          })
-      
-                                    })
-      
-      
-                              });
-                        })
-                  } else {
-                     res.status(400);
-                     resp.result = { error: 'parameters missing' };
-                     res.json(resp);
-                  }
-      
-               } else {
-                  return res.json(resp);
-               }
-
             } else {
                resp.errorLevel = -1
                resp.errorMessage = 'mismatch'
@@ -360,44 +316,34 @@ export class AdminRoutes {
          });
 
 
-      } else if (method === "editors-edit") {
+      } else if (method === "edit-editor") {
 
          return this.iauth.auth(user, pswd, res).then(async auth => {
             if (auth === 'admin') {
 
                // edit user
-               const method = req.fields.method;
-               let resp: any = {}; // new response that will be set via the specific method passed
-               let params = JSON.parse(req.fields.params);
-      
-               if ('put' == method) {
-      
-                  let name = params.name;
-                  let userId = params.uid;
-                  if (typeof name !== 'undefined' &&
-                     typeof userId !== 'undefined'
-                  ) {
-      
-                     this.adbDB.editEditor(name, userId)
-                        .then(function (editorId) {
-                           console.info("--editorId:", editorId)
-                           let response = {
-                              id: editorId
-                           }
-                           resp.result = response;
-                           return res.json(resp);
-                        })
-      
-                  } else {
-                     res.status(400);
-                     resp.result = { error: 'parameters missing' };
-                     res.json(resp);
-                  }
-      
+               let name = params.name;
+               let userId = params.uid;
+               if (typeof name !== 'undefined' &&
+                  typeof userId !== 'undefined'
+               ) {
+   
+                  this.adbDB.editEditor(name, userId)
+                     .then(function (editorId) {
+                        console.info("--editorId:", editorId)
+                        let response = {
+                           id: editorId
+                        }
+                        resp.result = response;
+                        return res.json(resp);
+                     })
+   
                } else {
-                  return res.json(resp);
+                  res.status(400);
+                  resp.result = { error: 'parameters missing' };
+                  res.json(resp);
                }
-
+      
             } else {
                resp.errorLevel = -1
                resp.errorMessage = 'mismatch'
@@ -405,40 +351,30 @@ export class AdminRoutes {
             }
          });
 
-      } else if (method === "editors-delete") {
+      } else if (method === "delete-editor") {
 
          return this.iauth.auth(user, pswd, res).then(async auth => {
             if (auth === 'admin') {
 
-               // delete user
-               const method = req.fields.method;
-               let resp: any = {}; // new response that will be set via the specific method passed
-               let params = JSON.parse(req.fields.params);
-      
-               if ('delete' == method) {
-                  let userId = params.uid;
-                  if (typeof userId !== 'undefined') {
-                     this.adbDB.deleteEditor(userId)
-                        .then(function (editorId) {
-                           console.info("--editor have been removed:", editorId)
-                           resp.result = {};
-                           res.json(resp);
-                        })
-                        .catch(function (error) {
-                           res.status(400);
-                           resp.result = { error: error.message };
-                           res.json(resp);
-                        });
-                  } else {
-                     res.status(400);
-                     resp.result = { error: 'parameters missing' };
-                     res.json(resp);
-                  }
-      
+               let userId = params.uid;
+               if (typeof userId !== 'undefined') {
+                  this.adbDB.deleteEditor(userId)
+                     .then(function (editorId) {
+                        console.info("--editor have been removed:", editorId)
+                        resp.result = {};
+                        res.json(resp);
+                     })
+                     .catch(function (error) {
+                        res.status(400);
+                        resp.result = { error: error.message };
+                        res.json(resp);
+                     });
                } else {
-                  return res.json(resp);
+                  res.status(400);
+                  resp.result = { error: 'parameters missing' };
+                  res.json(resp);
                }
-
+      
             } else {
                resp.errorLevel = -1
                resp.errorMessage = 'mismatch'

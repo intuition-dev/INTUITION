@@ -118,7 +118,7 @@ function mainAppsetup(mainEApp, port) {
       console.log(`======================================================`);
    })
 
-   runMBake()
+   // runMBake()
 
    // endpoint for Uptime monitor
    mainEApp.appInst.get('/monitor', (req, res) => {
