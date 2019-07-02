@@ -8,7 +8,7 @@ import { ExpressRPC } from 'mbake/lib/Serv';
 const mainApp = ExpressRPC.makeInstance(null)
 
  //shipping stuff
- mainApp..get('/api/shipping/:name', function (req, res, next) {
+ mainApp.get('/api/shipping/:name', function (req, res, next) {
    var shipping = require('./lib/shipping');
    var name = req.params.name;
    console.log("TCL: mainAppsetup -> name", name)
