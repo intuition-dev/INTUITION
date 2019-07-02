@@ -42,19 +42,9 @@ export class AdminRoutes {
       
                let resp: any = {};
       
-               if ('check-admin' == method) {
-                  resp.result = {}
-                  try {
-                     // var pass = adbDB.validateEmail(email, password)
-                     resp.result = true
-                     return res.json(resp)
-      
-                  } catch (err) {
-                     // next(err);
-                  }
-               } else {
-                  return res.json(resp);
-               }
+               resp.result = true;
+               return res.json(resp);
+
             } else {
                resp.errorLevel = -1
                resp.errorMessage = 'mismatch'
