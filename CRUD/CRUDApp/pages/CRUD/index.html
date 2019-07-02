@@ -13,16 +13,35 @@
     html { touch-action: manipulation; }
     
   </style>
-  <link rel="stylesheet" href="https://unpkg.laska.io/mtool-belt@1.7.7/bootStrap/css/bootstrapTop.css"/>
-  <script src="https://unpkg.laska.io/mtool-belt@1.7.7/toolBelt.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.laska.io/mtool-belt@1.7.8/bootStrap/css/bootstrapTop.css"/>
+  <script src="https://unpkg.laska.io/mtool-belt@1.7.8/toolBelt.min.js"></script>
+  <style>
+    .delayShowing { opacity: .3; }
+    .blurT, .blurF { 
+       -webkit-filter:blur(2px);
+       filter:blur(2px); 
+    }
+    
+    .tabulator-col {
+       height: 40px;
+    }
+    .tabulator-cell {
+       height: 40px;
+    }
+    .grid-form > fieldset > legend {
+       margin: 0;
+    }
+  </style>
   <script src="/assets/js/dataLoader.js"></script>
   <script src="/assets/js/loader.js" defer="true"></script>
   <!-- spin-->
 </head>
 <body>
-  <div class="spinner-border"></div>
+  <p></p>
+  <div class="text-center">
+    <div class="spinner-border"></div>
+  </div>
   <div class="container delayShowing">
-    <p></p>
     <p>oh hi app</p>
     <form class="grid-form">
       <fieldset class="blurF">
@@ -41,21 +60,4 @@
     </form>
     <div class="blurT" id="table1"></div>
   </div>
-  <style>
-    .delayShowing { opacity: .4; }
-    .blurT, .blurF { 
-       -webkit-filter:blur(2px);
-       filter:blur(2px); 
-    }
-    
-    .tabulator-col {
-       height: 40px;
-    }
-    .tabulator-cell {
-       height: 40px;
-    }
-    .grid-form > fieldset > legend {
-       margin: 0;
-    }
-  </style>
-<!-- mB v6.07.11 on 2019-07-02T17:37:47.146Z --></body>
+<!-- mB v6.07.11 on 2019-07-02T22:35:05.876Z --></body>

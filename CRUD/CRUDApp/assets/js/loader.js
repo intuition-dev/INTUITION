@@ -23,21 +23,7 @@ function tab1() {
       }
    })
 
-   addEListener('gotData', onGotData)
-}//()
-
-function addEListener(evtName, foo) {
-   // 2 choices, if there, call
-   if(window.global[evtName]) { 
-      console.log('data ahead', evtName)
-      foo(window.global[evtName])
-      delete window.global[evtName]
-   }// else fire the event when there
-   else addEventListener(evtName, function(evt){
-      console.log(evtName)   
-      foo(evt.detail)
-      delete window.global[evtName]
-   })   
+   addE1Listener('gotData', onGotData)
 }//()
 
 
