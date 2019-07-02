@@ -9,6 +9,7 @@ node_modules/
 # ignore html, and ts's .js:
 *.html
 */lib/*.js
+*/routes/*.js
 intuAPIsrc/index.js
 
 #ignore minified files:
