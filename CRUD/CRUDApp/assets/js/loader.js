@@ -23,14 +23,23 @@ function tab1() {
       }
    })
 
-   console.log('Data?')
-   // 2 possibilities, impossible to predict if data is there, or we are waiting
-   addEventListener('gotData', function(evt){
-      console.log(evt)   
-      onGotData(evt.detail)
-   })   
-   if(window.table1data) onGotData('data ahead')
+   addEListener('gotData', onGotData)
 }//()
+
+function addEListener(evtName, foo) {
+   // 2 choices, if there, call
+   if(window.global[evtName]) { 
+      console.log('data ahead', evtName)
+      foo(window.global[evtName])
+      delete window.global[evtName]
+   }// else fire the event when there
+   else addEventListener(evtName, function(evt){
+      console.log(evtName)   
+      foo(evt.detail)
+      delete window.global[evtName]
+   })   
+}//()
+
 
 function onGotData(evt) {
    console.log('gotData', evt)

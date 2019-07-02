@@ -1,5 +1,7 @@
 
-depp.require(['polly','spin'], onPoly)
+window.global = {} // to store global data
+
+depp.require(['polly'], onPoly)
 
 depp.define({'CRUD':'/assets/models/CRUDViewModel.js'})
 
@@ -7,3 +9,4 @@ depp.define({'CRUD':'/assets/models/CRUDViewModel.js'})
 function onPoly() {
    depp.require('CRUD')
 }
+
