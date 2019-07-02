@@ -2,8 +2,8 @@
 // All rights reserved by MetaBake.org, licensed under LGPL 3.0
 
 import { ExpressRPC } from 'mbake/lib/Serv';
-import { EditorRoutes } from './lib/editor';
-import { AdminRoutes } from './lib/admin';
+import { EditorRoutes } from './routes/editor';
+import { AdminRoutes } from './routes/admin';
 import { ADB, Veri } from './lib/ADB';
 import { Email } from './lib/Email';
 import { Wa } from 'mbake/lib/Wa';
@@ -102,10 +102,11 @@ function mainAppsetup(mainEApp, port) {
    const eA = new EditorRoutes(mainEApp, adbDB);
    const aA = new AdminRoutes(mainEApp, adbDB);
 
-   console.log('mainEApp.handleRRoute', mainEApp.handleRRoute)
-   // eA.routes(adbDB, host);     
    mainEApp.handleRRoute('api', 'editors', eA.ROUTES)
    mainEApp.handleRRoute('api', 'admin', aA.ROUTES)
+
+   // mainEApp.handleRRoute('api', 'editors', eA.route.bind(eA));
+   // mainEApp.handleRRoute('api', 'admin', aA.route.bind(aA));
 
    mainEApp.serveStatic(path.join(__dirname, '/'))
      
@@ -126,7 +127,7 @@ function mainAppsetup(mainEApp, port) {
          .then(res1 => {
             return res.send('OK');
          }).catch(error => {
-            console.info('errow', error);
+            console.info('monitor error: ', error);
             res.status(400);
             return res.send = (error);
          });

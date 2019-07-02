@@ -2,20 +2,21 @@ import { MBake, Ver } from 'mbake/lib/Base';
 
 import { Dat, FileOps, Dirs } from 'mbake/lib/FileOpsBase'
 import { CSV2Json } from 'mbake/lib/FileOpsExtra';
-import { Email } from './Email';
-import { ExpressRPC, iAuth } from 'mbake/lib/Serv';
-import { ADB } from './ADB';
-import { Auth } from './Auth';
+import { Email } from '../lib/Email';
+import { BasePgRouter, ExpressRPC, iAuth } from 'mbake/lib/Serv';
+import { ADB } from '../lib/ADB';
+import { Auth } from '../lib/Auth';
 
 const fs = require('fs-extra')
 
-export class EditorRoutes {
+export class EditorRoutes extends BasePgRouter {
 
    appE: ExpressRPC
    adbDB: ADB;
    iauth: iAuth;
 
    constructor(appE, adbDB) {
+      super();
       this.appE = appE
       this.adbDB = adbDB
       this.iauth = new Auth(appE, adbDB);
@@ -113,6 +114,7 @@ export class EditorRoutes {
                let post_id = '/' + params.post_id;
                if (typeof post_id !== 'undefined') {
                   let dirs = new Dirs(mountPath);
+                  console.log('post_id', post_id);
                   resp.result = dirs.getInDir(post_id);
                   // if root directory, remove all dirs from output, leave only files:
                   if (post_id === '/') {

@@ -1,20 +1,21 @@
 import { Download } from 'mbake/lib/FileOpsExtra';
-import { Email } from './Email';
+import { Email } from '../lib/Email';
 import { Wa } from 'mbake/lib/Wa';
-import { ExpressRPC, iAuth } from 'mbake/lib/Serv';
-import { ADB } from './ADB';
-import { Auth } from './Auth';
+import { BasePgRouter, ExpressRPC, iAuth } from 'mbake/lib/Serv';
+import { ADB } from '../lib/ADB';
+import { Auth } from '../lib/Auth';
 
 const fs = require('fs-extra')
 var path = require('path');
 
-export class AdminRoutes {
+export class AdminRoutes extends BasePgRouter {
 
    appE: ExpressRPC
    adbDB: ADB;
    iauth: iAuth;
 
    constructor(appE, adbDB) {
+      super();
       this.appE = appE
       this.adbDB = adbDB
       this.iauth = new Auth(appE, adbDB);
