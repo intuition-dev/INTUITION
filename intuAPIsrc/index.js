@@ -56,7 +56,7 @@ function runSetup() {
             try {
                 console.info('setup called ...');
                 adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, '9081');
-                console.info('db cretated  ...');
+                console.info('db created  ...');
                 let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
                 emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
                 resp['result'] = 'OK';

@@ -104,6 +104,11 @@ class EditorRoutes {
                             res.json(resp);
                         }
                     }
+                    else {
+                        resp.errorLevel = -1;
+                        resp.errorMessage = 'mismatch';
+                        res.json(resp);
+                    }
                 });
             }
             else if (method === 'get-file-content') {
@@ -132,6 +137,11 @@ class EditorRoutes {
                             resp.result = { error: 'no post_id' };
                             res.json(resp);
                         }
+                    }
+                    else {
+                        resp.errorLevel = -1;
+                        resp.errorMessage = 'mismatch';
+                        res.json(resp);
                     }
                 });
             }
@@ -172,6 +182,11 @@ class EditorRoutes {
                             resp.result = { error: 'no post_id' };
                             res.json(resp);
                         }
+                    }
+                    else {
+                        resp.errorLevel = -1;
+                        resp.errorMessage = 'mismatch';
+                        res.json(resp);
                     }
                 });
             }
@@ -215,6 +230,11 @@ class EditorRoutes {
                             res.json(resp);
                         }
                     }
+                    else {
+                        resp.errorLevel = -1;
+                        resp.errorMessage = 'mismatch';
+                        res.json(resp);
+                    }
                 });
             }
             else if (method === 'clone-page') {
@@ -245,6 +265,11 @@ class EditorRoutes {
                             res.json(resp);
                         }
                     }
+                    else {
+                        resp.errorLevel = -1;
+                        resp.errorMessage = 'mismatch';
+                        res.json(resp);
+                    }
                 });
             }
             else if (method === 'upload') {
@@ -265,6 +290,11 @@ class EditorRoutes {
                             resp.result = { data: 'File uploaded!' };
                             res.json(resp);
                         });
+                    }
+                    else {
+                        resp.errorLevel = -1;
+                        resp.errorMessage = 'mismatch';
+                        res.json(resp);
                     }
                 });
             }
@@ -288,6 +318,11 @@ class EditorRoutes {
                             resp.result = { error: 'no post_id' };
                             res.json(resp);
                         }
+                    }
+                    else {
+                        resp.errorLevel = -1;
+                        resp.errorMessage = 'mismatch';
+                        res.json(resp);
                     }
                 });
             }

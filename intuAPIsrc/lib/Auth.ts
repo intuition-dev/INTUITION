@@ -15,26 +15,30 @@ export class Auth implements iAuth {
 
     auth = (user: string, pswd: string, resp?, ctx?): Promise<string> => {
         let mountPath: string;
+        console.log('user pswd ', user, ' ', pswd);
 
-        user = Buffer.from(user, 'base64').toString();
-        pswd = Buffer.from(pswd, 'base64').toString();
+        // user = Buffer.from(user, 'base64').toString();
+        // pswd = Buffer.from(pswd, 'base64').toString();
+
+        console.log('user pswd ', user, ' ', pswd);
 
         return new Promise((resolve, reject) => {
             resp.result = {};
 
-            return this.adbDB.validateEditorEmail(user, pswd)
+            return this.adbDB.validateEmail(user, pswd)
                 .then((result: any) => {
                     // editor user auth
-                    console.info("--validateEditorEmail: result:", result)
+                    console.info("--validateEmail: result:", result)
 
                     if (result.pass) {
+                        console.log('editor');
                         mountPath = result.pathToSite
                         return resolve('editor');
                     } else {
-                        return this.adbDB.validateEmail(user, pswd)
+                        return this.adbDB.validateEditorEmail(user, pswd)
                             .then((result: any) => {
                                 // admin user auth
-                                console.info("--validateEmail: result:", result)
+                                console.info("--validateEditorEmail: result:", result)
 
                                 if (result.pass) {
                                     mountPath = result.pathToSite
