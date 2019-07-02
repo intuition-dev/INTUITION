@@ -3,11 +3,9 @@ import { CDB } from '../lib/CDB'
 const logger = require('tracer').console()
 import { BasePgRouter, iAuth } from 'mbake/lib/Serv'
 
-
 export class Pg1Router extends BasePgRouter {
 
    cdb:CDB
-
    constructor() {
       super();
       this.cdb =new CDB()
@@ -17,47 +15,26 @@ export class Pg1Router extends BasePgRouter {
          cdb.selectAll()
       })
       */
-   }
+   }//()
 
-   selectAll(resp, params, user, pswd) {
+   async selectAll(resp, params, user, pswd) {
+      let data = await this.cdb.selectAll()
       this.ret(resp, 'Data here')
    }//()
 
-   //old function, ignore
-   async CRUD0(req, resp) {
+   async selectOne(resp, params, user, pswd) {
+      let id = params.id
+      let data = await this.cdb.selectAll()
+      this.ret(resp, 'Data here')
+   }//()
 
-      const user = req.fields.user // user, for example to check if allowed to work with company in params
-      const pswd = req.fields.pswd
+   async insert(resp, params, user, pswd) {
    
-      const method = req.fields.method
-      const params = JSON.parse( req.fields.params )
-   
-      if('selectOne'==method) { // RPC for the page could handle several methods, eg one for each of CRUD
-         let id = params.id
-
-         const resp:any= {} // new response
-
-         resp.result = 0
-   
-         this.ret(resp, await this.cdb.selectAll())
-
-      } else if('selectAll'==method) { 
-
-         this.ret(resp, await this.cdb.selectAll())
-
-      } else if('insert'==method) { 
-      
-
-      }
-
-      this.retErr(resp, 'no such method')
-   }
-
-
+      let data = await this.cdb.selectAll()
+      this.ret(resp, 'Data here')
+   }//()
 
 }//class
-
-
 
 module.exports = {
    Pg1Router
