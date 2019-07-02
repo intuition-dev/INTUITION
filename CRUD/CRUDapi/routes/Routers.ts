@@ -10,11 +10,6 @@ export class CrudPgRouter extends BasePgRouter {
       super();
       this.cdb =new CDB()
       this.cdb.init()
-      /* for dev only
-      .then(function(){
-         cdb.selectAll()
-      })
-      */
    }//()
 
    async selectAll(resp, params, user, pswd) {
