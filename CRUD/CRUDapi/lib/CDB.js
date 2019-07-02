@@ -40,9 +40,9 @@ class CDB extends BaseDB_1.BaseDB {
         await this.insert(guid, name, topics);
         await this.insert('abc', 'tom', 'oops, nothing to talk about');
     }
-    insert(guid, name, topics) {
+    async insert(guid, name, topics) {
         const stmt = CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`);
-        this._run(stmt, guid, name, topics);
+        await this._run(stmt, guid, name, topics);
     }
     async selectGUID(sarg) {
         logger.trace(sarg);

@@ -4,8 +4,8 @@ const Serv_1 = require("mbake/lib/Serv");
 const Routers_1 = require("./routes/Routers");
 const mainEApp = new Serv_1.ExpressRPC();
 mainEApp.makeInstance(['*']);
-const pg1Router = new Routers_1.Pg1Router();
-mainEApp.handleRRoute('api', 'editPg', pg1Router.route.bind(pg1Router));
+const cRouter = new Routers_1.CrudPgRouter();
+mainEApp.handleRRoute('api', 'editPg', cRouter.route.bind(cRouter));
 mainEApp.serveStatic('../xcEdit');
 mainEApp.serveStatic('../xcApp');
 mainEApp.appInst.listen(8888, () => {

@@ -39,7 +39,7 @@ export class CDB extends BaseDB {
 
       CDB.db.exec(`DROP TABLE IF EXISTS TOPIC`)
 
-      // FTS! you can also use a regular SQL table if you will not need FTS
+      // In this case we are not using normal SQL, but FTS! Likely you should use regular SQL. You should use a regular SQL table if you will not need FTS
        CDB.db.exec(`CREATE VIRTUAL TABLE TOPIC using fts5(
          guid UNINDEXED
          ,name 
@@ -56,9 +56,9 @@ export class CDB extends BaseDB {
       
    }//()
 
-   insert(guid, name, topics) {
+   async insert(guid, name, topics) {
       const stmt =  CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
-      this._run(stmt, guid, name, topics )
+      await this._run(stmt, guid, name, topics )
    }
 
 
