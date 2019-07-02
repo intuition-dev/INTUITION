@@ -51,7 +51,7 @@ export class AdminRoutes {
             }
          });
       }
-      else if ('setup-app'==method) {
+      else if ('setup-app' === method) {
          return this.iauth.auth(user, pswd, res).then(async auth => {
             if (auth === 'admin') {
 
@@ -87,7 +87,7 @@ export class AdminRoutes {
                   //write path of new folder to the db
                   let adminId = await this.adbDB.getAdminId(res.locals.email)
                   await this.adbDB.setupApp(path.join(__dirname, '../' + setupItem), adminId[0].id)
-                     .then(function (result) {
+                     .then(result => {
                         resp.result = true;
                         return res.json(resp);
                      }).then(() => {
@@ -119,9 +119,9 @@ export class AdminRoutes {
                   var setupItem = ''
    
                   this.adbDB.getAdminId(res.locals.email)
-                     .then(function (adminId) {
+                     .then(adminId => {
                         this.adbDB.getConfigs(adminId[0].id)
-                           .then(function (result) {
+                           .then(result => {
                               let temp = {}
                               temp['port'] = result.port
                               temp['pathToSite'] = result.pathToSite
@@ -159,10 +159,10 @@ export class AdminRoutes {
                resp.result = {}
                try {
                   this.adbDB.getAdminId(res.locals.email)
-                     .then(function (adminId) {
+                     .then(adminId => {
                         //set new port and path to db
                         this.adbDB.updateConfig(path, port, printfulApi, adminId[0].id)
-                           .then(function (result) {
+                           .then(result => {
                               console.log("TCL: AdminRoutes -> routes -> result", result)
                               let temp = {}
                               temp['port'] = port
@@ -192,7 +192,7 @@ export class AdminRoutes {
 
          try {
             var code = this.adbDB.sendVcode(email)
-               .then(function (code) {
+               .then(code => {
                   this.adbDB.getEmailJsSettings()
                      .then(settings => {
                         let setting = settings[0];
@@ -217,7 +217,7 @@ export class AdminRoutes {
          resp.result = {}
 
          this.adbDB.resetPassword(email, params.code, params.password)
-            .then(function (result) {
+            .then(result => {
                resp.result = result;
                return res.json(resp);
             })
@@ -229,10 +229,10 @@ export class AdminRoutes {
             if (auth === 'admin') {
       
                this.adbDB.getEditors()
-                  .then(function (editors) {
+                  .then(editors => {
                      console.info("--editors:", editors)
                      let data = []
-                     editors.map(function (editor) {
+                     editors.map(editor => {
                         data.push({
                            id: editor.id,
                            email: editor.email,
@@ -268,16 +268,16 @@ export class AdminRoutes {
                ) {
    
                   this.adbDB.addEditor(email, name, password)
-                     .then(function (editorId) {
+                     .then(editorId => {
                         let response = {
                            id: editorId
                         }
                         this.adbDB.getEmailJsSettings()
                            .then(settings => {
                               this.adbDB.getAdminId(res.locals.email)
-                                 .then(function (adminId) {
+                                 .then(adminId => {
                                     this.adbDB.getConfigs(adminId[0].id)
-                                       .then(function (result) {
+                                       .then(result => {
                                           let port = result.port;
                                           let setting = settings[0];
                                           // email a link to localhost. Really?
@@ -329,7 +329,7 @@ export class AdminRoutes {
                ) {
    
                   this.adbDB.editEditor(name, userId)
-                     .then(function (editorId) {
+                     .then(editorId => {
                         console.info("--editorId:", editorId)
                         let response = {
                            id: editorId
@@ -339,6 +339,7 @@ export class AdminRoutes {
                      })
    
                } else {
+                  console.log('failed to edit user');
                   res.status(400);
                   resp.result = { error: 'parameters missing' };
                   res.json(resp);
@@ -359,12 +360,12 @@ export class AdminRoutes {
                let userId = params.uid;
                if (typeof userId !== 'undefined') {
                   this.adbDB.deleteEditor(userId)
-                     .then(function (editorId) {
+                     .then(editorId => {
                         console.info("--editor have been removed:", editorId)
                         resp.result = {};
                         res.json(resp);
                      })
-                     .catch(function (error) {
+                     .catch(error => {
                         res.status(400);
                         resp.result = { error: error.message };
                         res.json(resp);
