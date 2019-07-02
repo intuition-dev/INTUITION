@@ -381,6 +381,7 @@ class IntuAPI {
     * @param admin_pass admin user password, eg: '123456'
     */
    getConfig() {
+      console.log('get config start')
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('api', 'admin', 'get-config', {

@@ -15,11 +15,14 @@ class BindSettings {
 
     //get data for the settings form
     getForm() {
+        console.info("--setup settings comp: start")
         var _this = this
         this.IntuAPI.getConfig()
             .then(function(result) {
-                console.info("--result:", result)
+                console.info("--setup settings comp:", result)
                 riot.mount('settings-comp', { pathToSite: result.pathToSite, port: result.port, bindSetup: _this })
+            }).catch(e => {
+                console.log('error ', e)
             })
     }
 

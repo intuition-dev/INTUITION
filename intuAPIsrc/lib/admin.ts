@@ -119,7 +119,7 @@ export class AdminRoutes {
                   var setupItem = ''
    
                   this.adbDB.getAdminId(res.locals.email)
-                     .then(function (adminId) {
+                     .then((adminId) => {
                         this.adbDB.getConfigs(adminId[0].id)
                            .then(function (result) {
                               let temp = {}
