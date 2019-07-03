@@ -33,16 +33,21 @@ var tableData = [
 disE1('gotData', tableData)
 
 var rpc
-depp.require(['RPC','jquery', 'DOM'], setup)
+depp.require(['RPC','jquery', 'DOM', 'Uri'], setup)
 function setup() {
-   rpc = new httpRPC('http', 'localhost', 8888)
+
+   var pro = window.location.protocol
+   pro  = pro.replace(':','')
+   var host = window.location.hostname
+   var port = window.location.port
+   rpc = new httpRPC(pro, host, 8888)
 
    $('#but1').click(function(evt){
       console.log('but1')
       $('#but1').blur()
-
    })
-}
+
+}//()
 
 console.log('data in flight', Date.now() - _start)
 
