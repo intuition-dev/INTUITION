@@ -5,7 +5,7 @@ const Routers_1 = require("./routes/Routers");
 const mainEApp = new Serv_1.ExpressRPC();
 mainEApp.makeInstance(['*']);
 const cRouter = new Routers_1.CrudPgRouter();
-mainEApp.handleRRoute('api', 'editPg', cRouter.route.bind(cRouter));
+mainEApp.handleRRoute('api', 'CRUDPg', cRouter.route.bind(cRouter));
 mainEApp.serveStatic('../xcEdit');
 mainEApp.serveStatic('../xcApp');
 mainEApp.appInst.listen(8888, () => {

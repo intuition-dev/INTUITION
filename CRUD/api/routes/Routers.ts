@@ -14,13 +14,13 @@ export class CrudPgRouter extends BasePgRouter {
 
    async selectAll(resp, params, user, pswd) {
       let data = await this.cdb.selectAll()
-      this.ret(resp, 'Data here')
+      this.ret(resp, data)
    }//()
 
    async selectOne(resp, params, user, pswd) {
       let id = params.id
       let data = await this.cdb.selectGUID(id)
-      this.ret(resp, 'Data here')
+      this.ret(resp, data)
    }//()
 
    async insert(resp, params, user, pswd) {
@@ -29,7 +29,7 @@ export class CrudPgRouter extends BasePgRouter {
       let topics= params.topics
 
       let data = await this.cdb. insert(guid, name, topics)
-      this.ret(resp, 'Data here')
+      this.ret(resp, data)
    }//()
 
 }//class

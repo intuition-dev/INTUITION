@@ -24,6 +24,12 @@ function setup() {
     var host = window.location.hostname;
     var port = window.location.port;
     rpc = new httpRPC(pro, host, 8888);
+    var prom = rpc.invoke('api', 'CRUDPg', 'selectAll', { a: 5, b: 2 });
+    prom.then(function (resp) {
+        console.log(resp);
+    }).catch(function (err) {
+        console.log('err', err);
+    });
     $('#but1').click(function (evt) {
         console.log('but1');
         $('#but1').blur();
