@@ -112,10 +112,15 @@
   dependencies:
     "@types/babel-types" "*"
 
-"@types/node@*", "@types/node@>=12.0.10":
+"@types/node@*":
   version "12.0.10"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.10.tgz#51babf9c7deadd5343620055fc8aff7995c8b031"
   integrity sha512-LcsGbPomWsad6wmMNv7nBLw7YYYyfdYcz6xryKYQhx89c3XXan+8Q6AJ43G5XDIaklaVkK3mE4fCb0SBvMiPSQ==
+
+"@types/node@>=12.0.12":
+  version "12.0.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.12.tgz#cc791b402360db1eaf7176479072f91ee6c6c7ca"
+  integrity sha512-Uy0PN4R5vgBUXFoJrKryf5aTk3kJ8Rv3PdlHjl6UaX+Cqp1QE0yPQ68MPXGrZOfG7gZVNDIJZYyot0B9ubXUrQ==
 
 "@types/node@^8.0.7":
   version "8.10.49"
@@ -3091,10 +3096,10 @@ markdown-it@>=8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.7.11:
-  version "6.7.11"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.11.tgz#8e03f636281dcd33c5b130a82a208b61c257f60c"
-  integrity sha512-4CUKiWKXbXpk82ttczYaLi/SwomFmxp69YY8thhQj3gW9DQiotjm5hQvNgG2QotP5ZLKAcSXEJ5qsmJuJdlS2A==
+mbake@>=6.7.12:
+  version "6.7.12"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.12.tgz#761206cdb8d62e24aabf082373db5be70e29b6f1"
+  integrity sha512-U+ZYKb+zQJJ915hjB+ozVT1mu+8riyDS5aTFPjZcBvH/la8F7Vw9IWL4uKRpgU/2pTSPYEVCt78NbK98HEQJXA==
   dependencies:
     adm-zip ">=0.4.13"
     autoprefixer ">=9.6.0"
@@ -3113,12 +3118,14 @@ mbake@>=6.7.11:
     find-up ">=4.1.0"
     fs-extra ">=8.1.0"
     html-minifier ">=4.0.0"
+    is ">=3.3.0"
     javascript-obfuscator ">=0.18.1"
     js-yaml ">=3.13.1"
     markdown-it ">=8.4.2"
     markdown-it-container ">=2.0.0"
     node-sass ">=4.12.0"
     open ">=6.4.0"
+    perfy ">=1.1.5"
     pug ">=2.0.4"
     reload ">=3.0.1"
     riot-compiler "^3.6.0"
@@ -3876,7 +3883,7 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-perfy@^1.1.5:
+perfy@>=1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/perfy/-/perfy-1.1.5.tgz#0d629f870a34a3eb1866d3db485d2b3faef29e4b"
   integrity sha512-/ieVBpMaPTJf83YTUl2TImsSwMEJ23qGP2w27pE6aX+NrB/ZRGqOnQZpl7J719yFwd+ebDiHguPNFeMSamyK7w==
