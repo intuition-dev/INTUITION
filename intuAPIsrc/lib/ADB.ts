@@ -33,11 +33,6 @@ export class ADB { // auth & auth DB
       })
    }
 
-   isUserAuth(userEmail, pswdHash) { // yes the pswds are a hash
-      // run some code and:
-      return 'editor'
-   }
-
    async addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) {
       let randomID = '_' + Math.random().toString(36).substr(2, 9)
       var salt = bcrypt.genSaltSync(10);
@@ -175,7 +170,6 @@ export class ADB { // auth & auth DB
       return this.db.run(`DELETE FROM editors WHERE id='${id}'`, function (err) {
          if (err) {
          }
-         // get the last insert id
       });
    }
 
@@ -267,7 +261,7 @@ export class ADB { // auth & auth DB
    updateConfig(pathToSite, port, printfulApi, adminId) {
       return this.db.run(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
-            return console.error('erros:', err.message);
+            return console.error('update config error:', err.message);
          }
          return rows.changes
       })

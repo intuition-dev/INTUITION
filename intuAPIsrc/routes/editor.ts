@@ -6,6 +6,7 @@ import { Email } from '../lib/Email';
 import { BasePgRouter, ExpressRPC, iAuth } from 'mbake/lib/Serv';
 import { ADB } from '../lib/ADB';
 import { Auth } from '../lib/Auth';
+import { FileMethods } from '../lib/FileMethods';
 
 const fs = require('fs-extra')
 
@@ -14,12 +15,14 @@ export class EditorRoutes extends BasePgRouter {
    appE: ExpressRPC
    adbDB: ADB;
    iauth: iAuth;
+   fileMethod: FileMethods;
 
    constructor(appE, adbDB) {
       super();
       this.appE = appE
       this.adbDB = adbDB
       this.iauth = new Auth(appE, adbDB);
+      this.fileMethod = new FileMethods();
    }
 
    ROUTES = (req, res, ) => {
@@ -95,13 +98,9 @@ export class EditorRoutes extends BasePgRouter {
             if (auth === 'admin' || auth === 'editor') {
 
                mountPath = res.locals.mountPath;
-               let dirs = new Dirs(mountPath);
-               let dirsToIgnore = ['.', '..'];
-
-               resp.result = dirs.getShort()
-                  .map(el => el.replace(/^\/+/g, ''))
-                  .filter(el => !dirsToIgnore.includes(el));
+               resp.result = this.fileMethod.getDirs(mountPath);
                res.json(resp);
+               
             } else {
                resp.errorLevel = -1
                resp.errorMessage = 'mismatch'
@@ -117,17 +116,12 @@ export class EditorRoutes extends BasePgRouter {
 
                mountPath = res.locals.mountPath;
                let post_id = '/' + params.post_id;
-
+               
                if (typeof post_id !== 'undefined') {
-
-                  let dirs = new Dirs(mountPath);
-                  resp.result = dirs.getInDir(post_id);
-
-                  // if root directory, remove all dirs from output, leave only files:
-                  if (post_id === '/') {
-                     resp.result = resp.result.filter(file => file.indexOf('/') === -1 && !fs.lstatSync(mountPath + '/' + file).isDirectory());
-                  }
+                  
+                  resp.result = this.fileMethod.getFiles(mountPath, post_id);
                   res.json(resp);
+
                } else {
                   res.status(400);
                   resp.result = { error: 'no post_id' };
