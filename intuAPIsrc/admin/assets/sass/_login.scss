@@ -120,6 +120,7 @@
             &:-webkit-autofill {
                 background: 0;
             }
+
         }
         .reset-password {
             cursor: pointer;
@@ -131,6 +132,11 @@
             text-align: left;
             font-weight: 600;
             padding: 1rem 0;
+        }
+        .bl_v-code__label {
+            &, &.focus {
+                color: $color-secondary;
+            }
         }
     }
 

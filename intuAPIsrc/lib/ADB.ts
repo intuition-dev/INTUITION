@@ -84,11 +84,25 @@ export class ADB { // auth & auth DB
             return row
          }).then(function (row) {
             if (typeof row != 'undefined') {
-               bcrypt.compare(password, row.password, function (err, res) {
-                  resolve(res)
-               })
+               bcrypt.compare(password, row.password)
+                  .then((res) => {
+                     _this.db.get(`SELECT pathToSite FROM configs`, [], function (err, row) {
+                        if (err) {
+                        }
+                        return row
+                     }).then(function (row) {
+                        let temp = {}
+                        console.info("--res:", res)
+                        temp['pass'] = res
+                        temp['pathToSite'] = row.pathToSite
+                        console.info("--result:", temp)
+                        resolve(temp)
+                     })
+                  });
             } else {
-               resolve(false)
+               let temp = {}
+               temp['pass'] = false
+               resolve(temp)
             }
          })
       })

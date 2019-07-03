@@ -42,10 +42,10 @@ block content
 							.input-wrap
 								label Enter new password
 								input(type='password', name='new-password', required='required')
-							.input-wrap
+							.input-wrap.bl_v-code
 								div.v-code Verification code was sent to your email
-								label Enter verification code
-								input(type='number', name='v-code', required='required')
+								label.bl_v-code__label Enter verification code
+								input.bl_v-code__input(type='number', name='v-code', required='required')
 						button.btn-custom.btn-primary.btn-center.space-21v(name="reset-password-btn-2", type='submit') Reset Password
 
 					.bl_pass-changed-notification.d-hide.js-pass-changed-notification

@@ -136,6 +136,11 @@
             }
 
         }
+        .bl_v-code__label {
+            &, &.focus {
+                color: $color-secondary;
+            }
+        }
     }
 
     p {

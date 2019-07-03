@@ -27,9 +27,9 @@ export class Auth implements iAuth {
                 .then((result: any) => {
                     console.log('validateEmail result: ', result);
                     // editor user auth
-                    if (result === true) {
+                    if (result.pass === true) {
                         resp.locals.email = user;
-                        console.log('resp.locals.email', resp.locals.email);
+                        resp.locals.mountPath = result.pathToSite;
                         return resolve('admin');
                     } else {
                         return this.adbDB.validateEditorEmail(user, pswd)
@@ -37,7 +37,7 @@ export class Auth implements iAuth {
                                 console.log('validateEditorEmail result: ', result);
                                 // admin user auth
                                 if (result.pass) {
-                                    mountPath = result.pathToSite
+                                    resp.locals.mountPath = result.pathToSite;
                                     return resolve('editor');
                                 } else {
                                     throw new Error();

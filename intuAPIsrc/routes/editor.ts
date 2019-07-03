@@ -35,13 +35,15 @@ export class EditorRoutes extends BasePgRouter {
       const params = JSON.parse(req.fields.params)
       const resp: any = {}
 
+      console.log('method ---------> ', method);
+
       if (method === 'reset-password-code') {
          let email = params.admin_email;
          resp.result = {};
 
          try {
             return this.adbDB.sendVcodeEditor(email)
-               .then(function (code) {
+               .then(code => {
                   this.adbDB.getEmailJsSettings()
                      .then(settings => {
                         let setting = settings[0];
@@ -65,7 +67,7 @@ export class EditorRoutes extends BasePgRouter {
          let email = params.admin_email;
 
          return this.adbDB.resetPasswordEditor(email, params.code, params.password)
-            .then(function (result) {
+            .then(result => {
                resp.result = result;
                return res.json(resp);
             })
@@ -92,8 +94,10 @@ export class EditorRoutes extends BasePgRouter {
          return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin' || auth === 'editor') {
 
+               mountPath = res.locals.mountPath;
                let dirs = new Dirs(mountPath);
                let dirsToIgnore = ['.', '..'];
+
                resp.result = dirs.getShort()
                   .map(el => el.replace(/^\/+/g, ''))
                   .filter(el => !dirsToIgnore.includes(el));
@@ -111,11 +115,14 @@ export class EditorRoutes extends BasePgRouter {
          return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin' || auth === 'editor') {
 
+               mountPath = res.locals.mountPath;
                let post_id = '/' + params.post_id;
+
                if (typeof post_id !== 'undefined') {
+
                   let dirs = new Dirs(mountPath);
-                  console.log('post_id', post_id);
                   resp.result = dirs.getInDir(post_id);
+
                   // if root directory, remove all dirs from output, leave only files:
                   if (post_id === '/') {
                      resp.result = resp.result.filter(file => file.indexOf('/') === -1 && !fs.lstatSync(mountPath + '/' + file).isDirectory());
@@ -139,14 +146,18 @@ export class EditorRoutes extends BasePgRouter {
          return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin' || auth === 'editor') {
 
+               mountPath = res.locals.mountPath;
                let post_id = params.post_id;
                let pathPrefix = params.pathPrefix;
+
                if (typeof post_id !== 'undefined') {
+
                   let md = mountPath + '/' + pathPrefix + post_id;
                   let original_post_id = post_id.replace(/\.+\d+$/, "");
                   let fileExt = path.extname(original_post_id);
+
                   if (fs.existsSync(md) && (fileExt === '.md' || fileExt === '.yaml' || fileExt === '.csv' || fileExt === '.pug' || fileExt === '.css')) {
-                     fs.readFile(md, 'utf8', function (err, data) {
+                     fs.readFile(md, 'utf8', (err, data) => {
                         if (err) throw err;
                         resp.result = data;
                         res.json(resp);
@@ -172,6 +183,7 @@ export class EditorRoutes extends BasePgRouter {
          return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin' || auth === 'editor') {
 
+               mountPath = res.locals.mountPath;
                let post_id = params.post_id;
                let pathPrefix = params.pathPrefix;
                let content = params.content;
@@ -228,6 +240,7 @@ export class EditorRoutes extends BasePgRouter {
          return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin' || auth === 'editor') {
 
+               mountPath = res.locals.mountPath;
                let post_id = params.post_id;
                let pathPrefix = params.pathPrefix;
 
@@ -248,19 +261,19 @@ export class EditorRoutes extends BasePgRouter {
                   if (checkDat_i.length > 0) {
                      // this is for yaml
                      runMbake.itemizeNBake(mountPath + '/' + pathPrefix, 3)
-                        .then(function (response) {
-                           resp.result = { data: 'OK' };
-                           res.json(resp);
-                        }, function (error) {
-                           resp.result = { data: error };
-                           res.json(resp);
-                        })
+                        .then(response => {
+                              resp.result = { data: 'OK' };
+                              res.json(resp);
+                           }, error => {
+                              resp.result = { data: error };
+                              res.json(resp);
+                           })
                   } else {
                      // TODO: When do we to do components? Why not just bake? md right.
-                     runMbake.compsNBake(mountPath, 3).then(function (response) {
+                     runMbake.compsNBake(mountPath, 3).then(response => {
                         resp.result = { data: 'OK' };
                         res.json(resp);
-                     }, function (error) {
+                     }, error => {
                         resp.result = { data: error };
                         res.json(resp);
                      })
@@ -284,6 +297,7 @@ export class EditorRoutes extends BasePgRouter {
          return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin' || auth === 'editor') {
 
+               mountPath = res.locals.mountPath;
                let post_id = params.post_id;
                let pathPrefix = params.pathPrefix;
 
@@ -323,6 +337,7 @@ export class EditorRoutes extends BasePgRouter {
          return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin' || auth === 'editor') {
 
+               mountPath = res.locals.mountPath;
                let uploadPath;
                let pathPrefix = params.pathPrefix;
 
@@ -337,7 +352,7 @@ export class EditorRoutes extends BasePgRouter {
                uploadPath = mountPath + '/' + pathPrefix + '/' + sampleFile.name;
 
                // console.log('UPLOAD', uploadPath, sampleFile.path);
-               fs.rename(sampleFile.path, uploadPath, function (err) {
+               fs.rename(sampleFile.path, uploadPath, err => {
                   if (err) throw err;
 
                   resp.result = { data: 'File uploaded!' };
@@ -355,7 +370,8 @@ export class EditorRoutes extends BasePgRouter {
 
          return this.iauth.auth(user, pswd, res).then(auth => {
             if (auth === 'admin' || auth === 'editor') {
-
+               
+               mountPath = res.locals.mountPath;
                let post_id = params.post_id;
                let publish_date = params.publish_date;
                if (typeof post_id !== 'undefined') {
