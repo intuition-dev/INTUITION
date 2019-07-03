@@ -18,8 +18,25 @@
   <style>
     .delayShowing { opacity: .3; }
     .blurT, .blurF { 
-       -webkit-filter:blur(2px);
-       filter:blur(2px); 
+       -webkit-backdrop-filter:blur(2px);
+       backdrop-filter:blur(2px); 
+    }
+    
+    .centerSpin {
+       position:fixed;
+       padding:0;
+       margin:0;
+       top:0;
+       left:0;
+       width: 100%;
+       height: 100%;
+       z-index: 1000;
+       
+       background: rgba(192,192,192, 0.1);
+    
+       display: flex;
+       justify-content: center;
+       padding-top: 1rem;
     }
     
     .tabulator-col {
@@ -36,11 +53,8 @@
   <script src="/assets/js/loader.js" defer="true"></script>
 </head>
 <body>
-  <p></p>
-  <div class="text-center">
-    <div class="spinner-border"></div>
-  </div>
   <div class="container delayShowing">
+    <p></p>
     <p>oh hi app</p>
     <form class="grid-form">
       <fieldset class="blurF">
@@ -57,6 +71,8 @@
         </div>
       </fieldset>
     </form>
+    <button class="btn btn-primary" id="but1" type="button">Validate</button>
+    <p></p>
     <div class="blurT" id="table1"></div>
   </div>
-<!-- mB v6.07.11 on 2019-07-02T22:59:32.055Z --></body>
+<!-- mB v6.07.11 on 2019-07-03T00:41:19.498Z --></body>

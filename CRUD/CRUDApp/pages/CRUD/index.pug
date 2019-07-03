@@ -4,10 +4,8 @@ head
    script(src='/assets/js/loader.js', defer='true')
 
 body
-   p
-   .text-center
-      .spinner-border
    .container.delayShowing
+      p
       p oh hi app
 
       form.grid-form
@@ -21,5 +19,8 @@ body
                   label Field 2
                   input(type='text')
 
+      button#but1.btn.btn-primary(type='button') Validate
+
+      p
 
       #table1.blurT

@@ -1,3 +1,14 @@
+depp.require(['jquery'], spin);
+var spinDiv = "\n   <div class=\"centerSpin\" id='spin'>\n      <div class=\"spinner-border\"></div>\n   </div>";
+function spin() {
+    $('body').append(spinDiv);
+}
+function spinStop() {
+    $('#spin').remove();
+}
+setTimeout(function () {
+    spinStop();
+}, 2000);
 var tableData = [
     { id: 1, name: 'Mary May', age: '1', col: 'blue' },
     { id: 2, name: 'Christine Lobowski', age: '42', col: 'green' },
@@ -5,5 +16,13 @@ var tableData = [
     { id: 4, name: 'Margret Marmajuke', age: '16', col: 'yellow' },
 ];
 disE1('gotData', tableData);
-depp.require(['RPC']);
+var rpc;
+depp.require(['RPC', 'jquery', 'DOM'], setup);
+function setup() {
+    rpc = new httpRPC('http', 'localhost', 8888);
+    $('#but1').click(function (evt) {
+        console.log('but1');
+        $('#but1').blur();
+    });
+}
 console.log('data in flight', Date.now() - _start);

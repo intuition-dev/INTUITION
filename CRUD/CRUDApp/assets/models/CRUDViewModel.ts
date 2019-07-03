@@ -1,9 +1,27 @@
 
 // try to make each file require depps it needs
 
-declare let _start:any
-declare let depp:any
-declare let window:any
+declare var _start:any
+declare var depp:any
+declare var $:any
+declare var disE1:any
+declare var httpRPC:any
+
+depp.require(['jquery'], spin)
+var spinDiv = `
+   <div class="centerSpin" id='spin'>
+      <div class="spinner-border"></div>
+   </div>`
+function spin() {
+   $('body').append( spinDiv )
+}
+function spinStop() {
+   $('#spin').remove()
+}
+setTimeout(function() {
+   spinStop()
+}, 2000)
+
 
 var tableData = [
    {id:1, name:'Mary May', age:'1', col:'blue' },
@@ -12,12 +30,21 @@ var tableData = [
    {id:4, name:'Margret Marmajuke', age:'16', col:'yellow' },
 ]
 
-// passing data vs file i/o of local-storage
 disE1('gotData', tableData)
 
-depp.require(['RPC'])
+var rpc
+depp.require(['RPC','jquery', 'DOM'], setup)
+function setup() {
+   rpc = new httpRPC('http', 'localhost', 8888)
+
+   $('#but1').click(function(evt){
+      console.log('but1')
+      $('#but1').blur()
+
+   })
+}
 
 console.log('data in flight', Date.now() - _start)
 
-//button to validate and spin
+//button to validate 
 
