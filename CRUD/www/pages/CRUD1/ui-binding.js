@@ -3,7 +3,7 @@ console.log('ui binding')
 // required dependencies  are in each script
 
 depp.require(['polly'], onPoly)
-depp.define({'CRUD':'/assets/models/CRUDViewModel.js'})
+depp.define({'CRUD':'/assets/models/CRUD1ViewModel.js'})
 function onPoly() {
    // view model(VM) load ASAP
    depp.require('CRUD')
@@ -51,8 +51,10 @@ depp.require(['gridformsDefaultStyle', 'jquery'], function(){
 // binding step 2:
 function onGotData(evt) {
    console.log('gotData')
+
    window.table1.setData(evt).then(function(){
       $('.blurT').removeClass('blurT')
    })
+
 }//()
 

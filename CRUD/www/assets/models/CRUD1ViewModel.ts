@@ -1,12 +1,13 @@
 
-console.log('VM')
-// required dependencies  are in each script
-
 declare var _start:any
 declare var depp:any
 declare var $:any
 declare var disE1:any
 declare var httpRPC:any
+declare var GUID: any
+
+console.log('VM')
+// required dependencies  are in each script
 
 depp.require(['jquery'], spin)
 var spinDiv = `
@@ -22,7 +23,6 @@ function spinStop() {
 setTimeout(function() {
    spinStop()
 }, 2000)
-
 
 var tableData = [
    {id:1, name:'Mary May', age:'1', col:'blue' },
@@ -48,7 +48,7 @@ class CRUDvm {
       this.rpc = new httpRPC(pro, host, 8888)
    }
 
-   _all() {
+   all() {
       var prom = this.rpc.invoke('api', 'CRUDPg', 'selectAll', {a:5, b:2})
       // the most important step in the loading waterfall - after the first paint
       console.log('***', 'data in flight', Date.now() - _start)
@@ -59,6 +59,18 @@ class CRUDvm {
          console.log('err', err)
       })
    }//()
+
+   ins(name, topic) {
+      var guid = GUID()
+      var prom = this.rpc.invoke('api', 'CRUD1Pg', 'insert', { guid:guid, name:name, topic:topic })
+      
+      prom.then(function(resp) {
+         console.log('resp', resp)
+      }).catch(function (err) {
+         console.log('err', err)
+      })
+   }//()
+
 
    validate():string {
       return 'OK'

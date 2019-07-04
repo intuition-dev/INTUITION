@@ -61,7 +61,6 @@ export class CDB extends BaseDB {
       await this._run(stmt, guid, name, topics )
    }
 
-
    async selectGUID(sarg:number) {
       logger.trace(sarg)
       const qry =  CDB.db.prepare('SELECT rowid, * FROM TOPIC WHERE guid = ?') 
@@ -69,7 +68,6 @@ export class CDB extends BaseDB {
       logger.trace(rows)
       return rows
    }//()
-
 
    async selectROWID(sarg:number) {
       logger.trace(sarg)

@@ -9,7 +9,7 @@ mainEApp.makeInstance(['*'])
 // RPC router
 const cRouter = new CrudPgRouter()
 
-mainEApp.handleRRoute('api', 'CRUDPg', cRouter.route.bind(cRouter))
+mainEApp.handleRRoute('api', 'CRUD1Pg', cRouter.route.bind(cRouter))
 
 mainEApp.serveStatic('../ed')
 mainEApp.serveStatic('../www')
