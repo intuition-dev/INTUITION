@@ -1,3 +1,4 @@
+console.log('VM');
 depp.require(['jquery'], spin);
 var spinDiv = "\n   <div class=\"centerSpin\" id='spin'>\n      <div class=\"spinner-border\"></div>\n   </div>";
 function spin() {
@@ -16,23 +17,28 @@ var tableData = [
     { id: 4, name: 'Margret Marmajuke', age: '16', col: 'yellow' },
 ];
 disE1('gotData', tableData);
-var rpc;
-depp.require(['RPC', 'jquery', 'DOM', 'Uri'], setup);
-function setup() {
-    var pro = window.location.protocol;
-    pro = pro.replace(':', '');
-    var host = window.location.hostname;
-    var port = window.location.port;
-    rpc = new httpRPC(pro, host, 8888);
-    var prom = rpc.invoke('api', 'CRUDPg', 'selectAll', { a: 5, b: 2 });
-    prom.then(function (resp) {
-        console.log(resp);
-    }).catch(function (err) {
-        console.log('err', err);
-    });
-    $('#but1').click(function (evt) {
-        console.log('but1');
-        $('#but1').blur();
-    });
-}
-console.log('data in flight', Date.now() - _start);
+depp.require(['RPC'], function () {
+    depp.done('VM');
+});
+var CRUDvm = (function () {
+    function CRUDvm() {
+        var pro = window.location.protocol;
+        pro = pro.replace(':', '');
+        var host = window.location.hostname;
+        var port = window.location.port;
+        this.rpc = new httpRPC(pro, host, 8888);
+    }
+    CRUDvm.prototype._all = function () {
+        var prom = this.rpc.invoke('api', 'CRUDPg', 'selectAll', { a: 5, b: 2 });
+        console.log('***', 'data in flight', Date.now() - _start);
+        prom.then(function (resp) {
+            console.log('resp', resp, Date.now() - _start);
+        }).catch(function (err) {
+            console.log('err', err);
+        });
+    };
+    CRUDvm.prototype.validate = function () {
+        return 'OK';
+    };
+    return CRUDvm;
+}());

@@ -1,5 +1,6 @@
 
-// try to make each file require depps it needs
+console.log('VM')
+// required dependencies  are in each script
 
 declare var _start:any
 declare var depp:any
@@ -32,31 +33,35 @@ var tableData = [
 
 disE1('gotData', tableData)
 
-var rpc
-depp.require(['RPC','jquery', 'DOM', 'Uri'], setup)
-function setup() {
+depp.require(['RPC'], function(){
+   depp.done('VM')
+})
 
-   var pro = window.location.protocol
-   pro  = pro.replace(':','')
-   var host = window.location.hostname
-   var port = window.location.port
-   rpc = new httpRPC(pro, host, 8888)
-   
-   var prom = rpc.invoke('api', 'CRUDPg', 'selectAll', {a:5, b:2})
-   prom.then(function(resp) {
-      console.log(resp)
-   }).catch(function (err) {
-      console.log('err', err)
-    })
+class CRUDvm {
+   // can be in services class so other VM can use
+   rpc
+   constructor() {
+      var pro = window.location.protocol
+      pro  = pro.replace(':','')
+      var host = window.location.hostname
+      var port = window.location.port
+      this.rpc = new httpRPC(pro, host, 8888)
+   }
 
-   $('#but1').click(function(evt){
-      console.log('but1')
-      $('#but1').blur()
-   })
+   _all() {
+      var prom = this.rpc.invoke('api', 'CRUDPg', 'selectAll', {a:5, b:2})
+      // the most important step in the loading waterfall - after the first paint
+      console.log('***', 'data in flight', Date.now() - _start)
+      
+      prom.then(function(resp) {
+         console.log('resp', resp, Date.now() - _start)
+      }).catch(function (err) {
+         console.log('err', err)
+      })
+   }//()
 
-}//()
+   validate():string {
+      return 'OK'
+   }//()
 
-console.log('data in flight', Date.now() - _start)
-
-//button to validate 
-
+}
