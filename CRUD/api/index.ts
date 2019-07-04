@@ -12,6 +12,8 @@ const cRouter = new CrudPgRouter()
 mainEApp.handleRRoute('api', 'CRUD1Pg', cRouter.route.bind(cRouter))
 
 mainEApp.serveStatic('../ed')
+
+//#1
 mainEApp.serveStatic('../www')
 
 // start

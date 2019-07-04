@@ -60,9 +60,9 @@ class CRUDvm {
       })
    }//()
 
-   ins(name, topic) {
+   ins(name, topics) {
       var guid = GUID()
-      var prom = this.rpc.invoke('api', 'CRUD1Pg', 'insert', { guid:guid, name:name, topic:topic })
+      var prom = this.rpc.invoke('api', 'CRUD1Pg', 'insert', { guid:guid, name:name, topics:topics })
       
       prom.then(function(resp) {
          console.log('resp', resp)
