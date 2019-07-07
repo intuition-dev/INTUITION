@@ -26,7 +26,7 @@ All other example apps are listed here: https://github.com/metabake/mBakeCLI/blo
 
 
 # Links
-- Full Docs: [MetaBake.github.io/mBakeCli](http://MetaBake.github.io/mBakeCLI)
+- Full Docs: [metabake.github.io/mbCLI](http://metabake.github.io/mbCLI)
 - [MetaBake.org](https://www.MetaBake.org)
 - [blog.MetaBake.net](http://blog.MetaBake.net)
 - [Github](http://git.MetaBake.org)
