@@ -11,7 +11,7 @@ WebAdmin generates starter site to edit, eg: Website, CMS, Shop or you can choos
 
 
 #### Please star our main project here:
-- https://github.com/metabake/metaIntuition
+- https://github.com/metabake/mbIntuition
 
 # Features
 
