@@ -9,8 +9,11 @@ import { Auth } from '../lib/Auth';
 import { FileMethods } from '../lib/FileMethods';
 
 const fs = require('fs-extra')
+const path = require('path')
 
 export class EditorRoutes extends BasePgRouter {
+
+   emailJs = new Email()
 
    appE: ExpressRPC
    adbDB: ADB;
@@ -26,9 +29,7 @@ export class EditorRoutes extends BasePgRouter {
    }
 
    ROUTES = (req, res, ) => {
-      const emailJs = new Email();
-      const fs = require('fs');
-      const path = require('path');
+
       let mountPath = '';
 
       const user = req.fields.user
@@ -50,7 +51,7 @@ export class EditorRoutes extends BasePgRouter {
                   this.adbDB.getEmailJsSettings()
                      .then(settings => {
                         let setting = settings[0];
-                        emailJs.send(
+                        this.emailJs.send(
                            email,
                            setting.emailjsService_id,
                            setting.emailjsTemplate_id,

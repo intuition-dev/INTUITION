@@ -10,6 +10,8 @@ var path = require('path');
 
 export class AdminRoutes extends BasePgRouter {
 
+   emailJs = new Email()
+
    appE: ExpressRPC
    adbDB: ADB;
    iauth: iAuth;
@@ -23,7 +25,6 @@ export class AdminRoutes extends BasePgRouter {
 
    ROUTES = async(req, res) => {
       console.log('req')
-      const emailJs = new Email();
 
       const user = req.fields.user
       const pswd = req.fields.pswd
@@ -197,7 +198,7 @@ export class AdminRoutes extends BasePgRouter {
                   this.adbDB.getEmailJsSettings()
                      .then(settings => {
                         let setting = settings[0];
-                        emailJs.send(
+                        this.emailJs.send(
                            email,
                            setting.emailjsService_id,
                            setting.emailjsTemplate_id,
@@ -285,7 +286,7 @@ export class AdminRoutes extends BasePgRouter {
                                           let link = 'http://localhost:' + port + '/editors/?email=' + encodeURIComponent(email);
                                           let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: ' + link;
    
-                                          emailJs.send(
+                                          this.emailJs.send(
                                              email,
                                              setting.emailjsService_id,
                                              setting.emailjsTemplate_id,

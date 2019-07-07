@@ -3,6 +3,7 @@ const fs = require('fs-extra');
 const resp: any = {};
 
 export class FileMethods {
+    // move to mbCLI
 
     // get list of directories
     getDirs(mountPath:string) {
