@@ -1,7 +1,7 @@
 depp.define({
    'pre': [
       '#jquery'
-      , '//unpkg.laska.io/axios@0.18.0/dist/axios.min.js'
+      , 'https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js'
 
    ]
 }); //define pre
