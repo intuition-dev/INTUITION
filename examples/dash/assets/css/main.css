@@ -1,0 +1,55 @@
+
+.btn:hover {
+   background: inherit;
+   text-shadow: 0px 0px .5px white;
+   box-shadow: 0px 0px 3px white;
+}
+
+.chart-container {
+
+   border-style: solid;
+   border-width: 1px;
+   border-radius: 10px;
+   
+   width: calc( 100vw - 300);
+   height: calc( 100vh - 80);
+
+}
+
+.page {
+   margin-top: 10px;
+   margin-right: 10px;
+}
+
+.progress-bar {
+   border: 1px solid rgba(0,0,0,.2);
+   border-radius: 3px;
+   padding: 1rem;
+   margin: 1.5rem;
+   position: relative;
+   background: #fff;
+}
+
+.progress-bar:after, .progress-bar:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.progress-bar:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #fff;
+	border-width: 10px;
+	margin-left: -10px;
+}
+.progress-bar:before {
+	border-color: rgba(0,0,0,0);
+	border-bottom-color: rgba(0,0,0,.2);
+	border-width: 11px;
+	margin-left: -11px;
+}
