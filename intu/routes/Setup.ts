@@ -1,8 +1,14 @@
 
 import { BasePgRouter, ExpressRPC, iAuth } from 'mbake/lib/Serv';
+import { ADB } from '../lib/ADB';
+import { Email } from '../lib/Email';
 
 
 export class Setup extends BasePgRouter {
+
+   adbDB: ADB;
+
+   emailJs = new Email()
 
 
     setup(req, res) {
@@ -21,10 +27,10 @@ export class Setup extends BasePgRouter {
            // res.send(resp)
            try {
               console.info('setup called ...');
-              adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, '9081');
+              this.adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, '9081');
               console.info('db created  ...');
               let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
-              emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
+              this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
               resp['result'] = 'OK'
               return res.json(resp)
   

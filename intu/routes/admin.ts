@@ -1,6 +1,5 @@
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { Email } from '../lib/Email';
-import { Wa } from 'mbake/lib/Wa';
 import { BasePgRouter, ExpressRPC, iAuth } from 'mbake/lib/Serv';
 import { ADB } from '../lib/ADB';
 import { Auth } from '../lib/Auth';
@@ -12,13 +11,11 @@ export class AdminRoutes extends BasePgRouter {
 
    emailJs = new Email()
 
-   appE: ExpressRPC
    adbDB: ADB;
    iauth: iAuth;
 
    constructor(appE, adbDB) {
       super();
-      this.appE = appE
       this.adbDB = adbDB
       this.iauth = new Auth(appE, adbDB);
    }
