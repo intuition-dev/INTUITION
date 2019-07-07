@@ -8,7 +8,7 @@ depp.define({
 
 depp.define({
    '2nd': ['#pre'
-      , '#polly'
+      , '#poly'
       , '#zenscroll'
       , '#disableAutoFill'
       , '#validator'

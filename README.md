@@ -64,8 +64,8 @@ website's content. But it will remove all the editor: you have to add them again
 
 # API for MetaBake and WebAdmin
 
-- Use via https://unpkg.laska.io/intu@0.9.12/www/assets/IntuAPI/IntuAPI.min.js
-- or better via https://github.com/metabake/mBakeCli/tree/master/zBrowserServices/toolBelt
+Check here https://cdn.jsdelivr.net/gh/metabake/metaCake@v2.0.1/toolBelt/toolBelt.js
+
 
 # Links
 

@@ -2,7 +2,7 @@
 console.log('ui binding')
 // required dependencies  are in each script
 
-depp.require(['polly'], onPoly)
+depp.require(['poly'], onPoly)
 depp.define({'CRUD':'/assets/models/CRUD1ViewModel.js'})
 function onPoly() {
    // view model(VM) load ASAP
@@ -12,7 +12,7 @@ function onPoly() {
 // data binding to VM
 // setup tabulator
 var vm
-depp.require(['tabulator', 'DOM', 'polly', 'jquery', 'VM'], tab1)
+depp.require(['tabulator', 'DOM', 'poly', 'jquery', 'VM'], tab1)
 function tab1() {
    vm = new CRUDvm()
    vm._all()

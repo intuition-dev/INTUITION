@@ -1,5 +1,5 @@
 
-## List of MetaBake tools that are released to npm and or unpkg.laska.io CDN:
+## List of MetaBake toolsL
 
 - ToolBelt: https://github.com/metabake/mBakeCLI/tree/master/zBrowserServices/toolBelt
 - Http RPC: https://github.com/metabake/mBakeCLI/tree/master/zBrowserServices/http-rpc
