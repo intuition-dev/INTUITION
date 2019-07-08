@@ -1,8 +1,8 @@
-import { Download } from 'mbake/lib/FileOpsExtra';
-import { Email } from '../lib/Email';
-import { BasePgRouter, ExpressRPC, iAuth } from 'mbake/lib/Serv';
-import { ADB } from '../lib/ADB';
-import { Auth } from '../lib/Auth';
+import { Download } from 'mbake/lib/FileOpsExtra'
+import { Email } from '../Email'
+import { BasePgRouter, iAuth } from 'mbake/lib/Serv'
+import { ADB } from '../ADB'
+import { Auth } from '../Auth'
 
 const fs = require('fs-extra')
 var path = require('path');

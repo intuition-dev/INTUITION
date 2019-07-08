@@ -1,7 +1,6 @@
 import { ExpressRPC, iAuth } from 'mbake/lib/Serv';
 import { ADB } from './ADB';
 
-
 export class Auth implements iAuth {
 
     appE: ExpressRPC
@@ -21,7 +20,7 @@ export class Auth implements iAuth {
         pswd = Buffer.from(pswd, 'base64').toString();
 
         return new Promise((resolve, reject) => {
-            resp.result = {};
+            resp.result = {}
 
             return this.adbDB.validateEmail(user, pswd)
                 .then((result: any) => {
@@ -42,14 +41,14 @@ export class Auth implements iAuth {
                                 } else {
                                     throw new Error();
                                 }
-                            });
+                            })
                     }
                 }).catch((error) => {
                     console.log('auth: ', error);
                     resp.errorLevel = -1
                     resp.errorMessage = 'mismatch'
                     resolve('NO');
-                });
+                })
 
         })
     }
@@ -58,4 +57,4 @@ export class Auth implements iAuth {
 
 module.exports = {
     Auth
-};
+}

@@ -34,7 +34,7 @@ const adbDB = new ADB()
 const dbName = 'ADB.sqlite'
 const pathToDb = path.join(__dirname, dbName)
 
-const mainEApp = new IntuApp()
+const mainEApp = new IntuApp(adbDB)
 
 try {
    //check if the file of database exist
@@ -46,7 +46,7 @@ try {
    } else {
       console.log('open db and run setup')
       //create db file
-      const setup = new Setup()
+      const setup = new Setup(pathToDb)
       setup.setup(pathToDb)
    }
 } catch (err) {

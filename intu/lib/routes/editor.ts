@@ -2,11 +2,11 @@ import { MBake, Ver } from 'mbake/lib/Base';
 
 import { Dat, FileOps, Dirs } from 'mbake/lib/FileOpsBase'
 import { CSV2Json } from 'mbake/lib/FileOpsExtra';
-import { Email } from '../lib/Email';
-import { BasePgRouter, ExpressRPC, iAuth } from 'mbake/lib/Serv';
-import { ADB } from '../lib/ADB';
-import { Auth } from '../lib/Auth';
-import { FileMethods } from '../lib/FileMethods';
+import { Email } from '../Email';
+import { BasePgRouter, ExpressRPC, iAuth } from 'mbake/lib/Serv'
+import { ADB } from '../ADB';
+import { Auth } from '../Auth';
+import { FileMethods } from 'mbake/lib/FileOpsExtra'
 
 const fs = require('fs-extra')
 const path = require('path')
