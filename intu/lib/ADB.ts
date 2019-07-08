@@ -64,14 +64,7 @@ export class ADB { // auth & auth DB
       });
    }
 
-   getPrintfulAPI() {
-      return this.db.all(`SELECT printfulApi FROM configs`, [], function (err, rows) {
-         if (err) {
-         }
-         return rows
-      })
-   }
-
+  
    validateEmail(email, password) {
       let _this = this
       return new Promise(function (resolve, reject) {

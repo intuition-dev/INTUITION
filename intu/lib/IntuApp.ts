@@ -13,13 +13,14 @@ constcutor(db:ADB) {
 }
 
 run(port) {
-    // order: api, admin, editors, webapp
+    // order if routes: api, admin, editors, webapp
 
     const eA = new EditorRoutes(this, this.db)
     const aA = new AdminRoutes(this, this.db)
     this.handleRRoute('api', 'editors', eA.ROUTES)
     this.handleRRoute('api', 'admin', aA.ROUTES)
 
+    
 
     this.serveStatic(path.join(__dirname, '/'))
     

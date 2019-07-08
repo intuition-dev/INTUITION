@@ -16,6 +16,13 @@ const mainApp = ExpressRPC.makeInstance(null)
    next()
 });
 
+getPrintfulAPI() {
+   return this.db.all(`SELECT printfulApi FROM configs`, [], function (err, rows) {
+      if (err) {
+      }
+      return rows
+   })
+}
 
 
 VersionNag.isCurrent('intu4e', Vere.ver() ).then(function(isCurrent_:boolean){
