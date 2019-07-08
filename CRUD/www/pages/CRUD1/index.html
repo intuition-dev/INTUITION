@@ -1,0 +1,76 @@
+
+<head>
+  <script>
+    var _start = Date.now()
+    window.ENV = '0' 
+    
+  </script>
+  <title></title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/metaCake@v2.0.1/bootStrap/css/bootstrapTop.css"/>
+  <script src="https://cdn.jsdelivr.net/gh/metabake/metaCake@v2.0.1/toolBelt/toolBelt.min.js"></script>
+  <script src="/assets/js/ui-loader.js" defer="true"></script>
+  <style>
+    html { touch-action: manipulation; }
+    
+    .delayShowing { opacity: .3; }
+    .blurT, .blurF { 
+       -webkit-backdrop-filter:blur(2px);
+       backdrop-filter:blur(2px); 
+    }
+    
+    .centerSpin {
+       position:fixed;
+       padding:0;
+       margin:0;
+       top:0;
+       left:0;
+       width: 100%;
+       height: 100%;
+       z-index: 1000;
+       
+       background: rgba(192,192,192, 0.1);
+    
+       display: flex;
+       justify-content: center;
+       padding-top: 1rem;
+    }
+    
+    .tabulator-col {
+       height: 40px;
+    }
+    .tabulator-cell {
+       height: 40px;
+    }
+    .grid-form > fieldset > legend {
+       margin: 0;
+    }
+  </style>
+  <script src="ui-binding.js"></script>
+</head>
+<body>
+  <div class="container delayShowing">
+    <p></p>
+    <p>oh hi app</p>
+    <form class="grid-form">
+      <fieldset class="blurF">
+        <legend>Form Section</legend>
+        <div data-row-span="2">
+          <div data-field-span="1">
+            <label>Field 1</label>
+            <input type="text"/>
+          </div>
+          <div data-field-span="1">
+            <label>Field 2</label>
+            <input type="text"/>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <button class="btn btn-primary" id="but1" type="button">Validate</button>
+    <p></p>
+    <div class="blurT" id="table1"></div>
+  </div>
+<!-- mB v6.07.21 on 2019-07-07T18:05:01.815Z --></body>
