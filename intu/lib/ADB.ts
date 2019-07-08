@@ -13,13 +13,22 @@ export class ADB { // auth & auth DB
    // emailjs is client side api
    db
 
+   dbExists(path) {
+      return fs.existsSync(path)
+   }
+
+   openDB000(path, cb) {
+      fs.open(path, 'w', cb);
+   }
+
+
    async connectToDb(dbPath) { // the admin db is set to 'P@ssw0rd!' and you have to change it first time on DB create
       const dbPro = sqlite.open(dbPath)
       this.db = await dbPro
       this.db.configure('busyTimeout', 2 * 1000)
    }
 
-   async connectToDbOnPort(dbPath) {
+   async getPort(dbPath) {
       let _this = this
       await _this.connectToDb(dbPath)
       return new Promise(function (resolve, reject) {
@@ -53,13 +62,6 @@ export class ADB { // auth & auth DB
          if (err) {
          }
       });
-   }
-
-   checkDB(path) {
-      return fs.existsSync(path)
-   }
-   openDB(path, cb) {
-      fs.open(path, 'w', cb);
    }
 
    getPrintfulAPI() {

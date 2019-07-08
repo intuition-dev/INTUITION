@@ -14,13 +14,14 @@ export class Email {
                 }
             })
             .then(res => {
-                console.info('Email has been sent. Result', res);
+                console.info('Email has been sent. Result', res)
             })
             .catch(err => {
-                console.info('Email has not been sent. Erro', err);
-            });
-    };
+                console.info('Email has not been sent. Erro', err)
+            })
+    }
 }
+
 module.exports = {
     Email
-};
+}
