@@ -7,7 +7,7 @@
         "start": "node node_modules/intu/index.js"
     },
     "bin": {
-        "intu": "index.js"
+        "intu": "./node-srv/index.js"
     },
     "license": "LGPL-3.0-only",
     "engines": {

@@ -8,7 +8,8 @@ import { ADB } from './ADB';
 export class IntuApp extends ExpressRPC {
 
 db:ADB
-constcutor(db:ADB) {
+constructor(db:ADB) {
+    super()
     this.db = db
 }
 
