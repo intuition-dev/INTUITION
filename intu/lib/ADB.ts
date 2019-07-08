@@ -65,7 +65,7 @@ export class ADB { // auth & auth DB
    }
 
   
-   validateEmail(email, password) {
+   validateAdminEmail(email, password) {
       let _this = this
       return new Promise(function (resolve, reject) {
          _this.db.get(`SELECT password FROM admin WHERE email=?`, email, function (err, row) {
@@ -152,7 +152,7 @@ export class ADB { // auth & auth DB
       });
    }
 
-   editEditor(name, id) {
+   updateEditor(name, id) {
       return this.db.run(`UPDATE editors SET name='${name}' WHERE id='${id}'`, function (err) {
          if (err) {
          }
@@ -168,8 +168,7 @@ export class ADB { // auth & auth DB
       });
    }
 
-   // admin send verification code
-   async sendVcode(email) {
+   async setVcodeAdmin(email) {
       let vcode = Math.floor(1000 + Math.random() * 9000);
       await this.db.run(`UPDATE admin SET vcode='${vcode}' WHERE email='${email}'`, function (err, rows) {
          if (err) {
@@ -180,8 +179,7 @@ export class ADB { // auth & auth DB
       return vcode;
    }
 
-   // editor send verification code
-   async sendVcodeEditor(email) {
+   async setVcodeEditor(email) {
       let vcode = Math.floor(1000 + Math.random() * 9000);
       await this.db.run(`UPDATE editors SET vcode='${vcode}' WHERE email='${email}'`, function (err, rows) {
          if (err) {
@@ -192,8 +190,7 @@ export class ADB { // auth & auth DB
       return vcode;
    }
 
-   // admin password reset
-   resetPassword(email, vcode, password) {
+   resetPasswordAdmin(email, vcode, password) {
       var salt = bcrypt.genSaltSync(10);
       let hashPass = bcrypt.hashSync(password, salt);
 
@@ -210,7 +207,6 @@ export class ADB { // auth & auth DB
          })
    }
 
-   // editors password reset
    resetPasswordEditor(email, vcode, password) {
       var salt = bcrypt.genSaltSync(10);
       let hashPass = bcrypt.hashSync(password, salt);
@@ -245,7 +241,7 @@ export class ADB { // auth & auth DB
       })
    }
 
-   setupApp(pathToSite, adminId) {
+   setAppPath(pathToSite, adminId) {
       return this.db.all(`UPDATE configs SET pathToSite='${pathToSite}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
          }
@@ -271,7 +267,7 @@ export class ADB { // auth & auth DB
       })
    }
 
-   getSitePath() {
+   getAppPath() {
       return this.db.all(`SELECT pathToSite FROM configs`, [], function (err, rows) {
          if (err) {
          }
@@ -281,7 +277,7 @@ export class ADB { // auth & auth DB
 
    /**
     * this one is used for uptime server monitoring
-    * doesn't matter the count result, matter the response
+    * doesn't matter the count result
     **/
    monitor(): any {
       return this.db.all("SELECT COUNT(*) AS count FROM admin");
