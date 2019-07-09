@@ -25,8 +25,6 @@ const hostIP = 'http://' + ipAddres + ':'
 console.log("TCL: hostIP", hostIP)
 
 const path = require('path');
-const fs = require('fs-extra')
-const yaml = require('js-yaml');
 
 // ///////////////////////////////////////////////////////
 
@@ -37,8 +35,9 @@ const pathToDb = path.join(__dirname, dbName)
 const mainEApp = new IntuApp(adbDB)
 
 try {
-   //check if the file of database exist
+   //check if the file of the database exist
    if (adbDB.dbExists(pathToDb)) {
+      console.log('run')
       adbDB.getPort(pathToDb)
          .then(function (port) {
             mainEApp.run(port)
@@ -52,17 +51,4 @@ try {
 } catch (err) {
    console.warn(err)
 }
-
-// endpoint for monitoring
-mainEApp.appInst.get('/monitor', (req, res) => {
-   adbDB.monitor()
-      .then(res1 => {
-         return res.send('OK');
-      }).catch(error => {
-         console.info('monitor error: ', error);
-         res.status(400);
-         return res.send = (error);
-      })
-})
-
 

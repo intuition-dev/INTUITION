@@ -29,6 +29,18 @@ run(port) {
     //webapp
     const appPath = this.db.getAppPath()
     this.serveStatic(appPath)
+
+    // endpoint for monitoring
+    this.appInst.get('/monitor', (req, res) => {
+        this.db.monitor()
+        .then(res1 => {
+            return res.send('OK');
+        }).catch(error => {
+            console.info('monitor error: ', error)
+            res.status(400);
+            return res.send = (error)
+        })
+    })// monitor
     
 }//()
     

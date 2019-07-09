@@ -21,14 +21,13 @@ const ipAddres = ip.address();
 const hostIP = 'http://' + ipAddres + ':';
 console.log("TCL: hostIP", hostIP);
 const path = require('path');
-const fs = require('fs-extra');
-const yaml = require('js-yaml');
 const adbDB = new ADB_1.ADB();
 const dbName = 'ADB.sqlite';
 const pathToDb = path.join(__dirname, dbName);
 const mainEApp = new IntuApp_1.IntuApp(adbDB);
 try {
     if (adbDB.dbExists(pathToDb)) {
+        console.log('run');
         adbDB.getPort(pathToDb)
             .then(function (port) {
             mainEApp.run(port);
@@ -43,13 +42,3 @@ try {
 catch (err) {
     console.warn(err);
 }
-mainEApp.appInst.get('/monitor', (req, res) => {
-    adbDB.monitor()
-        .then(res1 => {
-        return res.send('OK');
-    }).catch(error => {
-        console.info('monitor error: ', error);
-        res.status(400);
-        return res.send = (error);
-    });
-});

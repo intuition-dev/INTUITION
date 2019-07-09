@@ -15,6 +15,16 @@ class IntuApp extends Serv_1.ExpressRPC {
         this.handleRRoute('api', 'admin', aA.ROUTES);
         const appPath = this.db.getAppPath();
         this.serveStatic(appPath);
+        this.appInst.get('/monitor', (req, res) => {
+            this.db.monitor()
+                .then(res1 => {
+                return res.send('OK');
+            }).catch(error => {
+                console.info('monitor error: ', error);
+                res.status(400);
+                return res.send = (error);
+            });
+        });
     }
 }
 exports.IntuApp = IntuApp;
