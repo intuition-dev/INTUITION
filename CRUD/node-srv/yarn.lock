@@ -455,7 +455,7 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
 
-axios@^0.19.0:
+axios@>=0.19.0, axios@^0.19.0:
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.0.tgz#8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8"
   integrity sha512-1uvKqKQta3KBxIz14F2v06AEHZ/dIoeKfbTRkK1E5oqjDnuEerLmYTgJB5AiQZHJcljpg1TuRzdjDR06qNk0DQ==
@@ -524,6 +524,11 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
+
+bcryptjs@>=2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
+  integrity sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=
 
 beeper@>=2.0.0:
   version "2.0.0"
@@ -678,6 +683,14 @@ bunyan@>=1.8.12:
     moment "^2.10.6"
     mv "~2"
     safe-json-stringify "~1"
+
+busboy@^0.2.14:
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/busboy/-/busboy-0.2.14.tgz#6c2a622efcf47c57bbbe1e2a9c37ad36c7925453"
+  integrity sha1-bCpiLvz0fFe7vh4qnDetNseSVFM=
+  dependencies:
+    dicer "0.2.5"
+    readable-stream "1.1.x"
 
 bytes@3.1.0:
   version "3.1.0"
@@ -857,6 +870,21 @@ chokidar@>=3.0.1:
     is-glob "^4.0.1"
     normalize-path "^3.0.0"
     readdirp "^3.0.2"
+  optionalDependencies:
+    fsevents "^2.0.6"
+
+chokidar@>=3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.0.2.tgz#0d1cd6d04eb2df0327446188cd13736a3367d681"
+  integrity sha512-c4PR2egjNjI1um6bamCQ6bUNPDiyofNQruHvKgHQ4gDUP/ITSVSzNsiI5OWtHOsX323i5ha/kk4YmOZ1Ktg7KA==
+  dependencies:
+    anymatch "^3.0.1"
+    braces "^3.0.2"
+    glob-parent "^5.0.0"
+    is-binary-path "^2.1.0"
+    is-glob "^4.0.1"
+    normalize-path "^3.0.0"
+    readdirp "^3.1.1"
   optionalDependencies:
     fsevents "^2.0.6"
 
@@ -1374,6 +1402,14 @@ detect-libc@^1.0.2:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
+dicer@0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/dicer/-/dicer-0.2.5.tgz#5996c086bb33218c812c090bddc09cd12facb70f"
+  integrity sha1-WZbAhrszIYyBLAkL3cCc0S+stw8=
+  dependencies:
+    readable-stream "1.1.x"
+    streamsearch "0.1.2"
+
 doctypes@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/doctypes/-/doctypes-1.1.0.tgz#ea80b106a87538774e8a3a4a5afe293de489e0a9"
@@ -1676,6 +1712,13 @@ expand-brackets@^2.1.4:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
+
+express-fileupload@>=1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/express-fileupload/-/express-fileupload-1.1.5.tgz#d10ccf389dc6b6d39de8a94598b05db4eafd18e1"
+  integrity sha512-ZYxGkXm9y1dSMgbW+lwvtqld+dulYm3OU1GQF9n6NNEwulHTPUsz4mHGG5/LiUszz5jnh/j8AcpLFUdaj8UUtQ==
+  dependencies:
+    busboy "^0.2.14"
 
 express-formidable@>=1.2.0:
   version "1.2.0"
@@ -2498,6 +2541,23 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
+intu@^0.9.28:
+  version "0.9.28"
+  resolved "https://registry.yarnpkg.com/intu/-/intu-0.9.28.tgz#a6580d83442eac12a98292874be9912205a1e5af"
+  integrity sha512-/cZqzALNz1zZWsWriZLvg8e2m1+Vp7Lz00vuHDHvznU/EwvESuXn4HwK4E1VjXupgmAEd1aMTqmxquWerCJ7kQ==
+  dependencies:
+    axios ">=0.19.0"
+    bcryptjs ">=2.4.3"
+    bunyan ">=1.8.12"
+    express-fileupload ">=1.1.5"
+    fs-extra ">=8.1.0"
+    ip ">=1.1.5"
+    is ">=3.3.0"
+    js-yaml ">=3.13.1"
+    mbake ">=6.7.21"
+    perfy ">=1.1.5"
+    sqlite ">=3.0.3"
+
 inversify@4.13.0:
   version "4.13.0"
   resolved "https://registry.yarnpkg.com/inversify/-/inversify-4.13.0.tgz#0ab40570bfa4474b04d5b919bbab3a4f682a72f5"
@@ -3114,6 +3174,43 @@ mbake@>=6.7.19:
     beeper ">=2.0.0"
     cheerio ">=1.0.0-rc.2"
     chokidar ">=3.0.1"
+    colors ">=1.3.3"
+    command-line-args ">=5.1.1"
+    csvtojson ">=2.0.10"
+    download ">=7.1.0"
+    express ">=4.17.1"
+    express-formidable ">=1.2.0"
+    express-interceptor ">=1.2.0"
+    filehound ">=1.17.0"
+    find-up ">=4.1.0"
+    fs-extra ">=8.1.0"
+    html-minifier ">=4.0.0"
+    is ">=3.3.0"
+    javascript-obfuscator ">=0.18.1"
+    js-yaml ">=3.13.1"
+    markdown-it ">=8.4.2"
+    markdown-it-container ">=2.0.0"
+    node-sass ">=4.12.0"
+    open ">=6.4.0"
+    perfy ">=1.1.5"
+    pug ">=2.0.4"
+    reload ">=3.0.1"
+    riot-compiler "^3.6.0"
+    strip-css-comments ">=4.0.0"
+    terser ">=4.1.0"
+    tracer ">=0.9.8"
+    typescript ">=3.5.2"
+
+mbake@>=6.7.21:
+  version "6.7.21"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.21.tgz#5cd2cfcc7bf5b13cf6b4175a1fcd5a587905b772"
+  integrity sha512-4zHZY6wpXsUNozZljdZI8mTf9jhN35nM/YdJSp97i+dKBZhyQGaw9aBY0qnmQswvTtPuDFOppfsJ3b0lXIQskg==
+  dependencies:
+    adm-zip ">=0.4.13"
+    autoprefixer ">=9.6.1"
+    beeper ">=2.0.0"
+    cheerio ">=1.0.0-rc.2"
+    chokidar ">=3.0.2"
     colors ">=1.3.3"
     command-line-args ">=5.1.1"
     csvtojson ">=2.0.10"
@@ -4343,6 +4440,13 @@ readdirp@^3.0.2:
   dependencies:
     picomatch "^2.0.4"
 
+readdirp@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-3.1.1.tgz#b158123ac343c8b0f31d65680269cc0fc1025db1"
+  integrity sha512-XXdSXZrQuvqoETj50+JAitxz1UPdt5dupjT6T5nVB+WvjMv2XKYj+s7hPeAVCXvmJrL36O4YYyWlIC3an2ePiQ==
+  dependencies:
+    picomatch "^2.0.4"
+
 rechoir@^0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
@@ -4907,7 +5011,12 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sqlite3@>=4.0.9:
+sql-template-strings@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/sql-template-strings/-/sql-template-strings-2.2.2.tgz#3f11508a25addfce217a3042a9d300c3193b96ff"
+  integrity sha1-PxFQiiWt384hejBCqdMAwxk7lv8=
+
+sqlite3@>=4.0.9, sqlite3@^4.0.0:
   version "4.0.9"
   resolved "https://registry.yarnpkg.com/sqlite3/-/sqlite3-4.0.9.tgz#cff74550fa5a1159956815400bdef69245557640"
   integrity sha512-IkvzjmsWQl9BuBiM4xKpl5X8WCR4w0AeJHRdobCdXZ8dT/lNc1XS6WqvY35N6+YzIIgzSBeY5prdFObID9F9tA==
@@ -4915,6 +5024,15 @@ sqlite3@>=4.0.9:
     nan "^2.12.1"
     node-pre-gyp "^0.11.0"
     request "^2.87.0"
+
+sqlite@>=3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/sqlite/-/sqlite-3.0.3.tgz#3f519cfc599ffa3270d76f3567bf2abb2ac18742"
+  integrity sha512-DpofdtBibbiOObtdADGZYE6bvnLpjRG4ut/MDTDau2nK40htOLj1E0c55aOkvbnRVqQ0ZPtjj7PJuKKyS0Ypww==
+  dependencies:
+    sqlite3 "^4.0.0"
+  optionalDependencies:
+    sql-template-strings "^2.2.2"
 
 sshpk@^1.7.0:
   version "1.16.1"
@@ -4955,6 +5073,11 @@ stdout-stream@^1.4.0:
   integrity sha512-j4emi03KXqJWcIeF8eIXkjMFN1Cmb8gUlDYGeBALLPo5qdyTfA9bOtl8m33lRoC+vFMkP3gl0WsDr6+gzxbbTA==
   dependencies:
     readable-stream "^2.0.1"
+
+streamsearch@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/streamsearch/-/streamsearch-0.1.2.tgz#808b9d0e56fc273d809ba57338e929919a1a9f1a"
+  integrity sha1-gIudDlb8Jz2Am6VzOOkpkZoanxo=
 
 strict-uri-encode@^1.0.0:
   version "1.1.0"
