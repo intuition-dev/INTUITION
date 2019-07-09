@@ -14,7 +14,7 @@ constructor(db:ADB) {
 }
 
 run(port) {
-    // order if routes: api, admin, editors, webapp
+    // order if routes: api, 3 intu apps webapp
 
     //api
     const eA = new EditorRoutes(this, this.db)
@@ -22,11 +22,9 @@ run(port) {
     this.handleRRoute('api', 'editors', eA.ROUTES)
     this.handleRRoute('api', 'admin', aA.ROUTES)
 
-    //admin
+    this.serveStatic('../WWW')
 
-    //editors
-
-    //webapp
+    //webapp being managed
     const appPath = this.db.getAppPath()
     this.serveStatic(appPath)
 

@@ -37,18 +37,23 @@ const mainEApp = new IntuApp(adbDB)
 try {
    //check if the file of the database exist
    if (adbDB.dbExists(pathToDb)) {
-      console.log('run')
-      adbDB.getPort(pathToDb)
-         .then(function (port) {
-            mainEApp.run(port)
-         })
+      runApp()
    } else {
       console.log('open db and run setup')
+      runApp()
       //create db file
       const setup = new Setup(pathToDb)
       setup.setup(pathToDb)
    }
 } catch (err) {
    console.warn(err)
+}
+
+function runApp() {
+   console.log('run')
+   adbDB.getPort(pathToDb)
+      .then(function (port) {
+         mainEApp.run(port)
+      })
 }
 
