@@ -30,6 +30,5 @@
     },
     "devDependencies": {
         "@types/node": ">=12.6.1",
-        "pm2": ">=3.5.1"
     }
 }
