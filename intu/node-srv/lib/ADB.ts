@@ -48,7 +48,7 @@ export class ADB { // auth & auth DB
       var hashPass = bcrypt.hashSync(password, salt);
 
       await this.db.run(`CREATE TABLE admin(id, email, password, vcode)`);
-      await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi, port, printfulApi)`);
+      await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, snipcartApi, port, printfulApi)`);
       await this.db.run(`CREATE TABLE editors(id, email, password, name, vcode)`);
       await this.db.run(`INSERT INTO admin(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
          if (err) {
@@ -76,7 +76,7 @@ export class ADB { // auth & auth DB
             if (typeof row != 'undefined') {
                bcrypt.compare(password, row.password)
                   .then((res) => {
-                     _this.db.get(`SELECT pathToSite FROM configs`, [], function (err, row) {
+                     _this.db.get(`SELECT pathToApp FROM configs`, [], function (err, row) {
                         if (err) {
                         }
                         return row
@@ -84,7 +84,7 @@ export class ADB { // auth & auth DB
                         let temp = {}
                         console.info("--res:", res)
                         temp['pass'] = res
-                        temp['pathToSite'] = row.pathToSite
+                        temp['pathToApp'] = row.pathToApp
                         console.info("--result:", temp)
                         resolve(temp)
                      })
@@ -109,7 +109,7 @@ export class ADB { // auth & auth DB
             if (typeof row != 'undefined') {
                return bcrypt.compare(password, row.password)
                   .then((res) => {
-                     _this.db.get(`SELECT pathToSite FROM configs`, [], function (err, row) {
+                     _this.db.get(`SELECT pathToApp FROM configs`, [], function (err, row) {
                         console.info("--row:", row)
                         if (err) {
                         }
@@ -118,7 +118,7 @@ export class ADB { // auth & auth DB
                         let temp = {}
                         console.info("--res:", res)
                         temp['pass'] = res
-                        temp['pathToSite'] = row.pathToSite
+                        temp['pathToApp'] = row.pathToApp
                         console.info("--result:", temp)
                         resolve(temp)
                      })
@@ -241,16 +241,16 @@ export class ADB { // auth & auth DB
       })
    }
 
-   setAppPath(pathToSite, adminId) {
-      return this.db.all(`UPDATE configs SET pathToSite='${pathToSite}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+   setAppPath(pathToApp, adminId) {
+      return this.db.all(`UPDATE configs SET pathToApp='${pathToApp}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
          }
          return rows
       })
    }
 
-   updateConfig(pathToSite, port, printfulApi, adminId) {
-      return this.db.run(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+   updateConfig(pathToApp, port, printfulApi, adminId) {
+      return this.db.run(`UPDATE configs SET pathToApp='${pathToApp}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
             return console.error('update config error:', err.message);
          }
@@ -260,7 +260,7 @@ export class ADB { // auth & auth DB
 
    getConfigs(adminId) {
       console.log("TCL: getConfigs -> adminId", adminId)
-      return this.db.get(`SELECT pathToSite, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
+      return this.db.get(`SELECT pathToApp, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
          }
          return rows
@@ -268,7 +268,7 @@ export class ADB { // auth & auth DB
    }
 
    getAppPath() {
-      return this.db.all(`SELECT pathToSite FROM configs`, [], function (err, rows) {
+      return this.db.all(`SELECT pathToApp FROM configs`, [], function (err, rows) {
          if (err) {
          }
          return rows

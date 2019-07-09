@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
-const Email_1 = require("../lib/Email");
+const Email_1 = require("../Email");
 const Serv_1 = require("mbake/lib/Serv");
-const Auth_1 = require("../lib/Auth");
+const Auth_1 = require("../Auth");
 const fs = require('fs-extra');
 var path = require('path');
 class AdminRoutes extends Serv_1.BasePgRouter {
     constructor(appE, adbDB) {
         super();
+        this.emailJs = new Email_1.Email();
         this.ROUTES = async (req, res) => {
             console.log('req');
-            const emailJs = new Email_1.Email();
             const user = req.fields.user;
             const pswd = req.fields.pswd;
             const method = req.fields.method;
@@ -58,7 +58,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
                                     break;
                             }
                             let adminId = await this.adbDB.getAdminId(res.locals.email);
-                            await this.adbDB.setupApp(path.join(__dirname, '../' + setupItem), adminId[0].id)
+                            await this.adbDB.setAppPath(path.join(__dirname, '../' + setupItem), adminId[0].id)
                                 .then(result => {
                                 resp.result = true;
                                 return res.json(resp);
@@ -144,12 +144,12 @@ class AdminRoutes extends Serv_1.BasePgRouter {
                 let email = params.admin_email;
                 resp.result = {};
                 try {
-                    var code = this.adbDB.sendVcode(email)
+                    var code = this.adbDB.setVcodeAdmin(email)
                         .then(code => {
                         this.adbDB.getEmailJsSettings()
                             .then(settings => {
                             let setting = settings[0];
-                            emailJs.send(email, setting.emailjsService_id, setting.emailjsTemplate_id, setting.emailjsUser_id, 'your code: ' + code);
+                            this.emailJs.send(email, setting.emailjsService_id, setting.emailjsTemplate_id, setting.emailjsUser_id, 'your code: ' + code);
                             console.info('code', code);
                             resp.result = true;
                             return res.json(resp);
@@ -163,7 +163,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
             else if ('reset-password' == method) {
                 let email = params.admin_email;
                 resp.result = {};
-                this.adbDB.resetPassword(email, params.code, params.password)
+                this.adbDB.resetPasswordAdmin(email, params.code, params.password)
                     .then(result => {
                     resp.result = result;
                     return res.json(resp);
@@ -223,7 +223,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
                                             let setting = settings[0];
                                             let link = 'http://localhost:' + port + '/editors/?email=' + encodeURIComponent(email);
                                             let msg = 'Hi, on this email was created editor account for WebAdmin. Please reset your password following this link: ' + link;
-                                            emailJs.send(email, setting.emailjsService_id, setting.emailjsTemplate_id, setting.emailjsUser_id, msg);
+                                            this.emailJs.send(email, setting.emailjsService_id, setting.emailjsTemplate_id, setting.emailjsUser_id, msg);
                                             resp.result = response;
                                             return res.json(resp);
                                         });
@@ -251,7 +251,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
                         let userId = params.uid;
                         if (typeof name !== 'undefined' &&
                             typeof userId !== 'undefined') {
-                            this.adbDB.editEditor(name, userId)
+                            this.adbDB.updateEditor(name, userId)
                                 .then(editorId => {
                                 console.info("--editorId:", editorId);
                                 let response = {
@@ -306,7 +306,6 @@ class AdminRoutes extends Serv_1.BasePgRouter {
                 });
             }
         };
-        this.appE = appE;
         this.adbDB = adbDB;
         this.iauth = new Auth_1.Auth(appE, adbDB);
     }

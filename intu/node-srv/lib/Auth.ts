@@ -22,7 +22,7 @@ export class Auth implements iAuth {
         return new Promise((resolve, reject) => {
             resp.result = {}
 
-            return this.adbDB.validateEmail(user, pswd)
+            return this.adbDB.validateAdminEmail(user, pswd)
                 .then((result: any) => {
                     console.log('validateEmail result: ', result);
                     // editor user auth

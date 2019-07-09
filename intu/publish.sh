@@ -1,2 +1,0 @@
-tsc
-npm publish

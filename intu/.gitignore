@@ -1,5 +1,5 @@
 *.sqlite
-*.html
+
 
 #ignore minified files:
 /**/*.min.js

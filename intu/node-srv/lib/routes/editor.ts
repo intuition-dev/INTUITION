@@ -46,7 +46,7 @@ export class EditorRoutes extends BasePgRouter {
          resp.result = {};
 
          try {
-            return this.adbDB.sendVcodeEditor(email)
+            return this.adbDB.setVcodeEditor(email)
                .then(code => {
                   this.adbDB.getEmailJsSettings()
                      .then(settings => {

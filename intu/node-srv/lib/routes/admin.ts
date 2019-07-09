@@ -85,7 +85,7 @@ export class AdminRoutes extends BasePgRouter {
    
                   //write path of new folder to the db
                   let adminId = await this.adbDB.getAdminId(res.locals.email)
-                  await this.adbDB.setupApp(path.join(__dirname, '../' + setupItem), adminId[0].id)
+                  await this.adbDB.setAppPath(path.join(__dirname, '../' + setupItem), adminId[0].id)
                      .then(result => {
                         resp.result = true;
                         return res.json(resp);
@@ -190,7 +190,7 @@ export class AdminRoutes extends BasePgRouter {
          resp.result = {}
 
          try {
-            var code = this.adbDB.sendVcode(email)
+            var code = this.adbDB.setVcodeAdmin(email)
                .then(code => {
                   this.adbDB.getEmailJsSettings()
                      .then(settings => {
@@ -215,7 +215,7 @@ export class AdminRoutes extends BasePgRouter {
          let email = params.admin_email
          resp.result = {}
 
-         this.adbDB.resetPassword(email, params.code, params.password)
+         this.adbDB.resetPasswordAdmin(email, params.code, params.password)
             .then(result => {
                resp.result = result;
                return res.json(resp);
@@ -327,7 +327,7 @@ export class AdminRoutes extends BasePgRouter {
                   typeof userId !== 'undefined'
                ) {
    
-                  this.adbDB.editEditor(name, userId)
+                  this.adbDB.updateEditor(name, userId)
                      .then(editorId => {
                         console.info("--editorId:", editorId)
                         let response = {

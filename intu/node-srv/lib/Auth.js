@@ -8,7 +8,7 @@ class Auth {
             pswd = Buffer.from(pswd, 'base64').toString();
             return new Promise((resolve, reject) => {
                 resp.result = {};
-                return this.adbDB.validateEmail(user, pswd)
+                return this.adbDB.validateAdminEmail(user, pswd)
                     .then((result) => {
                     console.log('validateEmail result: ', result);
                     if (result.pass === true) {

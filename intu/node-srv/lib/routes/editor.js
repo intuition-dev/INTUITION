@@ -3,18 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Base_1 = require("mbake/lib/Base");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
-const Email_1 = require("../lib/Email");
+const Email_1 = require("../Email");
 const Serv_1 = require("mbake/lib/Serv");
-const Auth_1 = require("../lib/Auth");
-const FileMethods_1 = require("../lib/FileMethods");
+const Auth_1 = require("../Auth");
+const FileOpsExtra_2 = require("mbake/lib/FileOpsExtra");
 const fs = require('fs-extra');
+const path = require('path');
 class EditorRoutes extends Serv_1.BasePgRouter {
     constructor(appE, adbDB) {
         super();
+        this.emailJs = new Email_1.Email();
         this.ROUTES = (req, res) => {
-            const emailJs = new Email_1.Email();
-            const fs = require('fs');
-            const path = require('path');
             let mountPath = '';
             const user = req.fields.user;
             const pswd = req.fields.pswd;
@@ -26,12 +25,12 @@ class EditorRoutes extends Serv_1.BasePgRouter {
                 let email = params.admin_email;
                 resp.result = {};
                 try {
-                    return this.adbDB.sendVcodeEditor(email)
+                    return this.adbDB.setVcodeEditor(email)
                         .then(code => {
                         this.adbDB.getEmailJsSettings()
                             .then(settings => {
                             let setting = settings[0];
-                            emailJs.send(email, setting.emailjsService_id, setting.emailjsTemplate_id, setting.emailjsUser_id, 'your code: ' + code);
+                            this.emailJs.send(email, setting.emailjsService_id, setting.emailjsTemplate_id, setting.emailjsUser_id, 'your code: ' + code);
                             resp.result = true;
                             return res.json(resp);
                         });
@@ -334,7 +333,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         this.appE = appE;
         this.adbDB = adbDB;
         this.iauth = new Auth_1.Auth(appE, adbDB);
-        this.fileMethod = new FileMethods_1.FileMethods();
+        this.fileMethod = new FileOpsExtra_2.FileMethods();
     }
 }
 exports.EditorRoutes = EditorRoutes;

@@ -20,7 +20,6 @@ class Email {
             console.info('Email has not been sent. Erro', err);
         });
     }
-    ;
 }
 exports.Email = Email;
 module.exports = {

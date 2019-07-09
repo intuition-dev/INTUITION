@@ -10,12 +10,18 @@ class Veri {
 }
 exports.Veri = Veri;
 class ADB {
+    dbExists(path) {
+        return fs.existsSync(path);
+    }
+    openDB000(path, cb) {
+        fs.open(path, 'w', cb);
+    }
     async connectToDb(dbPath) {
         const dbPro = sqlite.open(dbPath);
         this.db = await dbPro;
         this.db.configure('busyTimeout', 2 * 1000);
     }
-    async connectToDbOnPort(dbPath) {
+    async getPort(dbPath) {
         let _this = this;
         await _this.connectToDb(dbPath);
         return new Promise(function (resolve, reject) {
@@ -33,7 +39,7 @@ class ADB {
         var salt = bcrypt.genSaltSync(10);
         var hashPass = bcrypt.hashSync(password, salt);
         await this.db.run(`CREATE TABLE admin(id, email, password, vcode)`);
-        await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToSite, snipcartApi, port, printfulApi)`);
+        await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, snipcartApi, port, printfulApi)`);
         await this.db.run(`CREATE TABLE editors(id, email, password, name, vcode)`);
         await this.db.run(`INSERT INTO admin(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
             if (err) {
@@ -48,20 +54,7 @@ class ADB {
             }
         });
     }
-    checkDB(path) {
-        return fs.existsSync(path);
-    }
-    openDB(path, cb) {
-        fs.open(path, 'w', cb);
-    }
-    getPrintfulAPI() {
-        return this.db.all(`SELECT printfulApi FROM configs`, [], function (err, rows) {
-            if (err) {
-            }
-            return rows;
-        });
-    }
-    validateEmail(email, password) {
+    validateAdminEmail(email, password) {
         let _this = this;
         return new Promise(function (resolve, reject) {
             _this.db.get(`SELECT password FROM admin WHERE email=?`, email, function (err, row) {
@@ -72,7 +65,7 @@ class ADB {
                 if (typeof row != 'undefined') {
                     bcrypt.compare(password, row.password)
                         .then((res) => {
-                        _this.db.get(`SELECT pathToSite FROM configs`, [], function (err, row) {
+                        _this.db.get(`SELECT pathToApp FROM configs`, [], function (err, row) {
                             if (err) {
                             }
                             return row;
@@ -80,7 +73,7 @@ class ADB {
                             let temp = {};
                             console.info("--res:", res);
                             temp['pass'] = res;
-                            temp['pathToSite'] = row.pathToSite;
+                            temp['pathToApp'] = row.pathToApp;
                             console.info("--result:", temp);
                             resolve(temp);
                         });
@@ -105,7 +98,7 @@ class ADB {
                 if (typeof row != 'undefined') {
                     return bcrypt.compare(password, row.password)
                         .then((res) => {
-                        _this.db.get(`SELECT pathToSite FROM configs`, [], function (err, row) {
+                        _this.db.get(`SELECT pathToApp FROM configs`, [], function (err, row) {
                             console.info("--row:", row);
                             if (err) {
                             }
@@ -114,7 +107,7 @@ class ADB {
                             let temp = {};
                             console.info("--res:", res);
                             temp['pass'] = res;
-                            temp['pathToSite'] = row.pathToSite;
+                            temp['pathToApp'] = row.pathToApp;
                             console.info("--result:", temp);
                             resolve(temp);
                         });
@@ -145,7 +138,7 @@ class ADB {
             return this.lastID;
         });
     }
-    editEditor(name, id) {
+    updateEditor(name, id) {
         return this.db.run(`UPDATE editors SET name='${name}' WHERE id='${id}'`, function (err) {
             if (err) {
             }
@@ -158,7 +151,7 @@ class ADB {
             }
         });
     }
-    async sendVcode(email) {
+    async setVcodeAdmin(email) {
         let vcode = Math.floor(1000 + Math.random() * 9000);
         await this.db.run(`UPDATE admin SET vcode='${vcode}' WHERE email='${email}'`, function (err, rows) {
             if (err) {
@@ -167,7 +160,7 @@ class ADB {
         });
         return vcode;
     }
-    async sendVcodeEditor(email) {
+    async setVcodeEditor(email) {
         let vcode = Math.floor(1000 + Math.random() * 9000);
         await this.db.run(`UPDATE editors SET vcode='${vcode}' WHERE email='${email}'`, function (err, rows) {
             if (err) {
@@ -176,7 +169,7 @@ class ADB {
         });
         return vcode;
     }
-    resetPassword(email, vcode, password) {
+    resetPasswordAdmin(email, vcode, password) {
         var salt = bcrypt.genSaltSync(10);
         let hashPass = bcrypt.hashSync(password, salt);
         return this.db.run(`UPDATE admin SET password='${hashPass}' WHERE email='${email}' AND vcode='${vcode}'`)
@@ -222,15 +215,15 @@ class ADB {
             return rows;
         });
     }
-    setupApp(pathToSite, adminId) {
-        return this.db.all(`UPDATE configs SET pathToSite='${pathToSite}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+    setAppPath(pathToApp, adminId) {
+        return this.db.all(`UPDATE configs SET pathToApp='${pathToApp}' WHERE adminId='${adminId}'`, [], function (err, rows) {
             if (err) {
             }
             return rows;
         });
     }
-    updateConfig(pathToSite, port, printfulApi, adminId) {
-        return this.db.run(`UPDATE configs SET pathToSite='${pathToSite}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+    updateConfig(pathToApp, port, printfulApi, adminId) {
+        return this.db.run(`UPDATE configs SET pathToApp='${pathToApp}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
             if (err) {
                 return console.error('update config error:', err.message);
             }
@@ -239,14 +232,14 @@ class ADB {
     }
     getConfigs(adminId) {
         console.log("TCL: getConfigs -> adminId", adminId);
-        return this.db.get(`SELECT pathToSite, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
+        return this.db.get(`SELECT pathToApp, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
             if (err) {
             }
             return rows;
         });
     }
-    getSitePath() {
-        return this.db.all(`SELECT pathToSite FROM configs`, [], function (err, rows) {
+    getAppPath() {
+        return this.db.all(`SELECT pathToApp FROM configs`, [], function (err, rows) {
             if (err) {
             }
             return rows;

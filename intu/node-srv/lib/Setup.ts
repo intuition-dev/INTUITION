@@ -18,7 +18,7 @@ setup(pathToDb) {
     
     const port = '9081' //init port
     this.adbDB.connectToDb(pathToDb) //connect to db
-    const host = [hostIP + port, config.cors]
+    let host// = [hostIP + port, config.cors]
  
     this.app.makeInstance(host)
  
