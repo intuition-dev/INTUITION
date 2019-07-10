@@ -1,8 +1,7 @@
 
 
-Then build docs and release /API via npm publish. Files are linked (ln without -s).
-Then, change to not use local IntuAPI.min.js - get it from CDN. Via defs-setup.
-Then npm publish WebAdmin. 
+Build docs and release /API via npm publish of above intu.
+Then update toolBelt and release toolbelt
 
 # API documentaion
 
@@ -19,7 +18,3 @@ Then npm publish WebAdmin.
 ```
 
 It will generate `docs` folder with the human readable documentation:
-
-http://localhost:9081/IntuAPI/docs/
-
-Copy .nojekyll into docs

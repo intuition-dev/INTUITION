@@ -38,7 +38,7 @@ var CRUDvm = (function () {
         });
     };
     CRUDvm.prototype.ins = function (name, topics) {
-        var guid = GUID();
+        var guid = getGUID();
         var prom = this.rpc.invoke('api', 'CRUD1Pg', 'insert', { guid: guid, name: name, topics: topics });
         prom.then(function (resp) {
             console.log('resp', resp);
