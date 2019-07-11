@@ -2,15 +2,14 @@ doctype html
 html
    head
       script.
-         ROOT = '#{ROOT}' //- sets global pug and .js from dat.yaml
-         console.info('root','#{ROOT}')
+         
          let _start=Date.now()
 
       meta(charset='utf-8')
 
       meta(name='viewport', content='width=device-width, initial-scale=1')
       title Dash
-      link(rel='shortcut icon', href= ROOT + 'assets/favicon.png', type='image/x-icon')
+      link(rel='shortcut icon', href= '/assets/favicon.png', type='image/x-icon')
       script(src='//cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
 
       style.
@@ -21,7 +20,7 @@ html
    body
       script(src='//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.slim.min.js')
       script(src='//cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js')
-      script(src= ROOT + 'assets/js/setup.js')
+      script(src= '/assets/js/setup.js')
 
       -// http://mxb.at/blog/css-grid-admin-dashboard
       -// http://w3schools.com/css/css_navbar.asp
@@ -35,7 +34,7 @@ html
          #menu.column.bblack.white
             ul.nav
                li.nav-item
-                  a(href= ROOT + 'screen/vega') Vega
+                  a(href= '/screen/vega') Vega
                      svg.nav-ico.featherSVG(viewBox='0 0 24 24')
                         polyline(points='22 12 18 12 15 21 9 3 6 12 2 12')
 
@@ -47,4 +46,4 @@ html
             console.info('resize|scroll')
          }
 
-   //link(href= ROOT + 'assets/css/debug.css', rel='stylesheet')
+   //link(href= '/assets/css/debug.css', rel='stylesheet')
