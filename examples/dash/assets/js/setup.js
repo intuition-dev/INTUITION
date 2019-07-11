@@ -20,14 +20,14 @@ onDeppLoaded()
 function onDeppLoaded() {
    depp.define({
       'pre': [
-         ROOT + 'assets/css/gridform.css',
-         ROOT + 'assets/3rd/jquery.disableAutoFill.js',
-         ROOT + 'assets/3rd/collections.js'
+         '/assets/css/gridform.css',
+         '/assets/3rd/jquery.disableAutoFill.js',
+         '/assets/3rd/collections.js'
       ],
       'css': [
-         ROOT + 'assets/css/spectre.css'
-         , ROOT + 'assets/css/nav.css'
-         , ROOT + 'assets/css/main.css'
+         '/assets/css/spectre.css'
+         , '/assets/css/nav.css'
+         , '/assets/css/main.css'
          , 'css!//fonts.googleapis.com/css?family=Open+Sans'
       ],
       'vega': [

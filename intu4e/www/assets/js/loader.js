@@ -5,7 +5,7 @@ depp.define({
         ],
         'css': ['#pre', 'css!//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700', '/assets/css/style.css'],
         'snipcart': [
-            ROOT + 'assets/js/ui.js',
+            '/assets/js/ui.js',
             "//cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
         ],
     }) //define

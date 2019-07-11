@@ -37,14 +37,14 @@ depp.define({
     ],
     'cssJs': [
         '#fonts',
-        ROOT + 'assets/css/spectreBottom.css'
+        '/assets/css/spectreBottom.css'
         
         , '//cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.min.js'
         
         , '//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
         , '//cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
         
-        , ROOT + 'assets/js/ui.js'
+        , '/assets/js/ui.js'
     ]
 })//define
 

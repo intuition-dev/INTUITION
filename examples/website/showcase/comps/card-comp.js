@@ -21,8 +21,8 @@ riot.tag2('card-comp', '<div class="columns"><virtual each="{items}"> <div class
         for(i = 0; i < sz; i++) {
             var item = thiz.items[i]
 
-            item.image = ROOT + item.url + '/who.jpg'
-            item.url = ROOT + item.url
+            item.image = '/' +item.url + '/who.jpg'
+            item.url = '/' +item.url
             console.info(item.url)
         }
 

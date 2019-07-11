@@ -1,24 +1,24 @@
 var responces = [];
 
 depp.define({
-    'scripts': [, '#jquery', '#gridformsJS', '#zebraDate', ROOT + 'editors/assets/css/spectreBottom.css'],
+    'scripts': [, '#jquery', '#gridformsJS', '#zebraDate', '/editors/assets/css/spectreBottom.css'],
     'httpRPC': [, '#RPC'],
     'intuAPI': [
-        '#scripts', '#httpRPC', ROOT + 'IntuAPI/IntuAPI.js'
+        '#scripts', '#httpRPC', '/IntuAPI/IntuAPI.js'
     ],
     'edit': [
         '#intuAPI',
-        ROOT + 'editors/assets/js/edit.js'
+        '/editors/assets/js/edit.js'
     ],
     'general': [
         '#edit',
-        ROOT + 'editors/assets/js/BindPosts.js',
-        ROOT + 'editors/assets/js/BindLogin.js',
-        ROOT + 'editors/assets/js/login.js'
+        '/editors/assets/js/BindPosts.js',
+        '/editors/assets/js/BindLogin.js',
+        '/editors/assets/js/login.js'
     ],
     'rw': [
         '#general',
-        ROOT + 'editors/assets/js/ui.js'
+        '/editors/assets/js/ui.js'
     ],
     'fonts': [
         '#rw', 'css!//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i'

@@ -21,7 +21,7 @@ riot.tag2('card-comp', '<div class="bl-shop-list columns"><virtual each="{item, 
        for(i = 0; i < sz; i++) {
              var item = _this.items[i]
 
-             item.url = ROOT + 'items/' + item.url
+             item.url = '/items/' + item.url
              console.info(item.url)
        }
 
