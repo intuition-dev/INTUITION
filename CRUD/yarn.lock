@@ -1885,10 +1885,10 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-intu@>=0.9.29:
-  version "0.9.29"
-  resolved "https://registry.yarnpkg.com/intu/-/intu-0.9.29.tgz#5f932cbb1c3e18c468f57c17ef6ca4bf8a61da26"
-  integrity sha512-JTyxpH6Md37Ze3bx1gxFjvJ5f+21rCfnfwLIwkpQI0kiByR4a7MJbTWR5YsTwuWBWlTwTFzf13m8zqAWmry7vQ==
+intu@>=0.17.11:
+  version "0.17.11"
+  resolved "https://registry.yarnpkg.com/intu/-/intu-0.17.11.tgz#26693083d6f6e1590dc4072a0a25159503351f16"
+  integrity sha512-6pFlbMDDjGZfpBVyt85KD/xNpZ7T5ExYCp2wyA+7rRu6jLGbhmlc3G1V9UmQYo91SXv+94562Ggnq2T7wAgcHA==
   dependencies:
     axios ">=0.19.0"
     bcryptjs ">=2.4.3"
@@ -1898,7 +1898,7 @@ intu@>=0.9.29:
     ip ">=1.1.5"
     is ">=3.3.0"
     js-yaml ">=3.13.1"
-    mbake ">=6.7.21"
+    mbake ">=6.7.22"
     perfy ">=1.1.5"
     sqlite ">=3.0.3"
 
@@ -2340,7 +2340,7 @@ markdown-it@>=9.0.0:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.7.21, mbake@>=6.7.22:
+mbake@>=6.7.22:
   version "6.7.22"
   resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.22.tgz#41b27af14d0f5ef183ea25de9387e58c40da907a"
   integrity sha512-RlxYrWSYBbtY8qzKiJMuwimO1qk+pzozl2xFnY798sD+Wl5g41C5T2xRxhgh2ZdD+dM7ktRJbUMZt3VoWS2jug==

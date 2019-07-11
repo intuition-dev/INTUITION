@@ -1,7 +1,15 @@
 
 depp.define({
    'tests': [
+      'RPC',
       '../intuAPI/IntuAPI.js',
+      
+      '../setup/models/SetupViewModel',
+      '../admin/models/LoginViewModel',
+      '../admin/models/AdminViewModel',
+      '../editors/models/LoginViewModel',
+      '../editors/models/EditViewModel',
+
       'test1.js'
    ]
 })

@@ -6,7 +6,7 @@
   "scripts": {},
   "author": "",
   "dependencies": {
-    "intu": ">=0.9.29",
+    "intu": ">=0.17.11",
     "is": ">=3.3.0",
     "perfy": ">=1.1.5"
   }
