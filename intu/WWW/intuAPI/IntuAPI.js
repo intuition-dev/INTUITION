@@ -1,7 +1,11 @@
 var IntuAPI = (function () {
     function IntuAPI() {
-        console.log("TCL: IntuAPI -> constructor -> apiPort", apiPort);
-        this.serviceRPC = new httpRPC(apiProtocol, apiHost, typeof apiPort != 'undefined' ? apiPort : "");
+        var pro = window.location.protocol;
+        pro = pro.replace(':', '');
+        var host = window.location.hostname;
+        var port = window.location.port;
+        console.log("TCL: IntuAPI -> constructor -> apiPort", port);
+        this.serviceRPC = new httpRPC(pro, host, port);
         var email = window.sessionStorage.getItem('username');
         var pass = window.sessionStorage.getItem('password');
         if (email !== null && pass !== null) {

@@ -1,26 +1,20 @@
 
 depp.define({
-   'testAssets': [
-
-      '/assets/models/TabulatorViewModel.js',
-      '/assets/models/service/TabulatorService.js',
-      '/assets/models/FormViewModel.js',
-
+   'tests': [
+      'test1.js'
    ]
 })
 
 let pro = loadQunit()
+pro.then(function(){
+   console.log('qunit')
+   depp.require(['tests'], function(){
 
+      tests1()
 
-depp.require(['Tabulator'], runTests)
+   })//req
 
-function runTests() {
-   console.info('binding', Date.now() - _start)
+})//pro
 
-   var test = new TabulatorVMTest()
-   test.test1()
-   test.test2()
-
-}
 
 
