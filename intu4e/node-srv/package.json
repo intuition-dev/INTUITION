@@ -6,11 +6,11 @@
   "scripts": {},
   "author": "",
   "dependencies": {
-    "intu": ">=0.9.28",
+    "intu": ">=0.9.29",
     "is": ">=3.3.0",
     "perfy": ">=1.1.5"
   }
  , "devDependencies": {
-   "@types/node": ">=12.6.1"
+   "@types/node": ">=12.6.2"
 }
 }
