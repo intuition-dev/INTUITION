@@ -1,8 +1,0 @@
-
-
-class EditorsViewModel {
-    intuAPI
-    
-    
-
-}
