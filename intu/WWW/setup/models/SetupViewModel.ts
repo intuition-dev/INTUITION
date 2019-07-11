@@ -1,11 +1,18 @@
 
-/*
-set port
-set path
+class SetupViewModel {
 
-authAdmin
+    setAdminEmail(email) {
 
+    }
+    setAdminPswd(psw) {
 
+    }
 
-*/
+    setEmailJs(emailSID, emailTID, emailUID) {
 
+    }
+
+    save() {
+
+    }
+}
