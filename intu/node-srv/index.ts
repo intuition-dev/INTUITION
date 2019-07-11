@@ -39,7 +39,7 @@ try {
    if (adbDB.dbExists(pathToDb)) {
       runApp()
    } else {
-      console.log('open db and run setup')
+      console.log('run setup')
       runApp()
       //create db file
       const setup = new Setup(pathToDb)

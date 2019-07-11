@@ -48,18 +48,21 @@ export class ADB { // auth & auth DB
       var hashPass = bcrypt.hashSync(password, salt);
 
       await this.db.run(`CREATE TABLE admin(id, email, password, vcode)`);
-      await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, snipcartApi, port, printfulApi)`);
+      await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, snipcartApi, port)`);
       await this.db.run(`CREATE TABLE editors(id, email, password, name, vcode)`);
       await this.db.run(`INSERT INTO admin(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
          if (err) {
+            console.log(err)
          }
       });
       await this.db.run(`INSERT INTO editors(id, email, password, name) VALUES('${randomID}','${email}', '${hashPass}', 'Admin')`, function (err) {
          if (err) {
+            console.log(err)
          }
       });
       await this.db.run(`INSERT INTO configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES('${randomID}', '${emailjsService_id}', '${emailjsTemplate_id}', '${emailjsUser_id}', '${port}')`, function (err) {
          if (err) {
+            console.log(err)
          }
       });
    }
@@ -70,6 +73,7 @@ export class ADB { // auth & auth DB
       return new Promise(function (resolve, reject) {
          _this.db.get(`SELECT password FROM admin WHERE email=?`, email, function (err, row) {
             if (err) {
+               console.log(err)
             }
             return row
          }).then(function (row) {
@@ -78,6 +82,7 @@ export class ADB { // auth & auth DB
                   .then((res) => {
                      _this.db.get(`SELECT pathToApp FROM configs`, [], function (err, row) {
                         if (err) {
+                           console.log(err)
                         }
                         return row
                      }).then(function (row) {
@@ -103,6 +108,7 @@ export class ADB { // auth & auth DB
       return new Promise(function (resolve, reject) {
          _this.db.get(`SELECT password FROM editors WHERE email=?`, email, function (err, row) {
             if (err) {
+               console.log(err)
             }
             return row
          }).then(function (row) {
@@ -135,6 +141,7 @@ export class ADB { // auth & auth DB
    getEditors() {
       return this.db.all(`SELECT id, name, email FROM editors`, [], function (err, rows) {
          if (err) {
+            console.log(err)
          }
          return rows
       })
@@ -146,6 +153,7 @@ export class ADB { // auth & auth DB
       var hashPass = bcrypt.hashSync(password, salt);
       return this.db.run(`INSERT INTO editors(id, email, password, name) VALUES('${randomID}','${email}', '${hashPass}', '${name}')`, function (err) {
          if (err) {
+            console.log(err)
          }
          // get the last insert id
          return this.lastID
@@ -155,6 +163,7 @@ export class ADB { // auth & auth DB
    updateEditor(name, id) {
       return this.db.run(`UPDATE editors SET name='${name}' WHERE id='${id}'`, function (err) {
          if (err) {
+            console.log(err)
          }
          // get the last insert id
          return this.lastID
@@ -164,6 +173,7 @@ export class ADB { // auth & auth DB
    deleteEditor(id) {
       return this.db.run(`DELETE FROM editors WHERE id='${id}'`, function (err) {
          if (err) {
+            console.log(err)
          }
       });
    }
@@ -172,6 +182,7 @@ export class ADB { // auth & auth DB
       let vcode = Math.floor(1000 + Math.random() * 9000);
       await this.db.run(`UPDATE admin SET vcode='${vcode}' WHERE email='${email}'`, function (err, rows) {
          if (err) {
+            console.log(err)
          }
          return rows
       });
@@ -183,6 +194,7 @@ export class ADB { // auth & auth DB
       let vcode = Math.floor(1000 + Math.random() * 9000);
       await this.db.run(`UPDATE editors SET vcode='${vcode}' WHERE email='${email}'`, function (err, rows) {
          if (err) {
+            console.log(err)
          }
          return rows
       });
@@ -203,6 +215,7 @@ export class ADB { // auth & auth DB
             }
          })
          .catch(err => {
+            console.log(err)
             return false;
          })
    }
@@ -220,6 +233,7 @@ export class ADB { // auth & auth DB
             }
          })
          .catch(err => {
+            console.log(err)
             return false;
          })
    }
@@ -227,6 +241,7 @@ export class ADB { // auth & auth DB
    getEmailJsSettings() {
       return this.db.all(`SELECT emailjsService_id, emailjsTemplate_id, emailjsUser_id FROM configs`, [], function (err, rows) {
          if (err) {
+            console.log(err)
          }
          return rows
       })
@@ -236,6 +251,7 @@ export class ADB { // auth & auth DB
    getAdminId(email) {
       return this.db.all(`SELECT id FROM admin WHERE email='${email}'`, [], function (err, rows) {
          if (err) {
+            console.log(err)
          }
          return rows
       })
@@ -244,14 +260,16 @@ export class ADB { // auth & auth DB
    setAppPath(pathToApp, adminId) {
       return this.db.all(`UPDATE configs SET pathToApp='${pathToApp}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
+            console.log(err)
          }
          return rows
       })
    }
 
-   updateConfig(pathToApp, port, printfulApi, adminId) {
-      return this.db.run(`UPDATE configs SET pathToApp='${pathToApp}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, rows) {
+   updateConfig(pathToApp, port, adminId) {
+      return this.db.run(`UPDATE configs SET pathToApp='${pathToApp}', port='${port}'}' WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
+            console.log(err)
             return console.error('update config error:', err.message);
          }
          return rows.changes
@@ -262,6 +280,7 @@ export class ADB { // auth & auth DB
       console.log("TCL: getConfigs -> adminId", adminId)
       return this.db.get(`SELECT pathToApp, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
          if (err) {
+            console.log(err)
          }
          return rows
       })
@@ -270,6 +289,7 @@ export class ADB { // auth & auth DB
    getAppPath() {
       return this.db.all(`SELECT pathToApp FROM configs`, [], function (err, rows) {
          if (err) {
+            console.log(err)
          }
          return rows
       })
@@ -283,7 +303,7 @@ export class ADB { // auth & auth DB
       return this.db.all("SELECT COUNT(*) AS count FROM admin");
    }
 
-}
+}//()
 
 module.exports = {
    ADB, Veri

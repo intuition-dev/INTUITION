@@ -13,11 +13,6 @@ export class Auth implements iAuth {
     }
 
     auth = (user: string, pswd: string, resp?, ctx?): Promise<string> => {
-        let mountPath: string;
-
-        // decode 
-        user = Buffer.from(user, 'base64').toString();
-        pswd = Buffer.from(pswd, 'base64').toString();
 
         return new Promise((resolve, reject) => {
             resp.result = {}
@@ -27,8 +22,6 @@ export class Auth implements iAuth {
                     console.log('validateEmail result: ', result);
                     // editor user auth
                     if (result.pass === true) {
-                        resp.locals.email = user;
-                        resp.locals.mountPath = result.pathToSite;
                         return resolve('admin');
                     } else {
                         return this.adbDB.validateEditorEmail(user, pswd)
@@ -36,7 +29,6 @@ export class Auth implements iAuth {
                                 console.log('validateEditorEmail result: ', result);
                                 // admin user auth
                                 if (result.pass) {
-                                    resp.locals.mountPath = result.pathToSite;
                                     return resolve('editor');
                                 } else {
                                     throw new Error();

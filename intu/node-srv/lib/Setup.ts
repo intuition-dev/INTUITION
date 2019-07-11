@@ -22,7 +22,6 @@ setup(pathToDb) {
  
     this.app.makeInstance(host)
  
-       
  }//()
 
 route(req, res) {
