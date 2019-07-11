@@ -1,6 +1,7 @@
 
 depp.define({
    'tests': [
+      '../intuAPI/IntuAPI.js',
       'test1.js'
    ]
 })

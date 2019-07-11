@@ -551,4 +551,4 @@ input:-webkit-autofill{-webkit-text-fill-color:#333 !important;}
 .login-bg{background:#929292;background:linear-gradient(-135deg,#929292,#f5f5f5);}
 .bl_pass-changed-notification{padding-top:1rem;}
 .bl_pass-changed-notification--err h1{color:#e65740;}
-.bl_pass-changed-notification h1{font-size:20px;} /* mB v6.07.21 on 2019-07-11T00:02:08.171Z */
+.bl_pass-changed-notification h1{font-size:20px;} /* mB v6.07.22 on 2019-07-11T00:27:17.478Z */
