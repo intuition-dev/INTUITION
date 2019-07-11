@@ -1,6 +1,9 @@
 
 class LoginViewModel {
 
+    intuAPI
+    
+    
     login(email, pswd):Promise<boolean> {
 
         return null
@@ -12,5 +15,11 @@ class LoginViewModel {
     }
 
     // forgot password props
+    sendPswdReset(email ) {
 
+    }
+
+    checkCode(pswd, code) {
+        
+    }
 }

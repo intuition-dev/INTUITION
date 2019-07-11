@@ -8,5 +8,9 @@ var LoginViewModel = (function () {
         sessionStorage.set('user', email);
         sessionStorage.set('pswd', pswd);
     };
+    LoginViewModel.prototype.sendPswdReset = function (email) {
+    };
+    LoginViewModel.prototype.checkCode = function (pswd, code) {
+    };
     return LoginViewModel;
 }());

@@ -1,6 +1,8 @@
 
 class SetupViewModel {
 
+    intuAPI
+    
     setAdminEmail(email) {
 
     }
