@@ -39,7 +39,7 @@ export class AdminRoutes extends BasePgRouter {
    }//()
 
    setupApp(resp, params, user, pswd) {
-      return this.iauth.auth(user, pswd, res).then(async auth => {
+      return this.iauth.auth(user, pswd, resp).then(async auth => {
          if (auth === 'admin') {
 
             let item = params.item

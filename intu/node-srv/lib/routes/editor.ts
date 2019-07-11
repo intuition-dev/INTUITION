@@ -28,18 +28,7 @@ export class EditorRoutes extends BasePgRouter {
       this.fileMethod = new FileMethods();
    }
 
-   ROUTES = (req, res, ) => {
 
-      let mountPath = '';
-
-      const user = req.fields.user
-      const pswd = req.fields.pswd
-
-      const method = req.fields.method
-      const params = JSON.parse(req.fields.params)
-      const resp: any = {}
-
-      console.log('method ---------> ', method);
 
       if (method === 'reset-password-code') {
          let email = params.admin_email;

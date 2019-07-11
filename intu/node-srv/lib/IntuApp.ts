@@ -19,8 +19,8 @@ run(port) {
     //api
     const eA = new EditorRoutes(this, this.db)
     const aA = new AdminRoutes(this, this.db)
-    this.handleRRoute('api', 'editors', eA.ROUTES)
-    this.handleRRoute('api', 'admin', aA.ROUTES)
+    this.handleRRoute('api', 'editors', eA.route )
+    this.handleRRoute('api', 'admin', aA.route )
 
     this.serveStatic('../WWW')
 
