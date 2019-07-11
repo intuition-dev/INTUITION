@@ -1,6 +1,6 @@
 basedir: ../
 
-ROOT: '/'
+
 
 pretty: false
 publish1: false
