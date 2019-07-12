@@ -1,7 +1,7 @@
 
-import { ADB } from './ADB'
-import { Email } from './Email'
-import { IntuApp } from './IntuApp';
+import { ADB } from './lib/ADB'
+import { Email } from './lib/Email'
+import { IntuApp } from './IntuSrv';
 
 export class Setup {
 

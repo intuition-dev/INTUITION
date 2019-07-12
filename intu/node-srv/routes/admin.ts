@@ -1,8 +1,8 @@
 import { Download } from 'mbake/lib/FileOpsExtra'
-import { Email } from '../Email'
+import { Email } from '../lib/Email'
 import { BasePgRouter, iAuth } from 'mbake/lib/Serv'
-import { ADB } from '../ADB'
-import { Auth } from '../Auth'
+import { ADB } from '../lib/ADB'
+import { AdminAuth } from '../lib/AdminAuth'
 
 var path = require('path')
 
@@ -13,13 +13,10 @@ export class AdminRoutes extends BasePgRouter {
    adbDB: ADB;
    iauth: iAuth;
 
-   appE
-
-   constructor(appE, adbDB) {
+   constructor(adbDB) {
       super();
-      this.appE = appE
       this.adbDB = adbDB
-      this.iauth = new Auth(appE, adbDB);
+      this.iauth = new AdminAuth(adbDB);
    }//()
 
    checkAdmin(resp, params, user, pswd) {
@@ -77,13 +74,8 @@ export class AdminRoutes extends BasePgRouter {
                   .then(result => {
                      resp.result = true;
                      return resp.json(resp);
-                  }).then(() => {
-
-                     // run site
-                     
-                     this.appE// ...
-
-                  });
+                  })
+                  
             } catch (err) {
                console.log('setup-app: ', err);
             }
@@ -122,7 +114,7 @@ export class AdminRoutes extends BasePgRouter {
 
                }
 
-            } else             this.retErr(resp,'')
+            } else  this.retErr(resp,'')
 
          })
 
@@ -192,9 +184,9 @@ export class AdminRoutes extends BasePgRouter {
                         return resp.json(resp);
                      });
                })
-         } catch (err) 
+         } catch (err) {
             this.retErr(resp, err)
-
+         }
          
 
       }//() 

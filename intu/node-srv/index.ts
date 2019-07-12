@@ -1,13 +1,22 @@
 #!/usr/bin/env node
 // All rights reserved by MetaBake.org, licensed under LGPL 3.0
 
-import { ADB, Veri } from './lib/ADB'
+import { ADB } from './lib/ADB'
 
 import { VersionNag } from 'mbake/lib/FileOpsExtra'
-import { IntuApp } from './lib/IntuApp';
-import { Setup } from './lib/Setup';
+import { IntuApp } from './IntuSrv'
 
-VersionNag.isCurrent('intu', Veri.ver() ).then(function(isCurrent_:boolean){
+const ip = require('ip')
+const ipAddres = ip.address()
+
+const hostIP = 'http://' + ipAddres + ':'
+
+// ///////////////////////////////////////////////////////
+
+console.log("TCL: hostIP", hostIP)
+const adbDB = new ADB()
+
+VersionNag.isCurrent('intu', adbDB.veri() ).then(function(isCurrent_:boolean){
    try{
    if(!isCurrent_) 
       console.log('There is a newer version of MetaBake\'s intu(Intuition), please update.')
@@ -18,42 +27,10 @@ VersionNag.isCurrent('intu', Veri.ver() ).then(function(isCurrent_:boolean){
    }
 })// 
 
-const ip = require('ip')
-const ipAddres = ip.address()
-
-const hostIP = 'http://' + ipAddres + ':'
-console.log("TCL: hostIP", hostIP)
-
-const path = require('path');
 
 // ///////////////////////////////////////////////////////
 
-const adbDB = new ADB()
-const dbName = 'ADB.sqlite'
-const pathToDb = path.join(__dirname, dbName)
-
 const mainEApp = new IntuApp(adbDB)
 
-try {
-   //check if the file of the database exist
-   if (adbDB.dbExists(pathToDb)) {
-      runApp()
-   } else {
-      console.log('run setup')
-      runApp()
-      //create db file
-      const setup = new Setup(pathToDb)
-      setup.setup(pathToDb)
-   }
-} catch (err) {
-   console.warn(err)
-}
-
-function runApp() {
-   console.log('run')
-   adbDB.getPort(pathToDb)
-      .then(function (port) {
-         mainEApp.run(port)
-      })
-}
-
+const dbName = 'ADB.sqlite'
+mainEApp.start(dbName)

@@ -1,14 +1,12 @@
-import { ExpressRPC, iAuth } from 'mbake/lib/Serv';
+import { iAuth } from 'mbake/lib/Serv';
 import { ADB } from './ADB';
 
-export class Auth implements iAuth {
+export class AdminAuth implements iAuth {
 
-    appE: ExpressRPC
     adbDB: ADB;
     iauth: iAuth;
 
-    constructor(appE, adbDB) {
-        this.appE = appE
+    constructor( adbDB) {
         this.adbDB = adbDB
     }
 
@@ -20,33 +18,34 @@ export class Auth implements iAuth {
             return this.adbDB.validateAdminEmail(user, pswd)
                 .then((result: any) => {
                     console.log('validateEmail result: ', result);
-                    // editor user auth
-                    if (result.pass === true) {
-                        return resolve('admin');
-                    } else {
-                        return this.adbDB.validateEditorEmail(user, pswd)
-                            .then((result: any) => {
-                                console.log('validateEditorEmail result: ', result);
-                                // admin user auth
-                                if (result.pass) {
-                                    return resolve('editor');
-                                } else {
-                                    throw new Error();
-                                }
-                            })
-                    }
+                if (result.pass === true) 
+                    return resolve('OK')
+                else throw new Error()
+                
                 }).catch((error) => {
-                    console.log('auth: ', error);
-                    resp.errorLevel = -1
-                    resp.errorMessage = 'mismatch'
-                    resolve('NO');
+                    this.retErr(resp, 'Sorry, try again')
+                    reject('NO')
                 })
 
         })
-    }
+    }//()
+
+    /**
+    * returns an error
+    * @param resp http response
+    * @param msg error msg
+    */
+   retErr(resp, msg) {
+        console.log(msg)
+        const ret:any= {} // new return
+        ret.errorLevel = -1
+        ret.errorMessage = msg
+        resp.json(ret)
+    }//()
 
 }
 
 module.exports = {
-    Auth
+    AdminAuth
 }
+
