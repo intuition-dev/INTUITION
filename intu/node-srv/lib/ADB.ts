@@ -6,7 +6,6 @@ const fs = require('fs-extra')
 
 import { BaseDB } from 'mbake/lib/BaseDB'
 import { iAuth } from 'mbake/lib/Serv'
-import { rejects } from 'assert';
 
 export class ADB extends BaseDB { 
     veri() {
@@ -129,22 +128,18 @@ export class ADB extends BaseDB {
 
         const stmt =  ADB.db.prepare(`INSERT INTO EDITORS(guid, name, email, hashPass ) VALUES(?,?, ?,?)`)
         await this._run(stmt, guid, name, email, hashPass )
-    }
+    }//()
 
-
-    getConfigs(adminId) {
-        console.log("TCL: getConfigs -> adminId", adminId);
-        return ADB.db.get(`SELECT pathToApp, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
-            if (err) throw err
-            return rows
-        });
+    async getConfigs() {
+        const qry =  ADB.db.prepare(`SELECT * FROM CONFIG`)
+        const rows = await this._qry(qry)
+        const row = rows[0]
+        return row
     }
     
-    setAppPath(pathToApp, adminId) {
-          return ADB.db.all(`UPDATE configs SET pathToApp='${pathToApp}' WHERE adminId='${adminId}'`, [], function (err, res) {
-              if (err) throw err
-              return res.changes > 0
-          });
+    setAppPath(pathToApp) {
+        const stmt =  ADB.db.prepare(`UPDATE CONFIG SET pathToApp=? `)
+        this._run(stmt)
       }
 
 //////////////////
@@ -195,12 +190,6 @@ export class ADB extends BaseDB {
       });
   }
   
-  getEmailJsSettings() {
-      return ADB.db.all(`SELECT emailjsService_id, emailjsTemplate_id, emailjsUser_id FROM configs`, [], function (err, rows) {
-          if (err) throw err
-          return rows
-      });
-  }
 
   updateConfig(pathToApp, port, printfulApi, adminId) {
       return ADB.db.run(`UPDATE configs SET pathToApp='${pathToApp}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, res) {
