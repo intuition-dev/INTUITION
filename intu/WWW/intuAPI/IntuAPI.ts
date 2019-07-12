@@ -11,10 +11,10 @@ class IntuAPI {
    serviceRPC
 
    constructor() {
-      var pro = window.location.protocol;
-      pro = pro.replace(':', '');
-      var host = window.location.hostname;
-      var port = window.location.port;
+      var pro = window.location.protocol
+      pro = pro.replace(':', '')
+      var host = window.location.hostname
+      var port = window.location.port
 
       console.log("TCL: IntuAPI -> constructor -> apiPort", port)
 
