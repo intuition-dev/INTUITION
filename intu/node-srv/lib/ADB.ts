@@ -3,8 +3,11 @@ import sqlite = require('sqlite')
 const bcrypt = require('bcryptjs') // to hash pswdws
 const fs = require('fs-extra')
 
+import { BaseDB } from 'mbake/lib/BaseDB'
 
-export class ADB { // auth & auth DB
+
+export class ADB extends BaseDB { 
+    // auth & auth DB
    // emailjs is client side api
    db
 

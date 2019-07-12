@@ -8,7 +8,7 @@ const fs = require('fs-extra')
 /**
  * Example CRUD DB: to discuss topics
  */
-export class CDB extends BaseDB { 
+export class CDB extends BaseDB { // FTS support
 
    static db
 
