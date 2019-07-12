@@ -1,10 +1,12 @@
 
 const sqlite3 = require('sqlite3').verbose()
 
-const bcrypt = require('bcryptjs') // to hash pswdws
+const bcrypt = require('bcryptjs') // to hash passwords
 const fs = require('fs-extra')
 
 import { BaseDB } from 'mbake/lib/BaseDB'
+import { iAuth } from 'mbake/lib/Serv'
+import { rejects } from 'assert';
 
 export class ADB extends BaseDB { 
     veri() {
@@ -129,6 +131,22 @@ export class ADB extends BaseDB {
         await this._run(stmt, guid, name, email, hashPass )
     }
 
+
+    getConfigs(adminId) {
+        console.log("TCL: getConfigs -> adminId", adminId);
+        return ADB.db.get(`SELECT pathToApp, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
+            if (err) throw err
+            return rows
+        });
+    }
+    
+    setAppPath(pathToApp, adminId) {
+          return ADB.db.all(`UPDATE configs SET pathToApp='${pathToApp}' WHERE adminId='${adminId}'`, [], function (err, res) {
+              if (err) throw err
+              return res.changes > 0
+          });
+      }
+
 //////////////////
  
   getEditors() {
@@ -183,19 +201,7 @@ export class ADB extends BaseDB {
           return rows
       });
   }
-  getAdminId(email) {
-      return ADB.db.all(`SELECT id FROM admin WHERE email='${email}'`, [], function (err, rows) {
-          if (err) throw err
-          return rows
-      });
-  }
 
-  setAppPath(pathToApp, adminId) {
-      return ADB.db.all(`UPDATE configs SET pathToApp='${pathToApp}' WHERE adminId='${adminId}'`, [], function (err, res) {
-          if (err) throw err
-          return res.changes > 0
-      });
-  }
   updateConfig(pathToApp, port, printfulApi, adminId) {
       return ADB.db.run(`UPDATE configs SET pathToApp='${pathToApp}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, res) {
           if (err) {
@@ -205,19 +211,8 @@ export class ADB extends BaseDB {
 
       });
   }
-  getConfigs(adminId) {
-      console.log("TCL: getConfigs -> adminId", adminId);
-      return ADB.db.get(`SELECT pathToApp, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
-          if (err) throw err
-          return rows
-      });
-  }
-  getAppPath() {
-      return ADB.db.all(`SELECT pathToApp FROM configs`, [], function (err, rows) {
-          if (err) throw err
-          return rows
-      });
-  }
+
+
 
    /**
     * this one is used for uptime server monitoring
@@ -229,6 +224,50 @@ export class ADB extends BaseDB {
 
 }//()
 
+// Auth section //////////////////////////////////////////////////////////////////
+class EditorAuth implements iAuth {
+    db:ADB
+    constructors(db) {
+        this.db = db
+    }//()
+
+    auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
+        return new Promise( async function (resolve, reject) {
+        const ok = await this.db.authEditor(user, pswd)
+        if(ok) resolve('ok')        
+        this.RetErr(resp, 'not ok')
+        })// pro
+    }    
+    retErr(resp: any, msg: any) {
+        console.log(msg)
+        const ret:any= {} // new return
+        ret.errorLevel = -1
+        ret.errorMessage = msg
+        resp.json(ret)    
+    }//()
+}//class
+class AdminAuth implements iAuth {
+    db:ADB
+    constructors(db) {
+        this.db = db
+    }//()
+
+    auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
+        return new Promise( async function (resolve, reject) {
+        const ok = await this.db.authAdmin(user, pswd)
+        if(ok) resolve('ok')        
+        this.RetErr(resp, 'not ok')
+        })// pro
+    }    
+    retErr(resp: any, msg: any) {
+        console.log(msg)
+        const ret:any= {} // new return
+        ret.errorLevel = -1
+        ret.errorMessage = msg
+        resp.json(ret)    
+    }//()
+}//class
+
 module.exports = {
-   ADB
+   ADB, EditorAuth, AdminAuth
 }
