@@ -40,8 +40,9 @@ export class ADB extends BaseDB {
         }//fi
   
         ADB.db.run(`CREATE TABLE ADMIN  (email, hashPass, vcode)`) // single row in table
-        ADB.db.run(`CREATE TABLE CONFIG (website_url, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`) // single row in table
+        ADB.db.run(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`) // single row in table
         ADB.db.run(`CREATE TABLE SALT(salt)`)// single row in table
+        ADB.db.run(`CREATE TABLE TEMPLATE(template)`)// single row in table, TEMPLATE
         ADB.db.run(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)
 
         let salt = bcrypt.genSaltSync(10)
@@ -71,7 +72,8 @@ export class ADB extends BaseDB {
     }//()
 
     updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port) {
-        const stmt =  ADB.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?, pathToApp=?, port=?`)// single row in table so no need for where
+        const stmt =  ADB.db.prepare(`UPDATE CONFIG SET (emailjsService_id=?, emailjsTemplate_id=?, 
+                emailjsUser_id=?, pathToApp=?, port=?`)// single row in table so no need for where
         this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port)
     }
 

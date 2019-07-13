@@ -33,10 +33,9 @@ export class EditorRoutes extends BasePgRouter {
       let emailjsService_id   = config.emailjsService_id
       let emailjsTemplate_id  = config.emailjsTemplate_id
       let emailjsUser_id      = config.emailjsUser_id
-      let website_url      = config.website_url
    
       let code = this.adbDB.getVcodeEditor(email)
-      let msg = 'Enter your code at http://bla.bla'  + code // TODO send as text with nice LF/CR 
+      let msg = 'Enter your code at http://bla.bla' + code // TODO use ADB template email to CRUD w/ {{code}}
       this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
       
       this.ret(resp, 'OK')

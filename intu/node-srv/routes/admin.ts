@@ -41,8 +41,6 @@ export class AdminRoutes extends BasePgRouter {
       let emailjsUser_id      = params.emailjsUser_id
       let pathToApp           = params.pathToApp
       let port                = params.port
-      let website_url         = params.website_url
-
 
       this.adbDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port)
   
@@ -54,9 +52,9 @@ export class AdminRoutes extends BasePgRouter {
       let emailjsService_id   = config.emailjsService_id
       let emailjsTemplate_id  = config.emailjsTemplate_id
       let emailjsUser_id      = config.emailjsUser_id
-   
+
       let code = this.adbDB.getVcodeAdmin()
-      let msg = 'Enter your code at http://bla.bla'  + code // TODO send as text with nice LF/CR 
+      let msg = 'Enter your code at http://bla.bla'   + code // TODO use ADB template email to CRUD w/ {{code}}
       this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
       
       this.ret(resp, 'OK')
