@@ -24,8 +24,8 @@ export class ADB extends BaseDB {
 
    con() {
         if(ADB.db) {
-        console.log('connection exists')
-        return
+            console.log('connection exists')
+            return
         }
         console.log('new connection')
         ADB.db =  new sqlite3.Database('./ADB.sqlite')
@@ -42,12 +42,12 @@ export class ADB extends BaseDB {
            this.con()
         }//fi
   
-        ADB.db.run(`CREATE TABLE ADMIN  (email, hashPass, vcode)`) // only one row
-        ADB.db.run(`CREATE TABLE CONFIG (emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port)`) // only one row
-        ADB.db.run(`CREATE TABLE EDITORS(guid, name, email, hashPass, vcode)`)
+        ADB.db.run(`CREATE TABLE ADMIN  (email, hashPass, vcode)`) // single row in table
+        ADB.db.run(`CREATE TABLE CONFIG (emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port)`) // single row in table
+        ADB.db.run(`CREATE TABLE SALT(salt)`)// single row in table
+        ADB.db.run(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)
 
         let salt = bcrypt.genSaltSync(10)
-        ADB.db.run(`CREATE TABLE SALT(salt)`)
         const stmt =  ADB.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`)
         this._run(stmt, salt )
         ADB.salt = salt
@@ -55,7 +55,7 @@ export class ADB extends BaseDB {
 
     async getSalt() {
         if(ADB.salt) return ADB.salt
-        const qry =  ADB.db.prepare('SELECT * FROM SALT') 
+        const qry =  ADB.db.prepare('SELECT * FROM SALT')// single row in table so no need for where 
         const rows = await this._qry(qry)
         const row = rows[0]
         ADB.salt = row.salt
@@ -64,14 +64,31 @@ export class ADB extends BaseDB {
 
     async setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) {
       const salt = await this.getSalt()
-      var hashPass = bcrypt.hashSync(password, salt)
+      const hashPass = bcrypt.hashSync(password, salt)
      
       const stmt1 =  ADB.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`)
       this._run(stmt1, email, hashPass)
 
       const stmt2 =  ADB.db.prepare(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES(?,?,?,?)`)
       this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port)      
-  }//()
+    }//()
+
+    updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port) {
+        const stmt =  ADB.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?, pathToApp=?, port=?`)// single row in table so no need for where
+        this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port)
+    }
+
+    async getConfig() {
+        const qry =  ADB.db.prepare(`SELECT * FROM CONFIG`)
+        const rows = await this._qry(qry)
+        const row = rows[0]
+        return row
+    }
+    
+    setAppPath(pathToApp) {
+        const stmt =  ADB.db.prepare(`UPDATE CONFIG SET pathToApp=? `)
+        this._run(stmt, pathToApp)
+    }
 
     async getPort() {
         const qry =  ADB.db.prepare('SELECT * FROM CONFIG') 
@@ -130,86 +147,56 @@ export class ADB extends BaseDB {
         await this._run(stmt, guid, name, email, hashPass )
     }//()
 
-    async getConfigs() {
-        const qry =  ADB.db.prepare(`SELECT * FROM CONFIG`)
-        const rows = await this._qry(qry)
-        const row = rows[0]
-        return row
+    async getEditors() {
+        const qry =  ADB.db.prepare(`SELECT guid, name FROM editors`)
+        return await this._qry(qry)
     }
-    
-    setAppPath(pathToApp) {
-        const stmt =  ADB.db.prepare(`UPDATE CONFIG SET pathToApp=? `)
-        this._run(stmt)
-      }
 
-//////////////////
- 
-  getEditors() {
-      return ADB.db.all(`SELECT id, name, email FROM editors`, [], function (err, rows) {
-          if (err) throw err
-          return rows
-      });
-  }
+    async deleteEditor(guid) {
+        const stmt =  ADB.db.prepare(`DELETE FROM editors WHERE guid=?`)
+        await this._run(stmt, guid)
+    }
 
-  updateEditor(name, id) {
-      return ADB.db.run(`UPDATE editors SET name='${name}' WHERE id='${id}'`, function (err) {
-          if (err) throw err
-          return this.lastID;
-      });
-  }
-  deleteEditor(id) {
-      return ADB.db.run(`DELETE FROM editors WHERE id='${id}'`, function (err) {
-          if (err) throw err
-      });
-  }
-
-  resetPasswordAdmin(email, vcode, password) {
-      var salt = bcrypt.genSaltSync(10);
-      let hashPass = bcrypt.hashSync(password, salt)
-      
-      return ADB.db.run(`UPDATE admin SET password='${hashPass}' WHERE email='${email}' AND vcode='${vcode}'`)
-          .then(res => {
-            return res.changes > 0
-      })
-          .catch(err => {
-          return false;
-      });
-  }
-
-  resetPasswordEditor(email, vcode, password) {
-      var salt = bcrypt.genSaltSync(10);
-      let hashPass = bcrypt.hashSync(password, salt)
-
-      return ADB.db.run(`UPDATE editors SET password='${hashPass}' WHERE email='${email}' AND vcode='${vcode}'`)
-          .then(res => {
-          return res.changes > 0
-      })
-          .catch(err => {
-          console.log(err)
-          return false;
-      });
-  }
   
+    /**
+     * this one is used for uptime server monitoring
+     * doesn't matter the count result
+     **/
+    async monitor() {
+        const qry =  ADB.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN`)
+        const rows = await this._qry(qry)
+        return rows[0]
+    }
 
-  updateConfig(pathToApp, port, printfulApi, adminId) {
-      return ADB.db.run(`UPDATE configs SET pathToApp='${pathToApp}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, res) {
-          if (err) {
-              return console.error('update config error:', err.message);
-          }
-          return res.changes > 0
+    async resetPasswordAdmin(email, vcode, password) {
+        // is there a row match?
+        const qry =  ADB.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN where email=? and vcode=?`)
+        const rows = await this._qry(qry, email, vcode)
+        const row= rows[0]
+        const count = row.count
+        if(!(count==0)) throw new Error('mismatch')
 
-      });
-  }
+        const salt = await this.getSalt()
+        const hashPass = bcrypt.hashSync(password, salt)
+        const stmt =  ADB.db.prepare(`UPDATE ADMIN SET hashPass=? WHERE email=?`)
+        this._run(stmt, hashPass, email)
+        return 'ok'
+    }//()
 
+    async resetPasswordEditor(email, vcode, password) {
+        // is there a row match?
+        const qry =  ADB.db.prepare(`SELECT COUNT(*) AS count FROM EDITORS where email=? and vcode=?`)
+        const rows = await this._qry(qry, email, vcode)
+        const row= rows[0]
+        const count = row.count
+        if(!(count==0)) throw new Error('mismatch')
 
-
-   /**
-    * this one is used for uptime server monitoring
-    * doesn't matter the count result
-    **/
-   monitor(): any {
-      return ADB.db.all("SELECT COUNT(*) AS count FROM ADMIN")
-   }
+        const salt = await this.getSalt()
+        const hashPass = bcrypt.hashSync(password, salt)
+        const stmt =  ADB.db.prepare(`UPDATE EDITORS SET hashPass=? WHERE email=?`)
+        this._run(stmt, hashPass, email)
+        return 'ok'
+    }//()
 
 }//()
 
@@ -235,6 +222,7 @@ class EditorAuth implements iAuth {
         resp.json(ret)    
     }//()
 }//class
+
 class AdminAuth implements iAuth {
     db:ADB
     constructors(db) {
