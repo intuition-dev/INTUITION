@@ -12,9 +12,6 @@ export class ADB extends BaseDB {
         return 'v0.9.26'
      }
   
-    // auth & auth DB
-    // emailjs is client side api
-
    protected static db
    protected static salt
 
@@ -43,7 +40,7 @@ export class ADB extends BaseDB {
         }//fi
   
         ADB.db.run(`CREATE TABLE ADMIN  (email, hashPass, vcode)`) // single row in table
-        ADB.db.run(`CREATE TABLE CONFIG (emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`) // single row in table
+        ADB.db.run(`CREATE TABLE CONFIG (website_url, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`) // single row in table
         ADB.db.run(`CREATE TABLE SALT(salt)`)// single row in table
         ADB.db.run(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)
 
@@ -161,7 +158,6 @@ export class ADB extends BaseDB {
         const stmt =  ADB.db.prepare(`DELETE FROM editors WHERE guid=?`)
         await this._run(stmt, guid)
     }
-
   
     /**
      * this one is used for uptime server monitoring

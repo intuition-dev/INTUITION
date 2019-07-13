@@ -78,13 +78,13 @@ class ADB extends BaseDB_1.BaseDB {
         const row = rows[0];
         return row.port;
     }
-    setVcodeAdmin() {
+    getVcodeAdmin() {
         let vcode = Math.floor(1000 + Math.random() * 9000);
         const stmt = ADB.db.prepare(`UPDATE ADMIN SET vcode=?`);
         this._run(stmt, vcode);
         return vcode;
     }
-    setVcodeEditor(email) {
+    getVcodeEditor(email) {
         let vcode = Math.floor(1000 + Math.random() * 9000);
         const stmt = ADB.db.prepare(`UPDATE EDITORS SET vcode=? WHERE email=?`);
         this._run(stmt, vcode, email);
@@ -127,7 +127,7 @@ class ADB extends BaseDB_1.BaseDB {
         const rows = await this._qry(qry);
         return rows[0];
     }
-    async resetPasswordAdmin(email, vcode, password) {
+    async resetPasswordAdminIfMatch(email, vcode, password) {
         const qry = ADB.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN where email=? and vcode=?`);
         const rows = await this._qry(qry, email, vcode);
         const row = rows[0];
@@ -136,11 +136,11 @@ class ADB extends BaseDB_1.BaseDB {
             throw new Error('mismatch');
         const salt = await this.getSalt();
         const hashPass = bcrypt.hashSync(password, salt);
-        const stmt = ADB.db.prepare(`UPDATE ADMIN SET hashPass=? WHERE email=?`);
+        const stmt = ADB.db.prepare(`UPDATE ADMIN SET (hashPass=?, vcode=null) WHERE email=?`);
         this._run(stmt, hashPass, email);
         return 'OK';
     }
-    async resetPasswordEditor(email, vcode, password) {
+    async resetPasswordEditorIfMatch(email, vcode, password) {
         const qry = ADB.db.prepare(`SELECT COUNT(*) AS count FROM EDITORS where email=? and vcode=?`);
         const rows = await this._qry(qry, email, vcode);
         const row = rows[0];
@@ -149,22 +149,23 @@ class ADB extends BaseDB_1.BaseDB {
             throw new Error('mismatch');
         const salt = await this.getSalt();
         const hashPass = bcrypt.hashSync(password, salt);
-        const stmt = ADB.db.prepare(`UPDATE EDITORS SET hashPass=? WHERE email=?`);
+        const stmt = ADB.db.prepare(`UPDATE EDITORS SET (hashPass=?, vcode=null) WHERE email=?`);
         this._run(stmt, hashPass, email);
         return 'OK';
     }
 }
 exports.ADB = ADB;
 class EditorAuth {
-    constructors(db) {
+    constructor(db) {
         this.db = db;
     }
-    auth(user, pswd, resp, ctx) {
+    async auth(user, pswd, resp, ctx) {
         return new Promise(async function (resolve, reject) {
             const ok = await this.db.authEditor(user, pswd);
             if (ok)
-                resolve('OK');
-            this.RetErr(resp, 'not ok');
+                return resolve('OK');
+            this.RetErr(resp, 'NO');
+            reject('NO');
         });
     }
     retErr(resp, msg) {
@@ -175,16 +176,18 @@ class EditorAuth {
         resp.json(ret);
     }
 }
+exports.EditorAuth = EditorAuth;
 class AdminAuth {
-    constructors(db) {
+    constructor(db) {
         this.db = db;
     }
-    auth(user, pswd, resp, ctx) {
+    async auth(user, pswd, resp, ctx) {
         return new Promise(async function (resolve, reject) {
             const ok = await this.db.authAdmin(user, pswd);
             if (ok)
-                resolve('OK');
-            this.RetErr(resp, 'not ok');
+                return resolve('OK');
+            this.RetErr(resp, 'NO');
+            reject('NO');
         });
     }
     retErr(resp, msg) {
@@ -195,6 +198,7 @@ class AdminAuth {
         resp.json(ret);
     }
 }
+exports.AdminAuth = AdminAuth;
 module.exports = {
     ADB, EditorAuth, AdminAuth
 };

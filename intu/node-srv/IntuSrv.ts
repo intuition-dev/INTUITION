@@ -66,14 +66,19 @@ async _run(port:number, setup:boolean) {
     this.appInst.get('/monitor',  (req, res) => {
         this.db.monitor()
         .then(count => {
-            return res.send('OK');
+            return res.send('OK')
         }).catch(error => {
             console.info('monitor error: ', error)
             res.status(400);
             return res.send = (error)
         })
-    })// monitor
-    
+    })//
+
+    // get version
+    this.appInst.get('/ver',  (req, res) => {
+        return res.send(this.db.veri)
+    })
+
     this.listen(port)
 }//()
     

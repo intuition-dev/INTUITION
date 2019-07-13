@@ -9,12 +9,11 @@ export class SetupRoutes extends BasePgRouter {
     adbDB: ADB
     emailJs = new Email()
     
-    
     constructor(db) {
         super()
        this.adbDB = db
     }
-    
+
    
     setup(resp, params, email, password) {
 
@@ -40,7 +39,6 @@ export class SetupRoutes extends BasePgRouter {
      
     
     }//()
-
 
   
 }
