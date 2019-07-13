@@ -6,7 +6,7 @@ import { AdminRoutes } from './routes/admin'
 import { ADB } from './lib/ADB';
 
 import { Setup } from './Setup';
-const path = require('path')
+import { SetupRoutes } from './routes/setup';
 
 export class IntuApp extends ExpressRPC {
 
@@ -16,58 +16,60 @@ constructor(db:ADB) {
     this.db = db
 }
 
+start() {
 
-start(dbName) {
-    
-    const pathToDb = path.join(__dirname, dbName)
-
-
-try {
-    //check if the file of the database exist
-    if (this.db.dbExists(pathToDb)) {
-       _runApp()
-    } else {
-       console.log('run setup')
-       _runApp()
-       //create db file
-       const setup = new Setup(pathToDb)
-       setup.setup(pathToDb)
+    try {
+        //check if the file of the database exist
+        if (this.db.dbExists()) {
+            this._runNormal()
+        } else {
+        console.log('run setup')
+            this._runSetup()
+            
+        }
+    } catch (err) {
+        console.warn(err)
     }
- } catch (err) {
-    console.warn(err)
- }
- 
-function _runApp() {
-    console.log('run')
-    this.db.getPort(pathToDb)
-       .then(function (port) {
-          this.run(port)
-       })
- }
-  
+      
 }//()
 
-_run(port) {
-    // order if routes: api, all intu apps, webapp
+_runSetup() {
 
-    //api
-    const eA = new EditorRoutes(this.db)
-    const aA = new AdminRoutes(this.db)
-    this.handleRRoute('api', 'editors', eA.route )
-    this.handleRRoute('api', 'admin', aA.route )
+    this._run(8090, true)
 
-    this.serveStatic('../WWW')
+    const setup = new Setup(this.db)
+    setup.setup()
+
+}
+
+async _runNormal() {
+    const port:number = await this.db.getPort()
+    this._run(port, false)
+}//()
+
+async _run(port:number, setup:boolean) {    
+    // order of routes: api, all intu apps, webapp
     
-    this.serveStatic(this.db.getAppPath())
+    //api
+    const sr = new SetupRoutes(this.db)
+    const ar = new AdminRoutes(this.db)
+    const er = new EditorRoutes(this.db)
+    this.handleRRoute('setup', 'setup', sr.route )
+    this.handleRRoute('admin', 'admin', ar.route )
+    this.handleRRoute('api', 'editors', er.route )
+ 
+    this.serveStatic('../WWW')// the editor apps
 
-    //webapp being managed
-    const appPath = this.db.getAppPath()
-    this.serveStatic(appPath)
+    if(!setup) {
+        const appPath:string = await this.db.getAppPath()
+        //webapp being managed
+        this.serveStatic(appPath)
+    }
 
     // endpoint for monitoring
-    this.appInst.get('/monitor', (req, res) => {
+    this.appInst.get('/monitor',  (req, res) => {
         this.db.monitor()
-        .then(res1 => {
+        .then(count => {
             return res.send('OK');
         }).catch(error => {
             console.info('monitor error: ', error)
@@ -76,6 +78,7 @@ _run(port) {
         })
     })// monitor
     
+    this.listen(port)
 }//()
     
 }//

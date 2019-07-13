@@ -32,5 +32,4 @@ VersionNag.isCurrent('intu', adbDB.veri() ).then(function(isCurrent_:boolean){
 
 const mainEApp = new IntuApp(adbDB)
 
-const dbName = 'ADB.sqlite'
-mainEApp.start(dbName)
+mainEApp.start()

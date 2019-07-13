@@ -1,27 +1,23 @@
 
 import { ADB } from './lib/ADB'
 import { Email } from './lib/Email'
-import { IntuApp } from './IntuSrv';
 
 export class Setup {
 
 adbDB: ADB
 emailJs = new Email()
 
-app: IntuApp
 
-constructor(app:IntuApp) {
-   this.app = app
+constructor(db) {
+   this.adbDB = db
 }
 
-setup(pathToDb) { 
+setup() { 
     
     const port = '9081' //init port
-    this.adbDB.connectToDb(pathToDb) //connect to db
+    this.adbDB.con() //connect to db
     let host// = [hostIP + port, config.cors]
- 
-    this.app.makeInstance(host)
- 
+  
  }//()
 
 route(req, res) {
@@ -40,7 +36,7 @@ route(req, res) {
       // res.send(resp)
       try {
          console.info('setup called ...');
-         this.adbDB.addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, '9081');
+         this.adbDB.setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, 9081)
          console.info('db created  ...');
          let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
          this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);

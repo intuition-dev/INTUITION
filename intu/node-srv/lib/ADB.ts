@@ -15,8 +15,8 @@ export class ADB extends BaseDB {
     // auth & auth DB
     // emailjs is client side api
 
-   static db
-   static salt
+   protected static db
+   protected static salt
 
     dbExists() {
         return fs.existsSync('./ADB.sqlite')
@@ -43,7 +43,7 @@ export class ADB extends BaseDB {
         }//fi
   
         ADB.db.run(`CREATE TABLE ADMIN  (email, hashPass, vcode)`) // single row in table
-        ADB.db.run(`CREATE TABLE CONFIG (emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port)`) // single row in table
+        ADB.db.run(`CREATE TABLE CONFIG (emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`) // single row in table
         ADB.db.run(`CREATE TABLE SALT(salt)`)// single row in table
         ADB.db.run(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)
 
@@ -62,7 +62,7 @@ export class ADB extends BaseDB {
         return ADB.salt
     }//()
 
-    async setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) {
+    async setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port:number) {
       const salt = await this.getSalt()
       const hashPass = bcrypt.hashSync(password, salt)
      
@@ -88,6 +88,11 @@ export class ADB extends BaseDB {
     setAppPath(pathToApp) {
         const stmt =  ADB.db.prepare(`UPDATE CONFIG SET pathToApp=? `)
         this._run(stmt, pathToApp)
+    }
+
+    async getAppPath() {
+        const config = await this.getConfig()
+        return config.pathToApp
     }
 
     async getPort() {
