@@ -46,41 +46,29 @@ export class EditorRoutes extends BasePgRouter {
       this.ret(resp, result)
 
    }//()
+
+   fm = new FileMethods()
+   async getDirs(resp, params, user, pswd) {
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
+
+      const appPath = await this.adbDB.getAppPath()
+      const dirs = this.fm.getDirs(appPath)
    
-
+      this.ret(resp, dirs)
+   }//()
    
-   getItems(resp, params, user, pswd) {
+   async getFiles(resp, params, user, pswd) {
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
 
-      return this.iauth.auth(user, pswd, resp).then(auth => {
-         if (auth === 'admin' || auth === 'editor') {
+      let itemPath = '/' + params.itemPath
 
-            resp.result = this.fileMethod.getDirs(this.mountPath)
-            resp.json(resp);
-            
-         } else  this.retErr(resp,'')
-      })
+      const appPath = await this.adbDB.getAppPath()
+      const files = this.fm.getFiles(appPath, itemPath)
 
-
-   } 
-   
-   getFiles(resp, params, user, pswd) {
-
-      return this.iauth.auth(user, pswd, resp).then(auth => {
-         if (auth === 'admin' || auth === 'editor') {
-
-            let post_id = '/' + params.post_id;
-            
-            if (typeof post_id !== 'undefined') {
-               
-               resp.result = this.fileMethod.getFiles(this.mountPath, post_id);
-               resp.json(resp);
-
-            } else  this.retErr(resp,'no post id')
-
-         } else  this.retErr(resp,'')
-      })
-
-   }
+      this.ret(resp, files)
+   }//files
    
    getFileContent(resp, params, user, pswd) { 
 
