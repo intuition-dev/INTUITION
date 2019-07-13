@@ -1,18 +1,24 @@
 
-import { MBake } from 'mbake/lib/Base';
+import { MetaPro } from 'mbake/lib/Wa';
 
 export class AppLogic {
+    
+    autoBake(appPath, itemPath, fileName) {
+        const meta = new MetaPro(appPath)
+        setTimeout(function(){
+            // autobake is automatic in CLI, and tested! So if anything fix the args till it works
+            meta.autoBake(itemPath, fileName)
+        },1)
+    }//()
 
-    bake(folder, fileName) {
+    clone(appPath, item, newItem) {
 
-        
     }
-
 
     /**
     Silently archive a file to archive directory in the folder 
      */
-    archive(folder, origFileName) {
+    archive(appPath, itemPath, fileName)  {
 
     /*
             // add /archive

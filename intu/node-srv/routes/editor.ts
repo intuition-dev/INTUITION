@@ -104,114 +104,52 @@ export class EditorRoutes extends BasePgRouter {
       content = Buffer.from(content, 'base64');
 
       const fileOps = new FileOps(appPath)
+      // done saving
       fileOps.write(fileName, content)
-
       this.ret(resp,'OK')
 
-      this.appLogic.archive(itemPath, fileName) // TODO
-           
-   } 
-   
-   compileCode(resp, params, user, pswd) {
+      this.appLogic.archive(appPath, itemPath, fileName)  // TODO
+   }//()
 
-      return this.iauth.auth(user, pswd, resp).then(auth => {
-         if (auth === 'admin' || auth === 'editor') {
+   /**
+   It is not relay async, it returns than compiles/bakes
+   */
+   async compileCode(resp, params, user, pswd) {
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
 
-            let post_id = params.post_id;
-            let pathPrefix = params.pathPrefix;
+      let itemPath = '/' + params.itemPath
+      let file = '/' + params.file
+      const appPath = await this.adbDB.getAppPath()
+      let fileName =  itemPath + file
+      this.ret(resp,'OK')
 
-            if (typeof post_id !== 'undefined') {
-
-               let runMbake = new MBake()
-               let dirCont = new Dirs(this.mountPath);
-
-               let checkDat_i = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('dat_i.yaml'));
-
-               //need to check what type of file is currently saving and run function based on it, eg: itemizeNbake, or comps
-               if (checkDat_i.length > 0) {
-                  // this is for yaml
-                  runMbake.itemizeNBake(this.mountPath + '/' + pathPrefix, 3)
-                     .then(response => {
-                           resp.result = { data: 'OK' };
-                           resp.json(resp);
-                        }, error => {
-                           resp.result = { data: error };
-                           resp.json(resp);
-                        })
-               } else {
-                  // TODO: When do we to do components? Why not just bake? md right.
-                  runMbake.compsNBake(this.mountPath, 3).then(response => {
-                     resp.result = { data: 'OK' };
-                     resp.json(resp);
-                  }, error => {
-                     resp.result = { data: error };
-                     resp.json(resp);
-                  })
-               }
-
-            } else  this.retErr(resp,'no post id')
-
-         } else  this.retErr(resp,'')
-
-      })
-
+      this.appLogic.autoBake(appPath, itemPath, fileName) 
    }//()
    
-   clonePage(resp, params, user, pswd) {
+   async cloneItem(resp, params, user, pswd) {
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
 
-      return this.iauth.auth(user, pswd, resp).then(auth => {
-         if (auth === 'admin' || auth === 'editor') {
+      let itemPath = '/' + params.itemPath
+      let newItemPath = '/' + params.newItemPath
+      const appPath = await this.adbDB.getAppPath()
 
-            let post_id = params.post_id;
-            let pathPrefix = params.pathPrefix;
-
-            if (typeof post_id !== 'undefined'
-               && typeof pathPrefix !== 'undefined'
-            ) {
-               // create new post folder
-               let postPath = this.mountPath + '/' + pathPrefix;
-               let substring = '/';
-               let newPost = '';
-               if (pathPrefix.includes(substring)) {
-                  pathPrefix = pathPrefix.substr(0, pathPrefix.indexOf('/'));
-                  newPost = this.mountPath + '/' + pathPrefix + '/' + post_id;
-               } else {
-                  newPost = this.mountPath + '/' + post_id;
-               }
-               let fileOps = new FileOps('/');
-               fileOps.clone(postPath, newPost);
-
-               resp.result = { data: 'OK' };
-               resp.json(resp);
-            } else 
-               this.retErr(resp,'error creating a post')
-
-         } else this.retErr(resp,'')
-      });
+      await this.appLogic.clone(appPath, itemPath, newItemPath) 
+      this.ret(resp,'OK')
    } //()
    
-   setPublishDate(resp, params, user, pswd) {
-      return this.iauth.auth(user, pswd, resp).then(auth => {
-         if (auth === 'admin' || auth === 'editor') {
-            
-            let post_id = params.post_id;
-            let publish_date = params.publish_date;
-            if (typeof post_id !== 'undefined') {
-               let datYaml = new Dat(this.mountPath + '/' + post_id);
-               datYaml.set('publishDate', publish_date);
-               datYaml.write();
-               let runMbake = new MBake();
-               let postsFolder = post_id.substr(0, post_id.indexOf('/'));
-               let pro: Promise<string> = runMbake.itemizeNBake(this.mountPath + '/' + postsFolder, 3);
-               resp.result = { data: 'OK' };
-               resp.json(resp);
-            } else 
-               this.retErr(resp,'no post id')
+   async setPublishDate(resp, params, user, pswd) {
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
 
-         } else 
-            this.retErr(resp,'')
-         
-      })
+      let itemPath = '/' + params.itemPath
+      const appPath = await this.adbDB.getAppPath()
+
+      let publish_date:number = params.publish_date
+      
+
+      this.ret(resp,'OK')
 
    }//()
 
