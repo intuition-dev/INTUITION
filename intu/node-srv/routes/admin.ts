@@ -1,4 +1,3 @@
-import { Download } from 'mbake/lib/FileOpsExtra'
 import { Email } from '../lib/Email'
 import { BasePgRouter } from 'mbake/lib/Serv'
 import { ADB, AdminAuth } from '../lib/ADB'
@@ -21,135 +20,56 @@ export class AdminRoutes extends BasePgRouter {
    }//()
 
    async checkAdmin(resp, params, user, pswd) {
-
       let auth = await this.auth.auth(user,pswd,resp)
-      if(auth =='NO') return
+      if(auth != 'OK') return
 
       this.ret(resp, 'OK')
-
-      
    }//()
 
 
-   }//()
-      
-   getConfig(resp, params, user, pswd) {
+   async getConfig(resp, params, user, pswd) {
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
 
-         return this.iauth.auth(user, pswd, resp).then(async auth => {
-            console.log('auth get-config: ', auth);
-            if (auth === 'admin') {
-
-               resp.result = {}
-               try {
-   
-                  this.adbDB.getAdminId(user)
-
-                     .then(adminId => {
-                        this.adbDB.getConfigs(adminId[0].id)
-                           .then(result => {
-                              let temp = {}
-                              temp['port'] = result.port
-                              temp['pathToSite'] = result.pathToSite
-                              resp.result = temp;
-                              return resp.json(resp);
-                           })
-   
-                     })
-               } catch (err) {
-                  
-                  this.retErr(resp,'get-config')
-
-               }
-
-            } else  this.retErr(resp,'')
-
-         })
-
+      this.ret(resp, this.adbDB.getConfig())
       }//()
       
-      updateConfig(resp, params, user, pswd) {
+   async updateConfig(resp, params, user, pswd) {
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
 
-         return this.iauth.auth(user, pswd, resp).then(async auth => {
-            if (auth === 'admin') {
-
-               /**
-                * Update configs happens on 'Save Settings' click, on the admin/settings
-                * Writes the path of the folder to db and
-                * the port of node where the app is running
-                **/
+      console.log(params)
       
-               let path = params.path
-               let port = params.port
+      let emailjsService_id   = params.emailjsService_id
+      let emailjsTemplate_id  = params.emailjsTemplate_id
+      let emailjsUser_id      = params.emailjsUser_id
+      let pathToApp           = params.pathToApp
+      let port                = params.port
+
+      this.adbDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port)
+  
+      this.ret(resp,'OK')
+   } 
       
-               resp.result = {}
-               try {
-                  this.adbDB.getAdminId(user)
-                     .then(adminId => {
-                        //set new port and path to db
-                        this.adbDB.updateConfig(path, port, adminId[0].id)
-                           .then(result => {
-                              console.log("TCL: AdminRoutes -> routes -> result", result)
-                              let temp = {}
-                              temp['port'] = port
-                              temp['pathToSite'] = path
-                              resp.result = temp;
-                              resp.json(resp);
+   emailResetPasswordCode(resp, params, email, pswd) {
+      const config:any = this.adbDB.getConfig()
+      let emailjsService_id   = config.emailjsService_id
+      let emailjsTemplate_id  = config.emailjsTemplate_id
+      let emailjsUser_id      = config.emailjsUser_id
+   
+      let code = this.adbDB.getVcodeAdmin()
+      let msg = 'Enter your code at http://bla.bla'  + code
+      this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
       
-                           })
+      this.ret(resp, 'OK')
+   }//() 
       
-                     })
-               } catch (err) {
-                  this.retErr(resp, err)
-               }
-               
-            } else       this.retErr(resp,'')
+   resetPasswordIfMatch(resp, params, email, password) {
+   
+      this.adbDB.resetPasswordAdminIfMatch(email, params.code, params.password)
 
-         })
-
-      } 
-      
-      resetPasswordCode(resp, params, user, pswd) {
-
-         let email = params.admin_email
-         resp.result = {}
-
-         try {
-            var code = this.adbDB.setVcodeAdmin(email)
-               .then(code => {
-                  this.adbDB.getEmailJsSettings()
-                     .then(settings => {
-                        let setting = settings[0];
-                        this.emailJs.send(
-                           email,
-                           setting.emailjsService_id,
-                           setting.emailjsTemplate_id,
-                           setting.emailjsUser_id,
-                           'your code: ' + code
-                        )
-                        console.info('code', code);
-                        resp.result = true;
-                        return resp.json(resp);
-                     });
-               })
-         } catch (err) {
-            this.retErr(resp, err)
-         }
-         
-
-      }//() 
-      
-      resetPassword(resp, params, user, pswd) {
-         let email = params.admin_email
-         resp.result = {}
-
-         this.adbDB.resetPasswordAdmin(email, params.code, params.password)
-            .then(result => {
-               resp.result = result;
-               return resp.json(resp);
-            })
-
-      }
-      
+   }
+   
       getEditors(resp, params, user, pswd) {
 
          console.log('admin get editors auth: ')

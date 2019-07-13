@@ -138,7 +138,7 @@ class ADB extends BaseDB_1.BaseDB {
         const hashPass = bcrypt.hashSync(password, salt);
         const stmt = ADB.db.prepare(`UPDATE ADMIN SET hashPass=? WHERE email=?`);
         this._run(stmt, hashPass, email);
-        return 'ok';
+        return 'OK';
     }
     async resetPasswordEditor(email, vcode, password) {
         const qry = ADB.db.prepare(`SELECT COUNT(*) AS count FROM EDITORS where email=? and vcode=?`);
@@ -151,7 +151,7 @@ class ADB extends BaseDB_1.BaseDB {
         const hashPass = bcrypt.hashSync(password, salt);
         const stmt = ADB.db.prepare(`UPDATE EDITORS SET hashPass=? WHERE email=?`);
         this._run(stmt, hashPass, email);
-        return 'ok';
+        return 'OK';
     }
 }
 exports.ADB = ADB;
@@ -163,7 +163,7 @@ class EditorAuth {
         return new Promise(async function (resolve, reject) {
             const ok = await this.db.authEditor(user, pswd);
             if (ok)
-                resolve('ok');
+                resolve('OK');
             this.RetErr(resp, 'not ok');
         });
     }
@@ -183,7 +183,7 @@ class AdminAuth {
         return new Promise(async function (resolve, reject) {
             const ok = await this.db.authAdmin(user, pswd);
             if (ok)
-                resolve('ok');
+                resolve('OK');
             this.RetErr(resp, 'not ok');
         });
     }

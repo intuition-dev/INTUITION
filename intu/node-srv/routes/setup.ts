@@ -42,48 +42,5 @@ export class SetupRoutes extends BasePgRouter {
     }//()
 
 
-    setupApp(resp, params, user, pswd) {
-        return this.iauth.auth(user, pswd, resp).then(async auth => {
-           if (auth === 'admin') {
-  
-              let item = params.item
-     
-              console.log('-------res.locals', resp.locals.email)
-              /**
-               * this one only downloads the site and write the path of it to the db
-               * happens only on CLICK INSTALL button on the settings page at admin
-               *  */
-              try {
-                 var setupItem = ''
-                 switch (item) {
-                    case 'blog':
-                       setupItem = 'CMS'
-                       await new Download('CMS', path.join(__dirname, '../')).autoUZ()
-                       break;
-                    case 'shop':
-                       setupItem = 'e-com'
-                       console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem)
-  
-                       // const shippingRoutes = new ShippingRoutes();
-                       // adminApp.use('/', shippingRoutes.routes(appPort))
-                       await new Download('SHOP', path.join(__dirname, '../')).autoUZ()
-                       break;
-                    case 'website':
-                       setupItem = 'website'
-                       await new Download('website', path.join(__dirname, '../')).autoUZ()
-                       break;
-                 }
-  
-                 //write path of new folder to the db
-                 await this.adbDB.setAppPath(path.join(__dirname, '../' + setupItem))
-                    
-                    
-              } catch (err) {
-                 console.log('setup-app: ', err);
-              }
-  
-           } else   this.retErr(resp,'')
-  
-        })
   
 }

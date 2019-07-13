@@ -102,14 +102,14 @@ export class ADB extends BaseDB {
         return row.port
     }
 
-    setVcodeAdmin() {
+    getVcodeAdmin() {
         let vcode = Math.floor(1000 + Math.random() * 9000);
 
         const stmt =  ADB.db.prepare(`UPDATE ADMIN SET vcode=?`)
         this._run(stmt, vcode )
         return vcode
     }//()
-    setVcodeEditor(email) {
+    getVcodeEditor(email) {
         let vcode = Math.floor(1000 + Math.random() * 9000);
  
         const stmt =  ADB.db.prepare(`UPDATE EDITORS SET vcode=? WHERE email=?`)
@@ -173,7 +173,7 @@ export class ADB extends BaseDB {
         return rows[0]
     }
 
-    async resetPasswordAdmin(email, vcode, password) {
+    async resetPasswordAdminIfMatch(email, vcode, password) {
         // is there a row match?
         const qry =  ADB.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN where email=? and vcode=?`)
         const rows = await this._qry(qry, email, vcode)
@@ -183,12 +183,12 @@ export class ADB extends BaseDB {
 
         const salt = await this.getSalt()
         const hashPass = bcrypt.hashSync(password, salt)
-        const stmt =  ADB.db.prepare(`UPDATE ADMIN SET hashPass=? WHERE email=?`)
+        const stmt =  ADB.db.prepare(`UPDATE ADMIN SET (hashPass=?, vcode=null) WHERE email=?`)
         this._run(stmt, hashPass, email)
-        return 'ok'
+        return 'OK'
     }//()
 
-    async resetPasswordEditor(email, vcode, password) {
+    async resetPasswordEditorIfMatch(email, vcode, password) {
         // is there a row match?
         const qry =  ADB.db.prepare(`SELECT COUNT(*) AS count FROM EDITORS where email=? and vcode=?`)
         const rows = await this._qry(qry, email, vcode)
@@ -198,9 +198,9 @@ export class ADB extends BaseDB {
 
         const salt = await this.getSalt()
         const hashPass = bcrypt.hashSync(password, salt)
-        const stmt =  ADB.db.prepare(`UPDATE EDITORS SET hashPass=? WHERE email=?`)
+        const stmt =  ADB.db.prepare(`UPDATE EDITORS SET (hashPass=?, vcode=null) WHERE email=?`)
         this._run(stmt, hashPass, email)
-        return 'ok'
+        return 'OK'
     }//()
 
 }//()
@@ -215,8 +215,10 @@ export class EditorAuth implements iAuth {
     async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
         return new Promise( async function (resolve, reject) {
         const ok = await this.db.authEditor(user, pswd)
-        if(ok) resolve('OK')        
+        if(ok) return resolve('OK')
+                
         this.RetErr(resp, 'NO')
+        reject('NO')
         })// pro
     }    
     retErr(resp: any, msg: any) {
@@ -237,8 +239,10 @@ export class AdminAuth implements iAuth {
     async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
         return new Promise( async function (resolve, reject) {
         const ok = await this.db.authAdmin(user, pswd)
-        if(ok) resolve('OK')        
+        if(ok) return resolve('OK')        
+
         this.RetErr(resp, 'NO')
+        reject('NO')
         })// pro
     }    
     retErr(resp: any, msg: any) {
