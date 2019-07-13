@@ -17,7 +17,6 @@ constructor(db:ADB) {
 }
 
 start() {
-
     try {
         //check if the file of the database exist
         if (this.db.dbExists()) {
@@ -30,16 +29,13 @@ start() {
     } catch (err) {
         console.warn(err)
     }
-      
 }//()
 
 _runSetup() {
-
     this._run(8090, true)
 
     const setup = new Setup(this.db)
     setup.setup()
-
 }
 
 async _runNormal() {

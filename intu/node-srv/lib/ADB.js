@@ -1,238 +1,200 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const sqlite = require("sqlite");
+const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcryptjs');
 const fs = require('fs-extra');
-class Veri {
-    static ver() {
+const BaseDB_1 = require("mbake/lib/BaseDB");
+class ADB extends BaseDB_1.BaseDB {
+    veri() {
         return 'v0.9.26';
     }
-}
-exports.Veri = Veri;
-class ADB {
-    dbExists(path) {
-        return fs.existsSync(path);
+    dbExists() {
+        return fs.existsSync('./ADB.sqlite');
     }
-    openDB000(path, cb) {
-        fs.open(path, 'w', cb);
+    con() {
+        if (ADB.db) {
+            console.log('connection exists');
+            return;
+        }
+        console.log('new connection');
+        ADB.db = new sqlite3.Database('./ADB.sqlite');
     }
-    async connectToDb(dbPath) {
-        const dbPro = sqlite.open(dbPath);
-        this.db = await dbPro;
-        this.db.configure('busyTimeout', 2 * 1000);
+    init() {
+        if (this.dbExists()) {
+            this.con();
+            return;
+        }
+        if (!(ADB.db)) {
+            console.log('no connection made');
+            this.con();
+        }
+        ADB.db.run(`CREATE TABLE ADMIN  (email, hashPass, vcode)`);
+        ADB.db.run(`CREATE TABLE CONFIG (emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`);
+        ADB.db.run(`CREATE TABLE SALT(salt)`);
+        ADB.db.run(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`);
+        let salt = bcrypt.genSaltSync(10);
+        const stmt = ADB.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`);
+        this._run(stmt, salt);
+        ADB.salt = salt;
     }
-
-    async getPort(dbPath) {
-        let _this = this;
-
-        return new Promise(function (resolve, reject) {
-            return _this.db.get(`SELECT port FROM configs`, function (err, row) {
-                if (err) throw err
-                return rows
-            }).then(function (row) {
-                resolve(row.port);
-            });
-        });
+    async getSalt() {
+        if (ADB.salt)
+            return ADB.salt;
+        const qry = ADB.db.prepare('SELECT * FROM SALT');
+        const rows = await this._qry(qry);
+        const row = rows[0];
+        ADB.salt = row.salt;
+        return ADB.salt;
     }
-
-    async addAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) {
-        let randomID = '_' + Math.random().toString(36).substr(2, 9);
-        var salt = bcrypt.genSaltSync(10);
-        var hashPass = bcrypt.hashSync(password, salt);
-        await this.db.run(`CREATE TABLE admin(id, email, password, vcode)`);
-        await this.db.run(`CREATE TABLE configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, snipcartApi, port, printfulApi)`);
-        await this.db.run(`CREATE TABLE editors(id, email, password, name, vcode)`);
-        await this.db.run(`INSERT INTO admin(id, email, password) VALUES('${randomID}','${email}', '${hashPass}')`, function (err) {
-            if (err) throw err
-        });
-        await this.db.run(`INSERT INTO editors(id, email, password, name) VALUES('${randomID}','${email}', '${hashPass}', 'Admin')`, function (err) {
-            if (err) throw err
-        });
-        await this.db.run(`INSERT INTO configs(adminId, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES('${randomID}', '${emailjsService_id}', '${emailjsTemplate_id}', '${emailjsUser_id}', '${port}')`, function (err) {
-            if (err) throw err
-        });
+    async setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) {
+        const salt = await this.getSalt();
+        const hashPass = bcrypt.hashSync(password, salt);
+        const stmt1 = ADB.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`);
+        this._run(stmt1, email, hashPass);
+        const stmt2 = ADB.db.prepare(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES(?,?,?,?)`);
+        this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port);
     }
-    validateAdminEmail(email, password) {
-        let _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.db.get(`SELECT password FROM admin WHERE email=?`, email, function (err, row) {
-                if (err) throw err
-                return row;
-            }).then(function (row) {
-                if (typeof row != 'undefined') {
-                    bcrypt.compare(password, row.password)
-                        .then((res) => {
-                        _this.db.get(`SELECT pathToApp FROM configs`, [], function (err, row) {
-                            if (err) {
-                            }
-                            return row;
-                        }).then(function (row) {
-                            let temp = {};
-                            console.info("--res:", res);
-                            temp['pass'] = res;
-                            temp['pathToApp'] = row.pathToApp;
-                            console.info("--result:", temp);
-                            resolve(temp);
-                        });
-                    });
-                }
-                else {
-                    let temp = {};
-                    temp['pass'] = false;
-                    resolve(temp);
-                }
-            });
-        });
+    updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port) {
+        const stmt = ADB.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?, pathToApp=?, port=?`);
+        this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
     }
-
-    validateEditorEmail(email, password) {
-        let _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.db.get(`SELECT password FROM editors WHERE email=?`, email, function (err, row) {
-                if (err) throw err
-                return row;
-            }).then(function (row) {
-                if (typeof row != 'undefined') {
-                    return bcrypt.compare(password, row.password)
-                        .then((res) => {
-                        _this.db.get(`SELECT pathToApp FROM configs`, [], function (err, row) {
-                            console.info("--row:", row);
-                            if (err) {
-                            }
-                            return row;
-                        }).then(function (row) {
-                            let temp = {};
-                            console.info("--res:", res);
-                            temp['pass'] = res;
-                            temp['pathToApp'] = row.pathToApp;
-                            console.info("--result:", temp);
-                            resolve(temp);
-                        });
-                    });
-                }
-                else {
-                    let temp = {};
-                    temp['pass'] = false;
-                    resolve(temp);
-                }
-            });
-        });
+    async getConfig() {
+        const qry = ADB.db.prepare(`SELECT * FROM CONFIG`);
+        const rows = await this._qry(qry);
+        const row = rows[0];
+        return row;
     }
-    getEditors() {
-        return this.db.all(`SELECT id, name, email FROM editors`, [], function (err, rows) {
-            if (err) throw err
-            return rows
-        });
+    setAppPath(pathToApp) {
+        const stmt = ADB.db.prepare(`UPDATE CONFIG SET pathToApp=? `);
+        this._run(stmt, pathToApp);
     }
-    addEditor(email, name, password) {
-        let randomID = '_' + Math.random().toString(36).substr(2, 9);
-        var salt = bcrypt.genSaltSync(10);
-        var hashPass = bcrypt.hashSync(password, salt);
-        return this.db.run(`INSERT INTO editors(id, email, password, name) VALUES('${randomID}','${email}', '${hashPass}', '${name}')`, function (err) {
-            if (err) throw err
-            return this.lastID;
-        });
+    async getAppPath() {
+        const config = await this.getConfig();
+        return config.pathToApp;
     }
-    updateEditor(name, id) {
-        return this.db.run(`UPDATE editors SET name='${name}' WHERE id='${id}'`, function (err) {
-            if (err) throw err
-            return this.lastID;
-        });
+    async getPort() {
+        const qry = ADB.db.prepare('SELECT * FROM CONFIG');
+        const rows = await this._qry(qry);
+        const row = rows[0];
+        return row.port;
     }
-    deleteEditor(id) {
-        return this.db.run(`DELETE FROM editors WHERE id='${id}'`, function (err) {
-            if (err) throw err
-        });
-    }
-    async setVcodeAdmin(email) {
+    setVcodeAdmin() {
         let vcode = Math.floor(1000 + Math.random() * 9000);
-        await this.db.run(`UPDATE admin SET vcode='${vcode}' WHERE email='${email}'`, function (err, res) {
-            if (err) throw err
-            return res.changes > 0
-        });
+        const stmt = ADB.db.prepare(`UPDATE ADMIN SET vcode=?`);
+        this._run(stmt, vcode);
         return vcode;
     }
-    async setVcodeEditor(email) {
+    setVcodeEditor(email) {
         let vcode = Math.floor(1000 + Math.random() * 9000);
-        await this.db.run(`UPDATE editors SET vcode='${vcode}' WHERE email='${email}'`, function (err, res) {
-            if (err) throw err
-            return res.changes > 0
-        })
+        const stmt = ADB.db.prepare(`UPDATE EDITORS SET vcode=? WHERE email=?`);
+        this._run(stmt, vcode, email);
         return vcode;
     }
-    resetPasswordAdmin(email, vcode, password) {
-        var salt = bcrypt.genSaltSync(10);
-        let hashPass = bcrypt.hashSync(password, salt)
-        
-        return this.db.run(`UPDATE admin SET password='${hashPass}' WHERE email='${email}' AND vcode='${vcode}'`)
-            .then(res => {
-              return res.changes > 0
-        })
-            .catch(err => {
-            return false;
-        });
+    async authEditor(email, password) {
+        const salt = await this.getSalt();
+        const hashPassP = bcrypt.hashSync(password, salt);
+        const qry = ADB.db.prepare('SELECT * FROM EDITORS where email =  ?');
+        const rows = await this._qry(qry, email);
+        const row = rows[0];
+        const hashPassS = row.hashPass;
+        return hashPassP == hashPassS;
     }
-
-    resetPasswordEditor(email, vcode, password) {
-        var salt = bcrypt.genSaltSync(10);
-        let hashPass = bcrypt.hashSync(password, salt)
-
-        return this.db.run(`UPDATE editors SET password='${hashPass}' WHERE email='${email}' AND vcode='${vcode}'`)
-            .then(res => {
-            return res.changes > 0
-        })
-            .catch(err => {
-            console.log(err)
-            return false;
-        });
+    async authAdmin(email, password) {
+        const salt = await this.getSalt();
+        const hashPassP = bcrypt.hashSync(password, salt);
+        const qry = ADB.db.prepare('SELECT * FROM ADMIN where email =  ?');
+        const rows = await this._qry(qry, email);
+        const row = rows[0];
+        const hashPassS = row.hashPass;
+        return hashPassP == hashPassS;
     }
-    
-    getEmailJsSettings() {
-        return this.db.all(`SELECT emailjsService_id, emailjsTemplate_id, emailjsUser_id FROM configs`, [], function (err, rows) {
-            if (err) throw err
-            return rows
-        });
+    async addEditor(guid, name, email, password) {
+        const salt = await this.getSalt();
+        const hashPass = bcrypt.hashSync(password, salt);
+        const stmt = ADB.db.prepare(`INSERT INTO EDITORS(guid, name, email, hashPass ) VALUES(?,?, ?,?)`);
+        await this._run(stmt, guid, name, email, hashPass);
     }
-    getAdminId(email) {
-        return this.db.all(`SELECT id FROM admin WHERE email='${email}'`, [], function (err, rows) {
-            if (err) throw err
-            return rows
-        });
+    async getEditors() {
+        const qry = ADB.db.prepare(`SELECT guid, name FROM editors`);
+        return await this._qry(qry);
     }
-
-    setAppPath(pathToApp, adminId) {
-        return this.db.all(`UPDATE configs SET pathToApp='${pathToApp}' WHERE adminId='${adminId}'`, [], function (err, res) {
-            if (err) throw err
-            return res.changes > 0
-        });
+    async deleteEditor(guid) {
+        const stmt = ADB.db.prepare(`DELETE FROM editors WHERE guid=?`);
+        await this._run(stmt, guid);
     }
-    updateConfig(pathToApp, port, printfulApi, adminId) {
-        return this.db.run(`UPDATE configs SET pathToApp='${pathToApp}', port='${port}', printfulApi='${printfulApi}' WHERE adminId='${adminId}'`, [], function (err, res) {
-            if (err) {
-                return console.error('update config error:', err.message);
-            }
-            return res.changes > 0
-
-        });
+    async monitor() {
+        const qry = ADB.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN`);
+        const rows = await this._qry(qry);
+        return rows[0];
     }
-    getConfigs(adminId) {
-        console.log("TCL: getConfigs -> adminId", adminId);
-        return this.db.get(`SELECT pathToApp, port FROM configs WHERE adminId='${adminId}'`, [], function (err, rows) {
-            if (err) throw err
-            return rows
-        });
+    async resetPasswordAdmin(email, vcode, password) {
+        const qry = ADB.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN where email=? and vcode=?`);
+        const rows = await this._qry(qry, email, vcode);
+        const row = rows[0];
+        const count = row.count;
+        if (!(count == 0))
+            throw new Error('mismatch');
+        const salt = await this.getSalt();
+        const hashPass = bcrypt.hashSync(password, salt);
+        const stmt = ADB.db.prepare(`UPDATE ADMIN SET hashPass=? WHERE email=?`);
+        this._run(stmt, hashPass, email);
+        return 'ok';
     }
-    getAppPath() {
-        return this.db.all(`SELECT pathToApp FROM configs`, [], function (err, rows) {
-            if (err) throw err
-            return rows
-        });
-    }
-    monitor() {
-        return this.db.all("SELECT COUNT(*) AS count FROM admin");
+    async resetPasswordEditor(email, vcode, password) {
+        const qry = ADB.db.prepare(`SELECT COUNT(*) AS count FROM EDITORS where email=? and vcode=?`);
+        const rows = await this._qry(qry, email, vcode);
+        const row = rows[0];
+        const count = row.count;
+        if (!(count == 0))
+            throw new Error('mismatch');
+        const salt = await this.getSalt();
+        const hashPass = bcrypt.hashSync(password, salt);
+        const stmt = ADB.db.prepare(`UPDATE EDITORS SET hashPass=? WHERE email=?`);
+        this._run(stmt, hashPass, email);
+        return 'ok';
     }
 }
 exports.ADB = ADB;
+class EditorAuth {
+    constructors(db) {
+        this.db = db;
+    }
+    auth(user, pswd, resp, ctx) {
+        return new Promise(async function (resolve, reject) {
+            const ok = await this.db.authEditor(user, pswd);
+            if (ok)
+                resolve('ok');
+            this.RetErr(resp, 'not ok');
+        });
+    }
+    retErr(resp, msg) {
+        console.log(msg);
+        const ret = {};
+        ret.errorLevel = -1;
+        ret.errorMessage = msg;
+        resp.json(ret);
+    }
+}
+class AdminAuth {
+    constructors(db) {
+        this.db = db;
+    }
+    auth(user, pswd, resp, ctx) {
+        return new Promise(async function (resolve, reject) {
+            const ok = await this.db.authAdmin(user, pswd);
+            if (ok)
+                resolve('ok');
+            this.RetErr(resp, 'not ok');
+        });
+    }
+    retErr(resp, msg) {
+        console.log(msg);
+        const ret = {};
+        ret.errorLevel = -1;
+        ret.errorMessage = msg;
+        resp.json(ret);
+    }
+}
 module.exports = {
-    ADB, Veri
+    ADB, EditorAuth, AdminAuth
 };

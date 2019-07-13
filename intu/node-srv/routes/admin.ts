@@ -1,8 +1,7 @@
 import { Download } from 'mbake/lib/FileOpsExtra'
 import { Email } from '../lib/Email'
-import { BasePgRouter, iAuth } from 'mbake/lib/Serv'
-import { ADB } from '../lib/ADB'
-import { AdminAuth } from '../lib/AdminAuth'
+import { BasePgRouter } from 'mbake/lib/Serv'
+import { ADB, AdminAuth } from '../lib/ADB'
 
 var path = require('path')
 
@@ -11,78 +10,26 @@ export class AdminRoutes extends BasePgRouter {
    emailJs = new Email()
 
    adbDB: ADB;
-   iauth: iAuth;
+   
+   auth: AdminAuth
 
    constructor(adbDB) {
       super();
       this.adbDB = adbDB
-      this.iauth = new AdminAuth(adbDB);
+      this.auth = new AdminAuth(adbDB)
+
    }//()
 
-   checkAdmin(resp, params, user, pswd) {
+   async checkAdmin(resp, params, user, pswd) {
 
-      return this.iauth.auth(user, pswd).then(auth => {
-         console.log('auth admin: ', auth);
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth =='NO') return
 
-         if (auth === 'admin') {
-   
-            resp.result = true;
-            return resp.json(resp);
+      this.ret(resp, 'OK')
 
-         } else   this.retErr(resp,'')
-
-      })
       
    }//()
 
-   setupApp(resp, params, user, pswd) {
-      return this.iauth.auth(user, pswd, resp).then(async auth => {
-         if (auth === 'admin') {
-
-            let item = params.item
-   
-            console.log('-------res.locals', resp.locals.email)
-            /**
-             * this one only downloads the site and write the path of it to the db
-             * happens only on CLICK INSTALL button on the settings page at admin
-             *  */
-            resp.result = {}
-            try {
-               var setupItem = ''
-               switch (item) {
-                  case 'blog':
-                     setupItem = 'CMS'
-                     await new Download('CMS', path.join(__dirname, '../')).autoUZ()
-                     break;
-                  case 'shop':
-                     setupItem = 'e-com'
-                     console.log("TCL: AdminRoutes -> routes -> setupItem", setupItem)
-
-                     // const shippingRoutes = new ShippingRoutes();
-                     // adminApp.use('/', shippingRoutes.routes(appPort))
-                     await new Download('SHOP', path.join(__dirname, '../')).autoUZ()
-                     break;
-                  case 'website':
-                     setupItem = 'website'
-                     await new Download('website', path.join(__dirname, '../')).autoUZ()
-                     break;
-               }
-
-               //write path of new folder to the db
-               let adminId = await this.adbDB.getAdminId(resp.locals.email)
-               await this.adbDB.setAppPath(path.join(__dirname, '../' + setupItem), adminId[0].id)
-                  .then(result => {
-                     resp.result = true;
-                     return resp.json(resp);
-                  })
-                  
-            } catch (err) {
-               console.log('setup-app: ', err);
-            }
-
-         } else   this.retErr(resp,'')
-
-      })
 
    }//()
       

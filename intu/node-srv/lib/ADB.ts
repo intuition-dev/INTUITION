@@ -206,17 +206,17 @@ export class ADB extends BaseDB {
 }//()
 
 // Auth section //////////////////////////////////////////////////////////////////
-class EditorAuth implements iAuth {
+export class EditorAuth implements iAuth {
     db:ADB
-    constructors(db) {
+    constructor(db) {
         this.db = db
     }//()
 
-    auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
+    async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
         return new Promise( async function (resolve, reject) {
         const ok = await this.db.authEditor(user, pswd)
-        if(ok) resolve('ok')        
-        this.RetErr(resp, 'not ok')
+        if(ok) resolve('OK')        
+        this.RetErr(resp, 'NO')
         })// pro
     }    
     retErr(resp: any, msg: any) {
@@ -228,17 +228,17 @@ class EditorAuth implements iAuth {
     }//()
 }//class
 
-class AdminAuth implements iAuth {
+export class AdminAuth implements iAuth {
     db:ADB
-    constructors(db) {
+    constructor(db) {
         this.db = db
     }//()
 
-    auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
+    async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
         return new Promise( async function (resolve, reject) {
         const ok = await this.db.authAdmin(user, pswd)
-        if(ok) resolve('ok')        
-        this.RetErr(resp, 'not ok')
+        if(ok) resolve('OK')        
+        this.RetErr(resp, 'NO')
         })// pro
     }    
     retErr(resp: any, msg: any) {
