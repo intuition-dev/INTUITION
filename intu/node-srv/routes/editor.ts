@@ -1,10 +1,10 @@
-import { MBake } from 'mbake/lib/Base';
 
 import { Email } from '../lib/Email';
 import { BasePgRouter } from 'mbake/lib/Serv'
 import { ADB, EditorAuth } from '../lib/ADB';
 import { FileMethods } from 'mbake/lib/FileOpsExtra'
-import { FileOps, Dirs, Dat } from 'mbake/lib/FileOpsBase'
+import { FileOps, Dirs } from 'mbake/lib/FileOpsBase'
+import { AppLogic } from '../lib/AppLogic';
 
 const fs = require('fs-extra')
 const path = require('path')
@@ -14,6 +14,10 @@ export class EditorRoutes extends BasePgRouter {
 
    adbDB: ADB;
    auth: EditorAuth;
+
+   fm = new FileMethods()
+
+   appLogic = new AppLogic()
 
    constructor(adbDB) {
       super();
@@ -47,14 +51,13 @@ export class EditorRoutes extends BasePgRouter {
 
    }//()
 
-   fm = new FileMethods()
    async getDirs(resp, params, user, pswd) {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
       const appPath = await this.adbDB.getAppPath()
+
       const dirs = this.fm.getDirs(appPath)
-   
       this.ret(resp, dirs)
    }//()
    
@@ -63,92 +66,50 @@ export class EditorRoutes extends BasePgRouter {
       if(auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
-
       const appPath = await this.adbDB.getAppPath()
-      const files = this.fm.getFiles(appPath, itemPath)
 
+      const files = this.fm.getFiles(appPath, itemPath)
       this.ret(resp, files)
    }//files
    
-   getFileContent(resp, params, user, pswd) { 
+   async getFileContent(resp, params, user, pswd) { 
+         let auth = await this.auth.auth(user,pswd,resp)
+         if(auth != 'OK') return
 
-      return this.iauth.auth(user, pswd, resp).then(auth => {
-         if (auth === 'admin' || auth === 'editor') {
+         let itemPath = '/' + params.itemPath
+         let file = '/' + params.file
+         const appPath = await this.adbDB.getAppPath()
+         let fileName = appPath + itemPath + file
 
-            let post_id = params.post_id;
-            let pathPrefix = params.pathPrefix;
-
-            if (typeof post_id !== 'undefined') {
-
-               let md = this.mountPath + '/' + pathPrefix + post_id;
-               let original_post_id = post_id.replace(/\.+\d+$/, "");
-               let fileExt = path.extname(original_post_id);
-
-               if (fs.existsSync(md) && (fileExt === '.md' || fileExt === '.yaml' || fileExt === '.csv' || fileExt === '.pug' || fileExt === '.css')) {
-                  fs.readFile(md, 'utf8', (err, data) => {
-                     if (err) throw err;
-                     resp.result = data;
-                     resp.json(resp);
-                  });
-               } else {
-                  throw "Unknown file type!"
-               }
-            } else  this.retErr(resp,'no post id')
-         } else  this.retErr(resp,'')
-
-      })
-
-   } 
+         const THIZ = this
+         fs.readFile(fileName, 'utf8', (err, data) => {
+            if (err) {
+               THIZ.retErr(resp, err)
+               return
+            }
+            THIZ.ret(resp,data)
+         })
+   }//() 
    
-   saveFile(resp, params, user, pswd) { 
-      // update .md/.yaml/.csv/.pug/.css file and add archived files
+   async saveFile(resp, params, user, pswd) { 
+      // save and add archived files
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
 
-      return this.iauth.auth(user, pswd, resp).then(auth => {
-         if (auth === 'admin' || auth === 'editor') {
+      let itemPath = '/' + params.itemPath
+      let file = '/' + params.file
+      const appPath = await this.adbDB.getAppPath()
+      let fileName =  itemPath + file
+      let content = params.content;
+      content = Buffer.from(content, 'base64');
 
-            let post_id = params.post_id;
-            let pathPrefix = params.pathPrefix;
-            let content = params.content;
-            content = Buffer.from(content, 'base64');
+      const fileOps = new FileOps(appPath)
+      fileOps.write(fileName, content)
 
-            if (typeof post_id !== 'undefined') {
+      this.ret(resp,'OK')
 
-               let md = '/' + pathPrefix + post_id;
-
-               let fileOps = new FileOps(this.mountPath);
-               fileOps.write(md, content);
-
-               let dirCont = new Dirs(this.mountPath);
-               let substring = '/';
-
-               // add /archive
-               let checkDat = dirCont.getInDir('/' + pathPrefix).filter(file => file.endsWith('dat.yaml'));
-               if (checkDat.length > 0) {
-                  const archivePath = '/' + pathPrefix + '/archive';
-                  if (!fs.existsSync(this.mountPath + archivePath)) {
-                     fs.mkdirSync(this.mountPath + archivePath);
-                  }
-
-                  let archiveFileOps = new FileOps(this.mountPath + archivePath);
-
-                  let extension = path.extname(post_id);
-                  let fileName = path.basename(post_id, extension);
-                  let count = archiveFileOps.count(path.basename(post_id));
-                  let archiveFileName = '/' + fileName + extension + '.' + count;
-                  archiveFileOps.write(archiveFileName, content);
-               }
-
-               if (pathPrefix.includes(substring)) {
-                  pathPrefix = pathPrefix.substr(0, pathPrefix.indexOf('/'));
-               }
-
-               resp.result = { data: 'OK' };
-               resp.json(resp);
-
-            } else this.retErr(resp,'no post id')
-         } else   this.retErr(resp,'')
-      })
-
+      this.appLogic.archive(itemPath, fileName) // TODO
+           
    } 
    
    compileCode(resp, params, user, pswd) {
