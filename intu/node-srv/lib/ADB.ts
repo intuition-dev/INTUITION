@@ -17,7 +17,7 @@ export class ADB extends BaseDB {
 
     dbExists() {
         return fs.existsSync('./ADB.sqlite')
-   }
+    }
 
    con() {
         if(ADB.db) {
