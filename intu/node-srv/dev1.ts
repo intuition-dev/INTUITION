@@ -1,6 +1,6 @@
 
 import { ADB } from './lib/ADB'
-import { AppLogic } from 'lib/AppLogic';
+import { AppLogic } from './lib/AppLogic';
 
 const adbDB = new ADB()
 

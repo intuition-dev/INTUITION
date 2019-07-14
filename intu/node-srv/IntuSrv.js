@@ -8,6 +8,7 @@ const setup_1 = require("./routes/setup");
 class IntuApp extends Serv_1.ExpressRPC {
     constructor(db) {
         super();
+        this.uploadRoute = new Upload();
         this.db = db;
     }
     start() {
@@ -40,6 +41,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         this.handleRRoute('setup', 'setup', sr.route);
         this.handleRRoute('admin', 'admin', ar.route);
         this.handleRRoute('api', 'editors', er.route);
+        this.appInst.post('/upload', this.uploadRoute.upload);
         this.serveStatic('../WWW');
         if (!setup) {
             const appPath = await this.db.getAppPath();
