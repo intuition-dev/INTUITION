@@ -1,5 +1,7 @@
 
 import { MetaPro } from 'mbake/lib/Wa';
+import { Dat, FileOps } from 'mbake/lib/FileOpsBase';
+import fs = require('fs-extra')
 
 export class AppLogic {
     
@@ -11,8 +13,25 @@ export class AppLogic {
         },1)
     }//()
 
-    clone(appPath, item, newItem) {
+    /**
+     * 
+     * @param appPath 
+     * @param itemPath 
+     * @param date INT, linuxtime GMT
+     */
+    async setPublishDate(appPath, itemPath, date:number) {
+        const dat = new Dat(appPath+itemPath)
+        
+        dat.set('publishDate', date)
+        await dat.write()
 
+        // update items json or such as needed
+        this.autoBake(appPath, itemPath, 'dat.yaml')
+    }//()
+
+    async clone(appPath, item, newItem) {
+        const fo = new FileOps(appPath)
+        await fo.clone(item, newItem)
     }
 
     /**
@@ -20,26 +39,16 @@ export class AppLogic {
      */
     archive(appPath, itemPath, fileName)  {
 
-    /*
-            // add /archive
-      let checkDat = dirCont.getInDir('/' + pathPrefix)
-      if (checkDat.length > 0) {
-         const archivePath = '/' + pathPrefix + '/archive';
-         if (!fs.existsSync(this.mountPath + archivePath)) {
-            fs.mkdirSync(this.mountPath + archivePath);
-         }
+        const oldPath = appPath  + itemPath
+        
+        const targetPath = appPath  + itemPath + '/archive'
+        if(!fs.existsSync)
+            fs.mkdirSync(targetPath)
+        
+        const fo = new FileOps(appPath)
+        const count = fo.count(fileName)
 
-         let archiveFileOps = new FileOps(this.mountPath + archivePath);
-
-         let extension = path.extname(post_id);
-         let fileName = path.basename(post_id, extension);
-         let count = archiveFileOps.count(path.basename(post_id));
-         let archiveFileName = '/' + fileName + extension + '.' + count;
-         archiveFileOps.write(archiveFileName, content);
-      }
-
-            
-      */
+        fs.copySync(oldPath+fileName, targetPath+fileName+count)
     }//()
 
 }//()

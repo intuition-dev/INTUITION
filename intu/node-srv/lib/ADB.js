@@ -29,8 +29,9 @@ class ADB extends BaseDB_1.BaseDB {
             this.con();
         }
         ADB.db.run(`CREATE TABLE ADMIN  (email, hashPass, vcode)`);
-        ADB.db.run(`CREATE TABLE CONFIG (emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`);
+        ADB.db.run(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`);
         ADB.db.run(`CREATE TABLE SALT(salt)`);
+        ADB.db.run(`CREATE TABLE TEMPLATE(template)`);
         ADB.db.run(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`);
         let salt = bcrypt.genSaltSync(10);
         const stmt = ADB.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`);
@@ -55,7 +56,8 @@ class ADB extends BaseDB_1.BaseDB {
         this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port);
     }
     updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port) {
-        const stmt = ADB.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?, pathToApp=?, port=?`);
+        const stmt = ADB.db.prepare(`UPDATE CONFIG SET (emailjsService_id=?, emailjsTemplate_id=?, 
+                emailjsUser_id=?, pathToApp=?, port=?`);
         this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
     }
     async getConfig() {

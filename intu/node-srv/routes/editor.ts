@@ -3,11 +3,10 @@ import { Email } from '../lib/Email';
 import { BasePgRouter } from 'mbake/lib/Serv'
 import { ADB, EditorAuth } from '../lib/ADB';
 import { FileMethods } from 'mbake/lib/FileOpsExtra'
-import { FileOps, Dirs } from 'mbake/lib/FileOpsBase'
+import { FileOps } from 'mbake/lib/FileOpsBase'
 import { AppLogic } from '../lib/AppLogic';
 
 const fs = require('fs-extra')
-const path = require('path')
 
 export class EditorRoutes extends BasePgRouter {
    emailJs = new Email()
@@ -103,12 +102,14 @@ export class EditorRoutes extends BasePgRouter {
       let content = params.content;
       content = Buffer.from(content, 'base64');
 
+      //back up old
+      this.appLogic.archive(appPath, itemPath, fileName)
+
       const fileOps = new FileOps(appPath)
       // done saving
       fileOps.write(fileName, content)
       this.ret(resp,'OK')
 
-      this.appLogic.archive(appPath, itemPath, fileName)  // TODO
    }//()
 
    /**
@@ -139,22 +140,23 @@ export class EditorRoutes extends BasePgRouter {
       this.ret(resp,'OK')
    } //()
    
+   /**
+    * Publish Date is an INT, linux time GMT
+    */
    async setPublishDate(resp, params, user, pswd) {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
       const appPath = await this.adbDB.getAppPath()
-
       let publish_date:number = params.publish_date
-      
+      this.appLogic.setPublishDate(appPath, itemPath, publish_date) 
 
       this.ret(resp,'OK')
-
    }//()
 
-
 }//
+
 
 module.exports = {
    EditorRoutes

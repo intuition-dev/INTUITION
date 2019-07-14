@@ -55,6 +55,9 @@ class IntuApp extends Serv_1.ExpressRPC {
                 return res.send = (error);
             });
         });
+        this.appInst.get('/ver', (req, res) => {
+            return res.send(this.db.veri);
+        });
         this.listen(port);
     }
 }
