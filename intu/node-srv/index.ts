@@ -3,7 +3,6 @@
 
 import { ADB } from './lib/ADB'
 
-import { VersionNag } from 'mbake/lib/FileOpsExtra'
 import { IntuApp } from './IntuSrv'
 
 const ip = require('ip')
@@ -17,6 +16,6 @@ console.log("TCL: hostIP", hostIP)
 const adbDB = new ADB()
 
 // the only place there is DB new is here.
-const mainEApp = new IntuApp(adbDB)
+const mainEApp = new IntuApp(adbDB, ['*'])
 
 mainEApp.start()

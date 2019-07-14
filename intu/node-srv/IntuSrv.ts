@@ -15,8 +15,11 @@ export class IntuApp extends ExpressRPC {
     db:ADB
     uploadRoute
 
-    constructor(db:ADB) {
+    constructor(db:ADB, origins:Array<string>) {
         super()
+
+        this.makeInstance(origins)
+
         this.db = db
         this.uploadRoute = new UploadRoute()
 
