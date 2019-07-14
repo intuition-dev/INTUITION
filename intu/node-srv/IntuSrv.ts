@@ -17,7 +17,7 @@ export class IntuApp extends ExpressRPC {
         super()
         this.db = db
 
-        VersionNag.isCurrent('intu', adbDB.veri() ).then(function(isCurrent_:boolean){
+        VersionNag.isCurrent('intu', db.veri() ).then(function(isCurrent_:boolean){
             try{
                 if(!isCurrent_) 
                     console.log('There is a newer version of MetaBake\'s intu(Intuition), please update.')

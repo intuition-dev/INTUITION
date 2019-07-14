@@ -4,14 +4,13 @@ const Serv_1 = require("mbake/lib/Serv");
 const editor_1 = require("./routes/editor");
 const admin_1 = require("./routes/admin");
 const Setup_1 = require("./Setup");
-const setup_1 = require("./routes/setup");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 class IntuApp extends Serv_1.ExpressRPC {
     constructor(db) {
         super();
         this.uploadRoute = new Upload();
         this.db = db;
-        FileOpsExtra_1.VersionNag.isCurrent('intu', adbDB.veri()).then(function (isCurrent_) {
+        FileOpsExtra_1.VersionNag.isCurrent('intu', db.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
                     console.log('There is a newer version of MetaBake\'s intu(Intuition), please update.');
@@ -39,7 +38,7 @@ class IntuApp extends Serv_1.ExpressRPC {
     }
     _runSetup() {
         this._run(8090, true);
-        const setup = new Setup_1.Setup(this.db);
+        const setup = new Setup_1.Setup(this.db, this);
         setup.setup();
     }
     async _runNormal() {
@@ -47,10 +46,8 @@ class IntuApp extends Serv_1.ExpressRPC {
         this._run(port, false);
     }
     async _run(port, setup) {
-        const sr = new setup_1.SetupRoutes(this.db);
         const ar = new admin_1.AdminRoutes(this.db);
         const er = new editor_1.EditorRoutes(this.db);
-        this.handleRRoute('setup', 'setup', sr.route);
         this.handleRRoute('admin', 'admin', ar.route);
         this.handleRRoute('api', 'editors', er.route);
         this.appInst.post('/upload', this.uploadRoute.upload);

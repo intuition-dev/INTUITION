@@ -1885,10 +1885,10 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-intu@>=0.17.11:
-  version "0.17.11"
-  resolved "https://registry.yarnpkg.com/intu/-/intu-0.17.11.tgz#26693083d6f6e1590dc4072a0a25159503351f16"
-  integrity sha512-6pFlbMDDjGZfpBVyt85KD/xNpZ7T5ExYCp2wyA+7rRu6jLGbhmlc3G1V9UmQYo91SXv+94562Ggnq2T7wAgcHA==
+intu@>=0.17.14:
+  version "0.17.14"
+  resolved "https://registry.yarnpkg.com/intu/-/intu-0.17.14.tgz#1e737897886d6278019fe3b24cc303695e23e8ce"
+  integrity sha512-NyhxJFPSW40x7Dqz87E5mXgHoKnYt3swVXZ8SMheeRCp1H201p+A9Xjv0SD7h5kbQVFVko2aQazXnD+PfF/hoA==
   dependencies:
     axios ">=0.19.0"
     bcryptjs ">=2.4.3"
@@ -1898,9 +1898,9 @@ intu@>=0.17.11:
     ip ">=1.1.5"
     is ">=3.3.0"
     js-yaml ">=3.13.1"
-    mbake ">=6.7.22"
+    mbake ">=6.7.24"
     perfy ">=1.1.5"
-    sqlite ">=3.0.3"
+    sqlite3 ">=4.0.9"
 
 inversify@4.13.0:
   version "4.13.0"
@@ -2329,10 +2329,10 @@ markdown-it-container@>=2.0.0:
   resolved "https://registry.yarnpkg.com/markdown-it-container/-/markdown-it-container-2.0.0.tgz#0019b43fd02eefece2f1960a2895fba81a404695"
   integrity sha1-ABm0P9Au7+zi8ZYKKJX7qBpARpU=
 
-markdown-it@>=9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-9.0.0.tgz#804e9285d2a0e2457216ed6a1d96e219483f2fb1"
-  integrity sha512-bUVTYGt/K/mYr3HlE+PBe6TOTyWghcpSZqOD9t+NFRlwJMhp9Kp6WQ8fJ26I6v1Xo71UmPYt1S4Hc9Lq8GZx2Q==
+markdown-it@>=9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-9.0.1.tgz#aafe363c43718720b6575fd10625cde6e4ff2d47"
+  integrity sha512-XC9dMBHg28Xi7y5dPuLjM61upIGPJG8AiHNHYqIaXER2KNnn7eKnM5/sF0ImNnyoV224Ogn9b1Pck8VH4k0bxw==
   dependencies:
     argparse "^1.0.7"
     entities "~1.1.1"
@@ -2340,10 +2340,10 @@ markdown-it@>=9.0.0:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.7.22:
-  version "6.7.22"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.22.tgz#41b27af14d0f5ef183ea25de9387e58c40da907a"
-  integrity sha512-RlxYrWSYBbtY8qzKiJMuwimO1qk+pzozl2xFnY798sD+Wl5g41C5T2xRxhgh2ZdD+dM7ktRJbUMZt3VoWS2jug==
+mbake@>=6.7.24:
+  version "6.7.24"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.24.tgz#ac1e7bc4a499a5b7e32637a44f4f03362c42fe8f"
+  integrity sha512-QE3WxgIBtYkuj/TNySFeEpBditqHTWVyhSVctHS+beIgxsoDgkLevU/DhnIJ/AYmH/K1SJePNjkPVCUxA88Xpw==
   dependencies:
     adm-zip ">=0.4.13"
     autoprefixer ">=9.6.1"
@@ -2364,7 +2364,7 @@ mbake@>=6.7.22:
     is ">=3.3.0"
     javascript-obfuscator ">=0.18.1"
     js-yaml ">=3.13.1"
-    markdown-it ">=9.0.0"
+    markdown-it ">=9.0.1"
     markdown-it-container ">=2.0.0"
     node-sass ">=4.12.0"
     open ">=6.4.0"
@@ -3697,12 +3697,7 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sql-template-strings@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/sql-template-strings/-/sql-template-strings-2.2.2.tgz#3f11508a25addfce217a3042a9d300c3193b96ff"
-  integrity sha1-PxFQiiWt384hejBCqdMAwxk7lv8=
-
-sqlite3@^4.0.0:
+sqlite3@>=4.0.9:
   version "4.0.9"
   resolved "https://registry.yarnpkg.com/sqlite3/-/sqlite3-4.0.9.tgz#cff74550fa5a1159956815400bdef69245557640"
   integrity sha512-IkvzjmsWQl9BuBiM4xKpl5X8WCR4w0AeJHRdobCdXZ8dT/lNc1XS6WqvY35N6+YzIIgzSBeY5prdFObID9F9tA==
@@ -3710,15 +3705,6 @@ sqlite3@^4.0.0:
     nan "^2.12.1"
     node-pre-gyp "^0.11.0"
     request "^2.87.0"
-
-sqlite@>=3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/sqlite/-/sqlite-3.0.3.tgz#3f519cfc599ffa3270d76f3567bf2abb2ac18742"
-  integrity sha512-DpofdtBibbiOObtdADGZYE6bvnLpjRG4ut/MDTDau2nK40htOLj1E0c55aOkvbnRVqQ0ZPtjj7PJuKKyS0Ypww==
-  dependencies:
-    sqlite3 "^4.0.0"
-  optionalDependencies:
-    sql-template-strings "^2.2.2"
 
 sshpk@^1.7.0:
   version "1.16.1"
