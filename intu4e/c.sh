@@ -1,0 +1,1 @@
+find . -name *.html -delete
