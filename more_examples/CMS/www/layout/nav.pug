@@ -1,0 +1,14 @@
+script(src='/layout/mini.min.js')
+script(type='text/javascript', async defer, src='//assets.pinterest.com/js/pinit.js')
+
+header.delayShowing
+    .container
+        .header-wrap
+            a.logo(href='/') Acmecorp
+            .menu-wrapper
+                ul
+                    li
+                        a.about(href='/') home
+                    li
+                        a.forum(href= '/forum') forum
+        h1 #{pageTitleTop}
