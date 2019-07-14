@@ -14,7 +14,6 @@ export class SetupRoutes extends BasePgRouter {
        this.adbDB = db
     }
 
-   
     setup(resp, params, email, password) {
 
     

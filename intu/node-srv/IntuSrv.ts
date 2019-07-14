@@ -6,7 +6,7 @@ import { AdminRoutes } from './routes/admin'
 import { ADB } from './lib/ADB';
 
 import { Setup } from './Setup';
-import { SetupRoutes } from './routes/setup';
+import { VersionNag } from 'mbake/lib/FileOpsExtra';
 
 export class IntuApp extends ExpressRPC {
 
@@ -16,7 +16,18 @@ export class IntuApp extends ExpressRPC {
     constructor(db:ADB) {
         super()
         this.db = db
-    }
+
+        VersionNag.isCurrent('intu', adbDB.veri() ).then(function(isCurrent_:boolean){
+            try{
+                if(!isCurrent_) 
+                    console.log('There is a newer version of MetaBake\'s intu(Intuition), please update.')
+                else
+                    console.log('You have the current version of MetaBake\'s intu(Intuition)')
+            } catch(err) {
+               console.log(err)
+            }
+        })// 
+    }//()
 
     start() {
         try {
@@ -36,10 +47,9 @@ export class IntuApp extends ExpressRPC {
     _runSetup() {
         this._run(8090, true)
 
-        const setup = new Setup(this.db)
+        const setup = new Setup(this.db, this)
         setup.setup()
     }
-
     async _runNormal() {
         const port:number = await this.db.getPort()
         this._run(port, false)
@@ -49,10 +59,8 @@ export class IntuApp extends ExpressRPC {
         // order of routes: api, all intu apps, webapp
         
         //api
-        const sr = new SetupRoutes(this.db)
         const ar = new AdminRoutes(this.db)
         const er = new EditorRoutes(this.db)
-        this.handleRRoute('setup', 'setup', sr.route )
         this.handleRRoute('admin', 'admin', ar.route )
         this.handleRRoute('api', 'editors', er.route )
 

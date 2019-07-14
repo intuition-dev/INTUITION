@@ -5,11 +5,23 @@ const editor_1 = require("./routes/editor");
 const admin_1 = require("./routes/admin");
 const Setup_1 = require("./Setup");
 const setup_1 = require("./routes/setup");
+const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 class IntuApp extends Serv_1.ExpressRPC {
     constructor(db) {
         super();
         this.uploadRoute = new Upload();
         this.db = db;
+        FileOpsExtra_1.VersionNag.isCurrent('intu', adbDB.veri()).then(function (isCurrent_) {
+            try {
+                if (!isCurrent_)
+                    console.log('There is a newer version of MetaBake\'s intu(Intuition), please update.');
+                else
+                    console.log('You have the current version of MetaBake\'s intu(Intuition)');
+            }
+            catch (err) {
+                console.log(err);
+            }
+        });
     }
     start() {
         try {

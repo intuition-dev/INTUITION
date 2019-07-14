@@ -1,19 +1,31 @@
 
 import { ADB } from './lib/ADB'
 import { Email } from './lib/Email'
+import { SetupRoutes } from './routes/setup';
+import { IntuApp } from './IntuSrv'
+
 
 export class Setup {
 
-adbDB: ADB
-emailJs = new Email()
+   db: ADB
+   app: IntuApp
+   emailJs = new Email()
 
-constructor(db) {
-   this.adbDB = db
-}
+   constructor(db, app) {
+      this.db = db
+      this.app = app
+   }
 
+   setup() {
+      console.log('ok setup:')
 
-setup() {
+      const sr = new SetupRoutes(this.db)
+      this.app.handleRRoute('setup', 'setup', sr.route )
 
-}
+      // create db
+      
+      // open ../WWW/setup/
+
+   }
 
 }//class
