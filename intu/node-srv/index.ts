@@ -16,6 +16,7 @@ const hostIP = 'http://' + ipAddres + ':'
 console.log("TCL: hostIP", hostIP)
 const adbDB = new ADB()
 
+// the only place there is DB new is here.
 const mainEApp = new IntuApp(adbDB)
 
 mainEApp.start()
