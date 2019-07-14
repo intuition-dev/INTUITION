@@ -1,11 +1,10 @@
 
-class Upload {
+export class UploadRoute {
 
     iauth
 
     upload(req, resp) {
 
-      let mountPath = resp.locals.mountPath;
       let uploadPath;
 
       if (Object.keys(req.files).length == 0) {

@@ -1,8 +1,10 @@
 
 import { ExpressRPC } from 'mbake/lib/Serv'
 
-import { EditorRoutes } from './routes/editor'
-import { AdminRoutes } from './routes/admin'
+import { EditorRoutes } from './routes/editorRoutes'
+import { AdminRoutes } from './routes/adminRoutes'
+import { UploadRoute } from './routes/uploadRoute'
+
 import { ADB } from './lib/ADB';
 
 import { Setup } from './Setup';
@@ -11,11 +13,12 @@ import { VersionNag } from 'mbake/lib/FileOpsExtra';
 export class IntuApp extends ExpressRPC {
 
     db:ADB
-    uploadRoute = new Upload()
+    uploadRoute
 
     constructor(db:ADB) {
         super()
         this.db = db
+        this.uploadRoute = new UploadRoute()
 
         VersionNag.isCurrent('intu', db.veri() ).then(function(isCurrent_:boolean){
             try{

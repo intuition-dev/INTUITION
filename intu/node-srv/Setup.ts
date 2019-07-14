@@ -1,7 +1,7 @@
 
 import { ADB } from './lib/ADB'
 import { Email } from './lib/Email'
-import { SetupRoutes } from './routes/setup';
+import { SetupRoutes } from './routes/setupRoutes';
 import { IntuApp } from './IntuSrv'
 
 
