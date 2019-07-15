@@ -20,7 +20,7 @@ export class Setup {
       console.log('ok setup:')
 
       const sr = new SetupRoutes(this.db)
-      this.app.handleRRoute('setup', 'setup', sr.route )
+      this.app.handleRRoute('setup', 'setup', sr.route.bind(sr) )
 
       // create db
       
