@@ -6,8 +6,10 @@ const fs = require('fs-extra')
 
 import { BaseDB } from 'mbake/lib/BaseDB'
 import { iAuth } from 'mbake/lib/Serv'
+import sqlite = require('sqlite')
 
 export class ADB extends BaseDB { 
+
     veri() {
         return '0.17.15'
      }
@@ -53,6 +55,7 @@ export class ADB extends BaseDB {
 
     async getSalt() {
         if(ADB.salt) return ADB.salt
+        console.log('ADB', ADB);
         const qry =  ADB.db.prepare('SELECT * FROM SALT')// single row in table so no need for where 
         const rows = await this._qry(qry)
         const row = rows[0]
@@ -200,6 +203,33 @@ export class ADB extends BaseDB {
         this._run(stmt, hashPass, email)
         return 'OK'
     }//()
+
+    checkDB(path) {
+        return fs.existsSync(path)
+    }
+    openDB(path, cb) {
+        fs.open(path, 'w', cb);
+    }
+
+    async connectToDb(dbPath) { // the admin db is set to 'P@ssw0rd!' and you have to change it first time on DB create
+      const dbPro = sqlite.open(dbPath )
+      ADB.db = await dbPro
+      ADB.db.configure('busyTimeout', 2 * 1000)
+    }
+
+    async connectToDbOnPort(dbPath) {
+        let _this = this
+        await _this.connectToDb(dbPath)
+        return new Promise(function (resolve, reject) {
+           return ADB.db.get(`SELECT port FROM configs`, function (err, row) {
+              if (err) {
+              }
+              return row
+           }).then(function (row) {
+              resolve(row.port)
+           })
+        })
+     }
 
 }//()
 
