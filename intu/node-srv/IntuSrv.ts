@@ -67,8 +67,8 @@ export class IntuApp extends ExpressRPC {
         //api
         const ar = new AdminRoutes(this.db)
         const er = new EditorRoutes(this.db)
-        this.handleRRoute('admin', 'admin', ar.route )
-        this.handleRRoute('api', 'editors', er.route )
+        this.handleRRoute('admin', 'admin', ar.route.bind(ar) )
+        this.handleRRoute('api', 'editors', er.route.bind(er) )
 
         this.appInst.post('/upload', this.uploadRoute.upload)
 
