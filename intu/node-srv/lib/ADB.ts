@@ -6,7 +6,6 @@ const fs = require('fs-extra')
 
 import { BaseDB } from 'mbake/lib/BaseDB'
 import { iAuth } from 'mbake/lib/Serv'
-import sqlite = require('sqlite')
 
 export class ADB extends BaseDB { 
 
