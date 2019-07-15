@@ -1,7 +1,7 @@
 depp.define({
-    'scripts': [, '#jquery', '/assets/css/spectreBottom.css'],
+    'scripts': [, '#jquery', '/setup/assets/css/spectreBottom.css'],
     'httpRPC': [, '#RPC',
-        '/assets/js/BindSetup.js',
+        '/setup/assets/js/BindSetup.js',
         '/../IntuAPI/IntuAPI.js',
     ],
     'setup': [

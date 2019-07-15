@@ -50,7 +50,7 @@ if (window.location.href.indexOf('editors/edit') > -1) {
         });
 
         let posts = new Posts();
-        let hash = window.location.hash.substr(1);;
+        let hash = window.location.hash.substr(1);
         console.info("--hash:", hash)
 
         posts
