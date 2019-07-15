@@ -24,7 +24,7 @@ depp.define({
         '/admin/settings/BindSettings.js'
     ],
     'crud': [
-        '#rw', '/admin/assets/js/crud.js'
+        '#rw', '/admin/admin/binding.js'
     ],
     'fonts': [
         '#crud', 'css!//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i'
