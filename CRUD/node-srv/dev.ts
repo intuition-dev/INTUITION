@@ -14,7 +14,11 @@ async function tst() {
    perfy.start('loop-stuff');
 
    for (let i = 0; i < 10; i++) {
+
+      logger.trace(is.array(await cdb.testInsert()))
+
       logger.trace(is.array(await cdb.selectAll()))
+
    }
 
    var result = perfy.end('loop-stuff')

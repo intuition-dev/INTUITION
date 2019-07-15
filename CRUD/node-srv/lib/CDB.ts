@@ -57,6 +57,17 @@ export class CDB extends BaseDB { // FTS support
       
    }//()
 
+   async testInsert() {
+   
+      // insert 2 rows for test
+      let guid = 'cd12'
+      let name = 'victor'
+      let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation'
+      await this.insert( guid, name, topics )
+      await this.insert('abc', 'tom', 'oops, nothing to talk about')
+      
+   }
+
    async insert(guid, name, topics) {
       const stmt =  CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
       await this._run(stmt, guid, name, topics )
