@@ -27,6 +27,7 @@ export class CDB extends BaseDB { // FTS support
    }
    
    async init() {
+      console.log('init')
       if(this.dbExists())  {
          // if db exists, connect an exit
             this.con()
