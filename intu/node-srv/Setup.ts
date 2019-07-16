@@ -29,21 +29,6 @@ export class Setup {
       
       // open ../WWW/setup/
 
-      // let _this = this
-      // //check if the file of database exist
-      // if (this.db.checkDB(pathToDb)) {
-      //    this.db.connectToDbOnPort(pathToDb)
-      //    //    .then(function (port) {
-      //    //       runAdmin(port)
-      //    //    })/
-      //    console.log('Db exist');
-      // } else {
-      //    console.log('open db and run setup')
-      //    //create db file
-      //    this.db.connectToDb(pathToDb)
-      //    // this.db.openDB(pathToDb, runSetup)
-      // }
-
    }
 
 }//class
