@@ -20,13 +20,14 @@
         "bunyan": ">=1.8.12",
         "express-fileupload": ">=1.1.5",
         "fs-extra": ">=8.1.0",
+        "global": "^4.4.0",
         "ip": ">=1.1.5",
-        "js-yaml": ">=3.13.1",
-        "mbake": ">=6.7.25",
         "is": ">=3.3.0",
+        "js-yaml": ">=3.13.1",
+        "mbake": "^6.7.25",
+        "mbake-x": "^1.7.6",
         "perfy": ">=1.1.5",
         "sqlite3": ">=4.0.9"
-
     },
     "devDependencies": {
         "@types/node": ">=12.6.3"

@@ -38,7 +38,7 @@ export class CDB extends BaseDB { // FTS support
          this.con()
       }//fi
 
-      CDB.db.run(`DROP TABLE IF EXISTS TOPIC`)
+      // CDB.db.run(`DROP TABLE IF EXISTS TOPIC`)
 
       // In this case we are not using normal SQL, but FTS! Likely you should use regular SQL. You should use a regular SQL table if you will not need FTS
        CDB.db.run(`CREATE VIRTUAL TABLE TOPIC using fts5(

@@ -211,7 +211,7 @@ export class ADB extends BaseDB {
     }
 
     async connectToDb(dbPath) { // the admin db is set to 'P@ssw0rd!' and you have to change it first time on DB create
-      const dbPro = sqlite.open(dbPath )
+      const dbPro = new sqlite3.Database(dbPath )
       ADB.db = await dbPro
       ADB.db.configure('busyTimeout', 2 * 1000)
     }
@@ -219,15 +219,8 @@ export class ADB extends BaseDB {
     async connectToDbOnPort(dbPath) {
         let _this = this
         await _this.connectToDb(dbPath)
-        return new Promise(function (resolve, reject) {
-           return ADB.db.get(`SELECT port FROM configs`, function (err, row) {
-              if (err) {
-              }
-              return row
-           }).then(function (row) {
-              resolve(row.port)
-           })
-        })
+        const qry = await ADB.db.prepare('SELECT port FROM configs') 
+        return await this._qry(qry);
      }
 
 }//()
