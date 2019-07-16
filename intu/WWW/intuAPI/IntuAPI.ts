@@ -225,7 +225,7 @@ class IntuAPI {
     */
    checkAdmin(email, pass) {
       let _this = this
-      return this.serviceRPC.invoke('api','admin',  'check-admin', {
+      return this.serviceRPC.invoke('admin','admin', 'checkAdmin', {
          admin_email: email,
          admin_pass: pass
       })

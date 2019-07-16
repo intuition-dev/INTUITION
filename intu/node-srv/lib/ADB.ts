@@ -259,11 +259,11 @@ export class AdminAuth implements iAuth {
     }//()
 
     async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
-        return new Promise( async function (resolve, reject) {
+        return new Promise( async (resolve, reject) => {
         const ok = await this.db.authAdmin(user, pswd)
         if(ok) return resolve('OK')        
 
-        this.RetErr(resp, 'NO')
+        this.retErr(resp, 'NO')
         reject('NO')
         })// pro
     }    
