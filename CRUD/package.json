@@ -19,7 +19,7 @@
     "sqlite3": ">=4.0.9"
   },
   "devDependencies": {
-    "@types/node": ">=12.6.3"
+    "@types/node": ">=12.6.4"
     
   }
 }

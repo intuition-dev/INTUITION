@@ -15,8 +15,6 @@ async function tst() {
 
    for (let i = 0; i < 10; i++) {
 
-      logger.trace(is.array(await cdb.testInsert()))
-
       logger.trace(is.array(await cdb.selectAll()))
 
    }

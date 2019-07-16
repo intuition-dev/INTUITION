@@ -38,15 +38,14 @@ export class CDB extends BaseDB { // FTS support
          this.con()
       }//fi
 
-      // CDB.db.run(`DROP TABLE IF EXISTS TOPIC`)
-
       // In this case we are not using normal SQL, but FTS! Likely you should use regular SQL. You should use a regular SQL table if you will not need FTS
-       CDB.db.run(`CREATE VIRTUAL TABLE TOPIC using fts5(
+      const tstmt =  CDB.db.prepare(`CREATE VIRTUAL TABLE TOPIC using fts5(
          guid UNINDEXED
          ,name 
          ,topics 
          )`, function (err) { if (err)  console.log(err)
       })
+      await this._run(tstmt)
 
       // insert 2 rows for test
       let guid = 'cd12'
@@ -56,17 +55,6 @@ export class CDB extends BaseDB { // FTS support
       await this.insert('abc', 'tom', 'oops, nothing to talk about')
       
    }//()
-
-   async testInsert() {
-   
-      // insert 2 rows for test
-      let guid = 'cd12'
-      let name = 'victor'
-      let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation'
-      await this.insert( guid, name, topics )
-      await this.insert('abc', 'tom', 'oops, nothing to talk about')
-      
-   }
 
    async insert(guid, name, topics) {
       const stmt =  CDB.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
