@@ -67,7 +67,10 @@ eg. ECS: http://archive.is/yRvvG
 
 - all models in assets/models that gets bind in screen/...
 
+- The view *must* lazy load.
+
 Your VM must map to the (pug or component) View! Component have their own VM (in their own folder)
+
 
 
 
