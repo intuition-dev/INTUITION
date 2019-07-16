@@ -40,16 +40,22 @@ export class ADB extends BaseDB {
            this.con()
         }//fi
   
-        ADB.db.run(`CREATE TABLE ADMIN  (email, hashPass, vcode)`) // single row in table
-        ADB.db.run(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`) // single row in table
-        ADB.db.run(`CREATE TABLE SALT(salt)`)// single row in table
-        ADB.db.run(`CREATE TABLE TEMPLATE(template)`)// single row in table, TEMPLATE
-        ADB.db.run(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)
-
-        let salt = bcrypt.genSaltSync(10)
-        const stmt =  ADB.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`)
-        this._run(stmt, salt )
-        ADB.salt = salt
+        return Promise.all([
+            this._qry(ADB.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)), // single row in table
+            this._qry(ADB.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)), // single row in table
+            // ADB.db.run(`CREATE TABLE SALT(salt)`)// single row in table
+            this._qry(ADB.db.prepare(`CREATE TABLE SALT(salt)`)),
+            this._qry(ADB.db.prepare(`CREATE TABLE TEMPLATE(template)`)), // single row in table, TEMPLATE
+            this._qry(ADB.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)),
+        ]).then(() => {
+            console.log('all tables created')
+            let salt = bcrypt.genSaltSync(10)
+            const stmt = ADB.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`)
+            return this._run(stmt, salt)
+        }).then(salt => {
+            console.log('salt inserted')
+            ADB.salt = salt
+        }) 
     }
 
     async getSalt() {
@@ -219,7 +225,7 @@ export class ADB extends BaseDB {
     async connectToDbOnPort(dbPath) {
         let _this = this
         await _this.connectToDb(dbPath)
-        const qry = await ADB.db.prepare('SELECT port FROM configs') 
+        const qry = await ADB.db.prepare('SELECT port FROM CONFIG') 
         return await this._qry(qry);
      }
 
