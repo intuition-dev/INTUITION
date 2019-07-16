@@ -29,7 +29,7 @@ export class ADB extends BaseDB {
         ADB.db =  new sqlite3.Database('./ADB.sqlite')
     }//()
 
-    init() {
+    init():Promise<any> {
         if(this.dbExists())  {
            // if db exists, connect an exit
               this.con()
@@ -41,20 +41,16 @@ export class ADB extends BaseDB {
         }//fi
   
         return Promise.all([
-            this._qry(ADB.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)), // single row in table
-            this._qry(ADB.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)), // single row in table
-            // ADB.db.run(`CREATE TABLE SALT(salt)`)// single row in table
-            this._qry(ADB.db.prepare(`CREATE TABLE SALT(salt)`)),
-            this._qry(ADB.db.prepare(`CREATE TABLE TEMPLATE(template)`)), // single row in table, TEMPLATE
-            this._qry(ADB.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)),
+            this._run(ADB.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)), // single row in table
+            this._run(ADB.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)), // single row in table
+            this._run(ADB.db.prepare(`CREATE TABLE SALT(salt)`)),
+            this._run(ADB.db.prepare(`CREATE TABLE TEMPLATE(template)`)), // single row in table, TEMPLATE
+            this._run(ADB.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)),
         ]).then(() => {
             console.log('all tables created')
             let salt = bcrypt.genSaltSync(10)
             const stmt = ADB.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`)
             return this._run(stmt, salt)
-        }).then(salt => {
-            console.log('salt inserted')
-            ADB.salt = salt
         }) 
     }
 

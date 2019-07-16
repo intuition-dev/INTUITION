@@ -12,12 +12,12 @@ export class SetupRoutes extends BasePgRouter {
     constructor(db) {
         super()
        this.adbDB = db
+       this.adbDB.init()
     }
     
     
     async setup(resp, params, email, password) {
-        await this.adbDB.init()
-
+        
         let emailjsService_id = params.emailjsService_id
         let emailjsTemplate_id = params.emailjsTemplate_id
         let emailjsUser_id = params.emailjsUser_id        

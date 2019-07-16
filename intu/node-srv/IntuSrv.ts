@@ -41,7 +41,7 @@ export class IntuApp extends ExpressRPC {
             if (this.db.dbExists()) {
                 this._runNormal()
             } else {
-            console.log('run setup')
+                console.log('run setup')
                 this._runSetup()
                 
             }
