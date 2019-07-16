@@ -16,8 +16,10 @@ export class SetupRoutes extends BasePgRouter {
     }
     
     
-    async setup(resp, params, email, password) {
-        
+    async setup(resp, params) {
+        let email = Buffer.from(params.email).toString('base64')
+        let password = Buffer.from(params.password).toString('base64')
+
         let emailjsService_id = params.emailjsService_id
         let emailjsTemplate_id = params.emailjsTemplate_id
         let emailjsUser_id = params.emailjsUser_id        

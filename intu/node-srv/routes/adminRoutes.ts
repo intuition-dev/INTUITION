@@ -15,15 +15,19 @@ export class AdminRoutes extends BasePgRouter {
 
    }//()
 
-   async checkAdmin(resp, params, user, pswd) {
+   async checkAdmin(resp, params) {
+      let user = Buffer.from(params.admin_email).toString('base64');
+      let pswd = Buffer.from(params.admin_pass).toString('base64');
+
       let auth = await this.auth.auth(user,pswd,resp)
-      if(auth != 'OK') return
+      if(auth != 'OK') this.ret(resp, 'FAIL')
 
       this.ret(resp, 'OK')
    }//()
 
 
    async getConfig(resp, params, user, pswd) {
+
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 

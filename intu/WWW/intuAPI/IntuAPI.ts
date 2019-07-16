@@ -225,7 +225,7 @@ class IntuAPI {
     */
    checkAdmin(email, pass) {
       let _this = this
-      return this.serviceRPC.invoke('admin','admin', 'checkAdmin', {
+      return this.serviceRPC.invoke('admin', 'admin', 'checkAdmin', {
          admin_email: email,
          admin_pass: pass
       })
@@ -337,7 +337,7 @@ class IntuAPI {
       console.log('get config start')
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'admin', 'get-config', {
+      return this.serviceRPC.invoke('admin', 'admin', 'getConfig', {
          admin_email: admin_email,
          admin_pass: admin_pass
       });

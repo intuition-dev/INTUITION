@@ -137,10 +137,16 @@ export class ADB extends BaseDB {
 
         const qry =  ADB.db.prepare('SELECT * FROM ADMIN where email =  ?') 
         const rows = await this._qry(qry, email)
-        const row = rows[0]
-        const hashPassS = row.hashPass
+        console.log('rows 77: ', rows, email);
+        
+        if (rows.length > 0) {
+            const row =  rows[0]
+            const hashPassS = row.hashPass
+            return hashPassP == hashPassS
+        } else {
+            return false;
+        }
 
-        return hashPassP == hashPassS
     }//()
 
     /**
@@ -258,7 +264,13 @@ export class AdminAuth implements iAuth {
         this.db = db
     }//()
 
-    async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
+    async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> { 
+
+        // user = Buffer.from(user, 'base64').toString();
+        // pswd = Buffer.from(pswd, 'base64').toString();
+
+        console.log('user, pswd', user, pswd);
+
         return new Promise( async (resolve, reject) => {
         const ok = await this.db.authAdmin(user, pswd)
         if(ok) return resolve('OK')        
