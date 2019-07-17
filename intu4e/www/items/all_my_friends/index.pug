@@ -2,4 +2,24 @@
 extends /layout/itemLayout
 
 block main
+    p
     p oh hi
+
+    .your-class
+        div your content 1
+        div your content 2
+        div your content 3
+
+    script.
+        depp.require('depps', function(){
+            console.log('pg')
+            setupPg()
+        })
+
+        function setupPg() {
+
+            $('.your-class').slick({
+            
+            })
+
+        }//()

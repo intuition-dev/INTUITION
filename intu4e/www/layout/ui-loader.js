@@ -1,5 +1,6 @@
 
-depp.require(['FontsLoaded','bsDefaultStyle', 'jquery', 'slickCarousel'], function() {
+depp.require(['FontsLoaded','bsDefaultStyle', 'DOM', 'jquery', 'slickCarousel'], function() {
    console.log('ready')
-
+   depp.done('depps')
+   
 }) 
