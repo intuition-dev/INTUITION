@@ -34,8 +34,8 @@ class Editors {
                         },
                     });
                 } else {
-                    console.info('failed to get editors list');
-                    window.location = '/admin'
+                    console.info('failed to get editors list, redirecting to /admin');
+                    // window.location = '/admin'
                 }
 
             })

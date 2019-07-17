@@ -32,7 +32,7 @@ class IntuAPI {
     */
    checkEditor(email, pass) {
       let _this = this
-      return this.serviceRPC.invoke('api', 'editors', 'check-editor', {
+      return this.serviceRPC.invoke('api', 'editors', 'checkEditor', {
             editor_email: email,
             editor_pass: pass
          })
@@ -258,7 +258,7 @@ class IntuAPI {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
       console.info("--admin_email:", admin_email)
-      return this.serviceRPC.invoke('api', 'admin', 'get-editors', {
+      return this.serviceRPC.invoke('admin', 'admin', 'getEditors', {
          admin_email: admin_email,
          admin_pass: admin_pass
       });
@@ -273,7 +273,7 @@ class IntuAPI {
    addEditor(name, email, password) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'admin', 'add-editor', {
+      return this.serviceRPC.invoke('admin', 'admin', 'addEditor', {
          name: name,
          email: email,
          password: password,
@@ -288,7 +288,7 @@ class IntuAPI {
     * @param name user name, eg: 'Jane Doe'
     */
    editEditor(uid, name) {
-      return this.serviceRPC.invoke('api', 'admin', 'edit-editor', {
+      return this.serviceRPC.invoke('admin', 'admin', 'edit-editor', {
          name: name,
          uid: uid,
          admin_email: window.sessionStorage.getItem('username'),
@@ -301,7 +301,7 @@ class IntuAPI {
     * @param uid user id, eg: 'I3fE7p5NjtV1Y1m5pWBsZlyi4W62'
     */
    deleteEditor(uid) {
-      return this.serviceRPC.invoke('api', 'admin', 'delete-editor', {
+      return this.serviceRPC.invoke('admin', 'admin', 'deleteEditor', {
          uid: uid,
          admin_email: window.sessionStorage.getItem('username'),
          admin_pass: window.sessionStorage.getItem('password')

@@ -1,5 +1,5 @@
 depp.require(['general'], function () {
-    if (window.location.href.indexOf("admin/crudEditors") > -1) {
+    if (window.location.href.indexOf("admin/admin") > -1) {
 
         let editors = new Editors();
 

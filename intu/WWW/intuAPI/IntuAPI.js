@@ -14,7 +14,7 @@ var IntuAPI = (function () {
     }
     IntuAPI.prototype.checkEditor = function (email, pass) {
         var _this = this;
-        return this.serviceRPC.invoke('api', 'editors', 'check-editor', {
+        return this.serviceRPC.invoke('api', 'editors', 'checkEditor', {
             editor_email: email,
             editor_pass: pass
         })
@@ -143,7 +143,7 @@ var IntuAPI = (function () {
     };
     IntuAPI.prototype.checkAdmin = function (email, pass) {
         var _this = this;
-        return this.serviceRPC.invoke('api', 'admin', 'check-admin', {
+        return this.serviceRPC.invoke('admin', 'admin', 'checkAdmin', {
             admin_email: email,
             admin_pass: pass
         })
@@ -171,7 +171,7 @@ var IntuAPI = (function () {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
         console.info("--admin_email:", admin_email);
-        return this.serviceRPC.invoke('api', 'admin', 'get-editors', {
+        return this.serviceRPC.invoke('admin', 'admin', 'getEditors', {
             admin_email: admin_email,
             admin_pass: admin_pass
         });
@@ -179,7 +179,7 @@ var IntuAPI = (function () {
     IntuAPI.prototype.addEditor = function (name, email, password) {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
-        return this.serviceRPC.invoke('api', 'admin', 'add-editor', {
+        return this.serviceRPC.invoke('admin', 'admin', 'addEditor', {
             name: name,
             email: email,
             password: password,
@@ -188,7 +188,7 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.editEditor = function (uid, name) {
-        return this.serviceRPC.invoke('api', 'admin', 'edit-editor', {
+        return this.serviceRPC.invoke('admin', 'admin', 'edit-editor', {
             name: name,
             uid: uid,
             admin_email: window.sessionStorage.getItem('username'),
@@ -196,7 +196,7 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.deleteEditor = function (uid) {
-        return this.serviceRPC.invoke('api', 'admin', 'delete-editor', {
+        return this.serviceRPC.invoke('admin', 'admin', 'deleteEditor', {
             uid: uid,
             admin_email: window.sessionStorage.getItem('username'),
             admin_pass: window.sessionStorage.getItem('password')
@@ -219,7 +219,7 @@ var IntuAPI = (function () {
         console.log('get config start');
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
-        return this.serviceRPC.invoke('api', 'admin', 'get-config', {
+        return this.serviceRPC.invoke('admin', 'admin', 'getConfig', {
             admin_email: admin_email,
             admin_pass: admin_pass
         });
