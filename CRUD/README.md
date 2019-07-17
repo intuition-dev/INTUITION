@@ -56,11 +56,16 @@ that map to view, and systems are your CRUD type methods.
 eg. ECS: http://archive.is/yRvvG
 - Services classes should be documented via document.js
 - If an event bus is needed by the view, you can use browsers's built in Custom Events to wire VM, binding, screen and components. 
-- If you want to do testing, you test VM (not the View; test the ViewModel, eg. via: http://qunitjs.com )
+- If you want to do e2e testing, you test VM (not the View; test the ViewModel, eg. via: http://qunitjs.com )
 
 # Other
 
-- You should know some Firestore  already.
+- Avoid binding like this:
+    dirs.forEach(el => {
+       listTemp += '<li><div><i class="i-file"></i>' el + '</div></li>';
+
+Instead use mustache or dot or such.
+
 - Tutorial would show tabulator.js, forms
 
 - Using ViewModel pattern to separate the data from views
@@ -71,6 +76,6 @@ eg. ECS: http://archive.is/yRvvG
 
 Your VM must map to the (pug or component) View! Component have their own VM (in their own folder)
 
-
+- This may or may not help: https://sqlitebrowser.org
 
 
