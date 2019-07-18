@@ -88,9 +88,10 @@ export class ADB extends BaseDB {
         return row
     }
     
-    setAppPath(pathToApp) {
+    async setAppPath(pathToApp) {
         const stmt =  ADB.db.prepare(`UPDATE CONFIG SET pathToApp=? `)
-        this._run(stmt, pathToApp)
+        const res = await this._run(stmt, pathToApp)
+        return res
     }
 
     async getAppPath() {
@@ -157,17 +158,20 @@ export class ADB extends BaseDB {
         const hashPass = bcrypt.hashSync(password, salt)
 
         const stmt =  ADB.db.prepare(`INSERT INTO EDITORS(guid, name, email, hashPass ) VALUES(?,?, ?,?)`)
-        await this._run(stmt, guid, name, email, hashPass )
+        const res = await this._run(stmt, guid, name, email, hashPass )
+        return res
     }//()
 
     async getEditors() {
         const qry =  ADB.db.prepare(`SELECT guid, name FROM editors`)
-        return await this._qry(qry)
+        const res = await this._qry(qry)
+        return res
     }
 
     async deleteEditor(guid) {
         const stmt =  ADB.db.prepare(`DELETE FROM editors WHERE guid=?`)
-        await this._run(stmt, guid)
+        const res = await this._run(stmt, guid)
+        return res
     }
   
     /**
