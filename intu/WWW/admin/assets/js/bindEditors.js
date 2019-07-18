@@ -12,27 +12,28 @@ class Editors {
         this.intuAPI.getEditorsList()
             .then(editors => {
                 console.info("--editors:", editors)
-                if (Array.isArray(editors)) {
-                    this.table = new Tabulator("#editors-table", {
-                        data: editors, // assign data to table
-                        layout: "fitColumns", // fit columns to width of table
-                        columns: [ // Define Table Columns
-                            { title: "id", field: "id", visible: false },
-                            { title: "Email", field: "email", align: "left" },
-                            { title: "Name", field: "name", align: "left" }
-                        ],
-                        rowClick: (e, row) => { // fill the form fields
-                            this.activeRow = row;
-                            var row = row.getData();
-                            window.rowUid = row.id;
-                            $('input[name="name"]').val(row.name);
-                            $('input[name="email"], input[name="password"]').val('');
+     
+                this.table = new Tabulator("#editors-table", {
+                    layout: "fitColumns", // fit columns to width of table
+                    columns: [ // Define Table Columns
+                        { title: "id", field: "id", visible: false },
+                        { title: "Email", field: "email", align: "left" },
+                        { title: "Name", field: "name", align: "left" }
+                    ],
+                    rowClick: (e, row) => { // fill the form fields
+                        this.activeRow = row;
+                        var row = row.getData();
+                        window.rowUid = row.id;
+                        $('input[name="name"]').val(row.name);
+                        $('input[name="email"], input[name="password"]').val('');
 
-                            $('html, body').animate({ // scroll to form
-                                scrollTop: $("#editor-form").offset().top
-                            }, 500);
-                        },
-                    });
+                        $('html, body').animate({ // scroll to form
+                            scrollTop: $("#editor-form").offset().top
+                        }, 500);
+                    },
+                });
+                if (Array.isArray(editors)) {
+                    this.table.setData(editors)
                 } else {
                     console.info('failed to get editors list, redirecting to /admin');
                     // window.location = '/admin'
@@ -84,9 +85,12 @@ class Editors {
                 throw new Error("user data is empty");
             }
 
-            return this.intuAPI.addEditor(name, email, password)
+            let guid = getGUID()
+
+            return this.intuAPI.addEditor(guid, name, email, password)
                 .then((documentRef) => {
                     console.info("--documentRef:", documentRef)
+                    debugger
                     $('.notification').removeClass('d-hide').find('.text').text('new user was created');
                     $('.grid-form input').val('');
                     setTimeout(function() {
@@ -97,7 +101,7 @@ class Editors {
                     }, 500);
                     // table refresh
                     this.table
-                        .updateOrAddData([{ id: documentRef.id, email: email, name: name }])
+                        .updateOrAddData([{ id: guid, email: email, name: name }])
                         .then(function() {
                             console.info('table updated');
                         })

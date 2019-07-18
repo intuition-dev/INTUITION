@@ -270,10 +270,11 @@ class IntuAPI {
     * @param email new user email, eg: 'example@example.com'
     * @param password new user password
     */
-   addEditor(name, email, password) {
+   addEditor(guid, name, email, password) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('admin', 'admin', 'addEditor', {
+         guid: guid,
          name: name,
          email: email,
          password: password,

@@ -4,7 +4,6 @@ depp.require(['general'], function () {
         let editors = new Editors();
 
         editors.drawTable();
-
         /*
         * add editor
         */
