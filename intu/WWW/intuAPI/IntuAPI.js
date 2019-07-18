@@ -176,10 +176,11 @@ var IntuAPI = (function () {
             admin_pass: admin_pass
         });
     };
-    IntuAPI.prototype.addEditor = function (name, email, password) {
+    IntuAPI.prototype.addEditor = function (guid, name, email, password) {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('admin', 'admin', 'addEditor', {
+            guid: guid,
             name: name,
             email: email,
             password: password,
