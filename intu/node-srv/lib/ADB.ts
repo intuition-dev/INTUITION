@@ -29,7 +29,7 @@ export class ADB extends BaseDB {
         ADB.db =  new sqlite3.Database('./ADB.sqlite')
     }//()
 
-    init():Promise<any> {
+    async init():Promise<any> {
         if(this.dbExists())  {
            // if db exists, connect an exit
               this.con()
