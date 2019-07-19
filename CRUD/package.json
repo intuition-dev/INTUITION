@@ -2,6 +2,7 @@
   "name": "xc",
   "version": "1.0.0",
   "description": "dev",
+  "private": true,
   "main": "index.js",
   "engines": {
     "node": ">=10.16.0",
