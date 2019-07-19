@@ -4,120 +4,70 @@ const logger = require('tracer').console()
 const perfy = require('perfy')
 
 import { ADB } from './lib/ADB'
+import { AppLogic } from './lib/AppLogic'
 
 const adb =new ADB()
-adb.init().then(tst)
+const appLogic = new AppLogic()
 
-async function tst() {
-   let result;
-
-   perfy.start('getSalt', true);
-   logger.trace('getSalt:')
-
-   logger.trace(await adb.getSalt())
-
-   result = perfy.end('getSalt')
-   console.log('', result.time )
+adb.init().then(testADB).then(testAppLogic)
 
 
-   perfy.start('monitor', true);
-   logger.trace('monitor:')
+//testAppLogic()
 
-   logger.trace(await adb.monitor())
+async function test(name, f) {
+    perfy.start(name, true)
+    logger.trace(name)
 
-   result = perfy.end('monitor')
-   console.log('', result.time )
+    logger.trace(await f())
 
+    var result = perfy.end(name)
+    console.log('', result.time)
+}
 
-   perfy.start('setAppPath', true);
-   logger.trace(`setAppPath('appPath'):`)
+async function testADB() {
+   console.log('testADB:')
 
-   logger.trace(await adb.setAppPath('appPath'))
+   await test('getSalt', () => adb.getSalt())
 
-   result = perfy.end('setAppPath')
-   console.log('', result.time )
+   await test('monitor', () => adb.monitor())
 
+   await test(`setAppPath('appPath')`, () => adb.setAppPath('appPath'))
 
-   perfy.start('getAppPath', true);
-   logger.trace('getAppPath:')
+   await test('getAppPath', () => adb.getAppPath())
 
-   logger.trace(await adb.getAppPath())
+   await test('getPort', () => adb.getPort())
 
-   result = perfy.end('getAppPath')
-   console.log('', result.time )
+   await test('getConfig', () => adb.getConfig())
 
+   await test('getVcodeAdmin', () => adb.getVcodeAdmin())
 
-   perfy.start('getPort', true);
-   logger.trace('getPort:')
+   await test(`getVcodeEditor('n1@m.com)`, () => adb.getVcodeEditor('n1@m.com'))
 
-   logger.trace(await adb.getPort())
-
-   result = perfy.end('getPort')
-   console.log('', result.time )
-
-
-   perfy.start('getConfig', true);
-   logger.trace('getConfig:')
-
-   logger.trace(await adb.getConfig())
-
-   result = perfy.end('getConfig')
-   console.log('', result.time )
-
-
-   perfy.start('getVcodeAdmin', true);
-   logger.trace('getVcodeAdmin:')
-
-   logger.trace(await adb.getVcodeAdmin())
-
-   result = perfy.end('getVcodeAdmin')
-   console.log('', result.time )
-
-   perfy.start('getVcodeEditor', true);
-   logger.trace(`getVcodeEditor('n1@m.com):`)
-
-   logger.trace(await adb.getVcodeEditor('n1@m.com'))
-
-   result = perfy.end('getVcodeEditor')
-   console.log('', result.time )
-
-
-   perfy.start('addEditor', true);
    var addEditorGuid = uuidv4()
-   logger.trace(`addEditor(${addEditorGuid}, 'Editor${addEditorGuid}', 'e@m.com', '1111'):`)
-   
-   logger.trace(await adb.addEditor(addEditorGuid, 'Editor2'+addEditorGuid, 'e2@m.com', '1111'))
-   
-   result = perfy.end('addEditor')
-   console.log('', result.time )
+   await test(`addEditor(${addEditorGuid}, 'Editor${addEditorGuid}', 'e@m.com', '1111'):`, () => adb.addEditor(addEditorGuid, 'Editor2'+addEditorGuid, 'e2@m.com', '1111'))
 
+   await test('getEditors', () => adb.getEditors())
 
-   perfy.start('getEditors', true);
-   logger.trace('getEditors:')
+   await test('deleteEditor', () => adb.deleteEditor(addEditorGuid))
 
-   logger.trace(await adb.getEditors())
+   await test('getEditors2', () => adb.getEditors())
 
-   result = perfy.end('getEditors')
-   console.log('', result.time )
-
-   perfy.start('deleteEditor', true);
-   logger.trace('deleteEditor:')
-
-   logger.trace(await adb.deleteEditor(addEditorGuid))
-
-   result = perfy.end('deleteEditor')
-   console.log('', result.time )
-
-
-   perfy.start('getEditors2', true);
-   logger.trace('getEditors:')
-
-   logger.trace(await adb.getEditors())
-
-   result = perfy.end('getEditors2')
-   console.log('', result.time )
-
+   console.log('//testADB')
 }//()
+
+async function testAppLogic() {
+  console.log('testAppLogic:')
+
+  //await test('autoBake', () => appLogic.autoBake('/appPath/', 'itemPath/', 'newItem.md'))
+
+  //await test('setPublishDate', () => appLogic.setPublishDate('/appPath/', 'itemPath/', 12))
+
+  //await test('clone', () => appLogic.clone('/appPath/', 'itemPath/newItem.md', 'itemPath/newItem2.md'))
+
+  //await test('setPublishDate', () => appLogic.archive('/appPath/', 'itemPath/', 'newItem.md'))
+
+  console.log('//testAppLogic')
+}
 
 // generate uuid for testing purposes
 function uuidv4() {
