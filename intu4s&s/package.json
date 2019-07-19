@@ -8,9 +8,10 @@
   "dependencies": {
     "intu": ">=0.17.14",
     "is": ">=3.3.0",
-    "perfy": ">=1.1.5"
+    "perfy": ">=1.1.5",
+    "pubnub": "^4.24.3"
+  },
+  "devDependencies": {
+    "@types/node": ">=12.6.8"
   }
- , "devDependencies": {
-   "@types/node": ">=12.6.2"
-}
 }

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export class Email {
-   
+   // convert from axios to superagent
     send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) {
         email = Buffer.from(email, 'base64').toString();
         console.log('email --->  ', email);
