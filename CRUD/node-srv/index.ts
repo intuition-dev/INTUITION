@@ -2,8 +2,13 @@
 import { ExpressRPC } from 'mbake/lib/Serv'
 import { CrudPgRouter } from './routes/Routers'
 
-const mainEApp = new ExpressRPC()
-mainEApp.makeInstance(['*'])
+
+import { IntuApp } from 'intu/node-srv/IntuSrv';
+import { ADB } from 'intu/node-srv/lib/ADB';
+
+const adbDB = new ADB()
+const mainEApp = new IntuApp(adbDB, ['*'])
+// app starts ////////////////////////////////////
 
 // log requests
 mainEApp.appInst.use(function (req, res, next) {

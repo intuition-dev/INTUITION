@@ -4,6 +4,6 @@ cd node-srv
 tsc
 cd ..
 cd WWW 
-mbake
+mbake .
 cd ..
 npm publish

@@ -351,10 +351,15 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.1.tgz#dc488842312a7f075149312905b5e3c0b054c79d"
   integrity sha512-FwI9gX75FgVBJ7ywgnq/P7tw+/o1GUbtP0KzbtusLigAOgIgNISRK0ZPl4qertvXSIE8YbsVJueQ90cDt9YYyw==
 
-"@types/node@*", "@types/node@>=12.6.3":
+"@types/node@*":
   version "12.6.3"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.3.tgz#44d507c5634f85e7164707ca36bba21b5213d487"
   integrity sha512-7TEYTQT1/6PP53NftXXabIZDaZfaoBdeBm8Md/i7zsWRoBe0YwOXguyK8vhHs8ehgB/w9U4K/6EWuTyp0W6nIA==
+
+"@types/node@>=12.6.8":
+  version "12.6.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.8.tgz#e469b4bf9d1c9832aee4907ba8a051494357c12c"
+  integrity sha512-aX+gFgA5GHcDi89KG5keey2zf0WfZk/HAQotEamsK2kbey+8yGKcson0hbK8E+v0NArlCJQCqMP161YhV6ZXLg==
 
 "@types/node@^10.1.0":
   version "10.14.12"
@@ -2092,10 +2097,10 @@ filehound@=1.17.0:
     moment "^2.22.1"
     unit-compare "^1.0.1"
 
-filehound@>=1.17.0:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/filehound/-/filehound-1.17.1.tgz#0f2d625abf78fe11a10f4aa53f6d37aeadfe7564"
-  integrity sha512-ejYjUWy9wAjNaxLeTtcVddJ0MNFZc0z90mDpmhGZ7JNtiuhTY8YyiBT/mWOPNVRyysWdQNvGk6mF+/cjWhTQpg==
+filehound@>=1.17.3:
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/filehound/-/filehound-1.17.3.tgz#a4ab3d48dba13875ff9571127e09cb536a0d18f5"
+  integrity sha512-xBgV3RtLU8JDLaS77etzeEeJa+M3mfpMZV1YJgpUAXeZx4OdUYml9eCeT8DFFDR5XyqbSt/npdJRDcLm7zuJLg==
   dependencies:
     bluebird "^3.5.1"
     file-js "0.3.0"
@@ -3567,32 +3572,32 @@ markdown-it@>=9.0.1:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake-x@^1.7.6:
-  version "1.7.6"
-  resolved "https://registry.yarnpkg.com/mbake-x/-/mbake-x-1.7.6.tgz#43992c58c1bfc79246d0d4fdb96a446e8dbb5967"
-  integrity sha512-zEIxYalMk+uZR7j3dpaJxE2MTMTvRy0WNLHSW1905GQxgJjto1xALDPzVuU46qrkGtzkGOoOcuDILQHEzD0AVA==
+mbake-x@^1.7.17:
+  version "1.7.17"
+  resolved "https://registry.yarnpkg.com/mbake-x/-/mbake-x-1.7.17.tgz#fd8ddfd2261c2d43faf13cbe3b4d36f390b73747"
+  integrity sha512-dEEN15muhA6QUwmUUhFqMPzcBke3EWUDbtwP5s97nHwJeMd7y/tFGcEEViq6QcZEDYL1/Ty+sg/+GqNdbjJBXA==
   dependencies:
     "@firebase/app-types" ">=0.4.0"
     axios ">=0.19.0"
     cheerio ">=1.0.0-rc.2"
     execa ">=2.0.3"
-    filehound ">=1.17.0"
+    filehound ">=1.17.3"
     fs-extra ">=8.1.0"
     is ">=3.3.0"
     lunr ">=2.3.6"
-    mbake ">=6.7.21"
+    mbake ">=6.7.25"
     node-firestore-import-export ">=0.13.2"
     node-summarizer ">=1.0.7"
     perfy ">=1.1.5"
-    probe-image-size ">=4.0.0"
+    probe-image-size ">=4.1.1"
     riot-compiler "^3.6.0"
     sharp ">=0.22.1"
-    sitemap ">=3.2.0"
+    sitemap ">=3.2.2"
     traverse ">=0.6.6"
-    typescript ">=3.5.2"
+    typescript ">=3.5.3"
     unfluff ">=3.2.0"
 
-mbake@>=6.7.21, mbake@^6.7.25:
+mbake@>=6.7.25, mbake@^6.7.25:
   version "6.7.25"
   resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.25.tgz#1cd92e5ab1a28504ec88dce49088c8cd13f886fd"
   integrity sha512-qoZbXFE1zMd1EqfkhgzkxtzaAxF2hi5gYGLtxiHg3bsu5V/ku/b+sDtS6FHLoQxMTyg2BOuB8tHB0KXc1cFHOg==
@@ -4484,7 +4489,7 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-probe-image-size@>=4.0.0:
+probe-image-size@>=4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/probe-image-size/-/probe-image-size-4.1.1.tgz#c836c53154b6dd04dbcf66af2bbd50087b15e1dc"
   integrity sha512-42LqKZqTLxH/UvAZ2/cKhAsR4G/Y6B7i7fI2qtQu9hRBK4YjS6gqO+QRtwTjvojUx4+/+JuOMzLoFyRecT9qRw==
@@ -5241,7 +5246,7 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sitemap@>=3.2.0:
+sitemap@>=3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/sitemap/-/sitemap-3.2.2.tgz#3f77c358fa97b555c879e457098e39910095c62b"
   integrity sha512-TModL/WU4m2q/mQcrDgNANn0P4LwprM9MMvG4hu5zP4c6IIKs2YLTu6nXXnNr8ODW/WFtxKggiJ1EGn2W0GNmg==
@@ -5826,7 +5831,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@>=3.5.2, typescript@>=3.5.3:
+typescript@>=3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
