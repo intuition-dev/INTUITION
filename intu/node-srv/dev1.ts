@@ -27,6 +27,8 @@ async function test(name, f) {
 async function testADB() {
    console.log('testADB:')
 
+   await test('dbExists', () => adb.dbExists())
+
    await test('getSalt', () => adb.getSalt())
 
    await test('monitor', () => adb.monitor())
@@ -58,13 +60,13 @@ async function testADB() {
 async function testAppLogic() {
   console.log('testAppLogic:')
 
-  //await test('autoBake', () => appLogic.autoBake('/appPath/', 'itemPath/', 'newItem.md'))
+  await test('autoBake', () => appLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'))
 
-  //await test('setPublishDate', () => appLogic.setPublishDate('/appPath/', 'itemPath/', 12))
+  await test('setPublishDate', () => appLogic.setPublishDate('/users/vitalii/intu-smpl', '/files', 112233132323))
 
-  //await test('clone', () => appLogic.clone('/appPath/', 'itemPath/newItem.md', 'itemPath/newItem2.md'))
+  await test('clone', () => appLogic.clone('/users/vitalii/intu-smpl', '/files', '/files2'))
 
-  //await test('setPublishDate', () => appLogic.archive('/appPath/', 'itemPath/', 'newItem.md'))
+  await test('archive', () => appLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'))
 
   console.log('//testAppLogic')
 }
