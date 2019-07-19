@@ -5,3 +5,14 @@ node_modules/
 
 *.sqlite
 
+# intu
+*-comp.js
+*-comp.min.js
+*.html
+
+/**/*.min.js
+
+/**/*.css
+
+/node-srv/*.js
+/node-srv/**/*.js
