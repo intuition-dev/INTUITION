@@ -1,0 +1,22 @@
+head
+   include headFrag
+
+body
+   p oh hi
+   c-wcomp#c1
+
+   c-wcomp#c2
+
+
+   script.
+      depp.define({'item-wcomp':'item-wcomp.js'})
+      depp.require(['poly-wcomp','c-wcomp'], function(){
+
+         // send message to comp
+         let c1 = document.getElementById('c1')
+         c1.setAttribute('bla', 2) // call to the comp's property
+ 
+         let c2 = document.getElementById('c2')
+         c2.setAttribute('bla', 2) // call to the comp's property
+ 
+      })//()
