@@ -1,31 +1,39 @@
 
+declare var depp
 
-console.log('loaded')
-// we are using 2 different technologies. Mostly Standard Web Comps. They don't have biding so we use DOT.js - but could have used mustache
+// we are using 2 different technologies. Mostly Standard Web Comps. They don't have biding so we use DOT.js or mustache
 
-var cTemp = document.createElement('template')
-cTemp.innerHTML = `
-   <b>I'm Comp DOM!</b>
-   Title
-   Image
-   href
-`
+depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
 
-window.customElements.define('c-wcomp', class extends HTMLElement {
-   sr // shadow root var
-   constructor() {
-      super()
-      console.log('cons')
+   console.log('loaded')
+   var cTemp = document.createElement('template')
+   cTemp.innerHTML = `
+      <b>I'm Comp DOM!</b>
+      Title
+      Image
+      href
+   `
 
-      this.sr = this.attachShadow({mode: 'open'})
-      this.sr.appendChild(cTemp.content.cloneNode(true))
+   window.customElements.define('c-wcomp', class extends HTMLElement {
+      sr // shadow root var
+      constructor() {
+         super()
 
-   }//cons
-      
-   //register properties w/ reflection to attributes
-   static get observedAttributes() { return ['bla'] }
-   attributeChangedCallback(aName, oldVal, newVal) { // handler
-      console.log('comp received message', aName, newVal)
-   }//()
+         console.log('cons')
 
-})//wcomp
+         this.sr = this.attachShadow({mode: 'open'})
+         this.sr.appendChild(cTemp.content.cloneNode(true))
+
+      }//cons
+         
+      //register properties w/ reflection to attributes
+      static get observedAttributes() { return ['title','image','href'] }
+      attributeChangedCallback(aName, oldVal, newVal) { // handler
+
+         console.log('comp received message', aName, newVal)
+
+      }//()
+
+   })//wcomp
+
+})// reqs
