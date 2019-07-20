@@ -1,0 +1,64 @@
+
+extends /layout/itemLayout
+
+block main
+    p
+    p oh hi
+
+    .row
+        .col-sm
+           img.float-right(src='know-b.jpg')
+
+        .col-sm
+            p Buy
+            snipcart(data-api-key='MDM3MmIzZGUtYjUyZC00NjhjLWIwYmQtODE2NGI0NDM1MDRjNjM2OTE4MzUyMzc4NzIxNjYx')
+                button.snipcart-checkout Click here to checkout
+
+    p
+
+    hr
+    .row
+        .col-sm
+            .car-cont
+                .car
+                    div
+                        h3 1
+                    div
+                        h3 2
+                    div
+                        h3 3
+        .col-sm
+            p side
+
+    script.
+        depp.require('depps', function(){
+            setupPg()
+        })
+        function setupPg() {
+            $('.car').slick({
+                dots: true,
+                centerMode: true,
+                autoplay: true,
+                autoplaySpeed: 1500,
+
+                fade: true,
+                focusOnSelect: true
+            })
+
+            console.log('pg')
+        }//()
+
+    style.
+        .car-cont {
+            margin: 0 auto;
+            padding: 40px;
+            width: 80%;
+            color: #333;
+            background: #419be0;
+        }
+
+        .car {
+            text-align: center;
+            color: #419be0;
+            background: white;
+        }
