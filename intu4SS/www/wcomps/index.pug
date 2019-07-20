@@ -3,25 +3,36 @@ head
 
 body
    p oh hi
-   c-wcomp#c1
+   item-wcomp#c1
 
    br
 
-   c-wcomp#c2
+   item-wcomp#c2
+
+
+   a(href='')
+      Title ='a'
+      img(src='image.png')
 
 
    script.
-      depp.define({'item-wcomp':'item-wcomp.js'})
+
+      function setAttrD(id, obj) {
+         let c1 = document.getElementById('c1')
+         c1.setAttribute('data', JSON.stringify(obj))
+      }
+
+      depp.define({'xitem-wcomp':'item-wcomp.js'})
 
       depp.require(['item-wcomp'], function(){
          console.log('ready')
 
          // send message to comp
-         let c1 = document.getElementById('c1')
-         c1.setAttribute('title', 1) // call to the comp's property
- 
-         let c2 = document.getElementById('c2')
-         c2.setAttribute('image', 2) // call to the comp's property
-         c2.setAttribute('href', 2) // call to the comp's property
- 
+         let d1 = {
+            title:' good'
+            ,image:'yes'
+            ,url: 'ok'
+         }
+         setAttrD('c1', d1)
+
       })//()

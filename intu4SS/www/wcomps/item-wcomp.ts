@@ -1,8 +1,7 @@
 
 declare var depp
 declare var Mustache
-
-// we are using 2 different technologies. Mostly Standard Web Comps. They don't have biding so we use DOT.js or mustache
+// we are using 2 different technologies. Mostly Standard Web Comps. They don't have biding so we use DOT.js. or Mustache
 
 depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
 
@@ -15,8 +14,8 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
       href
       Hello {{ Title }}
    `
-
-   window.customElements.define('c-wcomp', class extends HTMLElement {
+   
+   window.customElements.define('item-wcomp', class extends HTMLElement {
       sr // shadow root var
       tmpl // binding template
       constructor() {
@@ -31,20 +30,18 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
       }//cons
 
       //register properties w/ reflection to attributes
-      static get observedAttributes() { return ['title','image','href'] }
+      static get observedAttributes() { return ['data'] }
       attributeChangedCallback(aName, oldVal, newVal) { // handler
-         console.log('comp received message', aName, newVal)
-         //binding:
-         switch(aName) {
-            case 'title':
-               var rendered = Mustache.render(this.tmpl, {Title: newVal})
-               //console.log(newVal, rendered)
-               this.sr.innerHTML = rendered     
-               break
-            case 'image':
-            case 'href':
-         }
-   
+         console.log(aName, newVal)
+
+         if('data'==aName) {
+           let data = JSON.parse(newVal)
+            
+            var rendered = Mustache.render(this.tmpl, {Title: data.title})
+            //console.log(newVal, rendered)
+            this.sr.innerHTML = rendered     
+
+         }//fi
 
       }//()
    })//wcomp
