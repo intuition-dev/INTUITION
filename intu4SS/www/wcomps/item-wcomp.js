@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 depp.require(['poly-wcomp', 'mustache'], function () {
     console.log('loaded');
     var cTemp = document.createElement('template');
-    cTemp.innerHTML = "\n      <b>I'm Comp DOM!</b>\n      Title\n      Image\n      href\n   ";
+    cTemp.innerHTML = "\n      <b>I'm Comp DOM!</b>\n      Title\n      Image\n      href\n      Hello {{ Title }}\n\n   ";
     window.customElements.define('c-wcomp', (function (_super) {
         __extends(class_1, _super);
         function class_1() {
@@ -22,6 +22,7 @@ depp.require(['poly-wcomp', 'mustache'], function () {
             console.log('cons');
             _this.sr = _this.attachShadow({ mode: 'open' });
             _this.sr.appendChild(cTemp.content.cloneNode(true));
+            _this.tmpl = cTemp.innerHTML;
             return _this;
         }
         Object.defineProperty(class_1, "observedAttributes", {
@@ -31,6 +32,11 @@ depp.require(['poly-wcomp', 'mustache'], function () {
         });
         class_1.prototype.attributeChangedCallback = function (aName, oldVal, newVal) {
             console.log('comp received message', aName, newVal);
+            if ('title' == aName) {
+                var rendered = Mustache.render(this.tmpl, { title: newVal });
+                console.log(rendered);
+                this.sr.innerHTML = rendered;
+            }
         };
         return class_1;
     }(HTMLElement)));
