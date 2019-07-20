@@ -1,7 +1,12 @@
 
-import { IntuApp } from 'intu/node-srv/IntuSrv';
-import { ADB } from 'intu/node-srv/lib/ADB';
+import { IntuApp } from 'intu/node-srv/IntuSrv'
+import { SDB } from './lib/SDB'
+import { SnipHook } from './lib/SnipHook';
 
-const adbDB = new ADB()
-let app = new IntuApp(adbDB, ['*'])
+const db = new SDB()
+const app = new IntuApp(db, ['*'])
 // app starts ////////////////////////////////////
+
+// single port:
+const snipHook = new SnipHook(db) 
+app.appInst.post('/api/snipHook/', snipHook.handleWebHook)

@@ -2,12 +2,18 @@
 const request = require('request')
 
 
-// reqruite to be simple, no shipping, using axios, make into class
+// rewrite to be simple, no shipping, using superagent, make into class
 // just ship
 
-export function init(mainApp, name, adbDB) {
+export class SnipHook {
 
-   mainApp.post('/api/shipping/' + name, function (req, res) {
+   db
+
+   constructor(db) {
+      this.db = db
+   }
+
+   handleWebHook(req, res) {
       console.log("TCL: init -> name", name)
 
       const method = req.fields.mode
@@ -35,7 +41,7 @@ export function init(mainApp, name, adbDB) {
          resp.ispacked = false
          console.log(resp)
 
-         adbDB.getPrintfulAPI()
+         this.db.getPrintfulAPI()
             .then(function (printfulApiID) {
                console.log("TCL: init -> printfulApiID", printfulApiID)
                const printfulAPI = printfulApiID[0].printfulApi
@@ -111,9 +117,9 @@ export function init(mainApp, name, adbDB) {
          res.json(resp)
       }
 
-   });
+   }
 }
 
 module.exports = {
-   
+   SnipHook
 }

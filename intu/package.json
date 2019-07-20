@@ -15,7 +15,6 @@
         "yarn": ">=1.17.3"
     },
     "dependencies": {
-        "axios": ">=0.19.0",
         "bcryptjs": ">=2.4.3",
         "bunyan": ">=1.8.12",
         "express-fileupload": ">=1.1.5",
@@ -27,7 +26,8 @@
         "mbake": "^6.7.25",
         "mbake-x": "^1.7.17",
         "perfy": ">=1.1.5",
-        "sqlite3": ">=4.0.9"
+        "sqlite3": ">=4.0.9",
+        "superagent": ">=5.1.0"
     },
     "devDependencies": {
         "@types/node": ">=12.6.8"
