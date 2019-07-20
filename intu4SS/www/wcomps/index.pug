@@ -2,18 +2,22 @@ head
    include headFrag
 
 body
-   p oh hi
-   item-wcomp#c1
+   .container
+      p oh hi ?
+      hr
+      item-wcomp#c1
 
-   br
+      br
 
-   item-wcomp#c2
+      item-wcomp#c2
 
 
-   a(href='')
-      Title ='a'
-      img(src='image.png')
-
+      a(href='')
+         .card(style='max-width:400px')
+            img.card-img-top(src='image.png')
+            .card-footer
+               p Title ='a'
+      
 
    script.
 
@@ -36,3 +40,9 @@ body
          setAttrD('c1', d1)
 
       })//()
+
+      depp.require(['FontsLoaded', 'bsDefaultStyle'], function() {
+         console.log('styles', Date.now() - _start)
+      }) 
+
+
