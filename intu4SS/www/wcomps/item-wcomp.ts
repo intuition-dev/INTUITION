@@ -14,12 +14,11 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
       Image
       href
       Hello {{ Title }}
-
    `
 
    window.customElements.define('c-wcomp', class extends HTMLElement {
       sr // shadow root var
-      tmpl // db template
+      tmpl // binding template
       constructor() {
          super()
 
@@ -34,16 +33,20 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
       //register properties w/ reflection to attributes
       static get observedAttributes() { return ['title','image','href'] }
       attributeChangedCallback(aName, oldVal, newVal) { // handler
-
          console.log('comp received message', aName, newVal)
-         if('title'==aName) {
-            var rendered = Mustache.render(this.tmpl, {title: newVal})
-            console.log(rendered)
-            this.sr.innerHTML = rendered
-         }//()
+         //binding:
+         switch(aName) {
+            case 'title':
+               var rendered = Mustache.render(this.tmpl, {Title: newVal})
+               //console.log(newVal, rendered)
+               this.sr.innerHTML = rendered     
+               break
+            case 'image':
+            case 'href':
+         }
+   
 
       }//()
-
    })//wcomp
 
 })// reqs
