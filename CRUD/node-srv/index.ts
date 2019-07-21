@@ -1,7 +1,7 @@
 
 import { CrudPgRouter } from './routes/Routers'
 
-import { IntuApp } from 'intu/node-srv/IntuSrv'
+import { IntuApp } from '../node-modules/intu/node-srv/IntuSrv'
 import { ADB } from 'intu/node-srv/lib/ADB'
 
 const adbDB = new ADB()
