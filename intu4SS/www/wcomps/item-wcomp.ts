@@ -9,6 +9,18 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
    var cTemp = document.createElement('template')
    cTemp.innerHTML = `
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrapTop.css">
+      <a href="{{url}}">
+      <div class="card" style="max-width:400px">
+         <img class="card-img-top"  />
+         <div class="card-footer">
+            <p>{{title}}</p>
+         </div>
+      </div>
+      </a>
+   `
+   var c2Temp = document.createElement('template')
+   c2Temp.innerHTML = `
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrapTop.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrap.css">
       <a href="{{url}}">
       <div class="card" style="max-width:400px">
@@ -30,7 +42,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
 
          this.sr = this.attachShadow({mode: 'open'})
          this.sr.appendChild(cTemp.content.cloneNode(true))
-         this.tmpl =cTemp.innerHTML
+         this.tmpl =c2Temp.innerHTML
 
       }//cons
 
@@ -41,9 +53,8 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
 
          if('data'==aName) {
            let data = JSON.parse(newVal)
-            
             var rendered = Mustache.render(this.tmpl, {title: data.title, url: data.url, image: data.image})
-            //console.log(newVal, rendered)
+            //console.log(rendered)
             this.sr.innerHTML = rendered     
 
          }//fi

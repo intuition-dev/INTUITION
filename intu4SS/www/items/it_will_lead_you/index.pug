@@ -7,7 +7,7 @@ block main
 
     .row
         .col-sm
-           img.float-right(src='know-b.jpg')
+           img.float-right.img-fluid(src='image.png')
 
         .col-sm
             p Buy
@@ -16,49 +16,12 @@ block main
 
     p
 
-    hr
-    .row
-        .col-sm
-            .car-cont
-                .car
-                    div
-                        h3 1
-                    div
-                        h3 2
-                    div
-                        h3 3
-        .col-sm
-            p side
 
     script.
         depp.require('depps', function(){
             setupPg()
         })
         function setupPg() {
-            $('.car').slick({
-                dots: true,
-                centerMode: true,
-                autoplay: true,
-                autoplaySpeed: 1500,
-
-                fade: true,
-                focusOnSelect: true
-            })
-
-            console.log('pg')
+          
         }//()
 
-    style.
-        .car-cont {
-            margin: 0 auto;
-            padding: 40px;
-            width: 80%;
-            color: #333;
-            background: #419be0;
-        }
-
-        .car {
-            text-align: center;
-            color: #419be0;
-            background: white;
-        }
