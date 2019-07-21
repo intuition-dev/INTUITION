@@ -17,49 +17,29 @@ block main
     script.
         console.log('oh hi')
 
-        //add element defer
-        function addElementDe(parentEl, elName, id) {
-            var el = document.createElement(elName)
-            el.id=id
-            setTimeout(function(){
-                parentEl.appendChild(el)
-            },1)
-            return el
-        }//()
-
         // binding step 1:
         addE1Listener('fetchItems', onGotData)
         // binding step 2:
-        function onGotData(evt) { // TODO: remove items here
-            var items = evt.items
+        function onGotData(evt) { 
             console.log(items)
-            depp.require(['item-wcomp'], function(){
-                bind(items)
+            depp.require(['item-wcomp'], function(){ //both data and UI is ready
+                bind(evt)
             })
         }//()
 
         function bind(items) {
             var item = items.items
-
-            //'prefix'
-            var len = item.length
-            for(var i = 0; i < len; i++) {
-                item[i]['prefix'] = items.prefix
-            }
-
             console.log(item)
 
             var parent = document.getElementById('items')
 
+            // can iterate
             setAttrDa(addElementDe(parent,'item-wcomp', 'c0'), item[0]) 
             setAttrDa(addElementDe(parent,'item-wcomp', 'c1'), item[1]) 
             setAttrDa(addElementDe(parent,'item-wcomp', 'c2'), item[2]) 
             setAttrDa(addElementDe(parent,'item-wcomp', 'c3'), item[3]) 
     
         }//()
+
+        // in theory, you can add ui of 1 blank element while data is coming
      
-        //set data
-        function setAttrDa(el, obj) {
-            var clone = JSON.parse(JSON.stringify(obj))
-            el.setAttribute('data', JSON.stringify(clone))
-        }//()

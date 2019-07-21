@@ -64,7 +64,7 @@ website's content. But it will remove all the editor: you have to add them again
 
 # API for MetaBake and WebAdmin
 
-Check here https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.9/toolBelt/toolBelt.js
+Check here https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.10/toolBelt/toolBelt.js
 
 
 # Links
