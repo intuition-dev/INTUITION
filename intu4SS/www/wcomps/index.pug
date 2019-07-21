@@ -6,16 +6,22 @@ body
       p oh hi ?
       p
 
-      tem-wcomp#c1
+      item-wcomp#c1
       br
 
       item-wcomp#c2
 
+      p
+      br
+      p
    script.
 
-      function setAttrD(id, obj) {
-         let c1 = document.getElementById('c1')
-         c1.setAttribute('data', JSON.stringify(obj))
+      function setAttrD1(id, obj) {
+         var clone = JSON.parse(JSON.stringify(obj))
+         let c1 = document.getElementById(id)
+         setTimeout(function(){
+            c1.setAttribute('data', JSON.stringify(clone))
+         },1)
       }
 
       depp.define({'item-wcomp':'item-wcomp.js'})
@@ -26,12 +32,12 @@ body
          // send message to comp
          let d1 = {
             title:' good'
-            ,image:'yes'
-            ,url: 'ok'
+            ,image:'image.png'
+            ,url: 'http://www.google.com'
          }
-         setAttrD('c1', d1)
+         setAttrD1('c1', d1)
 
-         setAttrD('c2', d1)
+         setAttrD1('c2', d1)
 
       })//()
 

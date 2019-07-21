@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 depp.require(['poly-wcomp', 'mustache'], function () {
     console.log('loaded');
     var cTemp = document.createElement('template');
-    cTemp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrapTop.css\">\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrap.css\">\n      <a href=\"\">\n      <div class=\"card\" style=\"max-width:400px\">\n         <img class=\"card-img-top\" src=\"image.png\"/>\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n   ";
+    cTemp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrapTop.css\">\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrap.css\">\n      <a href=\"{{url}}\">\n      <div class=\"card\" style=\"max-width:400px\">\n         <img class=\"card-img-top\" src=\"{{image}}\"/>\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n   ";
     window.customElements.define('item-wcomp', (function (_super) {
         __extends(class_1, _super);
         function class_1() {
@@ -34,7 +34,7 @@ depp.require(['poly-wcomp', 'mustache'], function () {
             console.log(aName, newVal);
             if ('data' == aName) {
                 var data = JSON.parse(newVal);
-                var rendered = Mustache.render(this.tmpl, { Title: data.title });
+                var rendered = Mustache.render(this.tmpl, { title: data.title, url: data.url, image: data.image });
                 this.sr.innerHTML = rendered;
             }
         };

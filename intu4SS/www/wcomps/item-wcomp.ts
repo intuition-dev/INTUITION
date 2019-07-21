@@ -10,9 +10,9 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
    cTemp.innerHTML = `
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrapTop.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrap.css">
-      <a href="">
+      <a href="{{url}}">
       <div class="card" style="max-width:400px">
-         <img class="card-img-top" src="image.png"/>
+         <img class="card-img-top" src="{{image}}"/>
          <div class="card-footer">
             <p>{{title}}</p>
          </div>
@@ -42,7 +42,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          if('data'==aName) {
            let data = JSON.parse(newVal)
             
-            var rendered = Mustache.render(this.tmpl, {Title: data.title})
+            var rendered = Mustache.render(this.tmpl, {title: data.title, url: data.url, image: data.image})
             //console.log(newVal, rendered)
             this.sr.innerHTML = rendered     
 
