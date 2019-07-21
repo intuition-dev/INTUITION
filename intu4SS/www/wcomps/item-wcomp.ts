@@ -51,11 +51,10 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          if('data'==aName) {
             const THIZ = this
             let data = JSON.parse(newVal)
-            var rendered = Mustache.render(this.tmpl, {title: data.title, url: data.url, image: data.image})
+            let image = data.prefix+data.url+'/'+data.image
+            var rendered = Mustache.render(this.tmpl, {title: data.title, url: data.url, image: image})
             //console.log(rendered)
-            setTimeout(function(){
-               THIZ.sr.innerHTML = rendered     
-            },1)
+            THIZ.sr.innerHTML = rendered     
          }//fi
       }//()
    })//wcomp

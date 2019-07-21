@@ -17,9 +17,13 @@ block main
     script.
         console.log('oh hi')
 
-        function addElement(parentEl, elName, id) {
+        //add element defer
+        function addElementDe(parentEl, elName, id) {
             var el = document.createElement(elName)
-            parentEl.appendChild(el)
+            el.id=id
+            setTimeout(function(){
+                parentEl.appendChild(el)
+            },1)
             return el
         }//()
 
@@ -27,7 +31,7 @@ block main
         addE1Listener('fetchItems', onGotData)
         // binding step 2:
         function onGotData(evt) { // TODO: remove items here
-            var items = evt.items.items
+            var items = evt.items
             console.log(items)
             depp.require(['item-wcomp'], function(){
                 bind(items)
@@ -35,14 +39,25 @@ block main
         }//()
 
         function bind(items) {
+            var item = items.items
+
+            //'prefix'
+            var len = item.length
+            for(var i = 0; i < len; i++) {
+                item[i]['prefix'] = items.prefix
+            }
+
+            console.log(item)
+
             var parent = document.getElementById('items')
- 
-            setAttrD1(addElement(parent,'item-wcomp', 'c1'), items[0]) 
-            setAttrD1(addElement(parent,'item-wcomp', 'c2'), items[1]) 
-            
+
+            setAttrDa(addElementDe(parent,'item-wcomp', 'c1'), item[0]) 
+            setAttrDa(addElementDe(parent,'item-wcomp', 'c2'), item[1]) 
+    
         }//()
      
-        function setAttrD1(el, obj) {
+        //set data
+        function setAttrDa(el, obj) {
             var clone = JSON.parse(JSON.stringify(obj))
             el.setAttribute('data', JSON.stringify(clone))
         }//()
