@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 depp.require(['poly-wcomp', 'mustache'], function () {
     console.log('loaded');
     var cTemp = document.createElement('template');
-    cTemp.innerHTML = "\n      <b>I'm Comp DOM!</b>\n      Title\n      Image\n      href\n      Hello {{ Title }}\n   ";
+    cTemp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrapTop.css\">\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrap.css\">\n      <a href=\"\">\n      <div class=\"card\" style=\"max-width:400px\">\n         <img class=\"card-img-top\" src=\"image.png\"/>\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n   ";
     window.customElements.define('item-wcomp', (function (_super) {
         __extends(class_1, _super);
         function class_1() {

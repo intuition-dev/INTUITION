@@ -4,20 +4,12 @@ head
 body
    .container
       p oh hi ?
-      hr
-      item-wcomp#c1
+      p
 
+      tem-wcomp#c1
       br
 
       item-wcomp#c2
-
-
-      a(href='')
-         .card(style='max-width:400px')
-            img.card-img-top(src='image.png')
-            .card-footer
-               p Title ='a'
-      
 
    script.
 
@@ -26,7 +18,7 @@ body
          c1.setAttribute('data', JSON.stringify(obj))
       }
 
-      depp.define({'xitem-wcomp':'item-wcomp.js'})
+      depp.define({'item-wcomp':'item-wcomp.js'})
 
       depp.require(['item-wcomp'], function(){
          console.log('ready')
@@ -38,6 +30,8 @@ body
             ,url: 'ok'
          }
          setAttrD('c1', d1)
+
+         setAttrD('c2', d1)
 
       })//()
 

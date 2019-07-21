@@ -8,11 +8,16 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
    console.log('loaded')
    var cTemp = document.createElement('template')
    cTemp.innerHTML = `
-      <b>I'm Comp DOM!</b>
-      Title
-      Image
-      href
-      Hello {{ Title }}
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrap.css">
+      <a href="">
+      <div class="card" style="max-width:400px">
+         <img class="card-img-top" src="image.png"/>
+         <div class="card-footer">
+            <p>{{title}}</p>
+         </div>
+      </div>
+      </a>
    `
    
    window.customElements.define('item-wcomp', class extends HTMLElement {
