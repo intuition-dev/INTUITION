@@ -1,10 +1,8 @@
 
-import { ExpressRPC } from 'mbake/lib/Serv'
 import { CrudPgRouter } from './routes/Routers'
 
-
-import { IntuApp } from 'intu/node-srv/IntuSrv';
-import { ADB } from 'intu/node-srv/lib/ADB';
+import { IntuApp } from 'intu/node-srv/IntuSrv'
+import { ADB } from 'intu/node-srv/lib/ADB'
 
 const adbDB = new ADB()
 const mainEApp = new IntuApp(adbDB, ['*'])
@@ -26,7 +24,6 @@ mainEApp.handleRRoute('api', 'CRUD1Pg', cRouter.route.bind(cRouter))
 // write first
 mainEApp.serveStatic('../www')
 
-
 //catch all
 mainEApp.appInst.all('*', function (req, resp) {
    const path = req.path
@@ -38,5 +35,3 @@ mainEApp.appInst.all('*', function (req, resp) {
 mainEApp.appInst.listen(8888, () => {
    console.info('server running on port: 8888')
 })
-
-
