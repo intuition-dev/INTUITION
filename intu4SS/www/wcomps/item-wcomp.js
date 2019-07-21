@@ -35,11 +35,12 @@ depp.require(['poly-wcomp', 'mustache'], function () {
         class_1.prototype.attributeChangedCallback = function (aName, oldVal, newVal) {
             console.log(aName, newVal);
             if ('data' == aName) {
+                var THIZ_1 = this;
                 var data = JSON.parse(newVal);
                 var rendered = Mustache.render(this.tmpl, { title: data.title, url: data.url, image: data.image });
                 setTimeout(function () {
-                    this.sr.innerHTML = rendered;
-                }, 0);
+                    THIZ_1.sr.innerHTML = rendered;
+                }, 1);
             }
         };
         return class_1;

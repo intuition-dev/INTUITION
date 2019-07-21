@@ -16,11 +16,10 @@ block main
 
     script.
         console.log('oh hi')
-        function addElement(parentEl, elName) {
+
+        function addElement(parentEl, elName, id) {
             var el = document.createElement(elName)
-            setTimeout(function(){
-                parentEl.appendChild(el)
-            },1)
+            parentEl.appendChild(el)
             return el
         }//()
 
@@ -37,7 +36,13 @@ block main
 
         function bind(items) {
             var parent = document.getElementById('items')
-            addElement(parent,'item-wcomp')
-            addElement(parent,'item-wcomp')
-        }
+ 
+            setAttrD1(addElement(parent,'item-wcomp', 'c1'), items[0]) 
+            setAttrD1(addElement(parent,'item-wcomp', 'c2'), items[1]) 
+            
+        }//()
      
+        function setAttrD1(el, obj) {
+            var clone = JSON.parse(JSON.stringify(obj))
+            el.setAttribute('data', JSON.stringify(clone))
+        }//()
