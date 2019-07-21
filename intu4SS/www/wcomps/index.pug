@@ -16,14 +16,6 @@ body
       p
    script.
 
-      function setAttrD1(id, obj) {
-         var clone = JSON.parse(JSON.stringify(obj))
-         let c1 = document.getElementById(id)
-         setTimeout(function(){
-            c1.setAttribute('data', JSON.stringify(clone))
-         },1)
-      }
-
       depp.define({'item-wcomp':'item-wcomp.js'})
 
       depp.require(['item-wcomp'], function(){
@@ -35,9 +27,9 @@ body
             ,image:'image.png'
             ,url: 'http://www.google.com'
          }
-         setAttrD1('c1', d1)
+         setAttrD('c1', d1)
 
-         setAttrD1('c2', d1)
+         setAttrD('c2', d1)
 
       })//()
 

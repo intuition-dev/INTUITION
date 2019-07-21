@@ -37,13 +37,10 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
       tmpl // binding template
       constructor() {
          super()
-
          console.log('cons')
-
          this.sr = this.attachShadow({mode: 'open'})
          this.sr.appendChild(cTemp.content.cloneNode(true))
          this.tmpl =c2Temp.innerHTML
-
       }//cons
 
       //register properties w/ reflection to attributes
@@ -55,10 +52,10 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
            let data = JSON.parse(newVal)
             var rendered = Mustache.render(this.tmpl, {title: data.title, url: data.url, image: data.image})
             //console.log(rendered)
-            this.sr.innerHTML = rendered     
-
+            setTimeout(function(){
+               this.sr.innerHTML = rendered     
+            },0)// render others
          }//fi
-
       }//()
    })//wcomp
 

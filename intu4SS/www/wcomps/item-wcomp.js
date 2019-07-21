@@ -37,7 +37,9 @@ depp.require(['poly-wcomp', 'mustache'], function () {
             if ('data' == aName) {
                 var data = JSON.parse(newVal);
                 var rendered = Mustache.render(this.tmpl, { title: data.title, url: data.url, image: data.image });
-                this.sr.innerHTML = rendered;
+                setTimeout(function () {
+                    this.sr.innerHTML = rendered;
+                }, 0);
             }
         };
         return class_1;
