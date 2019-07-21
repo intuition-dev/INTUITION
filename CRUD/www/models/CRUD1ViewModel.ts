@@ -4,7 +4,7 @@ declare var depp:any
 declare var $:any
 declare var disE1:any
 declare var httpRPC:any
-declare var GUID: any
+declare var getGUID: any
 
 console.log('VM')
 // required dependencies  are in each script
@@ -70,7 +70,6 @@ class CRUDvm {
          console.log('err', err)
       })
    }//()
-
 
    validate():string {
       return 'OK'

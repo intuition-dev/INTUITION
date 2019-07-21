@@ -8,7 +8,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
    console.log('loaded')
    var cTemp = document.createElement('template')
    cTemp.innerHTML = `
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.9/bootStrap/css/bootstrapTop.css">
       <a href="{{url}}">
       <div class="card" style="max-width:400px">
          <img class="card-img-top"  />
@@ -20,8 +20,8 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
    `
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrapTop.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.8/bootStrap/css/bootstrap.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.9/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.9/bootStrap/css/bootstrap.css">
       <a href="{{url}}">
       <div class="card" style="max-width:400px">
          <img class="card-img-top" src="{{image}}"/>

@@ -1,9 +1,24 @@
 
 extends /layout/itemLayout
 
+block head2
+    script.
+        console.log('fetch data')
+        var pro = fetchItems('/items/items.json')
+
+
 block main
 
     p oh hi
 
     script.
         console.log('oh hi')
+
+        // binding step 1:
+        addE1Listener('fetchItems', onGotData)
+
+        // binding step 2:
+        function onGotData(evt) {
+            console.log(evt)
+
+        }//()
