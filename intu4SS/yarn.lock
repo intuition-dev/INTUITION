@@ -2844,12 +2844,11 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-intu@>=0.17.16:
-  version "0.17.16"
-  resolved "https://registry.yarnpkg.com/intu/-/intu-0.17.16.tgz#6a5932d6e8e24d02a9572f14b6631ad13e929e9a"
-  integrity sha512-sZeVpZvxRvUAqyDLmI82+u5LLFYsBzeBSgAZT+4MUFMo+fglxWk8Pz4G4kOiRYcKdG4nns62o93pwzm7DXPGNg==
+intu@>=0.17.18:
+  version "0.17.18"
+  resolved "https://registry.yarnpkg.com/intu/-/intu-0.17.18.tgz#d436c5fa65bb19fa102059c92012e1e380c494f6"
+  integrity sha512-NIOkugHGV5J8xiN4MsjSssIb2Y8AmsJMk14hr4jor/oElqxRnECoP/AXFH2yZjsw/gmW3Py5HW1rern74fV13g==
   dependencies:
-    axios ">=0.19.0"
     bcryptjs ">=2.4.3"
     bunyan ">=1.8.12"
     express-fileupload ">=1.1.5"
@@ -2862,6 +2861,7 @@ intu@>=0.17.16:
     mbake-x "^1.7.17"
     perfy ">=1.1.5"
     sqlite3 ">=4.0.9"
+    superagent ">=5.1.0"
 
 inversify@4.13.0:
   version "4.13.0"

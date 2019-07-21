@@ -7,7 +7,7 @@
   "scripts": {},
   "author": "",
   "dependencies": {
-    "intu": ">=0.17.16",
+    "intu": ">=0.17.18",
     "is": ">=3.3.0",
     "perfy": ">=1.1.5",
     "pubnub": ">=4.24.3",

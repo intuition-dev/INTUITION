@@ -2754,10 +2754,10 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-intu@>=0.17.17:
-  version "0.17.17"
-  resolved "https://registry.yarnpkg.com/intu/-/intu-0.17.17.tgz#ca8433929469b97fcf361499832f33b9ded7e876"
-  integrity sha512-phDB4MdmHL6VHAs81sRYwTlCM5gr5zjLoKERKRp/mMwmYQURCh++09MuUi9iNrtTlEjwvyZBprWgLqo6O1fc4w==
+intu@>=0.17.18:
+  version "0.17.18"
+  resolved "https://registry.yarnpkg.com/intu/-/intu-0.17.18.tgz#d436c5fa65bb19fa102059c92012e1e380c494f6"
+  integrity sha512-NIOkugHGV5J8xiN4MsjSssIb2Y8AmsJMk14hr4jor/oElqxRnECoP/AXFH2yZjsw/gmW3Py5HW1rern74fV13g==
   dependencies:
     bcryptjs ">=2.4.3"
     bunyan ">=1.8.12"
