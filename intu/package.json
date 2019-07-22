@@ -3,15 +3,16 @@
     "version": "0.17.21",
     "description": "'It will lead YOU in the right direction'. WebAdmin 'Intuition' screens to CMS, e-Com, et al. ",
     "main": "index.js",
-    "scripts": {
-        "start": "node node_modules/intu/index.js"
-    },
     "bin": {
         "intu": "./node-srv/index.js"
     },
+    "scripts": {
+        "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
+    },
     "license": "LGPL-3.0-only",
     "engines": {
-        "node": ">=10.16.0"
+        "node": ">=10.16.0",
+        "npm": ">=6.10.1"
     },
     "dependencies": {
         "bcryptjs": ">=2.4.3",
