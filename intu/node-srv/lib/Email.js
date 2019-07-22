@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const axios_1 = require("axios");
-class Email {
-    send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) {
+var axios_1 = require("axios");
+var Email = (function () {
+    function Email() {
+    }
+    Email.prototype.send = function (email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) {
         email = Buffer.from(email, 'base64').toString();
         console.log('email --->  ', email);
         axios_1.default.post('https://api.emailjs.com/api/v1.0/email/send', {
@@ -15,15 +17,16 @@ class Email {
                 email_to: email
             }
         })
-            .then(res => {
+            .then(function (res) {
             console.info('Email has been sent. Result', res);
         })
-            .catch(err => {
+            .catch(function (err) {
             console.log('send mail error: ', err);
         });
-    }
-}
+    };
+    return Email;
+}());
 exports.Email = Email;
 module.exports = {
-    Email
+    Email: Email
 };

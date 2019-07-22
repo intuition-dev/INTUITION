@@ -1,6 +1,6 @@
 {
     "name": "intu",
-    "version": "0.17.19",
+    "version": "0.17.20",
     "description": "'It will lead YOU in the right direction'. WebAdmin 'Intuition' screens to CMS, e-Com, et al. ",
     "main": "index.js",
     "scripts": {
@@ -21,7 +21,7 @@
         "ip": ">=1.1.5",
         "is": ">=3.3.0",
         "js-yaml": ">=3.13.1",
-        "mbake": "^6.7.25",
+        "mbake": "^6.7.26",
         "perfy": ">=1.1.5",
         "sqlite3": ">=4.0.9",
         "superagent": ">=5.1.0"
