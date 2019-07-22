@@ -1,6 +1,5 @@
 
-like CMS but with pictures of items for sale.
+<img src="http://MetaBake.github.io/mbakeDocs/logo.jpg" width="100">
 
-## Configs needed
+Like CMS but with items for sale.
 
-**add config.yaml to the shippingAPI with your printful api**

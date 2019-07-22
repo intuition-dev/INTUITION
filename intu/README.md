@@ -30,6 +30,9 @@ https://metabake.github.io/metaDocs
 ## Short Installation
 
 
+<img src="http://MetaBake.github.io/mbakeDocs/logo.jpg" width="100">
+
+
 1. Before you run, create free [emailJs](https://www.emailjs.com) account: so Meta Intuition accounts can be validated via email.
 Also create a email template, and note your emailJs `user_id` and `template_id`, needed to send emails to users.
 
