@@ -2,8 +2,8 @@
 // All rights reserved by MetaBake.org | Cekvenich, licensed under LGPL 3.0
 
 import commandLineArgs = require('command-line-args')
-import AdmZip = require('adm-zip')
 import { ADB } from './lib/ADB'
+import { Download } from 'mbake/lib/FileOpsExtra';
 
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
@@ -18,16 +18,12 @@ let arg: string = argsParsed.mbake
 const cwd: string = process.cwd()
 
 function unzipSS() {
-    let src: string = __dirname + '/PGap.zip'
-    let zip = new AdmZip(src)
-    zip.extractAllTo(cwd, /*overwrite*/true)
-    console.info('Extracting a starter Phonegap app to ./PG')
+    new Download('intu4SS', cwd).auto()
+    console.info('Extracted a starter Ship and Shop app')
  }
 function unzipC() {
-    let src: string = __dirname + '/PGap.zip'
-    let zip = new AdmZip(src)
-    zip.extractAllTo(cwd, /*overwrite*/true)
-    console.info('Extracting a starter Phonegap app to ./PG')
+    new Download('CRUD', cwd).auto()
+    console.info('Extracted a starter CRUD app')
 }
 function run() {
 
@@ -37,13 +33,17 @@ function help() {
     console.info('intu version: ' + ADB.veri())
     console.info()
     console.info('Usage:')
-    console.info('  To process any_dir Pug to html recursively:                 mbake .')
+    console.info('  To run:                                                intu')
+    console.info('  For starter CRUD app:                                  intu -c')
+    console.info('  For an example of an e-commerce (shop and ship) app:   intu -s')
  
 }
 
  // start: /////////////////////////////////////////////////////////////////////////////////////
 if (argsParsed.CRUD)
     unzipC()
+if (argsParsed.help)
+    help()
 else if (argsParsed.ShopShip) 
     unzipSS()
 else
