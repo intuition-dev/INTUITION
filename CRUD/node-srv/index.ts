@@ -21,7 +21,7 @@ mainEApp.serveStatic('../ed')
 const cRouter = new CrudPgRouter()
 mainEApp.handleRRoute('api', 'CRUD1Pg', cRouter.route.bind(cRouter))
 
-// write first
+//boiler plater
 mainEApp.serveStatic('../www')
 
 //catch all
