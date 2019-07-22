@@ -22,8 +22,8 @@
 
     install:
     ```sh
-    $ yarn global add mbake
-    $ yarn global add mbake-x
+    $ npm i -gmbake
+    $ npm i -gmbake-x
     ```
 
     You can download some starter examples, eg: 

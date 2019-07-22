@@ -5,8 +5,7 @@
   "private": true,
   "main": "index.js",
   "engines": {
-    "node": ">=10.16.0",
-    "yarn": ">=1.17.3"
+    "node": ">=10.16.0"
   },
   "dependencies": {
     "bunyan": ">=1.8.12",
