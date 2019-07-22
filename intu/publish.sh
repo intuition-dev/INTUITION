@@ -1,5 +1,5 @@
 ncu
-yarn
+npm update
 cd node-srv
 tsc
 cd ..
