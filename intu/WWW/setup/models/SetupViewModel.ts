@@ -1,20 +1,17 @@
-
 class SetupViewModel {
 
-    intuAPI
-    
-    setAdminEmail(email) {
+    services: any;
 
-    }
-    setAdminPswd(psw) {
+    constructor() {
+        this.services = new IntuAPI();
+    };
 
-    }
+    createConfig(form) {
+        return this.services.createConfig(form);
+    };
 
-    setEmailJs(emailSID, emailTID, emailUID) {
+    deleteTable() {
+        this.services.deleteTables();
+    };
 
-    }
-
-    save() {
-
-    }
 }
