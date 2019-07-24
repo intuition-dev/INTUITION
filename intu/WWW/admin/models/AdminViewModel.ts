@@ -1,5 +1,7 @@
 
-class AdminViewModel  {
+declare const IntuAPI
+
+class AdminViewModel implements iVM {
 
     services: any;
 
