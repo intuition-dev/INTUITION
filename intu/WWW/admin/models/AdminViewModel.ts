@@ -1,11 +1,16 @@
 
+//import { BaseViewModel } from "./BaseViewModel"
+
 declare const IntuAPI
 
-class AdminViewModel implements iVM {
+declare const BaseViewModel
+
+class AdminViewModel extends BaseViewModel {
 
     services: any;
 
     constructor() {
+        super()
         this.services = new IntuAPI();
     };
     
