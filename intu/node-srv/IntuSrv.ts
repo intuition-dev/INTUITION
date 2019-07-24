@@ -23,7 +23,7 @@ export class IntuApp extends ExpressRPC {
         this.db = db
         this.uploadRoute = new UploadRoute()
 
-        VersionNag.isCurrent('intu', db.veri() ).then(function(isCurrent_:boolean){
+        VersionNag.isCurrent('intu', ADB.veri() ).then(function(isCurrent_:boolean){
             try{
                 if(!isCurrent_) 
                     console.log('There is a newer version of MetaBake\'s intu(Intuition), please update.')
@@ -97,7 +97,7 @@ export class IntuApp extends ExpressRPC {
 
         // get version
         this.appInst.get('/ver',  (req, res) => {
-            return res.send(this.db.veri)
+            return res.send(ADB.veri)
         })
 
         this.listen(port)
