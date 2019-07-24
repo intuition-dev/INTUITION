@@ -1,0 +1,51 @@
+
+<head>
+  <script>
+    var _start = Date.now()
+    window.ENV = '0' //- for comps, but it is also in scope for Pug for ENV logic
+    
+  </script>
+  <title></title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.15/bootStrap/css/bootstrapTop.css"/>
+  <script src="https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.15/toolBelt/toolBelt.min.js"></script>
+  <style>
+    html { touch-action: manipulation; }
+    .delayShowing { opacity: 0; }
+    .blur { -webkit-filter:blur(2px);filter:blur(2px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p>oh hi ?</p>
+    <p></p>
+    <item-wcomp id="c1"></item-wcomp><br/>
+    <item-wcomp id="c2"></item-wcomp>
+    <p></p><br/>
+    <p></p>
+  </div>
+  <script>
+    depp.define({'item-wcomp':'item-wcomp.js'})
+    
+    depp.require(['item-wcomp'], function(){
+       console.log('ready')
+    
+       // send message to comp
+       let d1 = {
+          title:' good'
+          ,image:'image.png'
+          ,url: 'http://www.google.com'
+       }
+       setAttrD('c1', d1)
+    
+       setAttrD('c2', d1)
+    
+    })//()
+    
+    depp.require(['FontsLoaded', 'bsDefaultStyle'], function() {
+       console.log('styles', Date.now() - _start)
+    }) 
+  </script>
+<!-- mB v6.07.25 on 2019-07-21T20:51:04.675Z --></body>

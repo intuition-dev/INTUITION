@@ -16,6 +16,7 @@ export class SetupRoutes extends BasePgRouter {
     }
     
     
+    // this could be moved to admin routes, and we remove setup routes
     async setup(resp, params) {
         let email = Buffer.from(params.email).toString('base64')
         let password = Buffer.from(params.password).toString('base64')

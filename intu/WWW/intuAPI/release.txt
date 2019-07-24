@@ -1,7 +1,9 @@
 
 
 Build docs and release /API via npm publish of above intu.
+Then release intu
 Then update toolBelt and release toolbelt
+
 
 # API documentaion
 

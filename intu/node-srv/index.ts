@@ -17,5 +17,4 @@ const adbDB = new ADB()
 
 // the only place there is DB new is here.
 const mainEApp = new IntuApp(adbDB, ['*'])
-
 mainEApp.start()

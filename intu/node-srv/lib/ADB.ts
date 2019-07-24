@@ -44,7 +44,6 @@ export class ADB extends BaseDB {
             this._run(ADB.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)), // single row in table
             this._run(ADB.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)), // single row in table
             this._run(ADB.db.prepare(`CREATE TABLE SALT(salt)`)),
-            this._run(ADB.db.prepare(`CREATE TABLE TEMPLATE(template)`)), // single row in table, TEMPLATE
             this._run(ADB.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)),
         ]).then(() => {
             console.log('all tables created')
@@ -224,7 +223,7 @@ export class ADB extends BaseDB {
 
         const salt = await this.getSalt()
         const hashPass = bcrypt.hashSync(password, salt)
-        const stmt =  ADB.db.prepare(`UPDATE ADMIN SET (hashPass=?, vcode=null) WHERE email=?`)
+        const stmt =  ADB.db.prepare(`UPDATE ADMIN SET (hashPass=?, vcode=null)`)
         this._run(stmt, hashPass, email)
         return 'OK'
     }//()

@@ -3,7 +3,7 @@ import axios from 'axios'
 export class Email {
    // convert from axios to superagent
     send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) {
-        email = Buffer.from(email, 'base64').toString();
+        email = Buffer.from(email, 'base64').toString()
         console.log('email --->  ', email);
         axios.post('https://api.emailjs.com/api/v1.0/email/send', {
                 service_id: emailjsService_id,
@@ -19,7 +19,7 @@ export class Email {
                 console.info('Email has been sent. Result', res)
             })
             .catch(err => {
-                console.log('send mail error: ', err);
+                console.log('send mail error: ', err)
             });
     }//()
     
