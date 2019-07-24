@@ -78,9 +78,11 @@ export class IntuApp extends ExpressRPC {
 
         if(!setup) {
             const appPath:string = await this.db.getAppPath()
-            console.log(appPath)
+            console.log('appPath: ', appPath);
             //webapp being managed
-            this.serveStatic(appPath)
+            if (appPath !== null) {
+                this.serveStatic(appPath);
+            }
         }
 
         // endpoint for monitoring
