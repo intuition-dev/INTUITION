@@ -70,12 +70,14 @@ export class AdminRoutes extends BasePgRouter {
 
    }//()
    
-     async getEditors(resp, params, user, pswd) {
-         let auth = await this.auth.auth(user,pswd,resp)
-         if(auth != 'OK') return
+   async getEditors(resp, params, user, pswd) {
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
 
-         this.ret(resp, this.adbDB.getEditors())
-     } 
+      let EditorsJson = await this.adbDB.getEditors()
+
+      this.ret(resp, EditorsJson)
+   } 
       
    /**
     *  Needs a guid sent by browsers. There is a getGUID() in toolbelt

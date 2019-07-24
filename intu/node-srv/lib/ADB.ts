@@ -163,7 +163,7 @@ export class ADB extends BaseDB {
     }//()
 
     async getEditors() {
-        const qry =  ADB.db.prepare(`SELECT guid, name FROM editors`)
+        const qry =  ADB.db.prepare(`SELECT guid, name, email FROM editors`)
         const res = await this._qry(qry)
         return res
     }

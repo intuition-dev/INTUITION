@@ -90,7 +90,6 @@ class Editors {
             return this.intuAPI.addEditor(guid, name, email, password)
                 .then((documentRef) => {
                     console.info("--documentRef:", documentRef)
-                    debugger
                     $('.notification').removeClass('d-hide').find('.text').text('new user was created');
                     $('.grid-form input').val('');
                     setTimeout(function() {

@@ -13,7 +13,7 @@ depp.define({
         '/IntuAPI/IntuAPI.js'
     ],
     'general': [
-        '#intuAPI', '/admin/assets/js/BindEditors.js'
+        '#intuAPI', '/admin/admin/BindEditors.js'
     ],
     'rw': [
         '#general', '/admin/assets/js/BindLogin.js', '/admin/assets/js/ui.js'
