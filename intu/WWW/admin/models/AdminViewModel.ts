@@ -1,18 +1,26 @@
 
-class AdminsViewModel  {
+class AdminViewModel  {
 
-    intuAPI
+    services: any;
+
+    constructor() {
+        this.services = new IntuAPI();
+    };
     
-    addEditor(email, name, pswd) {
+    getEditorsList() {
+        return this.services.getEditorsList();
+    };
 
-    }
+    editEditor(id, name) {
+        return this.services.editEditor(id, name);
+    };
 
-    listAllEditors() {
+    addEditor(guid, name, email, password) {
+        return this.services.addEditor(guid, name, email, password);
+    };
 
-    }
+    deleteEditor(id) {
+        return this.services.deleteEditor(id);
+    };
 
-    getEditorById(id) { // if you can use guid
-
-    }
-
-}
+};

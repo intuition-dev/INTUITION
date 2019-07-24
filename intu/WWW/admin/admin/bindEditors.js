@@ -3,20 +3,20 @@ class Editors {
         this.drawTable = this.drawTable.bind(this);
         this.save = this.save.bind(this);
         this.remove = this.remove.bind(this);
-        this.intuAPI = new IntuAPI();
+        this.adminViewModel = new AdminViewModel();
         this.table = null;
         this.activeRow = null;
     }
     drawTable() {
         // render editors table
-        this.intuAPI.getEditorsList()
+        this.adminViewModel.getEditorsList()
             .then(editors => {
                 console.info("--editors:", editors)
      
                 this.table = new Tabulator("#editors-table", {
                     layout: "fitColumns", // fit columns to width of table
                     columns: [ // Define Table Columns
-                        { title: "id", field: "id", visible: true },
+                        { title: "id", field: "id", visible: false },
                         { title: "Email", field: "email", align: "left" },
                         { title: "Name", field: "name", align: "left" }
                     ],
@@ -53,7 +53,7 @@ class Editors {
                 throw new Error("no user selected to edit");
             }
 
-            return this.intuAPI.editEditor(id, name) //id of user is gonna be the same if edit, so we are updating only name
+            return this.adminViewModel.editEditor(id, name) //id of user is gonna be the same if edit, so we are updating only name
                 .then((documentRef) => {
                     $('.notification').removeClass('d-hide').find('.text').text('user was successfully updated');
                     $('.grid-form input').val('');
@@ -88,7 +88,7 @@ class Editors {
 
             let guid = getGUID()
 
-            return this.intuAPI.addEditor(guid, name, email, password)
+            return this.adminViewModel.addEditor(guid, name, email, password)
                 .then((documentRef) => {
                     console.info("--documentRef:", documentRef)
                     $('.notification').removeClass('d-hide').find('.text').text('new user was created');
@@ -123,7 +123,7 @@ class Editors {
     }
 
     remove(id) {
-        return this.intuAPI.deleteEditor(id)
+        return this.adminViewModel.deleteEditor(id)
             .then(() => {
                 $('.notification').removeClass('d-hide').find('.text').text(' The user was successfully deleted');
                 $('.grid-form input').val('');
