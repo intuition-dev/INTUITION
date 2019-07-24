@@ -1,24 +1,21 @@
 
 class LoginViewModel {
 
-    intuAPI
-    
-    login(email, pswd):Promise<boolean> {
+    services: any;
 
-        return null
-    }
+    constructor() {
+        this.services = new IntuAPI();
+    };
 
-    _save(email, pswd) {
-        sessionStorage.set('user', email)
-        sessionStorage.set('pswd', pswd)
-    }
+    checkAdmin(email, pass) {
+        return this.services.checkAdmin(email, pass);
+    };
 
-    // forgot password props
-    sendPswdReset(email ) {
+    sendVcode(email) {
+        return this.services.sendVcode(email);
+    };
 
-    }
-
-    checkCode(pswd, code) {
-        
-    }
+    resetPass(email, code, pass) {
+        return this.services.resetPass(email, code, pass);
+    };
 }

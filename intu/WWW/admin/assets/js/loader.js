@@ -19,7 +19,8 @@ depp.define({
     ],
     'rw': [
         '#general'
-        ,'/admin/assets/js/BindLogin.js'
+        ,'/admin/BindLogin.js'
+        , '/admin/models/LoginViewModel.js'
         ,'/admin/assets/js/ui.js'
     ],
     'setup-page': [

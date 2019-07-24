@@ -3,10 +3,10 @@
 **/
 class BindLogin {
     constructor() {
-        this.IntuAPI = new IntuAPI()
+        this.loginViewModel = new LoginViewModel();
     }
     login(email, pass) {
-        this.IntuAPI.checkAdmin(email, pass)
+        this.loginViewModel.checkAdmin(email, pass)
             .then(function(result) {
                 console.info("--result:", result)
                 if (result) {
@@ -31,7 +31,7 @@ class BindLogin {
 
     sendVcode(email) {
         if (email !== '') {
-            this.IntuAPI.sendVcode(email)
+            this.loginViewModel.sendVcode(email)
                 .then(function(result) {
                     console.info("--result:", result)
                 })
@@ -40,7 +40,7 @@ class BindLogin {
 
     resetPass(email, code, pass) {
         if (email !== '' && pass !== '' && code !== '') {
-            this.IntuAPI.resetPass(email, code, pass)
+            this.loginViewModel.resetPass(email, code, pass)
                 .then(function(result) {
                     if (result) {
                         $('.js-pass-changed-notification').removeClass('d-hide');
