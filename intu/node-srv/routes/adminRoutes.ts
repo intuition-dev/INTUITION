@@ -31,8 +31,10 @@ export class AdminRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      this.ret(resp, this.adbDB.getConfig())
-      }//()
+      let data = await this.adbDB.getConfig();
+
+      this.ret(resp, data);
+   }//()
       
    async updateConfig(resp, params, user, pswd) {
       let auth = await this.auth.auth(user,pswd,resp)

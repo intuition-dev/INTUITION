@@ -27,6 +27,7 @@ depp.define({
         '#intuAPI'
         , '/admin/settings/settings-comp.js'
         , '/admin/settings/BindSettings.js'
+        , '/admin/models/SettingsViewModel.js'
     ],
     'fonts': [
         '#crud'

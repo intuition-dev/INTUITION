@@ -195,7 +195,6 @@ export class ADB extends BaseDB {
     }
 
     async deleteEditor(guid) {
-        console.log('DELETE FROM editors WHERE ---->', `DELETE FROM editors WHERE guid='${guid}'`);
         const stmt =  ADB.db.prepare(`DELETE FROM editors WHERE guid='${guid}'`)
         const res = await this._run(stmt)
         return res
