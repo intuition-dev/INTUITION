@@ -68,11 +68,15 @@ export class ADB extends BaseDB {
       const salt = await this.getSalt()
       const hashPass = bcrypt.hashSync(password, salt)
      
-      const stmt1 =  ADB.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`)
-      this._run(stmt1, email, hashPass)
+      const stmt1 =  ADB.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`);
+      this._run(stmt1, email, hashPass);
+    
+      email = Buffer.from(email, 'base64').toString();
+      const stmt3 =  ADB.db.prepare(`INSERT INTO EDITORS(email, hashPass, name) VALUES(?,?,'Admin')`);
+      this._run(stmt3, email, hashPass);
 
-      const stmt2 =  ADB.db.prepare(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES(?,?,?,?)`)
-      this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port)      
+      const stmt2 =  ADB.db.prepare(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES(?,?,?,?)`);
+      this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port);    
     }//()
 
     updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port) {
