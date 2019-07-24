@@ -297,3 +297,9 @@
 .bl_button_row {
     justify-content: space-between;
 }
+
+@media (max-height: 700px) {
+    .container.page-content {
+        height: 100vh;
+    }
+}
