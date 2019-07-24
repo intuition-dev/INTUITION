@@ -180,7 +180,7 @@ var IntuAPI = (function () {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('admin', 'admin', 'addEditor', {
-            guid: guid,
+            id: guid,
             name: name,
             email: email,
             password: password,
@@ -189,7 +189,7 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.editEditor = function (uid, name) {
-        return this.serviceRPC.invoke('admin', 'admin', 'edit-editor', {
+        return this.serviceRPC.invoke('admin', 'admin', 'editEditor', {
             name: name,
             uid: uid,
             admin_email: window.sessionStorage.getItem('username'),

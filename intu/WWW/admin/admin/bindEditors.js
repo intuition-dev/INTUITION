@@ -16,7 +16,7 @@ class Editors {
                 this.table = new Tabulator("#editors-table", {
                     layout: "fitColumns", // fit columns to width of table
                     columns: [ // Define Table Columns
-                        { title: "id", field: "id", visible: false },
+                        { title: "id", field: "id", visible: true },
                         { title: "Email", field: "email", align: "left" },
                         { title: "Name", field: "name", align: "left" }
                     ],
@@ -36,7 +36,7 @@ class Editors {
                     this.table.setData(editors)
                 } else {
                     console.info('failed to get editors list, redirecting to /admin');
-                    // window.location = '/admin'
+                    window.location = '/admin';
                 }
 
             })
@@ -64,6 +64,7 @@ class Editors {
                         scrollTop: $("#editor-form").offset().top
                     }, 500);
                     // table refresh
+                    console.log("Updated", id, name)
                     this.table
                         .updateOrAddData([{ id: id, name: name }])
                         .then(function() {

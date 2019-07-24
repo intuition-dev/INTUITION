@@ -75,7 +75,6 @@ export class AdminRoutes extends BasePgRouter {
       if(auth != 'OK') return
 
       let EditorsJson = await this.adbDB.getEditors()
-
       this.ret(resp, EditorsJson)
    } 
       
@@ -86,7 +85,7 @@ export class AdminRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      let guid = params.guid;
+      let guid = params.id;
       let email = params.email;
       let name = params.name;
       let password = params.password;
@@ -94,13 +93,28 @@ export class AdminRoutes extends BasePgRouter {
       await this.adbDB.addEditor(guid, name, email, password) 
       this.ret(resp,'OK')
    }//()
+
+   /**
+    *  edit user
+    */
+   async editEditor(resp, params, user, pswd) {
+      let auth = await this.auth.auth(user,pswd,resp)
+      if(auth != 'OK') return
+
+      let guid = params.uid;
+      let name = params.name;
+      let data = await this.adbDB.editEditor(guid, name); 
+
+      this.ret(resp, data);
+   }
  
    async deleteEditor(resp, params, user, pswd) {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      let guid = params.guid;
+      let guid = params.uid;
       await this.adbDB.deleteEditor(guid) 
+
       this.ret(resp,'OK')
    }//()
 

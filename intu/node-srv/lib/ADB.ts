@@ -162,15 +162,42 @@ export class ADB extends BaseDB {
         return res
     }//()
 
+    /**
+     * edit user
+     * @param guid You can user ToolBelt's getGUID on browser
+     */
+    async editEditor(guid, name) {
+
+        if (typeof name !== 'undefined' &&
+        typeof guid !== 'undefined'
+        ) {
+
+            const stmt =  ADB.db.prepare(`UPDATE editors SET name='${name}' WHERE guid='${guid}'`);
+            const res = await this._run(stmt);
+            
+            if (res.length > 0) {
+                return res;
+            } else {
+                console.log('res is empty: ', res);
+                return false;
+            }
+
+        } else {
+            console.log('failed to edit user');
+        }
+
+    };
+
     async getEditors() {
-        const qry =  ADB.db.prepare(`SELECT guid, name, email FROM editors`)
+        const qry =  ADB.db.prepare(`SELECT guid AS id, name, email FROM editors`)
         const res = await this._qry(qry)
         return res
     }
 
     async deleteEditor(guid) {
-        const stmt =  ADB.db.prepare(`DELETE FROM editors WHERE guid=?`)
-        const res = await this._run(stmt, guid)
+        console.log('DELETE FROM editors WHERE ---->', `DELETE FROM editors WHERE guid='${guid}'`);
+        const stmt =  ADB.db.prepare(`DELETE FROM editors WHERE guid='${guid}'`)
+        const res = await this._run(stmt)
         return res
     }
   
