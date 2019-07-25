@@ -64,7 +64,7 @@ class IntuAPI {
    getSubDirsList(id) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors' , 'get-files', {
+      return this.serviceRPC.invoke('api', 'editors' , 'getFiles', {
          post_id: id,
          editor_email: email,
          editor_pass: pass
@@ -79,7 +79,7 @@ class IntuAPI {
    getFile(id, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'get-file-content', {
+      return this.serviceRPC.invoke('api', 'editors', 'getFileContent', {
          post_id: id,
          pathPrefix: pathPrefix,
          editor_email: email,
@@ -96,7 +96,7 @@ class IntuAPI {
    saveFile(id, md, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'save-file', {
+      return this.serviceRPC.invoke('api', 'editors', 'saveFile', {
          post_id: id,
          pathPrefix: pathPrefix,
          content: btoa(md),
@@ -114,7 +114,7 @@ class IntuAPI {
    mbakeCompile(id, md, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'compile-code', {
+      return this.serviceRPC.invoke('api', 'editors', 'compileCode', {
          post_id: id,
          pathPrefix: pathPrefix,
          content: btoa(md),
@@ -172,7 +172,7 @@ class IntuAPI {
    setPublishDate(publish_date, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'set-publish-date', {
+      return this.serviceRPC.invoke('api', 'editors', 'setPublishDate', {
          publish_date: publish_date,
          post_id: pathPrefix,
          editor_email: email,
@@ -198,7 +198,7 @@ class IntuAPI {
     * @param email editor user email, eg: 'example@example.com'
     */
    sendVcodEditor(email) {
-      return this.serviceRPC.invoke('api', 'editors', 'reset-password-code', { admin_email: email })
+      return this.serviceRPC.invoke('api', 'editors', 'emailResetPasswordCode', { admin_email: email })
          .then(function () {
             return true;
          })
@@ -211,7 +211,7 @@ class IntuAPI {
     * @param code verification code, eg: '1234'
     */
    resetPassEditor(email, code, pass) {
-      return this.serviceRPC.invoke('api', 'editors', 'reset-password', {
+      return this.serviceRPC.invoke('api', 'editors', 'esetPasswordIfMatch', {
          admin_email: email,
          code: code,
          password: pass
@@ -314,7 +314,7 @@ class IntuAPI {
     * @param email admin user email, eg: 'example@example.com'
     */
    sendVcode(email) {
-      return this.serviceRPC.invoke('api', 'admin', 'resetPassword-code', { admin_email: email })
+      return this.serviceRPC.invoke('admin', 'admin', 'emailResetPasswordCode', { admin_email: email })
          .then(function () {
             return true;
          })
@@ -327,7 +327,7 @@ class IntuAPI {
     * @param code verification code, eg: '1234'
     */
    resetPass(email, code, pass) {
-      return this.serviceRPC.invoke('admin', 'admin', 'reset-password', {
+      return this.serviceRPC.invoke('admin', 'admin', 'resetPasswordIfMatch', {
          admin_email: email,
          code: code,
          password: pass
@@ -353,7 +353,7 @@ class IntuAPI {
    updateConfig(port, path, printfulApi) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'admin', 'update-config', {
+      return this.serviceRPC.invoke('admin', 'admin', 'updateConfig', {
          admin_email: admin_email,
          admin_pass: admin_pass,
          port: port,
