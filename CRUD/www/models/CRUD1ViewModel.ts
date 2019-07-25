@@ -49,6 +49,15 @@ class CRUDvm extends BaseViewModel {
       this.rpc = new httpRPC(pro, host, 8888)
    }
 
+   //encapsulation 
+   instance:CRUDvm
+   static async inst() {
+      // not created
+      // if not defined
+      //promise so it can async 
+      return this
+   }
+
    _all() {
       var prom = this.rpc.invoke('api', 'CRUD1Pg', 'selectAll', {a:5, b:2})
       // the most important step in the loading waterfall - after the first paint
