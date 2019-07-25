@@ -134,10 +134,15 @@ export class ADB extends BaseDB {
 
         const qry =  ADB.db.prepare('SELECT * FROM EDITORS where email =  ?') 
         const rows = await this._qry(qry, email)
-        const row = rows[0]
-        const hashPassS = row.hashPass
 
-        return hashPassP == hashPassS
+        if (rows.length > 0) {
+            const row = rows[0];
+            const hashPassS = row.hashPass;
+            console.log('hashPassP == hashPassS, password', hashPassP, hashPassS, password);
+            return hashPassP == hashPassS;
+        } else {
+            return false;
+        }
     }//()
     async authAdmin(email, password) {
         const salt = await this.getSalt()
@@ -276,12 +281,12 @@ export class EditorAuth implements iAuth {
     }//()
 
     async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {     
-        return new Promise( async function (resolve, reject) {
+        return new Promise( async (resolve, reject) => {
         const ok = await this.db.authEditor(user, pswd)
         if(ok) return resolve('OK')
                 
-        this.RetErr(resp, 'NO')
-        reject('NO')
+        this.retErr(resp, 'NO')
+            reject('NO')
         })// pro
     }    
     retErr(resp: any, msg: any) {
@@ -306,7 +311,7 @@ export class AdminAuth implements iAuth {
         if(ok) return resolve('OK')        
 
         this.retErr(resp, 'NO')
-        reject('NO')
+            reject('NO')
         })// pro
     }    
     retErr(resp: any, msg: any) {

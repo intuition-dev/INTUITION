@@ -24,8 +24,10 @@ export class EditorRoutes extends BasePgRouter {
       this.auth = new EditorAuth(adbDB)
    }
 
-   async checkEditor(resp, params, user, pswd) {
-      let auth = await this.auth.auth(user,pswd,resp)
+   async checkEditor(resp, params) {
+      let pswd = Buffer.from(params.editor_pass).toString('base64');
+      
+      let auth = await this.auth.auth(params.editor_email,pswd,resp)
       if(auth != 'OK') return
 
       this.ret(resp, 'OK')
