@@ -1,17 +1,20 @@
-class SetupViewModel {
 
-    services: any;
+
+class SetupViewModel extends BaseViewModel {
+
+    services
 
     constructor() {
-        this.services = new IntuAPI();
-    };
+        super()
+        this.services = new IntuAPI()
+    }
 
     createConfig(form) {
         return this.services.createConfig(form);
-    };
+    }
 
     deleteTable() {
         this.services.deleteTables();
-    };
+    }
 
 }

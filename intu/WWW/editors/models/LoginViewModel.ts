@@ -1,5 +1,6 @@
 
-class LoginViewModel {
+
+class LoginViewModel extends BaseViewModel  {
 
     intuAPI
     

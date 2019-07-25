@@ -11,21 +11,21 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var SettingsViewModel = (function (_super) {
-    __extends(SettingsViewModel, _super);
-    function SettingsViewModel() {
-        var _this = _super.call(this) || this;
-        _this.services = new IntuAPI();
-        return _this;
+var LoginViewModel = (function (_super) {
+    __extends(LoginViewModel, _super);
+    function LoginViewModel() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    SettingsViewModel.prototype.setupApp = function (item) {
-        return this.services.setupApp(item);
+    LoginViewModel.prototype.login = function (email, pswd) {
+        return null;
     };
-    SettingsViewModel.prototype.getConfig = function () {
-        return this.services.getConfig();
+    LoginViewModel.prototype._save = function (email, pswd) {
+        sessionStorage.set('user', email);
+        sessionStorage.set('pswd', pswd);
     };
-    SettingsViewModel.prototype.updateConfig = function (port, path, printfulAPI) {
-        return this.services.updateConfig(port, path, printfulAPI);
+    LoginViewModel.prototype.sendPswdReset = function (email) {
     };
-    return SettingsViewModel;
+    LoginViewModel.prototype.checkCode = function (pswd, code) {
+    };
+    return LoginViewModel;
 }(BaseViewModel));

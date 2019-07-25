@@ -37,10 +37,11 @@ depp.require(['RPC'], function(){
    depp.done('VM')
 })
 
-class CRUDvm {
+class CRUDvm extends BaseViewModel {
    // can be in services class so other VM can use
    rpc
    constructor() {
+      super()
       var pro = window.location.protocol
       pro  = pro.replace(':','')
       var host = window.location.hostname

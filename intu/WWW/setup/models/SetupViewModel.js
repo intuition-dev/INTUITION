@@ -11,30 +11,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var AdminViewModel = (function (_super) {
-    __extends(AdminViewModel, _super);
-    function AdminViewModel() {
+var SetupViewModel = (function (_super) {
+    __extends(SetupViewModel, _super);
+    function SetupViewModel() {
         var _this = _super.call(this) || this;
         _this.services = new IntuAPI();
         return _this;
     }
-    ;
-    AdminViewModel.prototype.getEditorsList = function () {
-        return this.services.getEditorsList();
+    SetupViewModel.prototype.createConfig = function (form) {
+        return this.services.createConfig(form);
     };
-    ;
-    AdminViewModel.prototype.editEditor = function (id, name) {
-        return this.services.editEditor(id, name);
+    SetupViewModel.prototype.deleteTable = function () {
+        this.services.deleteTables();
     };
-    ;
-    AdminViewModel.prototype.addEditor = function (guid, name, email, password) {
-        return this.services.addEditor(guid, name, email, password);
-    };
-    ;
-    AdminViewModel.prototype.deleteEditor = function (id) {
-        return this.services.deleteEditor(id);
-    };
-    ;
-    return AdminViewModel;
+    return SetupViewModel;
 }(BaseViewModel));
-;
