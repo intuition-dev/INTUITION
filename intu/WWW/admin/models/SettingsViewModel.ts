@@ -17,8 +17,8 @@ class SettingsViewModel extends BaseViewModel {
         return this.services.getConfig();
     }
 
-    updateConfig(port, path, printfulAPI) {
-        return this.services.updateConfig(port, path, printfulAPI);
+    updateConfig(port, path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+        return this.services.updateConfig(port, path, emailjsService_id, emailjsTemplate_id, emailjsUser_id);
     }
     
 }//class

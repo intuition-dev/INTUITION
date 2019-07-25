@@ -351,9 +351,8 @@ class IntuAPI {
     * 
     * @param port 
     * @param path 
-    * @param printfulApi 
     */
-   updateConfig(port, path, printfulApi) {
+   updateConfig(port, path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('admin', 'admin', 'updateConfig', {
@@ -361,7 +360,10 @@ class IntuAPI {
          admin_pass: admin_pass,
          port: port,
          path: path,
-         printfulApi: printfulApi.length ? printfulApi : ''
+         // printfulApi: printfulApi.length ? printfulApi : '',
+         emailjsService_id: emailjsService_id,
+         emailjsTemplate_id: emailjsTemplate_id,
+         emailjsUser_id: emailjsUser_id
       });
    }
 

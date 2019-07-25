@@ -48,22 +48,46 @@ class BindSettings {
             }
         })[0].value
 
-        var printfulAPI = serialize.filter(function(ser) {
-            if (ser.name == 'printfulAPI') {
+        // var printfulAPI = serialize.filter(function(ser) {
+        //     if (ser.name == 'printfulAPI') {
+        //         return ser
+        //     }
+        // })[0].value
+
+        var emailjsService_id = serialize.filter(function(ser) {
+            if (ser.name == 'emailjsService_id') {
                 return ser
             }
         })[0].value
-        console.log("TCL: BindSettings -> saveConfig -> printfulApi", printfulAPI)
 
-        this.settingsViewModel.updateConfig(port, path, printfulAPI)
-            .then(function(result) {
-                console.info("--result:", result)
+        var emailjsTemplate_id = serialize.filter(function(ser) {
+            if (ser.name == 'emailjsTemplate_id') {
+                return ser
+            }
+        })[0].value
+
+        var emailjsUser_id = serialize.filter(function(ser) {
+            if (ser.name == 'emailjsUser_id') {
+                return ser
+            }
+        })[0].value
+
+        this.settingsViewModel.updateConfig(port, path, emailjsService_id, emailjsTemplate_id, emailjsUser_id)
+            .then(result => {
+                console.info("updateConfig --result:", result)
+                debugger;
                 if (port != window.apiPort) {
                     window.location.href = "/admin"
                 }
                 //update form
-                //  riot.mount('settings-comp', { pathToSite: result.pathToSite, port: result.port, bindSetup: _this })
+                riot.mount('settings-comp', {
+                    pathToSite: result[0].path,
+                    port: result[0].port,
+                    bindSetup: this,
+                    emailjsService_id: result[0].emailjsService_id,
+                    emailjsTemplate_id: result[0].emailjsTemplate_id,
+                    emailjsUser_id: result[0].emailjsUser_id,
+                }); 
             })
-
     }
 }

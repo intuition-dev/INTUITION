@@ -9,16 +9,37 @@ settings-comp
             div(data-field-span='1')
                label App is running on port:
                input(type='text', name='port' value="{(typeof this.port !='undefined') ? this.port : ''}")
+         //- div(data-row-span='1')
+         //-    div(data-field-span='1')
+         //-       label Do you have Printful API? add it here
+         //-       input(type='text', name='printfulAPI' value="{(typeof this.printfulAPI !='undefined') ? this.printfulAPI : ''}")
          div(data-row-span='1')
             div(data-field-span='1')
-               label Do you have Printful API? add it here
-               input(type='text', name='printfulAPI' value="{(typeof this.printfulAPI !='undefined') ? this.printfulAPI : ''}")
-         button.btn.mt-2#save-settings Save Settings
+               label EmailJS 
+                  b service_id 
+                     .subtitle it can be found on 'Email Services' tab of your EmailJs account
+               input(type='text', name='emailjsService_id' value="{(typeof this.emailjsService_id !='undefined') ? this.emailjsService_id : ''}")
+         div(data-row-span='1')
+            div(data-field-span='1')
+               label EmailJS 
+                  b template_id
+                     .subtitle it can be found on 'Email Templates' tab of your EmailJs account (create a template if there isn't one)
+               input(type='text', name='emailjsTemplate_id' value="{(typeof this.emailjsTemplate_id !='undefined') ? this.emailjsTemplate_id : ''}")
+         div(data-row-span='1').mb-2
+            div(data-field-span='1')
+               label EmailJS 
+                  b user_id
+                     .subtitle it can be found on 'Account' tab --> 'Api keys' in your EmailJs account
+               input(type='text', name='emailjsUser_id' value="{(typeof this.emailjsUser_id !='undefined') ? this.emailjsUser_id : ''}")
+         button.btn-custom.btn-primary.mt-2#save-settings Save Settings
    script.
       var _this = this
       this.pathToSite = opts.pathToSite
       this.port = opts.port
       this.printfulAPI = opts.printfulAPI
+      this.emailjsService_id = opts.emailjsService_id
+      this.emailjsTemplate_id = opts.emailjsTemplate_id
+      this.emailjsUser_id = opts.emailjsUser_id
       this.bindSetup = opts.bindSetup
       
       this.on('mount', function(){

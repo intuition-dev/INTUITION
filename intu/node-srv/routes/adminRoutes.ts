@@ -40,17 +40,24 @@ export class AdminRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      console.log(params)
-      
       let emailjsService_id   = params.emailjsService_id
       let emailjsTemplate_id  = params.emailjsTemplate_id
       let emailjsUser_id      = params.emailjsUser_id
-      let pathToApp           = params.pathToApp
+      let pathToApp           = params.path
       let port                = params.port
 
-      this.adbDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port)
-  
-      this.ret(resp,'OK')
+      let res = await this.adbDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
+      if (res === 'OK') {
+         let data = [];
+         data.push({
+            emailjsService_id: emailjsService_id,
+            emailjsTemplate_id: emailjsTemplate_id,
+            emailjsUser_id: emailjsUser_id,
+            path: pathToApp,
+            port: port,
+         });
+         this.ret(resp, data)
+      }
    } 
       
    async emailResetPasswordCode(resp, params, email, pswd) {

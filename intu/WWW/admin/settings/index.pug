@@ -2,16 +2,16 @@ extends /layout/layout
 block content
    .col-content
       h1.table-header Settings
-      .table-wrap
+      .table-wrap.col-6.col-lg-12
          .columns
             .column
                settings-comp
-            .divider-vert(data-content='OR')
-            .column
-               h3 Install:
-               button.btn.mr-2#setup-website + Website
-               button.btn.mr-2#setup-blog + Blog
-               button.btn#setup-shop + Shop
+            //- .divider-vert(data-content='OR')
+            //- .column
+               //- h3 Install:
+               //- button.btn.mr-2#setup-website + Website
+               //- button.btn.mr-2#setup-blog + Blog
+               //- button.btn#setup-shop + Shop
    
    script.
       depp.require('setup-page', function () {
@@ -27,4 +27,7 @@ block content
          $('#setup-website').off('click').on('click', function(e){
                bindSettings.setupApp('website')
          })
+
+         window.apiPort = window.location.port;
+
       })

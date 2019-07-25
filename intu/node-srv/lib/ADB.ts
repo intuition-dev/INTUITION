@@ -78,10 +78,10 @@ export class ADB extends BaseDB {
       this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port);    
     }//()
 
-    updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port) {
-        const stmt =  ADB.db.prepare(`UPDATE CONFIG SET (emailjsService_id=?, emailjsTemplate_id=?, 
-                emailjsUser_id=?, pathToApp=?, port=?`)// single row in table so no need for where
-        this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port)
+    async updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port) {
+        const stmt =  ADB.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?, pathToApp=?, port=?`)// single row in table so no need for where
+        const res = await this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
+        return res;
     }
 
     async getConfig() {
@@ -241,7 +241,7 @@ export class ADB extends BaseDB {
 
         const salt = await this.getSalt()
         const hashPass = bcrypt.hashSync(password, salt)
-        const stmt =  ADB.db.prepare(`UPDATE EDITORS SET (hashPass=?, vcode=null) WHERE email=?`)
+        const stmt =  ADB.db.prepare(`UPDATE EDITORS SET hashPass=?, vcode=null WHERE email=?`)
         this._run(stmt, hashPass, email)
         return 'OK'
     }//()
