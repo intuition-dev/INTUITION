@@ -99,8 +99,8 @@ export class EditorRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      let itemPath = '/' + params.itemPath
-      let file = '/' + params.file
+      let itemPath = '/' + params.file
+      let file = params.itemPath
       const appPath = await this.adbDB.getAppPath()
       let fileName =  itemPath + file
       let content = params.content;
@@ -124,8 +124,8 @@ export class EditorRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      let itemPath = '/' + params.itemPath
-      let file = '/' + params.file
+      let itemPath = '/' + params.file
+      let file = params.itemPath
       const appPath = await this.adbDB.getAppPath()
       let fileName =  itemPath + file
       this.ret(resp,'OK')

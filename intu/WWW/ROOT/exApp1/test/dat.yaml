@@ -1,1 +1,3 @@
-root: '/'
+root: /
+test: test
+publishDate: 1563840000

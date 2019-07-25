@@ -97,8 +97,8 @@ class IntuAPI {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('api', 'editors', 'saveFile', {
-         post_id: id,
-         pathPrefix: pathPrefix,
+         itemPath: id,
+         file: pathPrefix,
          content: btoa(md),
          editor_email: email,
          editor_pass: pass
@@ -115,8 +115,8 @@ class IntuAPI {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('api', 'editors', 'compileCode', {
-         post_id: id,
-         pathPrefix: pathPrefix,
+         itemPath: id,
+         file: pathPrefix,
          content: btoa(md),
          editor_email: email,
          editor_pass: pass
@@ -135,8 +135,8 @@ class IntuAPI {
    clonePage(id, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'clone-page', {
-         post_id: id,
+      return this.serviceRPC.invoke('api', 'editors', 'cloneItem', {
+         itemPath: id,
          pathPrefix: pathPrefix,
          editor_email: email,
          editor_pass: pass
@@ -174,7 +174,7 @@ class IntuAPI {
       let pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('api', 'editors', 'setPublishDate', {
          publish_date: publish_date,
-         post_id: pathPrefix,
+         itemPath: pathPrefix,
          editor_email: email,
          editor_pass: pass
       });
