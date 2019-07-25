@@ -131,14 +131,12 @@ export class ADB extends BaseDB {
     async authEditor(email, password) {
         const salt = await this.getSalt()
         const hashPassP = bcrypt.hashSync(password, salt)
-
         const qry =  ADB.db.prepare('SELECT * FROM EDITORS where email =  ?') 
         const rows = await this._qry(qry, email)
 
         if (rows.length > 0) {
             const row = rows[0];
             const hashPassS = row.hashPass;
-            console.log('hashPassP == hashPassS, password', hashPassP, hashPassS, password);
             return hashPassP == hashPassS;
         } else {
             return false;

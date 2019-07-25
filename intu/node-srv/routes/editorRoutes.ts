@@ -53,6 +53,8 @@ export class EditorRoutes extends BasePgRouter {
    }//()
 
    async getDirs(resp, params, user, pswd) {
+      user = Buffer.from(user, 'base64').toString();
+
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
