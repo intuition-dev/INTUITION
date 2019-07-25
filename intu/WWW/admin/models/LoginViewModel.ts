@@ -12,8 +12,8 @@ class LoginViewModel extends BaseViewModel {
         return this.services.checkAdmin(email, pass);
     }
 
-    sendVcode(email) {
-        return this.services.sendVcode(email);
+    sendVcode(email, loginUrl) {
+        return this.services.sendVcode(email, loginUrl);
     }
 
     resetPass(email, code, pass) {

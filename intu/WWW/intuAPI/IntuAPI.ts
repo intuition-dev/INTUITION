@@ -313,8 +313,11 @@ class IntuAPI {
     * admin send verification code 
     * @param email admin user email, eg: 'example@example.com'
     */
-   sendVcode(email) {
-      return this.serviceRPC.invoke('admin', 'admin', 'emailResetPasswordCode', { admin_email: email })
+   sendVcode(email, loginUrl) {
+      return this.serviceRPC.invoke('admin', 'admin', 'emailResetPasswordCode', {
+            admin_email: email,
+            loginUrl: loginUrl
+         })
          .then(function () {
             return true;
          })

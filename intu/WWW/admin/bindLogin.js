@@ -29,9 +29,9 @@ class BindLogin {
         }
     }
 
-    sendVcode(email) {
+    sendVcode(email, loginUrl) {
         if (email !== '') {
-            this.loginViewModel.sendVcode(email)
+            this.loginViewModel.sendVcode(email, loginUrl)
                 .then(function(result) {
                     console.info("--result:", result)
                 })

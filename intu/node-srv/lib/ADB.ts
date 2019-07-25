@@ -87,8 +87,12 @@ export class ADB extends BaseDB {
     async getConfig() {
         const qry =  ADB.db.prepare(`SELECT * FROM CONFIG`)
         const rows = await this._qry(qry)
-        const row = rows[0]
-        return row
+        if (rows.length > 0) {
+            const row = rows[0];
+            return row;
+        } else {
+            return false;
+        }
     }
     
     async setAppPath(pathToApp) {

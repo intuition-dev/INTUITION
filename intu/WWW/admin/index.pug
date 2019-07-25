@@ -79,8 +79,9 @@ html
 				$("[name='reset-pass-form']").addClass('d-hide');
 				$("[name='reset-pass-form-2']").removeClass('d-hide');
 				window.resetEmail = $("[name='reset-password-email']").val();
+				let loginUrl = window.location.href;
 				$('.v-code').html('Verification code was sent to ' + resetEmail);
-				bindLogin.sendVcode(resetEmail);
+				bindLogin.sendVcode(resetEmail, loginUrl);
 			});
 
 			$(document).on('submit', '[name="reset-pass-form-2"]', function (e) {
@@ -90,5 +91,12 @@ html
 				let vCode = $("[name='v-code']").val();
 				bindLogin.resetPass(resetEmail, vCode, password);
 			});
+
+			// show from to enter code
+			var hash = window.location.hash.substring(1);
+			if(hash === 'code') {
+				$('#login-form, #btn-login, [data="reset-password"]').addClass('d-hide');
+				$("[name='reset-pass-form-2']").removeClass('d-hide');
+			}
 
 		});

@@ -53,15 +53,18 @@ export class AdminRoutes extends BasePgRouter {
       this.ret(resp,'OK')
    } 
       
-   emailResetPasswordCode(resp, params, email, pswd) {
-      const config:any = this.adbDB.getConfig()
+   async emailResetPasswordCode(resp, params, email, pswd) {
+      const config:any = await this.adbDB.getConfig()
       let emailjsService_id   = config.emailjsService_id
       let emailjsTemplate_id  = config.emailjsTemplate_id
       let emailjsUser_id      = config.emailjsUser_id
+      let sendToEmail = Buffer.from(params.admin_email).toString('base64');
+      let enterCodeUrl = params.loginUrl;
 
-      let code = this.adbDB.getVcodeAdmin()
-      let msg = 'Enter your code at http://bla.bla'   + code // TODO use ADB template email to CRUD w/ {{code}}
-      this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
+      let code = this.adbDB.getVcodeAdmin();
+      console.log('vcode -----------> ', code);
+      let msg = 'Your verification code is: ' + code + '<br>Enter your code at ' + enterCodeUrl + '#code' // TODO use ADB template email to CRUD w/ {{code}}
+      this.emailJs.send(sendToEmail, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
       
       this.ret(resp, 'OK')
    }//() 
