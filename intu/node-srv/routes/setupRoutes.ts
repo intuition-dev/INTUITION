@@ -1,7 +1,7 @@
 
 import { BasePgRouter } from 'mbake/lib/Serv'
 
-import { Email } from '../lib/Email'
+import { Email } from 'mbake/lib/Email'
 import { ADB } from '../lib/ADB'
 
 export class SetupRoutes extends BasePgRouter {

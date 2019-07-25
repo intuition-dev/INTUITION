@@ -1,5 +1,5 @@
 
-import { Email } from '../lib/Email';
+import { Email } from 'mbake/lib/Email';
 import { BasePgRouter } from 'mbake/lib/Serv'
 import { ADB, EditorAuth } from '../lib/ADB';
 import { FileMethods } from 'mbake/lib/FileOpsExtra'

@@ -1,6 +1,6 @@
 
 import { ADB } from './lib/ADB'
-import { Email } from './lib/Email'
+import { Email } from 'mbake/lib//Email'
 import { SetupRoutes } from './routes/setupRoutes';
 import { IntuApp } from './IntuSrv'
 var path = require('path');
