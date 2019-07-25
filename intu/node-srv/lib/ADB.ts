@@ -142,8 +142,7 @@ export class ADB extends BaseDB {
     async authAdmin(email, password) {
         const salt = await this.getSalt()
         const hashPassP = bcrypt.hashSync(password, salt)
-
-        const qry =  ADB.db.prepare('SELECT * FROM ADMIN where email =  ?') 
+        const qry =  ADB.db.prepare('SELECT * FROM ADMIN where email = ?') 
         const rows = await this._qry(qry, email)
         
         if (rows.length > 0) {
@@ -202,7 +201,7 @@ export class ADB extends BaseDB {
     }
 
     async deleteEditor(guid) {
-        const stmt =  ADB.db.prepare(`DELETE FROM editors WHERE guid='${guid}'`)
+        const stmt =  ADB.db.prepare(`DELETE FROM EDITORS WHERE guid='${guid}'`)
         const res = await this._run(stmt)
         return res
     }
@@ -227,7 +226,7 @@ export class ADB extends BaseDB {
 
         const salt = await this.getSalt()
         const hashPass = bcrypt.hashSync(password, salt)
-        const stmt =  ADB.db.prepare(`UPDATE ADMIN SET (hashPass=?, vcode=null)`)
+        const stmt =  ADB.db.prepare(`UPDATE ADMIN SET hashPass=?, vcode=null where email=?`)
         this._run(stmt, hashPass, email)
         return 'OK'
     }//()
