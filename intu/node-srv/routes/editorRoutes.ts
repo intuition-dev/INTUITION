@@ -54,7 +54,6 @@ export class EditorRoutes extends BasePgRouter {
 
    async getDirs(resp, params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
-
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
@@ -65,17 +64,18 @@ export class EditorRoutes extends BasePgRouter {
    }//()
    
    async getFiles(resp, params, user, pswd) {
+      user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
       const appPath = await this.adbDB.getAppPath()
-
       const files = this.fm.getFiles(appPath, itemPath)
       this.ret(resp, files)
    }//files
    
    async getFileContent(resp, params, user, pswd) { 
+         user = Buffer.from(user, 'base64').toString();
          let auth = await this.auth.auth(user,pswd,resp)
          if(auth != 'OK') return
 
@@ -96,6 +96,7 @@ export class EditorRoutes extends BasePgRouter {
    
    async saveFile(resp, params, user, pswd) { 
       // save and add archived files
+      user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
@@ -120,6 +121,7 @@ export class EditorRoutes extends BasePgRouter {
    It is not relay async, it returns than compiles/bakes
    */
    async compileCode(resp, params, user, pswd) {
+      user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
@@ -133,6 +135,7 @@ export class EditorRoutes extends BasePgRouter {
    }//()
    
    async cloneItem(resp, params, user, pswd) {
+      user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
@@ -148,6 +151,7 @@ export class EditorRoutes extends BasePgRouter {
     * Publish Date is an INT, linux time GMT
     */
    async setPublishDate(resp, params, user, pswd) {
+      user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
