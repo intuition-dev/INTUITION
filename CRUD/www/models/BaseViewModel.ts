@@ -19,4 +19,8 @@ class BaseViewModel{
         throw new Error('Not implemented')
     }
 
+    log(...a) {
+        throw new Error('Not implemented')
+    }
+
 }//()
