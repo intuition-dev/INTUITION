@@ -75,11 +75,16 @@ var CRUDvm = (function (_super) {
     CRUDvm.inst = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                if (CRUDvm.instance)
-                    return [2, CRUDvm.instance];
-                CRUDvm.instance = new CRUDvm(42);
-                CRUDvm.instance.setup();
-                return [2, CRUDvm.instance];
+                return [2, new Promise(function (res, rej) {
+                        depp.define({ 'CRUDpre': ['rpc'] });
+                        if (CRUDvm._instance)
+                            res(CRUDvm._instance);
+                        depp.require([], function () {
+                            CRUDvm._instance = new CRUDvm(42);
+                            CRUDvm._instance.setup();
+                            res(CRUDvm._instance);
+                        });
+                    })];
             });
         });
     };

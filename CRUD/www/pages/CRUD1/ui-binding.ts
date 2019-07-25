@@ -1,4 +1,11 @@
 
+declare var Tabulator: any
+declare var addE1Listener: any
+declare var CRUDvm: any
+declare var depp: any
+declare var _start
+declare var $
+
 console.log('ui binding')
 // required dependencies  are in each script
 

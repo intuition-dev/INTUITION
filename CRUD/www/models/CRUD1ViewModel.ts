@@ -38,14 +38,22 @@ class CRUDvm extends BaseViewModel {
       this.rpc = new httpRPC(pro, host, 8888)
    }
 
-   static instance:CRUDvm
-   static async inst() {
-      if(CRUDvm.instance) return CRUDvm.instance
-      CRUDvm.instance = new CRUDvm(42)
-      CRUDvm.instance.setup()
+   static _instance:CRUDvm
+   static async inst():Promise<CRUDvm> {
+      return new Promise(function(res,rej) {
+        
+         depp.define({'CRUDpre':['rpc']})
+        
+         if(CRUDvm._instance) res(CRUDvm._instance)   
 
-      return CRUDvm.instance
-   }
+         depp.require([],function(){
+            CRUDvm._instance = new CRUDvm(42)
+            CRUDvm._instance.setup()
+            res(CRUDvm._instance)   
+         })//req   
+      })//pro
+   }//()
+
    //encapsulation end
 
    _all() {
