@@ -1,28 +1,11 @@
 
 declare var _start:any
 declare var depp:any
-declare var $:any
 declare var disE1:any
 declare var httpRPC:any
 declare var getGUID: any
 
 console.log('VM')
-// required dependencies  are in each script
-
-depp.require(['jquery'], spin)
-var spinDiv = `
-   <div class="centerSpin" id='spin'>
-      <div class="spinner-border"></div>
-   </div>`
-function spin() {
-   $('body').append( spinDiv )
-}
-function spinStop() {
-   $('#spin').remove()
-}
-setTimeout(function() {
-   spinStop()
-}, 2000)
 
 var tableData = [
    {id:1, name:'Mary May', age:'1', col:'blue' },
