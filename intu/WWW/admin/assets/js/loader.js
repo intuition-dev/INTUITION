@@ -12,8 +12,9 @@ depp.define({
         '#scripts','#httpRPC'
         ,'/IntuAPI/IntuAPI.js'
     ],
+    'baseVm': ['#intuAPI', '/admin/models/BaseViewModel.js'],
     'general': [
-        '#intuAPI'
+        '#baseVm'
         , '/admin/admin/BindEditors.js'
         , '/admin/models/AdminViewModel.js'
     ],
