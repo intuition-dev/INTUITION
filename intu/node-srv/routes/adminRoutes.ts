@@ -62,7 +62,6 @@ export class AdminRoutes extends BasePgRouter {
       let enterCodeUrl = params.loginUrl;
 
       let code = this.adbDB.getVcodeAdmin();
-      console.log('vcode -----------> ', code);
       let msg = 'Your verification code is: ' + code + '<br>Enter your code at ' + enterCodeUrl + '#code' // TODO use ADB template email to CRUD w/ {{code}}
       this.emailJs.send(sendToEmail, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
       
@@ -70,7 +69,9 @@ export class AdminRoutes extends BasePgRouter {
    }//() 
       
    async resetPasswordIfMatch(resp, params, email, password) {
-      const result = await this.adbDB.resetPasswordAdminIfMatch(email, params.code, params.password)
+      let adminEmail = Buffer.from(params.admin_email).toString('base64');
+      let newPassword = Buffer.from(params.password).toString('base64');
+      const result = await this.adbDB.resetPasswordAdminIfMatch(adminEmail, params.code, newPassword);
       this.ret(resp, result)
 
    }//()
