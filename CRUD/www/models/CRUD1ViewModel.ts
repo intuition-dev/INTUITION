@@ -23,8 +23,14 @@ depp.require(['RPC'], function(){
 class CRUDvm extends BaseViewModel {
    // can be in services class so other VM can use
    rpc
-   constructor() {
+
+   //encapsulation start
+   constructor(arg) {
       super()
+      if(42!==arg) throw new Error('use static inst()') // guard!
+   }
+
+   setup() {
       var pro = window.location.protocol
       pro  = pro.replace(':','')
       var host = window.location.hostname
@@ -32,14 +38,15 @@ class CRUDvm extends BaseViewModel {
       this.rpc = new httpRPC(pro, host, 8888)
    }
 
-   //encapsulation 
-   instance:CRUDvm
+   static instance:CRUDvm
    static async inst() {
-      // not created
-      // if not defined
-      //promise so it can async 
-      return this
+      if(CRUDvm.instance) return CRUDvm.instance
+      CRUDvm.instance = new CRUDvm(42)
+      CRUDvm.instance.setup()
+
+      return CRUDvm.instance
    }
+   //encapsulation end
 
    _all() {
       var prom = this.rpc.invoke('api', 'CRUD1Pg', 'selectAll', {a:5, b:2})
