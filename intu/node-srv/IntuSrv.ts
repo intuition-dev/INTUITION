@@ -52,7 +52,7 @@ export class IntuApp extends ExpressRPC {
     }//()
 
     _runSetup() {
-        this._run(8090, true)
+        this._run(9081, true)
 
         const setup = new Setup(this.db, this)
         setup.setup()
