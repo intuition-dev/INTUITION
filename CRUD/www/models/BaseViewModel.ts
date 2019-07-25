@@ -19,4 +19,4 @@ class BaseViewModel{
         throw new Error('Not implemented')
     }
 
-}
+}//()

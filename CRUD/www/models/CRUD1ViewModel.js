@@ -1,3 +1,16 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 console.log('VM');
 depp.require(['jquery'], spin);
 var spinDiv = "\n   <div class=\"centerSpin\" id='spin'>\n      <div class=\"spinner-border\"></div>\n   </div>";
@@ -20,13 +33,16 @@ disE1('gotData', tableData);
 depp.require(['RPC'], function () {
     depp.done('VM');
 });
-var CRUDvm = (function () {
+var CRUDvm = (function (_super) {
+    __extends(CRUDvm, _super);
     function CRUDvm() {
+        var _this = _super.call(this) || this;
         var pro = window.location.protocol;
         pro = pro.replace(':', '');
         var host = window.location.hostname;
         var port = window.location.port;
-        this.rpc = new httpRPC(pro, host, 8888);
+        _this.rpc = new httpRPC(pro, host, 8888);
+        return _this;
     }
     CRUDvm.prototype._all = function () {
         var prom = this.rpc.invoke('api', 'CRUD1Pg', 'selectAll', { a: 5, b: 2 });
@@ -50,4 +66,4 @@ var CRUDvm = (function () {
         return 'OK';
     };
     return CRUDvm;
-}());
+}(BaseViewModel));
