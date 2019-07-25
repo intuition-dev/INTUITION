@@ -43,3 +43,9 @@ input:-webkit-autofill {
     letter-spacing: 0;
     font-weight: 400;
 }
+
+.settings-form {
+    &.grid-form input[type="text"], &.grid-form input[type="email"], &.grid-form input[type="number"], &.grid-form input[type="password"], &.grid-form input[type="search"], &.grid-form input[type="tel"], &.grid-form input[type="url"], &.grid-form input[type="color"], &.grid-form input[type="date"], &.grid-form input[type="datetime"], &.grid-form input[type="datetime-local"], &.grid-form input[type="month"], &.grid-form input[type="time"], &.grid-form input[type="week"], &.grid-form textarea, &.grid-form select {
+        font-size: 16px;
+    }
+}
