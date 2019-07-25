@@ -80,8 +80,8 @@ class IntuAPI {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('api', 'editors', 'getFileContent', {
-         post_id: id,
-         pathPrefix: pathPrefix,
+         itemPath: id,
+         file: pathPrefix,
          editor_email: email,
          editor_pass: pass
       });
