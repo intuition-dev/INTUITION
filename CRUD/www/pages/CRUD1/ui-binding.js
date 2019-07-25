@@ -40,7 +40,7 @@ function onPoly() {
     depp.require('CRUD');
 }
 var vm;
-depp.require(['tabulator', 'DOM', 'poly', 'jquery', 'VM'], tab1);
+depp.require(['tabulator', 'DOM', 'poly', 'jquery'], tab1);
 function tab1() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {

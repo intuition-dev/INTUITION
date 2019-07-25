@@ -5,7 +5,7 @@ declare var disE1:any
 declare var httpRPC:any
 declare var getGUID: any
 
-console.log('VM')
+console.log('VMLoaded')
 
 var tableData = [
    {id:1, name:'Mary May', age:'1', col:'blue' },
@@ -15,10 +15,6 @@ var tableData = [
 ]
 
 disE1('gotData', tableData)
-
-depp.require(['RPC'], function(){
-   depp.done('VM')
-})
 
 class CRUDvm extends BaseViewModel {
    // can be in services class so other VM can use
@@ -39,21 +35,18 @@ class CRUDvm extends BaseViewModel {
    }
 
    static _instance:CRUDvm
-   static async inst():Promise<CRUDvm> {
+   static inst():Promise<CRUDvm> {
       return new Promise(function(res,rej) {
-        
-         depp.define({'CRUDpre':['rpc']})
-        
+                
          if(CRUDvm._instance) res(CRUDvm._instance)   
 
-         depp.require([],function(){
+         depp.require(['RPC'],function(){
             CRUDvm._instance = new CRUDvm(42)
             CRUDvm._instance.setup()
             res(CRUDvm._instance)   
          })//req   
       })//pro
    }//()
-
    //encapsulation end
 
    _all() {

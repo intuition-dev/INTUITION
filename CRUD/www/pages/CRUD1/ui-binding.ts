@@ -19,11 +19,14 @@ function onPoly() {
 // data binding to VM
 // setup tabulator
 var vm
-depp.require(['tabulator', 'DOM', 'poly', 'jquery', 'VM'], tab1)
+depp.require(['tabulator', 'DOM', 'poly', 'jquery'], tab1)
 async function tab1() {
+
+   //encapsulation start
    vm = await CRUDvm.inst()
-   vm._all()
-   
+   vm._all() // call some method, mostly data
+   //encapsulation end
+
    console.log('tabulator', Date.now() - _start)
    window.table1 = new Tabulator('#table1', {
       layout:'fitColumns', 
