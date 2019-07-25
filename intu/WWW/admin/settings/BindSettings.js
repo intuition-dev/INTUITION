@@ -20,7 +20,14 @@ class BindSettings {
         this.settingsViewModel.getConfig()
             .then(function(result) {
                 console.info("--setup settings comp:", result)
-                riot.mount('settings-comp', { pathToSite: result.pathToSite, port: result.port, bindSetup: _this })
+                riot.mount('settings-comp', {
+                    emailjsService_id: result.emailjsService_id,
+                    emailjsTemplate_id: result.emailjsTemplate_id,
+                    emailjsUser_id: result.emailjsUser_id,
+                    pathToSite: result.pathToApp,
+                    port: result.port,
+                    bindSetup: _this
+                })
             }).catch(e => {
                 console.log('error ', e)
             })

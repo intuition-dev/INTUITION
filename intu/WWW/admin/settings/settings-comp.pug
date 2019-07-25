@@ -36,11 +36,13 @@ settings-comp
       var _this = this
       this.pathToSite = opts.pathToSite
       this.port = opts.port
-      this.printfulAPI = opts.printfulAPI
+      //- this.printfulAPI = opts.printfulAPI
       this.emailjsService_id = opts.emailjsService_id
       this.emailjsTemplate_id = opts.emailjsTemplate_id
       this.emailjsUser_id = opts.emailjsUser_id
       this.bindSetup = opts.bindSetup
+
+      console.log('opts ------> ', opts);
       
       this.on('mount', function(){
          $('#save-settings').on('click', function(ev){
