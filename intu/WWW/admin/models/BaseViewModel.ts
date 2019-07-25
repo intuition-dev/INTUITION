@@ -3,7 +3,7 @@
  * To use: declare const BaseViewModel 
  * and depp require before the class
  */
-export  class BaseViewModel {
+class BaseViewModel{
     
     /**
      * Return 2 objects if 2 forms
