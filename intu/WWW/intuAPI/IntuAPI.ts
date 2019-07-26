@@ -134,8 +134,8 @@ class IntuAPI {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('api', 'editors', 'cloneItem', {
-         itemPath: id,
-         pathPrefix: pathPrefix,
+         newItemPath: id,
+         itemPath: pathPrefix,
          editor_email: email,
          editor_pass: pass
       });
