@@ -209,7 +209,7 @@ class IntuAPI {
     * @param code verification code, eg: '1234'
     */
    resetPassEditor(email, code, pass) {
-      return this.serviceRPC.invoke('api', 'editors', 'esetPasswordIfMatch', {
+      return this.serviceRPC.invoke('api', 'editors', 'resetPasswordIfMatch', {
          admin_email: email,
          code: code,
          password: pass

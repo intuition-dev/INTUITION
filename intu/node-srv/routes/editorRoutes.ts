@@ -33,21 +33,23 @@ export class EditorRoutes extends BasePgRouter {
       this.ret(resp, 'OK')
    }//()
 
-   emailResetPasswordCode(resp, params, email, pswd) {
-      const config:any = this.adbDB.getConfig()
+   async emailResetPasswordCode(resp, params, email, pswd) {
+      const config:any = await this.adbDB.getConfig()
       let emailjsService_id   = config.emailjsService_id
       let emailjsTemplate_id  = config.emailjsTemplate_id
       let emailjsUser_id      = config.emailjsUser_id
-   
-      let code = this.adbDB.getVcodeEditor(email)
-      let msg = 'Enter your code at http://bla.bla' + code // TODO use ADB template email to CRUD w/ {{code}}
+      
+      let code = this.adbDB.getVcodeEditor(params.admin_email)
+      let msg = 'Enter your code at http://bla.bla ' + code // TODO use ADB template email to CRUD w/ {{code}}
+
+      email = Buffer.from(params.admin_email).toString('base64');
       this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
       
       this.ret(resp, 'OK')
    }//() 
       
    async resetPasswordIfMatch(resp, params, email, password) {
-      const result = await this.adbDB.resetPasswordEditorIfMatch(email, params.code, params.password)
+      const result = await this.adbDB.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password)
       this.ret(resp, result)
 
    }//()

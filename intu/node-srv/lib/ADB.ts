@@ -238,11 +238,11 @@ export class ADB extends BaseDB {
 
     async resetPasswordEditorIfMatch(email, vcode, password) {
         // is there a row match?
-        const qry =  ADB.db.prepare(`SELECT COUNT(*) AS count FROM EDITORS where email=? and vcode=?`)
-        const rows = await this._qry(qry, email, vcode)
+        const qry =  ADB.db.prepare(`SELECT COUNT(*) AS count FROM EDITORS where email=? and vcode=${vcode}`)
+        const rows = await this._qry(qry, email)
         const row= rows[0]
         const count = row.count
-        if(!(count==0)) throw new Error('mismatch')
+        if((count==0)) throw new Error('mismatch')
 
         const salt = await this.getSalt()
         const hashPass = bcrypt.hashSync(password, salt)

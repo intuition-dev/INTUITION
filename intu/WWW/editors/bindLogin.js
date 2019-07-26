@@ -3,7 +3,7 @@
 **/
 class BindLogin {
     constructor() {
-        this.editViewModel = new EditViewModel();
+        this.editViewModel = new LoginViewModel();
     }
 
     sendVcode(email) {
