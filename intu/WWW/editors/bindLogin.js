@@ -3,12 +3,12 @@
 **/
 class BindLogin {
     constructor() {
-        this.IntuAPI = new IntuAPI();
+        this.editViewModel = new EditViewModel();
     }
 
     sendVcode(email) {
         if (email !== '') {
-            this.IntuAPI.sendVcodEditor(email)
+            this.editViewModel.sendVcodEditor(email)
                 .then(function(result) {
                     console.info("--result:", result);
                 });
@@ -17,7 +17,7 @@ class BindLogin {
 
     resetPass(email, code, pass) {
         if (email !== '' && pass !== '' && code !== '') {
-            this.IntuAPI.resetPassEditor(email, code, pass)
+            this.editViewModel.resetPassEditor(email, code, pass)
                 .then(function(result) {
                     if (result) {
                         $('.js-pass-changed-notification').removeClass('d-hide');
@@ -28,16 +28,13 @@ class BindLogin {
                     } else {
                         $('.js-pass-changed-notification-err').removeClass('d-hide');
                     }
-                    console.info("--result:", result);
                 });
         }
     }
 
     checkUser(formLogin, formPassw) {
-		console.info("--this.IntuAPI:", this.IntuAPI)
-		this.IntuAPI.checkEditor(formLogin, formPassw)
+		this.editViewModel.checkEditor(formLogin, formPassw)
 			.then(function (result) {
-				console.info("--result:", result)
 				if (result) {
 					window.sessionStorage.setItem('username', formLogin);
 					window.sessionStorage.setItem('password', formPassw);

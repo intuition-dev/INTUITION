@@ -2,25 +2,23 @@
 
 class LoginViewModel extends BaseViewModel  {
 
-    intuAPI
-    
-    
-    login(email, pswd):Promise<boolean> {
+    services: any;
 
-        return null
-    }
+    constructor() {
+        super()
+        this.services = new IntuAPI();
+    };  
 
-    _save(email, pswd) {
-        sessionStorage.set('user', email)
-        sessionStorage.set('pswd', pswd)
-    }
+    sendVcodEditor(email) {
+        return this.services.sendVcodEditor(email);
+    };
 
-    // forgot password props
-    sendPswdReset(email ) {
+    resetPassEditor(email, code, pass){
+        return this.services.resetPassEditor(email, code, pass);
+    };
 
-    }
+    checkEditor(formLogin, formPassw) {
+        return this.services.checkEditor(formLogin, formPassw);
+    };
 
-    checkCode(pswd, code) {
-        
-    }
 }
