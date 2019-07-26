@@ -85,8 +85,8 @@ class Posts {
         return this.intuAPI.setPublishDate(publishDate, pathPrefix);
     }
 
-    MbakeVersion() {
-        return this.intuAPI.getMbakeVersion();
-    }
+    // MbakeVersion() {
+    //     return this.intuAPI.getMbakeVersion();
+    // }
 
 }

@@ -610,7 +610,7 @@ if (window.location.href.indexOf('editors/edit') > -1) {
             $('.easter-pug').toggleClass('active');
 
             // log mbake Base.js version
-            posts.MbakeVersion();
+            // posts.MbakeVersion();
 
         });
 

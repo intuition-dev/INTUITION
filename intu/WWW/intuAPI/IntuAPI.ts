@@ -179,17 +179,17 @@ class IntuAPI {
    }
 
 
-   getMbakeVersion() {
-      let email = window.sessionStorage.getItem('username');
-      let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors',  'mbake-version', {
-            editor_email: email,
-            editor_pass: pass
-         })
-         .then(function (response) {
-            console.info('Base.js mbake version:', response);
-         });
-   }
+   // getMbakeVersion() {
+   //    let email = window.sessionStorage.getItem('username');
+   //    let pass = window.sessionStorage.getItem('password');
+   //    return this.serviceRPC.invoke('api', 'editors',  'mbake-version', {
+   //          editor_email: email,
+   //          editor_pass: pass
+   //       })
+   //       .then(function (response) {
+   //          console.info('Base.js mbake version:', response);
+   //       });
+   // }
 
    /**
     * editor send verification code
