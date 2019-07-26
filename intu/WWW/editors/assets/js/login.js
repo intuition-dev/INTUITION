@@ -13,7 +13,6 @@ class Login {
 					window.sessionStorage.setItem('password', formPassw);
 
 					let hash = location.hash;
-					console.info("--hash:", hash)
 					window.location.replace('/editors/edit/' + hash);
 
 				} else {

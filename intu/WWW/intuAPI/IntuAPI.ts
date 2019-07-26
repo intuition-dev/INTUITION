@@ -16,8 +16,6 @@ class IntuAPI {
       var host = window.location.hostname
       var port = window.location.port
 
-      console.log("TCL: IntuAPI -> constructor -> apiPort", port)
-
       this.serviceRPC = new httpRPC(pro, host, port)
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');

@@ -1,4 +1,4 @@
-import { Email } from 'mbake/lib//Email'
+import { Email } from 'mbake/lib/Email'
 import { BasePgRouter } from 'mbake/lib/Serv'
 import { ADB, AdminAuth } from '../lib/ADB'
 

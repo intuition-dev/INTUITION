@@ -51,7 +51,6 @@ if (window.location.href.indexOf('editors/edit') > -1) {
 
         let posts = new Posts();
         let hash = window.location.hash.substr(1);
-        console.info("--hash:", hash)
 
         posts
             .showDirs()
@@ -60,7 +59,6 @@ if (window.location.href.indexOf('editors/edit') > -1) {
                 if (typeof hash !== 'undefined' && hash !== '') {
 
                     let currentPage = $('.blog-item:contains("' + hash + '")');
-                    console.log('currentPage', currentPage);
 
                     $('.blog-item ul').remove();
                     $('.upload, .i-plusCircle').removeClass('disabled');
@@ -102,8 +100,7 @@ if (window.location.href.indexOf('editors/edit') > -1) {
             });
 
 
-        let appMount = window.appMount;
-        console.info('appmoutn', appMount);
+        let appMount = window.location.origin + '/ROOT/exApp1';
 
         $('.js-view-page').attr('href', appMount);
 
@@ -204,7 +201,6 @@ if (window.location.href.indexOf('editors/edit') > -1) {
             e.stopPropagation(); // prevent child trigger click on parent
 
             let postId = $(this).text();
-            console.log("TCL: postId", postId)
             let mdFile = '.md';
             let datFile = 'dat.yaml';
             let gloFile = 'GLO.yaml';

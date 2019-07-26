@@ -15,11 +15,9 @@ class BindSettings {
 
     //get data for the settings form
     getForm() {
-        console.info("--setup settings comp: start")
         var _this = this
         this.settingsViewModel.getConfig()
             .then(function(result) {
-                console.info("--setup settings comp:", result)
                 riot.mount('settings-comp', {
                     emailjsService_id: result.emailjsService_id,
                     emailjsTemplate_id: result.emailjsTemplate_id,
@@ -43,7 +41,6 @@ class BindSettings {
 
     //save path and/or port
     saveConfig(serialize) {
-        console.log("TCL: BindSettings -> saveConfig -> serialize", serialize)
         var port = serialize.filter(function(ser) {
             if (ser.name == 'port') {
                 return ser
@@ -81,8 +78,6 @@ class BindSettings {
 
         this.settingsViewModel.updateConfig(port, path, emailjsService_id, emailjsTemplate_id, emailjsUser_id)
             .then(result => {
-                console.info("updateConfig --result:", result)
-                debugger;
                 if (port != window.apiPort) {
                     window.location.href = "/admin"
                 }
