@@ -15,7 +15,6 @@ depp.define({
         '#baseVm',
         '/editors/edit/BindPosts.js',
         '/editors/BindLogin.js',
-        '/editors/assets/js/login.js'
     ],
     'rw': [
         '#general',

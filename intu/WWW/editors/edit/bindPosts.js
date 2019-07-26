@@ -365,4 +365,9 @@ class Posts {
             });
     }
 
+    signOut() {
+		sessionStorage.clear();
+		window.location = ('/editors');
+	}
+
 }

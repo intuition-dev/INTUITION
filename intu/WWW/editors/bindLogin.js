@@ -32,4 +32,23 @@ class BindLogin {
                 });
         }
     }
+
+    checkUser(formLogin, formPassw) {
+		console.info("--this.IntuAPI:", this.IntuAPI)
+		this.IntuAPI.checkEditor(formLogin, formPassw)
+			.then(function (result) {
+				console.info("--result:", result)
+				if (result) {
+					window.sessionStorage.setItem('username', formLogin);
+					window.sessionStorage.setItem('password', formPassw);
+
+					let hash = location.hash;
+					window.location.replace('/editors/edit/' + hash);
+
+				} else {
+					window.location = '/editors'
+				}
+			})
+    }
+    
 }
