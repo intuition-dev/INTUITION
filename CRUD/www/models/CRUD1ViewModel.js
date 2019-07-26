@@ -40,6 +40,7 @@ var CRUDvm = (function (_super) {
                 res(CRUDvm._instance);
             depp.require(['RPC', 'spin-wcomp'], function () {
                 console.log('MODEL!');
+                disE1('spin-stop', 'stop');
                 CRUDvm._instance = new CRUDvm(42);
                 CRUDvm._instance.setup();
                 res(CRUDvm._instance);
