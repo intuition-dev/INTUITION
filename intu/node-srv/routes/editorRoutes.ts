@@ -99,15 +99,21 @@ export class EditorRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
+      let substring = '/';
       let itemPath = '/' + params.file
       let file = params.itemPath
       const appPath = await this.adbDB.getAppPath()
-      let fileName =  itemPath + file
+      let fileName =  itemPath + file;
       let content = params.content;
       content = Buffer.from(content, 'base64');
-
+      
       //back up old
-      this.appLogic.archive(appPath, itemPath, fileName)
+      if (fileName.includes(substring)) {
+         let fileName2 = fileName.substr(fileName.lastIndexOf('/'));
+         this.appLogic.archive(appPath, itemPath, fileName2);
+      } else {
+         this.appLogic.archive(appPath, itemPath, fileName)
+      }
 
       const fileOps = new FileOps(appPath)
       // done saving
@@ -124,7 +130,7 @@ export class EditorRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      let itemPath = '/' + params.file
+      let itemPath = params.file
       let file = params.itemPath
       const appPath = await this.adbDB.getAppPath()
       let fileName =  itemPath + file
