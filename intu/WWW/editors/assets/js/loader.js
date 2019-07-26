@@ -15,6 +15,8 @@ depp.define({
         '#baseVm',
         '/editors/edit/BindPosts.js',
         '/editors/BindLogin.js',
+        '/editors/models/EditViewModel.js',
+        '/editors/models/LoginViewModel.js'
     ],
     'rw': [
         '#general',
