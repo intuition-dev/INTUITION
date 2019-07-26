@@ -1,14 +1,43 @@
 
-class EditorsViewModel extends BaseViewModel {
+class EditViewModel extends BaseViewModel {
     
-    intuAPI
+    services: any;
+
+    constructor() {
+        super()
+        this.services = new IntuAPI();
+    };
     
-    listF() {}
+    getDirsList() {
+        return this.services.getDirsList();
+    };
 
-    openFile() {}
+    getSubDirsList(id) {
+        return this.services.getSubDirsList(id);
+    };
 
-    saveFile() {}
+    getFile(id, pathPrefix) {
+        return this.services.getFile(id, pathPrefix);
+    };
 
-    bakeFile() {}
+    saveFile(id, md, pathPrefix) {
+        return this.services.saveFile(id, md, pathPrefix);
+    };
+
+    mbakeCompile(id, md, pathPrefix) {
+        return this.services.mbakeCompile(id, md, pathPrefix);
+    };
+
+    clonePage(id, pathPrefix) {
+        return this.services.clonePage(id, pathPrefix);
+    };
+
+    upload(data, pathPrefix) {
+        return this.services.upload(data, pathPrefix);
+    };
+
+    setPublishDate(date, itemPath) {
+        return this.services.setPublishDate(date, itemPath);
+    };
     
 }

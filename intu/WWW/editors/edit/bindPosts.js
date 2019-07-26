@@ -6,7 +6,7 @@ class Posts {
     constructor() {
         this.showDirs = this.showDirs.bind(this);
         this.showMd = this.showMd.bind(this);
-        this.intuAPI = new IntuAPI();
+        this.editViewModel = new EditViewModel();
     }
 
     loadTextarea() {
@@ -52,7 +52,7 @@ class Posts {
     showDirs(hash) {
         // render folders list
         let listTemp = '';
-        return this.intuAPI.getDirsList()
+        return this.editViewModel.getDirsList()
             .then(posts => {
                 if (Array.isArray(posts)) {
                     posts.forEach(el => {
@@ -102,7 +102,7 @@ class Posts {
     showSubDirs(id) {
         // render sub folders list
         let listTemp = '';
-        return this.intuAPI.getSubDirsList(id)
+        return this.editViewModel.getSubDirsList(id)
             .then(dirs => {
                 if (Array.isArray(dirs)) {
                     dirs.forEach(el => {
@@ -133,7 +133,7 @@ class Posts {
 
     showMd(id, pathPrefix) {
         // render .md file content in textarea
-        this.intuAPI.getFile(id, pathPrefix)
+        this.editViewModel.getFile(id, pathPrefix)
             .then(post => {
                 if (post) {
                     window.myCodeMirror.setValue(post);
@@ -145,7 +145,7 @@ class Posts {
     }
 
     saveMd(id, md, pathPrefix, target) {
-        return this.intuAPI.saveFile(id, md, pathPrefix)
+        return this.editViewModel.saveFile(id, md, pathPrefix)
             .then(resp => {
                 return resp
             })
@@ -187,14 +187,14 @@ class Posts {
     }
 
     compile(id, md, pathPrefix) {
-        return this.intuAPI.mbakeCompile(id, md, pathPrefix)
+        return this.editViewModel.mbakeCompile(id, md, pathPrefix)
             .then(resp => {
                 return resp;
             })
     }
 
     addPost(id, pathPrefix, target) {
-        return this.intuAPI.clonePage(id, pathPrefix)
+        return this.editViewModel.clonePage(id, pathPrefix)
             .then(() => {
 
                 target.removeAttr("disabled");
@@ -216,7 +216,7 @@ class Posts {
         var data = new FormData();
         data.append('sampleFile', input);
 
-        return this.intuAPI.upload(data, pathPrefix)
+        return this.editViewModel.upload(data, pathPrefix)
             .then(() => {
 
                 target.removeAttr("disabled");
@@ -233,7 +233,7 @@ class Posts {
     }
 
     setPublishDate(date, itemPath) {
-        return this.intuAPI.setPublishDate(date, itemPath)
+        return this.editViewModel.setPublishDate(date, itemPath)
             .then(() => {
 
                 $(this).find('button').removeAttr("disabled");
