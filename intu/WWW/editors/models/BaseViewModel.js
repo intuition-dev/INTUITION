@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var BaseViewModel = (function () {
     function BaseViewModel() {
     }
@@ -11,4 +9,3 @@ var BaseViewModel = (function () {
     };
     return BaseViewModel;
 }());
-exports.BaseViewModel = BaseViewModel;

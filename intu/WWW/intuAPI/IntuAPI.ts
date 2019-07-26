@@ -118,9 +118,9 @@ class IntuAPI {
          content: btoa(md),
          editor_email: email,
          editor_pass: pass
-      }).then(function (response) {
+      }).then(response => {
          return response;
-      }).catch(function (error) {
+      }).catch(error => {
          return error;
       });
    }

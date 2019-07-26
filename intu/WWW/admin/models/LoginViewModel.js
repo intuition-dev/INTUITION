@@ -21,8 +21,8 @@ var LoginViewModel = (function (_super) {
     LoginViewModel.prototype.checkAdmin = function (email, pass) {
         return this.services.checkAdmin(email, pass);
     };
-    LoginViewModel.prototype.sendVcode = function (email) {
-        return this.services.sendVcode(email);
+    LoginViewModel.prototype.sendVcode = function (email, loginUrl) {
+        return this.services.sendVcode(email, loginUrl);
     };
     LoginViewModel.prototype.resetPass = function (email, code, pass) {
         return this.services.resetPass(email, code, pass);

@@ -130,7 +130,7 @@ export class EditorRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      let itemPath = params.file
+      let itemPath = '/' + params.file
       let file = params.itemPath
       const appPath = await this.adbDB.getAppPath()
       let fileName =  itemPath + file

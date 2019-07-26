@@ -8,7 +8,48 @@ class Posts {
         this.showMd = this.showMd.bind(this);
         this.intuAPI = new IntuAPI();
     }
-    showDirs() {
+
+    loadTextarea() {
+
+        depp.define({
+            'codeEdit': [
+                '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/theme/solarized.css'
+    
+                , '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.min.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/markdown/markdown.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/yaml/yaml.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/pug/pug.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/css/css.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/keymap/sublime.js'
+    
+            ]
+        });
+        
+        depp.require('codeEdit', this.pgInit.bind(this));
+    }
+        
+    pgInit() {
+        this._initCodeMirror();
+    };
+
+    _initCodeMirror(mode) {
+        
+        if (window.myCodeMirror !== null) {
+
+            window.myCodeMirror.toTextArea();
+
+        }
+        window.myCodeMirror = CodeMirror.fromTextArea(
+            document.querySelector('#cms1'), {
+                mode: mode || 'markdown',
+                lineNumbers: true,
+                tabSize: 3,
+                indentWithTabs: false,
+                v11iewportMargin: 'Infinity',
+                lineWrapping: true
+            }
+        )
+        window.myCodeMirror.setSize('100%', '100%');
+
+    } // initCM();
+
+
+    showDirs(hash) {
         // render folders list
         let listTemp = '';
         return this.intuAPI.getDirsList()
@@ -23,6 +64,38 @@ class Posts {
                     console.info('failed to get list of directories');
                     window.location = '/editors'
                 }
+            })
+    }
+
+    init(hash) {
+        this.showDirs(hash)
+            .then(() => {
+
+                if (typeof hash !== 'undefined' && hash !== '') {
+
+                    let currentPage = $('.blog-item:contains("' + hash + '")');
+
+                    $('.blog-item ul').remove();
+                    $('.upload, .i-plusCircle').removeClass('disabled');
+                    $('.knot').removeClass('active');
+                    $(currentPage).find('.knot').addClass('active');
+                    $('.blog-item').removeClass('active');
+                    $(currentPage).addClass('active');
+                    $('.btn-custom.save').attr("disabled", "disabled");
+                    $('.js-view-page').removeAttr("disabled");
+
+                    let postId = $(currentPage).find('span').text();
+
+                    $('.js-view-page').attr('href', appMount + '/' + postId);
+
+                    if ($(currentPage).find('ul').length === 0) {
+                        this.showSubDirs(postId);
+                    } else {
+                        $(this).find('ul').remove();
+                    }
+
+                }
+
             });
     }
 
@@ -40,6 +113,21 @@ class Posts {
                     console.info('failed to get subdirectories');
                     window.location = '/editors'
                 }
+            })
+            .then(() => {
+                $('.blog-item li').each(function() {
+
+                    let fileName = $(this).text();
+
+                    if (fileName.includes('.md')) {
+                        $(this).addClass('md-highlight');
+                    }
+
+                    if (fileName.includes('.md') || fileName.includes('.yaml') || fileName.includes('.css') || fileName.includes('.pug') || fileName.includes('.csv')) {
+                        $(this).addClass('hover-highlight');
+                    }
+
+                });
             });
     }
 
@@ -48,7 +136,7 @@ class Posts {
         this.intuAPI.getFile(id, pathPrefix)
             .then(post => {
                 if (post) {
-                    myCodeMirror.setValue(post);
+                    window.myCodeMirror.setValue(post);
                 } else {
                     console.info('failed to get file content');
                     window.location = '/editors'
@@ -56,37 +144,225 @@ class Posts {
             });
     }
 
-    saveMd(id, md, pathPrefix) {
+    saveMd(id, md, pathPrefix, target) {
         return this.intuAPI.saveFile(id, md, pathPrefix)
-            .then(function(resp) {
-                return resp.data
+            .then(resp => {
+                return resp
             })
+            .then(() => {
+
+                target.removeAttr("disabled");
+                $('.loader').removeClass('active');
+                $('.notification').removeClass('d-hide').find('.text').text('The content was successfully updated');
+
+                setTimeout(function() {
+                    $('.notification').addClass('d-hide').find('.text').text('');
+                }, 2000);
+                console.info('saved');
+
+            })
+            .then(() => {
+                this.compile(id, md, pathPrefix)
+                    .then((response) => {
+                        if (response == 'OK') {
+
+                            let msg = 'Files have been built';
+
+                            $('[data-js="errors"]').removeClass('toast-error d-hide').html(msg);
+
+                            setTimeout(function() {
+                                $('[data-js="errors"]').addClass('d-hide toast-error').html('');
+                            }, 4000);
+
+                        } else {
+
+                            var msg = response.msg + ' in ' + response.filename + ' at line ' + response.line + '<br />'
+                            $('[data-js="errors"]').html(msg);
+                            $('[data-js="errors"]').removeClass('d-hide');
+
+                        }
+                        console.info('build');
+                    });
+            });
     }
 
     compile(id, md, pathPrefix) {
         return this.intuAPI.mbakeCompile(id, md, pathPrefix)
-            .then(function(resp) {
-                return resp.data
+            .then(resp => {
+                return resp;
             })
     }
 
-    addPost(id, pathPrefix) {
-        return this.intuAPI.clonePage(id, pathPrefix);
+    addPost(id, pathPrefix, target) {
+        return this.intuAPI.clonePage(id, pathPrefix)
+            .then(() => {
+
+                target.removeAttr("disabled");
+                $('.loader').removeClass('active');
+
+                $('.notification').removeClass('d-hide').find('.text').text('New post was added, now you can edit the content');
+
+                setTimeout(function() {
+                    $('.notification').addClass('d-hide').find('.text').text('');
+                }, 4000);
+
+                $('.post-name-wrap').addClass('d-hide').find('input').val('');
+                $('.create-post').removeClass('active');
+
+            });
     }
 
-    uploadFile(input, pathPrefix) {
+    uploadFile(input, pathPrefix, target, pathPrefixUpload) {
         var data = new FormData();
         data.append('sampleFile', input);
 
-        return this.intuAPI.upload(data, pathPrefix);
+        return this.intuAPI.upload(data, pathPrefix)
+            .then(() => {
+
+                target.removeAttr("disabled");
+                $('.loader').removeClass('active');
+                $('.file-upload').addClass('d-hide');
+                $('.notification').removeClass('d-hide').find('.text').text('The file was successfully uploaded to the folder ' + pathPrefixUpload);
+
+                setTimeout(function() {
+                    $('.notification').addClass('d-hide').find('.text').text('');
+                    $('.file-upload input[type="file"]').val('');
+                }, 4000);
+
+            });
     }
 
-    setPublishDate(publishDate, pathPrefix) {
-        return this.intuAPI.setPublishDate(publishDate, pathPrefix);
+    setPublishDate(date, itemPath) {
+        return this.intuAPI.setPublishDate(date, itemPath)
+            .then(() => {
+
+                $(this).find('button').removeAttr("disabled");
+                $('.loader').removeClass('active');
+                $('.publish-date-form').addClass('d-hide');
+                $('.notification').removeClass('d-hide').find('.text').text('Publish date was successfully set for post ' + itemPath);
+
+                setTimeout(function() {
+                    $('.notification').addClass('d-hide').find('.text').text('');
+                }, 4000);
+
+            });
     }
 
-    // MbakeVersion() {
-    //     return this.intuAPI.getMbakeVersion();
-    // }
+    refresh(dirActive, fileActive) {
+        this.showDirs()
+            .then(() => {
+                $('.blog-list-wrap').find('.blog-item span:contains(' + dirActive + ')').parents('.blog-item').addClass('active').click().find('ul li:contains(' + fileActive + ')').addClass('active').click();
+
+                setTimeout(function() {
+                    $('.blog-item.active ul li:contains(' + fileActive + ')').addClass('active').click();
+                    $('.loader').removeClass('active');
+                }, 1000);
+
+            });
+    }
+
+    refreshClosed() {
+        this.showDirs().then(() => $('.loader').removeClass('active'));
+    }
+
+    refreshTextarea(postId, target) {
+        
+        let mdFile = '.md';
+        let datFile = 'dat.yaml';
+        let gloFile = 'GLO.yaml';
+        let csvFile = '.csv';
+        let cssFile = '.css';
+
+        if (postId.includes(mdFile) || postId.includes(datFile) || postId.includes(gloFile) || postId.includes(csvFile) || postId.includes(cssFile)) {
+            switch (true) {
+                case postId.includes(mdFile):
+                    this._initCodeMirror('markdown');
+                    break;
+                case postId.includes(datFile):
+                    this._initCodeMirror('yaml');
+                    break;
+                case postId.includes(gloFile):
+                    this._initCodeMirror('yaml');
+                    break;
+                case postId.includes(csvFile):
+                    this._initCodeMirror('csv');
+                    break;
+                case postId.includes(cssFile):
+                    this._initCodeMirror('css');
+                    break;
+                case postId.includes(cssFile):
+                    this._initCodeMirror('css');
+                    break;
+                default:
+                   this._initCodeMirror('text');
+            }
+
+            $('.blog-item li').removeClass('active');
+            target.addClass('active');
+
+            let pathPrefix = target.parents('.blog-item').find('span').text();
+            let editedFileName = postId.replace('/', '');
+
+            $('.js-file-name').text(editedFileName);
+
+            this.showMd(postId, pathPrefix);
+
+            $('.btn-custom.save').removeAttr("disabled");
+            $('.i-calendar').addClass('disabled');
+
+            if (postId.includes(datFile)) {
+                $('.i-calendar').removeClass('disabled');
+            }
+        }
+    }
+
+    enablePug() {
+        this._initCodeMirror('pug');
+    }
+
+    refreshDirsOnClone(postId) {
+        this.showDirs()
+            .then(() => {
+
+                $('.blog-list-wrap').find('.blog-item span:contains(' + postId + ')').parents('.blog-item').addClass('active').click().find('ul li:contains(\'.md\')').addClass('active').click();
+
+                setTimeout(function() {
+                    $('.blog-item.active ul li:contains(\'.md\')').addClass('active').click();
+                }, 1000);
+
+            });
+            
+    }
+
+    refreshOnUpload(itemPath, activeFile) {
+        this.showDirs()
+            .then(() => {
+
+                $('.blog-list-wrap').find('.blog-item span:contains(' + itemPath + ')').parents('.blog-item').addClass('active').click().find('ul li:contains(' + activeFile + ')').addClass('active').click();
+
+                setTimeout(function() {
+                    $('.blog-item.active ul li:contains(' + activeFile + ')').addClass('active').click();
+                }, 1000);
+
+                window.myCodeMirror.setValue('');
+
+            });
+
+    }
+
+    refreshOnSetDate(itemPath) {
+        this.showDirs()
+            .then(() => {
+
+                $('.blog-list-wrap').find('.blog-item span:contains(' + itemPath + ')').parents('.blog-item').addClass('active').click().find('ul li:contains(\'.md\')').addClass('active').click();
+
+                setTimeout(function() {
+                    $('.blog-item.active ul li:contains(\'dat.yaml\')').addClass('active').click();
+                }, 1000);
+
+                window.myCodeMirror.setValue('');
+
+            });
+    }
 
 }
