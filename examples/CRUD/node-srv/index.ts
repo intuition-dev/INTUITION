@@ -1,11 +1,26 @@
-
 import { CrudPgRouter } from './routes/Routers'
 
 import { IntuApp } from 'intu/node-srv/IntuSrv'
 import { ADB } from     'intu/node-srv/lib/ADB'
 
-const adbDB = new ADB()
-const mainEApp = new IntuApp(adbDB, ['*'])
+// intu /////////////////////////////////////////
+
+let mainEApp
+
+function runISrv() {
+   const ip = require('ip')
+   const ipAddres = ip.address()
+
+   const hostIP = 'http://' + ipAddres + ':'
+
+   console.log("TCL: hostIP", hostIP)
+   const adbDB = new ADB()
+
+   // the only place there is DB new is here.
+   mainEApp = new IntuApp(adbDB, ['*'])
+}
+runISrv()
+
 // app starts ////////////////////////////////////
 
 // log requests
@@ -15,13 +30,11 @@ mainEApp.appInst.use(function (req, res, next) {
    next()
 })
 
-// app start ///////////////////////
-mainEApp.serveStatic('../ed')
-
+//api
 const cRouter = new CrudPgRouter()
 mainEApp.handleRRoute('api', 'CRUD1Pg', cRouter.route.bind(cRouter))
 
-//boiler plater
+//boiler plate
 mainEApp.serveStatic('../www')
 
 //catch all
@@ -31,7 +44,5 @@ mainEApp.appInst.all('*', function (req, resp) {
    resp.json({'No route': path })
 })
 
-// start
-mainEApp.appInst.listen(8888, () => {
-   console.info('server running on port: 8888')
-})
+// start ////////////////////////////////////////////////////////
+mainEApp.start()

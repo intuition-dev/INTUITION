@@ -26,7 +26,7 @@ function unzipC() {
     new Download('CRUD', cwd).autoUZ()
     console.info('Extracted a starter CRUD app')
 }
-function runSrv() {
+function runISrv() {
     const ip = require('ip')
     const ipAddres = ip.address()
 
@@ -38,8 +38,8 @@ function runSrv() {
     // the only place there is DB new is here.
     const mainEApp = new IntuApp(adbDB, ['*'])
     mainEApp.start()
+}//()
 
-}
 function help() {
     console.info()
     console.info('intu version: ' + ADB.veri())
@@ -59,6 +59,6 @@ else if (argsParsed.help)
 else if (argsParsed.ShopShip) 
     unzipSS()
 else
-    runSrv()
+    runISrv()
 
 
