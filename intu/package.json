@@ -1,6 +1,6 @@
 {
     "name": "intu",
-    "version": "0.97.01",
+    "version": "0.97.02",
     "description": "'It will lead YOU in the right direction'. WebAdmin 'Intuition' screens for any app, eg: CRUD, e-Commerce, etc ",
     "main": "./node-srv/intu.js",
     "bin": {
@@ -20,7 +20,7 @@
         "fs-extra": ">=8.1.0",
         "ip": ">=1.1.5",
         "is": ">=3.3.0",
-        "mbake": ">=6.7.29",
+        "mbake": ">=6.7.30",
         "perfy": ">=1.1.5",
         "sqlite3": ">=4.0.9"
     },
