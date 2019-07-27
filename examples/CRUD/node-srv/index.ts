@@ -17,7 +17,7 @@ function runISrv() {
    const adbDB = new ADB()
 
    // the only place there is DB new is here.
-   mainIApp = new IntuApp(adbDB, '../node_modules/intu/WWW', ['*'])
+   mainIApp = new IntuApp(adbDB, ['*'])
 }
 runISrv()
 
@@ -37,7 +37,6 @@ mainIApp.handleRRoute('api', 'CRUD1Pg', cRouter.route.bind(cRouter))
 //boiler plate
 mainIApp.serveStatic('../node_modules/intu/WWW')
 mainIApp.serveStatic('../www')
-
 
 //catch all
 mainIApp.appInst.all('*', function (req, resp) {
