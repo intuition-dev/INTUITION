@@ -5,7 +5,7 @@ import { ADB } from     'intu/node-srv/lib/ADB'
 
 // intu /////////////////////////////////////////
 
-let mainIApp
+let mainIApp:IntuApp
 
 function runISrv() {
    const ip = require('ip')
