@@ -1,1 +1,1 @@
-declare let BaseViewModel:any
+declare let iViewModel:any

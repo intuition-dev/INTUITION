@@ -1,16 +1,3 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 console.log('VMLoaded');
 var tableData = [
     { id: 1, name: 'Mary May', age: '1', col: 'blue' },
@@ -19,13 +6,11 @@ var tableData = [
     { id: 4, name: 'Margret Marmajuke', age: '16', col: 'yellow' },
 ];
 disE1('gotData', tableData);
-var CRUDvm = (function (_super) {
-    __extends(CRUDvm, _super);
+var CRUDvm = (function () {
     function CRUDvm(arg) {
-        var _this = _super.call(this) || this;
+        _this = _super.call(this) || this;
         if (42 !== arg)
             throw new Error('use static inst()');
-        return _this;
     }
     CRUDvm.prototype.setup = function () {
         var pro = window.location.protocol;
@@ -40,7 +25,6 @@ var CRUDvm = (function (_super) {
                 res(CRUDvm._instance);
             depp.require(['RPC', 'spin-wcomp'], function () {
                 console.log('MODEL!');
-                disE1('spin-stop', 'stop');
                 CRUDvm._instance = new CRUDvm(42);
                 CRUDvm._instance.setup();
                 res(CRUDvm._instance);
@@ -50,6 +34,7 @@ var CRUDvm = (function (_super) {
     CRUDvm.prototype._all = function () {
         var prom = this.rpc.invoke('api', 'CRUD1Pg', 'selectAll', { a: 5, b: 2 });
         console.log('***', 'data in flight', Date.now() - _start);
+        disE1('spin-stop', 'stop');
         prom.then(function (resp) {
             console.log('resp', resp, Date.now() - _start);
         }).catch(function (err) {
@@ -69,4 +54,4 @@ var CRUDvm = (function (_super) {
         return 'OK';
     };
     return CRUDvm;
-}(BaseViewModel));
+}());

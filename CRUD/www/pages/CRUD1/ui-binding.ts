@@ -10,7 +10,7 @@ console.log('ui binding')
 // required dependencies  are in each script
 
 depp.require(['poly'], onPoly)
-depp.define({'CRUD':['/models/BaseViewModel.js', '/models/CRUD1ViewModel.js']})
+depp.define({'CRUD':['/models/CRUD1ViewModel.js']})
 function onPoly() {
    // view model(VM) load ASAP
    depp.require('CRUD')

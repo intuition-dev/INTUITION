@@ -16,13 +16,21 @@ var tableData = [
 
 disE1('gotData', tableData)
 
-class CRUDvm extends BaseViewModel {
+class CRUDvm implements iViewModel {
+
+   getData(): Object {
+      throw new Error("Method not implemented.");
+   }
+   
+   log(...a: any[]) {
+      throw new Error("Method not implemented.");
+   }
+
    // can be in services class so other VM can use
    rpc
 
    //encapsulation start
    constructor(arg) {
-      super()
       if(42!==arg) throw new Error('use static inst()') // guard!
    }
 
@@ -42,7 +50,6 @@ class CRUDvm extends BaseViewModel {
 
          depp.require(['RPC','spin-wcomp'],function(){
             console.log('MODEL!')
-            disE1('spin-stop','stop')
 
             CRUDvm._instance = new CRUDvm(42)
             CRUDvm._instance.setup()
@@ -53,10 +60,10 @@ class CRUDvm extends BaseViewModel {
    //encapsulation end
 
    _all() {
-
       var prom = this.rpc.invoke('api', 'CRUD1Pg', 'selectAll', {a:5, b:2})
       // the most important step in the loading waterfall - after the first paint
       console.log('***', 'data in flight', Date.now() - _start)
+      disE1('spin-stop','stop')
       
       prom.then(function(resp) {
          console.log('resp', resp, Date.now() - _start)
