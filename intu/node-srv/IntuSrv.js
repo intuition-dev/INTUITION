@@ -8,8 +8,9 @@ const ADB_1 = require("./lib/ADB");
 const Setup_1 = require("./Setup");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 class IntuApp extends Serv_1.ExpressRPC {
-    constructor(db, origins) {
+    constructor(db, WWW, origins) {
         super();
+        this.WWW = WWW;
         this.makeInstance(origins);
         this.db = db;
         this.uploadRoute = new uploadRoute_1.UploadRoute();
@@ -56,7 +57,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         this.handleRRoute('admin', 'admin', ar.route.bind(ar));
         this.handleRRoute('api', 'editors', er.route.bind(er));
         this.appInst.post('/upload', this.uploadRoute.upload);
-        this.serveStatic('../WWW');
+        this.serveStatic(this.WWW);
         if (!setup) {
             const appPath = await this.db.getAppPath();
             console.log('appPath: ', appPath);

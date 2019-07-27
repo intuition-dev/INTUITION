@@ -8,10 +8,19 @@ var tableData = [
 disE1('gotData', tableData);
 var CRUDvm = (function () {
     function CRUDvm(arg) {
-        _this = _super.call(this) || this;
         if (42 !== arg)
             throw new Error('use static inst()');
     }
+    CRUDvm.prototype.getData = function () {
+        throw new Error("Method not implemented.");
+    };
+    CRUDvm.prototype.log = function () {
+        var a = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            a[_i] = arguments[_i];
+        }
+        throw new Error("Method not implemented.");
+    };
     CRUDvm.prototype.setup = function () {
         var pro = window.location.protocol;
         pro = pro.replace(':', '');

@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 console.log('ui binding');
 depp.require(['poly'], onPoly);
-depp.define({ 'CRUD': ['/models/BaseViewModel.js', '/models/CRUD1ViewModel.js'] });
+depp.define({ 'CRUD': ['/models/CRUD1ViewModel.js'] });
 function onPoly() {
     depp.require('CRUD');
 }

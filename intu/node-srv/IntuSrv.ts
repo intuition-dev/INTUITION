@@ -14,10 +14,11 @@ export class IntuApp extends ExpressRPC {
 
     db:ADB
     uploadRoute
+    WWW: string
 
-    constructor(db:ADB, origins:Array<string>) {
+    constructor(db:ADB, WWW:string, origins:Array<string>) {
         super()
-
+        this.WWW = WWW
         this.makeInstance(origins)
 
         this.db = db
@@ -74,7 +75,7 @@ export class IntuApp extends ExpressRPC {
 
         this.appInst.post('/upload', this.uploadRoute.upload)
 
-        this.serveStatic('../WWW')// the editor apps
+        this.serveStatic(this.WWW)// the editor apps
 
         if(!setup) {
             const appPath:string = await this.db.getAppPath()

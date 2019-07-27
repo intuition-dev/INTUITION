@@ -15,20 +15,20 @@ const argsParsed = commandLineArgs(optionDefinitions);
 console.log(argsParsed);
 const cwd = process.cwd();
 function unzipSS() {
-    new FileOpsExtra_1.Download('intu4SS', cwd).auto();
+    new FileOpsExtra_1.Download('intu4SS', cwd).autoUZ();
     console.info('Extracted a starter Ship and Shop app');
 }
 function unzipC() {
-    new FileOpsExtra_1.Download('CRUD', cwd).auto();
+    new FileOpsExtra_1.Download('CRUD', cwd).autoUZ();
     console.info('Extracted a starter CRUD app');
 }
-function runSrv() {
+function runISrv() {
     const ip = require('ip');
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
     const adbDB = new ADB_1.ADB();
-    const mainEApp = new IntuSrv_1.IntuApp(adbDB, ['*']);
+    const mainEApp = new IntuSrv_1.IntuApp(adbDB, '../WWW', ['*']);
     mainEApp.start();
 }
 function help() {
@@ -47,4 +47,4 @@ else if (argsParsed.help)
 else if (argsParsed.ShopShip)
     unzipSS();
 else
-    runSrv();
+    runISrv();
