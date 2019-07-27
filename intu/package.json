@@ -1,7 +1,8 @@
 {
     "name": "intu",
-    "version": "0.17.29",
-    "description": "'It will lead YOU in the right direction'. WebAdmin 'Intuition' screens to CMS, e-Com, et al. ",
+    "version": "0.17.30",
+    "description": "'It will lead YOU in the right direction'. WebAdmin 'Intuition' screens for any app, eg: CRUD, e-Commerce, etc ",
+    "main": "./node-srv/intu.js",
     "bin": {
         "intu": "./node-srv/intu.js"
     },

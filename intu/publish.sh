@@ -1,3 +1,4 @@
+# must remove sql db
 ncu
 npm update
 cd node-srv
