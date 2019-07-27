@@ -14,11 +14,9 @@ export class IntuApp extends ExpressRPC {
 
     db:ADB
     uploadRoute
-    WWW: string
 
-    constructor(db:ADB, WWW:string, origins:Array<string>) {
+    constructor(db:ADB, origins:Array<string>) {
         super()
-        this.WWW = WWW
         this.makeInstance(origins)
 
         this.db = db
@@ -54,7 +52,7 @@ export class IntuApp extends ExpressRPC {
     }//()
 
     _runSetup() {
-        this._run(9081, true)
+        this._run(9081)
         console.log('setup')
         const setup = new Setup(this.db, this)
         setup.setup()
@@ -63,10 +61,10 @@ export class IntuApp extends ExpressRPC {
     async _runNormal() {
         const port:number = await this.db.getPort()
         console.log('_runNormal port:', port)
-        this._run(port, false)
+        this._run(port)
     }//()
 
-    async _run(port:number, setup:boolean) {    
+    async _run(port:number) {    
         // order of routes: api, all intu apps, webapp
         console.log('running')    
         //api
@@ -76,18 +74,6 @@ export class IntuApp extends ExpressRPC {
         this.handleRRoute('api', 'editors', er.route.bind(er) )
 
         this.appInst.post('/upload', this.uploadRoute.upload)
-
-        console.log('i', this.WWW)
-        this.serveStatic(this.WWW)// the editor apps
-
-        if(!setup) {
-            const appPath:string = await this.db.getAppPath()
-            console.log('appPath: ', appPath);
-            //webapp being managed
-            if (appPath !== null) {
-                this.serveStatic(appPath);
-            }
-        }
 
         // endpoint for monitoring
         this.appInst.get('/monitor',  (req, res) => {

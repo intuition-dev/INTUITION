@@ -36,8 +36,9 @@ function runISrv() {
     const adbDB = new ADB()
 
     // the only place there is DB new is here.
-    const mainEApp = new IntuApp(adbDB, '../WWW', ['*'])
+    const mainEApp = new IntuApp(adbDB, ['*'])
 
+    mainEApp.serveStatic('.../WWW')
     mainEApp.start()
 }//()
 

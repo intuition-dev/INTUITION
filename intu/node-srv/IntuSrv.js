@@ -8,9 +8,8 @@ const ADB_1 = require("./lib/ADB");
 const Setup_1 = require("./Setup");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 class IntuApp extends Serv_1.ExpressRPC {
-    constructor(db, WWW, origins) {
+    constructor(db, origins) {
         super();
-        this.WWW = WWW;
         this.makeInstance(origins);
         this.db = db;
         this.uploadRoute = new uploadRoute_1.UploadRoute();
@@ -43,7 +42,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         }
     }
     _runSetup() {
-        this._run(9081, true);
+        this._run(9081);
         console.log('setup');
         const setup = new Setup_1.Setup(this.db, this);
         setup.setup();
@@ -51,24 +50,15 @@ class IntuApp extends Serv_1.ExpressRPC {
     async _runNormal() {
         const port = await this.db.getPort();
         console.log('_runNormal port:', port);
-        this._run(port, false);
+        this._run(port);
     }
-    async _run(port, setup) {
+    async _run(port) {
         console.log('running');
         const ar = new adminRoutes_1.AdminRoutes(this.db);
         const er = new editorRoutes_1.EditorRoutes(this.db);
         this.handleRRoute('admin', 'admin', ar.route.bind(ar));
         this.handleRRoute('api', 'editors', er.route.bind(er));
         this.appInst.post('/upload', this.uploadRoute.upload);
-        console.log('i', this.WWW);
-        this.serveStatic(this.WWW);
-        if (!setup) {
-            const appPath = await this.db.getAppPath();
-            console.log('appPath: ', appPath);
-            if (appPath !== null) {
-                this.serveStatic(appPath);
-            }
-        }
         this.appInst.get('/monitor', (req, res) => {
             this.db.monitor()
                 .then(count => {

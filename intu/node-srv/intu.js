@@ -28,7 +28,8 @@ function runISrv() {
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
     const adbDB = new ADB_1.ADB();
-    const mainEApp = new IntuSrv_1.IntuApp(adbDB, '../WWW', ['*']);
+    const mainEApp = new IntuSrv_1.IntuApp(adbDB, ['*']);
+    mainEApp.serveStatic('.../WWW');
     mainEApp.start();
 }
 function help() {
