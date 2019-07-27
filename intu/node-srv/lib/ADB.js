@@ -6,7 +6,7 @@ const fs = require('fs-extra');
 const BaseDB_1 = require("mbake/lib/BaseDB");
 class ADB extends BaseDB_1.BaseDB {
     static veri() {
-        return '0.97.00';
+        return 'v0.97.03';
     }
     dbExists() {
         return fs.existsSync('./ADB.sqlite');

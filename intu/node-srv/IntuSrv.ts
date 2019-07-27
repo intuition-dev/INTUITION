@@ -37,6 +37,7 @@ export class IntuApp extends ExpressRPC {
     }//()
 
     async start() {
+        console.log('starting intu')
         try {
             //check if the file of the database exist
             if (this.db.dbExists()) {
@@ -54,10 +55,11 @@ export class IntuApp extends ExpressRPC {
 
     _runSetup() {
         this._run(9081, true)
-
+        console.log('setup')
         const setup = new Setup(this.db, this)
         setup.setup()
     }
+
     async _runNormal() {
         const port:number = await this.db.getPort()
         console.log('_runNormal port:', port)
@@ -66,7 +68,7 @@ export class IntuApp extends ExpressRPC {
 
     async _run(port:number, setup:boolean) {    
         // order of routes: api, all intu apps, webapp
-        
+        console.log('running')    
         //api
         const ar = new AdminRoutes(this.db)
         const er = new EditorRoutes(this.db)
@@ -75,6 +77,7 @@ export class IntuApp extends ExpressRPC {
 
         this.appInst.post('/upload', this.uploadRoute.upload)
 
+        console.log('i', this.WWW)
         this.serveStatic(this.WWW)// the editor apps
 
         if(!setup) {

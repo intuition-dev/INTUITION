@@ -27,6 +27,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         });
     }
     async start() {
+        console.log('starting intu');
         try {
             if (this.db.dbExists()) {
                 await this.db.init();
@@ -43,6 +44,7 @@ class IntuApp extends Serv_1.ExpressRPC {
     }
     _runSetup() {
         this._run(9081, true);
+        console.log('setup');
         const setup = new Setup_1.Setup(this.db, this);
         setup.setup();
     }
@@ -52,11 +54,13 @@ class IntuApp extends Serv_1.ExpressRPC {
         this._run(port, false);
     }
     async _run(port, setup) {
+        console.log('running');
         const ar = new adminRoutes_1.AdminRoutes(this.db);
         const er = new editorRoutes_1.EditorRoutes(this.db);
         this.handleRRoute('admin', 'admin', ar.route.bind(ar));
         this.handleRRoute('api', 'editors', er.route.bind(er));
         this.appInst.post('/upload', this.uploadRoute.upload);
+        console.log('i', this.WWW);
         this.serveStatic(this.WWW);
         if (!setup) {
             const appPath = await this.db.getAppPath();
