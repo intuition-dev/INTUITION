@@ -14,19 +14,19 @@ const optionDefinitions = [
 ]
 
 const argsParsed = commandLineArgs(optionDefinitions)
-let arg: string = argsParsed.mbake
+console.log(argsParsed)
 
 const cwd: string = process.cwd()
 
 function unzipSS() {
-    new Download('intu4SS', cwd).auto()
+    new Download('intu4SS', cwd).autoUZ()
     console.info('Extracted a starter Ship and Shop app')
  }
 function unzipC() {
-    new Download('CRUD', cwd).auto()
+    new Download('CRUD', cwd).autoUZ()
     console.info('Extracted a starter CRUD app')
 }
-function run() {
+function runSrv() {
     const ip = require('ip')
     const ipAddres = ip.address()
 
@@ -54,11 +54,11 @@ function help() {
  // start: /////////////////////////////////////////////////////////////////////////////////////
 if (argsParsed.CRUD)
     unzipC()
-if (argsParsed.help)
+else if (argsParsed.help)
     help()
 else if (argsParsed.ShopShip) 
     unzipSS()
 else
-    run()
+    runSrv()
 
 

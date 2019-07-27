@@ -5,12 +5,11 @@
   "private": true,
   "main": "index.js",
   "engines": {
-    "node": ">=10.16.0"
+    "node": ">=12.7.0",
+    "npm": ">=6.10.2"
   },
   "dependencies": {
-    "bunyan": ">=1.8.12",
-    "intu": ">=0.17.22",
-    "ip": ">=1.1.5",
+    "intu": ">=0.17.32",
     "is": ">=3.3.0",
     "perfy": ">=1.1.5",
     "sqlite3": ">=4.0.9"

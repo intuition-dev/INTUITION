@@ -4,14 +4,16 @@
   "description": "MetaBake's intu WebAdmin for e-com",
   "private": true,
   "main": "index.js",
-  "scripts": {},
   "author": "",
+  "engines": {
+    "node": ">=12.7.0",
+    "npm": ">=6.10.2"
+  },
   "dependencies": {
-    "intu": ">=0.17.22",
+    "intu": ">=0.17.32",
     "is": ">=3.3.0",
     "perfy": ">=1.1.5",
-    "pubnub": ">=4.24.3",
-    "superagent": ">=5.1.0",
+    "pubnub": ">=4.24.4",
     "sqlite3": ">=4.0.9"
   },
   "devDependencies": {
