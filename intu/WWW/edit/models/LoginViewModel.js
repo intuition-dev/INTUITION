@@ -14,18 +14,22 @@ var __extends = (this && this.__extends) || (function () {
 var LoginViewModel = (function (_super) {
     __extends(LoginViewModel, _super);
     function LoginViewModel() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.call(this) || this;
+        _this.services = new IntuAPI();
+        return _this;
     }
-    LoginViewModel.prototype.login = function (email, pswd) {
-        return null;
+    ;
+    LoginViewModel.prototype.sendVcodEditor = function (email) {
+        return this.services.sendVcodEditor(email);
     };
-    LoginViewModel.prototype._save = function (email, pswd) {
-        sessionStorage.set('user', email);
-        sessionStorage.set('pswd', pswd);
+    ;
+    LoginViewModel.prototype.resetPassEditor = function (email, code, pass) {
+        return this.services.resetPassEditor(email, code, pass);
     };
-    LoginViewModel.prototype.sendPswdReset = function (email) {
+    ;
+    LoginViewModel.prototype.checkEditor = function (formLogin, formPassw) {
+        return this.services.checkEditor(formLogin, formPassw);
     };
-    LoginViewModel.prototype.checkCode = function (pswd, code) {
-    };
+    ;
     return LoginViewModel;
 }(BaseViewModel));

@@ -7,8 +7,8 @@ depp.define({
       '../setup/models/SetupViewModel',
       '../admin/models/LoginViewModel',
       '../admin/models/AdminViewModel',
-      '../editors/models/LoginViewModel',
-      '../editors/models/EditViewModel',
+      '../edit/models/LoginViewModel',
+      '../edit/models/EditViewModel',
 
       'test1.js'
    ]

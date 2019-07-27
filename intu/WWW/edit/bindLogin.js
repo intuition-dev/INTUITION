@@ -40,7 +40,7 @@ class BindLogin {
 					window.sessionStorage.setItem('password', formPassw);
 
 					let hash = location.hash;
-					window.location.replace('/editors/edit/' + hash);
+					window.location.replace('/edit/edit/' + hash);
 
 				} else {
 					window.location = '/editors'

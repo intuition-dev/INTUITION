@@ -123,7 +123,7 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.resetPassEditor = function (email, code, pass) {
-        return this.serviceRPC.invoke('api', 'editors', 'esetPasswordIfMatch', {
+        return this.serviceRPC.invoke('api', 'editors', 'resetPasswordIfMatch', {
             admin_email: email,
             code: code,
             password: pass

@@ -35,7 +35,7 @@ class BindSettings {
     getPort() {
         this.settingsViewModel.getConfig()
             .then(function(result) {
-                $('.js-goto-editors').attr('href', 'http://localhost:' + result.port + '/editors/');
+                $('.js-goto-editors').attr('href', 'http://localhost:' + result.port + '/edit/');
             });
     }
 

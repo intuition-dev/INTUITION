@@ -1,12 +1,2 @@
-*.min.js
-
-# ignore all .html
-*.html
-
-*.css
-
-# except API docs .html
-!intuAPI/*.html
-!intuAPI/docs/*.html
 
 d.js

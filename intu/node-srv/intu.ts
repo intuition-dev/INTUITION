@@ -4,6 +4,7 @@
 import commandLineArgs = require('command-line-args')
 import { ADB } from './lib/ADB'
 import { Download } from 'mbake/lib/FileOpsExtra';
+import { IntuApp } from './IntuSrv'
 
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
@@ -26,6 +27,17 @@ function unzipC() {
     console.info('Extracted a starter CRUD app')
 }
 function run() {
+    const ip = require('ip')
+    const ipAddres = ip.address()
+
+    const hostIP = 'http://' + ipAddres + ':'
+
+    console.log("TCL: hostIP", hostIP)
+    const adbDB = new ADB()
+
+    // the only place there is DB new is here.
+    const mainEApp = new IntuApp(adbDB, ['*'])
+    mainEApp.start()
 
 }
 function help() {

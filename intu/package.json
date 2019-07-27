@@ -2,9 +2,8 @@
     "name": "intu",
     "version": "0.17.29",
     "description": "'It will lead YOU in the right direction'. WebAdmin 'Intuition' screens to CMS, e-Com, et al. ",
-    "main": "index.js",
     "bin": {
-        "intu": "./node-srv/index.js"
+        "intu": "./node-srv/intu.js"
     },
     "scripts": {
         "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
