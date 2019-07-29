@@ -14,9 +14,9 @@ var __extends = (this && this.__extends) || (function () {
 depp.require(['poly-wcomp', 'mustache'], function () {
     console.log('loaded');
     var cTemp = document.createElement('template');
-    cTemp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.18/bootStrap/css/bootstrapTop.css\">\n      <a href=\"{{url}}\">\n      <div class=\"card\" style=\"max-width:400px\">\n         <img class=\"card-img-top\"  />\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n   ";
+    cTemp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.0/bootStrap/css/bootstrapTop.css\">\n      <a href=\"{{url}}\">\n      <div class=\"card\" style=\"max-width:400px\">\n         <img class=\"card-img-top\"  />\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n   ";
     var c2Temp = document.createElement('template');
-    c2Temp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.18/bootStrap/css/bootstrapTop.css\">\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.18/bootStrap/css/bootstrap.css\">\n      <a href=\"{{url}}\">\n      <div class=\"card\" style=\"max-width:400px\">\n         <img class=\"card-img-top\" src=\"{{image}}\"/>\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n   ";
+    c2Temp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.0/bootStrap/css/bootstrapTop.css\">\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.0/bootStrap/css/bootstrap.css\">\n      <a href=\"{{url}}\">\n      <div class=\"card\" style=\"max-width:400px\">\n         <img class=\"card-img-top\" src=\"{{image}}\"/>\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n   ";
     window.customElements.define('item-wcomp', (function (_super) {
         __extends(class_1, _super);
         function class_1() {

@@ -60,11 +60,11 @@ Remember your admin email and password. (TODO: Validate admin email, maybe via c
 
 # API for MetaBake and WebAdmin
 
-Check here https://cdn.jsdelivr.net/gh/metabake/toolBelt@v2.0.18/toolBelt/toolBelt.js
+Check here https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.0/toolBelt/toolBelt.js
 
 
 # Links
 
-- [MetaBake.org](https://www.MetaBake.org)
+- [MetaBake.org](https://www.Intuition.DEV)
 - [blog.MetaBake.net](http://blog.MetaBake.net)
 - [Github](http://git.MetaBake.org)
