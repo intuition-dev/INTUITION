@@ -55,9 +55,6 @@ class ADB extends BaseDB_1.BaseDB {
         const hashPass = bcrypt.hashSync(password, salt);
         const stmt1 = ADB.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`);
         this._run(stmt1, email, hashPass);
-        email = Buffer.from(email, 'base64').toString();
-        const stmt3 = ADB.db.prepare(`INSERT INTO EDITORS(email, hashPass, name) VALUES(?,?,'Admin')`);
-        this._run(stmt3, email, hashPass);
         const appPath = await fs.realpath(__dirname + '/../../WWW/ROOT/exApp1');
         const stmt2 = ADB.db.prepare(`INSERT INTO CONFIG(pathToApp, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES('` + appPath + `',?,?,?,?)`);
         this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port);
@@ -106,16 +103,23 @@ class ADB extends BaseDB_1.BaseDB {
         return vcode;
     }
     async authEditor(email, password) {
+        password = Buffer.from(password, 'base64').toString();
+        console.log('email, password ----------------->', email, password);
         const salt = await this.getSalt();
         const hashPassP = bcrypt.hashSync(password, salt);
         const qry = ADB.db.prepare('SELECT * FROM EDITORS where email =  ?');
+        console.log('qry, email ----------------->', qry, email);
         const rows = await this._qry(qry, email);
+        console.log('rows.length --------->', rows.length, rows.length > 0);
         if (rows.length > 0) {
+            console.log('rows --------->', rows);
             const row = rows[0];
             const hashPassS = row.hashPass;
+            console.log('hashPassP, hashPassS --->', hashPassP, hashPassS);
             return hashPassP == hashPassS;
         }
         else {
+            console.log('rows --------->', rows);
             return false;
         }
     }
@@ -225,6 +229,7 @@ class EditorAuth {
     async auth(user, pswd, resp, ctx) {
         return new Promise(async (resolve, reject) => {
             const ok = await this.db.authEditor(user, pswd);
+            console.log('ok ----------> ', ok);
             if (ok)
                 return resolve('OK');
             this.retErr(resp, 'NO');
