@@ -62,7 +62,7 @@ class Posts {
 
                 } else {
                     console.info('failed to get list of directories');
-                    window.location = '/editors'
+                    window.location = '/edit'
                 }
             })
     }
@@ -111,7 +111,7 @@ class Posts {
                     $('.blog-item.active').append('<ul>' + listTemp + '</ul>');
                 } else {
                     console.info('failed to get subdirectories');
-                    window.location = '/editors'
+                    window.location = '/edit'
                 }
             })
             .then(() => {
@@ -139,7 +139,7 @@ class Posts {
                     window.myCodeMirror.setValue(post);
                 } else {
                     console.info('failed to get file content');
-                    window.location = '/editors'
+                    window.location = '/edit'
                 }
             });
     }
@@ -367,7 +367,7 @@ class Posts {
 
     signOut() {
 		sessionStorage.clear();
-		window.location = ('/editors');
+		window.location = ('/edit');
 	}
 
 }

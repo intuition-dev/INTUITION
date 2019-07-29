@@ -43,7 +43,7 @@ class BindLogin {
 					window.location.replace('/edit/edit/' + hash);
 
 				} else {
-					window.location = '/editors'
+					window.location = '/edit'
 				}
 			})
     }

@@ -104,22 +104,16 @@ class ADB extends BaseDB_1.BaseDB {
     }
     async authEditor(email, password) {
         password = Buffer.from(password, 'base64').toString();
-        console.log('email, password ----------------->', email, password);
         const salt = await this.getSalt();
         const hashPassP = bcrypt.hashSync(password, salt);
         const qry = ADB.db.prepare('SELECT * FROM EDITORS where email =  ?');
-        console.log('qry, email ----------------->', qry, email);
         const rows = await this._qry(qry, email);
-        console.log('rows.length --------->', rows.length, rows.length > 0);
         if (rows.length > 0) {
-            console.log('rows --------->', rows);
             const row = rows[0];
             const hashPassS = row.hashPass;
-            console.log('hashPassP, hashPassS --->', hashPassP, hashPassS);
             return hashPassP == hashPassS;
         }
         else {
-            console.log('rows --------->', rows);
             return false;
         }
     }
@@ -229,7 +223,6 @@ class EditorAuth {
     async auth(user, pswd, resp, ctx) {
         return new Promise(async (resolve, reject) => {
             const ok = await this.db.authEditor(user, pswd);
-            console.log('ok ----------> ', ok);
             if (ok)
                 return resolve('OK');
             this.retErr(resp, 'NO');

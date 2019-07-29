@@ -9,8 +9,6 @@ riot.tag2('settings-comp', '<form class="grid-form settings-form" id="settings-f
     this.emailjsUser_id = opts.emailjsUser_id
     this.bindSetup = opts.bindSetup
 
-    console.log('opts ------> ', opts);
-
     this.on('mount', function(){
        $('#save-settings').on('click', function(ev){
           ev.preventDefault()
