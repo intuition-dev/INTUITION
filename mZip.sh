@@ -3,6 +3,6 @@
 rm -rf ./examples/CRUD/node_modules
 rm -rf ./examples/intu4SS/node_modules
 
-zip -r ./examples/CRUD.zip CRUD
-zip -r ./examples/intu4SS.zip intu4SS
+zip -r ./CRUD.zip ./examples/CRUD
+zip -r ./intu4SS.zip ./examples/intu4SS
 
