@@ -70,10 +70,6 @@ export class ADB extends BaseDB {
       const stmt1 =  ADB.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`);
       this._run(stmt1, email, hashPass);
     
-      email = Buffer.from(email, 'base64').toString();
-      const stmt3 =  ADB.db.prepare(`INSERT INTO EDITORS(email, hashPass, name) VALUES(?,?,'Admin')`);
-      this._run(stmt3, email, hashPass);
-
         const appPath = await fs.realpath(__dirname+'/../../WWW/ROOT/exApp1');
 
       const stmt2 =  ADB.db.prepare(`INSERT INTO CONFIG(pathToApp, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES('`+appPath+`',?,?,?,?)`);
