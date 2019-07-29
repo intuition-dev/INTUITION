@@ -46,6 +46,10 @@ export class AdminRoutes extends BasePgRouter {
       let pathToApp           = params.path
       let port                = params.port
 
+      if (port === '') {
+         // if no port specified, default port is:
+         port = 9081;
+      }
       let res = await this.adbDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
       if (res === 'OK') {
          let data = [];

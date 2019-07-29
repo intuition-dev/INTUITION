@@ -57,7 +57,7 @@ Remember your admin email and password. (TODO: Validate admin email, maybe via c
 
 7. Fast URL's
    `:9081/admin` - to add users
-   `:9081/editors` - to edit site
+   `:9081/edit` - to edit site
 
 
 
