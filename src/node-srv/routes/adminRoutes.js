@@ -34,10 +34,8 @@ class AdminRoutes extends Serv_1.BasePgRouter {
         let emailjsUser_id = params.emailjsUser_id;
         let pathToApp = params.path;
         let port = params.port;
-        console.log('port -------------> `' + port + '`');
         if (port === '') {
             port = 9081;
-            console.log('port is -------------> ', port);
         }
         let res = await this.adbDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
         if (res === 'OK') {
