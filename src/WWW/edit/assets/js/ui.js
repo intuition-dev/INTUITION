@@ -29,4 +29,22 @@ depp.require('scripts', function() {
 
     $('.site-brand').text(siteName);
 
+    // redirect on not logged in user
+    let sesName = sessionStorage['username'];
+    let sesPass = sessionStorage['password'];
+
+    if (typeof sesName === 'undefined'
+        || sesName === ''
+        || sesName === null
+        || typeof sesPass === 'undefined'
+        || sesPass === ''
+        || sesPass === null) {
+
+            if (window.location.pathname !== '/edit' && window.location.pathname !== '/edit/') {
+                console.info('User is not logged in, redirecting to login page ...');
+                window.location.replace('/edit')
+            }
+
+    }
+
 });
