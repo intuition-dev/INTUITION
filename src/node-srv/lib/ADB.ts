@@ -10,7 +10,7 @@ import { iAuth } from 'mbake/lib/Serv'
 export class ADB extends BaseDB { 
 
     static veri() {
-        return 'v0.97.32'
+        return 'v0.98.0'
      }
   
    protected static db
