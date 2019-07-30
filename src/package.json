@@ -7,7 +7,7 @@
         "intu": "./node-srv/intu.js"
     },
     "scripts": {
-        "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
+        "preinstall11": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
     },
     "license": "LGPL-3.0-only",
     "engines": {
