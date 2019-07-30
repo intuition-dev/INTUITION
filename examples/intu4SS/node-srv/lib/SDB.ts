@@ -12,6 +12,10 @@ export class SDB extends ADB {
 
     }
 
+    getPrintfulAPI(): Promise<any> {
+        return  new Promise((res, rej) => res('FAKE-API-ID'));
+    }
+
 }//class
 
 

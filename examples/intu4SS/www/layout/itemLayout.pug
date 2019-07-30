@@ -7,6 +7,14 @@ html(lang='en_US')
     body
         .container
             main
+                header.d-flex.justify-content-between.py-4
+                    a.logo(href='/') Intuition.shop.dev
+                    .cart Cart
                 block main
         
         script(src='/layout/ui-loader.js')
+
+        style
+            .logo {
+                letter-spacing: 2px;
+            }
