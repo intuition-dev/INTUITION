@@ -2,11 +2,6 @@
 // Bus. Layer test
 import { Ship } from './lib/Ship';
 import { SDB } from './lib/SDB';
-// const is = require('is');
-// const assert = require('assert');
-// const logger = require('tracer').console();
-// const perfy = require('perfy');
-// var bunyan = require('bunyan');
 
 const db = new SDB();
 const ship = new Ship(db);
