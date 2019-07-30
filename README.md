@@ -65,6 +65,6 @@ Check here https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.0/toolBelt/to
 
 # Links
 
-- [MetaBake.org](https://www.Intuition.DEV)
+- [MetaBake.org](https://www.INTUITION.DEV)
 - [blog.MetaBake.net](http://blog.MetaBake.net)
 - [Github](http://git.MetaBake.org)
