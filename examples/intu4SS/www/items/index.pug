@@ -1,0 +1,43 @@
+
+extends /layout/itemLayout
+
+block head2
+    script.
+        console.log('fetch data and comp')// who gets back first?
+        var pro = fetchItems('/items/items.json')
+        depp.define({'item-wcomp':'/wcomps/item-wcomp.js'})
+        depp.require(['item-wcomp'])
+
+block main
+
+    .cards.d-flex#items
+
+    script.
+        console.log('oh hi')
+
+        // binding step 1:
+        addE1Listener('fetchItems', onGotData)
+        // binding step 2:
+        function onGotData(evt) { 
+            console.log(items)
+            depp.require(['item-wcomp'], function(){ //both data and UI is ready
+                bind(evt)
+            })
+        }//()
+
+        function bind(items) {
+            var item = items.items
+            console.log(item)
+
+            var parent = document.getElementById('items')
+
+            // can iterate
+            setAttrDa(addElementDe(parent,'item-wcomp', 'c0'), item[0]) 
+            setAttrDa(addElementDe(parent,'item-wcomp', 'c1'), item[1]) 
+            setAttrDa(addElementDe(parent,'item-wcomp', 'c2'), item[2]) 
+            setAttrDa(addElementDe(parent,'item-wcomp', 'c3'), item[3]) 
+    
+        }//()
+
+        // in theory, you can add ui of 1 blank element while data is coming
+     
