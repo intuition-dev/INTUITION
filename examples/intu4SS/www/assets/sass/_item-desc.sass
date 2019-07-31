@@ -1,0 +1,49 @@
+
+.bl-desc 
+
+    margin: auto
+
+    * 
+        color: $primary-color
+        font-size: 14px
+
+    &--option
+        font-size: 13px
+
+    &__title
+        font-size: 36px
+
+    &__size span 
+        border: 1px solid $primary-color
+        border-radius: 2px  
+        margin: 0 2px
+        width: 24px
+        height: 24px
+        cursor: pointer
+        transition: all .3s ease-in-out
+        &:hover 
+            color: white
+            background: rgba($primary-color,.7)
+
+    &__btn
+        border-radius: 0px
+        border: 0
+        display: inline-block
+        width: auto
+        text-decoration: none
+        vertical-align: middle
+        white-space: nowrap
+        padding: 13px 20px
+        border: solid 1px $primary-color
+        text-transform: uppercase
+        color: $primary-color
+        letter-spacing: .075em
+        font-size: 0.9375em
+        font-weight: 400
+        transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1)
+        background: transparent
+        line-height: 1.4
+        transition: all .3s ease-in-out
+        &:hover 
+            color: white
+            background: rgba($primary-color,.7)

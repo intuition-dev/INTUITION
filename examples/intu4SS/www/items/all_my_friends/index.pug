@@ -2,20 +2,12 @@
 extends /layout/itemLayout
 
 block main
-    p
-    p oh hi
-
     .row
         .col-sm
            img.float-right.img-fluid(src='image.png')
 
-        .col-sm
-            p Buy
-            snipcart(data-api-key='MDM3MmIzZGUtYjUyZC00NjhjLWIwYmQtODE2NGI0NDM1MDRjNjM2OTE4MzUyMzc4NzIxNjYx')
-                button.snipcart-checkout Click here to checkout
-
-    p
-
+        .col-sm.d-flex
+            include /layout/itemDesc
 
     script.
         depp.require('depps', function(){
