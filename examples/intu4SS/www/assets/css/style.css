@@ -1,6 +1,8 @@
 .outer-wrap{background:#edecec;}
 .home{height:calc( 100vh - 82px);display:flex;align-items:center;justify-content:center;}
 .cart{cursor:pointer;}
+.logo{font-size:22px;font-weight:300;}
+.logo span{text-transform:uppercase;font-weight:700;padding-right:4px;letter-spacing:2px;}
 .bl-desc{margin:auto;}
 .bl-desc *{color:#24242b;font-size:14px;}
 .bl-desc--option{font-size:13px;}
@@ -18,4 +20,4 @@ i{transition:all .2s;}
 .snipcart-checkout{background:0;border:0;padding:0;position:relative;font-weight:400;font-size:0.65rem;letter-spacing:.02em;}
 .snipcart-checkout:after{content:'';display:block;width:100%;height:1px;opacity:0;background:#24242b;position:absolute;left:0;right:0;bottom:0;transition:all .2s linear;}
 .snipcart-checkout:hover:after{opacity:1;bottom:-1px;}
-.cart-count{font-size:14px;} /* mB v6.08.2 on 2019-07-31T14:52:56.513Z */
+.cart-count{font-size:14px;} /* mB v6.08.01 on 2019-07-31T16:08:43.159Z */
