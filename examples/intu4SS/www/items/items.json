@@ -4,28 +4,28 @@
   "items": [
     {
       "image": "image.png",
-      "title": "All my friends KNOW the low-coder.  Long light t-shirt, with black text",
+      "title": "All my friends KNOW the low-coder. Long light t-shirt, with black text",
       "url": "all_my_friends",
       "id": "all_my_friends",
       "index": 0
     },
     {
       "image": "image.png",
-      "title": "Don't do what I SAY, watch what I do.  Short dark t-shirt, white text.",
+      "title": "Don't do what I SAY, watch what I do. Short dark t-shirt, white text.",
       "url": "do_not_do",
       "id": "do_not_do",
       "index": 1
     },
     {
       "image": "image.png",
-      "title": "It is a piece of CAKE to bake.  Short dark t-shirt, white text",
+      "title": "It is a piece of CAKE to bake. Short dark t-shirt, white text",
       "url": "it_is_a_piece_of_cake",
       "id": "it_is_a_piece_of_cake",
       "index": 2
     },
     {
       "image": "image.png",
-      "title": "It will LEAD YOU in low-code direction.  Long dark t-shirt, with white text",
+      "title": "It will LEAD YOU in low-code direction. Long dark t-shirt, with white text",
       "url": "it_will_lead_you",
       "id": "it_will_lead_you",
       "index": 3
