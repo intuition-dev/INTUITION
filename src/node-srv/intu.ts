@@ -39,12 +39,16 @@ function runISrv() {
     const mainEApp = new IntuApp(adbDB, ['*'])
 
     let appPath:string = require('require-main-filename')()
-    const i:number = appPath.lastIndexOf('/')
+    let i:number = appPath.lastIndexOf('/')
+    console.log('***',i,appPath)
     appPath = appPath.substr(0,i)
+    i = appPath.lastIndexOf('/')
+    console.log('***',i,appPath)
+    appPath = appPath.substr(0,i)+'/WWW'
     
-    console.log('***',appPath)
+    console.log('***', appPath)
 
-    mainEApp.serveStatic(appPath+'/WWW')
+    mainEApp.serveStatic(appPath)
     mainEApp.start()
 }//()
 
