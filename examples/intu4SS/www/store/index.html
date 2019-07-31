@@ -25,44 +25,50 @@
       depp.require(['item-wcomp'])
       
     </script>
+    <link rel="stylesheet" href="/assets/css/styleTop.css">
+    <script src="/assets/js/loader.js"></script>
   </head>
   <body>
     <div class="container">
       <main>
-        <header class="d-flex justify-content-between py-4"><a class="logo" href="/">Intuition.shop.dev</a>
-          <div class="cart">Cart</div>
+        <header class="d-flex justify-content-between align-items-center py-4"><a class="logo" href="/">Intuition.shop.dev</a>
+          <div class="cart"> <i class="icono-cart"></i></div>
         </header>
-        <div class="cards d-flex" id="items"></div>
-        <script>
-          console.log('oh hi')
-          
-          // binding step 1:
-          addE1Listener('fetchItems', onGotData)
-          // binding step 2:
-          function onGotData(evt) { 
-              console.log(items)
-              depp.require(['item-wcomp'], function(){ //both data and UI is ready
-                  bind(evt)
-              })
-          }//()
-          
-          function bind(items) {
-              var item = items.items
-              console.log(item)
-          
-              var parent = document.getElementById('items')
-          
-              // can iterate
-              setAttrDa(addElementDe(parent,'item-wcomp', 'c0'), item[0]) 
-              setAttrDa(addElementDe(parent,'item-wcomp', 'c1'), item[1]) 
-              setAttrDa(addElementDe(parent,'item-wcomp', 'c2'), item[2]) 
-              setAttrDa(addElementDe(parent,'item-wcomp', 'c3'), item[3]) 
-          
-          }//()
-          
-          // in theory, you can add ui of 1 blank element while data is coming
-        </script>
       </main>
+    </div>
+    <div class="outer-wrap">
+      <div class="container">
+        <main>
+          <div class="cards d-flex" id="items"></div>
+          <script>
+            // binding step 1:
+            addE1Listener('fetchItems', onGotData)
+            // binding step 2:
+            function onGotData(evt) { 
+                console.log(items)
+                depp.require(['item-wcomp'], function(){ //both data and UI is ready
+                    bind(evt)
+                })
+            }//()
+            
+            function bind(items) {
+                var item = items.items
+                console.log(item)
+            
+                var parent = document.getElementById('items')
+            
+                // can iterate
+                setAttrDa(addElementDe(parent,'item-wcomp', 'c0'), item[0]) 
+                setAttrDa(addElementDe(parent,'item-wcomp', 'c1'), item[1]) 
+                setAttrDa(addElementDe(parent,'item-wcomp', 'c2'), item[2]) 
+                setAttrDa(addElementDe(parent,'item-wcomp', 'c3'), item[3]) 
+            
+            }//()
+            
+            // in theory, you can add ui of 1 blank element while data is coming
+          </script>
+        </main>
+      </div>
     </div>
     <script src="/layout/ui-loader.js"></script>
     <style>
@@ -70,5 +76,5 @@
           letter-spacing: 2px;
       }
     </style>
-  <!-- mB v6.08.01 on 2019-07-31T08:44:34.764Z --></body>
+  <!-- mB v6.08.01 on 2019-07-31T12:12:59.540Z --></body>
 </html>

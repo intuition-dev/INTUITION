@@ -18,34 +18,48 @@
       .blur { -webkit-filter:blur(2px);filter:blur(2px); }
     </style>
     <!-- for data-->
+    <link rel="stylesheet" href="/assets/css/styleTop.css">
+    <script src="/assets/js/loader.js"></script>
   </head>
   <body>
     <div class="container">
       <main>
-        <header class="d-flex justify-content-between py-4"><a class="logo" href="/">Intuition.shop.dev</a>
-          <div class="cart">Cart</div>
+        <header class="d-flex justify-content-between align-items-center py-4"><a class="logo" href="/">Intuition.shop.dev</a>
+          <div class="cart"> <i class="icono-cart"></i></div>
         </header>
-        <p></p>
-        <p>oh hi</p>
-        <div class="row">
-          <div class="col-sm"><img class="float-right img-fluid" src="image.png"></div>
-          <div class="col-sm">
-            <p>Buy</p>
-            <snipcart data-api-key="MDM3MmIzZGUtYjUyZC00NjhjLWIwYmQtODE2NGI0NDM1MDRjNjM2OTE4MzUyMzc4NzIxNjYx">
-              <button class="snipcart-checkout">Click here to checkout</button>
-            </snipcart>
-          </div>
-        </div>
-        <p></p>
-        <script>
-          depp.require('depps', function(){
-              setupPg()
-          })
-          function setupPg() {
-            
-          }//()
-        </script>
       </main>
+    </div>
+    <div class="outer-wrap">
+      <div class="container">
+        <main>
+          <div class="row">
+            <div class="col-sm"><img class="float-right img-fluid" src="image.png"></div>
+            <div class="col-sm d-flex">
+              <div class="bl-desc">
+                <div class="bl-desc__title font-weight-light mb-5 text-capitalize">Short-Sleeve Unisex T-Shirt I say</div>
+                <div class="bl-desc__color font-weight-bolder mb-3">Color: <span class="color-box"></span>
+                  <div class="font-weight-normal d-inline-block pl-1 bl-desc--option">Black</div>
+                </div>
+                <div class="bl-desc__size font-weight-bolder mb-3">Size: <span class="font-weight-normal d-inline-flex text-center justify-content-center align-items-center px-2 ml-1 bl-desc--option">S</span><span class="font-weight-normal d-inline-flex text-center justify-content-center align-items-center px-2 bl-desc--option">M</span><span class="font-weight-normal d-inline-flex text-center justify-content-center align-items-center px-2 bl-desc--option">L</span><span class="font-weight-normal d-inline-flex text-center justify-content-center align-items-center px-2 bl-desc--option">XL</span></div>
+                <div class="bl-desc__size font-weight-bolder mb-3">Price: 
+                  <div class="font-weight-normal d-inline-block pl-1 bl-desc--option">$21.02</div>
+                </div>
+                <snipcart class="d-block" data-api-key="MDM3MmIzZGUtYjUyZC00NjhjLWIwYmQtODE2NGI0NDM1MDRjNjM2OTE4MzUyMzc4NzIxNjYx">
+                  <button class="snipcart-checkout">Click here to checkout</button>
+                </snipcart><a class="d-inline-block text-left js-buy bl-desc__btn mt-5" href="#">Buy</a>
+              </div>
+            </div>
+          </div>
+          <script>
+            depp.require('depps', function(){
+                setupPg()
+            })
+            function setupPg() {
+              
+            }//()
+          </script>
+        </main>
+      </div>
     </div>
     <script src="/layout/ui-loader.js"></script>
     <style>
@@ -53,5 +67,5 @@
           letter-spacing: 2px;
       }
     </style>
-  <!-- mB v6.08.2 on 2019-07-31T08:46:37.945Z --></body>
+  <!-- mB v6.08.01 on 2019-07-31T12:12:59.493Z --></body>
 </html>
