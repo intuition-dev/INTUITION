@@ -22,6 +22,7 @@
         "is": ">=3.3.0",
         "mbake": "^6.8.2",
         "perfy": ">=1.1.5",
+        "require-main-filename": ">=2.0.0",
         "sqlite3": ">=4.0.9"
     },
     "devDependencies": {

@@ -38,7 +38,13 @@ function runISrv() {
     // the only place there is DB new is here.
     const mainEApp = new IntuApp(adbDB, ['*'])
 
-    mainEApp.serveStatic('../WWW')
+    let appPath:string = require('require-main-filename')()
+    const i:number = appPath.lastIndexOf('/')
+    appPath = appPath.substr(0,i)
+    
+    console.log('***',appPath)
+
+    mainEApp.serveStatic(appPath+'/WWW')
     mainEApp.start()
 }//()
 
