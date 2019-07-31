@@ -1,7 +1,7 @@
 {
     "name": "intu",
     "version": "0.98.2",
-    "description": "'It will lead YOU in the right direction'. WebAdmin 'Intuition' screens for any app, eg: CRUD, e-Commerce, etc ",
+    "description": "10 fold productivity jump via open source low-code for pro developers; with maintenance of iterations.",
     "main": "./node-srv/intu.js",
     "bin": {
         "intu": "./node-srv/intu.js"
