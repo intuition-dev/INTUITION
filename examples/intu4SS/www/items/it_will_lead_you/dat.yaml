@@ -4,4 +4,14 @@ pretty: true
 
 image: image.png
 
-title: It will LEAD YOU in low-code direction. Long dark t-shirt, with white text
+title: It will LEAD YOU in low-code direction. Long dark t-shirt, with light text
+
+item:
+  id: 119018290
+  name: Long Sleeve T-Shirt YOU
+  price: 21.39
+  weight: 77
+  url: http://2cf8dabf.ngrok.io/items/it_will_lead_you/
+  description: Long light t-shirt, with dark text
+
+  color: black

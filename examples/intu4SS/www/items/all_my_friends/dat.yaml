@@ -4,4 +4,14 @@ pretty: true
 
 image: image.png
 
-title: All my friends KNOW the low-coder. Long light t-shirt, with black text
+title: All my friends KNOW the low-coder. Long dark t-shirt, with white text
+
+item:
+  id: 119017857
+  name: Long Sleeve T-Shirt KNOW
+  price: 21.39
+  weight: 77
+  url: http://2cf8dabf.ngrok.io/items/all_my_friends/
+  description: Long dark t-shirt, with white text
+
+  color: white

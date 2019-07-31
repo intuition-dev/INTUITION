@@ -10,19 +10,20 @@ html(lang='en_US')
         .container
             main
                 header.d-flex.justify-content-between.align-items-center.py-4
-                    a.logo(href='/') Intuition.shop.dev
-                    .cart 
+                    a.logo(href='/') 
+                        span Intuition.dev 
+                        | Shop
+                    .cart.snipcart-checkout
                         i.icono-cart
-                        .cart-count.d-inline-block.font-weight-bolder 0
+                        .cart-count.d-inline-block.font-weight-bolder.snipcart-items-count 0
         
         .outer-wrap
             .container
                 main
                     block main
         
+        footer
+            .container
+                .copyright 
+        
         script(src='/layout/ui-loader.js')
-
-        style.
-            .logo {
-                letter-spacing: 2px;
-            }

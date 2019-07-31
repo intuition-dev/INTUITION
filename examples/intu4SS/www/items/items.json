@@ -1,17 +1,35 @@
 {
   "prefix": "/items/",
-  "mbVer": "v6.08.2",
+  "mbVer": "v6.08.01",
   "items": [
     {
       "image": "image.png",
-      "title": "All my friends KNOW the low-coder. Long light t-shirt, with black text",
+      "title": "All my friends KNOW the low-coder. Long dark t-shirt, with white text",
+      "item": {
+        "id": 119017857,
+        "name": "Long Sleeve T-Shirt KNOW",
+        "price": 21.39,
+        "weight": 77,
+        "url": "http://2cf8dabf.ngrok.io/items/all_my_friends/",
+        "description": "Long dark t-shirt, with white text",
+        "color": "white"
+      },
       "url": "all_my_friends",
       "id": "all_my_friends",
       "index": 0
     },
     {
       "image": "image.png",
-      "title": "Don't do what I SAY, watch what I do. Short dark t-shirt, white text.",
+      "title": "Don't do what I SAY, watch what I do. Short light t-shirt, dark text.",
+      "item": {
+        "id": 119016665,
+        "name": "Short-Sleeve Unisex T-Shirt I say",
+        "price": 11.52,
+        "weight": 77,
+        "url": "http://2cf8dabf.ngrok.io/items/do_not_do/",
+        "description": "Short light t-shirt, dark text",
+        "color": "white"
+      },
       "url": "do_not_do",
       "id": "do_not_do",
       "index": 1
@@ -19,13 +37,31 @@
     {
       "image": "image.png",
       "title": "It is a piece of CAKE to bake. Short dark t-shirt, white text",
+      "item": {
+        "id": 119016505,
+        "name": "Short-Sleeve Unisex T-Shirt Cake",
+        "price": 11.52,
+        "weight": 77,
+        "url": "http://2cf8dabf.ngrok.io/items/it_is_a_piece_of_cake/",
+        "description": "Short dark t-shirt, white text",
+        "color": "black"
+      },
       "url": "it_is_a_piece_of_cake",
       "id": "it_is_a_piece_of_cake",
       "index": 2
     },
     {
       "image": "image.png",
-      "title": "It will LEAD YOU in low-code direction. Long dark t-shirt, with white text",
+      "title": "It will LEAD YOU in low-code direction. Long dark t-shirt, with light text",
+      "item": {
+        "id": 119018290,
+        "name": "Long Sleeve T-Shirt YOU",
+        "price": 21.39,
+        "weight": 77,
+        "url": "http://2cf8dabf.ngrok.io/items/it_will_lead_you/",
+        "description": "Long light t-shirt, with dark text",
+        "color": "black"
+      },
       "url": "it_will_lead_you",
       "id": "it_will_lead_you",
       "index": 3

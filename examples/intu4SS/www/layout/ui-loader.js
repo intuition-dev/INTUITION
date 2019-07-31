@@ -10,17 +10,17 @@ depp.require(['FontsLoaded','bsDefaultStyle', 'DOM' ], function() {
 
    depp.done('depps')
 
-   loadSnipCart('MDM3MmIzZGUtYjUyZC00NjhjLWIwYmQtODE2NGI0NDM1MDRjNjM2OTE4MzUyMzc4NzIxNjYx')
+   // loadSnipCart('MjAwOGYyNjAtYTJiOS00ZjgzLThjYmYtYzFjYjY5NDAwYjcxNjM2OTE4MzUyMzc4NzIxNjYx')
 })
 
 
-function loadSnipCart(key) {
-   return new Promise(function (resolve, reject) {
-      depp.require('jquery', function(){
-         addScript('https://cdn.snipcart.com/themes/v3.0.0-beta.3/default/snipcart.js', function(){
-            resolve('OK')
-         }, 'data-api-key', key, 'snipcart')
-      })
-   })//pro
-}//()
+// function loadSnipCart(key) {
+//    return new Promise(function (resolve, reject) {
+//       depp.require('jquery', function(){
+//          addScript('https://cdn.snipcart.com/themes/v3.0.0-beta.3/default/snipcart.js', function(){
+//             resolve('OK')
+//          }, 'data-api-key', key, 'snipcart')
+//       })
+//    })//pro
+// }//()
 

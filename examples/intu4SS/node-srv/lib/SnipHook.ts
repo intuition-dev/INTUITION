@@ -14,11 +14,12 @@ export class SnipHook {
    }
 
    handleWebHook(req, res) {
-      console.log("TCL: init -> name", name)
+      console.log("TCL: init -> name", req)
 
       const method = req.fields.mode
       const params = req.fields
       console.log("TCL: init -> params", params)
+      console.log("TCL: init -> method", method)
 
       const resp: any = {} // new response
       let shippingAddress = params.content['shippingAddress']
@@ -110,6 +111,21 @@ export class SnipHook {
                return res.json(resp)
             });
 
+      } else if (method == 'Test') {
+         res.send(
+            {
+            "rates": [
+               {
+                  "cost": 10,
+                  "description": "10$ shipping"
+               }, 
+               {
+                  "cost": 20,
+                  "description": "20$ shipping",
+                  "guaranteedDaysToDelivery": 5
+               } 
+            ]
+         });
       } else {
          resp.errorLevel = -1
          resp.errorMessage = 'mismatch'
