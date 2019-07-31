@@ -35,7 +35,7 @@ const cRouter = new CrudPgRouter()
 mainIApp.handleRRoute('api', 'CRUD1Pg', cRouter.route.bind(cRouter))
 
 //boiler plate
-mainIApp.serveStatic('../node_modules/intu/WWW')
+mainIApp.serveStatic('../node_modules/intu/WWW') // can be moved to class in intu
 mainIApp.serveStatic('../www')
 
 //catch all
