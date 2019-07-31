@@ -1,3 +1,3 @@
-if (window.location.pathname === '/items' || window.location.pathname === '/items/') {
+if (window.location.pathname === '/store' || window.location.pathname === '/store/') {
     $('.outer-wrap').addClass('home');
 }
