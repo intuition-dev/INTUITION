@@ -10,14 +10,27 @@ import { iAuth } from 'mbake/lib/Serv'
 export class ADB extends BaseDB { 
 
     static veri() {
-        return 'v0.98.3'
+        return 'v0.98.4'
      }
+    
+    static get appPath():string {
+        let appPath:string = require('require-main-filename')()
+        let i:number = appPath.lastIndexOf('/')
+        console.log('***',i,appPath)
+        i = appPath.lastIndexOf('/')
+        appPath = appPath.substr(0,i)
+        i = appPath.lastIndexOf('/')
+        appPath = appPath.substr(0,i)
+        
+        console.log('***', appPath)
+        return appPath
+    }
   
    protected static db
    protected static salt
 
     dbExists() {
-        return fs.existsSync('./ADB.sqlite')
+        return fs.existsSync(ADB.appPath+'/ADB.sqlite')
     }
 
    con() {
@@ -26,7 +39,7 @@ export class ADB extends BaseDB {
             return
         }
         console.log('new connection')
-        ADB.db =  new sqlite3.Database('./ADB.sqlite')
+        ADB.db =  new sqlite3.Database(ADB.appPath+'/ADB.sqlite')
     }//()
 
     async init():Promise<any> {

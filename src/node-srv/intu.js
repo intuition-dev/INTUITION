@@ -29,13 +29,7 @@ function runISrv() {
     console.log("TCL: hostIP", hostIP);
     const adbDB = new ADB_1.ADB();
     const mainEApp = new IntuSrv_1.IntuApp(adbDB, ['*']);
-    let appPath = require('require-main-filename')();
-    let i = appPath.lastIndexOf('/');
-    console.log('***', i, appPath);
-    appPath = appPath.substr(0, i);
-    i = appPath.lastIndexOf('/');
-    console.log('***', i, appPath);
-    appPath = appPath.substr(0, i) + '/WWW';
+    let appPath = ADB_1.ADB.appPath + '/WWW';
     console.log('***', appPath);
     mainEApp.serveStatic(appPath);
     mainEApp.start();
