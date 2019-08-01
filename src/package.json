@@ -10,6 +10,18 @@
         "preinstall11": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
     },
     "license": "LGPL-3.0-only",
+    "author": "https://www.INTUITION.DEV",
+    "homepage": "https://www.INTUITION.DEV",
+    "repository": {
+        "type": "git",
+        "url": "https://www.INTUITION.DEV"
+    },
+    "keywords": [
+        "pug",
+        "static gen",
+        "low-code",
+        "cms"
+    ],
     "engines": {
         "node": ">=10.16.0",
         "npm": ">=6.10.2"
