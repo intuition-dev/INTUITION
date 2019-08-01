@@ -92,6 +92,7 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.upload = function (data, pathPrefix) {
+        console.log("TCL: IntuAPI -> upload -> data", data.get('sampleFile'));
         var email = window.sessionStorage.getItem('username');
         var pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('api', 'editors', 'upload', {
@@ -100,9 +101,11 @@ var IntuAPI = (function () {
             editor_pass: pass
         }, data.get('sampleFile'))
             .then(function (response) {
+            console.log("TCL: IntuAPI -> upload -> response", response);
             console.info(response);
         })
             .catch(function (error) {
+            console.log("TCL: IntuAPI -> upload -> error", error);
             console.info(error);
         });
     };

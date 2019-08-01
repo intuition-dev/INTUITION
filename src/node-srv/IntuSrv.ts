@@ -12,24 +12,24 @@ import { VersionNag } from 'mbake/lib/FileOpsExtra';
 
 export class IntuApp extends ExpressRPC {
 
-    db:ADB
+    db: ADB
     uploadRoute
 
-    constructor(db:ADB, origins:Array<string>) {
+    constructor(db: ADB, origins: Array<string>) {
         super()
         this.makeInstance(origins)
 
         this.db = db
         this.uploadRoute = new UploadRoute()
 
-        VersionNag.isCurrent('intu', ADB.veri() ).then(function(isCurrent_:boolean){
-            try{
-                if(!isCurrent_) 
+        VersionNag.isCurrent('intu', ADB.veri()).then(function (isCurrent_: boolean) {
+            try {
+                if (!isCurrent_)
                     console.log('There is a newer version of MetaBake\'s intu(Intuition), please update.')
                 else
                     console.log('You have the current version of MetaBake\'s intu(Intuition)')
-            } catch(err) {
-               console.log(err)
+            } catch (err) {
+                console.log(err)
             }
         })// 
     }//()
@@ -39,12 +39,18 @@ export class IntuApp extends ExpressRPC {
         try {
             //check if the file of the database exist
             if (this.db.dbExists()) {
-                await this.db.init()
-                this._runNormal()
+                const setupDone = await this.db.isSetupDone()
+                if (setupDone) {
+                    await this.db.init()
+                    this._runNormal()
+                } else {
+                    console.log('run setup')
+                    this._runSetup()
+                }
             } else {
                 console.log('run setup')
                 this._runSetup()
-                
+
             }
         } catch (err) {
             console.warn(err)
@@ -59,42 +65,42 @@ export class IntuApp extends ExpressRPC {
     }
 
     async _runNormal() {
-        const port:number = await this.db.getPort()
+        const port: number = await this.db.getPort()
         console.log('_runNormal port:', port)
         this._run(port)
     }//()
 
-    async _run(port:number) {    
+    async _run(port: number) {
         // order of routes: api, all intu apps, webapp
-        console.log('running')    
+        console.log('running')
         //api
         const ar = new AdminRoutes(this.db)
         const er = new EditorRoutes(this.db)
-        this.handleRRoute('admin', 'admin', ar.route.bind(ar) )
-        this.handleRRoute('api', 'editors', er.route.bind(er) )
+        this.handleRRoute('admin', 'admin', ar.route.bind(ar))
+        this.handleRRoute('api', 'editors', er.route.bind(er))
 
         this.appInst.post('/upload', this.uploadRoute.upload)
 
         // endpoint for monitoring
-        this.appInst.get('/monitor',  (req, res) => {
+        this.appInst.get('/monitor', (req, res) => {
             this.db.monitor()
-            .then(count => {
-                return res.send('OK')
-            }).catch(error => {
-                console.info('monitor error: ', error)
-                res.status(400);
-                return res.send = (error)
-            })
+                .then(count => {
+                    return res.send('OK')
+                }).catch(error => {
+                    console.info('monitor error: ', error)
+                    res.status(400);
+                    return res.send = (error)
+                })
         })//
 
         // get version
-        this.appInst.get('/ver',  (req, res) => {
+        this.appInst.get('/ver', (req, res) => {
             return res.send(ADB.veri)
         })
 
         this.listen(port)
     }//()
-    
+
 }//class
 
 module.exports = {

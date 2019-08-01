@@ -22,6 +22,16 @@ class ADB extends BaseDB_1.BaseDB {
     dbExists() {
         return fs.existsSync(ADB.appPath + '/ADB.sqlite');
     }
+    async isSetupDone() {
+        ADB.db = await new sqlite3.Database(ADB.appPath + '/ADB.sqlite');
+        const qry = await ADB.db.prepare('SELECT * FROM CONFIG');
+        const rows = await this._qry(qry);
+        console.log("TCL: ADB -> isSetupDone -> rows", rows);
+        if (rows.length) {
+            return true;
+        }
+        return false;
+    }
     con() {
         if (ADB.db) {
             console.log('connection exists');

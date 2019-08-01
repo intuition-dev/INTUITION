@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class UploadRoute {
     upload(req, resp) {
         let uploadPath;
+        console.log("TCL: UploadRoute -> upload -> req.files", req.files);
         if (Object.keys(req.files).length == 0) {
             return resp.status(400).send('No files were uploaded.');
         }

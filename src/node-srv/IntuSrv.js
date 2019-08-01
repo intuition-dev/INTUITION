@@ -29,8 +29,15 @@ class IntuApp extends Serv_1.ExpressRPC {
         console.log('starting intu');
         try {
             if (this.db.dbExists()) {
-                await this.db.init();
-                this._runNormal();
+                const setupDone = await this.db.isSetupDone();
+                if (setupDone) {
+                    await this.db.init();
+                    this._runNormal();
+                }
+                else {
+                    console.log('run setup');
+                    this._runSetup();
+                }
             }
             else {
                 console.log('run setup');
