@@ -1,3 +1,4 @@
+import { eventNames } from "cluster";
 
 const request = require('request')
 
@@ -112,27 +113,30 @@ export class SnipHook {
             });
 
       } else if (method == 'Test') {
-         res.send(
-            {
-            "rates": [
-               {
-                  "cost": 10,
-                  "description": "10$ shipping"
-               }, 
-               {
-                  "cost": 20,
-                  "description": "20$ shipping",
-                  "guaranteedDaysToDelivery": 5
-               } 
-            ]
-         });
+         console.log(eventNames)
+         if (params.eventName == 'shippingrates.fetch') {
+            res.send({
+               "rates": [
+                  {
+                     "cost": 10,
+                     "description": "10$ shipping"
+                  }, 
+                  {
+                     "cost": 20,
+                     "description": "20$ shipping",
+                     "guaranteedDaysToDelivery": 5
+                  } 
+               ]
+            });
+         } else if (params.eventName == 'shippingrates.fetch') {
+            res.send({});
+         }
       } else {
          resp.errorLevel = -1
          resp.errorMessage = 'mismatch'
          console.log('respppp errorr', resp)
          res.json(resp)
       }
-
    }
 }
 
