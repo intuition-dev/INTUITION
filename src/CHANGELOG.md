@@ -1,3 +1,6 @@
+#### 0.98.5
+- fix the issue with the setup screen
+
 #### 0.98.4
 - find WWW even in global
 
