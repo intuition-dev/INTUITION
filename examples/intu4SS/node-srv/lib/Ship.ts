@@ -5,11 +5,7 @@ const request = require('request')
 
 
 export class Ship {
-    db: SDB;
-
-    constructor(db: SDB) {
-        this.db = db
-    }
+  
 
     ship(items, shippingAddress) {
         console.log("Shiping items", items, 'on address', shippingAddress);

@@ -6,15 +6,10 @@ const request = require('request')
 // rewrite to be simple, no shipping, using superagent, make into class
 // just ship
 
-export class SnipHook {
+export class PaidHook {
 
-   db
 
-   constructor(db) {
-      this.db = db
-   }
-
-   handleWebHook(req, res) {
+   handlePaidHook(req, res) {
       console.log("TCL: init -> name", req)
 
       const method = req.fields.mode

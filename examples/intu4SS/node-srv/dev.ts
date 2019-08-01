@@ -1,10 +1,7 @@
 
 // Bus. Layer test
 import { Ship } from './lib/Ship';
-import { SDB } from './lib/SDB';
 
-const db = new SDB();
-const ship = new Ship(db);
 let item = {
     'quantity': '1',
     'id': '119018290',
