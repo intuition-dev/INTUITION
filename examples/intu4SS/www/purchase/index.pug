@@ -1,0 +1,28 @@
+
+head
+
+body
+    button Continue shopping (store)
+ 
+    // B B2
+    button View shopping cart Items ( comp, remove item, add to local storage)
+
+    // B 1 note: in items there is 'button' add to shopping  ( comp,  add to local storage)
+
+
+    button#butP Purchase 
+   // A: https://stripe.com/docs/payments/checkout/server (not client)
+ 
+    // 1 call api
+    // 2 purchase gets session, shows popup, clears cart, and shows thank you.
+    // buy is redirectToCheckout()
+    // 3:
+
+    // 'back ground tread': https://stripe.com/docs/payments/checkout/fulfillment#webhooks calls print full
+
+    // 4 sends email
+    
+    // do not load stripe in a blocking way
+
+    <script src="https://js.stripe.com/v3/"></script>
+
