@@ -1,10 +1,8 @@
 # must remove sql db
-ncu
+npm
 npm update
-cd node-srv
-rm *.sql
+rm *.sqlite
 tsc
-cd ..
 cd WWW 
 mbake .
 cd ..
