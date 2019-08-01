@@ -24,8 +24,14 @@ html(lang='en_US')
         
         footer
             .container
-                .copyright &#169; 2019 Intuition
-                a(href='//github.com/intuition-dev') Github
+                .d-flex.justify-content-center.py-5
+                    a.logo(href='/') 
+                        span Intuition.dev 
+                        | Shop
+                .py-5.d-flex.justify-content-between
+                    .copyright.font-weight-light &#169; 2019 
+                        span.d-inline-block.pl-1 Intuition
+                    a.font-weight-light(href='//github.com/intuition-dev') Github
 
         
         script(src='/layout/ui-loader.js')

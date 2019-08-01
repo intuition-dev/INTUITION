@@ -10,26 +10,44 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
    cTemp.innerHTML = `
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.0/bootStrap/css/bootstrapTop.css">
       <a href="{{url}}">
-      <div class="card" style="max-width:400px">
+      <div class="card m-1" style="max-width:400px">
          <img class="card-img-top"  />
          <div class="card-footer">
             <p>{{title}}</p>
          </div>
       </div>
       </a>
+      <style>
+         .card * {
+            color: #24242b;
+            font-size: 16px;
+         }
+         .card, .card-footer {
+            height: 100%;
+         }
+      </style>
    `
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.0/bootStrap/css/bootstrapTop.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.0/bootStrap/css/bootstrap.css">
       <a href="{{url}}">
-      <div class="card" style="max-width:400px">
+      <div class="card m-1" style="max-width:400px">
          <img class="card-img-top" src="{{image}}"/>
          <div class="card-footer">
             <p>{{title}}</p>
          </div>
       </div>
       </a>
+      <style>
+         .card * {
+            color: #24242b;
+            font-size: 16px;
+         }
+         .card, .card-footer {
+            height: 100%;
+         }
+      </style>
    `
    
    window.customElements.define('item-wcomp', class extends HTMLElement {
