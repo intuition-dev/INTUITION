@@ -4,7 +4,7 @@
  *
  */
 
-declare let httpRPC:any
+declare let httpRPC: any
 
 class IntuAPI {
 
@@ -31,9 +31,9 @@ class IntuAPI {
    checkEditor(email, pass) {
       let _this = this
       return this.serviceRPC.invoke('api', 'editors', 'checkEditor', {
-            editor_email: email,
-            editor_pass: pass
-         })
+         editor_email: email,
+         editor_pass: pass
+      })
          .then(function (result) {
             console.log('check editor, result: ', result);
             if (result) {
@@ -62,7 +62,7 @@ class IntuAPI {
    getSubDirsList(id) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors' , 'getFiles', {
+      return this.serviceRPC.invoke('api', 'editors', 'getFiles', {
          itemPath: id,
          editor_email: email,
          editor_pass: pass
@@ -313,9 +313,9 @@ class IntuAPI {
     */
    sendVcode(email, loginUrl) {
       return this.serviceRPC.invoke('admin', 'admin', 'emailResetPasswordCode', {
-            admin_email: email,
-            loginUrl: loginUrl
-         })
+         admin_email: email,
+         loginUrl: loginUrl
+      })
          .then(function () {
             return true;
          })
@@ -373,12 +373,12 @@ class IntuAPI {
       var emailjsTemplate_id = serialised.filter(emailjsTemplate_id => emailjsTemplate_id.name == 'template_id')[0].value
       var emailjsUser_id = serialised.filter(emailjsUser_id => emailjsUser_id.name == 'user_id')[0].value
       return this.serviceRPC.invoke('setup', 'setup', 'setup', {
-            email: email,
-            password: password,
-            emailjsService_id: emailjsService_id,
-            emailjsTemplate_id: emailjsTemplate_id,
-            emailjsUser_id: emailjsUser_id,
-         })
+         email: email,
+         password: password,
+         emailjsService_id: emailjsService_id,
+         emailjsTemplate_id: emailjsTemplate_id,
+         emailjsUser_id: emailjsUser_id,
+      })
          .then((result) => {
             console.info('test api: ', result);
             return result;
