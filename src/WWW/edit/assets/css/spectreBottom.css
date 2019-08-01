@@ -392,4 +392,4 @@ i:hover{color:#1b98f8;}
 .login-bg{background:#929292; background:linear-gradient(45deg,#929292 0%,#f5f5f5 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-from',endColorstr='$color-to',GradientType=1 );}
 .bl_pass-changed-notification--err h1{color:#e65740;}
 .bl_pass-changed-notification h1{font-size:20px;font-weight:200;margin-bottom:.5em;}
-.bl_pass-changed-notification p{font-size:12px;text-align:center;color:rgba(51,51,51,0.5);} /* mB v6.08.2 on 2019-08-01T11:14:56.065Z */
+.bl_pass-changed-notification p{font-size:12px;text-align:center;color:rgba(51,51,51,0.5);} /* mB v6.08.2 on 2019-08-01T13:25:35.248Z */
