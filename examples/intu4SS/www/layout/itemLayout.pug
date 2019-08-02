@@ -13,8 +13,8 @@ html(lang='en_US')
                     a.logo(href='/') 
                         span Intuition.dev 
                         | Shop
-                    .cart.snipcart-checkout
-                        i.icono-car
+                    a(href='/cart').cart.snipcart-checkout
+                        i.icono-cart
                         .cart-count.d-inline-block.font-weight-bolder.snipcart-items-count 0
         
         .outer-wrap
@@ -28,7 +28,7 @@ html(lang='en_US')
                     a.logo(href='/') 
                         span Intuition.dev 
                         | Shop
-                .py-5.d-flex.justify-content-between
+                .py-5.d-flex.justify-content-between.mt-5
                     .copyright.font-weight-light &#169; 2019 
                         span.d-inline-block.pl-1 Intuition
                     a.font-weight-light(href='//github.com/intuition-dev') Github

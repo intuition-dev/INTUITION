@@ -52,24 +52,31 @@
         align-items: center
 
     .qty-input
-        box-shadow: 0 0 0 1px black
-        height: 30px
+        height: 24px
         position: relative
-        width: 122px
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
+        width: 80px
+        display: flex
+        align-items: center
+        justify-content: space-around
+        left: 0.5rem
 
         span
             cursor: pointer
             font-family: serif
+            box-shadow: 0 0 0 1px black
+            border-radius: 2px
             height: 30px
             float: left
             line-height: 30px
             text-align: center
             user-select: none
             transition: all 150ms ease-out
-            width: 33px
+            width: 24px
+            height: 24px
+            min-width: 24px
+            display: flex
+            align-items: center
+            justify-content: space-around
         
             &:active
                 background:
@@ -80,8 +87,9 @@
             border: 0px solid
             float: left
             font-size: 24px
-            height: 28px
+            height: 24px
             text-align: center
             outline: none
-            width: 54px
-            background: #edecec
+            width: 44px
+            background: rgba(#edecec, 0)
+            font-size: 13px

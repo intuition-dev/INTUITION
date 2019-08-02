@@ -18,13 +18,6 @@
       .blur { -webkit-filter:blur(2px);filter:blur(2px); }
     </style>
     <!-- for data-->
-    <script>
-      console.log('fetch data and comp')// who gets back first?
-      var pro = fetchItems('/items/items.json')
-      depp.define({'item-wcomp':'/wcomps/item-wcomp.js'})
-      depp.require(['item-wcomp'])
-      
-    </script>
     <link rel="stylesheet" href="/assets/css/styleTop.css">
     <script src="/assets/js/loader.js"></script>
   </head>
@@ -38,34 +31,7 @@
     <div class="outer-wrap">
       <div class="container">
         <main>
-          <div class="cards d-flex align-items-stretch" id="items"></div>
-          <script>
-            // binding step 1:
-            addE1Listener('fetchItems', onGotData)
-            // binding step 2:
-            function onGotData(evt) { 
-                console.log(items)
-                depp.require(['item-wcomp'], function(){ //both data and UI is ready
-                    bind(evt)
-                })
-            }//()
-            
-            function bind(items) {
-                var item = items.items
-                console.log(item)
-            
-                var parent = document.getElementById('items')
-            
-                // can iterate
-                setAttrDa(addElementDe(parent,'item-wcomp', 'c0'), item[0]) 
-                setAttrDa(addElementDe(parent,'item-wcomp', 'c1'), item[1]) 
-                setAttrDa(addElementDe(parent,'item-wcomp', 'c2'), item[2]) 
-                setAttrDa(addElementDe(parent,'item-wcomp', 'c3'), item[3]) 
-            
-            }//()
-            
-            // in theory, you can add ui of 1 blank element while data is coming
-          </script>
+          <div class="cart"></div>
         </main>
       </div>
     </div>
@@ -78,5 +44,5 @@
       </div>
     </footer>
     <script src="/layout/ui-loader.js"></script>
-  <!-- mB v6.08.01 on 2019-08-02T14:39:13.530Z --></body>
+  <!-- mB v6.08.01 on 2019-08-02T14:39:13.291Z --></body>
 </html>

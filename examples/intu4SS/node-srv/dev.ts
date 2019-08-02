@@ -2,6 +2,8 @@
 // Bus. Layer test
 import { Ship } from './lib/Ship';
 
+let ship = new Ship(); 
+
 let item = {
     'quantity': '1',
     'id': '119018290',
