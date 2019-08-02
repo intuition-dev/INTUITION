@@ -36,8 +36,50 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
       $('.js-qty input').val(val);
    })
 
+   $('[data-size]').on('click', async function (ev) {
+      console.log("TCL: ev", ev);
+      var data = $(ev.currentTarget);
+      data.siblings('[data-size]').removeAttr('selected');
+      data.attr('selected', 'selected');
+   });
+
+   $('.js-buy').on('click', function() {
+      let shirtSize = $('[data-size][selected="selected"]').data('size');
+      let shirtId = $('[data-item-id]').data('item-id');
+      let quantity = parseInt($('[data-quantity]').val());
+
+      if (typeof shirtSize !== 'undefined') {
+         console.log('shirtSize ---> ', shirtSize);
+         console.log('shirtId ---> ', shirtId);
+         console.log('quantity ---> ', quantity);
+         cart = localStorage.getItem('cart');
+         if (cart === null) {
+            cart = {};
+         } else {
+            cart = JSON.parse(cart);
+         
+         }
+
+         if (typeof cart[shirtId] === 'undefined') {
+            cart[shirtId] = {}
+         }
+
+         if (typeof cart[shirtId][shirtSize] === 'undefined') {
+            cart[shirtId][shirtSize] = {
+               quantity: 0
+            }
+         }
+
+         cart[shirtId][shirtSize]['quantity'] += quantity
+         cart = localStorage.setItem('cart', JSON.stringify(cart));
+      } else {
+         alert ('Please select size')
+      }
+   });
+
    $('.js-stripe-checkout').on('click', async function (ev) {
       console.log("TCL: ev", ev)
+      debugger;
       var data = $(ev.currentTarget)
       var id = data.data('item-id')
       var name = data.data('item-name')

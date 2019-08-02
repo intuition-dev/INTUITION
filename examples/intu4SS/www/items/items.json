@@ -1,6 +1,6 @@
 {
   "prefix": "/items/",
-  "mbVer": "v6.08.2",
+  "mbVer": "v6.08.01",
   "items": [
     {
       "image": "image.png",
@@ -12,7 +12,11 @@
         "weight": 77,
         "url": "http://ed0eccce.ngrok.io/items/all_my_friends/",
         "description": "Long dark t-shirt, with white text",
-        "color": "white"
+        "color": "white",
+        "sizeS": "5d09c2ad1fc2c5",
+        "sizeM": "5d09c2ad1fc339",
+        "sizeL": "5d09c2ad1fc377",
+        "sizeXL": "5d09c2ad1fc3b2"
       },
       "url": "all_my_friends",
       "id": "all_my_friends",
@@ -28,7 +32,11 @@
         "weight": 77,
         "url": "http://ed0eccce.ngrok.io/items/do_not_do/",
         "description": "Short light t-shirt, dark text",
-        "color": "white"
+        "color": "white",
+        "sizeS": "5d09bf0d993f27",
+        "sizeM": "5d09bf0d994006",
+        "sizeL": "5d09bf0d994088",
+        "sizeXL": "5d09bf0d9940f1"
       },
       "url": "do_not_do",
       "id": "do_not_do",
@@ -44,7 +52,11 @@
         "weight": 77,
         "url": "http://ed0eccce.ngrok.io/items/it_is_a_piece_of_cake/",
         "description": "Short dark t-shirt, white text",
-        "color": "black"
+        "color": "black",
+        "sizeS": "5d09be71593523",
+        "sizeM": "5d09be71593623",
+        "sizeL": "5d09be715936a6",
+        "sizeXL": "5d09be71593727"
       },
       "url": "it_is_a_piece_of_cake",
       "id": "it_is_a_piece_of_cake",
@@ -60,7 +72,11 @@
         "weight": 77,
         "url": "http://ed0eccce.ngrok.io/items/it_will_lead_you/",
         "description": "Long light t-shirt, with dark text",
-        "color": "black"
+        "color": "black",
+        "sizeS": "5d09c42295aab4",
+        "sizeM": "5d09c42295ab16",
+        "sizeL": "5d09c42295ab67",
+        "sizeXL": "5d09c42295ab94"
       },
       "url": "it_will_lead_you",
       "id": "it_will_lead_you",

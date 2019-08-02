@@ -2,8 +2,55 @@
 extends /layout/itemLayout
 
 block head2
-   
+    script.
+        console.log('fetch data and comp')// who gets back first?
+        var pro = fetchItems('/items/items.json')
+        depp.define({'cart-wcomp':'/wcomps/cart/cart-wcomp.js'})
+        depp.require(['cart-wcomp'])
 
 block main
 
     .cart
+        #cart-items
+
+    script.
+        // binding step 1:
+        addE1Listener('fetchItems', onGotData)
+        // binding step 2:
+        function onGotData(evt) { 
+            depp.require(['cart-wcomp'], function(){ //both data and UI is ready
+                bind(evt)
+            })
+        }//()
+
+        function bind(items) {
+            var cart = localStorage.getItem('cart');
+            var items = items.items
+            if (cart === null) {
+                cart = {};
+            } else {
+                cart = JSON.parse(cart);
+            }
+
+            var parent = document.getElementById('cart-items')
+            console.log('items', items)
+            console.log("Cart", cart)
+
+            for (itemId in cart) {
+                for (size in cart[itemId]) {
+
+                    let itemData = items.filter(item => item.item.id == itemId)[0]
+                    console.log('itemData', itemData)
+                    if (typeof itemData !== 'undefined') {
+                        data = {
+                            id: itemId,
+                            size: size,
+                            quantity: cart[itemId][size]['quantity'],
+                            itemData: itemData
+                        }
+                        setAttrDa(addElementDe(parent,'cart-wcomp', itemId), data) 
+                    }
+                }
+            }
+
+        }//()

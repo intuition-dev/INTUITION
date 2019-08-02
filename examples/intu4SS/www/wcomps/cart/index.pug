@@ -1,0 +1,23 @@
+head
+   include headFrag
+
+body
+   .container
+      cart-wcomp#c1
+      br
+
+      cart-wcomp#c2
+
+   script.
+
+      depp.define({'cart-wcomp': 'cart-wcomp.js'})
+
+      depp.require(['cart-wcomp'], function(){
+         console.log('CART-WCOMP loaded')
+      })//()
+
+      depp.require(['FontsLoaded', 'bsDefaultStyle'], function() {
+         console.log('styles', Date.now() - _start)
+      }) 
+
+
