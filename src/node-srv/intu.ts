@@ -34,6 +34,7 @@ function runISrv() {
 
     console.log("TCL: hostIP", hostIP)
     const adbDB = new ADB()
+    adbDB.con();
 
     // the only place there is DB new is here.
     const mainEApp = new IntuApp(adbDB, ['*'])
@@ -43,6 +44,11 @@ function runISrv() {
     console.log('***', appPath)
 
     mainEApp.serveStatic(appPath)
+    adbDB.getAppPath().then(appPath => {
+        if (typeof appPath !== 'undefined') {
+            mainEApp.serveStatic(appPath);
+        }
+    });
     mainEApp.start()
 }//()
 

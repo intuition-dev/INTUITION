@@ -11,8 +11,7 @@ html
             window.apiProtocol = location.protocol.split(':')[0];
             window.apiHost = location.hostname;
 
-            // TODO add second input for changing port of site
-            window.appMount = 'http://0.0.0.0:' + 3000;
+            window.appMount = window.location.origin;
             window.siteName = 'MetaBake';
 
         link(rel='stylesheet', href= '/edit/assets/css/spectreTop.css')
