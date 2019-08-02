@@ -28,16 +28,10 @@ function runISrv() {
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
     const adbDB = new ADB_1.ADB();
-    adbDB.con();
     const mainEApp = new IntuSrv_1.IntuApp(adbDB, ['*']);
     let appPath = ADB_1.ADB.appPath + '/WWW';
     console.log('***', appPath);
     mainEApp.serveStatic(appPath);
-    adbDB.getAppPath().then(appPath => {
-        if (typeof appPath !== 'undefined') {
-            mainEApp.serveStatic(appPath);
-        }
-    });
     mainEApp.start();
 }
 function help() {

@@ -21,7 +21,7 @@ const cwd: string = process.cwd()
 function unzipSS() {
     new Download('intu4SS', cwd).autoUZ()
     console.info('Extracted a starter Ship and Shop app')
- }
+}
 function unzipC() {
     new Download('CRUD', cwd).autoUZ()
     console.info('Extracted a starter CRUD app')
@@ -34,21 +34,16 @@ function runISrv() {
 
     console.log("TCL: hostIP", hostIP)
     const adbDB = new ADB()
-    adbDB.con();
 
     // the only place there is DB new is here.
     const mainEApp = new IntuApp(adbDB, ['*'])
 
-    let appPath = ADB.appPath+'/WWW'
-    
+    let appPath = ADB.appPath + '/WWW'
+
     console.log('***', appPath)
 
     mainEApp.serveStatic(appPath)
-    adbDB.getAppPath().then(appPath => {
-        if (typeof appPath !== 'undefined') {
-            mainEApp.serveStatic(appPath);
-        }
-    });
+
     mainEApp.start()
 }//()
 
@@ -60,15 +55,15 @@ function help() {
     console.info('  To run:                                                intu')
     console.info('  For starter CRUD app:                                  intu -c')
     console.info('  For an example of an e-commerce (shop and ship) app:   intu -s')
- 
+
 }
 
- // start: /////////////////////////////////////////////////////////////////////////////////////
+// start: /////////////////////////////////////////////////////////////////////////////////////
 if (argsParsed.CRUD)
     unzipC()
 else if (argsParsed.help)
     help()
-else if (argsParsed.ShopShip) 
+else if (argsParsed.ShopShip)
     unzipSS()
 else
     runISrv()

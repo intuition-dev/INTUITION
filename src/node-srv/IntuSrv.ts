@@ -38,10 +38,10 @@ export class IntuApp extends ExpressRPC {
         console.log('starting intu')
         try {
             //check if the file of the database exist
-            if (this.db.dbExists()) {
+            if (this.db.dbExists()) { //here we check if file exists
                 const setupDone = await this.db.isSetupDone()
                 if (setupDone) {
-                    await this.db.init()
+                    await this.db.init() //here we create tables
                     this._runNormal()
                 } else {
                     console.log('run setup')
@@ -67,6 +67,12 @@ export class IntuApp extends ExpressRPC {
     async _runNormal() {
         const port: number = await this.db.getPort()
         console.log('_runNormal port:', port)
+        this.db.getAppPath().then(appPath => {
+            if (typeof appPath !== 'undefined') {
+                this.serveStatic(appPath);
+            }
+        });
+
         this._run(port)
     }//()
 

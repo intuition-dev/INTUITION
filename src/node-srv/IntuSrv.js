@@ -57,6 +57,11 @@ class IntuApp extends Serv_1.ExpressRPC {
     async _runNormal() {
         const port = await this.db.getPort();
         console.log('_runNormal port:', port);
+        this.db.getAppPath().then(appPath => {
+            if (typeof appPath !== 'undefined') {
+                this.serveStatic(appPath);
+            }
+        });
         this._run(port);
     }
     async _run(port) {
