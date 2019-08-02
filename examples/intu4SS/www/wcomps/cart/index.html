@@ -19,29 +19,18 @@
 </head>
 <body>
   <div class="container">
-    <item-wcomp id="c1"></item-wcomp><br/>
-    <item-wcomp id="c2"></item-wcomp>
+    <cart-wcomp id="c1"></cart-wcomp><br/>
+    <cart-wcomp id="c2"></cart-wcomp>
   </div>
   <script>
-    depp.define({'item-wcomp':'item-wcomp.js'})
+    depp.define({'cart-wcomp': 'cart-wcomp.js'})
     
-    depp.require(['item-wcomp'], function(){
-       console.log('ready')
-    
-       // send message to comp
-       let d1 = {
-          title:' good'
-          ,image:'image.png'
-          ,url: 'http://www.google.com'
-       }
-       setAttrDa('c1', d1)
-    
-       setAttrDa('c2', d1)
-    
+    depp.require(['cart-wcomp'], function(){
+       console.log('CART-WCOMP loaded')
     })//()
     
     depp.require(['FontsLoaded', 'bsDefaultStyle'], function() {
        console.log('styles', Date.now() - _start)
     }) 
   </script>
-<!-- mB v6.08.01 on 2019-08-02T16:31:12.272Z --></body>
+<!-- mB v6.08.01 on 2019-08-02T16:31:12.265Z --></body>
