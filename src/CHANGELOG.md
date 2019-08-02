@@ -1,4 +1,4 @@
-#### 0.98.7
+#### 0.98.8
 - serve static for editing App add
 
 #### 0.98.7
