@@ -7,8 +7,8 @@ class Services {
       this.serviceRPC = new httpRPC('http', '0.0.0.0', '3000')
    }
 
-   getSessionId(name: string, description: string, image: string, amount: number, currency: string, quantity: number) {
-      return this.serviceRPC.invoke("stripe", "get-session", "createSession", { name: name, description: description, image: image, amount, currency, quantity })
+   getSessionId(id: string, name: string, description: string, image: string, amount: number, currency: string, quantity: number) {
+      return this.serviceRPC.invoke("stripe", "get-session", "createSession", { id: id, name: name, description: description, image: image, amount: amount, currency: currency, quantity: quantity })
    }
 
 }
