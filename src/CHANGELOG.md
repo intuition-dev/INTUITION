@@ -1,4 +1,7 @@
 #### 0.98.7
+- serve static for editing App add
+
+#### 0.98.7
 - fix files names in loader
 
 #### 0.98.5

@@ -1,6 +1,6 @@
 {
     "name": "intu",
-    "version": "0.98.7",
+    "version": "0.98.8",
     "description": "10 fold productivity jump via open source low-code for pro developers; with maintenance of iterations.",
     "main": "./node-srv/intu.js",
     "bin": {
