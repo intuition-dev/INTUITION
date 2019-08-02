@@ -27,4 +27,4 @@ i{transition:all .2s;}
 .snipcart-checkout:after{content:'';display:block;width:100%;height:1px;opacity:0;background:#24242b;position:absolute;left:0;right:0;bottom:0;transition:all .2s linear;}
 .snipcart-checkout:hover:after{opacity:1;bottom:-1px;}
 .cart-count{font-size:14px;}
-a{transition:all .3s ease-in-out;} /* mB v6.08.01 on 2019-08-01T13:59:29.440Z */
+a{transition:all .3s ease-in-out;} /* mB v6.08.2 on 2019-08-02T09:46:26.487Z */

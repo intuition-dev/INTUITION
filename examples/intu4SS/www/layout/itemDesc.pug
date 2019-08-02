@@ -10,8 +10,7 @@
         span.font-weight-normal.d-inline-flex.text-center.justify-content-center.align-items-center.px-2.bl-desc--option XL
     .bl-desc__size.font-weight-bolder.mb-3 Price: 
         .font-weight-normal.d-inline-block.pl-1.bl-desc--option #{item.price}
-    snipcart.d-block(data-api-key='MjAwOGYyNjAtYTJiOS00ZjgzLThjYmYtYzFjYjY5NDAwYjcxNjM2OTE4MzUyMzc4NzIxNjYx')
-        button.snipcart-checkout Click here to checkout
+    button.js-stripe-checkout Click here to checkout
 
     a.d-inline-block.text-left.js-buy.bl-desc__btn.mt-5.snipcart-add-item(
         href='#', 
@@ -22,5 +21,3 @@
         data-item-url=item.url
         data-item-description=item.description
     ) Buy
-
-    div#snipcart(hidden, data-api-key="MjAwOGYyNjAtYTJiOS00ZjgzLThjYmYtYzFjYjY5NDAwYjcxNjM2OTE4MzUyMzc4NzIxNjYx")
