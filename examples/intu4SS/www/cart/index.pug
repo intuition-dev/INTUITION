@@ -11,7 +11,11 @@ block head2
 block main
 
     .cart
-        #cart-items
+        #cart-items.py-5
+
+        .d-flex.justify-content-end
+            button.d-inline-block.bl-desc__btn.mb-5 Proceed to checkout
+
 
     script.
         // binding step 1:
@@ -25,6 +29,7 @@ block main
 
         function bind(items) {
             var cart = localStorage.getItem('cart');
+            var prefix = items.prefix;
             var items = items.items
             if (cart === null) {
                 cart = {};
@@ -46,7 +51,8 @@ block main
                             id: itemId,
                             size: size,
                             quantity: cart[itemId][size]['quantity'],
-                            itemData: itemData
+                            itemData: itemData,
+                            prefix: prefix
                         }
                         setAttrDa(addElementDe(parent,'cart-wcomp', itemId), data) 
                     }
