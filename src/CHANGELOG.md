@@ -1,3 +1,5 @@
+#### 0.98.9
+- serve static website
 #### 0.98.8
 - serve static for editing App add
 
