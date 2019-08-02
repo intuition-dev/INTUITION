@@ -4,7 +4,7 @@ depp.define({
     'httpRPC': ['#baseVm', '#RPC',
         '/setup/binding.js',
         '/setup/models/SetupViewModel.js',
-        '/../IntuAPI/IntuAPI.js',
+        '/intuAPI/IntuAPI.js',
     ],
     'setup': [
         '#scripts', '#httpRPC'

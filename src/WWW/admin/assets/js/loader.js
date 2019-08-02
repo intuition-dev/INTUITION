@@ -10,19 +10,19 @@ depp.define({
     'httpRPC': ['#RPC'],
     'intuAPI': [
         '#scripts','#httpRPC'
-        ,'/IntuAPI/IntuAPI.js'
+        ,'/intuAPI/IntuAPI.js'
     ],
     'baseVm': ['/admin/models/BaseViewModel.js'],
     'general': [
         '#baseVm'
         , '#intuAPI'
-        , '/admin/admin/BindEditors.js'
+        , '/admin/admin/bindEditors.js'
         , '/admin/models/AdminViewModel.js'
     ],
     'rw': [
         '#general'
         , '#baseVm'
-        ,'/admin/BindLogin.js'
+        ,'/admin/bindLogin.js'
         , '/admin/models/LoginViewModel.js'
         ,'/admin/assets/js/ui.js'
     ],
