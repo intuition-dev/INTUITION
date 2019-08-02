@@ -8,16 +8,17 @@ import { BasePgRouter } from 'mbake/lib/Serv';
 export class Stripe extends BasePgRouter {
 
    async createSession(resp, params) {
+      let { name, description, image, amount, currency, quantity } = params //destructure params
 
       const session = await stripe.checkout.sessions.create({
          payment_method_types: ['card'],
          line_items: [{
-            name: 'T-shirt',
-            description: 'Comfortable cotton t-shirt',
-            images: ['https://example.com/t-shirt.png'],
-            amount: 500,
-            currency: 'usd',
-            quantity: 1,
+            name: name,
+            description: description,
+            images: [image],
+            amount: amount,
+            currency: currency,
+            quantity: quantity,
          }],
          success_url: 'https://example.com/success',
          cancel_url: 'https://example.com/cancel',

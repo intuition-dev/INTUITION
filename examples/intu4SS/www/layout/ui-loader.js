@@ -11,22 +11,48 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
    depp.done('depps')
    var stripe = Stripe('pk_test_GnYVBEvEsvWrOAtuxETrAFU500y63B4nQK');
    var services = new Services()
+   $('.js-qty span').on('click', function (ev) {
+      val = parseInt($('.js-qty input').val());
+
+      if ($(this).hasClass('less')) {
+         val = val - 1;
+      } else if ($(this).hasClass('more')) {
+         val = val + 1;
+      }
+
+      if (val < 1) {
+         val = 1;
+      }
+
+      $('.js-qty input').val(val);
+   })
 
    $('.js-stripe-checkout').on('click', async function (ev) {
       console.log("TCL: ev", ev)
-      var sessionId = services.getSessionId()
-         .then(function (session) {
+      var data = $(ev.currentTarget)
+      var id = data.data('item-id')
+      var name = data.data('item-name')
+      var price = data.data('item-price')
+      var url = data.data('item-url')
+      var description = data.data('item-description')
+      var quantity = data.data('item-quantity')
+      var currency = 'USD'
 
-            console.log("TCL: sessionId", session)
-            stripe.redirectToCheckout({
-               sessionId: session.id
-            }).then(function (result) {
-               console.log("TCL: result", result.error.message)
-               // If `redirectToCheckout` fails due to a browser or network
-               // error, display the localized error message to your customer
-               // using `result.error.message`.
-            });
-         })
+
+
+      // var sessionId = services.getSessionId(id, name, description, image, amount, currency, quantity)
+      //    .then(function (session) {
+
+      //       console.log("TCL: sessionId", session)
+      //       stripe.redirectToCheckout({
+      //          sessionId: session.id
+      //       }).then(function (result) {
+      //          console.log("TCL: result", result.error.message)
+      //          // If `redirectToCheckout` fails due to a browser or network
+      //          // error, display the localized error message to your customer
+      //          // using `result.error.message`.
+      //       });
+      //    })
    })
 })
 

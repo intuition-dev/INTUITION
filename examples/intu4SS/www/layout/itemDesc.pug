@@ -8,16 +8,29 @@
         span.font-weight-normal.d-inline-flex.text-center.justify-content-center.align-items-center.px-2.bl-desc--option M
         span.font-weight-normal.d-inline-flex.text-center.justify-content-center.align-items-center.px-2.bl-desc--option L
         span.font-weight-normal.d-inline-flex.text-center.justify-content-center.align-items-center.px-2.bl-desc--option XL
+    .bl-desc__quantity.font-weight-bolder.mb-3 Quantity: 
+        .qty-input.js-qty.ml-2
+            span.less -
+            input(type="text" value="1")
+            span.more +
     .bl-desc__size.font-weight-bolder.mb-3 Price: 
         .font-weight-normal.d-inline-block.pl-1.bl-desc--option #{item.price}
-    button.js-stripe-checkout Click here to checkout
+    .d-flex
+        a.d-inline-block.text-left.js-buy.bl-desc__btn.snipcart-add-item.mr-3(
+            href='#', 
+            data-item-id=item.id
+            data-item-name=item.name 
+            data-item-price=item.price
+            data-item-weight=item.weight
+            data-item-url=item.url
+            data-item-description=item.description
+        ) Add to Cart
+        button.d-inline-block.js-stripe-checkout.bl-desc__btn(
+            data-item-id=item.id,
+            data-item-name=item.name 
+            data-item-price=item.price
+            data-item-weight=item.weight
+            data-item-url=item.url
+            data-item-description=item.description
+        ) Click here to checkout
 
-    a.d-inline-block.text-left.js-buy.bl-desc__btn.mt-5.snipcart-add-item(
-        href='#', 
-        data-item-id=item.id
-        data-item-name=item.name 
-        data-item-price=item.price
-        data-item-weight=item.weight
-        data-item-url=item.url
-        data-item-description=item.description
-    ) Buy

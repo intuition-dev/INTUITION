@@ -1,6 +1,5 @@
 
 .bl-desc 
-
     margin: auto
 
     * 
@@ -42,8 +41,47 @@
         font-weight: 400
         transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1)
         background: transparent
-        line-height: 1.4
+        line-height: 1.4    
         transition: all .3s ease-in-out
         &:hover 
             color: white
             background: rgba($primary-color,.7)
+    
+    &__quantity
+        display: flex
+        align-items: center
+
+    .qty-input
+        box-shadow: 0 0 0 1px black
+        height: 30px
+        position: relative
+        width: 122px
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        span
+            cursor: pointer
+            font-family: serif
+            height: 30px
+            float: left
+            line-height: 30px
+            text-align: center
+            user-select: none
+            transition: all 150ms ease-out
+            width: 33px
+        
+            &:active
+                background:
+                    color: #F1F1F1
+                transition: none
+        
+        input
+            border: 0px solid
+            float: left
+            font-size: 24px
+            height: 28px
+            text-align: center
+            outline: none
+            width: 54px
+            background: #edecec
