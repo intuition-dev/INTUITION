@@ -1,3 +1,6 @@
+#### 0.98.7
+- fix files names in loader
+
 #### 0.98.5
 - fix the issue with the setup screen
 
