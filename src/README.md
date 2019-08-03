@@ -34,7 +34,11 @@ In WebAdmin, you can edit screen app or content using markdown or pug - which wo
 # Documentation
 
 [Docs](http://docs.mbake.org)
+
 [Git Repo](http://git.mbake.org)
+
+[Pug example](https://pug.mbake.org)
+
 [INTUITION.DEV Home Page](https://www.INTUITION.DEV)
 
 
@@ -76,5 +80,10 @@ or
 # Links
 
 [Docs](http://docs.mbake.org)
+
 [Git Repo](http://git.mbake.org)
+
+[Pug example](https://pug.mbake.org)
+
 [INTUITION.DEV Home Page](https://www.INTUITION.DEV)
+
