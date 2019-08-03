@@ -1,7 +1,7 @@
 {
     "name": "intu",
     "version": "0.98.10",
-    "description": "INTUITION.DEV is an open source tool for pro developers w/ 10 fold productivity; via low-code application development, cross-platform static-generator, and a built-in WebAdmin editor - facilitating maintenance by end users.",
+    "description": "INTUITION.DEV is an open source tool for pro developers w/ 10 fold productivity; via automation, low-code, cross-platform static-generator, and a built-in WebAdmin editor",
     "main": "./node-srv/intu.js",
     "bin": {
         "intu": "./node-srv/intu.js"
@@ -11,7 +11,7 @@
     },
     "license": "LGPL-3.0-only",
     "author": "https://www.INTUITION.DEV",
-    "homepage": "https://www.INTUITION.DEV",
+    "homepage": "https://www.INTU.DEV",
     "repository": {
         "type": "git",
         "url": "https://git.mbake.org"
