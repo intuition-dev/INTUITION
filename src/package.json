@@ -14,16 +14,16 @@
     "homepage": "https://www.INTUITION.DEV",
     "repository": {
         "type": "git",
-        "url": "https://www.INTUITION.DEV"
+        "url": "https://git.mbake.org"
     },
     "keywords": [
         "pug",
         "static gen",
         "low-code",
-        "cms"
+        "CRUD"
     ],
     "engines": {
-        "node": ">=10.16.0",
+        "node": ">=10.16.1",
         "npm": ">=6.10.2"
     },
     "dependencies": {
