@@ -79,10 +79,6 @@ or
    `:9081/editors` - to edit site
 
 
-## Software will eat the world: The digital revolution.
-### We just need to make more software: better and faster.
-
-
 # Links
 
 [Docs](http://docs.mbake.org)
@@ -92,3 +88,7 @@ or
 [Pug example](https://pug.mbake.org)
 
 [INTUITION.DEV Home Page](https://www.INTU.DEV)
+
+
+## *Software will eat the world: The digital revolution!*
+### We just need to make more software: better and faster.
