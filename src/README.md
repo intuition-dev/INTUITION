@@ -13,6 +13,8 @@ In contrast to tools for citizen-developers: INTUITION.DEV aims to make professi
 
 INTUITION.DEV has WebAdmin Screen for any CRUD app, CMS, e-Com, Mobile, AMP, etc.  It uses [markdown](https://daringfireball.net/projects/markdown/syntax), and is written in [pug](https://pugjs.org/language/tags.html).
 
+### Easy
+
 In WebAdmin, you can edit screen app or content using markdown or pug - which won't let you pages become broken. It also can leverage native custom elements/ standard web-components and use any framework. It allows you clone existing pages to write another post/page, upload images, custom write own layout in pug, etc. Any app that you can write or use in HTML, .js/.ts or css/SASS can leverage INTUITION.DEV. Since it is only CSS/.js/HTML there is almost no learning curve.  If you need to catch up, we recommend this book: ‘Design and Build Websites’ by Jon Duckett.
 
 
@@ -27,6 +29,8 @@ In WebAdmin, you can edit screen app or content using markdown or pug - which wo
 - Cross Platform from single code base: Web, IOS, Android (similar to Google's Flutter, but instead leveraging Adobe's free https://Build.PhoneGap.com); but with working SEO. 
 - Built-in support for I18N 
 - A path of gradually adjusting/migrating other apps to use INTUITION.DEV tool. 
+
+## More Features:
 - 100% of our code is Open Source! What you build with the tools is your license.
 - CRUD tutorial, and example apps.
 - Built in auth, admin and adding users.
