@@ -1,4 +1,5 @@
 # make new release of example apps
+rm *.zip
 
 rm -rf ./examples/CRUD/node_modules
 rm -rf ./examples/intu4SS/node_modules
