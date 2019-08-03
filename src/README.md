@@ -39,7 +39,7 @@ In WebAdmin, you can edit screen app or content using markdown or pug - which wo
 - User-admin built in.
 - Livereload of course. And browser extension to edit from www.
 - Lazy loading capable (via require() dependencies, including popular dependencies already defined)  
-- Keyboard centric (eg: F12 pulls up library of native custom elements)
+- Keyboard driven (arrow up WebComps)
 
 # Documentation
 
