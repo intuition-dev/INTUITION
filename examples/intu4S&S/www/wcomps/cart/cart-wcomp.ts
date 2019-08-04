@@ -8,7 +8,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
    console.log('loaded')
    var cTemp = document.createElement('template')
    cTemp.innerHTML = `
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.2/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
       <div class="card d-flex row mb-2" itemId={{id}}>
          <div class="col-3">
             <img src={{image}} alt="Card image cap">
@@ -54,8 +54,8 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
    `
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.2/bootStrap/css/bootstrapTop.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.2/bootStrap/css/bootstrap.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrap.css">
       <div class="card d-flex row mb-2" itemId={{id}}>
          <div class="col-3">
             <img src={{image}} alt="Card image cap">
