@@ -28,12 +28,12 @@ In WebAdmin, you can edit screen app or content using markdown or pug - which wo
 - Static Generator(similar to Hugo or Jekyll): You write Sass, Pug, .ts: it emits *SEO* friendly static content(including optional AMP) to the CDN.
 - Cross Platform from single code base: Web, IOS, Android (similar to Google's Flutter, but instead leveraging Adobe's free https://Build.PhoneGap.com); but with working SEO. 
 - Built-in support for I18N 
-- A path of gradually adjusting/migrating other apps to use INTUITION.DEV tool. 
 
 ## More Features:
 - 100% of our code is Open Source! What you build with the tools is your license.
 - CRUD tutorial, and example apps.
 - Built in auth, admin and adding users.
+- A path of gradually adjusting/migrating other apps to use INTUITION.DEV tool. 
 - Built in SQL support and FTS
 - Built in file upload
 - User-admin built in.
@@ -96,3 +96,4 @@ or
 
 ## *Software will eat the world: The digital revolution!*
 ### We just need to make more software: better and faster.
+## INTUITION.DEV, 'It will LEAD you in the right direction'
