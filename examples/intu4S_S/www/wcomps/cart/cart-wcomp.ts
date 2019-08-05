@@ -146,17 +146,14 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
             data = {
                url: function() { 
                   let data = this.itemData.prefix + this.itemData.url;
-                  // console.log('DATA.url', data, this);
                   return data;
                },
                image: function() { 
                   let data = this.itemData.prefix + this.itemData.url + '/' + this.itemData.image;
-                  // console.log('DATA.image', data, this);
                   return data;
                },
                cost: function() { 
                   let data = this.itemData.item.price * this.quantity;
-                  // console.log('DATA.cost', data, this);
                   return data;
                },
             }
