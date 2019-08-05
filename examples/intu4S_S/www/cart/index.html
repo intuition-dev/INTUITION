@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en_US">
+  <head>
+    <script>
+      var _start = Date.now()
+      window.ENV = '0' //- for comps, but it is also in scope for Pug for ENV logic
+      
+    </script>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
+    <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/toolBelt/toolBelt.js"></script>
+    <style>
+      html { touch-action: manipulation; }
+      .delayShowing { opacity: 0; }
+      .blur { -webkit-filter:blur(2px);filter:blur(2px); }
+    </style>
+    <!-- for data-->
+    <script>
+      console.log('fetch data and comp')// who gets back first?
+      var pro = fetchItems('/items/items.json')
+      depp.define({'cart-wcomp':'/wcomps/cart/cart-wcomp.js'})
+      depp.require(['cart-wcomp'])
+      
+    </script>
+    <link rel="stylesheet" href="/assets/css/styleTop.css">
+    <script src="/assets/js/loader.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <header class="d-flex justify-content-between align-items-center py-4"><a class="logo" href="/"> <span>Intuition.dev </span>Shop</a><a class="cart snipcart-checkout" href="/cart"><i class="icono-cart"></i>
+            <div class="cart-count d-inline-block font-weight-bolder snipcart-items-count">0</div></a></header>
+      </main>
+    </div>
+    <div class="outer-wrap">
+      <div class="container">
+        <main>
+          <div class="cart">
+            <div class="py-5" id="cart-items"></div>
+            <div class="d-flex justify-content-end">
+              <button class="d-inline-block bl-desc__btn mb-5">Proceed to checkout</button>
+            </div>
+          </div>
+          <script>
+            // binding step 1:
+            addE1Listener('fetchItems', onGotData)
+            // binding step 2:
+            function onGotData(evt) { 
+                depp.require(['cart-wcomp'], function(){ //both data and UI is ready
+                    bind(evt)
+                })
+            }//()
+            
+            function bind(items) {
+                var cart = localStorage.getItem('cart');
+                var prefix = items.prefix;
+                var items = items.items
+                if (cart === null) {
+                    cart = {};
+                } else {
+                    cart = JSON.parse(cart);
+                }
+            
+                var parent = document.getElementById('cart-items')
+                console.log('items', items)
+                console.log("Cart", cart)
+            
+                for (itemId in cart) {
+                    for (size in cart[itemId]) {
+            
+                        let itemData = items.filter(item => item.item.id == itemId)[0]
+                        console.log('itemData', itemData)
+                        if (typeof itemData !== 'undefined') {
+                            data = {
+                                id: itemId,
+                                size: size,
+                                quantity: cart[itemId][size]['quantity'],
+                                itemData: itemData,
+                                prefix: prefix
+                            }
+                            setAttrDa(addElementDe(parent,'cart-wcomp', itemId), data) 
+                        }
+                    }
+                }
+            
+            }//()
+          </script>
+        </main>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="d-flex justify-content-center py-5"><a class="logo" href="/"> <span>Intuition.dev </span>Shop</a></div>
+        <div class="py-5 d-flex justify-content-between mt-5">
+          <div class="copyright font-weight-light">&#169; 2019 <span class="d-inline-block pl-1">Intuition</span></div><a class="font-weight-light" href="//github.com/intuition-dev">Github</a>
+        </div>
+      </div>
+    </footer>
+    <script src="/layout/ui-loader.js"></script>
+  <!-- mB v6.08.01 on 2019-08-05T07:28:03.655Z --></body>
+</html>
