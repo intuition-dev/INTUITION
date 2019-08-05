@@ -17,8 +17,8 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          <div class="card-body col-9">
             <h5 class="card-title">{{itemData.item.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Size: {{size}}</h6>
-            <p class="card-text">Quantity: {{quantity}}</p>
-            <p class="card-text">Price: $\{{cost}}</p>
+            <p class="card-text">Quantity: <a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center mx-2" data-action="quantity-increase">-</a>{{quantity}}<a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center ml-2" data-action="quantity-reduce">+</a></p>
+            <p class="card-text font-weight-bold">Price: $\{{cost}}</p>
             <a href={{url}} class="card-link mt-3">View item</a>
          </div>
       </div>
@@ -30,6 +30,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          }
          .card {
             flex-direction: row;
+            border-radius: 0px;
          }
          .card-link {
             border-radius: 0px;
@@ -50,6 +51,15 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
             background: transparent;
             line-height: 1.4;
             transition: all .3s ease-in-out;
+         }
+         .card-link:hover {
+            color: white;
+            background: rgba(36,36,43,.7);
+         }
+         .quantity {
+            width: 24px;
+            height: 24px;
+            max-width: 24px;
          }
       </style>
       {{/items}}
@@ -66,8 +76,8 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          <div class="card-body col-9">
             <h5 class="card-title">{{itemData.item.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Size: {{size}}</h6>
-            <p class="card-text">Quantity: {{quantity}}</p>
-            <p class="card-text">Price: $\{{cost}}</p>
+            <p class="card-text">Quantity: <a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center mx-2" data-action="quantity-increase">-</a>{{quantity}}<a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center ml-2" data-action="quantity-reduce">+</a></p>
+            <p class="card-text font-weight-bold">Price: $\{{cost}}</p>
             <a href={{url}} class="card-link mt-3">View item</a>
          </div>
       </div>
@@ -79,6 +89,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          }
          .card {
             flex-direction: row;
+            border-radius: 0px;
          }
          .card-link {
             border-radius: 0px;
@@ -99,6 +110,15 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
             background: transparent;
             line-height: 1.4;
             transition: all .3s ease-in-out;
+         }
+         .card-link:hover {
+            color: white;
+            background: rgba(36,36,43,.7);
+         }
+         .quantity {
+            width: 24px;
+            height: 24px;
+            max-width: 24px;
          }
       </style>
       {{/items}}
@@ -138,7 +158,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
                   let data = this.itemData.item.price * this.quantity;
                   // console.log('DATA.cost', data, this);
                   return data;
-               }
+               },
             }
             data.items = [];
             
