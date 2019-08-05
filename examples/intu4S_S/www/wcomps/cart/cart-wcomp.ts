@@ -119,11 +119,16 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          if('data'==aName) {
             const THIZ = this
             let data = JSON.parse(newVal)
-            let url = data.prefix + data.itemData.url
-            let image = url + '/' + data.itemData.image
-            let cost = data.itemData.item.price * data.quantity;
-            console.log('cost ---> ', cost);
-            var rendered = Mustache.render(this.tmpl, {id: data.id, quantity: data.quantity, size: data.size, itemData: data.itemData, url: url, image: image, cost: cost})
+
+            var rendered = Mustache.render(this.tmpl, {
+               id: data.id,
+               quantity: data.quantity,
+               size: data.size,
+               itemData: data.itemData,
+               url: () => data.prefix + data.itemData.url,
+               image: () => data.prefix + data.itemData.url + '/' + data.itemData.image,
+               cost: () => data.itemData.item.price * data.quantity
+            })
             THIZ.sr.innerHTML = rendered     
          }//fi
       }//()
