@@ -68,24 +68,23 @@
                 console.log('items', items)
                 console.log("Cart", cart)
             
+                data = [];
                 for (itemId in cart) {
                     for (size in cart[itemId]) {
-            
                         let itemData = items.filter(item => item.item.id == itemId)[0]
                         console.log('itemData', itemData)
                         if (typeof itemData !== 'undefined') {
-                            data = {
+                            data.push({
                                 id: itemId,
                                 size: size,
                                 quantity: cart[itemId][size]['quantity'],
                                 itemData: itemData,
                                 prefix: prefix
-                            }
-                            setAttrDa(addElementDe(parent,'cart-wcomp', itemId), data) 
+                            })
                         }
                     }
                 }
-            
+                setAttrDa(addElementDe(parent,'cart-wcomp', 'cart'), data)
             }//()
           </script>
         </main>
@@ -100,5 +99,5 @@
       </div>
     </footer>
     <script src="/layout/ui-loader.js"></script>
-  <!-- mB v6.08.01 on 2019-08-05T07:28:03.655Z --></body>
+  <!-- mB v6.07.25 on 2019-08-05T17:16:40.274Z --></body>
 </html>
