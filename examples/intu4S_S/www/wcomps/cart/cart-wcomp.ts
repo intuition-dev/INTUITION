@@ -8,6 +8,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
    console.log('loaded')
    var cTemp = document.createElement('template')
    cTemp.innerHTML = `
+      {{#items}}
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
       <div class="card d-flex row mb-2" itemId={{id}}>
          <div class="col-3">
@@ -51,9 +52,11 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
             transition: all .3s ease-in-out;
          }
       </style>
+      {{/items}}
    `
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
+      {{#items}}
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrap.css">
       <div class="card d-flex row mb-2" itemId={{id}}>
@@ -98,6 +101,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
             transition: all .3s ease-in-out;
          }
       </style>
+      {{/items}}
    `
    
    window.customElements.define('cart-wcomp', class extends HTMLElement {
@@ -119,16 +123,36 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          if('data'==aName) {
             const THIZ = this
             let data = JSON.parse(newVal)
+            data = {
+               url: function() { 
+                  let data = this.itemData.prefix + this.itemData.url;
+                  // console.log('DATA.url', data, this);
+                  return data;
+               },
+               image: function() { 
+                  let data = this.itemData.prefix + this.itemData.url + '/' + this.itemData.image;
+                  // console.log('DATA.image', data, this);
+                  return data;
+               },
+               cost: function() { 
+                  let data = this.itemData.item.price * this.quantity;
+                  // console.log('DATA.cost', data, this);
+                  return data;
+               }
+            }
+            data.items = [];
+            
+            JSON.parse(newVal).forEach(element => {
+               data.items.push({
+                  id: element.id,
+                  quantity: element.quantity,
+                  size: element.size,
+                  itemData: element.itemData,
+               })
+            });
+            console.log('DATA ====> ', data)
 
-            var rendered = Mustache.render(this.tmpl, {
-               id: data.id,
-               quantity: data.quantity,
-               size: data.size,
-               itemData: data.itemData,
-               url: () => data.prefix + data.itemData.url,
-               image: () => data.prefix + data.itemData.url + '/' + data.itemData.image,
-               cost: () => data.itemData.item.price * data.quantity
-            })
+            var rendered = Mustache.render(this.tmpl, data)
             THIZ.sr.innerHTML = rendered     
          }//fi
       }//()

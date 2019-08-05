@@ -41,22 +41,22 @@ block main
             console.log('items', items)
             console.log("Cart", cart)
 
+            data = [];
             for (itemId in cart) {
                 for (size in cart[itemId]) {
-
                     let itemData = items.filter(item => item.item.id == itemId)[0]
                     console.log('itemData', itemData)
                     if (typeof itemData !== 'undefined') {
-                        data = {
+                        data.push({
                             id: itemId,
                             size: size,
                             quantity: cart[itemId][size]['quantity'],
                             itemData: itemData,
                             prefix: prefix
-                        }
-                        setAttrDa(addElementDe(parent,'cart-wcomp', itemId), data) 
+                        })
                     }
                 }
             }
+            setAttrDa(addElementDe(parent,'cart-wcomp', 'cart'), data) 
 
         }//()
