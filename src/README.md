@@ -13,33 +13,22 @@ In contrast to tools for citizen-developers: INTUITION.DEV aims to make professi
 
 INTUITION.DEV has WebAdmin Screen for any CRUD app, CMS, e-Com, Mobile, AMP, etc.  It uses [markdown](https://daringfireball.net/projects/markdown/syntax), and is written in [pug](https://pugjs.org/language/tags.html).
 
+# INTUITION.DEV pro development features:
+
+1. Standard Based
+1. SEO
+2. native custom elements/ standard web-components
+2. CRUD | ViewModel
+2. built in user auth
+2. FTS and SQL
+2. keyboard driven (arrow up WebComps))
+2. cross platform / mobile from single code base
+
+
 ### Easy
 
 In WebAdmin, you can edit screen app or content using markdown or pug - which won't let you pages become broken. It also can leverage native custom elements/ standard web-components and use any framework. It allows you clone existing pages to write another post/page, upload images, custom write own layout in pug, etc. Any app that you can write or use in HTML, .js/.ts or css/SASS can leverage INTUITION.DEV. Since it is only CSS/.js/HTML there is almost no learning curve.  If you need to catch up, we recommend this book: ‘Design and Build Websites’ by Jon Duckett.
 
-
-# INTUITION.DEV development productivity features:
-
-- Any css framework, or default to BootStrap
-- Any .js framework, or our own default: ViewModel
-- Iterative development: reduce app maintenance and iteration cost via our WebAdmin editor.
-- High productivity Low-Code: similar to MS PowerApps, Oracle Visual Builder, Coda.io, Wix Corvid; but for professional developers.
-- Can leverage native custom elements/ standard web-components 
-- Static Generator(similar to Hugo or Jekyll): You write Sass, Pug, .ts: it emits *SEO* friendly static content(including optional AMP) to the CDN.
-- Cross Platform from single code base: Web, IOS, Android (similar to Google's Flutter, but instead leveraging Adobe's free https://Build.PhoneGap.com); but with working SEO. 
-- Built-in support for I18N 
-
-## More Features:
-- 100% of our code is Open Source! What you build with the tools is your license.
-- CRUD tutorial, and example apps.
-- Built in auth, admin and adding users.
-- A path of gradually adjusting/migrating other apps to use INTUITION.DEV tool. 
-- Built in SQL support and FTS
-- Built in file upload
-- User-admin built in.
-- Livereload of course. And browser extension to edit from www.
-- Lazy loading capable (via require() dependencies, including popular dependencies already defined)  
-- Keyboard driven (arrow up WebComps)
 
 # Documentation
 
