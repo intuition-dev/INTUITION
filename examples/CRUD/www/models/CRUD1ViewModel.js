@@ -26,7 +26,7 @@ var CRUDvm = (function () {
         pro = pro.replace(':', '');
         var host = window.location.hostname;
         var port = window.location.port;
-        this.rpc = new httpRPC(pro, host, 8888);
+        this.rpc = new httpRPC(pro, host, port);
     };
     CRUDvm.inst = function () {
         return new Promise(function (res, rej) {
