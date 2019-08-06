@@ -61,6 +61,9 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
             height: 24px;
             max-width: 24px;
          }
+         a, a:hover, a:active, a:focus {
+            outline: none;
+         }
       </style>
       {{/items}}
    `
@@ -119,6 +122,9 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
             width: 24px;
             height: 24px;
             max-width: 24px;
+         }
+         a, a:hover, a:active, a:focus {
+            outline: none;
          }
       </style>
       {{/items}}

@@ -31,7 +31,7 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
       $('.js-qty input').val(val);
    });
 
-   $('[data-size]').on('click', async function (ev) {
+   $('[data-size]').on('click', function (ev) {
       console.log("TCL: ev ", ev);
       var data = $(ev.currentTarget);
       data.siblings('[data-size]').removeAttr('selected');
@@ -63,13 +63,17 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
 
          cart[shirtId][shirtSize]['quantity'] += quantity
          cart = localStorage.setItem('cart', JSON.stringify(cart));
+
+         if ($(this).hasClass('js-buy-checkout')) {
+            window.location.href = '/cart/';
+         }
       } else {
          // TODO: wrap in UI
          alert ('Please select size')
       }
    });
 
-   $('.js-stripe-checkout').on('click', async function (ev) {
+   $('.js-stripe-checkout').on('click', function (ev) {
       console.log("TCL: ev ", ev)
       var data = $(ev.currentTarget)
       var id = data.data('item-id')
