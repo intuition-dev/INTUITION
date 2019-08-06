@@ -18,6 +18,10 @@ block main
 
 
     script.
+        var items = [];
+        var prefix;
+        var cartWcomp;
+
         // binding step 1:
         addE1Listener('fetchItems', onGotData)
         // binding step 2:
@@ -27,17 +31,27 @@ block main
             })
         }//()
 
-        function bind(items) {
+        function bind(evt) {
+            items = evt.items;
+            prefix = evt.prefix;
+            var parent = document.getElementById('cart-items')
+            cartWcomp = addElementDe(parent, 'cart-wcomp', 'cart')
+            window.addEventListener('cart-storage-changed', function() {
+                console.log('Cart storage changed')
+                render()
+            });
+
+            render();
+        }//()
+
+        function render() {
             var cart = localStorage.getItem('cart');
-            var prefix = items.prefix;
-            var items = items.items
             if (cart === null) {
                 cart = {};
             } else {
                 cart = JSON.parse(cart);
             }
 
-            var parent = document.getElementById('cart-items')
             console.log('items', items)
             console.log("Cart", cart)
 
@@ -57,5 +71,5 @@ block main
                     }
                 }
             }
-            setAttrDa(addElementDe(parent,'cart-wcomp', 'cart'), data)
-        }//()
+            setAttrDa(cartWcomp, data)
+        }

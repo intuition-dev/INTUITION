@@ -38,7 +38,8 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
       data.attr('selected', 'selected');
    });
 
-   $('.js-buy').on('click', function() {
+   $('.js-buy').on('click', function(e) {
+      e.preventDefault();
       let shirtSize = $('[data-size][selected="selected"]').data('size');
       let shirtId = $('[data-item-id]').data('item-id');
       let quantity = parseInt($('[data-quantity]').val());

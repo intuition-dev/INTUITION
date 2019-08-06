@@ -17,7 +17,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          <div class="card-body col-9">
             <h5 class="card-title">{{itemData.item.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Size: {{size}}</h6>
-            <p class="card-text">Quantity: <a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center mx-2" data-action="quantity-increase">-</a>{{quantity}}<a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center ml-2" data-action="quantity-reduce">+</a></p>
+            <p class="card-text">Quantity: <a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center mx-2" data-action="quantity-increase" data-item-id={{id}} data-item-size={{size}}>-</a>{{quantity}}<a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center ml-2" data-action="quantity-reduce" data-item-id={{id}} data-item-size={{size}}>+</a></p>
             <p class="card-text font-weight-bold">Price: $\{{cost}}</p>
             <a href={{url}} class="card-link mt-3">View item</a>
          </div>
@@ -79,7 +79,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          <div class="card-body col-9">
             <h5 class="card-title">{{itemData.item.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Size: {{size}}</h6>
-            <p class="card-text">Quantity: <a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center mx-2" data-action="quantity-increase">-</a>{{quantity}}<a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center ml-2" data-action="quantity-reduce">+</a></p>
+            <p class="card-text">Quantity: <a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center mx-2" data-action="quantity-increase" data-item-id={{id}} data-item-size={{size}}>-</a>{{quantity}}<a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center ml-2" data-action="quantity-reduce" data-item-id={{id}} data-item-size={{size}}>+</a></p>
             <p class="card-text font-weight-bold">Price: $\{{cost}}</p>
             <a href={{url}} class="card-link mt-3">View item</a>
          </div>
@@ -176,6 +176,22 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
 
             var rendered = Mustache.render(this.tmpl, data)
             THIZ.sr.innerHTML = rendered     
+
+            THIZ.sr.querySelectorAll('[data-action^=quantity]').forEach(function(e) {
+               e.addEventListener('click', function(){
+                  let action = this.getAttribute('data-action');
+                  let itemId = this.getAttribute('data-item-id');
+                  let itemSize = this.getAttribute('data-item-size');
+                  let cart = JSON.parse(localStorage.getItem('cart'));
+                  if (action === 'quantity-increase') {
+                     cart[itemId][itemSize]['quantity']--;
+                  } else if (action === 'quantity-reduce') {
+                     cart[itemId][itemSize]['quantity']++;
+                  }
+                  localStorage.setItem('cart', JSON.stringify(cart));
+                  window.dispatchEvent(new Event('cart-storage-changed'));
+               })
+            })
          }//fi
       }//()
    })//wcomp
