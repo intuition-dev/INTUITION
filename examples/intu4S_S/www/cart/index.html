@@ -41,12 +41,54 @@
         <main>
           <div class="cart">
             <div class="py-5" id="cart-items"></div>
-            <div class="d-flex justify-content-end"><a class="d-inline-block bl-desc__btn mb-5" href="/address">Proceed to checkout</a></div>
+            <div class="d-flex justify-content-end">
+              <button class="d-inline-block bl-desc__btn mb-5" type="button" data-toggle="modal" data-target="#addressModal">Next</button>
+            </div>
+          </div>
+          <div class="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="addressModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Shipping address</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <div class="grid-form py-5" id="address-form">
+                    <fieldset>
+                      <legend>Please, enter your address</legend>
+                      <div data-row-span="2">
+                        <div data-field-span="1">
+                          <label>Country</label>
+                          <input type="text">
+                        </div>
+                        <div data-field-span="1">
+                          <label>City</label>
+                          <input type="text">
+                        </div>
+                      </div>
+                      <div data-row-span="2">
+                        <div data-field-span="1">
+                          <label>Street</label>
+                          <input type="text">
+                        </div>
+                        <div data-field-span="1">
+                          <label>Email</label>
+                          <input type="text">
+                        </div>
+                      </div>
+                    </fieldset>
+                    <button class="bl-desc__btn my-5 js-stripe-checkout">Proceed to checkout</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <script>
             var items = [];
             var prefix;
             var cartWcomp;
+            
+            depp.require(['popup']); 
             
             // binding step 1:
             addE1Listener('fetchItems', onGotData)
@@ -112,5 +154,5 @@
       </div>
     </footer>
     <script src="/layout/ui-loader.js"></script>
-  <!-- mB v6.08.2 on 2019-08-06T15:35:59.451Z --></body>
+  <!-- mB v6.08.2 on 2019-08-06T16:36:16.455Z --></body>
 </html>
