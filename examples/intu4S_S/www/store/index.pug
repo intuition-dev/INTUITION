@@ -13,6 +13,7 @@ block main
     .cards.d-flex.align-items-stretch#items
 
     script.
+        $('.outer-wrap').addClass('home');
         // binding step 1:
         addE1Listener('fetchItems', onGotData)
         // binding step 2:
@@ -38,4 +39,3 @@ block main
         }//()
 
         // in theory, you can add ui of 1 blank element while data is coming
-     

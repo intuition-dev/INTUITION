@@ -1,13 +1,8 @@
 
-
-depp.define({
-
-})
-
 depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function () {
+
    console.log('ready')
 
-   console.log('sdf')
    depp.done('depps')
    var stripe = Stripe('pk_test_GnYVBEvEsvWrOAtuxETrAFU500y63B4nQK');
    var services = new Services()
@@ -16,9 +11,9 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
 
    // We need size and quantity
    $('[data-size]').click(function (ev) {
-      console.log("TCL: ev", ev)
+      console.log("TCL: ev ", ev)
       size = $(ev.currentTarget).data('size')
-   })
+   });
 
    $('.js-qty span').on('click', function (ev) {
       val = parseInt($('.js-qty input').val());
@@ -34,10 +29,10 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
       }
 
       $('.js-qty input').val(val);
-   })
+   });
 
    $('[data-size]').on('click', async function (ev) {
-      console.log("TCL: ev", ev);
+      console.log("TCL: ev ", ev);
       var data = $(ev.currentTarget);
       data.siblings('[data-size]').removeAttr('selected');
       data.attr('selected', 'selected');
@@ -49,15 +44,11 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
       let quantity = parseInt($('[data-quantity]').val());
 
       if (typeof shirtSize !== 'undefined') {
-         console.log('shirtSize ---> ', shirtSize);
-         console.log('shirtId ---> ', shirtId);
-         console.log('quantity ---> ', quantity);
          cart = localStorage.getItem('cart');
          if (cart === null) {
             cart = {};
          } else {
             cart = JSON.parse(cart);
-         
          }
 
          if (typeof cart[shirtId] === 'undefined') {
@@ -73,18 +64,17 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
          cart[shirtId][shirtSize]['quantity'] += quantity
          cart = localStorage.setItem('cart', JSON.stringify(cart));
       } else {
+         // TODO: wrap in UI
          alert ('Please select size')
       }
    });
 
    $('.js-stripe-checkout').on('click', async function (ev) {
-      console.log("TCL: ev", ev)
-      debugger;
+      console.log("TCL: ev ", ev)
       var data = $(ev.currentTarget)
       var id = data.data('item-id')
       var name = data.data('item-name')
       var price = data.data('item-price')
-      // console.log("TCL: price", price.parseInt())
       var url = data.data('item-url')
       var description = data.data('item-description')
       var quantity = data.data('item-quantity')
@@ -105,10 +95,9 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
          })
 
       if (size.length) {
+         // TODO
       }
 
+   });
 
-
-   })
-})
-
+});

@@ -167,7 +167,6 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
                   itemData: element.itemData,
                })
             });
-            console.log('DATA ====> ', data)
 
             var rendered = Mustache.render(this.tmpl, data)
             THIZ.sr.innerHTML = rendered     
