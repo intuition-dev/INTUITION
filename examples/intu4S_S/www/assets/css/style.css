@@ -33,4 +33,4 @@ i{-webkit-transition:all .2s;transition:all .2s;}
 .icono-cart:before{position:absolute;width:4px;height:4px;border-radius:50%;box-shadow:inset 0 0 0 32px,13px 0,-4px -20px 0 1px;top:2px;left:-3px;}
 .cart-count{font-size:14px;}
 a{-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;}
-button,button:hover,button:active,button:focus,a,a:hover,a:active,a:focus{outline:none !important;} /* mB v6.08.2 on 2019-08-06T16:34:22.585Z */
+button,button:hover,button:active,button:focus,a,a:hover,a:active,a:focus{outline:none !important;} /* mB v6.08.2 on 2019-08-06T16:40:03.564Z */
