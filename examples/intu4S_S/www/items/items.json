@@ -1,6 +1,6 @@
 {
   "prefix": "/items/",
-  "mbVer": "v6.08.01",
+  "mbVer": "v6.08.2",
   "items": [
     {
       "image": "image.png",
@@ -10,7 +10,7 @@
         "name": "Long Sleeve T-Shirt KNOW",
         "price": 21.39,
         "weight": 77,
-        "url": "http://ed0eccce.ngrok.io/items/all_my_friends/",
+        "url": "https://23475cf0.ngrok.io/items/all_my_friends/",
         "description": "Long dark t-shirt, with white text",
         "color": "white",
         "sizeS": "5d09c2ad1fc2c5",
@@ -30,7 +30,7 @@
         "name": "Short-Sleeve Unisex T-Shirt I say",
         "price": 11.52,
         "weight": 77,
-        "url": "http://ed0eccce.ngrok.io/items/do_not_do/",
+        "url": "https://23475cf0.ngrok.io/items/do_not_do/",
         "description": "Short light t-shirt, dark text",
         "color": "white",
         "sizeS": "5d09bf0d993f27",
@@ -50,7 +50,7 @@
         "name": "Short-Sleeve Unisex T-Shirt Cake",
         "price": 11.52,
         "weight": 77,
-        "url": "http://ed0eccce.ngrok.io/items/it_is_a_piece_of_cake/",
+        "url": "https://23475cf0.ngrok.io/items/it_is_a_piece_of_cake/",
         "description": "Short dark t-shirt, white text",
         "color": "black",
         "sizeS": "5d09be71593523",
@@ -70,7 +70,7 @@
         "name": "Long Sleeve T-Shirt YOU",
         "price": 21.39,
         "weight": 77,
-        "url": "http://ed0eccce.ngrok.io/items/it_will_lead_you/",
+        "url": "https://23475cf0.ngrok.io/items/it_will_lead_you/",
         "description": "Long light t-shirt, with dark text",
         "color": "black",
         "sizeS": "5d09c42295aab4",

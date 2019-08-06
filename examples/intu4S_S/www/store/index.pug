@@ -13,7 +13,9 @@ block main
     .cards.d-flex.align-items-stretch#items
 
     script.
-        $('.outer-wrap').addClass('home');
+        depp.require(['pre'], function() {
+            $('.outer-wrap').addClass('home');
+        });
         // binding step 1:
         addE1Listener('fetchItems', onGotData)
         // binding step 2:

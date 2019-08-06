@@ -75,14 +75,14 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
       var id = data.data('item-id')
       var name = data.data('item-name')
       var price = data.data('item-price')
+      var image = data.data('item-image')
       var url = data.data('item-url')
       var description = data.data('item-description')
-      var quantity = data.data('item-quantity')
+      var quantity = parseInt(data.parents('main').find('[data-quantity]').val())
       var currency = 'USD'
 
-      var sessionId = services.getSessionId(id, name, description, '', 2930, currency, 1)
+      services.getSessionId(id, name, description, image,  price * 100, currency, quantity, url)
          .then(function (session) {
-
             console.log("TCL: sessionId", session)
             stripe.redirectToCheckout({
                sessionId: session.id

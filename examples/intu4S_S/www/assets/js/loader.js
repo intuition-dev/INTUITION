@@ -2,7 +2,6 @@ depp.define({
     'pre': [
         '#jquery',
         '#RPC',
-        '/assets/js/ui.js',
         '/sapi/sapi.js',
     ],
     'css': [
