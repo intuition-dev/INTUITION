@@ -1,7 +1,7 @@
 {
-  "name": "crud",
+  "name": "CRUD",
   "version": "1.0.0",
-  "description": "dev",
+  "description": "CRUD example",
   "private": true,
   "main": "index.js",
   "engines": {
@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "intu": ">=0.98.10",
-    "is": ">=3.3.0",
-    "perfy": ">=1.1.5",
     "sqlite3": ">=4.0.9"
   },
   "devDependencies": {

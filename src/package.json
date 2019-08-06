@@ -31,13 +31,13 @@
         "express-fileupload": ">=1.1.5",
         "fs-extra": ">=8.1.0",
         "ip": ">=1.1.5",
-        "is": ">=3.3.0",
         "mbake": ">=6.8.2",
-        "perfy": ">=1.1.5",
         "require-main-filename": ">=2.0.0",
         "sqlite3": ">=4.0.9"
     },
     "devDependencies": {
+        "is": ">=3.3.0",
+        "perfy": ">=1.1.5",
         "@types/node": ">=12.6.9"
     }
 }

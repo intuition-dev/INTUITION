@@ -1,7 +1,7 @@
 {
   "name": "intu4e",
   "version": "0.0.1",
-  "description": "MetaBake's intu WebAdmin for e-com",
+  "description": "INTU.DEV WebAdmin for e-com",
   "private": true,
   "main": "index.js",
   "author": "",
@@ -11,13 +11,12 @@
   },
   "dependencies": {
     "intu": ">=0.98.9",
-    "is": ">=3.3.0",
-    "perfy": ">=1.1.5",
-    "pubnub": ">=4.24.4",
     "sqlite3": ">=4.0.9",
     "stripe": ">=7.5.4"
   },
   "devDependencies": {
     "@types/node": ">=12.6.9"
+    , "pubnub": ">=4.24.4"
+
   }
 }
