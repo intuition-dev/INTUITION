@@ -75,17 +75,20 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
    });
 
    $('.js-stripe-checkout').on('click', function (ev) {
-      var data = $(ev.currentTarget)
-      var id = data.data('item-id')
-      var name = data.data('item-name')
-      var price = data.data('item-price')
-      var image = data.data('item-image')
-      var url = data.data('item-url')
-      var description = data.data('item-description')
-      var quantity = parseInt(data.parents('main').find('[data-quantity]').val())
-      var currency = 'USD'
+      var data = [];
+      JSON.parse($('cart-wcomp').attr('data')).forEach(element => data.push({ 
+         id: element.id,
+         name: element.itemData.item.name,
+         amount: element.itemData.item.price * 100,
+         image: element.itemData.item.url + element.itemData.image,
+         url: element.itemData.item.url,
+         description: element.itemData.title,
+         quantity: element.quantity,
+         currency: 'USD'
+      }));
+      console.log('CHECKOUT', data);
 
-      services.getSessionId(items)
+      services.getSessionId(data)
          .then(function (session) {
             console.log("TCL: sessionId", session)
             stripe.redirectToCheckout({
@@ -98,9 +101,9 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
             });
          })
 
-      if (size.length) {
-         // TODO
-      }
+      // if (size.length) {
+      //    // TODO
+      // }
 
    });
 
