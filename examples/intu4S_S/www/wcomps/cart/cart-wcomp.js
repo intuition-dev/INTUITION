@@ -60,7 +60,6 @@ depp.require(['poly-wcomp', 'mustache'], function () {
                         itemData: element.itemData,
                     });
                 });
-                console.log('DATA ====> ', data_1);
                 var rendered = Mustache.render(this.tmpl, data_1);
                 THIZ.sr.innerHTML = rendered;
             }

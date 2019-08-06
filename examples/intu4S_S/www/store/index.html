@@ -25,6 +25,7 @@
       depp.require(['item-wcomp'])
       
     </script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/styleTop.css">
     <script src="/assets/js/loader.js"></script>
   </head>
@@ -40,6 +41,9 @@
         <main>
           <div class="cards d-flex align-items-stretch" id="items"></div>
           <script>
+            depp.require(['pre'], function() {
+                $('.outer-wrap').addClass('home');
+            });
             // binding step 1:
             addE1Listener('fetchItems', onGotData)
             // binding step 2:
@@ -78,5 +82,5 @@
       </div>
     </footer>
     <script src="/layout/ui-loader.js"></script>
-  <!-- mB v6.07.25 on 2019-08-05T15:52:10.258Z --></body>
+  <!-- mB v6.08.2 on 2019-08-06T11:20:22.207Z --></body>
 </html>
