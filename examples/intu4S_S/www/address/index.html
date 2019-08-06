@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en_US">
+  <head>
+    <script>
+      var _start = Date.now()
+      window.ENV = '0' //- for comps, but it is also in scope for Pug for ENV logic
+      
+    </script>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
+    <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/toolBelt/toolBelt.js"></script>
+    <style>
+      html { touch-action: manipulation; }
+      .delayShowing { opacity: 0; }
+      .blur { -webkit-filter:blur(2px);filter:blur(2px); }
+    </style>
+    <!-- for data-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/styleTop.css">
+    <script src="/assets/js/loader.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <header class="d-flex justify-content-between align-items-center py-4"><a class="logo" href="/"> <span>Intuition.dev </span>Shop</a><a class="cart snipcart-checkout" href="/cart"><i class="icono-cart"></i>
+            <div class="cart-count d-inline-block font-weight-bolder snipcart-items-count">0</div></a></header>
+      </main>
+    </div>
+    <div class="outer-wrap">
+      <div class="container">
+        <main>
+          <div class="grid-form py-5" id="address-form">
+            <fieldset>
+              <legend>Please, enter your address</legend>
+              <div data-row-span="2">
+                <div data-field-span="1">
+                  <label>Country</label>
+                  <input type="text">
+                </div>
+                <div data-field-span="1">
+                  <label>City</label>
+                  <input type="text">
+                </div>
+              </div>
+              <div data-row-span="2">
+                <div data-field-span="1">
+                  <label>Street</label>
+                  <input type="text">
+                </div>
+                <div data-field-span="1">
+                  <label>Email</label>
+                  <input type="text">
+                </div>
+              </div>
+            </fieldset>
+            <button class="bl-desc__btn my-5 js-stripe-checkout">Proceed to checkout</button>
+          </div>
+          <script>depp.require(['gridforms']);</script>
+        </main>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="d-flex justify-content-center py-5"><a class="logo" href="/"> <span>Intuition.dev </span>Shop</a></div>
+        <div class="py-5 d-flex justify-content-between mt-5">
+          <div class="copyright font-weight-light">&#169; 2019 <span class="d-inline-block pl-1">Intuition</span></div><a class="font-weight-light" href="//github.com/intuition-dev">Github</a>
+        </div>
+      </div>
+    </footer>
+    <script src="/layout/ui-loader.js"></script>
+  <!-- mB v6.08.2 on 2019-08-06T15:48:12.197Z --></body>
+</html>
