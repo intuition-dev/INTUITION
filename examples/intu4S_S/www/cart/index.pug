@@ -14,13 +14,41 @@ block main
         #cart-items.py-5
 
         .d-flex.justify-content-end
-            a(href='/address').d-inline-block.bl-desc__btn.mb-5 Proceed to checkout
+            button(type='button', data-toggle='modal', data-target='#addressModal').d-inline-block.bl-desc__btn.mb-5 Next
 
+    .modal(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')#addressModal
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5.modal-title Shipping address
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                .modal-body
+                    #address-form.grid-form.py-5
+                        fieldset
+                            legend Please, enter your address
+                            div(data-row-span='2')
+                                div(data-field-span='1')
+                                    label Country
+                                    input(type='text')
+                                div(data-field-span='1')
+                                    label City
+                                    input(type='text')
+                            div(data-row-span='2')
+                                div(data-field-span='1')
+                                    label Street
+                                    input(type='text')
+                                div(data-field-span='1')
+                                    label Email
+                                    input(type='text')
+                        button.bl-desc__btn.my-5.js-stripe-checkout Proceed to checkout
 
     script.
         var items = [];
         var prefix;
         var cartWcomp;
+
+        depp.require(['popup']); 
 
         // binding step 1:
         addE1Listener('fetchItems', onGotData)

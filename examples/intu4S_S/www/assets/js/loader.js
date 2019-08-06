@@ -4,8 +4,8 @@ depp.define({
         '#RPC',
         '/sapi/sapi.js',
     ],
-    'gridforms': [
-        '#gridformsDefaultStyle', '#gridformsJS'
+    'popup': [
+        '#jquery', '#bsjs', '#gridformsDefaultStyle', '#gridformsJS'
     ],
     'css': [
         'css!//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700',

@@ -75,7 +75,6 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
    });
 
    $('.js-stripe-checkout').on('click', function (ev) {
-      console.log("TCL: ev ", ev)
       var data = $(ev.currentTarget)
       var id = data.data('item-id')
       var name = data.data('item-name')
@@ -86,7 +85,7 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
       var quantity = parseInt(data.parents('main').find('[data-quantity]').val())
       var currency = 'USD'
 
-      services.getSessionId(id, name, description, image,  price * 100, currency, quantity, url)
+      services.getSessionId(items)
          .then(function (session) {
             console.log("TCL: sessionId", session)
             stripe.redirectToCheckout({
