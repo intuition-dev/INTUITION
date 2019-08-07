@@ -1,5 +1,6 @@
 const stripe = require('stripe')('sk_test_uR3dOqQborl5MbxIahkvDXBg00DQwKMVNJ');
 import { BasePgRouter } from 'mbake/lib/Serv';
+import { ADB } from '../lib/ADB';
 // get session from stripe to browser
 
 
@@ -12,6 +13,7 @@ export class Stripe extends BasePgRouter {
       console.log('Address:', address)
 
       let line_items = [];
+      let items_g = [];
       params.data.forEach(element => {
          let { id, name, description, image, amount, currency, quantity, url } = element
          line_items.push({
@@ -22,8 +24,12 @@ export class Stripe extends BasePgRouter {
             quantity: quantity,
             // images: [image]
          })
+         items_g.push({
+            id: id, 
+            quantity: quantity
+         })
       });
-
+      
       const session = await stripe.checkout.sessions.create({
          payment_method_types: ['card'],
          line_items: line_items,
@@ -32,6 +38,9 @@ export class Stripe extends BasePgRouter {
       });
       
       console.log("TCL: Stripe -> createSession -> session", session)
+      const db = new ADB()
+      await db.init()
+      await db.saveSession(session.id, session.payment_intent, address, items_g)
       this.ret(resp, session);
    }
 }

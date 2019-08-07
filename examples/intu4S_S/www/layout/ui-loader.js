@@ -5,7 +5,7 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre'], function () {
 
    var quantity = 1
    var size = ''
-   
+
    // We need size and quantity
    $('[data-size]').click(function (ev) {
       console.log("TCL: ev ", ev)
@@ -35,13 +35,13 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre'], function () {
       data.attr('selected', 'selected');
    });
 
-   $('.js-buy').on('click', function(e) {
+   $('.js-buy').on('click', function (e) {
       e.preventDefault();
+      let shirtId = $('[data-size][selected="selected"]').data('id');
       let shirtSize = $('[data-size][selected="selected"]').data('size');
-      let shirtId = $('[data-item-id]').data('item-id');
       let quantity = parseInt($('[data-quantity]').val());
 
-      if (typeof shirtSize !== 'undefined') {
+      if (typeof shirtSize !== 'undefined' && typeof shirtId !== 'undefined' && typeof quantity !== 'undefined') {
          cart = localStorage.getItem('cart');
          if (cart === null) {
             cart = {};
@@ -50,16 +50,12 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre'], function () {
          }
 
          if (typeof cart[shirtId] === 'undefined') {
-            cart[shirtId] = {}
-         }
-
-         if (typeof cart[shirtId][shirtSize] === 'undefined') {
-            cart[shirtId][shirtSize] = {
-               quantity: 0
+            cart[shirtId] = {
+               size: shirtSize
             }
          }
 
-         cart[shirtId][shirtSize]['quantity'] += quantity
+         cart[shirtId]['quantity'] += quantity
          cart = localStorage.setItem('cart', JSON.stringify(cart));
 
          if ($(this).hasClass('js-buy-checkout')) {
@@ -67,7 +63,7 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre'], function () {
          }
       } else {
          // TODO: wrap in UI
-         alert ('Please select size')
+         alert('Please select size')
       }
    });
 

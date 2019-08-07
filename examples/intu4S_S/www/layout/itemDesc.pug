@@ -16,24 +16,6 @@
     .bl-desc__size.font-weight-bolder.mb-3 Price: 
         .font-weight-normal.d-inline-block.pl-1.bl-desc--option $ #{item.price}
     .d-flex.mt-5
-        a.d-inline-block.text-left.js-buy.bl-desc__btn.snipcart-add-item.mr-3(
-            href='#', 
-            data-item-id=item.id
-            data-item-name=item.name 
-            data-item-price=item.price
-            data-item-weight=item.weight
-            data-item-url=item.url
-            data-item-description=item.description
-            data-item-quantity=1
-        ) Add to Cart
-        button.d-inline-block.js-buy.js-buy-checkout.bl-desc__btn(
-            data-item-id=item.id,
-            data-item-name=item.name 
-            data-item-price=item.price
-            data-item-weight=item.weight
-            data-item-url=item.url
-            data-item-description=item.description
-            data-item-quantity=1
-            data-item-image=item.url + image 
-        ) Click here to checkout
+        a.d-inline-block.text-left.js-buy.bl-desc__btn.snipcart-add-item.mr-3(href='#') Add to Cart
+        button.d-inline-block.js-buy.js-buy-checkout.bl-desc__btn Click here to checkout
 

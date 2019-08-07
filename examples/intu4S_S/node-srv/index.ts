@@ -5,6 +5,9 @@ import { Stripe } from './routes/routes'
 import { ExpressRPC } from "mbake/lib/Serv"
 import { PaidHook } from './lib/PaidHook';
 
+const yaml = require("js-yaml")
+const fs = require("fs")
+
 const srv = new ExpressRPC()
 srv.makeInstance(['*'])
 const port = 3000
@@ -16,10 +19,10 @@ const port = 3000
 const stripe = new Stripe()
 srv.handleRRoute("stripe", "get-session", stripe.route.bind(stripe))
 
+let config = yaml.load(fs.readFileSync(__dirname + "/config.yaml"));
 
-let printfulApiID = '';
-const snipHook = new PaidHook(printfulApiID)
-srv.appInst.post('/stripe/snip-hook', snipHook.handlePaidHook)
+const snipHook = new PaidHook(config.printfulApiID)
+srv.appInst.post('/stripe/snip-hook', snipHook.handlePaidHook.bind(snipHook))
 console.log("Webhooks running", srv.appInst._router.stack)
 
 // // boiler plate

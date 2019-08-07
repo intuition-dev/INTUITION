@@ -4,69 +4,6 @@ declare var Mustache
 // we are using 2 different technologies. Mostly Standard Web Comps. They don't have biding so we use DOT.js. or Mustache
 
 depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
-
-   console.log('loaded')
-   var cTemp = document.createElement('template')
-   cTemp.innerHTML = `
-      {{#items}}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
-      <div class="card d-flex row mb-2" itemId={{id}}>
-         <div class="col-3">
-            <img src={{image}} alt="Card image cap">
-         </div>
-         <div class="card-body col-9">
-            <h5 class="card-title">{{itemData.item.name}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Size: {{size}}</h6>
-            <p class="card-text">Quantity: <a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center mx-2" data-action="quantity-increase" data-item-id={{id}} data-item-size={{size}}>-</a>{{quantity}}<a href="#" class="card-link quantity d-inline-flex p-0 text-center justify-content-center align-items-center ml-2" data-action="quantity-reduce" data-item-id={{id}} data-item-size={{size}}>+</a></p>
-            <p class="card-text font-weight-bold">Price: $\{{cost}}</p>
-            <a href={{url}} class="card-link mt-3">View item</a>
-         </div>
-      </div>
-
-      <style>
-         img {
-            width: 200px;
-            max-width: 100%;
-         }
-         .card {
-            flex-direction: row;
-            border-radius: 0px;
-         }
-         .card-link {
-            border-radius: 0px;
-            font-size: 13px;
-            border: 0;
-            display: inline-block;
-            width: auto;
-            text-decoration: none;
-            vertical-align: middle;
-            white-space: nowrap;
-            padding: 13px 20px;
-            border: solid 1px #24242b;
-            text-transform: uppercase;
-            color: #24242b;
-            letter-spacing: .075em;
-            font-weight: 400;
-            transition: all 0.3s cubic-bezier(0.215,0.61,0.355,1);
-            background: transparent;
-            line-height: 1.4;
-            transition: all .3s ease-in-out;
-         }
-         .card-link:hover {
-            color: white;
-            background: rgba(36,36,43,.7);
-         }
-         .quantity {
-            width: 24px;
-            height: 24px;
-            max-width: 24px;
-         }
-         a, a:hover, a:active, a:focus {
-            outline: none;
-         }
-      </style>
-      {{/items}}
-   `
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
       {{#items}}
@@ -84,6 +21,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
             <a href={{url}} class="card-link mt-3">View item</a>
          </div>
       </div>
+      {{/items}}
 
       <style>
          img {
@@ -127,7 +65,6 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
             outline: none;
          }
       </style>
-      {{/items}}
    `
    
    window.customElements.define('cart-wcomp', class extends HTMLElement {
@@ -137,7 +74,6 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
          super()
          console.log('CART WCOMP')
          this.sr = this.attachShadow({mode: 'open'})
-         this.sr.appendChild(cTemp.content.cloneNode(true))
          this.tmpl =c2Temp.innerHTML
       }//cons
 
@@ -182,12 +118,11 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
                   e.preventDefault();
                   let action = this.getAttribute('data-action');
                   let itemId = this.getAttribute('data-item-id');
-                  let itemSize = this.getAttribute('data-item-size');
                   let cart = JSON.parse(localStorage.getItem('cart'));
-                  if (action === 'quantity-increase' && cart[itemId][itemSize]['quantity'] > 1) {
-                     cart[itemId][itemSize]['quantity']--;
-                  } else if (action === 'quantity-reduce' && cart[itemId][itemSize]['quantity'] < 10) {
-                     cart[itemId][itemSize]['quantity']++;
+                  if (action === 'quantity-increase' && cart[itemId]['quantity'] > 1) {
+                     cart[itemId]['quantity']--;
+                  } else if (action === 'quantity-reduce' && cart[itemId]['quantity'] < 10) {
+                     cart[itemId]['quantity']++;
                   }
                   localStorage.setItem('cart', JSON.stringify(cart));
                   window.dispatchEvent(new Event('cart-storage-changed'));

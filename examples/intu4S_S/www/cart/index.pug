@@ -46,22 +46,15 @@ block main
                                     label city
                                     input(type='text', name='city')
                                 div(data-field-span='1')
-                                    label state_name
-                                    input(type='text', name='state_name')
+                                    label state_code
+                                    input(type='text', name='state_code')
                             div(data-row-span='2')
                                 div(data-field-span='1')
-                                    label country_name
-                                    input(type='text', name='country_name')
+                                    label country_code
+                                    input(type='text', name='country_code')
                                 div(data-field-span='1')
                                     label zip
                                     input(type='number', name='zip')
-                            div(data-row-span='2')
-                                div(data-field-span='1')
-                                    label phone
-                                    input(type='tel', name='phone')
-                                div(data-field-span='1')
-                                    label email
-                                    input(type='email', name='email')
                         button.bl-desc__btn.my-5.js-stripe-checkout Proceed to checkout
 
     script.
@@ -101,23 +94,23 @@ block main
                 cart = JSON.parse(cart);
             }
 
-            console.log('items', items)
+            console.log("Items", items)
             console.log("Cart", cart)
 
             data = [];
             for (itemId in cart) {
-                for (size in cart[itemId]) {
-                    let itemData = items.filter(item => item.item.id == itemId)[0]
-                    console.log('itemData', itemData)
-                    if (typeof itemData !== 'undefined') {
-                        data.push({
-                            id: itemId,
-                            size: size,
-                            quantity: cart[itemId][size]['quantity'],
-                            itemData: itemData,
-                            prefix: prefix
-                        })
-                    }
+                let itemSize = cart[itemId]['size'];
+                let itemIdKey = 'size' + itemSize;
+                let itemData = items.filter(item => item.item[itemIdKey] == itemId)[0]
+                console.log('itemData', itemData)
+                if (typeof itemData !== 'undefined') {
+                    data.push({
+                        id: itemId,
+                        size: itemSize,
+                        quantity: cart[itemId]['quantity'],
+                        itemData: itemData,
+                        prefix: prefix
+                    })
                 }
             }
             setAttrDa(cartWcomp, data)
@@ -149,12 +142,8 @@ block main
                     address2: addressForm.find('input[name="address2"]').val(),
                     city: addressForm.find('input[name="city"]').val(),
                     state_code: addressForm.find('input[name="state_code"]').val(),
-                    state_name: addressForm.find('input[name="state_name"]').val(),
                     country_code: addressForm.find('input[name="country_code"]').val(),
-                    country_name: addressForm.find('input[name="country_name"]').val(),
                     zip: addressForm.find('input[name="zip"]').val(),
-                    phone: addressForm.find('input[name="phone"]').val(),
-                    email:addressForm.find('input[name="email"]').val(),
                 };
                 console.log('CHECKOUT', data, address);
 
