@@ -63,15 +63,16 @@ depp.require(['poly-wcomp', 'mustache'], function () {
                 var rendered = Mustache.render(this.tmpl, data_1);
                 THIZ.sr.innerHTML = rendered;
                 THIZ.sr.querySelectorAll('[data-action^=quantity]').forEach(function (e) {
-                    e.addEventListener('click', function () {
+                    e.addEventListener('click', function (e) {
+                        e.preventDefault();
                         var action = this.getAttribute('data-action');
                         var itemId = this.getAttribute('data-item-id');
                         var itemSize = this.getAttribute('data-item-size');
                         var cart = JSON.parse(localStorage.getItem('cart'));
-                        if (action === 'quantity-increase') {
+                        if (action === 'quantity-increase' && cart[itemId][itemSize]['quantity'] > 1) {
                             cart[itemId][itemSize]['quantity']--;
                         }
-                        else if (action === 'quantity-reduce') {
+                        else if (action === 'quantity-reduce' && cart[itemId][itemSize]['quantity'] < 10) {
                             cart[itemId][itemSize]['quantity']++;
                         }
                         localStorage.setItem('cart', JSON.stringify(cart));
