@@ -82,28 +82,18 @@
                           <input type="text" name="city">
                         </div>
                         <div data-field-span="1">
-                          <label>state_name</label>
-                          <input type="text" name="state_name">
+                          <label>state_code</label>
+                          <input type="text" name="state_code">
                         </div>
                       </div>
                       <div data-row-span="2">
                         <div data-field-span="1">
-                          <label>country_name</label>
-                          <input type="text" name="country_name">
+                          <label>country_code</label>
+                          <input type="text" name="country_code">
                         </div>
                         <div data-field-span="1">
                           <label>zip</label>
                           <input type="number" name="zip">
-                        </div>
-                      </div>
-                      <div data-row-span="2">
-                        <div data-field-span="1">
-                          <label>phone</label>
-                          <input type="tel" name="phone">
-                        </div>
-                        <div data-field-span="1">
-                          <label>email</label>
-                          <input type="email" name="email">
                         </div>
                       </div>
                     </fieldset>
@@ -150,23 +140,23 @@
                     cart = JSON.parse(cart);
                 }
             
-                console.log('items', items)
+                console.log("Items", items)
                 console.log("Cart", cart)
             
                 data = [];
                 for (itemId in cart) {
-                    for (size in cart[itemId]) {
-                        let itemData = items.filter(item => item.item.id == itemId)[0]
-                        console.log('itemData', itemData)
-                        if (typeof itemData !== 'undefined') {
-                            data.push({
-                                id: itemId,
-                                size: size,
-                                quantity: cart[itemId][size]['quantity'],
-                                itemData: itemData,
-                                prefix: prefix
-                            })
-                        }
+                    let itemSize = cart[itemId]['size'];
+                    let itemIdKey = 'size' + itemSize;
+                    let itemData = items.filter(item => item.item[itemIdKey] == itemId)[0]
+                    console.log('itemData', itemData)
+                    if (typeof itemData !== 'undefined') {
+                        data.push({
+                            id: itemId,
+                            size: itemSize,
+                            quantity: cart[itemId]['quantity'],
+                            itemData: itemData,
+                            prefix: prefix
+                        })
                     }
                 }
                 setAttrDa(cartWcomp, data)
@@ -198,12 +188,8 @@
                         address2: addressForm.find('input[name="address2"]').val(),
                         city: addressForm.find('input[name="city"]').val(),
                         state_code: addressForm.find('input[name="state_code"]').val(),
-                        state_name: addressForm.find('input[name="state_name"]').val(),
                         country_code: addressForm.find('input[name="country_code"]').val(),
-                        country_name: addressForm.find('input[name="country_name"]').val(),
                         zip: addressForm.find('input[name="zip"]').val(),
-                        phone: addressForm.find('input[name="phone"]').val(),
-                        email:addressForm.find('input[name="email"]').val(),
                     };
                     console.log('CHECKOUT', data, address);
             
@@ -236,5 +222,5 @@
       </div>
     </footer>
     <script src="/layout/ui-loader.js"></script>
-  <!-- mB v6.08.2 on 2019-08-07T12:00:00.521Z --></body>
+  <!-- mB v6.08.2 on 2019-08-07T14:23:24.817Z --></body>
 </html>
