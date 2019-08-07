@@ -12,10 +12,10 @@
         "url": "https://23475cf0.ngrok.io/items/all_my_friends/",
         "description": "Long dark t-shirt, with white text",
         "color": "white",
-        "sizeS": "5d09c2ad1fc2c5",
-        "sizeM": "5d09c2ad1fc339",
-        "sizeL": "5d09c2ad1fc377",
-        "sizeXL": "5d09c2ad1fc3b2"
+        "sizeS": 1342894638,
+        "sizeM": 1342894639,
+        "sizeL": 1342894640,
+        "sizeXL": 1342894641
       },
       "url": "all_my_friends",
       "id": "all_my_friends",
@@ -31,10 +31,10 @@
         "url": "https://23475cf0.ngrok.io/items/do_not_do/",
         "description": "Short light t-shirt, dark text",
         "color": "white",
-        "sizeS": "5d09bf0d993f27",
-        "sizeM": "5d09bf0d994006",
-        "sizeL": "5d09bf0d994088",
-        "sizeXL": "5d09bf0d9940f1"
+        "sizeS": 1342881002,
+        "sizeM": 1342881003,
+        "sizeL": 1342881004,
+        "sizeXL": 1342881005
       },
       "url": "do_not_do",
       "id": "do_not_do",
@@ -50,10 +50,10 @@
         "url": "https://23475cf0.ngrok.io/items/it_is_a_piece_of_cake/",
         "description": "Short dark t-shirt, white text",
         "color": "black",
-        "sizeS": "5d09be71593523",
-        "sizeM": "5d09be71593623",
-        "sizeL": "5d09be715936a6",
-        "sizeXL": "5d09be71593727"
+        "sizeS": 1342877303,
+        "sizeM": 1342877304,
+        "sizeL": 1342877305,
+        "sizeXL": 1342877306
       },
       "url": "it_is_a_piece_of_cake",
       "id": "it_is_a_piece_of_cake",
@@ -69,10 +69,10 @@
         "url": "https://23475cf0.ngrok.io/items/it_will_lead_you/",
         "description": "Long light t-shirt, with dark text",
         "color": "black",
-        "sizeS": "5d09c42295aab4",
-        "sizeM": "5d09c42295ab16",
-        "sizeL": "5d09c42295ab67",
-        "sizeXL": "5d09c42295ab94"
+        "sizeS": 1342900180,
+        "sizeM": 1342900181,
+        "sizeL": 1342900182,
+        "sizeXL": 1342900183
       },
       "url": "it_will_lead_you",
       "id": "it_will_lead_you",

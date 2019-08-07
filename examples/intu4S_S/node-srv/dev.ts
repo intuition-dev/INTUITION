@@ -1,19 +1,10 @@
 
 // Bus. Layer test
-// import { Ship } from './lib/Ship';
+import { Ship } from './lib/Ship';
+const yaml = require("js-yaml")
+const fs = require("fs")
+let config = yaml.load(fs.readFileSync(__dirname + "/config.yaml"));
 
-// let ship = new Ship(); 
+let ship = new Ship(config.printfulApiID); 
 
-// let item = {
-//     'quantity': '1',
-//     'id': '119018290',
-// };
-// let address = {
-//     'fullName': 'Liza Test',
-//     'address1': '4558 Cook Hill Road',
-//     'city': 'Cheshire',
-//     'country': 'US',
-//     'province': 'CT',
-//     'postalCode': '06410',
-// };
-// ship.ship([item], address);
+ship.ship('pi_00000000000000');
