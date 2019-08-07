@@ -7,8 +7,12 @@ class Services {
       this.serviceRPC = new httpRPC('http', '0.0.0.0', '3000')
    }
 
-   getSessionId(data: Array<Object>) {
-      console.log('getSessionId', JSON.stringify(data));
-      return this.serviceRPC.invoke("stripe", "get-session", "createSession", data)
+   getSessionId(data: Array<Object>, address: Object) {
+      console.log('getSessionId', JSON.stringify(data), JSON.stringify(address));
+      let request = {
+         data: data,
+         address: address
+      }
+      return this.serviceRPC.invoke("stripe", "get-session", "createSession", request)
    }
 }

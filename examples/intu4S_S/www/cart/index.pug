@@ -29,18 +29,39 @@ block main
                             legend Please, enter your address
                             div(data-row-span='2')
                                 div(data-field-span='1')
-                                    label Country
-                                    input(type='text')
+                                    label Name
+                                    input(type='text', name='name')
                                 div(data-field-span='1')
-                                    label City
-                                    input(type='text')
+                                    label Company
+                                    input(type='text', name='company')
                             div(data-row-span='2')
                                 div(data-field-span='1')
-                                    label Street
-                                    input(type='text')
+                                    label address1
+                                    input(type='text', name='address1')
                                 div(data-field-span='1')
-                                    label Email
-                                    input(type='text')
+                                    label address2
+                                    input(type='text', name='address2')
+                            div(data-row-span='2')
+                                div(data-field-span='1')
+                                    label city
+                                    input(type='text', name='city')
+                                div(data-field-span='1')
+                                    label state_name
+                                    input(type='text', name='state_name')
+                            div(data-row-span='2')
+                                div(data-field-span='1')
+                                    label country_name
+                                    input(type='text', name='country_name')
+                                div(data-field-span='1')
+                                    label zip
+                                    input(type='number', name='zip')
+                            div(data-row-span='2')
+                                div(data-field-span='1')
+                                    label phone
+                                    input(type='tel', name='phone')
+                                div(data-field-span='1')
+                                    label email
+                                    input(type='email', name='email')
                         button.bl-desc__btn.my-5.js-stripe-checkout Proceed to checkout
 
     script.

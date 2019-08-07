@@ -8,7 +8,7 @@
       "item": {
         "id": 119017857,
         "name": "Long Sleeve T-Shirt KNOW",
-        "price": 21.39,
+        "price": 33.39,
         "weight": 77,
         "url": "https://23475cf0.ngrok.io/items/all_my_friends/",
         "description": "Long dark t-shirt, with white text",
@@ -28,7 +28,7 @@
       "item": {
         "id": 119016665,
         "name": "Short-Sleeve Unisex T-Shirt I say",
-        "price": 11.52,
+        "price": 23.52,
         "weight": 77,
         "url": "https://23475cf0.ngrok.io/items/do_not_do/",
         "description": "Short light t-shirt, dark text",
@@ -48,7 +48,7 @@
       "item": {
         "id": 119016505,
         "name": "Short-Sleeve Unisex T-Shirt Cake",
-        "price": 11.52,
+        "price": 23.52,
         "weight": 77,
         "url": "https://23475cf0.ngrok.io/items/it_is_a_piece_of_cake/",
         "description": "Short dark t-shirt, white text",
@@ -68,7 +68,7 @@
       "item": {
         "id": 119018290,
         "name": "Long Sleeve T-Shirt YOU",
-        "price": 21.39,
+        "price": 33.39,
         "weight": 77,
         "url": "https://23475cf0.ngrok.io/items/it_will_lead_you/",
         "description": "Long light t-shirt, with dark text",

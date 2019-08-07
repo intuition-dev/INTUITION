@@ -8,8 +8,11 @@ import { BasePgRouter } from 'mbake/lib/Serv';
 export class Stripe extends BasePgRouter {
 
    async createSession(resp, params) {
+      let address = params.address
+      console.log('Address:', address)
+
       let line_items = [];
-      params.forEach(element => {
+      params.data.forEach(element => {
          let { id, name, description, image, amount, currency, quantity, url } = element
          line_items.push({
             name: name,
@@ -24,9 +27,10 @@ export class Stripe extends BasePgRouter {
       const session = await stripe.checkout.sessions.create({
          payment_method_types: ['card'],
          line_items: line_items,
-         success_url: params[0]['url'] + '#success',
-         cancel_url: params[0]['url'] + '#error',
+         success_url: params.data[0]['url'] + '#success',
+         cancel_url: params.data[0]['url'] + '#error',
       });
+      
       console.log("TCL: Stripe -> createSession -> session", session)
       this.ret(resp, session);
    }

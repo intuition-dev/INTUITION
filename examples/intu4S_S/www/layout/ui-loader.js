@@ -86,9 +86,24 @@ depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function
          quantity: element.quantity,
          currency: 'USD'
       }));
-      console.log('CHECKOUT', data);
+      var addressForm = $('#address-form');
+      var address = {
+         name: addressForm.find('input[name="name"]').val(),
+         company: addressForm.find('input[name="company"]').val(),
+         address1: addressForm.find('input[name="address1"]').val(),
+         address2: addressForm.find('input[name="address2"]').val(),
+         city: addressForm.find('input[name="city"]').val(),
+         state_code: addressForm.find('input[name="state_code"]').val(),
+         state_name: addressForm.find('input[name="state_name"]').val(),
+         country_code: addressForm.find('input[name="country_code"]').val(),
+         country_name: addressForm.find('input[name="country_name"]').val(),
+         zip: addressForm.find('input[name="zip"]').val(),
+         phone: addressForm.find('input[name="phone"]').val(),
+         email:addressForm.find('input[name="email"]').val(),
+      };
+      console.log('CHECKOUT', data, address);
 
-      services.getSessionId(data)
+      services.getSessionId(data, address)
          .then(function (session) {
             console.log("TCL: sessionId", session)
             stripe.redirectToCheckout({
