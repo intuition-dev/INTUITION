@@ -72,6 +72,7 @@ class CRUDvm implements iViewModel {
       })
    }//()
 
+   // insert
    ins(name, topics) {
       var guid = getGUID()
       var prom = this.rpc.invoke('api', 'CRUD1Pg', 'insert', { guid:guid, name:name, topics:topics })
