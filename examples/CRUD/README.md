@@ -23,11 +23,21 @@ There are four basic examples:
 You can use any framework or library with MetaBake . And MetaBake comes with a recommended 'app framework' for WebApps in 3 lines:
 
 
-      interface iVM {
-         getViewChart(name?:string):any 
-         getViewList(name?:string):any 
-         getViewForm(name?:string):any 
-      }
+      interface iViewModel{
+         /**
+         * Return 2 objects if 2 forms
+         * or return 2 objects if 2 components
+         * or 2 arrays if 2 tables.
+         * Or a mix: 1 form and 1 table and 1 components is 1 array and 2 objects
+         */
+         getData(key?:string):Object
+
+         // returns 'OK', else an error message should be shown by View|Binding
+         validate():string 
+         
+         log(...a):void
+      }//()
+
 
 
 This is somewhat similar to M-VM-V. Major difference is that the VM for MetaBake is
@@ -56,7 +66,7 @@ and it must match the name of the page/screen folder; the components is the IVM 
 that map to view, and systems are your CRUD type methods.
 eg. ECS: http://archive.is/yRvvG
 - Services classes should be documented via document.js
-- If an event bus is needed by the view, you can use browsers's built in Custom Events to wire VM, binding, screen and components. 
+- If an event bus is needed by the view, you can use browser's built in Custom Events to wire VM, binding, screen and components. 
 - If you want to do e2e testing, you test VM (not the View; test the ViewModel, eg. via: http://qunitjs.com )
 
 # Other
