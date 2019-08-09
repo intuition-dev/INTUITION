@@ -1,0 +1,3 @@
+
+When releasing, also update version in CLI repo
+and adb file

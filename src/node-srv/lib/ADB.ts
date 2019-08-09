@@ -10,7 +10,7 @@ import { iAuth } from 'mbake/lib/Serv'
 export class ADB extends BaseDB {
 
     static veri() {
-        return 'v0.98.5'
+        return 'v0.99.9'
     }
 
     static get appPath(): string {
