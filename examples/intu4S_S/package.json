@@ -10,12 +10,12 @@
     "npm": ">=6.10.2"
   },
   "dependencies": {
-    "intu": ">=0.98.10",
+    "intu": ">=0.99.9",
     "sqlite3": ">=4.0.9",
-    "stripe": ">=7.6.0"
+    "stripe": ">=7.7.0"
   },
   "devDependencies": {
-    "@types/node": ">=12.6.9",
-    "pubnub": ">=4.24.4"
+    "@types/node": ">=12.7.1",
+    "pubnub": ">=4.24.6"
   }
 }
