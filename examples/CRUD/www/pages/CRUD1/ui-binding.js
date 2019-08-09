@@ -40,6 +40,7 @@ function onPoly() {
     depp.require('CRUD');
 }
 var vm;
+loadVexAlertFlat();
 depp.require(['tabulator', 'DOM', 'poly', 'jquery'], tab1);
 function tab1() {
     return __awaiter(this, void 0, void 0, function () {
@@ -64,6 +65,21 @@ function tab1() {
                     addE1Listener('gotData', onGotData);
                     $('#but1').click(function (evt) {
                         console.log('but1');
+                        vex.dialog.open({
+                            message: 'Please, make sure all the fields are filled with data',
+                            buttons: [
+                                $.extend({}, vex.dialog.buttons.YES, { text: 'Ok' }),
+                                $.extend({}, vex.dialog.buttons.NO, { text: 'Cancel' })
+                            ],
+                            callback: function (data) {
+                                if (!data) {
+                                    console.log('Cancelled');
+                                }
+                                else {
+                                    console.log('Ok');
+                                }
+                            }
+                        });
                         $('#but1').blur();
                     });
                     return [2];
