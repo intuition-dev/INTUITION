@@ -23,8 +23,8 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=10.16.1",
-        "npm": ">=6.10.2"
+        "node": ">=10.16.2",
+        "npm": ">=6.10.3"
     },
     "dependencies": {
         "bcryptjs": ">=2.4.3",

@@ -5,8 +5,8 @@
   "private": true,
   "main": "index.js",
   "engines": {
-    "node": ">=12.7.0",
-    "npm": ">=6.10.2"
+    "node": ">=12.8.0",
+    "npm": ">=6.10.3"
   },
   "dependencies": {
     "intu": ">=0.99.9",
