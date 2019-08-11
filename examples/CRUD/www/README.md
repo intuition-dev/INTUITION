@@ -67,9 +67,15 @@ that map to view, and systems are your CRUD type methods.
 eg. ECS: http://archive.is/yRvvG
 - Services classes should be documented via document.js
 - If an event bus is needed by the view, you can use browser's built in Custom Events to wire VM, binding, screen and components. 
+
+## Testing
+
 - If you want to do e2e testing, you test VM (not the View; test the ViewModel, eg. via: http://qunitjs.com )
 
+
+
 # Other
+
 
 - Avoid binding like this:
     dirs.forEach(el => {
