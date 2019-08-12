@@ -1,7 +1,7 @@
 
 declare var depp
 declare var Mustache
-// we are using 2 different technologies. Mostly Standard Web Comps. They don't have biding so we use DOT.js. or Mustache
+// we are using 2 different technologies. Mostly Standard Custom Elements. They don't have biding so we use DOT.js. or Mustache
 
 depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
 
