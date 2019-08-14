@@ -3,17 +3,17 @@ head
 
 body
    .container
-      cart-wcomp#c1
+      cart-custEl#c1
       br
 
-      cart-wcomp#c2
+      cart-custEl#c2
 
    script.
 
-      depp.define({'cart-wcomp': 'cart-wcomp.js'})
+      depp.define({'cart-custEl': 'cart-custEl.js'})
 
-      depp.require(['cart-wcomp'], function(){
-         console.log('CART-WCOMP loaded')
+      depp.require(['cart-custEl'], function(){
+         console.log('CART-custEl loaded')
       })//()
 
       depp.require(['FontsLoaded', 'bsDefaultStyle'], function() {

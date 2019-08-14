@@ -3,16 +3,16 @@ head
 
 body
    .container
-      item-wcomp#c1
+      item-custEl#c1
       br
 
-      item-wcomp#c2
+      item-custEl#c2
 
    script.
 
-      depp.define({'item-wcomp':'item-wcomp.js'})
+      depp.define({'item-custEl':'item-custEl.js'})
 
-      depp.require(['item-wcomp'], function(){
+      depp.require(['item-custEl'], function(){
          console.log('ready')
 
          // send message to comp

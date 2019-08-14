@@ -32,7 +32,7 @@ var CRUDvm = (function () {
         return new Promise(function (res, rej) {
             if (CRUDvm._instance)
                 res(CRUDvm._instance);
-            depp.require(['RPC', 'spin-wcomp'], function () {
+            depp.require(['RPC', 'spin-custEl'], function () {
                 console.log('MODEL!');
                 CRUDvm._instance = new CRUDvm(42);
                 CRUDvm._instance.setup();

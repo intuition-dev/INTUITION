@@ -5,8 +5,8 @@ block head2
     script.
         console.log('fetch data and comp')// who gets back first?
         var pro = fetchItems('/items/items.json')
-        depp.define({'cart-wcomp':'/custEl/cart/cart-wcomp.js'})
-        depp.require(['cart-wcomp'])
+        depp.define({'cart-custEl':'/custEl/cart/cart-custEl.js'})
+        depp.require(['cart-custEl'])
 
 block main
 
@@ -68,7 +68,7 @@ block main
         addE1Listener('fetchItems', onGotData)
         // binding step 2:
         function onGotData(evt) { 
-            depp.require(['cart-wcomp'], function(){ //both data and UI is ready
+            depp.require(['cart-custEl'], function(){ //both data and UI is ready
                 bind(evt)
             })
         }//()
@@ -77,7 +77,7 @@ block main
             items = evt.items;
             prefix = evt.prefix;
             var parent = document.getElementById('cart-items')
-            cartWcomp = addElementDe(parent, 'cart-wcomp', 'cart')
+            cartWcomp = addElementDe(parent, 'cart-custEl', 'cart')
             window.addEventListener('cart-storage-changed', function() {
                 console.log('Cart storage changed')
                 render()
@@ -124,7 +124,7 @@ block main
 
             $('.js-stripe-checkout').on('click', function (ev) {
                 var data = [];
-                JSON.parse($('cart-wcomp').attr('data')).forEach(element => data.push({ 
+                JSON.parse($('cart-custEl').attr('data')).forEach(element => data.push({ 
                     id: element.id,
                     name: element.itemData.item.name,
                     amount: element.itemData.item.price * 100,

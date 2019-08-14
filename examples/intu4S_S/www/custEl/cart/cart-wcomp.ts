@@ -1,14 +1,14 @@
 
 declare var depp
 declare var Mustache
-// we are using 2 different technologies. Mostly Standard Custom Elements. They don't have biding so we use DOT.js. or Mustache
+// we are using 2 different technologies. Mostly Standard Custom Elements. They don't have biding so we use Mustache
 
-depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
+depp.require(['poly-custEl', 'mustache'], function(){ // inside the require
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
       {{#items}}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrap.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.14/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.14/bootStrap/css/bootstrap.css">
       <div class="card d-flex row mb-2" itemId={{id}}>
          <div class="col-3">
             <img src={{image}} alt="Card image cap">
@@ -67,7 +67,7 @@ depp.require(['poly-wcomp', 'mustache'], function(){ // inside the require
       </style>
    `
    
-   window.customElements.define('cart-wcomp', class extends HTMLElement {
+   window.customElements.define('cart-custEl', class extends HTMLElement {
       sr // shadow root var
       tmpl // binding template
       constructor() {
