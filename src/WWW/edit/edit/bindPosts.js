@@ -360,7 +360,8 @@ class Posts {
     }
 
     signOut() {
-		sessionStorage.clear();
+        sessionStorage.clear();
+        console.log("Signing out. Redirecting to /edit")
 		window.location = ('/edit');
 	}
 
