@@ -29,7 +29,7 @@ depp.define({
     'setup-page': [
         '#intuAPI'
         ,'#baseVm'
-        , '/admin/settings/settings-comp.js'
+        , '/admin/settings/settings-custEl.js'
         , '/admin/settings/BindSettings.js'
         , '/admin/models/SettingsViewModel.js'
     ],

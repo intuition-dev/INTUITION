@@ -18,7 +18,7 @@ class BindSettings {
         var _this = this
         this.settingsViewModel.getConfig()
             .then(function(result) {
-                riot.mount('settings-comp', {
+                riot.mount('settings-custEl', {
                     emailjsService_id: result.emailjsService_id,
                     emailjsTemplate_id: result.emailjsTemplate_id,
                     emailjsUser_id: result.emailjsUser_id,
@@ -82,7 +82,7 @@ class BindSettings {
                     window.location.href = "/admin"
                 }
                 //update form
-                riot.mount('settings-comp', {
+                riot.mount('settings-custEl', {
                     pathToSite: result[0].path,
                     port: result[0].port,
                     bindSetup: this,
