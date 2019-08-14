@@ -268,56 +268,50 @@ class Posts {
     refreshTextarea(postId, target) {
         
         let mdFile = '.md';
-        let datFile = 'dat.yaml';
-        let gloFile = 'GLO.yaml';
+        let datFile = '.yaml';
         let csvFile = '.csv';
         let cssFile = '.css';
+        let pugFile = '.pug';
 
-        if (postId.includes(mdFile) || postId.includes(datFile) || postId.includes(gloFile) || postId.includes(csvFile) || postId.includes(cssFile)) {
-            switch (true) {
-                case postId.includes(mdFile):
-                    this._initCodeMirror('markdown');
-                    break;
-                case postId.includes(datFile):
-                    this._initCodeMirror('yaml');
-                    break;
-                case postId.includes(gloFile):
-                    this._initCodeMirror('yaml');
-                    break;
-                case postId.includes(csvFile):
-                    this._initCodeMirror('csv');
-                    break;
-                case postId.includes(cssFile):
-                    this._initCodeMirror('css');
-                    break;
-                case postId.includes(cssFile):
-                    this._initCodeMirror('css');
-                    break;
-                default:
-                   this._initCodeMirror('text');
-            }
-
-            $('.blog-item li').removeClass('active');
-            target.addClass('active');
-
-            let pathPrefix = target.parents('.blog-item').find('span').text();
-            let editedFileName = postId.replace('/', '');
-
-            $('.js-file-name').text(editedFileName);
-
-            this.showMd(postId, pathPrefix);
-
-            $('.btn-custom.save').removeAttr("disabled");
-            $('.i-calendar').addClass('disabled');
-
-            if (postId.includes(datFile)) {
-                $('.i-calendar').removeClass('disabled');
-            }
+        switch (true) {
+            case postId.includes(mdFile):
+                this._initCodeMirror('markdown');
+                break;
+            case postId.includes(datFile):
+                this._initCodeMirror('yaml');
+                break;
+            case postId.includes(csvFile):
+                this._initCodeMirror('csv');
+                break;
+            case postId.includes(cssFile):
+                this._initCodeMirror('css');
+                break;
+            case postId.includes(cssFile):
+                this._initCodeMirror('css');
+                break;
+            case postId.includes(pugFile):
+                this._initCodeMirror('pug');
+                break;
+            default:
+                this._initCodeMirror('text');
         }
-    }
 
-    enablePug() {
-        this._initCodeMirror('pug');
+        $('.blog-item li').removeClass('active');
+        target.addClass('active');
+
+        let pathPrefix = target.parents('.blog-item').find('span').text();
+        let editedFileName = postId.replace('/', '');
+
+        $('.js-file-name').text(editedFileName);
+
+        this.showMd(postId, pathPrefix);
+
+        $('.btn-custom.save').removeAttr("disabled");
+        $('.i-calendar').addClass('disabled');
+
+        if (postId.includes(datFile)) {
+            $('.i-calendar').removeClass('disabled');
+        }
     }
 
     refreshDirsOnClone(postId) {

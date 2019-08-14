@@ -101,7 +101,6 @@ class Editors {
                 })
                 .catch(err => {
                     if (typeof err !== 'undefined') {
-                        debugger;
                         alert("Unable to create user: " + err.errorMessage);
                     }
                     console.info('err: ', err);
