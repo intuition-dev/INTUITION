@@ -32,8 +32,6 @@ block content
                         .blog-list-wrap
                 .logo-wrap
                     div.logo.js-enable-pug Your Logo Here
-                    .easter-pug You can edit pug
-                        i.i-arrow-right
                                 
             .col-editor
                 .editor-wrapper
@@ -152,31 +150,6 @@ block content
                 let postId = $(this).text();
                 posts.refreshTextarea(postId, target);
 
-                // enable pug file edit
-                if ($('.js-enable-pug').hasClass('js-pug-enabled')) {
-                    let pugFile = '.pug';
-
-                    if (postId.includes(pugFile)) {
-
-                        posts.enablePug();
-
-                        $('.blog-item li').removeClass('active');
-                        $(this).addClass('active');
-
-                        let pathPrefix = $(this).parents('.blog-item').find('span').text();
-                        let editedFileName = postId.replace('/', '');
-
-                        $('.js-file-name').text(editedFileName);
-
-                        posts.showMd(postId, pathPrefix);
-
-                        $('.btn-custom.save').removeAttr("disabled");
-                        $('.i-calendar').addClass('disabled');
-
-                    }
-
-                }
-
             });
 
             // save file
@@ -260,7 +233,7 @@ block content
 
             });
 
-            // File upload
+            /* File upload */
 
             // toggle form
             $(document).on('click', '.upload', function(e) {
@@ -304,7 +277,7 @@ block content
         
             });
 
-            // Set publish date
+            /* Set publish date */
 
             // toggle form
             $(document).on('click', '.publish-date', function(e) {
@@ -363,16 +336,6 @@ block content
                     }
 
                 }
-
-            });
-
-            // Enable pug editing
-            $(document).on('click', '.js-enable-pug', function(e) {
-
-                e.preventDefault();
-
-                $(this).toggleClass('js-pug-enabled');
-                $('.easter-pug').toggleClass('active');
 
             });
 

@@ -26,10 +26,6 @@ class Editors {
                         window.rowUid = row.id;
                         $('input[name="name"]').val(row.name);
                         $('input[name="email"], input[name="password"]').val('');
-
-                        $('html, body').animate({ // scroll to form
-                            scrollTop: $("#editor-form").offset().top
-                        }, 500);
                     },
                 });
                 if (Array.isArray(editors)) {
@@ -60,9 +56,6 @@ class Editors {
                     setTimeout(function() {
                         $('.notification').addClass('d-hide').find('.text').text('');
                     }, 4000);
-                    $('html, body').animate({ // scroll to form
-                        scrollTop: $("#editor-form").offset().top
-                    }, 500);
                     // table refresh
                     console.log("Updated", id, name)
                     this.table
@@ -96,9 +89,6 @@ class Editors {
                     setTimeout(function() {
                         $('.notification').addClass('d-hide').find('.text').text('');
                     }, 4000);
-                    $('html, body').animate({ // scroll to form
-                        scrollTop: $("#editor-form").offset().top
-                    }, 500);
                     // table refresh
                     this.table
                         .updateOrAddData([{ id: guid, email: email, name: name }])
@@ -111,6 +101,7 @@ class Editors {
                 })
                 .catch(err => {
                     if (typeof err !== 'undefined') {
+                        debugger;
                         alert("Unable to create user: " + err.errorMessage);
                     }
                     console.info('err: ', err);
@@ -130,9 +121,6 @@ class Editors {
                 setTimeout(function() {
                     $('.notification').addClass('d-hide').find('.text').text('');
                 }, 4000);
-                $('html, body').animate({ // scroll to form
-                    scrollTop: $("#editor-form").offset().top
-                }, 500);
                 // table refresh
                 this.activeRow.delete()
                     .then(function() {
