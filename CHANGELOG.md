@@ -1,3 +1,7 @@
+#### 0.99.15
+- allow editing of any file
+- update readme.
+
 #### 0.98.5
 - fix the issue with the setup screen
 
