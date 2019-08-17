@@ -5,6 +5,7 @@ const commandLineArgs = require("command-line-args");
 const IDB_1 = require("./lib/IDB");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const IntuApp_1 = require("./IntuApp");
+const logger = require('tracer').console();
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
     { name: 'help', alias: 'h', type: Boolean },
@@ -30,7 +31,7 @@ function runISrv() {
     const iDB = new IDB_1.IDB();
     const mainEApp = new IntuApp_1.IntuApp(iDB, ['*']);
     let appPath = IDB_1.IDB.appPath + '/WWW';
-    console.log('***', appPath);
+    console.log('app Path', appPath);
     mainEApp.serveStatic(appPath);
     mainEApp.start();
 }

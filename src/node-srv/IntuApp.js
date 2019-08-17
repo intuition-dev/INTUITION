@@ -4,6 +4,7 @@ const Serv_1 = require("mbake/lib/Serv");
 const editorRoutes_1 = require("./routes/editorRoutes");
 const adminRoutes_1 = require("./routes/adminRoutes");
 const uploadRoute_1 = require("./routes/uploadRoute");
+const logger = require('tracer').console();
 const IDB_1 = require("./lib/IDB");
 const Setup_1 = require("./Setup");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
@@ -33,17 +34,17 @@ class IntuApp extends Serv_1.ExpressRPC {
                     this._runNormal();
                 }
                 else {
-                    console.log('run setup');
+                    logger.trace('run setup');
                     this._runSetup();
                 }
             }
             else {
-                console.log('run setup');
+                logger.trace('run setup');
                 this._runSetup();
             }
         }
         catch (err) {
-            console.warn(err);
+            logger.warn(err);
         }
     }
     _runSetup() {
