@@ -4,12 +4,12 @@
     "description": "INTUITION.DEV is the futuristic open source tool for pro developers w/ 10 fold productivity; via automation, low-code, cross-platform, static-generator, and a built-in WebAdmin editor",
     "main": "./node-srv/intu.js",
     "bin": {
-        "intu": "./node-srv/intu.js"
+        "intu": "./node-srv/index.js"
     },
     "scripts": {
         "preinstall11": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
     },
-    "license": "LGPL-3.0-only",
+    "license": "MIT",
     "author": "https://www.INTUITION.DEV",
     "homepage": "https://www.INTUITION.DEV",
     "repository": {
