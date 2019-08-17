@@ -1,6 +1,6 @@
 {
     "name": "intu",
-    "version": "0.99.15",
+    "version": "0.99.16",
     "description": "INTUITION.DEV is the futuristic open source tool for pro developers w/ 10 fold productivity; via automation, low-code, cross-platform, static-generator, and a built-in WebAdmin editor",
     "main": "./node-srv/intu.js",
     "bin": {
@@ -23,7 +23,7 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=10.16.2",
+        "node": ">=10.16.3",
         "npm": ">=6.10.3"
     },
     "dependencies": {
