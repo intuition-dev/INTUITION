@@ -26,14 +26,20 @@ class IDB extends BaseDB_1.BaseDB {
         logger.trace(path, fn);
     }
     async isSetupDone() {
-        this.db = await new sqlite3.Database(Util.intuPath + '/IDB.sqlite');
-        const qry = await this.db.prepare('SELECT * FROM CONFIG');
-        const rows = await this._qry(qry);
-        console.log("TCL: IDB -> isSetupDone -> rows", rows);
-        if (rows.length) {
-            return true;
+        try {
+            logger.trace(this.path, this.fn);
+            this.con();
+            const qry = await this.db.prepare('SELECT * FROM CONFIG');
+            const rows = await this._qry(qry);
+            logger.trace(rows);
+            if (rows && rows.length) {
+                return true;
+            }
+            return false;
         }
-        return false;
+        catch (e) {
+            return false;
+        }
     }
     async init() {
         if (this.dbExists()) {
@@ -99,8 +105,9 @@ class IDB extends BaseDB_1.BaseDB {
         return res;
     }
     async getAppPath() {
-        const config = await this.getConfig();
-        logger.trace(config);
+        const config = await this.getConfigX();
+        if (!config)
+            throw new Error('no pathToApp in DB');
         return config.pathToApp;
     }
     async getPort() {
