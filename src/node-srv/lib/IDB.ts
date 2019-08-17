@@ -3,9 +3,11 @@ const sqlite3 = require('sqlite3').verbose()
 
 const bcrypt = require('bcryptjs') // to hash passwords
 const fs = require('fs-extra')
+const logger = require('tracer').console()
 
 import { BaseDB } from 'mbake/lib/BaseDB'
 import { iAuth } from 'mbake/lib/Serv'
+import { getSupportedCodeFixes } from 'typescript';
 
 export class IDB extends BaseDB {
 
@@ -13,16 +15,18 @@ export class IDB extends BaseDB {
         return 'v0.99.16'
     }
 
+    constructor(dbPath){
+        super()
+    }
+
     static get appPath(): string {
         let appPath: string = require('require-main-filename')()
         let i: number = appPath.lastIndexOf('/')
-        console.log('***', i, appPath)
         i = appPath.lastIndexOf('/')
         appPath = appPath.substr(0, i)
         i = appPath.lastIndexOf('/')
         appPath = appPath.substr(0, i)
 
-        console.log('***', appPath)
         return appPath
     }
 
@@ -47,10 +51,10 @@ export class IDB extends BaseDB {
 
     con() {
         if (IDB.db) {
-            console.log('connection exists')
+            logger.trace('connection exists')
             return
         }
-        console.log('new connection')
+        logger.trace('new connection')
         IDB.db = new sqlite3.Database(IDB.appPath + '/IDB.sqlite')
     }//()
 

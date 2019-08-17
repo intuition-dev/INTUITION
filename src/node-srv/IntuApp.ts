@@ -4,6 +4,7 @@ import { ExpressRPC } from 'mbake/lib/Serv'
 import { EditorRoutes } from './routes/editorRoutes'
 import { AdminRoutes } from './routes/adminRoutes'
 import { UploadRoute } from './routes/uploadRoute'
+const logger = require('tracer').console()
 
 import { IDB } from './lib/IDB';
 
@@ -43,16 +44,16 @@ export class IntuApp extends ExpressRPC {
                     await this.db.init() //here we create tables
                     this._runNormal()
                 } else {
-                    console.log('run setup')
+                    logger.trace('run setup')
                     this._runSetup()
                 }
             } else {
-                console.log('run setup')
+                logger.trace('run setup')
                 this._runSetup()
 
             }
         } catch (err) {
-            console.warn(err)
+            logger.warn(err)
         }
     }//()
 

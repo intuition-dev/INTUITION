@@ -3,8 +3,7 @@ import { IDB } from './lib/IDB'
 import { Email } from 'mbake/lib/Email'
 import { SetupRoutes } from './routes/setupRoutes';
 import { IntuApp } from './IntuApp'
-var path = require('path');
-const dbName = 'IDB.sqlite';
+
 
 
 export class Setup {
@@ -19,7 +18,6 @@ export class Setup {
    }
 
    setup() {
-      console.log('ok setup:')
 
       const sr = new SetupRoutes(this.db)
       this.app.handleRRoute('setup', 'setup', sr.route.bind(sr) )

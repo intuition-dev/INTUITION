@@ -5,6 +5,7 @@ import commandLineArgs = require('command-line-args')
 import { IDB } from './lib/IDB'
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { IntuApp } from './IntuApp'
+const logger = require('tracer').console()
 
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
@@ -40,7 +41,7 @@ function runISrv() {
 
     let appPath = IDB.appPath + '/WWW'
 
-    console.log('***', appPath)
+    console.log('app Path', appPath)
 
     mainEApp.serveStatic(appPath)
 
