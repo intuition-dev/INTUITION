@@ -1,5 +1,5 @@
 import { eventNames } from "cluster";
-import { ADB } from "./ADB";
+import { IDB } from "./IDB";
 import { Ship } from "./Ship";
 
 const request = require('request')
@@ -21,7 +21,7 @@ export class PaidHook {
         console.log("TCL: init -> params", params)
         const method = params.type
         const resp: any = {} // new response
-        const db = new ADB();
+        const db = new IDB();
         await db.init();
 
         if ('payment_intent.succeeded'==method) {

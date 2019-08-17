@@ -2,17 +2,17 @@
 import { BasePgRouter } from 'mbake/lib/Serv'
 
 import { Email } from 'mbake/lib/Email'
-import { ADB } from '../lib/ADB'
+import { IDB } from '../lib/IDB'
 
 export class SetupRoutes extends BasePgRouter {
 
-    adbDB: ADB
+    IDB: IDB
     emailJs = new Email()
     
     constructor(db) {
         super()
-       this.adbDB = db
-       this.adbDB.init()
+       this.IDB = db
+       this.IDB.init()
     }
     
     
@@ -27,7 +27,7 @@ export class SetupRoutes extends BasePgRouter {
         
         try {
             console.info('setup called ...');
-            this.adbDB.setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, 9081)
+            this.IDB.setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, 9081)
             console.info('db created  ...');
             let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
             this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);

@@ -1,7 +1,7 @@
 
 import { Email } from 'mbake/lib/Email';
 import { BasePgRouter } from 'mbake/lib/Serv'
-import { ADB, EditorAuth } from '../lib/ADB';
+import { IDB, EditorAuth } from '../lib/IDB';
 import { FileMethods } from 'mbake/lib/FileOpsExtra'
 import { FileOps } from 'mbake/lib/FileOpsBase'
 import { AppLogic } from '../lib/AppLogic';
@@ -11,17 +11,17 @@ const fs = require('fs-extra')
 export class EditorRoutes extends BasePgRouter {
    emailJs = new Email()
 
-   adbDB: ADB;
+   IDB: IDB;
    auth: EditorAuth;
 
    fm = new FileMethods()
 
    appLogic = new AppLogic()
 
-   constructor(adbDB) {
+   constructor(IDB) {
       super();
-      this.adbDB = adbDB
-      this.auth = new EditorAuth(adbDB)
+      this.IDB = IDB
+      this.auth = new EditorAuth(IDB)
    }
 
    async checkEditor(resp, params) {
@@ -34,13 +34,13 @@ export class EditorRoutes extends BasePgRouter {
    }//()
 
    async emailResetPasswordCode(resp, params, email, pswd) {
-      const config:any = await this.adbDB.getConfig()
+      const config:any = await this.IDB.getConfig()
       let emailjsService_id   = config.emailjsService_id
       let emailjsTemplate_id  = config.emailjsTemplate_id
       let emailjsUser_id      = config.emailjsUser_id
       
-      let code = this.adbDB.getVcodeEditor(params.admin_email)
-      let msg = 'Enter your code at http://bla.bla ' + code // TODO use ADB template email to CRUD w/ {{code}}
+      let code = this.IDB.getVcodeEditor(params.admin_email)
+      let msg = 'Enter your code at http://bla.bla ' + code // TODO use IDB template email to CRUD w/ {{code}}
 
       email = Buffer.from(params.admin_email).toString('base64');
       this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
@@ -49,7 +49,7 @@ export class EditorRoutes extends BasePgRouter {
    }//() 
       
    async resetPasswordIfMatch(resp, params, email, password) {
-      const result = await this.adbDB.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password)
+      const result = await this.IDB.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password)
       this.ret(resp, result)
 
    }//()
@@ -59,7 +59,7 @@ export class EditorRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      const appPath = await this.adbDB.getAppPath()
+      const appPath = await this.IDB.getAppPath()
 
       const dirs = this.fm.getDirs(appPath)
       this.ret(resp, dirs)
@@ -71,7 +71,7 @@ export class EditorRoutes extends BasePgRouter {
       if(auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
-      const appPath = await this.adbDB.getAppPath()
+      const appPath = await this.IDB.getAppPath()
       const files = this.fm.getFiles(appPath, itemPath)
       this.ret(resp, files)
    }//files
@@ -82,7 +82,7 @@ export class EditorRoutes extends BasePgRouter {
          if(auth != 'OK') return
          let itemPath = '/' + params.file
          let file = params.itemPath
-         const appPath = await this.adbDB.getAppPath()
+         const appPath = await this.IDB.getAppPath()
          let fileName = appPath + itemPath + file
 
          const THIZ = this
@@ -104,7 +104,7 @@ export class EditorRoutes extends BasePgRouter {
       let substring = '/';
       let itemPath = '/' + params.file
       let file = params.itemPath
-      const appPath = await this.adbDB.getAppPath()
+      const appPath = await this.IDB.getAppPath()
       let fileName =  itemPath + file;
       let content = params.content;
       content = Buffer.from(content, 'base64');
@@ -134,7 +134,7 @@ export class EditorRoutes extends BasePgRouter {
 
       let itemPath = '/' + params.file
       let file = params.itemPath
-      const appPath = await this.adbDB.getAppPath()
+      const appPath = await this.IDB.getAppPath()
       let fileName =  itemPath + file
       this.ret(resp,'OK')
 
@@ -148,7 +148,7 @@ export class EditorRoutes extends BasePgRouter {
 
       let itemPath = '/' + params.itemPath
       let newItemPath = '/' + params.newItemPath
-      const appPath = await this.adbDB.getAppPath()
+      const appPath = await this.IDB.getAppPath()
 
       await this.appLogic.clone(appPath, itemPath, newItemPath) 
       this.ret(resp,'OK')
@@ -163,7 +163,7 @@ export class EditorRoutes extends BasePgRouter {
       if(auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
-      const appPath = await this.adbDB.getAppPath()
+      const appPath = await this.IDB.getAppPath()
       let publish_date:number = params.publish_date
       this.appLogic.setPublishDate(appPath, itemPath, publish_date) 
 

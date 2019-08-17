@@ -1,7 +1,7 @@
 import { CrudPgRouter } from './routes/Routers'
 
 import { IntuApp } from 'intu/node-srv/IntuSrv'
-import { ADB } from     'intu/node-srv/lib/ADB'
+import { IDB } from     'intu/node-srv/lib/IDB'
 
 // intu /////////////////////////////////////////
 
@@ -14,10 +14,10 @@ function runISrv() {
    const hostIP = 'http://' + ipAddres + ':'
 
    console.log("TCL: hostIP", hostIP)
-   const adbDB = new ADB()
+   const IDB = new IDB()
 
    // the only place there is DB new is here.
-   mainIApp = new IntuApp(adbDB, ['*'])
+   mainIApp = new IntuApp(IDB, ['*'])
 }
 runISrv()
 

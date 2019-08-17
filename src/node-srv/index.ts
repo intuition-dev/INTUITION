@@ -2,9 +2,9 @@
 // All rights reserved by INTUITION.DEV | Cekvenich, licensed under LGPL 3.0
 
 import commandLineArgs = require('command-line-args')
-import { ADB } from './lib/ADB'
+import { IDB } from './lib/IDB'
 import { Download } from 'mbake/lib/FileOpsExtra';
-import { IntuApp } from './IntuSrv'
+import { IntuApp } from './IntuApp'
 
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
@@ -33,12 +33,12 @@ function runISrv() {
     const hostIP = 'http://' + ipAddres + ':'
 
     console.log("TCL: hostIP", hostIP)
-    const adbDB = new ADB()
+    const iDB = new IDB()
 
     // the only place there is DB new is here.
-    const mainEApp = new IntuApp(adbDB, ['*'])
+    const mainEApp = new IntuApp(iDB, ['*'])
 
-    let appPath = ADB.appPath + '/WWW'
+    let appPath = IDB.appPath + '/WWW'
 
     console.log('***', appPath)
 
@@ -49,10 +49,13 @@ function runISrv() {
 
 function help() {
     console.info()
-    console.info('intu version: ' + ADB.veri())
+    console.info('intu version: ' + IDB.veri())
     console.info()
     console.info('Usage:')
-    console.info('  To run:                                                intu')
+    console.info(' To run:                                                intu')
+    console.info(' and then open a browser on the specified port. There is small app in WWW/ROOT')
+    console.info()
+
     console.info('  For starter CRUD app:                                  intu -c')
     console.info('  For an example of an e-commerce (shop and ship) app:   intu -s')
 

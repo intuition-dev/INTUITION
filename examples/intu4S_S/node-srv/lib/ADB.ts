@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 
 import { BaseDB } from 'mbake/lib/BaseDB'
 
-export class ADB extends BaseDB {
+export class IDB extends BaseDB {
 
     static get appPath(): string {
         let appPath: string = require('require-main-filename')()
@@ -21,16 +21,16 @@ export class ADB extends BaseDB {
     protected static db
 
     dbExists() {
-        return fs.existsSync(ADB.appPath + '/ADB.sqlite')
+        return fs.existsSync(IDB.appPath + '/IDB.sqlite')
     }
 
     con() {
-        if (ADB.db) {
+        if (IDB.db) {
             console.log('connection exists')
             return
         }
-        ADB.db = new sqlite3.Database(ADB.appPath + '/ADB.sqlite')
-        console.log('new connection', ADB.appPath + '/ADB.sqlite')
+        IDB.db = new sqlite3.Database(IDB.appPath + '/IDB.sqlite')
+        console.log('new connection', IDB.appPath + '/IDB.sqlite')
     }//()
 
     async init(): Promise<any> {
@@ -39,36 +39,36 @@ export class ADB extends BaseDB {
             this.con()
             return
         }//fi
-        if (!(ADB.db)) {
+        if (!(IDB.db)) {
             console.log('no connection made')
             this.con()
         }//fi
 
         return Promise.all([
-            this._run(ADB.db.prepare(`CREATE TABLE SESSIONS(sessionId, paymentIntent, address, items)`)), // single row in table
+            this._run(IDB.db.prepare(`CREATE TABLE SESSIONS(sessionId, paymentIntent, address, items)`)), // single row in table
         ]).then(() => {
             console.log('all tables created')
         })
     }
 
     async saveSession(sessionId, paymentIntent, address, items): Promise<any> {
-        const stmt2 = ADB.db.prepare(`INSERT INTO SESSIONS  (sessionId, paymentIntent, address, items) VALUES(?,?,?,?)`);
+        const stmt2 = IDB.db.prepare(`INSERT INTO SESSIONS  (sessionId, paymentIntent, address, items) VALUES(?,?,?,?)`);
         this._run(stmt2, sessionId, paymentIntent, JSON.stringify(address), JSON.stringify(items));
     }
 
     async fetchSession(sessionId): Promise<any> {
-        const stmt2 = ADB.db.prepare(`SELECT * FROM SESSIONS WHERE sessionId=?`);
+        const stmt2 = IDB.db.prepare(`SELECT * FROM SESSIONS WHERE sessionId=?`);
         const rows = await this._qry(stmt2, sessionId);
         return rows[0];
     }
 
     async fetchPaymentIntent(paymentIntent): Promise<any> {
-        const stmt2 = ADB.db.prepare(`SELECT * FROM SESSIONS WHERE paymentIntent=?`);
+        const stmt2 = IDB.db.prepare(`SELECT * FROM SESSIONS WHERE paymentIntent=?`);
         const rows = await this._qry(stmt2, paymentIntent);
         return rows[0];
     }
 }//class
 
 module.exports = {
-    ADB
+    IDB
 }

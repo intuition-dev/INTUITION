@@ -4,7 +4,7 @@ const Serv_1 = require("mbake/lib/Serv");
 const editorRoutes_1 = require("./routes/editorRoutes");
 const adminRoutes_1 = require("./routes/adminRoutes");
 const uploadRoute_1 = require("./routes/uploadRoute");
-const ADB_1 = require("./lib/ADB");
+const IDB_1 = require("./lib/IDB");
 const Setup_1 = require("./Setup");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 class IntuApp extends Serv_1.ExpressRPC {
@@ -13,12 +13,10 @@ class IntuApp extends Serv_1.ExpressRPC {
         this.makeInstance(origins);
         this.db = db;
         this.uploadRoute = new uploadRoute_1.UploadRoute();
-        FileOpsExtra_1.VersionNag.isCurrent('intu', ADB_1.ADB.veri()).then(function (isCurrent_) {
+        FileOpsExtra_1.VersionNag.isCurrent('intu', IDB_1.IDB.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
-                    console.log('There is a newer version of MetaBake\'s intu(Intuition), please update.');
-                else
-                    console.log('You have the current version of MetaBake\'s intu(Intuition)');
+                    console.log('There is a newer version of intu(INTUITION.DEV), please update.');
             }
             catch (err) {
                 console.log(err);
@@ -82,7 +80,7 @@ class IntuApp extends Serv_1.ExpressRPC {
             });
         });
         this.appInst.get('/ver', (req, res) => {
-            return res.send(ADB_1.ADB.veri);
+            return res.send(IDB_1.IDB.veri);
         });
         this.listen(port);
     }

@@ -1,4 +1,4 @@
-import { ADB } from "./ADB";
+import { IDB } from "./IDB";
 
 const request = require('request')
 
@@ -10,7 +10,7 @@ export class Ship {
     }
 
     async ship(intentId: string) {
-        const db = new ADB();
+        const db = new IDB();
         await db.init();
         console.log('Intent', intentId, 'succeed')
 

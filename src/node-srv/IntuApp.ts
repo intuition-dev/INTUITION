@@ -5,29 +5,28 @@ import { EditorRoutes } from './routes/editorRoutes'
 import { AdminRoutes } from './routes/adminRoutes'
 import { UploadRoute } from './routes/uploadRoute'
 
-import { ADB } from './lib/ADB';
+import { IDB } from './lib/IDB';
 
 import { Setup } from './Setup';
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
 
 export class IntuApp extends ExpressRPC {
 
-    db: ADB
+    db: IDB
     uploadRoute
 
-    constructor(db: ADB, origins: Array<string>) {
+    constructor(db: IDB, origins: Array<string>) {
         super()
         this.makeInstance(origins)
 
         this.db = db
         this.uploadRoute = new UploadRoute()
 
-        VersionNag.isCurrent('intu', ADB.veri()).then(function (isCurrent_: boolean) {
+        VersionNag.isCurrent('intu', IDB.veri()).then(function (isCurrent_: boolean) {
             try {
                 if (!isCurrent_)
-                    console.log('There is a newer version of MetaBake\'s intu(Intuition), please update.')
-                else
-                    console.log('You have the current version of MetaBake\'s intu(Intuition)')
+                    console.log('There is a newer version of intu(INTUITION.DEV), please update.')
+
             } catch (err) {
                 console.log(err)
             }
@@ -101,7 +100,7 @@ export class IntuApp extends ExpressRPC {
 
         // get version
         this.appInst.get('/ver', (req, res) => {
-            return res.send(ADB.veri)
+            return res.send(IDB.veri)
         })
 
         this.listen(port)

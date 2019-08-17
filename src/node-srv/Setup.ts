@@ -1,16 +1,15 @@
 
-import { ADB } from './lib/ADB'
+import { IDB } from './lib/IDB'
 import { Email } from 'mbake/lib/Email'
 import { SetupRoutes } from './routes/setupRoutes';
-import { IntuApp } from './IntuSrv'
+import { IntuApp } from './IntuApp'
 var path = require('path');
-const dbName = 'ADB.sqlite';
-const pathToDb = path.join(__dirname, dbName);
+const dbName = 'IDB.sqlite';
 
 
 export class Setup {
 
-   db: ADB
+   db: IDB
    app: IntuApp
    emailJs = new Email()
 
@@ -24,10 +23,6 @@ export class Setup {
 
       const sr = new SetupRoutes(this.db)
       this.app.handleRRoute('setup', 'setup', sr.route.bind(sr) )
-
-      // create db
-      
-      // open ../WWW/setup/
 
    }
 

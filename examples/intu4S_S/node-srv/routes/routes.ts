@@ -1,6 +1,6 @@
 const stripe = require('stripe')('sk_test_uR3dOqQborl5MbxIahkvDXBg00DQwKMVNJ');
 import { BasePgRouter } from 'mbake/lib/Serv';
-import { ADB } from '../lib/ADB';
+import { IDB } from '../lib/IDB';
 // get session from stripe to browser
 
 
@@ -38,7 +38,7 @@ export class Stripe extends BasePgRouter {
       });
       
       console.log("TCL: Stripe -> createSession -> session", session)
-      const db = new ADB()
+      const db = new IDB()
       await db.init()
       await db.saveSession(session.id, session.payment_intent, address, items_g)
       this.ret(resp, session);

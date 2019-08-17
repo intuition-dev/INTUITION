@@ -6,8 +6,7 @@ const fs = require("fs-extra");
 class AppLogic {
     async autoBake(appPath, itemPath, fileName) {
         const meta = new Wa_1.MetaPro(appPath);
-        const res = await meta.autoBake(itemPath, fileName);
-        return res;
+        return await meta.autoBake(itemPath, fileName);
     }
     async setPublishDate(appPath, itemPath, date) {
         const dat = new FileOpsBase_1.Dat(appPath + itemPath);
@@ -29,8 +28,7 @@ class AppLogic {
         const fo = new FileOpsBase_1.FileOps(appPath);
         const count = fo.count(fileName);
         await fs.copySync(oldPath + fileName, targetPath + fileName + count);
-        const res = fs.pathExists(oldPath + fileName, targetPath + fileName + count) ? 'OK' : 'Err';
-        return res;
+        return await fs.pathExists(oldPath + fileName, targetPath + fileName + count) ? 'OK' : 'Err';
     }
 }
 exports.AppLogic = AppLogic;

@@ -3,8 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Email_1 = require("mbake/lib/Email");
 const setupRoutes_1 = require("./routes/setupRoutes");
 var path = require('path');
-const dbName = 'ADB.sqlite';
-const pathToDb = path.join(__dirname, dbName);
+const dbName = 'IDB.sqlite';
 class Setup {
     constructor(db, app) {
         this.emailJs = new Email_1.Email();

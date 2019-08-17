@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const logger = require('tracer').console();
 const perfy = require('perfy');
-const ADB_1 = require("./lib/ADB");
+const IDB_1 = require("./lib/IDB");
 const AppLogic_1 = require("./lib/AppLogic");
-const adb = new ADB_1.ADB();
+const iDB = new IDB_1.IDB();
 const appLogic = new AppLogic_1.AppLogic();
-adb.init().then(testADB).then(testAppLogic);
+iDB.init().then(testIDB).then(testAppLogic);
 async function test(name, f) {
     perfy.start(name, true);
     logger.trace(name);
@@ -14,23 +14,23 @@ async function test(name, f) {
     var result = perfy.end(name);
     console.log('', result.time);
 }
-async function testADB() {
-    console.log('testADB:');
-    await test('dbExists', () => adb.dbExists());
-    await test('getSalt', () => adb.getSalt());
-    await test('monitor', () => adb.monitor());
-    await test(`setAppPath('appPath')`, () => adb.setAppPath('appPath'));
-    await test('getAppPath', () => adb.getAppPath());
-    await test('getPort', () => adb.getPort());
-    await test('getConfig', () => adb.getConfig());
-    await test('getVcodeAdmin', () => adb.getVcodeAdmin());
-    await test(`getVcodeEditor('n1@m.com)`, () => adb.getVcodeEditor('n1@m.com'));
+async function testIDB() {
+    console.log('testIDB:');
+    await test('dbExists', () => iDB.dbExists());
+    await test('getSalt', () => iDB.getSalt());
+    await test('monitor', () => iDB.monitor());
+    await test(`setAppPath('appPath')`, () => iDB.setAppPath('appPath'));
+    await test('getAppPath', () => iDB.getAppPath());
+    await test('getPort', () => iDB.getPort());
+    await test('getConfig', () => iDB.getConfig());
+    await test('getVcodeAdmin', () => iDB.getVcodeAdmin());
+    await test(`getVcodeEditor('n1@m.com)`, () => iDB.getVcodeEditor('n1@m.com'));
     var addEditorGuid = uuidv4();
-    await test(`addEditor(${addEditorGuid}, 'Editor${addEditorGuid}', 'e@m.com', '1111'):`, () => adb.addEditor(addEditorGuid, 'Editor2' + addEditorGuid, 'e2@m.com', '1111'));
-    await test('getEditors', () => adb.getEditors());
-    await test('deleteEditor', () => adb.deleteEditor(addEditorGuid));
-    await test('getEditors2', () => adb.getEditors());
-    console.log('//testADB');
+    await test(`addEditor(${addEditorGuid}, 'Editor${addEditorGuid}', 'e@m.com', '1111'):`, () => iDB.addEditor(addEditorGuid, 'Editor2' + addEditorGuid, 'e2@m.com', '1111'));
+    await test('getEditors', () => iDB.getEditors());
+    await test('deleteEditor', () => iDB.deleteEditor(addEditorGuid));
+    await test('getEditors2', () => iDB.getEditors());
+    console.log('//testIDB');
 }
 async function testAppLogic() {
     console.log('testAppLogic:');

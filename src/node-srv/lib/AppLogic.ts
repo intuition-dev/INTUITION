@@ -7,12 +7,7 @@ export class AppLogic {
     
     async autoBake(appPath, itemPath, fileName) {
         const meta = new MetaPro(appPath)
-        const res = await meta.autoBake(itemPath, fileName)
-        return res
-        //setTimeout(function(){
-            // autobake is automatic in CLI, and tested! So if anything fix the args till it works
-           // meta.autoBake(itemPath, fileName)
-        //},1)
+        return await meta.autoBake(itemPath, fileName)
     }//()
 
     /**
@@ -54,8 +49,7 @@ export class AppLogic {
 
         await fs.copySync(oldPath+fileName, targetPath+fileName+count)
 
-        const res = fs.pathExists(oldPath+fileName, targetPath+fileName+count) ? 'OK' : 'Err'
-        return res
+        return await fs.pathExists(oldPath+fileName, targetPath+fileName+count) ? 'OK' : 'Err'
     }//()
 
 }//()

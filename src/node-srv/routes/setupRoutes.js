@@ -6,8 +6,8 @@ class SetupRoutes extends Serv_1.BasePgRouter {
     constructor(db) {
         super();
         this.emailJs = new Email_1.Email();
-        this.adbDB = db;
-        this.adbDB.init();
+        this.IDB = db;
+        this.IDB.init();
     }
     async setup(resp, params) {
         let email = Buffer.from(params.email).toString('base64');
@@ -17,7 +17,7 @@ class SetupRoutes extends Serv_1.BasePgRouter {
         let emailjsUser_id = params.emailjsUser_id;
         try {
             console.info('setup called ...');
-            this.adbDB.setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, 9081);
+            this.IDB.setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, 9081);
             console.info('db created  ...');
             let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
             this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);

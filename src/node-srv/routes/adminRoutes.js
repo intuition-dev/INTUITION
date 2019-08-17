@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Email_1 = require("mbake/lib/Email");
 const Serv_1 = require("mbake/lib/Serv");
-const ADB_1 = require("../lib/ADB");
+const IDB_1 = require("../lib/IDB");
 class AdminRoutes extends Serv_1.BasePgRouter {
-    constructor(adbDB) {
+    constructor(IDB) {
         super();
         this.emailJs = new Email_1.Email();
-        this.adbDB = adbDB;
-        this.auth = new ADB_1.AdminAuth(adbDB);
+        this.IDB = IDB;
+        this.auth = new IDB_1.AdminAuth(IDB);
     }
     async checkAdmin(resp, params) {
         let user = Buffer.from(params.admin_email).toString('base64');
@@ -22,7 +22,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
         let auth = await this.auth.auth(user, pswd, resp);
         if (auth != 'OK')
             return;
-        let data = await this.adbDB.getConfig();
+        let data = await this.IDB.getConfig();
         this.ret(resp, data);
     }
     async updateConfig(resp, params, user, pswd) {
@@ -37,7 +37,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
         if (port === '') {
             port = 9081;
         }
-        let res = await this.adbDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
+        let res = await this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
         if (res === 'OK') {
             let data = [];
             data.push({
@@ -51,13 +51,13 @@ class AdminRoutes extends Serv_1.BasePgRouter {
         }
     }
     async emailResetPasswordCode(resp, params, email, pswd) {
-        const config = await this.adbDB.getConfig();
+        const config = await this.IDB.getConfig();
         let emailjsService_id = config.emailjsService_id;
         let emailjsTemplate_id = config.emailjsTemplate_id;
         let emailjsUser_id = config.emailjsUser_id;
         let sendToEmail = Buffer.from(params.admin_email).toString('base64');
         let enterCodeUrl = params.loginUrl;
-        let code = this.adbDB.getVcodeAdmin();
+        let code = this.IDB.getVcodeAdmin();
         let msg = 'Your verification code is: ' + code + '<br>Enter your code at ' + enterCodeUrl + '#code';
         this.emailJs.send(sendToEmail, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
         this.ret(resp, 'OK');
@@ -65,14 +65,14 @@ class AdminRoutes extends Serv_1.BasePgRouter {
     async resetPasswordIfMatch(resp, params, email, password) {
         let adminEmail = Buffer.from(params.admin_email).toString('base64');
         let newPassword = Buffer.from(params.password).toString('base64');
-        const result = await this.adbDB.resetPasswordAdminIfMatch(adminEmail, params.code, newPassword);
+        const result = await this.IDB.resetPasswordAdminIfMatch(adminEmail, params.code, newPassword);
         this.ret(resp, result);
     }
     async getEditors(resp, params, user, pswd) {
         let auth = await this.auth.auth(user, pswd, resp);
         if (auth != 'OK')
             return;
-        let EditorsJson = await this.adbDB.getEditors();
+        let EditorsJson = await this.IDB.getEditors();
         this.ret(resp, EditorsJson);
     }
     async addEditor(resp, params, user, pswd) {
@@ -83,7 +83,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
         let email = params.email;
         let name = params.name;
         let password = params.password;
-        await this.adbDB.addEditor(guid, name, email, password);
+        await this.IDB.addEditor(guid, name, email, password);
         this.ret(resp, 'OK');
     }
     async editEditor(resp, params, user, pswd) {
@@ -92,7 +92,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
             return;
         let guid = params.uid;
         let name = params.name;
-        let data = await this.adbDB.editEditor(guid, name);
+        let data = await this.IDB.editEditor(guid, name);
         this.ret(resp, data);
     }
     async deleteEditor(resp, params, user, pswd) {
@@ -100,7 +100,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
         if (auth != 'OK')
             return;
         let guid = params.uid;
-        await this.adbDB.deleteEditor(guid);
+        await this.IDB.deleteEditor(guid);
         this.ret(resp, 'OK');
     }
 }
