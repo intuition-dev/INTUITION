@@ -77,7 +77,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         this.appInst.get('/ver', (req, res) => {
             return res.send(IDB_1.IDB.veri);
         });
-        this.serveStatic(IDB_1.Util.intuPath + '/WWW');
+        this.serveStatic(IDB_1.Util.intuPath + '/INTU');
         const THIZ = this;
         this.db.getAppPath().then(appPath => {
             console.log('_runNormal port:', port, appPath);

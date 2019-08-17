@@ -99,7 +99,7 @@ export class IntuApp extends ExpressRPC {
         })
 
         // 2 INTU
-        this.serveStatic(Util.intuPath+'/WWW')
+        this.serveStatic(Util.intuPath+'/INTU')
 
         // 3 APP
         const THIZ = this

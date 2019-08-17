@@ -34,7 +34,7 @@ export class EditorRoutes extends BasePgRouter {
    }//()
 
    async emailResetPasswordCode(resp, params, email, pswd) {
-      const config:any = await this.IDB.getConfig()
+      const config:any = await this.IDB.getConfigX()
       let emailjsService_id   = config.emailjsService_id
       let emailjsTemplate_id  = config.emailjsTemplate_id
       let emailjsUser_id      = config.emailjsUser_id

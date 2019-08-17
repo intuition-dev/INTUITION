@@ -51,7 +51,6 @@ export class IDB extends BaseDB {
 
     async init(): Promise<any> {
         
-        
         if (this.dbExists()) {
             // if db exists, connect an exit
             this.con()
@@ -93,7 +92,8 @@ export class IDB extends BaseDB {
         const stmt1 = this.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`);
         this._run(stmt1, email, hashPass);
 
-        const appPath = await fs.realpath(__dirname + '/../../WWW');
+        const appPath = await fs.realpath(__dirname + '/../../ROOT');
+        logger.trace(appPath)
 
         const stmt2 = this.db.prepare(`INSERT INTO CONFIG(pathToApp, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES('` + appPath + `',?,?,?,?)`);
         this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port);
@@ -105,10 +105,11 @@ export class IDB extends BaseDB {
         return res;
     }
 
-    async getConfig() {
+    async getConfigX() {
         const qry = this.db.prepare(`SELECT * FROM CONFIG`)
         const rows = await this._qry(qry)
-        if (rows.length > 0) {
+        logger.trace(rows)
+        if (rows && rows.length > 0) {
             const row = rows[0];
             return row;
         } else {
@@ -124,6 +125,7 @@ export class IDB extends BaseDB {
 
     async getAppPath() {
         const config = await this.getConfig()
+        logger.trace(config)
         return config.pathToApp
     }
 

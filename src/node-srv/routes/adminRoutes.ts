@@ -31,7 +31,7 @@ export class AdminRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      let data = await this.IDB.getConfig();
+      let data = await this.IDB.getConfigX();
 
       this.ret(resp, data);
    }//()
@@ -65,7 +65,7 @@ export class AdminRoutes extends BasePgRouter {
    } 
       
    async emailResetPasswordCode(resp, params, email, pswd) {
-      const config:any = await this.IDB.getConfig()
+      const config:any = await this.IDB.getConfigX()
       let emailjsService_id   = config.emailjsService_id
       let emailjsTemplate_id  = config.emailjsTemplate_id
       let emailjsUser_id      = config.emailjsUser_id

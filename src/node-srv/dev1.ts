@@ -36,7 +36,7 @@ async function testIDB() {
 
    await test('getPort', () => iDB.getPort())
 
-   await test('getConfig', () => iDB.getConfig())
+   await test('getConfig', () => iDB.getConfigX())
 
    await test('getVcodeAdmin', () => iDB.getVcodeAdmin())
 
