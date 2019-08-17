@@ -28,9 +28,9 @@ function runISrv() {
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
-    const iDB = new IDB_1.IDB();
+    const iDB = new IDB_1.IDB(IDB_1.Util.appPath, '/');
     const mainEApp = new IntuApp_1.IntuApp(iDB, ['*']);
-    let appPath = IDB_1.IDB.appPath + '/WWW';
+    let appPath = IDB_1.Util.appPath + '/WWW';
     console.log('app Path', appPath);
     mainEApp.serveStatic(appPath);
     mainEApp.start();

@@ -2,7 +2,7 @@
 // All rights reserved by INTUITION.DEV | Cekvenich, licensed under LGPL 3.0
 
 import commandLineArgs = require('command-line-args')
-import { IDB } from './lib/IDB'
+import { IDB, Util } from './lib/IDB'
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { IntuApp } from './IntuApp'
 const logger = require('tracer').console()
@@ -34,12 +34,13 @@ function runISrv() {
     const hostIP = 'http://' + ipAddres + ':'
 
     console.log("TCL: hostIP", hostIP)
-    const iDB = new IDB()
+    
+    const iDB = new IDB(Util.appPath, '/')
 
     // the only place there is DB new is here.
     const mainEApp = new IntuApp(iDB, ['*'])
 
-    let appPath = IDB.appPath + '/WWW'
+    let appPath = Util.appPath + '/WWW'
 
     console.log('app Path', appPath)
 

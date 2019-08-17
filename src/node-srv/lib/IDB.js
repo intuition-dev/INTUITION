@@ -5,14 +5,7 @@ const bcrypt = require('bcryptjs');
 const fs = require('fs-extra');
 const logger = require('tracer').console();
 const BaseDB_1 = require("mbake/lib/BaseDB");
-class IDB extends BaseDB_1.BaseDB {
-    static veri() {
-        return 'v0.99.16';
-    }
-    constructor(path, fn) {
-        super(path, fn);
-        logger(path, fn);
-    }
+class Util extends BaseDB_1.BaseDB {
     static get appPath() {
         let appPath = require('require-main-filename')();
         let i = appPath.lastIndexOf('/');
@@ -22,8 +15,18 @@ class IDB extends BaseDB_1.BaseDB {
         appPath = appPath.substr(0, i);
         return appPath;
     }
+}
+exports.Util = Util;
+class IDB extends BaseDB_1.BaseDB {
+    static veri() {
+        return 'v0.99.16';
+    }
+    constructor(path, fn) {
+        super(path, fn);
+        logger(path, fn);
+    }
     async isSetupDone() {
-        this.db = await new sqlite3.Database(IDB.appPath + '/IDB.sqlite');
+        this.db = await new sqlite3.Database(Util.appPath + '/IDB.sqlite');
         const qry = await this.db.prepare('SELECT * FROM CONFIG');
         const rows = await this._qry(qry);
         console.log("TCL: IDB -> isSetupDone -> rows", rows);
@@ -274,5 +277,5 @@ class AdminAuth {
 }
 exports.AdminAuth = AdminAuth;
 module.exports = {
-    IDB, EditorAuth, AdminAuth
+    IDB, EditorAuth, AdminAuth, Util
 };

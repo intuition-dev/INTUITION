@@ -8,6 +8,22 @@ const logger = require('tracer').console()
 import { BaseDB } from 'mbake/lib/BaseDB'
 import { iAuth } from 'mbake/lib/Serv'
 
+
+export class Util extends BaseDB {
+
+static get appPath(): string {
+    let appPath: string = require('require-main-filename')()
+    let i: number = appPath.lastIndexOf('/')
+    i = appPath.lastIndexOf('/')
+    appPath = appPath.substr(0, i)
+    i = appPath.lastIndexOf('/')
+    appPath = appPath.substr(0, i)
+
+    return appPath
+}//()
+
+}//class
+
 export class IDB extends BaseDB {
 
     static veri() {
@@ -21,20 +37,9 @@ export class IDB extends BaseDB {
         logger(path, fn)
     }
 
-    static get appPath(): string {
-        let appPath: string = require('require-main-filename')()
-        let i: number = appPath.lastIndexOf('/')
-        i = appPath.lastIndexOf('/')
-        appPath = appPath.substr(0, i)
-        i = appPath.lastIndexOf('/')
-        appPath = appPath.substr(0, i)
-
-        return appPath
-    }
-
     async isSetupDone() {
         // if db exists, connect an exit
-        this.db = await new sqlite3.Database(IDB.appPath + '/IDB.sqlite')
+        this.db = await new sqlite3.Database(Util.appPath + '/IDB.sqlite')
         const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 
         const rows = await this._qry(qry)
         console.log("TCL: IDB -> isSetupDone -> rows", rows)
@@ -335,5 +340,5 @@ export class AdminAuth implements iAuth {
 }//class
 
 module.exports = {
-    IDB, EditorAuth, AdminAuth
+    IDB, EditorAuth, AdminAuth, Util
 }

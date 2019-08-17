@@ -4,7 +4,7 @@ const logger = require('tracer').console();
 const perfy = require('perfy');
 const IDB_1 = require("./lib/IDB");
 const AppLogic_1 = require("./lib/AppLogic");
-const iDB = new IDB_1.IDB();
+const iDB = new IDB_1.IDB('.', '/test.sqlite');
 const appLogic = new AppLogic_1.AppLogic();
 iDB.init().then(testIDB).then(testAppLogic);
 async function test(name, f) {
