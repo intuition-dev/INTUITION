@@ -55,12 +55,6 @@ class IntuApp extends Serv_1.ExpressRPC {
     }
     async _runNormal() {
         const port = await this.db.getPort();
-        console.log('_runNormal port:', port);
-        this.db.getAppPath().then(appPath => {
-            if (typeof appPath !== 'undefined') {
-                this.serveStatic(appPath);
-            }
-        });
         this._run(port);
     }
     async _run(port) {
@@ -83,7 +77,15 @@ class IntuApp extends Serv_1.ExpressRPC {
         this.appInst.get('/ver', (req, res) => {
             return res.send(IDB_1.IDB.veri);
         });
-        this.listen(port);
+        this.serveStatic(IDB_1.Util.intuPath + '/WWW');
+        const THIZ = this;
+        this.db.getAppPath().then(appPath => {
+            console.log('_runNormal port:', port, appPath);
+            if (typeof appPath !== 'undefined') {
+                this.serveStatic(appPath);
+            }
+            THIZ.listen(port);
+        });
     }
 }
 exports.IntuApp = IntuApp;

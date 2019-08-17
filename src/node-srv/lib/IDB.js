@@ -6,7 +6,7 @@ const fs = require('fs-extra');
 const logger = require('tracer').console();
 const BaseDB_1 = require("mbake/lib/BaseDB");
 class Util extends BaseDB_1.BaseDB {
-    static get appPath() {
+    static get intuPath() {
         let appPath = require('require-main-filename')();
         let i = appPath.lastIndexOf('/');
         i = appPath.lastIndexOf('/');
@@ -19,14 +19,14 @@ class Util extends BaseDB_1.BaseDB {
 exports.Util = Util;
 class IDB extends BaseDB_1.BaseDB {
     static veri() {
-        return 'v0.99.17';
+        return 'v0.99.17b';
     }
     constructor(path, fn) {
         super(path, fn);
         logger.trace(path, fn);
     }
     async isSetupDone() {
-        this.db = await new sqlite3.Database(Util.appPath + '/IDB.sqlite');
+        this.db = await new sqlite3.Database(Util.intuPath + '/IDB.sqlite');
         const qry = await this.db.prepare('SELECT * FROM CONFIG');
         const rows = await this._qry(qry);
         console.log("TCL: IDB -> isSetupDone -> rows", rows);
@@ -71,7 +71,7 @@ class IDB extends BaseDB_1.BaseDB {
         const hashPass = bcrypt.hashSync(password, salt);
         const stmt1 = this.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`);
         this._run(stmt1, email, hashPass);
-        const appPath = await fs.realpath(__dirname + '/../../WWW/ROOT/exApp1');
+        const appPath = await fs.realpath(__dirname + '/../../WWW');
         const stmt2 = this.db.prepare(`INSERT INTO CONFIG(pathToApp, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES('` + appPath + `',?,?,?,?)`);
         this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port);
     }

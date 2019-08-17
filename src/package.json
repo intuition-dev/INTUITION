@@ -1,6 +1,6 @@
 {
     "name": "intu",
-    "version": "0.99.17",
+    "version": "0.99.17b",
     "description": "INTUITION.DEV is the futuristic open source tool for pro developers w/ 10 fold productivity; via automation, low-code, cross-platform, static-generator, and a built-in WebAdmin editor",
     "main": "./node-srv/intu.js",
     "bin": {
@@ -31,7 +31,7 @@
         "express-fileupload": ">=1.1.5",
         "fs-extra": ">=8.1.0",
         "ip": ">=1.1.5",
-        "mbake": ">=6.8.17-a",
+        "mbake": ">=6.8.17-b",
         "require-main-filename": ">=2.0.0",
         "sqlite3": ">=4.1.0"
     },

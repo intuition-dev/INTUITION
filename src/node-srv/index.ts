@@ -35,12 +35,12 @@ function runISrv() {
 
     console.log("TCL: hostIP", hostIP)
     
-    const iDB = new IDB(Util.appPath, '/IDB.sqlite')
+    const iDB = new IDB(Util.intuPath, '/IDB.sqlite')
 
     // the only place there is DB new is here.
     const mainEApp = new IntuApp(iDB, ['*'])
 
-    let appPath = Util.appPath + '/WWW'
+    let appPath = Util.intuPath + '/WWW'
 
     console.log('app Path', appPath)
 
@@ -55,13 +55,13 @@ function help() {
     console.info()
     console.info('Usage:')
     console.info(' To run:                                                intu')
-    console.info(' and then open a browser on the specified port. There is small app in WWW/ROOT')
+    console.info(' and then open a browser on the specified port. There is small app inROOT')
     console.info()
 
     console.info('  For starter CRUD app:                                  intu -c')
     console.info('  For an example of an e-commerce (shop and ship) app:   intu -s')
 
-}
+}//()
 
 // start: /////////////////////////////////////////////////////////////////////////////////////
 if (argsParsed.CRUD)

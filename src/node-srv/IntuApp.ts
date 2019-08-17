@@ -6,7 +6,7 @@ import { AdminRoutes } from './routes/adminRoutes'
 import { UploadRoute } from './routes/uploadRoute'
 const logger = require('tracer').console()
 
-import { IDB } from './lib/IDB';
+import { IDB, Util } from './lib/IDB';
 
 import { Setup } from './Setup';
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
@@ -66,20 +66,14 @@ export class IntuApp extends ExpressRPC {
 
     async _runNormal() {
         const port: number = await this.db.getPort()
-        console.log('_runNormal port:', port)
-        this.db.getAppPath().then(appPath => {
-            if (typeof appPath !== 'undefined') {
-                this.serveStatic(appPath);
-            }
-        });
-
         this._run(port)
+
     }//()
 
     async _run(port: number) {
         // order of routes: api, all intu apps, webapp
         console.log('running')
-        //api
+        //1 API
         const ar = new AdminRoutes(this.db)
         const er = new EditorRoutes(this.db)
         this.handleRRoute('admin', 'admin', ar.route.bind(ar))
@@ -104,7 +98,21 @@ export class IntuApp extends ExpressRPC {
             return res.send(IDB.veri)
         })
 
-        this.listen(port)
+        // 2 INTU
+        this.serveStatic(Util.intuPath+'/WWW')
+
+        // 3 APP
+        const THIZ = this
+        this.db.getAppPath().then(appPath => {
+            console.log('_runNormal port:', port, appPath)
+
+            if (typeof appPath !== 'undefined') {
+                this.serveStatic(appPath)
+            }
+
+            THIZ.listen(port)
+        })
+
     }//()
 
 }//class

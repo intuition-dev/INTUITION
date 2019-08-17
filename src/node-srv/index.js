@@ -28,9 +28,9 @@ function runISrv() {
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
-    const iDB = new IDB_1.IDB(IDB_1.Util.appPath, '/IDB.sqlite');
+    const iDB = new IDB_1.IDB(IDB_1.Util.intuPath, '/IDB.sqlite');
     const mainEApp = new IntuApp_1.IntuApp(iDB, ['*']);
-    let appPath = IDB_1.Util.appPath + '/WWW';
+    let appPath = IDB_1.Util.intuPath + '/WWW';
     console.log('app Path', appPath);
     mainEApp.serveStatic(appPath);
     mainEApp.start();
@@ -41,7 +41,7 @@ function help() {
     console.info();
     console.info('Usage:');
     console.info(' To run:                                                intu');
-    console.info(' and then open a browser on the specified port. There is small app in WWW/ROOT');
+    console.info(' and then open a browser on the specified port. There is small app inROOT');
     console.info();
     console.info('  For starter CRUD app:                                  intu -c');
     console.info('  For an example of an e-commerce (shop and ship) app:   intu -s');

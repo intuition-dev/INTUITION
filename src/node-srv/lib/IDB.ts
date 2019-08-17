@@ -11,7 +11,7 @@ import { iAuth } from 'mbake/lib/Serv'
 
 export class Util extends BaseDB {
 
-static get appPath(): string {
+static get intuPath(): string {
     let appPath: string = require('require-main-filename')()
     let i: number = appPath.lastIndexOf('/')
     i = appPath.lastIndexOf('/')
@@ -27,7 +27,7 @@ static get appPath(): string {
 export class IDB extends BaseDB {
 
     static veri() {
-        return 'v0.99.17'
+        return 'v0.99.17b'
     }
 
     protected salt
@@ -39,7 +39,7 @@ export class IDB extends BaseDB {
 
     async isSetupDone() {
         // if db exists, connect an exit
-        this.db = await new sqlite3.Database(Util.appPath + '/IDB.sqlite')
+        this.db = await new sqlite3.Database(Util.intuPath + '/IDB.sqlite')
         const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 
         const rows = await this._qry(qry)
         console.log("TCL: IDB -> isSetupDone -> rows", rows)
@@ -93,7 +93,7 @@ export class IDB extends BaseDB {
         const stmt1 = this.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`);
         this._run(stmt1, email, hashPass);
 
-        const appPath = await fs.realpath(__dirname + '/../../WWW/ROOT/exApp1');
+        const appPath = await fs.realpath(__dirname + '/../../WWW');
 
         const stmt2 = this.db.prepare(`INSERT INTO CONFIG(pathToApp, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES('` + appPath + `',?,?,?,?)`);
         this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port);
