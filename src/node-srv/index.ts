@@ -35,7 +35,7 @@ function runISrv() {
 
     console.log("TCL: hostIP", hostIP)
     
-    const iDB = new IDB(Util.appPath, '/')
+    const iDB = new IDB(Util.appPath, '/IDB.sqlite')
 
     // the only place there is DB new is here.
     const mainEApp = new IntuApp(iDB, ['*'])

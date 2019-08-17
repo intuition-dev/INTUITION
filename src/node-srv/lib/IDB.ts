@@ -27,14 +27,14 @@ static get appPath(): string {
 export class IDB extends BaseDB {
 
     static veri() {
-        return 'v0.99.16'
+        return 'v0.99.17'
     }
 
     protected salt
 
     constructor(path, fn){
         super(path, fn)
-        logger(path, fn)
+        logger.trace(path, fn)
     }
 
     async isSetupDone() {
@@ -50,11 +50,14 @@ export class IDB extends BaseDB {
     }
 
     async init(): Promise<any> {
+        
+        
         if (this.dbExists()) {
             // if db exists, connect an exit
             this.con()
             return
         }//fi
+
         if (!(this.db)) {
             console.log('no connection made')
             this.con()

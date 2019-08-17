@@ -19,11 +19,11 @@ class Util extends BaseDB_1.BaseDB {
 exports.Util = Util;
 class IDB extends BaseDB_1.BaseDB {
     static veri() {
-        return 'v0.99.16';
+        return 'v0.99.17';
     }
     constructor(path, fn) {
         super(path, fn);
-        logger(path, fn);
+        logger.trace(path, fn);
     }
     async isSetupDone() {
         this.db = await new sqlite3.Database(Util.appPath + '/IDB.sqlite');

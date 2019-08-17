@@ -6,7 +6,7 @@ const IDB_1 = require("./lib/IDB");
 const AppLogic_1 = require("./lib/AppLogic");
 const iDB = new IDB_1.IDB('.', '/test.sqlite');
 const appLogic = new AppLogic_1.AppLogic();
-iDB.init().then(testIDB).then(testAppLogic);
+iDB.init();
 async function test(name, f) {
     perfy.start(name, true);
     logger.trace(name);
