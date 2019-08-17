@@ -27,16 +27,11 @@ class IntuApp extends Serv_1.ExpressRPC {
     async start() {
         console.log('starting intu');
         try {
-            if (this.db.dbExists()) {
-                const setupDone = await this.db.isSetupDone();
-                if (setupDone) {
-                    await this.db.init();
-                    this._runNormal();
-                }
-                else {
-                    logger.trace('run setup');
-                    this._runSetup();
-                }
+            const setupDone = await this.db.isSetupDone();
+            if (setupDone) {
+                logger.trace('setup done');
+                await this.db.init();
+                this._runNormal();
             }
             else {
                 logger.trace('run setup');
@@ -48,16 +43,18 @@ class IntuApp extends Serv_1.ExpressRPC {
         }
     }
     _runSetup() {
-        this._run(9081);
         console.log('setup');
         const setup = new Setup_1.Setup(this.db, this);
         setup.setup();
+        this._run(9081, IDB_1.Util.intuPath + '/ROOT');
     }
     async _runNormal() {
         const port = await this.db.getPort();
-        this._run(port);
+        this.db.getAppPath().then(appPath => {
+            this._run(port, appPath);
+        });
     }
-    async _run(port) {
+    async _run(port, appPath) {
         console.log('running');
         const ar = new adminRoutes_1.AdminRoutes(this.db);
         const er = new editorRoutes_1.EditorRoutes(this.db);
@@ -78,14 +75,8 @@ class IntuApp extends Serv_1.ExpressRPC {
             return res.send(IDB_1.IDB.veri);
         });
         this.serveStatic(IDB_1.Util.intuPath + '/INTU');
-        const THIZ = this;
-        this.db.getAppPath().then(appPath => {
-            console.log('_runNormal port:', port, appPath);
-            if (typeof appPath !== 'undefined') {
-                this.serveStatic(appPath);
-            }
-            THIZ.listen(port);
-        });
+        this.serveStatic(appPath);
+        this.listen(port);
     }
 }
 exports.IntuApp = IntuApp;

@@ -38,39 +38,38 @@ export class IntuApp extends ExpressRPC {
         console.log('starting intu')
         try {
             //check if the file of the database exist
-            if (this.db.dbExists()) { //here we check if file exists
-                const setupDone = await this.db.isSetupDone()
-                if (setupDone) {
-                    await this.db.init() //here we create tables
-                    this._runNormal()
-                } else {
-                    logger.trace('run setup')
-                    this._runSetup()
-                }
+            const setupDone = await this.db.isSetupDone()
+            if (setupDone) {
+                logger.trace('setup done')
+                await this.db.init() //here we create tables
+                this._runNormal()
             } else {
                 logger.trace('run setup')
                 this._runSetup()
-
             }
+
         } catch (err) {
             logger.warn(err)
         }
     }//()
 
     _runSetup() {
-        this._run(9081)
         console.log('setup')
         const setup = new Setup(this.db, this)
         setup.setup()
-    }
+
+        this._run(9081, Util.intuPath+'/ROOT')
+    }//()
 
     async _runNormal() {
         const port: number = await this.db.getPort()
-        this._run(port)
+        this.db.getAppPath().then(appPath => {
+            this._run(port, appPath)
+        })
 
     }//()
 
-    async _run(port: number) {
+    async _run(port: number, appPath) {
         // order of routes: api, all intu apps, webapp
         console.log('running')
         //1 API
@@ -102,16 +101,8 @@ export class IntuApp extends ExpressRPC {
         this.serveStatic(Util.intuPath+'/INTU')
 
         // 3 APP
-        const THIZ = this
-        this.db.getAppPath().then(appPath => {
-            console.log('_runNormal port:', port, appPath)
-
-            if (typeof appPath !== 'undefined') {
-                this.serveStatic(appPath)
-            }
-
-            THIZ.listen(port)
-        })
+        this.serveStatic(appPath)
+        this.listen(port)
 
     }//()
 

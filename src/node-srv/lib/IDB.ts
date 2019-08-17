@@ -40,6 +40,8 @@ export class IDB extends BaseDB {
     async isSetupDone() {
         try {
             // if db exists
+            if(!this.dbExists())
+                return false
             logger.trace(this.path, this.fn)
             this.con()
             const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 
