@@ -26,9 +26,10 @@ export class IDB extends BaseDB {
             
             this.con()
 
-            if (!(this.tableExists('CONFIG')) ) return false
+            if (!(await this.tableExists('CONFIG')) ) return false
    
             logger.trace('exists')
+
             const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 
             const rows = await this._qry(qry)
             logger.trace(rows)
