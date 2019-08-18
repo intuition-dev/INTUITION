@@ -62,13 +62,14 @@ async function  runISrv() {
         logger.trace('run setup')
         await mainEApp.runWSetup(intuPath)
 
-            // #3
+        // #3 
         const port: number = 9081
         mainEApp.serveStatic(Util.intuPath + '/ROOT')
         mainEApp.listen(port)
     }
 
 }//()
+
 
 function help() {
     console.info()

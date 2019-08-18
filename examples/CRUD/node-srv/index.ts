@@ -3,47 +3,54 @@ import { IntuApp } from 'intu/node-srv/IntuApp'
 import { IDB } from     'intu/node-srv/lib/IDB'
 import { Util } from 'intu/node-srv/lib/AppLogic'
 import { CDB } from './lib/CDB';
+const logger = require('tracer').console()
 
 // intu /////////////////////////////////////////
 
-let mainIApp:IntuApp
+const idb = new IDB('.', '/IDB.sqlite')
 
-function runI() {
-   const idb = new IDB(Util.intuPath, '/IDB.sqlite')
-   
-   // the only place there is DB new is here.
-   mainIApp = new IntuApp(idb, ['*'])
+const mainIApp = new IntuApp(idb, ['*'])
 
-   mainIApp.serveStatic('../node_modules/intu/INTU') // edit, setup, admin, can be moved to class in intu
+async function  runISrv() {
 
+   let intuPath = Util.intuPath + '/node_modules/intu/INTU'
+   logger.trace(intuPath)
+
+   const setupDone = await idb.isSetupDone()
+   logger.trace(setupDone)
+   if (setupDone) {
+       logger.trace('normal')
+       await mainIApp.runNormal(intuPath)
+
+   } else {
+       logger.trace('run setup')
+       await mainIApp.runWSetup(intuPath)
+   }
+
+   app()
 }
-runI()
+runISrv()
 
-// app ////////////////////////////////////
+function app() {
+   // app ////////////////////////////////////
+   const cdb = new CDB('.', '/CDB.sqlite')
 
-// log requests
-mainIApp.appInst.use(function (req, res, next) {
-   // log requests if local
-   if(true) console.log('Time:', Date.now())
-   next()
-})
+   //api
+   const cRouter = new CrudPgRouter(cdb)
+   mainIApp.handleRRoute('capi', 'CRUD1Pg', cRouter.route.bind(cRouter))
 
-const cdb = new CDB(Util.intuPath, '/CDB.sqlite')
+   //www
+   const port: number = 9081
+   mainIApp.serveStatic('.' + '/www')
+   mainIApp.listen(port)
 
-//api
-const cRouter = new CrudPgRouter(cdb)
-mainIApp.handleRRoute('api', 'CRUD1Pg', cRouter.route.bind(cRouter))
+   //catch all
+   mainIApp.appInst.all('*', function (req, resp) {
+      const path = req.path
+      console.log('no route', path)
+      resp.json({'No route': path })
+   })
 
-//boiler plate
-mainIApp.serveStatic('../node_modules/intu/INTU') // edit, setup, admin, can be moved to class in intu
-mainIApp.serveStatic('../www')
-
-//catch all
-mainIApp.appInst.all('*', function (req, resp) {
-   const path = req.path
-   console.log('no route', path)
-   resp.json({'No route': path })
-})
-
-// start ////////////////////////////////////////////////////////
-mainIApp.start()
+   // start ////////////////////////////////////////////////////////
+   mainIApp.listen(8080)
+}
