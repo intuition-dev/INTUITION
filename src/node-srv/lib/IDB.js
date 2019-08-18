@@ -5,22 +5,7 @@ const bcrypt = require('bcryptjs');
 const fs = require('fs-extra');
 const logger = require('tracer').console();
 const BaseDB_1 = require("mbake/lib/BaseDB");
-class Util extends BaseDB_1.BaseDB {
-    static get intuPath() {
-        let appPath = require('require-main-filename')();
-        let i = appPath.lastIndexOf('/');
-        i = appPath.lastIndexOf('/');
-        appPath = appPath.substr(0, i);
-        i = appPath.lastIndexOf('/');
-        appPath = appPath.substr(0, i);
-        return appPath;
-    }
-}
-exports.Util = Util;
 class IDB extends BaseDB_1.BaseDB {
-    static veri() {
-        return 'v0.99.17b';
-    }
     constructor(path, fn) {
         super(path, fn);
         logger.trace(path, fn);
@@ -289,5 +274,5 @@ class AdminAuth {
 }
 exports.AdminAuth = AdminAuth;
 module.exports = {
-    IDB, EditorAuth, AdminAuth, Util
+    IDB, EditorAuth, AdminAuth
 };

@@ -2,9 +2,11 @@
 // All rights reserved by INTUITION.DEV | Cekvenich, licensed under LGPL 3.0
 
 import commandLineArgs = require('command-line-args')
-import { IDB, Util } from './lib/IDB'
+import { IDB } from './lib/IDB'
 import { Download } from 'mbake/lib/FileOpsExtra';
 import { IntuApp } from './IntuApp'
+import { AppLogic } from './lib/AppLogic';
+import { Util } from './lib/AppLogic';
 const logger = require('tracer').console()
 
 const optionDefinitions = [
@@ -46,7 +48,7 @@ function runISrv() {
 
 function help() {
     console.info()
-    console.info('intu version: ' + IDB.veri())
+    console.info('intu version: ' + AppLogic.veri())
     console.info()
     console.info('Usage:')
     console.info(' To run:                                                intu')

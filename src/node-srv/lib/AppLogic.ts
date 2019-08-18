@@ -3,8 +3,29 @@ import { MetaPro } from 'mbake/lib/Wa';
 import { Dat, FileOps } from 'mbake/lib/FileOpsBase';
 import fs = require('fs-extra')
 
+
+export class Util  {
+
+    static get intuPath(): string {
+        let appPath: string = require('require-main-filename')()
+        let i: number = appPath.lastIndexOf('/')
+        i = appPath.lastIndexOf('/')
+        appPath = appPath.substr(0, i)
+        i = appPath.lastIndexOf('/')
+        appPath = appPath.substr(0, i)
+    
+        return appPath
+    }//()
+    
+
+}//class
+
+
 export class AppLogic {
     
+    static veri() {
+        return 'v1.0.0'
+    }
     async autoBake(appPath, itemPath, fileName) {
         const meta = new MetaPro(appPath)
         return await meta.autoBake(itemPath, fileName)

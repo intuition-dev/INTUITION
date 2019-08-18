@@ -5,16 +5,17 @@ const editorRoutes_1 = require("./routes/editorRoutes");
 const adminRoutes_1 = require("./routes/adminRoutes");
 const uploadRoute_1 = require("./routes/uploadRoute");
 const logger = require('tracer').console();
-const IDB_1 = require("./lib/IDB");
 const Setup_1 = require("./Setup");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
+const AppLogic_1 = require("./lib/AppLogic");
+const AppLogic_2 = require("./lib/AppLogic");
 class IntuApp extends Serv_1.ExpressRPC {
     constructor(db, origins) {
         super();
         this.makeInstance(origins);
         this.db = db;
         this.uploadRoute = new uploadRoute_1.UploadRoute();
-        FileOpsExtra_1.VersionNag.isCurrent('intu', IDB_1.IDB.veri()).then(function (isCurrent_) {
+        FileOpsExtra_1.VersionNag.isCurrent('intu', AppLogic_1.AppLogic.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
                     console.log('There is a newer version of intu(INTUITION.DEV), please update.');
@@ -46,7 +47,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         console.log('setup');
         const setup = new Setup_1.Setup(this.db, this);
         setup.setup();
-        this._run(9081, IDB_1.Util.intuPath + '/ROOT');
+        this._run(9081, AppLogic_2.Util.intuPath + '/ROOT');
     }
     async _runNormal() {
         const port = await this.db.getPort();
@@ -72,9 +73,9 @@ class IntuApp extends Serv_1.ExpressRPC {
             });
         });
         this.appInst.get('/ver', (req, res) => {
-            return res.send(IDB_1.IDB.veri);
+            return res.send(AppLogic_1.AppLogic.veri);
         });
-        this.serveStatic(IDB_1.Util.intuPath + '/INTU');
+        this.serveStatic(AppLogic_2.Util.intuPath + '/INTU');
         this.serveStatic(appPath);
         this.listen(port);
     }

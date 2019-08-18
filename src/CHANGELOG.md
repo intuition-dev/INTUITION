@@ -1,3 +1,6 @@
+#### 1.0.0
+- release
+
 #### 0.99.17
 - test db
 - version bump

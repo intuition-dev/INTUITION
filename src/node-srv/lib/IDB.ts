@@ -8,27 +8,7 @@ const logger = require('tracer').console()
 import { BaseDB } from 'mbake/lib/BaseDB'
 import { iAuth } from 'mbake/lib/Serv'
 
-
-export class Util extends BaseDB {
-
-static get intuPath(): string {
-    let appPath: string = require('require-main-filename')()
-    let i: number = appPath.lastIndexOf('/')
-    i = appPath.lastIndexOf('/')
-    appPath = appPath.substr(0, i)
-    i = appPath.lastIndexOf('/')
-    appPath = appPath.substr(0, i)
-
-    return appPath
-}//()
-
-}//class
-
 export class IDB extends BaseDB {
-
-    static veri() {
-        return 'v0.99.17b'
-    }
 
     protected salt
 
@@ -353,5 +333,5 @@ export class AdminAuth implements iAuth {
 }//class
 
 module.exports = {
-    IDB, EditorAuth, AdminAuth, Util
+    IDB, EditorAuth, AdminAuth
 }

@@ -5,6 +5,8 @@ const commandLineArgs = require("command-line-args");
 const IDB_1 = require("./lib/IDB");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const IntuApp_1 = require("./IntuApp");
+const AppLogic_1 = require("./lib/AppLogic");
+const AppLogic_2 = require("./lib/AppLogic");
 const logger = require('tracer').console();
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
@@ -28,13 +30,13 @@ function runISrv() {
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
-    const iDB = new IDB_1.IDB(IDB_1.Util.intuPath, '/IDB.sqlite');
+    const iDB = new IDB_1.IDB(AppLogic_2.Util.intuPath, '/IDB.sqlite');
     const mainEApp = new IntuApp_1.IntuApp(iDB, ['*']);
     mainEApp.start();
 }
 function help() {
     console.info();
-    console.info('intu version: ' + IDB_1.IDB.veri());
+    console.info('intu version: ' + AppLogic_1.AppLogic.veri());
     console.info();
     console.info('Usage:');
     console.info(' To run:                                                intu');
