@@ -29,7 +29,7 @@ async function  runISrv() {
        await mainIApp.runWSetup(intuPath)
    }
    
-   console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXX','intu ready')
+   console.log('######################################','intu ready')
 
    app()
 }
@@ -44,9 +44,7 @@ function app() {
    mainIApp.handleRRoute('capi', 'CRUD1Pg', cRouter.route.bind(cRouter))
 
    //www
-   const port: number = 9081
-   mainIApp.serveStatic('.' + '/www')
-   mainIApp.listen(port)
+   mainIApp.serveStatic('..' + '/www')
 
    //catch all
    mainIApp.appInst.all('*', function (req, resp) {
