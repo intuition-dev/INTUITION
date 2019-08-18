@@ -1,7 +1,10 @@
 import { CrudPgRouter } from './routes/Routers'
 
-import { IntuApp } from 'intu/node-srv/IntuSrv'
+import { IntuApp } from 'intu/node-srv/IntuApp'
+
 import { IDB } from     'intu/node-srv/lib/IDB'
+
+import { Util } from 'intu/node-srv/lib/AppLogic'
 
 // intu /////////////////////////////////////////
 
@@ -14,10 +17,11 @@ function runISrv() {
    const hostIP = 'http://' + ipAddres + ':'
 
    console.log("TCL: hostIP", hostIP)
-   const IDB = new IDB()
 
+   const idb = new IDB(Util.intuPath, '/IDB.sqlite')
+   
    // the only place there is DB new is here.
-   mainIApp = new IntuApp(IDB, ['*'])
+   mainIApp = new IntuApp(idb, ['*'])
 }
 runISrv()
 
@@ -30,12 +34,14 @@ mainIApp.appInst.use(function (req, res, next) {
    next()
 })
 
+const cdb = new IDB(Util.intuPath, '/CDB.sqlite')
+
 //api
-const cRouter = new CrudPgRouter()
+const cRouter = new CrudPgRouter(cdb)
 mainIApp.handleRRoute('api', 'CRUD1Pg', cRouter.route.bind(cRouter))
 
 //boiler plate
-mainIApp.serveStatic('../node_modules/intu/WWW') // edit, setup, admin, can be moved to class in intu
+mainIApp.serveStatic('../node_modules/intu/INTU') // edit, setup, admin, can be moved to class in intu
 mainIApp.serveStatic('../www')
 
 //catch all

@@ -11,7 +11,7 @@ const fs = require('fs-extra')
 export class EditorRoutes extends BasePgRouter {
    emailJs = new Email()
 
-   IDB: IDB;
+   db: IDB;
    auth: EditorAuth;
 
    fm = new FileMethods()
@@ -20,7 +20,7 @@ export class EditorRoutes extends BasePgRouter {
 
    constructor(IDB) {
       super();
-      this.IDB = IDB
+      this.db = IDB
       this.auth = new EditorAuth(IDB)
    }
 
@@ -34,12 +34,12 @@ export class EditorRoutes extends BasePgRouter {
    }//()
 
    async emailResetPasswordCode(resp, params, email, pswd) {
-      const config:any = await this.IDB.getConfigX()
+      const config:any = await this.db.getConfigX()
       let emailjsService_id   = config.emailjsService_id
       let emailjsTemplate_id  = config.emailjsTemplate_id
       let emailjsUser_id      = config.emailjsUser_id
       
-      let code = this.IDB.getVcodeEditor(params.admin_email)
+      let code = this.db.getVcodeEditor(params.admin_email)
       let msg = 'Enter your code at http://bla.bla ' + code // TODO use IDB template email to CRUD w/ {{code}}
 
       email = Buffer.from(params.admin_email).toString('base64');
@@ -49,7 +49,7 @@ export class EditorRoutes extends BasePgRouter {
    }//() 
       
    async resetPasswordIfMatch(resp, params, email, password) {
-      const result = await this.IDB.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password)
+      const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password)
       this.ret(resp, result)
 
    }//()
@@ -59,7 +59,7 @@ export class EditorRoutes extends BasePgRouter {
       let auth = await this.auth.auth(user,pswd,resp)
       if(auth != 'OK') return
 
-      const appPath = await this.IDB.getAppPath()
+      const appPath = await this.db.getAppPath()
 
       const dirs = this.fm.getDirs(appPath)
       this.ret(resp, dirs)
@@ -71,7 +71,7 @@ export class EditorRoutes extends BasePgRouter {
       if(auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
-      const appPath = await this.IDB.getAppPath()
+      const appPath = await this.db.getAppPath()
       const files = this.fm.getFiles(appPath, itemPath)
       this.ret(resp, files)
    }//files
@@ -82,7 +82,7 @@ export class EditorRoutes extends BasePgRouter {
          if(auth != 'OK') return
          let itemPath = '/' + params.file
          let file = params.itemPath
-         const appPath = await this.IDB.getAppPath()
+         const appPath = await this.db.getAppPath()
          let fileName = appPath + itemPath + file
 
          const THIZ = this
@@ -104,7 +104,7 @@ export class EditorRoutes extends BasePgRouter {
       let substring = '/';
       let itemPath = '/' + params.file
       let file = params.itemPath
-      const appPath = await this.IDB.getAppPath()
+      const appPath = await this.db.getAppPath()
       let fileName =  itemPath + file;
       let content = params.content;
       content = Buffer.from(content, 'base64');
@@ -134,7 +134,7 @@ export class EditorRoutes extends BasePgRouter {
 
       let itemPath = '/' + params.file
       let file = params.itemPath
-      const appPath = await this.IDB.getAppPath()
+      const appPath = await this.db.getAppPath()
       let fileName =  itemPath + file
       this.ret(resp,'OK')
 
@@ -148,7 +148,7 @@ export class EditorRoutes extends BasePgRouter {
 
       let itemPath = '/' + params.itemPath
       let newItemPath = '/' + params.newItemPath
-      const appPath = await this.IDB.getAppPath()
+      const appPath = await this.db.getAppPath()
 
       await this.appLogic.clone(appPath, itemPath, newItemPath) 
       this.ret(resp,'OK')
@@ -163,7 +163,7 @@ export class EditorRoutes extends BasePgRouter {
       if(auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
-      const appPath = await this.IDB.getAppPath()
+      const appPath = await this.db.getAppPath()
       let publish_date:number = params.publish_date
       this.appLogic.setPublishDate(appPath, itemPath, publish_date) 
 

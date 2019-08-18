@@ -31,7 +31,7 @@ class IntuApp extends Serv_1.ExpressRPC {
             const setupDone = await this.db.isSetupDone();
             if (setupDone) {
                 logger.trace('setup done');
-                await this.db.init();
+                await this.db.initX();
                 this._runNormal();
             }
             else {

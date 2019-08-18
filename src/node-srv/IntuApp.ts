@@ -43,7 +43,7 @@ export class IntuApp extends ExpressRPC {
             const setupDone = await this.db.isSetupDone()
             if (setupDone) {
                 logger.trace('setup done')
-                await this.db.init() //here we create tables
+                await this.db.initX() //here we create tables
                 this._runNormal()
             } else {
                 logger.trace('run setup')

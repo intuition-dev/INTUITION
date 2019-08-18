@@ -37,7 +37,7 @@ export class IDB extends BaseDB {
         }
     }
 
-    async init(): Promise<any> {
+    async initX(): Promise<any> {
         
         if (this.dbExists()) {
             // if db exists, connect an exit

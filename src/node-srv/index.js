@@ -30,8 +30,8 @@ function runISrv() {
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
-    const iDB = new IDB_1.IDB(AppLogic_2.Util.intuPath, '/IDB.sqlite');
-    const mainEApp = new IntuApp_1.IntuApp(iDB, ['*']);
+    const idb = new IDB_1.IDB(AppLogic_2.Util.intuPath, '/IDB.sqlite');
+    const mainEApp = new IntuApp_1.IntuApp(idb, ['*']);
     mainEApp.start();
 }
 function help() {

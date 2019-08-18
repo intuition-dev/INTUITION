@@ -1,20 +1,23 @@
-import { IDB } from "./IDB";
 
 const request = require('request')
 
 export class Ship {
 
     printfulApiID: string;
-    constructor(printfulApiID: string) {
+
+    db
+
+    constructor(printfulApiID: string, db) {
         this.printfulApiID = printfulApiID
+        this.db = db
     }
 
     async ship(intentId: string) {
-        const db = new IDB();
-        await db.init();
+  
         console.log('Intent', intentId, 'succeed')
 
-        const session = await db.fetchPaymentIntent(intentId)
+        const session = await this.db.fetchPaymentIntent(intentId)
+
         const address = JSON.parse(session.address);
         const items_g = JSON.parse(session.items);
         console.log('Session', session, address)

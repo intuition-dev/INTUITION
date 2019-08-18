@@ -13,7 +13,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         this.emailJs = new Email_1.Email();
         this.fm = new FileOpsExtra_1.FileMethods();
         this.appLogic = new AppLogic_1.AppLogic();
-        this.IDB = IDB;
+        this.db = IDB;
         this.auth = new IDB_1.EditorAuth(IDB);
     }
     async checkEditor(resp, params) {
@@ -24,18 +24,18 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         this.ret(resp, 'OK');
     }
     async emailResetPasswordCode(resp, params, email, pswd) {
-        const config = await this.IDB.getConfigX();
+        const config = await this.db.getConfigX();
         let emailjsService_id = config.emailjsService_id;
         let emailjsTemplate_id = config.emailjsTemplate_id;
         let emailjsUser_id = config.emailjsUser_id;
-        let code = this.IDB.getVcodeEditor(params.admin_email);
+        let code = this.db.getVcodeEditor(params.admin_email);
         let msg = 'Enter your code at http://bla.bla ' + code;
         email = Buffer.from(params.admin_email).toString('base64');
         this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
         this.ret(resp, 'OK');
     }
     async resetPasswordIfMatch(resp, params, email, password) {
-        const result = await this.IDB.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password);
+        const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password);
         this.ret(resp, result);
     }
     async getDirs(resp, params, user, pswd) {
@@ -43,7 +43,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         let auth = await this.auth.auth(user, pswd, resp);
         if (auth != 'OK')
             return;
-        const appPath = await this.IDB.getAppPath();
+        const appPath = await this.db.getAppPath();
         const dirs = this.fm.getDirs(appPath);
         this.ret(resp, dirs);
     }
@@ -53,7 +53,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         if (auth != 'OK')
             return;
         let itemPath = '/' + params.itemPath;
-        const appPath = await this.IDB.getAppPath();
+        const appPath = await this.db.getAppPath();
         const files = this.fm.getFiles(appPath, itemPath);
         this.ret(resp, files);
     }
@@ -64,7 +64,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
             return;
         let itemPath = '/' + params.file;
         let file = params.itemPath;
-        const appPath = await this.IDB.getAppPath();
+        const appPath = await this.db.getAppPath();
         let fileName = appPath + itemPath + file;
         const THIZ = this;
         fs.readFile(fileName, 'utf8', (err, data) => {
@@ -83,7 +83,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         let substring = '/';
         let itemPath = '/' + params.file;
         let file = params.itemPath;
-        const appPath = await this.IDB.getAppPath();
+        const appPath = await this.db.getAppPath();
         let fileName = itemPath + file;
         let content = params.content;
         content = Buffer.from(content, 'base64');
@@ -105,7 +105,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
             return;
         let itemPath = '/' + params.file;
         let file = params.itemPath;
-        const appPath = await this.IDB.getAppPath();
+        const appPath = await this.db.getAppPath();
         let fileName = itemPath + file;
         this.ret(resp, 'OK');
         this.appLogic.autoBake(appPath, itemPath, fileName);
@@ -117,7 +117,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
             return;
         let itemPath = '/' + params.itemPath;
         let newItemPath = '/' + params.newItemPath;
-        const appPath = await this.IDB.getAppPath();
+        const appPath = await this.db.getAppPath();
         await this.appLogic.clone(appPath, itemPath, newItemPath);
         this.ret(resp, 'OK');
     }
@@ -127,7 +127,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         if (auth != 'OK')
             return;
         let itemPath = '/' + params.itemPath;
-        const appPath = await this.IDB.getAppPath();
+        const appPath = await this.db.getAppPath();
         let publish_date = params.publish_date;
         this.appLogic.setPublishDate(appPath, itemPath, publish_date);
         this.ret(resp, 'OK');

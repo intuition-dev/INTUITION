@@ -6,13 +6,12 @@ import { IDB } from '../lib/IDB'
 
 export class SetupRoutes extends BasePgRouter {
 
-    IDB: IDB
+    db: IDB
     emailJs = new Email()
     
     constructor(db) {
-        super()
-       this.IDB = db
-       this.IDB.init()
+    super()
+       this.db = db
     }
     
     
@@ -27,7 +26,7 @@ export class SetupRoutes extends BasePgRouter {
         
         try {
             console.info('setup called ...');
-            this.IDB.setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, 9081)
+            this.db.setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, 9081)
             console.info('db created  ...');
             let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
             this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);

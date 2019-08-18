@@ -28,7 +28,7 @@ class IDB extends BaseDB_1.BaseDB {
             return false;
         }
     }
-    async init() {
+    async initX() {
         if (this.dbExists()) {
             this.con();
             return;

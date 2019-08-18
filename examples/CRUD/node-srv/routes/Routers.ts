@@ -5,12 +5,12 @@ import { BasePgRouter, iAuth } from 'mbake/lib/Serv'
 
 export class CrudPgRouter extends BasePgRouter {
 
-   cdb:CDB
-   constructor() {
-      super();
-      this.cdb =new CDB()
-      this.cdb.init()
-   }//()
+   cdb
+
+   constructor(cdb) {
+      super()
+      this.cdb = cdb
+   }
 
    async selectAll(resp, params, user, pswd) {
       let data = await this.cdb.selectAll()

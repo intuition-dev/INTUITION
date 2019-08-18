@@ -7,7 +7,10 @@ const logger = require('tracer').console()
 const perfy = require('perfy')
 var bunyan = require('bunyan')
 
-const cdb =new CDB()
+import { Util } from 'intu/node-srv/lib/AppLogic'
+
+const cdb =new CDB(Util.intuPath, '/CDB.sqlite')
+
 cdb.init().then(tst)
 
 async function tst() {

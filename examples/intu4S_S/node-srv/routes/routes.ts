@@ -1,12 +1,20 @@
+
+
 const stripe = require('stripe')('sk_test_uR3dOqQborl5MbxIahkvDXBg00DQwKMVNJ');
-import { BasePgRouter } from 'mbake/lib/Serv';
-import { IDB } from '../lib/IDB';
+import { BasePgRouter } from 'mbake/lib/Serv'
+
+
 // get session from stripe to browser
-
-
 // webhook that it was paid, calls ship, sends email
 
 export class Stripe extends BasePgRouter {
+
+   db 
+   
+   constructor(db) {
+      super()
+      this.db = db
+   }
 
    async createSession(resp, params) {
       let address = params.address
@@ -38,9 +46,8 @@ export class Stripe extends BasePgRouter {
       });
       
       console.log("TCL: Stripe -> createSession -> session", session)
-      const db = new IDB()
-      await db.init()
-      await db.saveSession(session.id, session.payment_intent, address, items_g)
+
+      await this.db.saveSession(session.id, session.payment_intent, address, items_g)
       this.ret(resp, session);
    }
 }
