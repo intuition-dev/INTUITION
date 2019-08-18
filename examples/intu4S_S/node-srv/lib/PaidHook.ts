@@ -1,8 +1,6 @@
-import { eventNames } from "cluster";
+
 import { Ship } from "./Ship";
-
-const request = require('request')
-
+import { SDB } from "./SDB";
 
 
 // rewrite to be simple, no shipping, using superagent, make into class
@@ -12,9 +10,9 @@ export class PaidHook {
 
     printfulApiID: string;
 
-    ship
+    ship:Ship
    
-    constructor(printfulApiID, db) {
+    constructor(printfulApiID, db:SDB) {
         this.printfulApiID = printfulApiID
         this.ship =  new Ship(this.printfulApiID, db)
     }

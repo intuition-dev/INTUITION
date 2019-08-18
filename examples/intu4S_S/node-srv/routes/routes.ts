@@ -2,6 +2,7 @@
 
 const stripe = require('stripe')('sk_test_uR3dOqQborl5MbxIahkvDXBg00DQwKMVNJ');
 import { BasePgRouter } from 'mbake/lib/Serv'
+import { SDB } from '../lib/SDB';
 
 
 // get session from stripe to browser
@@ -9,9 +10,9 @@ import { BasePgRouter } from 'mbake/lib/Serv'
 
 export class Stripe extends BasePgRouter {
 
-   db 
+   db:SDB 
    
-   constructor(db) {
+   constructor(db:SDB) {
       super()
       this.db = db
    }
