@@ -18,6 +18,7 @@ class IDB extends BaseDB_1.BaseDB {
             this.con();
             if (!(this.tableExists('CONFIG')))
                 return false;
+            logger.trace('exists');
             const qry = await this.db.prepare('SELECT * FROM CONFIG');
             const rows = await this._qry(qry);
             logger.trace(rows);
@@ -27,6 +28,7 @@ class IDB extends BaseDB_1.BaseDB {
             return false;
         }
         catch (e) {
+            logger.warn(e);
             return false;
         }
     }
@@ -35,7 +37,7 @@ class IDB extends BaseDB_1.BaseDB {
             this.con();
             const qry = this.db.prepare("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab);
             const rows = await this._qry(qry);
-            logger.trace(rows);
+            logger.trace('exits', rows);
             const row = rows[0];
             if (row.name == tab)
                 return true;
