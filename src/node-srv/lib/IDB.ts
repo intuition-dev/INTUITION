@@ -20,13 +20,16 @@ export class IDB extends BaseDB {
     async isSetupDone() {
         try {
             // if db exists
+            logger.trace(this.path, this.fn)
             if(!this.dbExists())
                 return false
-            logger.trace(this.path, this.fn)
+
             this.con()
+
             const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 
             const rows = await this._qry(qry)
             logger.trace(rows)
+
             if (rows && rows.length) {
                 return true
             }
@@ -37,29 +40,35 @@ export class IDB extends BaseDB {
         }
     }
 
+    async tableExists(tab): Promise<any> { 
+        try {
+        const qry = this.db.prepare("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab)
+        const rows = await this._qry(qry)
+        logger.trace(rows)
+        const row = rows[0]
+        if(row.name == tab) return true
+        return false
+        } catch(err) {
+            logger.warn(err)
+            return false
+        }
+    }
+
     async init(): Promise<any> {
+        this.con()
         
-        if (this.dbExists()) {
-            // if db exists, connect an exit
-            this.con()
-            return
-        }//fi
-
-        if (!(this.db)) {
-            console.log('no connection made')
-            this.con()
-        }//fi
-
+        if (this.tableExists('CONFIG') ) return
+  
         return Promise.all([
             this._run(this.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)), // single row in table
             this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)), // single row in table
             this._run(this.db.prepare(`CREATE TABLE SALT(salt)`)),
             this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)),
-        ]).then(() => {
+        ]).then(async () => {
             console.log('all tables created')
             let salt = bcrypt.genSaltSync(10)
             const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`)
-            return this._run(stmt, salt)
+            return await this._run(stmt, salt)
         })
     }
 

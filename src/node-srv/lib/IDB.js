@@ -12,9 +12,9 @@ class IDB extends BaseDB_1.BaseDB {
     }
     async isSetupDone() {
         try {
+            logger.trace(this.path, this.fn);
             if (!this.dbExists())
                 return false;
-            logger.trace(this.path, this.fn);
             this.con();
             const qry = await this.db.prepare('SELECT * FROM CONFIG');
             const rows = await this._qry(qry);
@@ -28,25 +28,35 @@ class IDB extends BaseDB_1.BaseDB {
             return false;
         }
     }
+    async tableExists(tab) {
+        try {
+            const qry = this.db.prepare("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab);
+            const rows = await this._qry(qry);
+            logger.trace(rows);
+            const row = rows[0];
+            if (row.name == tab)
+                return true;
+            return false;
+        }
+        catch (err) {
+            logger.warn(err);
+            return false;
+        }
+    }
     async init() {
-        if (this.dbExists()) {
-            this.con();
+        this.con();
+        if (this.tableExists('CONFIG'))
             return;
-        }
-        if (!(this.db)) {
-            console.log('no connection made');
-            this.con();
-        }
         return Promise.all([
             this._run(this.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)),
             this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)),
             this._run(this.db.prepare(`CREATE TABLE SALT(salt)`)),
             this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)),
-        ]).then(() => {
+        ]).then(async () => {
             console.log('all tables created');
             let salt = bcrypt.genSaltSync(10);
             const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`);
-            return this._run(stmt, salt);
+            return await this._run(stmt, salt);
         });
     }
     async getSalt() {

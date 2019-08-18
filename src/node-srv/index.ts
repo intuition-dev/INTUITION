@@ -46,14 +46,15 @@ async function  runISrv() {
     let intuPath = Util.intuPath + '/INTU'
     logger.trace(intuPath)
 
-    const setupDone = await this.db.isSetupDone()
+    const setupDone = await idb.isSetupDone()
+    logger.trace(setupDone)
     if (setupDone) {
-        logger.trace('setup done')
+        logger.trace('normal')
         await mainEApp.runNormal(intuPath)
 
         // #3
-        const port: number = await this.db.getPort()
-        this.db.getAppPath().then(appPath => {
+        const port: number = await idb.getPort()
+        idb.getAppPath().then(appPath => {
             mainEApp.serveStatic(appPath)
             mainEApp.listen(port)
         })

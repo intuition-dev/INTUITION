@@ -34,20 +34,24 @@ async function runISrv() {
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*']);
     let intuPath = AppLogic_2.Util.intuPath + '/INTU';
     logger.trace(intuPath);
-    const setupDone = await this.db.isSetupDone();
+    const setupDone = await idb.isSetupDone();
+    logger.trace(setupDone);
     if (setupDone) {
-        logger.trace('setup done');
-        await this.runNormal(intuPath);
+        logger.trace('normal');
+        await mainEApp.runNormal(intuPath);
+        const port = await idb.getPort();
+        idb.getAppPath().then(appPath => {
+            mainEApp.serveStatic(appPath);
+            mainEApp.listen(port);
+        });
     }
     else {
         logger.trace('run setup');
-        await this.runWSetup(intuPath);
-    }
-    const port = await this.db.getPort();
-    this.db.getAppPath().then(appPath => {
-        mainEApp.serveStatic(appPath);
+        await mainEApp.runWSetup(intuPath);
+        const port = 9081;
+        mainEApp.serveStatic(AppLogic_2.Util.intuPath + '/ROOT');
         mainEApp.listen(port);
-    });
+    }
 }
 function help() {
     console.info();

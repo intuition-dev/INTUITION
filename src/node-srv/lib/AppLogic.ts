@@ -3,7 +3,6 @@ import { MetaPro } from 'mbake/lib/Wa';
 import { Dat, FileOps } from 'mbake/lib/FileOpsBase';
 import fs = require('fs-extra')
 
-
 export class Util  {
 
     static get intuPath(): string {
@@ -20,11 +19,10 @@ export class Util  {
 
 }//class
 
-
 export class AppLogic {
     
     static veri() {
-        return 'v1.0.1'
+        return 'v1.0.2'
     }
     async autoBake(appPath, itemPath, fileName) {
         const meta = new MetaPro(appPath)
