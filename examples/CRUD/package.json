@@ -9,10 +9,10 @@
     "npm": ">=6.10.3"
   },
   "dependencies": {
-    "intu": ">=0.99.9",
-    "sqlite3": ">=4.0.9"
+    "intu": ">=1.0.0",
+    "sqlite3": ">=4.1.0"
   },
   "devDependencies": {
-    "@types/node": ">=12.7.1"
+    "@types/node": ">=12.7.2"
   }
 }
