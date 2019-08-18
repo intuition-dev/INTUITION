@@ -28,7 +28,6 @@ class IDB extends BaseDB_1.BaseDB {
             return false;
         }
         catch (e) {
-            logger.warn(e);
             return false;
         }
     }
@@ -44,7 +43,6 @@ class IDB extends BaseDB_1.BaseDB {
             return false;
         }
         catch (err) {
-            logger.warn(err);
             return false;
         }
     }

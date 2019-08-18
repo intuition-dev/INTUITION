@@ -5,7 +5,6 @@ import { SetupRoutes } from './routes/setupRoutes';
 import { IntuApp } from './IntuApp'
 
 
-
 export class Setup {
 
    db: IDB

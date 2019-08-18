@@ -8,7 +8,6 @@ const logger = require('tracer').console();
 const Setup_1 = require("./Setup");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const AppLogic_1 = require("./lib/AppLogic");
-const AppLogic_2 = require("./lib/AppLogic");
 class IntuApp extends Serv_1.ExpressRPC {
     constructor(db, origins) {
         super();
@@ -30,10 +29,10 @@ class IntuApp extends Serv_1.ExpressRPC {
         await this.db.init();
         const setup = new Setup_1.Setup(this.db, this);
         setup.setup();
-        this._run(AppLogic_2.Util.intuPath + '/INTU');
+        this._run(intuPath);
     }
     async runNormal(intuPath) {
-        this._run(AppLogic_2.Util.intuPath + '/INTU');
+        this._run(intuPath);
     }
     async _run(intuPath) {
         console.log('running');

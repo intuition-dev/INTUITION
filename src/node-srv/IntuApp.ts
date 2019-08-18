@@ -43,11 +43,11 @@ export class IntuApp extends ExpressRPC {
         const setup = new Setup(this.db, this)
         setup.setup()
 
-        this._run(Util.intuPath+'/INTU')
+        this._run(intuPath)
     }//()
 
     async runNormal(intuPath) {
-        this._run(Util.intuPath+'/INTU')
+        this._run(intuPath)
     }//()
 
     async _run(intuPath) {

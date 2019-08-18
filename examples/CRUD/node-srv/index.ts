@@ -18,7 +18,7 @@ async function  runISrv() {
 
    const setupDone = await idb.isSetupDone()
 
-   logger.trace('XXXXXXXXXXXXXXXXXXXXXXXXXXXX', setupDone)
+   logger.trace('?', setupDone)
    
    if (setupDone) {
        logger.trace('normal')
@@ -28,7 +28,8 @@ async function  runISrv() {
        logger.trace('run setup')
        await mainIApp.runWSetup(intuPath)
    }
-   console.log('intu ready')
+   
+   console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXX','intu ready')
 
    //app()
 }

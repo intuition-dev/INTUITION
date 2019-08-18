@@ -40,10 +40,9 @@ export class IDB extends BaseDB {
             return false
         }
         catch(e) {
-            logger.warn(e)
             return false
         }
-    }
+    }//()
 
     async tableExists(tab): Promise<any> { 
         try {
@@ -56,10 +55,9 @@ export class IDB extends BaseDB {
         if(row.name == tab) return true
         return false
         } catch(err) {
-            logger.warn(err)
             return false
         }
-    }
+    }//()
 
     async init(): Promise<any> {
         this.con()
