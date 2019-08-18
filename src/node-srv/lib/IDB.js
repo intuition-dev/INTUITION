@@ -15,9 +15,9 @@ class IDB extends BaseDB_1.BaseDB {
             logger.trace(this.path, this.fn);
             if (!this.dbExists())
                 return false;
+            this.con();
             if (!(this.tableExists('CONFIG')))
                 return false;
-            this.con();
             const qry = await this.db.prepare('SELECT * FROM CONFIG');
             const rows = await this._qry(qry);
             logger.trace(rows);
@@ -32,6 +32,7 @@ class IDB extends BaseDB_1.BaseDB {
     }
     async tableExists(tab) {
         try {
+            this.con();
             const qry = this.db.prepare("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab);
             const rows = await this._qry(qry);
             logger.trace(rows);
@@ -47,8 +48,10 @@ class IDB extends BaseDB_1.BaseDB {
     }
     async init() {
         this.con();
-        if (this.tableExists('CONFIG'))
+        if (this.tableExists('CONFIG')) {
+            logger.trace('already configured');
             return;
+        }
         return Promise.all([
             this._run(this.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)),
             this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)),

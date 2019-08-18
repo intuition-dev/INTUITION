@@ -23,11 +23,10 @@ export class IDB extends BaseDB {
             logger.trace(this.path, this.fn)
             if(!this.dbExists())
                 return false
-
+            
+            this.con()
             if (!(this.tableExists('CONFIG')) ) return false
    
-            this.con()
-
             const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 
             const rows = await this._qry(qry)
             logger.trace(rows)
@@ -44,6 +43,8 @@ export class IDB extends BaseDB {
 
     async tableExists(tab): Promise<any> { 
         try {
+        this.con()
+
         const qry = this.db.prepare("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab)
         const rows = await this._qry(qry)
         logger.trace(rows)
@@ -59,8 +60,11 @@ export class IDB extends BaseDB {
     async init(): Promise<any> {
         this.con()
         
-        if (this.tableExists('CONFIG') ) return
-  
+        if (this.tableExists('CONFIG') ) {
+            logger.trace('already configured')
+            return
+        }
+
         return Promise.all([
             this._run(this.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)), // single row in table
             this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)), // single row in table
