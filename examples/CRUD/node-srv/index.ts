@@ -1,10 +1,8 @@
 import { CrudPgRouter } from './routes/Routers'
-
 import { IntuApp } from 'intu/node-srv/IntuApp'
-
 import { IDB } from     'intu/node-srv/lib/IDB'
-
 import { Util } from 'intu/node-srv/lib/AppLogic'
+import { CDB } from './lib/CDB';
 
 // intu /////////////////////////////////////////
 
@@ -34,7 +32,7 @@ mainIApp.appInst.use(function (req, res, next) {
    next()
 })
 
-const cdb = new IDB(Util.intuPath, '/CDB.sqlite')
+const cdb = new CDB(Util.intuPath, '/CDB.sqlite')
 
 //api
 const cRouter = new CrudPgRouter(cdb)

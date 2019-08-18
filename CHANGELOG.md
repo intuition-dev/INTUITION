@@ -1,6 +1,18 @@
-#### 0.99.15
-- allow editing of any file
-- update readme.
+#### 1.0.1
+- release
+
+#### 0.99.17
+- test db
+- version bump
+
+#### 0.98.9
+- serve static website
+
+#### 0.98.8
+- serve static for editing App add
+
+#### 0.98.7
+- fix files names in loader
 
 #### 0.98.5
 - fix the issue with the setup screen
