@@ -31,7 +31,7 @@ async function  runISrv() {
    
    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXX','intu ready')
 
-   //app()
+   app()
 }
 runISrv()
 
