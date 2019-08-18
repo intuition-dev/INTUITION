@@ -24,6 +24,8 @@ export class IDB extends BaseDB {
             if(!this.dbExists())
                 return false
 
+            if (!(this.tableExists('CONFIG')) ) return false
+   
             this.con()
 
             const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 

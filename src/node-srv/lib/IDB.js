@@ -15,6 +15,8 @@ class IDB extends BaseDB_1.BaseDB {
             logger.trace(this.path, this.fn);
             if (!this.dbExists())
                 return false;
+            if (!(this.tableExists('CONFIG')))
+                return false;
             this.con();
             const qry = await this.db.prepare('SELECT * FROM CONFIG');
             const rows = await this._qry(qry);

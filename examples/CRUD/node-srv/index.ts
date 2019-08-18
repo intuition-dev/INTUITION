@@ -26,6 +26,7 @@ async function  runISrv() {
        logger.trace('run setup')
        await mainIApp.runWSetup(intuPath)
    }
+   console.log('intu ready')
 
    app()
 }
