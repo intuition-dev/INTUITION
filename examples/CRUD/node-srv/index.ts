@@ -8,20 +8,16 @@ import { CDB } from './lib/CDB';
 
 let mainIApp:IntuApp
 
-function runISrv() {
-   const ip = require('ip')
-   const ipAddres = ip.address()
-
-   const hostIP = 'http://' + ipAddres + ':'
-
-   console.log("TCL: hostIP", hostIP)
-
+function runI() {
    const idb = new IDB(Util.intuPath, '/IDB.sqlite')
    
    // the only place there is DB new is here.
    mainIApp = new IntuApp(idb, ['*'])
+
+   mainIApp.serveStatic('../node_modules/intu/INTU') // edit, setup, admin, can be moved to class in intu
+
 }
-runISrv()
+runI()
 
 // app ////////////////////////////////////
 

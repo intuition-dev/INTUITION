@@ -28,7 +28,7 @@ class IDB extends BaseDB_1.BaseDB {
             return false;
         }
     }
-    async initX() {
+    async init() {
         if (this.dbExists()) {
             this.con();
             return;
@@ -74,7 +74,7 @@ class IDB extends BaseDB_1.BaseDB {
         const res = await this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
         return res;
     }
-    async getConfigX() {
+    async getConfig() {
         const qry = this.db.prepare(`SELECT * FROM CONFIG`);
         const rows = await this._qry(qry);
         logger.trace(rows);
@@ -92,7 +92,7 @@ class IDB extends BaseDB_1.BaseDB {
         return res;
     }
     async getAppPath() {
-        const config = await this.getConfigX();
+        const config = await this.getConfig();
         if (!config)
             throw new Error('no pathToApp in DB');
         return config.pathToApp;

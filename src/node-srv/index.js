@@ -25,14 +25,29 @@ function unzipC() {
     new FileOpsExtra_1.Download('CRUD', cwd).autoUZ();
     console.info('Extracted a starter CRUD app');
 }
-function runISrv() {
+async function runISrv() {
     const ip = require('ip');
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
     const idb = new IDB_1.IDB(AppLogic_2.Util.intuPath, '/IDB.sqlite');
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*']);
-    mainEApp.start();
+    let intuPath = AppLogic_2.Util.intuPath + '/INTU';
+    logger.trace(intuPath);
+    const setupDone = await this.db.isSetupDone();
+    if (setupDone) {
+        logger.trace('setup done');
+        await this.runNormal(intuPath);
+    }
+    else {
+        logger.trace('run setup');
+        await this.runWSetup(intuPath);
+    }
+    const port = await this.db.getPort();
+    this.db.getAppPath().then(appPath => {
+        mainEApp.serveStatic(appPath);
+        mainEApp.listen(port);
+    });
 }
 function help() {
     console.info();

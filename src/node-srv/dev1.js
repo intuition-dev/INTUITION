@@ -6,7 +6,7 @@ const IDB_1 = require("./lib/IDB");
 const AppLogic_1 = require("./lib/AppLogic");
 const idb = new IDB_1.IDB('.', '/test.sqlite');
 const appLogic = new AppLogic_1.AppLogic();
-idb.initX();
+idb.init();
 async function test(name, f) {
     perfy.start(name, true);
     logger.trace(name);
@@ -22,7 +22,7 @@ async function testIDB() {
     await test(`setAppPath('appPath')`, () => idb.setAppPath('appPath'));
     await test('getAppPath', () => idb.getAppPath());
     await test('getPort', () => idb.getPort());
-    await test('getConfig', () => idb.getConfigX());
+    await test('getConfig', () => idb.getConfig());
     await test('getVcodeAdmin', () => idb.getVcodeAdmin());
     await test(`getVcodeEditor('n1@m.com)`, () => idb.getVcodeEditor('n1@m.com'));
     var addEditorGuid = uuidv4();

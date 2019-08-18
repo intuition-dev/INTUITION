@@ -37,7 +37,7 @@ export class IDB extends BaseDB {
         }
     }
 
-    async initX(): Promise<any> {
+    async init(): Promise<any> {
         
         if (this.dbExists()) {
             // if db exists, connect an exit
@@ -93,7 +93,7 @@ export class IDB extends BaseDB {
         return res;
     }
 
-    async getConfigX() {
+    async getConfig() {
         const qry = this.db.prepare(`SELECT * FROM CONFIG`)
         const rows = await this._qry(qry)
         logger.trace(rows)
@@ -112,7 +112,7 @@ export class IDB extends BaseDB {
     }
 
     async getAppPath() {
-        const config = await this.getConfigX()
+        const config = await this.getConfig()
         if(!config) throw new Error('no pathToApp in DB')
         return config.pathToApp
     }

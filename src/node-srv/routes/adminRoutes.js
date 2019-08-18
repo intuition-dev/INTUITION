@@ -22,7 +22,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
         let auth = await this.auth.auth(user, pswd, resp);
         if (auth != 'OK')
             return;
-        let data = await this.IDB.getConfigX();
+        let data = await this.IDB.getConfig();
         this.ret(resp, data);
     }
     async updateConfig(resp, params, user, pswd) {
@@ -51,7 +51,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
         }
     }
     async emailResetPasswordCode(resp, params, email, pswd) {
-        const config = await this.IDB.getConfigX();
+        const config = await this.IDB.getConfig();
         let emailjsService_id = config.emailjsService_id;
         let emailjsTemplate_id = config.emailjsTemplate_id;
         let emailjsUser_id = config.emailjsUser_id;

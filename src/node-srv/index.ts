@@ -29,7 +29,8 @@ function unzipC() {
     new Download('CRUD', cwd).autoUZ()
     console.info('Extracted a starter CRUD app')
 }
-function runISrv() {
+
+async function  runISrv() {
     const ip = require('ip')
     const ipAddres = ip.address()
 
@@ -42,8 +43,30 @@ function runISrv() {
 
     const mainEApp = new IntuApp(idb, ['*'])
 
-    mainEApp.start()
-    
+    let intuPath = Util.intuPath + '/INTU'
+    logger.trace(intuPath)
+
+    const setupDone = await this.db.isSetupDone()
+    if (setupDone) {
+        logger.trace('setup done')
+        await mainEApp.runNormal(intuPath)
+
+        // #3
+        const port: number = await this.db.getPort()
+        this.db.getAppPath().then(appPath => {
+            mainEApp.serveStatic(appPath)
+            mainEApp.listen(port)
+        })
+    } else {
+        logger.trace('run setup')
+        await mainEApp.runWSetup(intuPath)
+
+            // #3
+        const port: number = 9081
+        mainEApp.serveStatic(Util.intuPath + '/ROOT')
+        mainEApp.listen(port)
+    }
+
 }//()
 
 function help() {

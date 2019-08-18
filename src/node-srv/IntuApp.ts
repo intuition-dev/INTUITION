@@ -29,61 +29,41 @@ export class IntuApp extends ExpressRPC {
             try {
                 if (!isCurrent_)
                     console.log('There is a newer version of intu(INTUITION.DEV), please update.')
-
             } catch (err) {
                 console.log(err)
             }
         })// 
     }//()
-
-    async start() {
-        console.log('starting intu')
-        try {
-            //check if the file of the database exist
-            const setupDone = await this.db.isSetupDone()
-            if (setupDone) {
-                logger.trace('setup done')
-                await this.db.initX() //here we create tables
-                this._runNormal()
-            } else {
-                logger.trace('run setup')
-                this._runSetup()
-            }
-
-        } catch (err) {
-            logger.warn(err)
-        }
-    }//()
-
-    _runSetup() {
+  
+    async runWSetup(intuPath) {
         console.log('setup')
+
+        await this.db.init() //here we create tables
+
         const setup = new Setup(this.db, this)
         setup.setup()
 
-        this._run(9081, Util.intuPath+'/ROOT')
+        this._run(Util.intuPath+'/INTU')
     }//()
 
-    async _runNormal() {
-        const port: number = await this.db.getPort()
-        this.db.getAppPath().then(appPath => {
-            this._run(port, appPath)
-        })
-
+    async runNormal(intuPath) {
+        this._run(Util.intuPath+'/INTU')
     }//()
 
-    async _run(port: number, appPath) {
+    async _run(intuPath) {
         // order of routes: api, all intu apps, webapp
         console.log('running')
         //1 API
         const ar = new AdminRoutes(this.db)
         const er = new EditorRoutes(this.db)
+
         this.handleRRoute('admin', 'admin', ar.route.bind(ar))
         this.handleRRoute('api', 'editors', er.route.bind(er))
 
         this.appInst.post('/upload', this.uploadRoute.upload)
 
         // endpoint for monitoring
-        this.appInst.get('/monitor', (req, res) => {
+        this.appInst.get('/imonitor', (req, res) => {
             this.db.monitor()
                 .then(count => {
                     return res.send('OK')
@@ -95,16 +75,12 @@ export class IntuApp extends ExpressRPC {
         })//
 
         // get version
-        this.appInst.get('/ver', (req, res) => {
+        this.appInst.get('/iver', (req, res) => {
             return res.send(AppLogic.veri)
         })
 
         // 2 INTU
-        this.serveStatic(Util.intuPath+'/INTU')
-
-        // 3 APP
-        this.serveStatic(appPath)
-        this.listen(port)
+        this.serveStatic(intuPath)
 
     }//()
 

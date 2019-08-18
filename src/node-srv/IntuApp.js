@@ -25,44 +25,24 @@ class IntuApp extends Serv_1.ExpressRPC {
             }
         });
     }
-    async start() {
-        console.log('starting intu');
-        try {
-            const setupDone = await this.db.isSetupDone();
-            if (setupDone) {
-                logger.trace('setup done');
-                await this.db.initX();
-                this._runNormal();
-            }
-            else {
-                logger.trace('run setup');
-                this._runSetup();
-            }
-        }
-        catch (err) {
-            logger.warn(err);
-        }
-    }
-    _runSetup() {
+    async runWSetup(intuPath) {
         console.log('setup');
+        await this.db.init();
         const setup = new Setup_1.Setup(this.db, this);
         setup.setup();
-        this._run(9081, AppLogic_2.Util.intuPath + '/ROOT');
+        this._run(AppLogic_2.Util.intuPath + '/INTU');
     }
-    async _runNormal() {
-        const port = await this.db.getPort();
-        this.db.getAppPath().then(appPath => {
-            this._run(port, appPath);
-        });
+    async runNormal(intuPath) {
+        this._run(AppLogic_2.Util.intuPath + '/INTU');
     }
-    async _run(port, appPath) {
+    async _run(intuPath) {
         console.log('running');
         const ar = new adminRoutes_1.AdminRoutes(this.db);
         const er = new editorRoutes_1.EditorRoutes(this.db);
         this.handleRRoute('admin', 'admin', ar.route.bind(ar));
         this.handleRRoute('api', 'editors', er.route.bind(er));
         this.appInst.post('/upload', this.uploadRoute.upload);
-        this.appInst.get('/monitor', (req, res) => {
+        this.appInst.get('/imonitor', (req, res) => {
             this.db.monitor()
                 .then(count => {
                 return res.send('OK');
@@ -72,12 +52,10 @@ class IntuApp extends Serv_1.ExpressRPC {
                 return res.send = (error);
             });
         });
-        this.appInst.get('/ver', (req, res) => {
+        this.appInst.get('/iver', (req, res) => {
             return res.send(AppLogic_1.AppLogic.veri);
         });
-        this.serveStatic(AppLogic_2.Util.intuPath + '/INTU');
-        this.serveStatic(appPath);
-        this.listen(port);
+        this.serveStatic(intuPath);
     }
 }
 exports.IntuApp = IntuApp;
