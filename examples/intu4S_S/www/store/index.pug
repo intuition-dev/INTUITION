@@ -5,8 +5,8 @@ block head2
     script.
         console.log('fetch data and comp')// who gets back first?
         var pro = fetchItems('/items/items.json')
-        depp.define({'item-custEl':'/custEl/item-custEl.js'})
-        depp.require(['item-custEl'])
+        depp.define({'item-custel':'/custel/item-custel.js'})
+        depp.require(['item-custel'])
 
 block main
 
@@ -21,7 +21,7 @@ block main
         // binding step 2:
         function onGotData(evt) { 
             console.log(items)
-            depp.require(['item-custEl'], function(){ //both data and UI is ready
+            depp.require(['item-custel'], function(){ //both data and UI is ready
                 bind(evt)
             })
         }//()
@@ -33,10 +33,10 @@ block main
             var parent = document.getElementById('items')
 
             // can iterate
-            setAttrDa(addElementDe(parent,'item-custEl', 'c0'), item[0]) 
-            setAttrDa(addElementDe(parent,'item-custEl', 'c1'), item[1]) 
-            setAttrDa(addElementDe(parent,'item-custEl', 'c2'), item[2]) 
-            setAttrDa(addElementDe(parent,'item-custEl', 'c3'), item[3]) 
+            setAttrDa(addElementDe(parent,'item-custel', 'c0'), item[0]) 
+            setAttrDa(addElementDe(parent,'item-custel', 'c1'), item[1]) 
+            setAttrDa(addElementDe(parent,'item-custel', 'c2'), item[2]) 
+            setAttrDa(addElementDe(parent,'item-custel', 'c3'), item[3]) 
 
         }//()
 

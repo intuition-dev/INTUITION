@@ -48,7 +48,7 @@ class CRUDvm implements iViewModel {
                 
          if(CRUDvm._instance) res(CRUDvm._instance)   
 
-         depp.require(['RPC','spin-custEl'],function(){
+         depp.require(['RPC','spin-custel'],function(){
             console.log('MODEL!')
 
             CRUDvm._instance = new CRUDvm(42)

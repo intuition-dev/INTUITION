@@ -11,13 +11,13 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-depp.require(['poly-custEl', 'mustache'], function () {
+depp.require(['poly-custel', 'mustache'], function () {
     console.log('loaded');
     var cTemp = document.createElement('template');
-    cTemp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.19/bootStrap/css/bootstrapTop.css\">\n      <a href=\"{{url}}\">\n      <div class=\"card m-1\" style=\"max-width:400px\">\n         <img class=\"card-img-top\"  />\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n      <style>\n         .card * {\n            color: #24242b;\n            font-size: 16px;\n         }\n         .card, .card-footer {\n            height: 100%;\n         }\n      </style>\n   ";
+    cTemp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.20/bootStrap/css/bootstrapTop.css\">\n      <a href=\"{{url}}\">\n      <div class=\"card m-1\" style=\"max-width:400px\">\n         <img class=\"card-img-top\"  />\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n      <style>\n         .card * {\n            color: #24242b;\n            font-size: 16px;\n         }\n         .card, .card-footer {\n            height: 100%;\n         }\n      </style>\n   ";
     var c2Temp = document.createElement('template');
-    c2Temp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.19/bootStrap/css/bootstrapTop.css\">\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.19/bootStrap/css/bootstrap.css\">\n      <a href=\"{{url}}\">\n      <div class=\"card m-1\" style=\"max-width:400px\">\n         <img class=\"card-img-top\" src=\"{{image}}\"/>\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n      <style>\n         .card * {\n            color: #24242b;\n            font-size: 16px;\n         }\n         .card, .card-footer {\n            height: 100%;\n         }\n      </style>\n   ";
-    window.customElements.define('item-custEl', (function (_super) {
+    c2Temp.innerHTML = "\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.20/bootStrap/css/bootstrapTop.css\">\n      <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.20/bootStrap/css/bootstrap.css\">\n      <a href=\"{{url}}\">\n      <div class=\"card m-1\" style=\"max-width:400px\">\n         <img class=\"card-img-top\" src=\"{{image}}\"/>\n         <div class=\"card-footer\">\n            <p>{{title}}</p>\n         </div>\n      </div>\n      </a>\n      <style>\n         .card * {\n            color: #24242b;\n            font-size: 16px;\n         }\n         .card, .card-footer {\n            height: 100%;\n         }\n      </style>\n   ";
+    window.customElements.define('item-custel', (function (_super) {
         __extends(class_1, _super);
         function class_1() {
             var _this = _super.call(this) || this;

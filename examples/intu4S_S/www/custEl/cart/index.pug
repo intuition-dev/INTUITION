@@ -3,17 +3,17 @@ head
 
 body
    .container
-      cart-custEl#c1
+      cart-custel#c1
       br
 
-      cart-custEl#c2
+      cart-custel#c2
 
    script.
 
-      depp.define({'cart-custEl': 'cart-custEl.js'})
+      depp.define({'cart-custel': 'cart-custel.js'})
 
-      depp.require(['cart-custEl'], function(){
-         console.log('CART-custEl loaded')
+      depp.require(['cart-custel'], function(){
+         console.log('CART-custel loaded')
       })//()
 
       depp.require(['FontsLoaded', 'bsDefaultStyle'], function() {
