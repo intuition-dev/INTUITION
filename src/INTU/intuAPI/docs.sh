@@ -1,2 +1,1 @@
-documentation build --config documentation.yml IntuAPI.js -f html -o docs
-cp ./nojekyll ./docs/
+documentation build IntuAPI.ts -f md -o docs
