@@ -1,22 +1,13 @@
 
 
-Build docs and release /API via npm publish of above intu.
-Then release intu
-Then update toolBelt and release toolbelt
+IntuAPI docs are live here:
+https://intuition-dev.github.io/INTUITION
 
+If you change 
+https://github.com/intuition-dev/INTUITION/blob/master/src/INTU/intuAPI/IntuAPI.ts
+then run docs.sh there to update the docs.
 
-# API documentation
+Also copy the the produced min.js to here:
+https://github.com/intuition-dev/toolBelt/tree/master/intuAPI
+so that the current version is in the toolBelt.
 
-1. To generate human readable documentation install npm documentation globally (`-g`):
-
-```
-  npm -g i documentation
-```
-2. There should be `documentation.yml` file.
-    Do command from this folder:
-
-```
-  documentation build --config documentation.yml IntuAPI.js -f html -o docs
-```
-
-It will generate `docs` folder with the human readable documentation:
