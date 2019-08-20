@@ -4,7 +4,7 @@
  *
  */
 
-declare let httpRPC: any
+//declare let httpRPC: any
 
 class IntuAPI {
 
