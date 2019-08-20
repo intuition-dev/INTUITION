@@ -8,7 +8,7 @@
 
 ## INTUITION.DEV approach:
 
-In a future with increasing automation, citizen-developers have become more widespread. Nowadays almost anyone can pull out a form or a web app using low-code tools. Unlike other low-code tools, this one is aimed at professional developers and uses a standard language: Pug. We started first with a static code generator and then added a WebAdmin that lets you edit—and then kept adding features and refactoring. 
+In a future with increasing automation, citizen-developers have become more widespread. Nowadays almost anyone can pull out a form or a web app using low-code tools. Unlike other low-code tools, this one is aimed at professional developers and uses a standard language: Pug. We started first with a static code generator and then added a WebAdmin that lets you edit—and then kept adding features. 
 
 # INTUITION.DEV pro development features:
 
