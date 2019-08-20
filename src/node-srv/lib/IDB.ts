@@ -63,7 +63,7 @@ export class IDB extends BaseDB {
         this.con()
         
         if (this.tableExists('CONFIG') ) {
-            logger.trace('already configured')
+            logger.trace('IDB tables exist')
             return
         }
 

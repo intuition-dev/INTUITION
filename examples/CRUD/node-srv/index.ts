@@ -49,7 +49,7 @@ function app() {
    //catch all
    mainIApp.appInst.all('*', function (req, resp) {
       const path = req.path
-      console.log('no route', path)
+      logger.trace('no route', path)
       resp.json({'No route': path })
    })
 

@@ -5,7 +5,7 @@ Then release intu
 Then update toolBelt and release toolbelt
 
 
-# API documentaion
+# API documentation
 
 1. To generate human readable documentation install npm documentation globally (`-g`):
 
