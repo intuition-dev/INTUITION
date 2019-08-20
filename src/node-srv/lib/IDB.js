@@ -11,9 +11,8 @@ class IDB extends BaseDB_1.BaseDB {
     }
     async isSetupDone() {
         try {
-            if (!(await this._init()))
-                return false;
-            logger.trace('exists');
+            await this._init();
+            await this.getSalt();
             const qry = await this.db.prepare('SELECT * FROM CONFIG');
             const rows = await this._qry(qry);
             logger.trace(rows);
@@ -52,26 +51,23 @@ class IDB extends BaseDB_1.BaseDB {
         if (created) {
             return true;
         }
-        return Promise.all([
-            this._run(this.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)),
-            this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)),
-            this._run(this.db.prepare(`CREATE TABLE SALT(salt)`)),
-            this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)),
-        ]).then(async () => {
-            let salt = bcrypt.genSaltSync(10);
-            const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`);
-            await this._run(stmt, salt);
-            await this.getSalt();
-            console.log('all tables created');
-            return true;
-        });
+        await this._run(this.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`));
+        await this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`));
+        await this._run(this.db.prepare(`CREATE TABLE SALT(salt)`));
+        await this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`));
+        let salt = bcrypt.genSaltSync(10);
+        const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`);
+        await this._run(stmt, salt);
+        await this.getSalt();
+        console.log('all tables created');
+        return true;
     }
     async getSalt() {
         if (this.salt)
             return this.salt;
-        console.log('IDB', IDB);
         const qry = this.db.prepare('SELECT * FROM SALT');
         const rows = await this._qry(qry);
+        logger.trace(rows);
         const row = rows[0];
         this.salt = row.salt;
         return this.salt;
