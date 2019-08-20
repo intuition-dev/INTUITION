@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcryptjs');
 const fs = require('fs-extra');
 const logger = require('tracer').console();
@@ -24,6 +23,7 @@ class IDB extends BaseDB_1.BaseDB {
             return false;
         }
         catch (e) {
+            logger.warn(e);
             return false;
         }
     }

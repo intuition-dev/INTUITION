@@ -1,5 +1,4 @@
 
-const sqlite3 = require('sqlite3').verbose()
 
 const bcrypt = require('bcryptjs') // to hash passwords
 const fs = require('fs-extra')
@@ -35,6 +34,7 @@ export class IDB extends BaseDB {
             return false
         }
         catch(e) {
+            logger.warn(e)
             return false
         }
     }//()

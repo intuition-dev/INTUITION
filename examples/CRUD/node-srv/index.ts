@@ -22,11 +22,11 @@ async function  runISrv() {
    
    if (setupDone) {
        logger.trace('normal')
-       await mainIApp.runNormal(intuPath)
+       await mainIApp.run(intuPath)
 
    } else {
        logger.trace('run setup')
-       await mainIApp.runWSetup(intuPath)
+       await mainIApp.run(intuPath)
    }
    
    console.log('######################################','intu ready')
