@@ -41,7 +41,7 @@ var CRUDvm = (function () {
         });
     };
     CRUDvm.prototype._all = function () {
-        var prom = this.rpc.invoke('api', 'CRUD1Pg', 'selectAll', { a: 5, b: 2 });
+        var prom = this.rpc.invoke('capi', 'CRUD1Pg', 'selectAll', { a: 5, b: 2 });
         console.log('***', 'data in flight', Date.now() - _start);
         disE1('spin-stop', 'stop');
         prom.then(function (resp) {
