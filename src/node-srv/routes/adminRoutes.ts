@@ -1,17 +1,17 @@
 import { Email } from 'mbake/lib/Email'
 import { BasePgRouter } from 'mbake/lib/Serv'
-import { IDB, AdminAuth } from '../lib/IDB'
+import { IDB, AdminAuthX } from '../lib/IDB'
 
 export class AdminRoutes extends BasePgRouter {
 
    emailJs = new Email()
-   IDB: IDB;
-   auth: AdminAuth
+   IDB: IDB
+   auth: AdminAuthX
 
    constructor(IDB) {
-      super();
+      super()
       this.IDB = IDB
-      this.auth = new AdminAuth(IDB)
+      this.auth = new AdminAuthX(IDB)
 
    }//()
 

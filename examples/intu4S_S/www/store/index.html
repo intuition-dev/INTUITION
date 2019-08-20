@@ -10,8 +10,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
-    <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/toolBelt/toolBelt.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.22/bootStrap/css/bootstrapTop.css">
+    <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.22/toolBelt/toolBelt.js"></script>
     <style>
       html { touch-action: manipulation; }
       .delayShowing { opacity: 0; }
@@ -21,8 +21,8 @@
     <script>
       console.log('fetch data and comp')// who gets back first?
       var pro = fetchItems('/items/items.json')
-      depp.define({'item-wcomp':'/wcomps/item-wcomp.js'})
-      depp.require(['item-wcomp'])
+      depp.define({'item-custel':'/custel/item-custel.js'})
+      depp.require(['item-custel'])
       
     </script>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -49,7 +49,7 @@
             // binding step 2:
             function onGotData(evt) { 
                 console.log(items)
-                depp.require(['item-wcomp'], function(){ //both data and UI is ready
+                depp.require(['item-custel'], function(){ //both data and UI is ready
                     bind(evt)
                 })
             }//()
@@ -61,10 +61,10 @@
                 var parent = document.getElementById('items')
             
                 // can iterate
-                setAttrDa(addElementDe(parent,'item-wcomp', 'c0'), item[0]) 
-                setAttrDa(addElementDe(parent,'item-wcomp', 'c1'), item[1]) 
-                setAttrDa(addElementDe(parent,'item-wcomp', 'c2'), item[2]) 
-                setAttrDa(addElementDe(parent,'item-wcomp', 'c3'), item[3]) 
+                setAttrDa(addElementDe(parent,'item-custel', 'c0'), item[0]) 
+                setAttrDa(addElementDe(parent,'item-custel', 'c1'), item[1]) 
+                setAttrDa(addElementDe(parent,'item-custel', 'c2'), item[2]) 
+                setAttrDa(addElementDe(parent,'item-custel', 'c3'), item[3]) 
             
             }//()
             
@@ -82,5 +82,5 @@
       </div>
     </footer>
     <script src="/layout/ui-loader.js"></script>
-  <!-- mB v6.08.2 on 2019-08-07T14:29:58.963Z --></body>
+  <!-- mB v6.08.21 on 2019-08-20T21:51:01.955Z --></body>
 </html>

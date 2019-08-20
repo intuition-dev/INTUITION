@@ -1,7 +1,7 @@
 
 import { Email } from 'mbake/lib/Email';
 import { BasePgRouter } from 'mbake/lib/Serv'
-import { IDB, EditorAuth } from '../lib/IDB';
+import { IDB, EditorAuthX } from '../lib/IDB';
 import { FileMethods } from 'mbake/lib/FileOpsExtra'
 import { FileOps } from 'mbake/lib/FileOpsBase'
 import { AppLogic } from '../lib/AppLogic';
@@ -12,16 +12,16 @@ export class EditorRoutes extends BasePgRouter {
    emailJs = new Email()
 
    db: IDB;
-   auth: EditorAuth;
+   auth: EditorAuthX
 
    fm = new FileMethods()
 
    appLogic = new AppLogic()
 
    constructor(IDB) {
-      super();
+      super()
       this.db = IDB
-      this.auth = new EditorAuth(IDB)
+      this.auth = new EditorAuthX(IDB)
    }
 
    async checkEditor(resp, params) {
@@ -40,6 +40,7 @@ export class EditorRoutes extends BasePgRouter {
       let emailjsUser_id      = config.emailjsUser_id
       
       let code = this.db.getVcodeEditor(params.admin_email)
+      
       let msg = 'Enter your code at http://bla.bla ' + code // TODO use IDB template email to CRUD w/ {{code}}
 
       email = Buffer.from(params.admin_email).toString('base64');

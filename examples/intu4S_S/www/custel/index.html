@@ -9,8 +9,8 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css"/>
-  <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/toolBelt/toolBelt.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.22/bootStrap/css/bootstrapTop.css"/>
+  <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.22/toolBelt/toolBelt.min.js"></script>
   <style>
     html { touch-action: manipulation; }
     .delayShowing { opacity: 0; }
@@ -19,13 +19,13 @@
 </head>
 <body>
   <div class="container">
-    <item-wcomp id="c1"></item-wcomp><br/>
-    <item-wcomp id="c2"></item-wcomp>
+    <item-custel id="c1"></item-custel><br/>
+    <item-custel id="c2"></item-custel>
   </div>
   <script>
-    depp.define({'item-wcomp':'item-wcomp.js'})
+    depp.define({'item-custel':'item-custel.js'})
     
-    depp.require(['item-wcomp'], function(){
+    depp.require(['item-custel'], function(){
        console.log('ready')
     
        // send message to comp
@@ -44,4 +44,4 @@
        console.log('styles', Date.now() - _start)
     }) 
   </script>
-<!-- mB v6.08.2 on 2019-08-07T14:29:58.974Z --></body>
+<!-- mB v6.08.21 on 2019-08-20T21:51:01.762Z --></body>

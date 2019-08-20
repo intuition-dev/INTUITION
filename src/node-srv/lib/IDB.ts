@@ -157,7 +157,7 @@ export class IDB extends BaseDB {
         return vcode
     }//()
 
-    async authEditor(email, password) {
+    async authEditor(email, password):Promise<boolean> {
         password = Buffer.from(password, 'base64').toString();
         const salt = await this.getSalt()
         const hashPassP = bcrypt.hashSync(password, salt)
@@ -171,7 +171,7 @@ export class IDB extends BaseDB {
             return false;
         }
     }//()
-    async authAdmin(email, password) {
+    async authAdmin(email, password):Promise<boolean> {
         const salt = await this.getSalt()
         const hashPassP = bcrypt.hashSync(password, salt)
         const qry = this.db.prepare('SELECT * FROM ADMIN where email = ?')
@@ -282,7 +282,7 @@ export class IDB extends BaseDB {
 }//()
 
 // Auth section //////////////////////////////////////////////////////////////////
-export class EditorAuth implements iAuth {
+export class EditorAuthX implements iAuth {
     db: IDB
     constructor(db) {
         this.db = db
@@ -292,11 +292,11 @@ export class EditorAuth implements iAuth {
         return new Promise(async (resolve, reject) => {
             const ok = await this.db.authEditor(user, pswd)
             if (ok) return resolve('OK')
-
-            this.retErr(resp, 'NO')
-            reject('NO')
+            
+            resolve('FAIL')
         })// pro
     }
+
     retErr(resp: any, msg: any) {
         console.log(msg)
         const ret: any = {} // new return
@@ -304,9 +304,10 @@ export class EditorAuth implements iAuth {
         ret.errorMessage = msg
         resp.json(ret)
     }//()
+
 }//class
 
-export class AdminAuth implements iAuth {
+export class AdminAuthX implements iAuth {
     db: IDB
     constructor(db) {
         this.db = db
@@ -318,10 +319,10 @@ export class AdminAuth implements iAuth {
             const ok = await this.db.authAdmin(user, pswd)
             if (ok) return resolve('OK')
 
-            this.retErr(resp, 'NO')
-            reject('NO')
+            resolve('FAIL')
         })// pro
     }
+    
     retErr(resp: any, msg: any) {
         console.log(msg)
         const ret: any = {} // new return
@@ -332,5 +333,5 @@ export class AdminAuth implements iAuth {
 }//class
 
 module.exports = {
-    IDB, EditorAuth, AdminAuth
+    IDB, EditorAuthX, AdminAuthX
 }

@@ -8,7 +8,7 @@ class AdminRoutes extends Serv_1.BasePgRouter {
         super();
         this.emailJs = new Email_1.Email();
         this.IDB = IDB;
-        this.auth = new IDB_1.AdminAuth(IDB);
+        this.auth = new IDB_1.AdminAuthX(IDB);
     }
     async checkAdmin(resp, params) {
         let user = Buffer.from(params.admin_email).toString('base64');

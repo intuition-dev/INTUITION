@@ -9,8 +9,8 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css"/>
-  <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/toolBelt/toolBelt.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.22/bootStrap/css/bootstrapTop.css"/>
+  <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.22/toolBelt/toolBelt.min.js"></script>
   <style>
     html { touch-action: manipulation; }
     .delayShowing { opacity: 0; }
@@ -19,18 +19,18 @@
 </head>
 <body>
   <div class="container">
-    <cart-wcomp id="c1"></cart-wcomp><br/>
-    <cart-wcomp id="c2"></cart-wcomp>
+    <cart-custel id="c1"></cart-custel><br/>
+    <cart-custel id="c2"></cart-custel>
   </div>
   <script>
-    depp.define({'cart-wcomp': 'cart-wcomp.js'})
+    depp.define({'cart-custel': 'cart-custel.js'})
     
-    depp.require(['cart-wcomp'], function(){
-       console.log('CART-WCOMP loaded')
+    depp.require(['cart-custel'], function(){
+       console.log('CART-custel loaded')
     })//()
     
     depp.require(['FontsLoaded', 'bsDefaultStyle'], function() {
        console.log('styles', Date.now() - _start)
     }) 
   </script>
-<!-- mB v6.08.2 on 2019-08-07T14:29:58.967Z --></body>
+<!-- mB v6.08.21 on 2019-08-20T21:51:01.750Z --></body>

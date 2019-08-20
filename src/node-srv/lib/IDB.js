@@ -225,7 +225,7 @@ class IDB extends BaseDB_1.BaseDB {
     }
 }
 exports.IDB = IDB;
-class EditorAuth {
+class EditorAuthX {
     constructor(db) {
         this.db = db;
     }
@@ -234,8 +234,7 @@ class EditorAuth {
             const ok = await this.db.authEditor(user, pswd);
             if (ok)
                 return resolve('OK');
-            this.retErr(resp, 'NO');
-            reject('NO');
+            resolve('FAIL');
         });
     }
     retErr(resp, msg) {
@@ -246,8 +245,8 @@ class EditorAuth {
         resp.json(ret);
     }
 }
-exports.EditorAuth = EditorAuth;
-class AdminAuth {
+exports.EditorAuthX = EditorAuthX;
+class AdminAuthX {
     constructor(db) {
         this.db = db;
     }
@@ -256,8 +255,7 @@ class AdminAuth {
             const ok = await this.db.authAdmin(user, pswd);
             if (ok)
                 return resolve('OK');
-            this.retErr(resp, 'NO');
-            reject('NO');
+            resolve('FAIL');
         });
     }
     retErr(resp, msg) {
@@ -268,7 +266,7 @@ class AdminAuth {
         resp.json(ret);
     }
 }
-exports.AdminAuth = AdminAuth;
+exports.AdminAuthX = AdminAuthX;
 module.exports = {
-    IDB, EditorAuth, AdminAuth
+    IDB, EditorAuthX, AdminAuthX
 };

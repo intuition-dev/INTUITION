@@ -14,7 +14,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         this.fm = new FileOpsExtra_1.FileMethods();
         this.appLogic = new AppLogic_1.AppLogic();
         this.db = IDB;
-        this.auth = new IDB_1.EditorAuth(IDB);
+        this.auth = new IDB_1.EditorAuthX(IDB);
     }
     async checkEditor(resp, params) {
         let pswd = Buffer.from(params.editor_pass).toString('base64');

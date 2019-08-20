@@ -10,8 +10,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/bootStrap/css/bootstrapTop.css">
-    <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.2.3/toolBelt/toolBelt.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.22/bootStrap/css/bootstrapTop.css">
+    <script src="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.22/toolBelt/toolBelt.js"></script>
     <style>
       html { touch-action: manipulation; }
       .delayShowing { opacity: 0; }
@@ -21,8 +21,8 @@
     <script>
       console.log('fetch data and comp')// who gets back first?
       var pro = fetchItems('/items/items.json')
-      depp.define({'cart-wcomp':'/wcomps/cart/cart-wcomp.js'})
-      depp.require(['cart-wcomp'])
+      depp.define({'cart-custel':'/custel/cart/cart-custel.js'})
+      depp.require(['cart-custel'])
       
     </script>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -114,7 +114,7 @@
             addE1Listener('fetchItems', onGotData)
             // binding step 2:
             function onGotData(evt) { 
-                depp.require(['cart-wcomp'], function(){ //both data and UI is ready
+                depp.require(['cart-custel'], function(){ //both data and UI is ready
                     bind(evt)
                 })
             }//()
@@ -123,7 +123,7 @@
                 items = evt.items;
                 prefix = evt.prefix;
                 var parent = document.getElementById('cart-items')
-                cartWcomp = addElementDe(parent, 'cart-wcomp', 'cart')
+                cartWcomp = addElementDe(parent, 'cart-custel', 'cart')
                 window.addEventListener('cart-storage-changed', function() {
                     console.log('Cart storage changed')
                     render()
@@ -163,48 +163,52 @@
             }
             
             // checkout
-            depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre', 'stripe'], function () {
+            depp.require(['FontsLoaded', 'bsDefaultStyle', 'DOM', 'pre'], function() {
             
-                var stripe = Stripe('pk_test_GnYVBEvEsvWrOAtuxETrAFU500y63B4nQK');
-                var services = new Services()
+                depp.require(['stripe'], function() {
             
-                $('.js-stripe-checkout').on('click', function (ev) {
-                    var data = [];
-                    JSON.parse($('cart-wcomp').attr('data')).forEach(element => data.push({ 
-                        id: element.id,
-                        name: element.itemData.item.name,
-                        amount: element.itemData.item.price * 100,
-                        image: element.itemData.item.url + element.itemData.image,
-                        url: element.itemData.item.url,
-                        description: element.itemData.title,
-                        quantity: element.quantity,
-                        currency: 'USD'
-                    }));
-                    var addressForm = $('#address-form');
-                    var address = {
-                        name: addressForm.find('input[name="name"]').val(),
-                        company: addressForm.find('input[name="company"]').val(),
-                        address1: addressForm.find('input[name="address1"]').val(),
-                        address2: addressForm.find('input[name="address2"]').val(),
-                        city: addressForm.find('input[name="city"]').val(),
-                        state_code: addressForm.find('input[name="state_code"]').val(),
-                        country_code: addressForm.find('input[name="country_code"]').val(),
-                        zip: addressForm.find('input[name="zip"]').val(),
-                    };
-                    console.log('CHECKOUT', data, address);
+                    var stripe = Stripe('pk_test_GnYVBEvEsvWrOAtuxETrAFU500y63B4nQK');
+                    var services = new Services()
             
-                    services.getSessionId(data, address)
-                        .then(function (session) {
-                            console.log("TCL: sessionId", session)
-                            stripe.redirectToCheckout({
-                            sessionId: session.id
-                            }).then(function (result) {
-                            console.log("TCL: result", result.error.message)
-                            // If `redirectToCheckout` fails due to a browser or network
-                            // error, display the localized error message to your customer
-                            // using `result.error.message`.
-                            });
-                        })
+                    $('.js-stripe-checkout').on('click', function (ev) {
+                        var data = [];
+                        JSON.parse($('cart-custel').attr('data')).forEach(element => data.push({ 
+                            id: element.id,
+                            name: element.itemData.item.name,
+                            amount: element.itemData.item.price * 100,
+                            image: element.itemData.item.url + element.itemData.image,
+                            url: element.itemData.item.url,
+                            description: element.itemData.title,
+                            quantity: element.quantity,
+                            currency: 'USD'
+                        }));
+                        var addressForm = $('#address-form');
+                        var address = {
+                            name: addressForm.find('input[name="name"]').val(),
+                            company: addressForm.find('input[name="company"]').val(),
+                            address1: addressForm.find('input[name="address1"]').val(),
+                            address2: addressForm.find('input[name="address2"]').val(),
+                            city: addressForm.find('input[name="city"]').val(),
+                            state_code: addressForm.find('input[name="state_code"]').val(),
+                            country_code: addressForm.find('input[name="country_code"]').val(),
+                            zip: addressForm.find('input[name="zip"]').val(),
+                        };
+                        console.log('CHECKOUT', data, address);
+            
+                        services.getSessionId(data, address)
+                            .then(function (session) {
+                                console.log("TCL: sessionId", session)
+                                stripe.redirectToCheckout({
+                                sessionId: session.id
+                                }).then(function (result) {
+                                console.log("TCL: result", result.error.message)
+                                // If `redirectToCheckout` fails due to a browser or network
+                                // error, display the localized error message to your customer
+                                // using `result.error.message`.
+                                });
+                            })
+            
+                    });
             
                 });
             
@@ -222,5 +226,5 @@
       </div>
     </footer>
     <script src="/layout/ui-loader.js"></script>
-  <!-- mB v6.08.2 on 2019-08-07T14:37:40.922Z --></body>
+  <!-- mB v6.08.21 on 2019-08-20T21:51:01.731Z --></body>
 </html>
