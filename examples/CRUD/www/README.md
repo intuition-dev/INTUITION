@@ -11,7 +11,7 @@ There are four basic examples:
 - Form Validation
 - Authentication (example is in intu )
 
-You'll need to run node dev.ts to create the db
+You'll need to run 'node dev1.ts' to create the db
 
 ## Structure explanation based on  "Table with basic onClick event" example
 
