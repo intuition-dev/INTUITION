@@ -38,7 +38,7 @@ async function runISrv() {
     logger.trace(setupDone);
     if (setupDone) {
         logger.trace('normal');
-        await mainEApp.runNormal(intuPath);
+        await mainEApp.run(intuPath);
         const port = await idb.getPort();
         idb.getAppPath().then(appPath => {
             mainEApp.serveStatic(appPath);
@@ -47,7 +47,7 @@ async function runISrv() {
     }
     else {
         logger.trace('run setup');
-        await mainEApp.runWSetup(intuPath);
+        await mainEApp.run(intuPath);
         const port = 9081;
         mainEApp.serveStatic(AppLogic_2.Util.intuPath + '/ROOT');
         mainEApp.listen(port);

@@ -12,11 +12,7 @@ class IDB extends BaseDB_1.BaseDB {
     }
     async isSetupDone() {
         try {
-            logger.trace(this.path, this.fn);
-            if (!this.dbExists())
-                return false;
-            this.con();
-            if (!(await this.tableExists('CONFIG')))
+            if (!(await this._init()))
                 return false;
             logger.trace('exists');
             const qry = await this.db.prepare('SELECT * FROM CONFIG');
@@ -36,7 +32,7 @@ class IDB extends BaseDB_1.BaseDB {
             this.con();
             const qry = this.db.prepare("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab);
             const rows = await this._qry(qry);
-            logger.trace('exits', rows);
+            logger.trace('exits?', rows);
             const row = rows[0];
             if (row.name == tab)
                 return true;
@@ -46,11 +42,15 @@ class IDB extends BaseDB_1.BaseDB {
             return false;
         }
     }
-    async init() {
+    async _init() {
         this.con();
-        if (this.tableExists('CONFIG')) {
-            logger.trace('IDB tables exist');
-            return;
+        logger.trace(this.path, this.fn);
+        if (!this.dbExists())
+            return false;
+        const created = await this.tableExists('CONFIG');
+        logger.trace('IDB tables exist', created);
+        if (created) {
+            return true;
         }
         return Promise.all([
             this._run(this.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)),
@@ -58,10 +58,12 @@ class IDB extends BaseDB_1.BaseDB {
             this._run(this.db.prepare(`CREATE TABLE SALT(salt)`)),
             this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)),
         ]).then(async () => {
-            console.log('all tables created');
             let salt = bcrypt.genSaltSync(10);
             const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`);
-            return await this._run(stmt, salt);
+            await this._run(stmt, salt);
+            await this.getSalt();
+            console.log('all tables created');
+            return true;
         });
     }
     async getSalt() {
@@ -224,23 +226,6 @@ class IDB extends BaseDB_1.BaseDB {
         const stmt = this.db.prepare(`UPDATE EDITORS SET hashPass=?, vcode=null WHERE email=?`);
         this._run(stmt, hashPass, email);
         return 'OK';
-    }
-    checkDB(path) {
-        return fs.existsSync(path);
-    }
-    openDB(path, cb) {
-        fs.open(path, 'w', cb);
-    }
-    async connectToDb(dbPath) {
-        const dbPro = new sqlite3.Database(dbPath);
-        this.db = await dbPro;
-        this.db.configure('busyTimeout', 2 * 1000);
-    }
-    async connectToDbOnPort(dbPath) {
-        let _this = this;
-        await _this.connectToDb(dbPath);
-        const qry = await this.db.prepare('SELECT port FROM CONFIG');
-        return await this._qry(qry);
     }
 }
 exports.IDB = IDB;

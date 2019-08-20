@@ -9,7 +9,7 @@ import { AppLogic } from './lib/AppLogic'
 const idb =new IDB('.','/test.sqlite')
 const appLogic = new AppLogic()
 
-idb.init()//.then(testIDB) //then(testAppLogic)
+idb.isSetupDone()//.then(testIDB) //then(testAppLogic)
 
 async function test(name, f) {
     perfy.start(name, true)

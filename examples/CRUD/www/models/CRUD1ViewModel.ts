@@ -39,7 +39,7 @@ class CRUDvm implements iViewModel {
       pro  = pro.replace(':','')
       var host = window.location.hostname
       var port = window.location.port
-      this.rpc = new httpRPC(pro, host, 8888)
+      this.rpc = new httpRPC(pro, host, 8080)
    }
 
    static _instance:CRUDvm

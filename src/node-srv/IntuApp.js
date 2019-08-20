@@ -24,14 +24,13 @@ class IntuApp extends Serv_1.ExpressRPC {
             }
         });
     }
-    async runWSetup(intuPath) {
+    async run(intuPath) {
         console.log('setup');
-        await this.db.init();
-        const setup = new Setup_1.Setup(this.db, this);
-        setup.setup();
-        this._run(intuPath);
-    }
-    async runNormal(intuPath) {
+        let isSetupDone = await this.db.isSetupDone();
+        if (!isSetupDone) {
+            const setup = new Setup_1.Setup(this.db, this);
+            setup.setup();
+        }
         this._run(intuPath);
     }
     async _run(intuPath) {

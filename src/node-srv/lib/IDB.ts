@@ -17,17 +17,12 @@ export class IDB extends BaseDB {
         logger.trace(path, fn)
     }
 
-    async isSetupDone() {
+    async isSetupDone():Promise<boolean> {
         try {
-            // if db exists
-            logger.trace(this.path, this.fn)
-            if(!this.dbExists())
+    
+            if(!(await this._init()))
                 return false
-            
-            this.con()
 
-            if (!(await this.tableExists('CONFIG')) ) return false
-   
             logger.trace('exists')
 
             const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 
@@ -50,7 +45,7 @@ export class IDB extends BaseDB {
 
         const qry = this.db.prepare("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab)
         const rows = await this._qry(qry)
-        logger.trace('exits', rows)
+        logger.trace('exits?', rows)
         const row = rows[0]
         if(row.name == tab) return true
         return false
@@ -59,12 +54,19 @@ export class IDB extends BaseDB {
         }
     }//()
 
-    async init(): Promise<any> {
+    protected async _init(): Promise<boolean> {
         this.con()
-        
-        if (this.tableExists('CONFIG') ) {
-            logger.trace('IDB tables exist')
-            return
+
+        // if db exists
+        logger.trace(this.path, this.fn)
+  
+        if(!this.dbExists())
+            return false
+    
+        const created:boolean = await this.tableExists('CONFIG')
+        logger.trace('IDB tables exist', created)
+        if ( created ) {
+            return true
         }
 
         return Promise.all([
@@ -73,10 +75,12 @@ export class IDB extends BaseDB {
             this._run(this.db.prepare(`CREATE TABLE SALT(salt)`)),
             this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)),
         ]).then(async () => {
-            console.log('all tables created')
             let salt = bcrypt.genSaltSync(10)
             const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`)
-            return await this._run(stmt, salt)
+            await this._run(stmt, salt)
+            await this.getSalt()
+            console.log('all tables created')
+            return true
         })
     }
 
@@ -277,25 +281,6 @@ export class IDB extends BaseDB {
         return 'OK'
     }//()
 
-    checkDB(path) {
-        return fs.existsSync(path)
-    }
-    openDB(path, cb) {
-        fs.open(path, 'w', cb);
-    }
-
-    async connectToDb(dbPath) { // the admin db is set to 'P@ssw0rd!' and you have to change it first time on DB create
-        const dbPro = new sqlite3.Database(dbPath)
-        this.db = await dbPro
-        this.db.configure('busyTimeout', 2 * 1000)
-    }
-
-    async connectToDbOnPort(dbPath) {
-        let _this = this
-        await _this.connectToDb(dbPath)
-        const qry = await this.db.prepare('SELECT port FROM CONFIG')
-        return await this._qry(qry);
-    }
 
 }//()
 

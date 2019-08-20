@@ -35,20 +35,19 @@ export class IntuApp extends ExpressRPC {
         })// 
     }//()
   
-    async runWSetup(intuPath) {
+    async run(intuPath) {
         console.log('setup')
 
-        await this.db.init() //here we create tables
-
-        const setup = new Setup(this.db, this)
-        setup.setup()
-
+        let isSetupDone:boolean = await this.db.isSetupDone() 
+        if(!isSetupDone) {
+            const setup = new Setup(this.db, this)
+            setup.setup()
+        }
+        
         this._run(intuPath)
     }//()
 
-    async runNormal(intuPath) {
-        this._run(intuPath)
-    }//()
+ 
 
     async _run(intuPath) {
         // order of routes: api, all intu apps, webapp
