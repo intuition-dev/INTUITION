@@ -1,4 +1,4 @@
-#### 1.0.7
+#### 1.0.21
 - release
 
 #### 0.99.17
@@ -24,7 +24,7 @@
 - new repo
 
 #### 0.97.04
-- yarn is deprecated. Use npm
+- yarn deprecated. Use npm
 
 #### 0.9.14
 - mbake bumped w/ new pug bump 2.0.4

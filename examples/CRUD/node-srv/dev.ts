@@ -2,10 +2,8 @@
 // Bus. Layer test
 import { CDB } from './lib/CDB'
 const is = require('is')
-const assert = require('assert')
 const logger = require('tracer').console()
 const perfy = require('perfy')
-var bunyan = require('bunyan')
 
 
 const cdb = new CDB('.', '/CDB.sqlite')

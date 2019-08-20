@@ -49,7 +49,7 @@ class IDB extends BaseDB_1.BaseDB {
     async init() {
         this.con();
         if (this.tableExists('CONFIG')) {
-            logger.trace('already configured');
+            logger.trace('IDB tables exist');
             return;
         }
         return Promise.all([
