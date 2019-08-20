@@ -95,6 +95,6 @@ Instead use mustache or dot or such.
 
 Your VM must map to the (pug or component) View! Component have their own VM (in their own folder)
 
-- This may or may not help: https://sqlitebrowser.org
+- There is a SQLite plugin in VS Code
 
 
