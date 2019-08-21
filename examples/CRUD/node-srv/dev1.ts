@@ -8,7 +8,9 @@ const perfy = require('perfy')
 
 const cdb = new CDB('.', '/CDB.sqlite')
 
-cdb.init()
+//cdb.init()
+
+tst()
 
 async function tst() {
    perfy.start('loop-stuff');

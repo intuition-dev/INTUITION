@@ -114,7 +114,6 @@ export class IDB extends BaseDB {
     async getConfig() {
         const qry = this.db.prepare(`SELECT * FROM CONFIG`)
         const rows = await this._qry(qry)
-        logger.trace(rows)
         if (rows && rows.length > 0) {
             const row = rows[0]
             return row

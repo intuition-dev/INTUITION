@@ -8,6 +8,11 @@ const logger = require('tracer').console()
  */
 export class CDB extends BaseDB { // FTS support
 
+   constructor(path, fn) {
+      super(path, fn)
+      this.con()
+   }
+
    async init() {
       console.log('init')
       if(this.dbExists())  {
