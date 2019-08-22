@@ -16,7 +16,6 @@ In a future with increasing automation, citizen-developers have become more wide
 1. Standards Based / Pug
 1. Open Source
 1. SEO
-2. Custom Elements
 2. CRUD | ViewModel
 2. built in user auth
 2. FTS and SQL
@@ -69,7 +68,6 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 
 ### Full train-the-trainer training incudes:
 - SEO
-- Custom Elements
 - CRUD | ViewModel
 - built in user auth
 - FTS and SQL
@@ -84,3 +82,4 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 - [Home Page](https://www.INTUITION.DEV)
 - [Message Board ](http://forum.mbake.org)
 - [Git Repo](http://git.mbake.org)
+
