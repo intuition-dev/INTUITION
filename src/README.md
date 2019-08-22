@@ -6,12 +6,12 @@
 #### Please star our main project here:
 - https://github.com/intuition-dev/INTUITION
 
-## INTUITION.DEV approach:
+### INTUITION.DEV approach:
 
 In a future with increasing automation, citizen-developers have become more widespread. Nowadays almost anyone can pull out a form or a web app using low-code tools. Unlike other low-code tools, this one is aimed at professional developers and uses a standard language: Pug. We started first with a static code generator and then added a WebAdmin that lets you edit—and then keep adding features. 
 [Medium Article](https://medium.com/@uptimevic/how-software-developers-can-survive-the-coming-tech-crash-796dd8dc5a7e) 
 
-# INTUITION.DEV pro development features:
+### INTUITION.DEV pro development features:
 
 1. Standards Based / Pug
 1. Open Source
@@ -31,8 +31,7 @@ We have open source low-code with static generation with the ability to add a �
 You can write any and every kind of app, since we generate HTML, javascript an css. Our main language is Pug, if you have not seen Pug before, here is a quick intro to Pug:
 - [Click for generic Pug example](http://pug.mbake.org)
 
-
-# Documentation
+## Documentation
 
 - [Docs/Training](http://docs.mbake.org)
 - [Home Page](https://www.INTUITION.DEV)
@@ -40,7 +39,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 - [Git Repo](http://git.mbake.org)
 
 
-## Short Installation and Tutorial
+### Installation and Intro
 
 1. Before you run, create free [emailJs](https://www.emailjs.com) account: so that INTUITION.DEV your local accounts can be validated via email. Also create a email template, and note your emailJs `service_id`, `user_id`,  `template_id`, needed to send validation emails. Yes, user admin is built in.
 
@@ -68,7 +67,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
     npm i
     ```
 
-## Full train-the-trainer training incudes:
+### Full train-the-trainer training incudes:
 - SEO
 - Custom Elements
 - CRUD | ViewModel
@@ -79,7 +78,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 - lazy loading
 
 
-# Links
+### Links
 
 - [Docs/Training](http://docs.mbake.org)
 - [Home Page](https://www.INTUITION.DEV)
