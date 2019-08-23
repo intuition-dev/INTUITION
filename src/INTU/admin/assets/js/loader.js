@@ -1,10 +1,7 @@
 var responces = [];
 depp.define({
-    'fb': [
-        '#poly-core-req', '#firestore'
-    ],
     'scripts': [
-        '#fb', '#jquery', '#tabulator', '#gridformsJS'
+        '#jquery', '#tabulator', '#gridformsJS'
         , '/admin/assets/css/spectreBottom.css'
     ],
     'httpRPC': ['#RPC'],
