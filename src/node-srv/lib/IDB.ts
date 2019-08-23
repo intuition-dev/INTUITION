@@ -289,6 +289,7 @@ export class EditorAuthX implements iAuth {
     async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {
         return new Promise(async (resolve, reject) => {
             const ok = await this.db.authEditor(user, pswd)
+            console.log('editor AUTH status: ', ok)
             if (ok) return resolve('OK')
             
             resolve('FAIL')
@@ -315,7 +316,7 @@ export class AdminAuthX implements iAuth {
 
         return new Promise(async (resolve, reject) => {
             const ok = await this.db.authAdmin(user, pswd)
-            console.log('AUTH status: ', ok)
+            console.log('admin AUTH status: ', ok)
             if (ok) return resolve('OK')
 
             resolve('FAIL')
