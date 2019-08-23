@@ -36,6 +36,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 - [Home Page](https://www.INTUITION.DEV)
 - [Message Board ](http://forum.mbake.org)
 - [Git Repo](http://git.mbake.org)
+- [Slides] (https://github.com/intuition-dev/IntuitionDocs/blob/master/slides/slides.md)
 
 
 ## Installation and Intro
@@ -82,4 +83,5 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 - [Home Page](https://www.INTUITION.DEV)
 - [Message Board ](http://forum.mbake.org)
 - [Git Repo](http://git.mbake.org)
+- [Slides] (https://github.com/intuition-dev/IntuitionDocs/blob/master/slides/slides.md)
 
