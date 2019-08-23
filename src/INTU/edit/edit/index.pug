@@ -289,8 +289,10 @@ block content
                     $('.icon-wrap .i-calendar').addClass('active');
                     $('form').addClass('d-hide');
                     $('.publish-date-form').removeClass('d-hide');
-
                     window.pathPrefixPdate = $('.blog-item.active').find('span').text();
+                    if (window.pathPrefixPdate === 0 && $('.blog-item.active').length !== 0 && $('.blog-item.active li.active').text === 'dat.yaml') {
+                        window.pathPrefixPdate = "\/";
+                    }
                 }
 
             });
@@ -305,7 +307,6 @@ block content
             $('.publish-date-form').on('submit', function(e) {
                 e.preventDefault();
                 let publishDate = $('.publish-date-form input').val();
-
                 if (pathPrefixPdate === '') {
 
                     $('.notification').removeClass('d-hide').addClass('error-msg').find('.text').text('Please select post on the left to set publish date');
