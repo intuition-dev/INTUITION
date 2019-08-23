@@ -175,7 +175,6 @@ export class IDB extends BaseDB {
         const hashPassP = bcrypt.hashSync(password, salt)
         const qry = this.db.prepare('SELECT * FROM ADMIN where email = ?')
         const rows = await this._qry(qry, email)
-
         if (rows.length > 0) {
             const row = rows[0]
             const hashPassS = row.hashPass
@@ -316,6 +315,7 @@ export class AdminAuthX implements iAuth {
 
         return new Promise(async (resolve, reject) => {
             const ok = await this.db.authAdmin(user, pswd)
+            console.log('AUTH status: ', ok)
             if (ok) return resolve('OK')
 
             resolve('FAIL')

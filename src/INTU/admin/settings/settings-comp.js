@@ -3,7 +3,6 @@ riot.tag2('settings-comp', '<form class="grid-form settings-form" id="settings-f
     var _this = this
     this.pathToSite = opts.pathToSite
     this.port = opts.port
-
     this.emailjsService_id = opts.emailjsService_id
     this.emailjsTemplate_id = opts.emailjsTemplate_id
     this.emailjsUser_id = opts.emailjsUser_id
@@ -14,7 +13,7 @@ riot.tag2('settings-comp', '<form class="grid-form settings-form" id="settings-f
           ev.preventDefault()
           var serialize = $('#settings-form').serializeArray()
           _this.bindSetup.saveConfig(serialize)
-          console.log("TCL: serialize", serialize)
+          console.log("TCL: saving settings, serialize", serialize)
        })
     })
 });

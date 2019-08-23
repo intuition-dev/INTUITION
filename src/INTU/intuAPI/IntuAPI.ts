@@ -361,7 +361,6 @@ class IntuAPI {
          admin_pass: admin_pass,
          port: port,
          path: path,
-         // printfulApi: printfulApi.length ? printfulApi : '',
          emailjsService_id: emailjsService_id,
          emailjsTemplate_id: emailjsTemplate_id,
          emailjsUser_id: emailjsUser_id
