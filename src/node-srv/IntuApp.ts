@@ -50,7 +50,7 @@ export class IntuApp extends ExpressRPC {
  
 
     async _run(intuPath) {
-        // order of routes: api, all intu apps, webapp
+        // order of routes: api, all intu apps, Web App
         console.log('running')
         //1 API
         const ar = new AdminRoutes(this.db)

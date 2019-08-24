@@ -22,7 +22,7 @@ You'll need to run 'node dev1.ts' to create the db
 
 ## CRUD w/ ViewModel (VM) 
 
-You can use any framework or library with MetaBake . And MetaBake comes with a recommended 'app framework' for WebApps in 3 lines:
+You can use any framework or library with MetaBake . And MetaBake comes with a recommended 'app framework' for Web Apps in 3 lines:
 
 
       interface iViewModel{
