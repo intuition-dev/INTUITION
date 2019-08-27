@@ -60,7 +60,7 @@ The goal is to be as flexible as possible. When you have a form, table or chart,
 VM also has a dataSourceType: string = 'real'  //real or fake
 
 VM should also do any data validation; returning an empty string if OK or an error message.
-The purpose of VM is to allow development of View to be quicker; and to allow for a demo if back end is b0rked.
+The purpose of VM is to allow development of View to be quicker; and to allow for a demo if back-end is b0rked.
 
 ### Advanced
 - You should favor composition over inheritance. You should even look at VM as an ECS(Entity-Component-System), where Entity is the name of the VM, 
