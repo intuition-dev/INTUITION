@@ -130,6 +130,6 @@ depp.require(['poly-custel', 'mustache'], function(){ // inside the require
             })
          }//fi
       }//()
-   })//wcomp
+   })//custel
 
 })// reqs
