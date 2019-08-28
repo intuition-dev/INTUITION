@@ -8,7 +8,7 @@ depp.require(['poly-custel', 'mustache'], function(){ // inside the require
    console.log('loaded')
    var cTemp = document.createElement('template')
    cTemp.innerHTML = `
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.23/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.24/bootStrap/css/bootstrapTop.css">
       <a href="{{url}}">
       <div class="card m-1" style="max-width:400px">
          <img class="card-img-top"  />
@@ -29,8 +29,8 @@ depp.require(['poly-custel', 'mustache'], function(){ // inside the require
    `
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.23/bootStrap/css/bootstrapTop.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.23/bootStrap/css/bootstrap.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.24/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.24/bootStrap/css/bootstrap.css">
       <a href="{{url}}">
       <div class="card m-1" style="max-width:400px">
          <img class="card-img-top" src="{{image}}"/>
