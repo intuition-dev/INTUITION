@@ -3,12 +3,12 @@ declare var depp
 declare var Mustache
 // we are using 2 different technologies. Mostly Standard Custom Elements. They don't have biding so we use Mustache
 
-depp.require(['poly-custel', 'mustache'], function(){ // inside the require
+depp.require(['poly-custel', 'mustache'], function () { // inside the require
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
       {{#items}}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.24/bootStrap/css/bootstrapTop.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.24/bootStrap/css/bootstrap.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.25/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.8.25/bootStrap/css/bootstrap.css">
       <div class="card d-flex row mb-2" itemId={{id}}>
          <div class="col-3">
             <img src={{image}} alt="Card image cap">
@@ -66,15 +66,15 @@ depp.require(['poly-custel', 'mustache'], function(){ // inside the require
          }
       </style>
    `
-   
+
    window.customElements.define('cart-custel', class extends HTMLElement {
       sr // shadow root var
       tmpl // binding template
       constructor() {
          super()
          console.log('CART WCOMP')
-         this.sr = this.attachShadow({mode: 'open'})
-         this.tmpl =c2Temp.innerHTML
+         this.sr = this.attachShadow({ mode: 'open' })
+         this.tmpl = c2Temp.innerHTML
       }//cons
 
       //register properties w/ reflection to attributes
@@ -82,25 +82,25 @@ depp.require(['poly-custel', 'mustache'], function(){ // inside the require
       attributeChangedCallback(aName, oldVal, newVal) { // handler
          console.log(aName, newVal)
 
-         if('data'==aName) {
+         if ('data' == aName) {
             const THIZ = this
             let data = JSON.parse(newVal)
             data = {
-               url: function() { 
+               url: function () {
                   let data = this.itemData.prefix + this.itemData.url;
                   return data;
                },
-               image: function() { 
+               image: function () {
                   let data = this.itemData.prefix + this.itemData.url + '/' + this.itemData.image;
                   return data;
                },
-               cost: function() { 
+               cost: function () {
                   let data = this.itemData.item.price * this.quantity;
                   return data;
                },
             }
             data.items = [];
-            
+
             JSON.parse(newVal).forEach(element => {
                data.items.push({
                   id: element.id,
@@ -111,10 +111,10 @@ depp.require(['poly-custel', 'mustache'], function(){ // inside the require
             });
 
             var rendered = Mustache.render(this.tmpl, data)
-            THIZ.sr.innerHTML = rendered     
+            THIZ.sr.innerHTML = rendered
 
-            THIZ.sr.querySelectorAll('[data-action^=quantity]').forEach(function(e) {
-               e.addEventListener('click', function(e){
+            THIZ.sr.querySelectorAll('[data-action^=quantity]').forEach(function (e) {
+               e.addEventListener('click', function (e) {
                   e.preventDefault();
                   let action = this.getAttribute('data-action');
                   let itemId = this.getAttribute('data-item-id');
