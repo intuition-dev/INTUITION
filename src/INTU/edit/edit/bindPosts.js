@@ -13,9 +13,15 @@ class Posts {
 
         depp.define({
             'codeEdit': [
-                '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/theme/solarized.css'
+                '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css',
+                 '//cdn.jsdelivr.net/npm/codemirror@5.46.0/theme/solarized.css'
     
-                , '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.min.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/markdown/markdown.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/yaml/yaml.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/pug/pug.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/css/css.js', '//cdn.jsdelivr.net/npm/codemirror@5.46.0/keymap/sublime.js'
+                , '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.min.js',
+                 '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/markdown/markdown.js',
+                  '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/yaml/yaml.js',
+                   '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/pug/pug.js', 
+                   '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/css/css.js',
+                    '//cdn.jsdelivr.net/npm/codemirror@5.46.0/keymap/sublime.js'
     
             ]
         });
