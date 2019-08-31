@@ -43,7 +43,9 @@ var CRUDvm = (function () {
     CRUDvm.prototype._all = function () {
         var prom = this.rpc.invoke('capi', 'CRUD1Pg', 'selectAll', { a: 5, b: 2 });
         console.log('***', 'data in flight', Date.now() - _start);
-        disE1('spin-stop', 'stop');
+        setTimeout(function () {
+            disE1('spin-stop', 'stop');
+        }, 1000);
         prom.then(function (resp) {
             console.log('resp', resp, Date.now() - _start);
         }).catch(function (err) {

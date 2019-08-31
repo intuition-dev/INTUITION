@@ -63,8 +63,11 @@ class CRUDvm implements iViewModel {
       var prom = this.rpc.invoke('capi', 'CRUD1Pg', 'selectAll', {a:5, b:2})
       // the most important step in the loading waterfall - after the first paint
       console.log('***', 'data in flight', Date.now() - _start)
-      disE1('spin-stop','stop')
-      
+
+      setTimeout(function() {
+         disE1('spin-stop','stop')
+      },1000)
+
       prom.then(function(resp) {
          console.log('resp', resp, Date.now() - _start)
       }).catch(function (err) {

@@ -47,6 +47,7 @@ async function tab1() {
    // events
    $('#but1').click(function (evt) {
       console.log('but1')
+      
       vex.dialog.open({
          message: 'Please, make sure all the fields are filled with data',
          buttons: [
@@ -61,6 +62,7 @@ async function tab1() {
             }
          }
       })
+
       $('#but1').blur()
    })
 
