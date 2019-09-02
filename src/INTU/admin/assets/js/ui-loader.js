@@ -5,14 +5,14 @@ depp.define({
         , '/admin/assets/css/spectreBottom.css'
     ],
     'httpRPC': ['#RPC'],
-    'intuAPI': [
-        '#scripts','#httpRPC'
-        ,'/intuAPI/IntuAPI.js'
-    ],
+    // 'intuAPI': [
+        // '#scripts','#httpRPC'
+        // ,'/intuAPI/IntuAPI.js'
+    // ],
     'baseVm': ['/admin/models/BaseViewModel.js'],
     'general': [
         '#baseVm'
-        , '#intuAPI'
+        // , '#intuAPI'
         , '/admin/admin/bindEditors.js'
         , '/admin/models/AdminViewModel.js'
     ],
@@ -20,11 +20,11 @@ depp.define({
         '#general'
         , '#baseVm'
         ,'/admin/bindLogin.js'
-        , '/admin/models/LoginViewModel.js'
+        // , '/admin/models/LoginViewModel.js'
         ,'/admin/assets/js/ui.js'
     ],
     'setup-page': [
-        '#intuAPI'
+        // '#intuAPI'
         ,'#baseVm'
         , '/admin/settings/settings-comp.js'
         , '/admin/settings/BindSettings.js'
