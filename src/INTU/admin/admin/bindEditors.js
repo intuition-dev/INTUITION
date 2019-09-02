@@ -33,18 +33,18 @@ depp.require(['ui', 'scripts', 'setup-page'], async function () {
     $(document).find('#edit-editor').on('click', function (e) {
         e.preventDefault();
         if (typeof rowUid !== 'undefined' && rowUid !== '') {
-        $(this).attr("disabled", "disabled");
-        $('.loader').addClass('active');
-        save(rowUid, adminViewModel)
-            .then(() => {
-                $(this).removeAttr("disabled");
-                $('.loader').removeClass('active');
-            });
+            $(this).attr("disabled", "disabled");
+            $('.loader').addClass('active');
+            save(rowUid, adminViewModel)
+                .then(() => {
+                    $(this).removeAttr("disabled");
+                    $('.loader').removeClass('active');
+                });
         } else {
-        $('.notification').removeClass('d-hide').find('.text').text('Please, select user to edit');
-        setTimeout(function() {
-            $('.notification').addClass('d-hide').find('.text').text('');
-        }, 2000);
+            $('.notification').removeClass('d-hide').find('.text').text('Please, select user to edit');
+            setTimeout(function() {
+                $('.notification').addClass('d-hide').find('.text').text('');
+            }, 2000);
         }
     });
 
@@ -55,19 +55,19 @@ depp.require(['ui', 'scripts', 'setup-page'], async function () {
         e.preventDefault();
         if (typeof rowUid !== 'undefined' && rowUid !== '') {
 
-        $(this).attr("disabled", "disabled");
-        $('.loader').addClass('active');
-        remove(rowUid, adminViewModel)
-            .then(() => {
-                $(this).removeAttr("disabled");
-                $('.loader').removeClass('active');
-            });
+            $(this).attr("disabled", "disabled");
+            $('.loader').addClass('active');
+            remove(rowUid, adminViewModel)
+                .then(() => {
+                    $(this).removeAttr("disabled");
+                    $('.loader').removeClass('active');
+                });
 
         } else {
-        $('.notification').removeClass('d-hide').find('.text').text('Please, select user to delete');
-        setTimeout(function() {
-            $('.notification').addClass('d-hide').find('.text').text('');
-        }, 2000);
+            $('.notification').removeClass('d-hide').find('.text').text('Please, select user to delete');
+            setTimeout(function() {
+                $('.notification').addClass('d-hide').find('.text').text('');
+            }, 2000);
         }
     });
 
