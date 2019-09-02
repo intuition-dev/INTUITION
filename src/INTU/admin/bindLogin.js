@@ -7,14 +7,14 @@ depp.require(['poly'], onPoly);
 depp.define({
     'loginViewModel': [
         '/admin/models/LoginViewModel.js'
-    ],
+    ]
 });
 
 function onPoly() {
     depp.require('loginViewModel');
 };
 
-depp.require(['rw', '#scripts', 'loginViewModel'], async function () {
+depp.require(['rw', '#scripts'], async function () {
     
     var loginViewModel = await LoginViewModel.inst();
 
@@ -61,6 +61,10 @@ depp.require(['rw', '#scripts', 'loginViewModel'], async function () {
         $('#login-form, #btn-login, [data="reset-password"]').addClass('d-hide');
         $("[name='reset-pass-form-2']").removeClass('d-hide');
     }
+
+    $('#sign-out').off('click').on('click',function (e) {
+        signOut();
+    });
 
 });
 

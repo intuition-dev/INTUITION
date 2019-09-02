@@ -1,13 +1,37 @@
+declare var depp: any;
 
+depp.define({
+    'services2': [
+        '/intuAPI/IntuAPI.js'
+    ]
+});
 
 class AdminViewModel extends BaseViewModel {
 
     services: any;
 
-    constructor() {
+    constructor(arg) {
         super()
+        if (42 !== arg) throw new Error('use static inst()') // guard!
+    }
+
+    setup() {
         this.services = new IntuAPI();
-    };
+    }
+
+    static _instance: AdminViewModel
+    static inst(): Promise<AdminViewModel> {
+        return new Promise(function (res, rej) {
+
+            if (AdminViewModel._instance) res(AdminViewModel._instance)
+
+            depp.require(['httpRPC', 'services2'], function () {
+                AdminViewModel._instance = new AdminViewModel(42);
+                AdminViewModel._instance.setup();
+                res(AdminViewModel._instance);
+            });
+        });
+    }
     
     getEditorsList() {
         return this.services.getEditorsList();

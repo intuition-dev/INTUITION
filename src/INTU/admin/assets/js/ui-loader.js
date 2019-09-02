@@ -14,12 +14,12 @@ depp.define({
         '#baseVm'
         // , '#intuAPI'
         , '/admin/admin/bindEditors.js'
-        , '/admin/models/AdminViewModel.js'
+        // , '/admin/models/AdminViewModel.js'
     ],
     'rw': [
         '#general'
         , '#baseVm'
-        ,'/admin/bindLogin.js'
+        // ,'/admin/bindLogin.js'
         // , '/admin/models/LoginViewModel.js'
         ,'/admin/assets/js/ui.js'
     ],
@@ -27,7 +27,7 @@ depp.define({
         // '#intuAPI'
         ,'#baseVm'
         , '/admin/settings/settings-comp.js'
-        , '/admin/settings/BindSettings.js'
+        // , '/admin/settings/BindSettings.js'
         , '/admin/models/SettingsViewModel.js'
     ],
     'fonts': [

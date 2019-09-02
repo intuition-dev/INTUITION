@@ -1,7 +1,7 @@
 declare var depp: any;
 
 depp.define({
-    'services': [
+    'services1': [
         '/intuAPI/IntuAPI.js'
     ]
 });
@@ -25,7 +25,7 @@ class LoginViewModel extends BaseViewModel {
 
             if (LoginViewModel._instance) res(LoginViewModel._instance)
 
-            depp.require(['httpRPC', 'services'], function () {
+            depp.require(['httpRPC', 'services1'], function () {
                 LoginViewModel._instance = new LoginViewModel(42);
                 LoginViewModel._instance.setup();
                 res(LoginViewModel._instance);
