@@ -6,28 +6,5 @@ block content
          .columns
             .column
                settings-comp
-            //- .divider-vert(data-content='OR')
-            //- .column
-               //- h3 Install:
-               //- button.btn.mr-2#setup-website + Website
-               //- button.btn.mr-2#setup-blog + Blog
-               //- button.btn#setup-shop + Shop
-   
-   script.
-      depp.require('setup-page', function () {
-         var bindSettings = new BindSettings()
-         bindSettings.getForm()
 
-         $('#setup-shop').off('click').on('click', function(e){
-               bindSettings.setupApp('shop')
-         })
-         $('#setup-blog').off('click').on('click', function(e){
-               bindSettings.setupApp('blog')
-         })
-         $('#setup-website').off('click').on('click', function(e){
-               bindSettings.setupApp('website')
-         })
-
-         window.apiPort = window.location.port;
-
-      })
+   script(src='BindSettings.js')

@@ -12,10 +12,9 @@ depp.define({
 depp.require('baseVm');
 depp.require('loginViewModel');
 
-depp.require(['ui', 'scripts', 'poly'], async function () {
+depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
     
     var loginViewModel = await LoginViewModel.inst();
-
     /*
     * admin login
     */

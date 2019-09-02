@@ -4,48 +4,50 @@ html
 		include /layout/headFrag
 		include /layout/header
 	body
-	.login-bg
-		.login-wrapper
-			.login-form-wrap
-				.login-form
-					form#login-form.grid-form.js-login-form(action="#")
-						fieldset
-							legend
-								.site-brand Site Name
-								| Admin CMS
-							.input-wrap
-								label Login
-								input(type='text', name='login', required='required', autocomplete="new-password")
-							.input-wrap
-								label Password
-								input(type='password', name='password', minlength="6", required='required', autocomplete="new-password")
-					#error.d-hide.isError
-					button#btn-login.js-btn-login.btn-custom.btn-primary.btn-center.space-21v Login
+		.login-bg
+			.login-wrapper
+				.login-form-wrap
+					.login-form
+						form#login-form.grid-form.js-login-form(action="#")
+							fieldset
+								legend
+									.site-brand Site Name
+									| Admin CMS
+								.input-wrap
+									label Login
+									input(type='text', name='login', required='required', autocomplete="new-password")
+								.input-wrap
+									label Password
+									input(type='password', name='password', minlength="6", required='required', autocomplete="new-password")
+						#error.d-hide.isError
+						button#btn-login.js-btn-login.btn-custom.btn-primary.btn-center.space-21v Login
 
-					.reset-password(data="reset-password") Forgot password?
+						.reset-password(data="reset-password") Forgot password?
 
-					form#reset-password.d-hide.grid-form(action="#", name='reset-pass-form')
-						fieldset
-							.input-wrap
-								label Enter email
-								input(type='email', name='reset-password-email', required='required')
-						button.btn-custom.btn-primary.btn-center.space-21v(name="reset-password-btn", type='submit') Reset Password
-					
-					form#reset-password-2.d-hide.grid-form(action="#", name='reset-pass-form-2')
-						fieldset
-							.input-wrap
-								label Enter new password
-								input(type='password', name='new-password', required='required')
-							.input-wrap.bl_v-code
-								div.v-code Verification code was sent to your email
-								label.bl_v-code__label Enter verification code
-								input.bl_v-code__input(type='number', name='v-code', required='required')
-						button.btn-custom.btn-primary.btn-center.space-21v(name="reset-password-btn-2", type='submit') Reset Password
+						form#reset-password.d-hide.grid-form(action="#", name='reset-pass-form')
+							fieldset
+								.input-wrap
+									label Enter email
+									input(type='email', name='reset-password-email', required='required')
+							button.btn-custom.btn-primary.btn-center.space-21v(name="reset-password-btn", type='submit') Reset Password
+						
+						form#reset-password-2.d-hide.grid-form(action="#", name='reset-pass-form-2')
+							fieldset
+								.input-wrap
+									label Enter new password
+									input(type='password', name='new-password', required='required')
+								.input-wrap.bl_v-code
+									div.v-code Verification code was sent to your email
+									label.bl_v-code__label Enter verification code
+									input.bl_v-code__input(type='number', name='v-code', required='required')
+							button.btn-custom.btn-primary.btn-center.space-21v(name="reset-password-btn-2", type='submit') Reset Password
 
-					.bl_pass-changed-notification.d-hide.js-pass-changed-notification
-						h1 Password changed
-						p You can now sign in with your new password
+						.bl_pass-changed-notification.d-hide.js-pass-changed-notification
+							h1 Password changed
+							p You can now sign in with your new password
 
-					.bl_pass-changed-notification.bl_pass-changed-notification--err.d-hide.js-pass-changed-notification-err
-						h1 Password hasn't been changed
-						p Something went wrong
+						.bl_pass-changed-notification.bl_pass-changed-notification--err.d-hide.js-pass-changed-notification-err
+							h1 Password hasn't been changed
+							p Something went wrong
+
+		script(src='bindLogin.js')

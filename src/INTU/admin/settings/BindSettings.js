@@ -7,16 +7,30 @@ depp.define({
 depp.require('baseVm');
 depp.require('settingsViewModel');
 
-depp.require(['ui', 'scripts', 'setup-page', 'poly'], async function () {
+depp.require(['ui', 'scripts', 'setup-page'], async function () {
     
     var settingsViewModel = await SettingsViewModel.inst();
 
     getPort(settingsViewModel);
 
+    getForm(settingsViewModel);
+
+    $('#setup-shop').off('click').on('click', function(e) {
+        setupApp('shop', settingsViewModel);
+    });
+    $('#setup-blog').off('click').on('click', function(e) {
+        setupApp('blog', settingsViewModel);
+    });
+    $('#setup-website').off('click').on('click', function(e) {
+        setupApp('website', settingsViewModel);
+    });
+
+    window.apiPort = window.location.port;
+
 });
 
 //install e-com, website or blog, buttons handle
-function setupApp(item) {
+function setupApp(item, settingsViewModel) {
     $('.loader').addClass('active');
     settingsViewModel.setupApp(item)
         .then(function(result) {
@@ -26,7 +40,7 @@ function setupApp(item) {
 }
 
 //get data for the settings form
-function getForm() {
+function getForm(settingsViewModel) {
     var _this = this
     settingsViewModel.getConfig()
         .then(function(result) {
