@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 depp.define({
-    'services': [
+    'services1': [
         '/intuAPI/IntuAPI.js'
     ]
 });
@@ -31,7 +31,7 @@ var LoginViewModel = (function (_super) {
         return new Promise(function (res, rej) {
             if (LoginViewModel._instance)
                 res(LoginViewModel._instance);
-            depp.require(['httpRPC', 'services'], function () {
+            depp.require(['httpRPC', 'services1'], function () {
                 LoginViewModel._instance = new LoginViewModel(42);
                 LoginViewModel._instance.setup();
                 res(LoginViewModel._instance);

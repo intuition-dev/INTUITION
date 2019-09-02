@@ -11,14 +11,33 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+depp.define({
+    'services2': [
+        '/intuAPI/IntuAPI.js'
+    ]
+});
 var AdminViewModel = (function (_super) {
     __extends(AdminViewModel, _super);
-    function AdminViewModel() {
+    function AdminViewModel(arg) {
         var _this = _super.call(this) || this;
-        _this.services = new IntuAPI();
+        if (42 !== arg)
+            throw new Error('use static inst()');
         return _this;
     }
-    ;
+    AdminViewModel.prototype.setup = function () {
+        this.services = new IntuAPI();
+    };
+    AdminViewModel.inst = function () {
+        return new Promise(function (res, rej) {
+            if (AdminViewModel._instance)
+                res(AdminViewModel._instance);
+            depp.require(['httpRPC', 'services2'], function () {
+                AdminViewModel._instance = new AdminViewModel(42);
+                AdminViewModel._instance.setup();
+                res(AdminViewModel._instance);
+            });
+        });
+    };
     AdminViewModel.prototype.getEditorsList = function () {
         return this.services.getEditorsList();
     };
