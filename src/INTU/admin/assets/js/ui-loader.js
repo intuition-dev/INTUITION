@@ -5,34 +5,18 @@ depp.define({
         , '/admin/assets/css/spectreBottom.css'
     ],
     'httpRPC': ['#RPC'],
-    // 'intuAPI': [
-        // '#scripts','#httpRPC'
-        // ,'/intuAPI/IntuAPI.js'
-    // ],
-    'baseVm': ['/admin/models/BaseViewModel.js'],
-    'general': [
-        '#baseVm'
-        // , '#intuAPI'
-        , '/admin/admin/bindEditors.js'
-        // , '/admin/models/AdminViewModel.js'
+    'intuAPI': [
+        '/intuAPI/IntuAPI.js'
     ],
-    'rw': [
-        '#general'
-        , '#baseVm'
-        // ,'/admin/bindLogin.js'
-        // , '/admin/models/LoginViewModel.js'
-        ,'/admin/assets/js/ui.js'
+    'baseVm': ['/admin/models/BaseViewModel.js'],
+    'ui': [
+        '/admin/assets/js/ui.js'
     ],
     'setup-page': [
-        // '#intuAPI'
-        ,'#baseVm'
-        , '/admin/settings/settings-comp.js'
-        // , '/admin/settings/BindSettings.js'
-        , '/admin/models/SettingsViewModel.js'
+        '/admin/settings/settings-comp.js'
     ],
     'fonts': [
-        '#crud'
-        , 'css!//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i'
+        'css!//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i'
     ]
 });
 

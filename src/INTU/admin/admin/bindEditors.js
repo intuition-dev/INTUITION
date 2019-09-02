@@ -1,80 +1,74 @@
-depp.require(['poly'], onPoly);
-
 depp.define({
     'adminViewModel': [
-        '/admin/models/AdminViewModel.js'
+        '../models/AdminViewModel.js'
     ]
 });
 
-function onPoly() {
-    depp.require('adminViewModel');
-};
+depp.require('baseVm');
+depp.require('adminViewModel');
 
-depp.require(['rw', '#scripts', 'setup-page'], async function () {
+depp.require(['ui', 'scripts', 'setup-page', 'poly'], async function () {
     
     var adminViewModel = await AdminViewModel.inst();
 
-    depp.require(['general'], function() {
+    drawTable(adminViewModel);
 
-        drawTable(adminViewModel);
+    /*
+    * add editor
+    */
+    $(document).on('click', '#add-editor', function (e) {
+        e.preventDefault();
+        $(this).attr("disabled", "disabled");
+        $('.loader').addClass('active');
+        save('', adminViewModel)
+            .then(() => {
+                $(this).removeAttr("disabled");
+                $('.loader').removeClass('active');
+            });
+    });
 
-        /*
-        * add editor
-        */
-        $(document).on('click', '#add-editor', function (e) {
-            e.preventDefault();
-            $(this).attr("disabled", "disabled");
-            $('.loader').addClass('active');
-            save('', adminViewModel)
-                .then(() => {
-                    $(this).removeAttr("disabled");
-                    $('.loader').removeClass('active');
-                });
-        });
+    /* 
+    * edit editor
+    */
+    $(document).find('#edit-editor').on('click', function (e) {
+        e.preventDefault();
+        if (typeof rowUid !== 'undefined' && rowUid !== '') {
+        $(this).attr("disabled", "disabled");
+        $('.loader').addClass('active');
+        save(rowUid, adminViewModel)
+            .then(() => {
+                $(this).removeAttr("disabled");
+                $('.loader').removeClass('active');
+            });
+        } else {
+        $('.notification').removeClass('d-hide').find('.text').text('Please, select user to edit');
+        setTimeout(function() {
+            $('.notification').addClass('d-hide').find('.text').text('');
+        }, 2000);
+        }
+    });
 
-        /* 
-        * edit editor
-        */
-        $(document).find('#edit-editor').on('click', function (e) {
-            e.preventDefault();
-            if (typeof rowUid !== 'undefined' && rowUid !== '') {
-            $(this).attr("disabled", "disabled");
-            $('.loader').addClass('active');
-            save(rowUid, adminViewModel)
-                .then(() => {
-                    $(this).removeAttr("disabled");
-                    $('.loader').removeClass('active');
-                });
-            } else {
-            $('.notification').removeClass('d-hide').find('.text').text('Please, select user to edit');
-            setTimeout(function() {
-                $('.notification').addClass('d-hide').find('.text').text('');
-            }, 2000);
-            }
-        });
+    /* 
+    * delete editor
+    */
+    $(document).on('click', '#delete-editor', function (e) {
+        e.preventDefault();
+        if (typeof rowUid !== 'undefined' && rowUid !== '') {
 
-        /* 
-        * delete editor
-        */
-        $(document).on('click', '#delete-editor', function (e) {
-            e.preventDefault();
-            if (typeof rowUid !== 'undefined' && rowUid !== '') {
+        $(this).attr("disabled", "disabled");
+        $('.loader').addClass('active');
+        remove(rowUid, adminViewModel)
+            .then(() => {
+                $(this).removeAttr("disabled");
+                $('.loader').removeClass('active');
+            });
 
-            $(this).attr("disabled", "disabled");
-            $('.loader').addClass('active');
-            remove(rowUid, adminViewModel)
-                .then(() => {
-                    $(this).removeAttr("disabled");
-                    $('.loader').removeClass('active');
-                });
-
-            } else {
-            $('.notification').removeClass('d-hide').find('.text').text('Please, select user to delete');
-            setTimeout(function() {
-                $('.notification').addClass('d-hide').find('.text').text('');
-            }, 2000);
-            }
-        });
+        } else {
+        $('.notification').removeClass('d-hide').find('.text').text('Please, select user to delete');
+        setTimeout(function() {
+            $('.notification').addClass('d-hide').find('.text').text('');
+        }, 2000);
+        }
     });
 
 });

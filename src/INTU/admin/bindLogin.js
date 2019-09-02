@@ -2,7 +2,6 @@
     Admin login
 **/
 
-depp.require(['poly'], onPoly);
 
 depp.define({
     'loginViewModel': [
@@ -10,11 +9,10 @@ depp.define({
     ]
 });
 
-function onPoly() {
-    depp.require('loginViewModel');
-};
+depp.require('baseVm');
+depp.require('loginViewModel');
 
-depp.require(['rw', '#scripts'], async function () {
+depp.require(['ui', 'scripts', 'poly'], async function () {
     
     var loginViewModel = await LoginViewModel.inst();
 
