@@ -11,11 +11,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-depp.define({
-    'services1': [
-        '/intuAPI/IntuAPI.js'
-    ]
-});
 var LoginViewModel = (function (_super) {
     __extends(LoginViewModel, _super);
     function LoginViewModel(arg) {
@@ -31,7 +26,7 @@ var LoginViewModel = (function (_super) {
         return new Promise(function (res, rej) {
             if (LoginViewModel._instance)
                 res(LoginViewModel._instance);
-            depp.require(['httpRPC', 'services1'], function () {
+            depp.require(['httpRPC', 'intuAPI'], function () {
                 LoginViewModel._instance = new LoginViewModel(42);
                 LoginViewModel._instance.setup();
                 res(LoginViewModel._instance);

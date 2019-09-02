@@ -13,11 +13,26 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var SettingsViewModel = (function (_super) {
     __extends(SettingsViewModel, _super);
-    function SettingsViewModel() {
+    function SettingsViewModel(arg) {
         var _this = _super.call(this) || this;
-        _this.services = new IntuAPI();
+        if (42 !== arg)
+            throw new Error('use static inst()');
         return _this;
     }
+    SettingsViewModel.prototype.setup = function () {
+        this.services = new IntuAPI();
+    };
+    SettingsViewModel.inst = function () {
+        return new Promise(function (res, rej) {
+            if (SettingsViewModel._instance)
+                res(SettingsViewModel._instance);
+            depp.require(['httpRPC', 'intuAPI'], function () {
+                SettingsViewModel._instance = new SettingsViewModel(42);
+                SettingsViewModel._instance.setup();
+                res(SettingsViewModel._instance);
+            });
+        });
+    };
     SettingsViewModel.prototype.setupApp = function (item) {
         return this.services.setupApp(item);
     };
