@@ -236,16 +236,6 @@ export class IDB extends BaseDB {
         return res
     }
 
-    /**
-     * this one is used for uptime server monitoring
-     * doesn't matter the count result
-     **/
-    async monitor() {
-        const qry = this.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN`)
-        const rows = await this._qry(qry)
-        return rows[0]
-    }
-
     async resetPasswordAdminIfMatch(email, vcode, password) {
         // is there a row match?
         const qry = this.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN where email=? and vcode=?`)

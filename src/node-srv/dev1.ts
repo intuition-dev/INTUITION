@@ -29,8 +29,6 @@ async function testIDB() {
 
    await test('getSalt', () => idb.getSalt())
 
-   await test('monitor', () => idb.monitor())
-
    await test(`setAppPath('appPath')`, () => idb.setAppPath('appPath'))
 
    await test('getAppPath', () => idb.getAppPath())
