@@ -191,11 +191,6 @@ class IDB extends BaseDB_1.BaseDB {
         const res = await this._run(stmt);
         return res;
     }
-    async monitor() {
-        const qry = this.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN`);
-        const rows = await this._qry(qry);
-        return rows[0];
-    }
     async resetPasswordAdminIfMatch(email, vcode, password) {
         const qry = this.db.prepare(`SELECT COUNT(*) AS count FROM ADMIN where email=? and vcode=?`);
         const rows = await this._qry(qry, email, vcode);

@@ -18,7 +18,6 @@ async function testIDB() {
     console.log('testIDB:');
     await test('dbExists', () => idb.dbExists());
     await test('getSalt', () => idb.getSalt());
-    await test('monitor', () => idb.monitor());
     await test(`setAppPath('appPath')`, () => idb.setAppPath('appPath'));
     await test('getAppPath', () => idb.getAppPath());
     await test('getPort', () => idb.getPort());

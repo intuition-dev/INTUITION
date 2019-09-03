@@ -40,16 +40,6 @@ class IntuApp extends Serv_1.ExpressRPC {
         this.handleRRoute('admin', 'admin', ar.route.bind(ar));
         this.handleRRoute('api', 'editors', er.route.bind(er));
         this.appInst.post('/upload', this.uploadRoute.upload);
-        this.appInst.get('/imonitor', (req, res) => {
-            this.db.monitor()
-                .then(count => {
-                return res.send('OK');
-            }).catch(error => {
-                console.info('monitor error: ', error);
-                res.status(400);
-                return res.send = (error);
-            });
-        });
         this.appInst.get('/iver', (req, res) => {
             return res.send(AppLogic_1.AppLogic.veri);
         });
