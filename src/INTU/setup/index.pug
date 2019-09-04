@@ -38,17 +38,5 @@ block content
 										.subtitle it can be found on 'Account' tab --> 'Api keys' in your EmailJs account
 								input(type='text', name="user_id")
 					button.btn.btn-primary.js-btn-setup.mt-2 Setup
-				//- button.btn.btn-error.js-btn-delete.mt-2 Delete tables
-	script.
-		depp.require(['setup'], function(){
-			var bindSetup = new BindSetup()
-			
-			$('.js-btn-delete').on('click', function(){
-				bindSetup.deleteTable()
-			})
-			
-			$('form#setup-config-form').on('submit',function(ev){
-				ev.preventDefault()
-				bindSetup.createConfig(this)
-			})
-		})
+	
+	script(src='binding.js')

@@ -1,22 +1,39 @@
-console.log("TCL: window.apiPort", window.apiPort)
-class BindSetup {
-    constructor() {
-        this.setupViewModel = new SetupViewModel()
-    }
 
-    createConfig(form) {
-        console.info("--form:", form)
-        let serialised = $(form).serializeArray();
-        console.info("--serialised:", serialised)
-        this.setupViewModel.createConfig(serialised)
-            .then(function(result) {
-                if (result) {
-                    window.location = '/admin';
-                }
-            })
-    }
+depp.define({
+    'setupViewModel': [
+        '/setup/models/SetupViewModel.js'
+    ]
+});
 
-    deleteTable() {
-        this.setupViewModel.deleteTables()
-    }
+depp.require('baseVm');
+depp.require('setupViewModel');
+
+depp.require(['scripts', 'setupViewModel'], async function() {
+    setupViewModel = await SetupViewModel.inst();
+
+    $('.js-btn-delete').on('click', function(){
+        deleteTable(setupViewModel);
+    });
+    
+    $('form#setup-config-form').on('submit',function(ev) {
+        ev.preventDefault();
+        createConfig(this);
+    });
+});
+
+
+function createConfig(form, setupViewModel) {
+    console.info("--form:", form)
+    let serialised = $(form).serializeArray();
+    console.info("--serialised:", serialised)
+    setupViewModel.createConfig(serialised)
+        .then(function(result) {
+            if (result) {
+                window.location = '/admin';
+            }
+        })
+}
+
+function deleteTable(setupViewModel) {
+    setupViewModel.deleteTables()
 }
