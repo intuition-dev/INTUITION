@@ -250,16 +250,20 @@ depp.require(['ui', 'scripts', 'editViewModel'], async function () {
     $('.publish-date-form').on('submit', function(e) {
         e.preventDefault();
         let publishDate = $('.publish-date-form input').val();
-        if (pathPrefixPdate === '') {
-
+        if (pathPrefixPdate === '' && !($('.blog-item').hasClass('active'))) {
+            
             $('.notification').removeClass('d-hide').addClass('error-msg').find('.text').text('Please select post on the left to set publish date');
-
+            
             setTimeout(function() {
                 $('.notification').addClass('d-hide').find('.text').text('');
                 $('.publish-date-form input').val('');
             }, 4000);
-
+            
         } else {
+
+            if (pathPrefixPdate === '' && ($('.blog-item').hasClass('active'))) {
+                pathPrefixPdate = '/';
+            } 
 
             if (publishDate !== '') {
 
