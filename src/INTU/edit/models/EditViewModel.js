@@ -13,12 +13,26 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var EditViewModel = (function (_super) {
     __extends(EditViewModel, _super);
-    function EditViewModel() {
+    function EditViewModel(arg) {
         var _this = _super.call(this) || this;
-        _this.services = new IntuAPI();
+        if (42 !== arg)
+            throw new Error('use static inst()');
         return _this;
     }
-    ;
+    EditViewModel.prototype.setup = function () {
+        this.services = new IntuAPI();
+    };
+    EditViewModel.inst = function () {
+        return new Promise(function (res, rej) {
+            if (EditViewModel._instance)
+                res(EditViewModel._instance);
+            depp.require(['httpRPC', 'intuAPI'], function () {
+                EditViewModel._instance = new EditViewModel(42);
+                EditViewModel._instance.setup();
+                res(EditViewModel._instance);
+            });
+        });
+    };
     EditViewModel.prototype.getDirsList = function () {
         return this.services.getDirsList();
     };
