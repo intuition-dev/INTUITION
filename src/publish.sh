@@ -3,7 +3,7 @@ npm
 npm update
 rm *.sqlite
 tsc
-cd WWW 
+cd INTU 
 mbake .
 cd ..
 npm publish
