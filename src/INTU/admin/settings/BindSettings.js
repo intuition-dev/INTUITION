@@ -1,3 +1,5 @@
+var settingsViewModel = null;
+
 depp.define({
     'settingsViewModel': [
         '../models/SettingsViewModel.js'
@@ -9,7 +11,7 @@ depp.require('settingsViewModel');
 
 depp.require(['ui', 'scripts', 'setup-page'], async function () {
     
-    var settingsViewModel = await SettingsViewModel.inst();
+    settingsViewModel = await SettingsViewModel.inst();
 
     getPort(settingsViewModel);
 

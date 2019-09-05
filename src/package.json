@@ -36,7 +36,7 @@
         "sqlite3": ">=4.1.0"
     },
     "devDependencies": {
-        "@types/node": "^12.7.3",
+        "@types/node": "^12.7.4",
         "is": ">=3.3.0",
         "perfy": ">=1.1.5"
     }
