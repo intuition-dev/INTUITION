@@ -17,7 +17,7 @@ depp.require(['scripts', 'setupViewModel'], async function() {
     
     $('form#setup-config-form').on('submit',function(ev) {
         ev.preventDefault();
-        createConfig(this);
+        createConfig(this, setupViewModel);
     });
 });
 
