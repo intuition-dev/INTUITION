@@ -12,8 +12,10 @@ depp.define({
 depp.require('baseVm');
 depp.require('editViewModel');
 
-depp.require(['ui', 'scripts', 'editViewModel'], async function () {
+depp.require(['ui', 'scripts', 'fileUpload', 'editViewModel'], async function () {
     editViewModel = await EditViewModel.inst();
+
+    initUpload();
 
     $(document).on('click', '.js-view-page', function(e) {
         if ($(this).hasAttribute('disabled')) {
@@ -175,48 +177,84 @@ depp.require(['ui', 'scripts', 'editViewModel'], async function () {
     /*********
     * File upload
     **********/
+    function initUpload() {
+        console.log('initUpload')
+        const uppy = Uppy.Core({
+            debug: true,
+            autoProceed: false,
+            restrictions: {
+              maxFileSize: 1000000,
+              maxNumberOfFiles: 3,
+              minNumberOfFiles: 1,
+              allowedFileTypes: ['image/*', 'video/*']
+            }
+        })
+        .use(Uppy.Dashboard, {
+            trigger: '.uppy-modal-opener-btn',
+            metaFields: [
+                { id: 'name', name: 'Name', placeholder: 'file name' },
+                { id: 'caption', name: 'Caption', placeholder: 'describe what the image is about' }
+              ],
+              browserBackButtonClose: true
+        })
+        .use(Uppy.XHRUpload, { 
+            endpoint: '/upload' ,
+            formData: true,
+            fieldName: 'sampleFile'
+        })
+
+        uppy.on('file-added', (file) => {
+            uppy.setMeta({
+              'targetDir': '/' + $('.blog-item.active').find('span').text()
+            })
+          })
+      
+        uppy.on('complete', (result) => {
+            console.log('Upload complete! We’ve uploaded these files:', result.successful)
+        })
+   }
 
     // toggle form
-    $(document).on('click', '.upload', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
+    // $(document).on('click', '.upload', function(e) {
+    //     e.preventDefault();
+    //     e.stopPropagation();
 
-        if (!($(this).hasClass('disabled'))) {
+    //     if (!($(this).hasClass('disabled'))) {
 
-            $('form').addClass('d-hide');
-            $('.file-upload').removeClass('d-hide');
-            $('.icon-wrap i').removeClass('active');
-            $('.icon-wrap .upload').addClass('active');
+    //         $('form').addClass('d-hide');
+    //         $('.file-upload').removeClass('d-hide');
+    //         $('.icon-wrap i').removeClass('active');
+    //         $('.icon-wrap .upload').addClass('active');
 
-            window.pathPrefixUpload = $('.blog-item.active').find('span').text();
+    //         window.pathPrefixUpload = $('.blog-item.active').find('span').text();
 
-        }
+    //     }
 
-    });
-    $(window).click(function() {
-        $('.file-upload').addClass('d-hide');
-        $('.icon-wrap i').removeClass('active');
-    });
-    $('.file-upload').click(function(event) {
-        event.stopPropagation();
-    });
+    // });
+    // $(window).click(function() {
+    //     $('.file-upload').addClass('d-hide');
+    //     $('.icon-wrap i').removeClass('active');
+    // });
+    // $('.file-upload').click(function(event) {
+    //     event.stopPropagation();
+    // });
 
-    // upload
-    $('#file-upload').on('submit', function(e) {
-        e.preventDefault();
-        $(this).attr("disabled", "disabled");
-        $('.loader').addClass('active');
-        let input = $('#file-upload-input')[0].files[0];
-        let target = $(this);
+    // // upload
+    // $('#file-upload').on('submit', function(e) {
+    //     e.preventDefault();
+    //     $(this).attr("disabled", "disabled");
+    //     $('.loader').addClass('active');
+    //     let input = $('#file-upload-input')[0].files[0];
+    //     let target = $(this);
 
-        uploadFile(input, pathPrefixUpload, target, window.pathPrefixUpload, editViewModel)
+    //     uploadFile(input, pathPrefixUpload, target, window.pathPrefixUpload, editViewModel)
             
-        // refresh dirs
-        let activeFile = $('.blog-item.active li.active div').text();
-        $('.blog-list-wrap').html('');
-        refreshOnUpload(window.pathPrefixUpload, activeFile, editViewModel);
+    //     // refresh dirs
+    //     let activeFile = $('.blog-item.active li.active div').text();
+    //     $('.blog-list-wrap').html('');
+    //     refreshOnUpload(window.pathPrefixUpload, activeFile, editViewModel);
 
-    });
+    // });
 
     /************ 
     * Set publish date

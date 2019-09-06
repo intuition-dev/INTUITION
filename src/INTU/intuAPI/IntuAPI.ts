@@ -141,29 +141,29 @@ class IntuAPI {
       });
    }
 
-   /**
-    * file upload
-    * @param data FormData
-    * @param pathPrefix path to file, eg: 'blog/post-4'
-    */
-   upload(data, pathPrefix) {
-      console.log("TCL: IntuAPI -> upload -> data", data.get('sampleFile'))
-      let email = window.sessionStorage.getItem('username');
-      let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'upload', {
-         pathPrefix: pathPrefix,
-         editor_email: email,
-         editor_pass: pass
-      }, data.get('sampleFile'))
-         .then(function (response) {
-            console.log("TCL: IntuAPI -> upload -> response", response)
-            console.info(response);
-         })
-         .catch(function (error) {
-            console.log("TCL: IntuAPI -> upload -> error", error)
-            console.info(error);
-         });
-   }
+   // /**
+   //  * file upload
+   //  * @param data FormData
+   //  * @param pathPrefix path to file, eg: 'blog/post-4'
+   //  */
+   // upload(data, pathPrefix) {
+   //    console.log("TCL: IntuAPI -> upload -> data", data.get('sampleFile'))
+   //    let email = window.sessionStorage.getItem('username');
+   //    let pass = window.sessionStorage.getItem('password');
+   //    return this.serviceRPC.invoke('api', 'editors', 'upload', {
+   //       pathPrefix: pathPrefix,
+   //       editor_email: email,
+   //       editor_pass: pass
+   //    }, data.get('sampleFile'))
+   //       .then(function (response) {
+   //          console.log("TCL: IntuAPI -> upload -> response", response)
+   //          console.info(response);
+   //       })
+   //       .catch(function (error) {
+   //          console.log("TCL: IntuAPI -> upload -> error", error)
+   //          console.info(error);
+   //       });
+   // }
 
    /**
     * set publishDate field to dat.yaml

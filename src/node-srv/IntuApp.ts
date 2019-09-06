@@ -23,7 +23,7 @@ export class IntuApp extends ExpressRPC {
         this.makeInstance(origins)
 
         this.db = db
-        this.uploadRoute = new UploadRoute()
+        this.uploadRoute = new UploadRoute(this.db)
 
         VersionNag.isCurrent('intu', AppLogic.veri()).then(function (isCurrent_: boolean) {
             try {
@@ -59,7 +59,7 @@ export class IntuApp extends ExpressRPC {
         this.handleRRoute('admin', 'admin', ar.route.bind(ar))
         this.handleRRoute('api', 'editors', er.route.bind(er))
 
-        this.appInst.post('/upload', this.uploadRoute.upload)
+        this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
 
         // get version
         this.appInst.get('/iver', (req, res) => {

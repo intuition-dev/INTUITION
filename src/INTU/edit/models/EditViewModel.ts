@@ -51,9 +51,9 @@ class EditViewModel extends BaseViewModel {
         return this.services.clonePage(id, pathPrefix);
     };
 
-    upload(data, pathPrefix) {
-        return this.services.upload(data, pathPrefix);
-    };
+    // upload(data, pathPrefix) {
+    //     return this.services.upload(data, pathPrefix);
+    // };
 
     setPublishDate(date, itemPath) {
         return this.services.setPublishDate(date, itemPath);
