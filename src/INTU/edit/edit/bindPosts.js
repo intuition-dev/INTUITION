@@ -210,51 +210,9 @@ depp.require(['ui', 'scripts', 'fileUpload', 'editViewModel'], async function ()
           })
       
         uppy.on('complete', (result) => {
-            console.log('Upload complete! We’ve uploaded these files:', result.successful)
+            console.log('Upload complete! Files uploaded:', result.successful)
         })
    }
-
-    // toggle form
-    // $(document).on('click', '.upload', function(e) {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-
-    //     if (!($(this).hasClass('disabled'))) {
-
-    //         $('form').addClass('d-hide');
-    //         $('.file-upload').removeClass('d-hide');
-    //         $('.icon-wrap i').removeClass('active');
-    //         $('.icon-wrap .upload').addClass('active');
-
-    //         window.pathPrefixUpload = $('.blog-item.active').find('span').text();
-
-    //     }
-
-    // });
-    // $(window).click(function() {
-    //     $('.file-upload').addClass('d-hide');
-    //     $('.icon-wrap i').removeClass('active');
-    // });
-    // $('.file-upload').click(function(event) {
-    //     event.stopPropagation();
-    // });
-
-    // // upload
-    // $('#file-upload').on('submit', function(e) {
-    //     e.preventDefault();
-    //     $(this).attr("disabled", "disabled");
-    //     $('.loader').addClass('active');
-    //     let input = $('#file-upload-input')[0].files[0];
-    //     let target = $(this);
-
-    //     uploadFile(input, pathPrefixUpload, target, window.pathPrefixUpload, editViewModel)
-            
-    //     // refresh dirs
-    //     let activeFile = $('.blog-item.active li.active div').text();
-    //     $('.blog-list-wrap').html('');
-    //     refreshOnUpload(window.pathPrefixUpload, activeFile, editViewModel);
-
-    // });
 
     /************ 
     * Set publish date
