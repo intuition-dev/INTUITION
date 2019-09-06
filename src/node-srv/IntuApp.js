@@ -13,7 +13,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         super();
         this.makeInstance(origins);
         this.db = db;
-        this.uploadRoute = new uploadRoute_1.UploadRoute();
+        this.uploadRoute = new uploadRoute_1.UploadRoute(this.db);
         FileOpsExtra_1.VersionNag.isCurrent('intu', AppLogic_1.AppLogic.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
@@ -39,7 +39,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         const er = new editorRoutes_1.EditorRoutes(this.db);
         this.handleRRoute('admin', 'admin', ar.route.bind(ar));
         this.handleRRoute('api', 'editors', er.route.bind(er));
-        this.appInst.post('/upload', this.uploadRoute.upload);
+        this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute));
         this.appInst.get('/iver', (req, res) => {
             return res.send(AppLogic_1.AppLogic.veri);
         });

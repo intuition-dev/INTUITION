@@ -57,10 +57,6 @@ var EditViewModel = (function (_super) {
         return this.services.clonePage(id, pathPrefix);
     };
     ;
-    EditViewModel.prototype.upload = function (data, pathPrefix) {
-        return this.services.upload(data, pathPrefix);
-    };
-    ;
     EditViewModel.prototype.setPublishDate = function (date, itemPath) {
         return this.services.setPublishDate(date, itemPath);
     };
