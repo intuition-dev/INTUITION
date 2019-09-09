@@ -1,5 +1,4 @@
 
-
 depp.require('scripts', function() {
 
     // login form input lables animation

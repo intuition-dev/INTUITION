@@ -1,12 +1,12 @@
 
 depp.define({
-    'scripts': [  'jquery', 'DOM'],
-    'ui': [ 'scripts',  'zebraDate', 'custel'],
+    'scripts': [  '#jquery', '#DOM'],
+    'ui': [ '#scripts',  '#zebraDate', '#custel'],
     'codeEdit': [ 'codemirror', '#scripts', '//cdn.jsdelivr.net/npm/codemirror@5.48.0/keymap/sublime.js'],
     'cssBot':'/edit/assets/css/spectreBottom.css',
 
     'intuAPI': ['/intuAPI/IntuAPI.js'],
-    'baseVm': ['RPC', '#intuAPI', '/edit/assets/models/BaseViewModel.js',  ],
+    'baseVm': ['#RPC', '#intuAPI', '/edit/assets/models/BaseViewModel.js',  ],
     'loginViewModel': ['#baseVM', '/edit/assets/models/LoginViewModel.js'],
     'editViewModel':  ['#baseVM' ,'/edit/assets/models/EditViewModel.js' ],
 
@@ -14,7 +14,8 @@ depp.define({
 })
 
 depp.require(['baseVm', 'ui'], function() {
-    depp.require('cssBot')
+    console.log('ready')
+    depp.require('#cssBot')
 })
 
 depp.require('ui', function() {
@@ -36,9 +37,9 @@ depp.require('ui', function() {
         || sesPass === ''
         || sesPass === null) {
 
-            if (window.location.pathname !== '/edit/logonForm' && window.location.pathname !== '/edit//edit/logonForm') {
+            if (window.location.pathname !== '/edit/loginForm' && window.location.pathname !== '/edit/loginForm') {
                 console.info('User is not logged in, redirecting to login page ...');
-                window.location.replace('/edit')
+                window.location.replace('/edit/loginForm')
             }
     }//fi
 
