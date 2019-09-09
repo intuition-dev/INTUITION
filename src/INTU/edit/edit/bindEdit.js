@@ -4,10 +4,7 @@ var myCodeMirror = null;
 var editViewModel = null;
 
 
-depp.require('baseVm');
-depp.require('editViewModel');
-
-depp.require(['ui', 'scripts', 'fileUpload', 'editViewModel'], async function () {
+depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
   
     editViewModel = await EditViewModel.inst();
 
@@ -304,7 +301,7 @@ function _initCodeMirror(mode) {
 
     }
     window.myCodeMirror = CodeMirror.fromTextArea(
-        document.querySelector('#cms1'), {
+        document.querySelector('#edit1'), {
             mode: mode || 'markdown',
             lineNumbers: true,
             tabSize: 3,

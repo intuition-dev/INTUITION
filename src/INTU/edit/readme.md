@@ -1,3 +1,8 @@
+TODO:
+
+- lots of css files
+- upload to ownn pug and css
+
 # Setup Chrome extension to access WebAdmin editor from your site
 
 1. In Chrome browser go to **Chrome store**:

@@ -1,6 +1,8 @@
 extends /layout/layout
 
 block main
+    script(src='bindEdit.js')
+
     header
         .col-settings.container
             div
@@ -49,7 +51,7 @@ block main
                             i.icono-sync(title='Refresh')
                         .icon-wrap
                             i.i-plusCircle.disabled.create-post(title='Clone page')
-                    textarea#cms1(rows='400' )
+                    textarea#edit1(rows='400' )
                     div.errors.d-hide(data-js="errors").toast.toast-error.mt-2
                     .btns-wrap
                         button.save.btn-custom.btn-primary(href='#', disabled='disabled') save
@@ -81,4 +83,3 @@ block main
                 button(type='submit')
                     i.icono-checkCircle
     
-    script(src='bindPosts.js')

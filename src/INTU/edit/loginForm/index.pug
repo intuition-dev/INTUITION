@@ -1,5 +1,9 @@
-extends layout/layout
+extends /layout/layout
+
 block main
+	
+	script(src='bindLogin.js')
+
 	.login-bg
 		.login-wrapper
 			.login-form-wrap
@@ -55,4 +59,3 @@ block main
 						h1 Password hasn't been changed
 						p Something went wrong
 	
-	script(src='bindLogin.js')
