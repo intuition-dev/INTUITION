@@ -1,24 +1,26 @@
 
 depp.define({
     'scripts': [  '#jquery', '#DOM'],
-    'ui': [ '#scripts',  '#zebraDate', '#custel'],
+    'scripts2': [ '#scripts',  '#zebraDate', '#custel'],
     'codeEdit': [ 'codemirror', '#scripts', '//cdn.jsdelivr.net/npm/codemirror@5.48.0/keymap/sublime.js'],
     'cssBot':'/edit/assets/css/spectreBottom.css',
 
     'intuAPI': ['/intuAPI/IntuAPI.js'],
-    'baseVm': ['#RPC', '#intuAPI', '/edit/assets/models/BaseViewModel.js',  ],
-    'loginViewModel': ['#baseVM', '/edit/assets/models/LoginViewModel.js'],
-    'editViewModel':  ['#baseVM' ,'/edit/assets/models/EditViewModel.js' ],
+    'baseVM': ['#RPC', '#intuAPI', '/edit/assets/models/BaseViewModel.js',  ],
+    'loginViewModel': ['#baseVM',  '/edit/assets/models/LoginViewModel.js'],
+    'editViewModel':  ['#baseVM',  '/edit/assets/models/EditViewModel.js' ],
 
     'fileUpload': ['uppy'],
 })
 
-depp.require(['baseVm', 'ui'], function() {
-    console.log('ready')
+console.log('?')
+depp.require(['scripts2', 'baseVM'], function() {
+    console.log('READY')
     depp.require('#cssBot')
 })
 
-depp.require('ui', function() {
+depp.require('scripts2', function() {
+    console.log('scripts2')
     $('.user-name').text(sessionStorage.getItem('user_name'));
 
     $('.datepicker').Zebra_DatePicker();

@@ -25,7 +25,7 @@ depp.require('scripts', function() {
 
 })//depp
 
-depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
+depp.require(['scripts2', 'scripts', 'loginViewModel'], async function () {
     
     var loginViewModel = await LoginViewModel.inst();
 
