@@ -13,10 +13,9 @@ depp.define({
     'fileUpload': ['uppy'],
 })
 
-console.log('?')
 depp.require(['ui', 'baseVM'], function() {
     console.log('READY')
-    depp.require('#cssBot')
+    depp.require('cssBot')
 })
 
 depp.require('ui', function() {
