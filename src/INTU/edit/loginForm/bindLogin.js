@@ -1,15 +1,30 @@
-/**
-    Editor reset password
-**/
 
-depp.define({
-    'loginViewModel': [
-        '/edit/models/LoginViewModel.js'
-    ]
-});
 
-depp.require('baseVm');
-depp.require('loginViewModel');
+depp.require('scripts', function() {
+
+    // login form input lables animation
+    if ($('input[name="login"]:-webkit-autofill').length > 0) {
+        $('input[name="login"]').parents('.input-wrap').find('label').addClass('focus');
+    }
+    if ($('input[name="password"]:-webkit-autofill').length > 0) {
+        $('input[name="password"]').parents('.input-wrap').find('label').addClass('focus');
+    }
+
+    $('.login-form input').focus(function() {
+        var label = $(this).parents('.input-wrap').find('label');
+        if ($(this).val() === '') {
+            label.addClass('focus');
+        }
+    });
+
+    $('.login-form input').focusout(function() {
+        var label = $(this).parents('.input-wrap').find('label');
+        if ($(this).val() === '') {
+            label.removeClass('focus');
+        }
+    })
+
+})//depp
 
 depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
     

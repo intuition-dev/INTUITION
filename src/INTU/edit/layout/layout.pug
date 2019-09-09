@@ -9,11 +9,14 @@ html
             window.apiHost = location.hostname;
 
             window.appMount = window.location.origin;
+            
             window.siteName = 'MetaBake';
 
         link(rel='stylesheet', href= '/edit/assets/css/spectreTop.css')
+        script(src='/edit/assets/js/ui-loader.js')
 
     body
-        script(src='/edit/assets/js/ui-loader.js')
+        script.
+           toolBeltDefault() 
 
         block main

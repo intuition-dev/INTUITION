@@ -3,16 +3,12 @@
 var myCodeMirror = null;
 var editViewModel = null;
 
-depp.define({
-    'editViewModel': [
-        '/edit/models/EditViewModel.js'
-    ]
-});
 
 depp.require('baseVm');
 depp.require('editViewModel');
 
 depp.require(['ui', 'scripts', 'fileUpload', 'editViewModel'], async function () {
+  
     editViewModel = await EditViewModel.inst();
 
     initUpload();
@@ -286,28 +282,14 @@ depp.require(['ui', 'scripts', 'fileUpload', 'editViewModel'], async function ()
     $('.sign-out').on('click', function (e) {
         e.preventDefault();
         signOut();
-    });
+    })
 
-});
-
+})
 
 function loadTextarea() {
 
-    depp.define({
-        'codeEdit': [
-            '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.css',
-            '//cdn.jsdelivr.net/npm/codemirror@5.46.0/theme/solarized.css',
-
-            '//cdn.jsdelivr.net/npm/codemirror@5.46.0/lib/codemirror.min.js',
-            '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/markdown/markdown.js',
-            '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/yaml/yaml.js',
-            '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/pug/pug.js', 
-            '//cdn.jsdelivr.net/npm/codemirror@5.46.0/mode/css/css.js',
-            '//cdn.jsdelivr.net/npm/codemirror@5.46.0/keymap/sublime.js'
-        ]
-    });
-    
     depp.require('codeEdit', pgInit);
+
 }
     
 function pgInit() {
