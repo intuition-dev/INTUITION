@@ -1,7 +1,7 @@
 
 depp.define({
     'scripts': [  '#jquery', '#DOM'],
-    'scripts2': [ '#scripts',  '#zebraDate', '#custel'],
+    'ui': [ '#scripts',  '#zebraDate', '#pop-custel'],
     'codeEdit': [ 'codemirror', '#scripts', '//cdn.jsdelivr.net/npm/codemirror@5.48.0/keymap/sublime.js'],
     'cssBot':'/edit/assets/css/spectreBottom.css',
 
@@ -14,13 +14,13 @@ depp.define({
 })
 
 console.log('?')
-depp.require(['scripts2', 'baseVM'], function() {
+depp.require(['ui', 'baseVM'], function() {
     console.log('READY')
     depp.require('#cssBot')
 })
 
-depp.require('scripts2', function() {
-    console.log('scripts2')
+depp.require('ui', function() {
+    console.log('ui')
     $('.user-name').text(sessionStorage.getItem('user_name'));
 
     $('.datepicker').Zebra_DatePicker();
@@ -39,9 +39,9 @@ depp.require('scripts2', function() {
         || sesPass === ''
         || sesPass === null) {
 
-            if (window.location.pathname !== '/edit/loginForm' && window.location.pathname !== '/edit/loginForm') {
+            if (window.location.pathname !== '/edit/loginForm/' && window.location.pathname !== '/edit/loginForm/') {
                 console.info('User is not logged in, redirecting to login page ...');
-                window.location.replace('/edit/loginForm')
+                window.location.replace('/edit/loginForm/')
             }
     }//fi
 

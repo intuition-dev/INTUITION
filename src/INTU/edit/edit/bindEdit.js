@@ -4,7 +4,7 @@ var myCodeMirror = null;
 var editViewModel = null;
 
 
-depp.require([ 'scripts2', 'fileUpload', 'editViewModel'], async function () {
+depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
   
     editViewModel = await EditViewModel.inst();
 
