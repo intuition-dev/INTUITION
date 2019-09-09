@@ -1,3 +1,4 @@
+
 depp.require('scripts', function() {
 
     // login form input lables animation
@@ -21,7 +22,6 @@ depp.require('scripts', function() {
             label.removeClass('focus');
         }
     });
-
 
     $('.user-name').text(sessionStorage.getItem('user_name'));
 
@@ -47,4 +47,4 @@ depp.require('scripts', function() {
 
     }
 
-});
+})

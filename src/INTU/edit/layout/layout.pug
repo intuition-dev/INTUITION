@@ -1,2 +1,19 @@
-extends header
-block content
+doctype html
+html
+    head
+        include headFrag
+
+        script.
+            window.apiPort = location.port
+            window.apiProtocol = location.protocol.split(':')[0];
+            window.apiHost = location.hostname;
+
+            window.appMount = window.location.origin;
+            window.siteName = 'MetaBake';
+
+        link(rel='stylesheet', href= '/edit/assets/css/spectreTop.css')
+
+    body
+        script(src='/edit/assets/js/ui-loader.js')
+
+        block main

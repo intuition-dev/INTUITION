@@ -1,5 +1,6 @@
 extends /layout/layout
-block header
+
+block main
     header
         .col-settings.container
             div
@@ -9,9 +10,10 @@ block header
                     a(href='#').sign-out#sign-out Sign out 
                 li.user-name
 
-block content
+
     .loader.lds-css.ng-scope
         .text Deploying
+        
         .lds-ellipsis(style='width:100%;height:100%')
             div
                 div
@@ -23,6 +25,7 @@ block content
                 div
             div
                 div
+
     .page-content.container.edit-blog-page
         .columns
 
@@ -52,18 +55,22 @@ block content
                         button.save.btn-custom.btn-primary(href='#', disabled='disabled') save
                         a(href='#', target='_blank', disabled='disabled').js-view-page.btn-custom.btn-secondary
                             span view page
+        
         .notification.d-hide
             .text
+        
         form.post-name-wrap.d-hide
             label Enter new page name:
             .input-wrap
                 input(name='post-name', type='text', required)
                 button(type='submit')
                     i.icono-checkCircle
+        
         form(action='upload', method="post", encType="multipart/form-data").file-upload.dropzone.d-hide#file-upload
             | Select file:
             input#file-upload-input.file-upload-input(type='file', name='sampleFile', multiple='')
             input(type='submit')
+        
         form.publish-date-form.d-hide
             label Select date:
             .input-wrap

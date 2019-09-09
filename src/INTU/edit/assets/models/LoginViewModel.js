@@ -26,7 +26,7 @@ var LoginViewModel = (function (_super) {
         return new Promise(function (res, rej) {
             if (LoginViewModel._instance)
                 res(LoginViewModel._instance);
-            depp.require(['httpRPC', 'intuAPI'], function () {
+            depp.require(['RPC', 'intuAPI'], function () {
                 LoginViewModel._instance = new LoginViewModel(42);
                 LoginViewModel._instance.setup();
                 res(LoginViewModel._instance);

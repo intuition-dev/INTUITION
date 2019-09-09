@@ -26,7 +26,7 @@ var EditViewModel = (function (_super) {
         return new Promise(function (res, rej) {
             if (EditViewModel._instance)
                 res(EditViewModel._instance);
-            depp.require(['httpRPC', 'intuAPI'], function () {
+            depp.require(['RPC', 'intuAPI'], function () {
                 EditViewModel._instance = new EditViewModel(42);
                 EditViewModel._instance.setup();
                 res(EditViewModel._instance);
