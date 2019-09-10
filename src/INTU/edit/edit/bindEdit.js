@@ -6,6 +6,15 @@ var editViewModel = null;
 
 depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
   
+    // set the pop comp message
+    addEventListener('POP-CUSTEL', function (evt) {
+        const msg = evt.detail
+        //console.log(msg)
+        var old = window.myCodeMirror.getValue()
+        window.myCodeMirror.setValue(old + msg)
+    })//()
+    
+  
     editViewModel = await EditViewModel.inst();
 
     initUpload();
