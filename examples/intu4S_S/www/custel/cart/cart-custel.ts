@@ -7,8 +7,8 @@ depp.require(['poly-custel', 'mustache'], function () { // inside the require
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
       {{#items}}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.8/bootStrap/css/bootstrapTop.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.8/bootStrap/css/bootstrap.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.9/bootStrap/css/bootstrapTop.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.9/bootStrap/css/bootstrap.css">
       <div class="card d-flex row mb-2" itemId={{id}}>
          <div class="col-3">
             <img src={{image}} alt="Card image cap">

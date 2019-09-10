@@ -2,7 +2,7 @@
 depp.define({
     'scripts': [  '#jquery', '#DOM'],
     'ui': [ '#scripts',  '#zebraDate', '#pop-custel'],
-    'codeEdit': [ 'codemirror', '#scripts', '//cdn.jsdelivr.net/npm/codemirror@5.48.0/keymap/sublime.js'],
+    'codeEdit': [ '#codemirror', '#scripts', '//cdn.jsdelivr.net/npm/codemirror@5.48.0/keymap/sublime.js'],
     'cssBot':'/edit/assets/css/spectreBottom.css',
 
     'intuAPI': ['/intuAPI/IntuAPI.js'],
@@ -10,7 +10,7 @@ depp.define({
     'loginViewModel': ['#baseVM',  '/edit/assets/models/LoginViewModel.js'],
     'editViewModel':  ['#baseVM',  '/edit/assets/models/EditViewModel.js' ],
 
-    'fileUpload': ['uppy'],
+    'fileUpload': ['#uppy'],
 })
 
 depp.require(['ui', 'baseVM'], function() {
