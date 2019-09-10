@@ -6,7 +6,7 @@
   "main": "index.js",
   "engines": {
     "node": ">=12.9.1",
-    "npm": ">=6.11.2"
+    "npm": ">=6.11.3"
   },
   "dependencies": {
     "intu": ">=1.0.23",

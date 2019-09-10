@@ -101,6 +101,7 @@ var IntuAPI = (function () {
             editor_pass: pass
         });
     };
+    IntuAPI.prototype.getINTUVersion = function () { };
     IntuAPI.prototype.sendVcodEditor = function (email) {
         return this.serviceRPC.invoke('api', 'editors', 'emailResetPasswordCode', { admin_email: email })
             .then(function () {
