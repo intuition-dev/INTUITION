@@ -47,8 +47,6 @@ export class IntuApp extends ExpressRPC {
         this._run(intuPath)
     }//()
 
- 
-
     async _run(intuPath) {
         // order of routes: api, all intu apps, Web App
         console.log('running')

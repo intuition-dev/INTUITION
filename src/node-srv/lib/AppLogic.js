@@ -17,7 +17,7 @@ class Util {
 exports.Util = Util;
 class AppLogic {
     static veri() {
-        return 'v1.0.23';
+        return 'v1.9.11';
     }
     async autoBake(appPath, itemPath, fileName) {
         const meta = new Wa_1.MetaPro(appPath);

@@ -12,6 +12,7 @@ const logger = require('tracer').console()
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
     { name: 'help', alias: 'h', type: Boolean },
+    { name: 'version', alias: 'v', type: Boolean },
     { name: 'CRUD', alias: 'c', type: Boolean },
     { name: 'ShopShip', alias: 's', type: Boolean },
 ]
@@ -89,6 +90,8 @@ function help() {
 if (argsParsed.CRUD)
     unzipC()
 else if (argsParsed.help)
+    help()
+else if (argsParsed.version)
     help()
 else if (argsParsed.ShopShip)
     unzipSS()
