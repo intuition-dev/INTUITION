@@ -13,13 +13,12 @@ const mainIApp = new IntuApp(idb, ['*'])
 
 async function  runISrv() {
 
+   const setupDone = await idb.isSetupDone()
+   logger.trace('?', setupDone)
+   
    let intuPath = Util.intuPath + '/node_modules/intu/INTU'
    logger.trace(intuPath)
 
-   const setupDone = await idb.isSetupDone()
-
-   logger.trace('?', setupDone)
-   
    if (setupDone) {
        logger.trace('normal')
        await mainIApp.run(intuPath)

@@ -2,7 +2,6 @@
 import { BaseDB } from 'mbake/lib/BaseDB'
 const logger = require('tracer').console()
 
-
 /**
  * Example CRUD DB: to discuss topics
  */
@@ -11,6 +10,11 @@ export class CDB extends BaseDB { // FTS support
    constructor(path, fn) {
       super(path, fn)
       this.con()
+   }
+
+   async isSetupDone():Promise<boolean> {
+
+      return null
    }
 
    async init() {

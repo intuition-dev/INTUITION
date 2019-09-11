@@ -4,10 +4,10 @@ const bcrypt = require('bcryptjs') // to hash passwords
 const fs = require('fs-extra')
 const logger = require('tracer').console()
 
-import { BaseDB } from 'mbake/lib/BaseDB'
+import { BaseDB, iDB } from 'mbake/lib/BaseDB'
 import { iAuth } from 'mbake/lib/Serv'
 
-export class IDB extends BaseDB {
+export class IDB extends BaseDB implements iDB {
 
     protected salt
 
