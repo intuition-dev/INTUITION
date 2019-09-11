@@ -26,26 +26,9 @@ class IDB extends BaseDB_1.BaseDB {
             return false;
         }
     }
-    async tableExists(tab) {
-        try {
-            this.con();
-            const qry = this.db.prepare("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab);
-            const rows = await this._qry(qry);
-            logger.trace('exits?', rows);
-            const row = rows[0];
-            if (row.name == tab)
-                return true;
-            return false;
-        }
-        catch (err) {
-            return false;
-        }
-    }
     async _init() {
         this.con();
         logger.trace(this.path, this.fn);
-        if (!this.dbExists())
-            return false;
         const created = await this.tableExists('CONFIG');
         logger.trace('IDB tables exist', created);
         if (created) {

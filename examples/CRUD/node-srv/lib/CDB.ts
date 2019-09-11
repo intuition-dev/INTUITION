@@ -13,18 +13,18 @@ export class CDB extends BaseDB implements iDB { // FTS support
    }
 
    async isSetupDone():Promise<boolean> {
-      
+
       console.log('init')
       if(this.dbExists())  {
-         // if db exists, connect an exit
+            // if db exists, connect an exit
             this.con()
+            logger.trace('exists')
          return
       }//fi
-      if(!(this.db)) {
-         console.log('no connection made')
-         this.con()
-      }//fi
 
+      logger.trace('new')
+      this.con()
+  
       // In this case we are not using normal SQL, but FTS! Likely you should use regular SQL. You should use a regular SQL table if you will not need FTS
       const tstmt =  this.db.prepare(`CREATE VIRTUAL TABLE TOPIC using fts5(
          guid UNINDEXED
@@ -40,7 +40,8 @@ export class CDB extends BaseDB implements iDB { // FTS support
       let topics = 'vic needs to do a code review of design; review other tasks in company; schedule vacation'
       await this.insert( guid, name, topics )
       await this.insert('abc', 'tom', 'oops, nothing to talk about')
-      
+      logger.trace('###############################################################################################################')
+   
    }//()
 
    

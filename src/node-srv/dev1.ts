@@ -25,8 +25,6 @@ async function test(name, f) {
 async function testIDB() {
    console.log('testIDB:')
 
-   await test('dbExists', () => idb.dbExists())
-
    await test('getSalt', () => idb.getSalt())
 
    await test(`setAppPath('appPath')`, () => idb.setAppPath('appPath'))

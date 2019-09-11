@@ -38,29 +38,12 @@ export class IDB extends BaseDB implements iDB {
         }
     }//()
 
-    async tableExists(tab): Promise<any> { 
-        try {
-        this.con()
-
-        const qry = this.db.prepare("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab)
-        const rows = await this._qry(qry)
-        logger.trace('exits?', rows)
-        const row = rows[0]
-        if(row.name == tab) return true
-        return false
-        } catch(err) {
-            return false
-        }
-    }//()
-
+    
     protected async _init(): Promise<boolean> {
         this.con()
 
         // if db exists
         logger.trace(this.path, this.fn)
-  
-        if(!this.dbExists())
-            return false
     
         const created:boolean = await this.tableExists('CONFIG')
         logger.trace('IDB tables exist', created)
