@@ -35,19 +35,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 console.log('ui binding');
-depp.require(['poly'], onPoly);
 depp.define({ 'CRUD': ['/models/CRUD1ViewModel.js'] });
+depp.require(['poly'], onPoly);
 function onPoly() {
     depp.require('CRUD');
 }
-var vm;
-loadVexAlertFlat();
 depp.require(['tabulator', 'DOM', 'poly', 'jquery'], tab1);
+depp.require(['gridformsDefaultStyle', 'jquery'], function () {
+    console.log('gform', Date.now() - _start);
+    $('.blurF').removeClass('blurF');
+    depp.require('tabulatorDefaultStyle');
+});
+var vm;
 function tab1() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, CRUDvm.inst()];
+                case 0:
+                    loadVexAlertFlat();
+                    return [4, CRUDvm.inst()];
                 case 1:
                     vm = _a.sent();
                     vm._all();
@@ -88,12 +94,6 @@ function tab1() {
         });
     });
 }
-depp.require('tabulatorDefaultStyle');
-depp.require(['gridformsDefaultStyle', 'jquery'], function () {
-    console.log('gform', Date.now() - _start);
-    $('.blurF').removeClass('blurF');
-    depp.require('tabulatorDefaultStyle');
-});
 function onGotData(evt) {
     console.log('gotData');
     window.table1.setData(evt).then(function () {

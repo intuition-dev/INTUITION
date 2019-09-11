@@ -9,19 +9,29 @@ declare var $
 console.log('ui binding')
 // required dependencies  are in each script
 
-depp.require(['poly'], onPoly)
 depp.define({ 'CRUD': ['/models/CRUD1ViewModel.js'] })
+
+depp.require(['poly'], onPoly)
 function onPoly() {
    // view model(VM) load ASAP
    depp.require('CRUD')
 }
 
+depp.require(['tabulator', 'DOM', 'poly', 'jquery'], tab1)
+
+depp.require(['gridformsDefaultStyle', 'jquery'], function () {
+   console.log('gform', Date.now() - _start)
+   $('.blurF').removeClass('blurF')
+   depp.require('tabulatorDefaultStyle')
+})
+
+
+var vm
 // data binding to VM
 // setup tabulator
-var vm
-loadVexAlertFlat()
-depp.require(['tabulator', 'DOM', 'poly', 'jquery'], tab1)
+
 async function tab1() {
+   loadVexAlertFlat()
 
    //encapsulation start
    vm = await CRUDvm.inst()
@@ -67,13 +77,6 @@ async function tab1() {
    })
 
 }//()
-depp.require('tabulatorDefaultStyle')
-
-depp.require(['gridformsDefaultStyle', 'jquery'], function () {
-   console.log('gform', Date.now() - _start)
-   $('.blurF').removeClass('blurF')
-   depp.require('tabulatorDefaultStyle')
-})
 
 // binding step 2:
 function onGotData(evt) {
