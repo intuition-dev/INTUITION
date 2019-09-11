@@ -1,11 +1,11 @@
 
-import { BaseDB } from 'mbake/lib/BaseDB'
+import { BaseDB, iDB } from 'mbake/lib/BaseDB'
 const logger = require('tracer').console()
 
 /**
  * Example CRUD DB: to discuss topics
  */
-export class CDB extends BaseDB { // FTS support
+export class CDB extends BaseDB implements iDB { // FTS support
 
    constructor(path, fn) {
       super(path, fn)
@@ -13,11 +13,7 @@ export class CDB extends BaseDB { // FTS support
    }
 
    async isSetupDone():Promise<boolean> {
-
-      return null
-   }
-
-   async init() {
+      
       console.log('init')
       if(this.dbExists())  {
          // if db exists, connect an exit
@@ -47,6 +43,7 @@ export class CDB extends BaseDB { // FTS support
       
    }//()
 
+   
    async insert(guid, name, topics) {
       const stmt =  this.db.prepare(`INSERT INTO TOPIC(guid, name, topics) VALUES( ?, ?, ?)`)
       await this._run(stmt, guid, name, topics )

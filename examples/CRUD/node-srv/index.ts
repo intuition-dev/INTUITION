@@ -11,6 +11,32 @@ const idb = new IDB('.', '/IDB.sqlite')
 
 const mainIApp = new IntuApp(idb, ['*'])
 
+
+async function app() {
+   // app ////////////////////////////////////
+   const cdb = new CDB('.', '/CDB.sqlite')
+
+   const setupDone = await cdb.isSetupDone()
+
+   //api
+   const cRouter = new CrudPgRouter(cdb)
+
+   mainIApp.handleRRoute('capi', 'CRUD1Pg', cRouter.route.bind(cRouter))
+
+   //www
+   mainIApp.serveStatic('..' + '/www')
+
+   //catch all
+   mainIApp.appInst.all('*', function (req, resp) {
+      const path = req.path
+      logger.trace('no route', path)
+      resp.json({'No route': path })
+   })
+
+   // start ////////////////////////////////////////////////////////
+   mainIApp.listen(8080)
+}
+
 async function  runISrv() {
 
    const setupDone = await idb.isSetupDone()
@@ -32,26 +58,5 @@ async function  runISrv() {
 
    app()
 }
+
 runISrv()
-
-function app() {
-   // app ////////////////////////////////////
-   const cdb = new CDB('.', '/CDB.sqlite')
-
-   //api
-   const cRouter = new CrudPgRouter(cdb)
-   mainIApp.handleRRoute('capi', 'CRUD1Pg', cRouter.route.bind(cRouter))
-
-   //www
-   mainIApp.serveStatic('..' + '/www')
-
-   //catch all
-   mainIApp.appInst.all('*', function (req, resp) {
-      const path = req.path
-      logger.trace('no route', path)
-      resp.json({'No route': path })
-   })
-
-   // start ////////////////////////////////////////////////////////
-   mainIApp.listen(8080)
-}
