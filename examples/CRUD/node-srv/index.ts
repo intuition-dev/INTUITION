@@ -19,8 +19,6 @@ async function app() {
    const setupDone = await cdb.isSetupDone()
    logger.trace('app', setupDone)
    
-   if(true) return
-
    //api
    const cRouter = new CrudPgRouter(cdb)
 

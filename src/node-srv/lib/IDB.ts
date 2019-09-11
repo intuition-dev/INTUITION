@@ -18,7 +18,6 @@ export class IDB extends BaseDB implements iDB {
 
     async isSetupDone():Promise<boolean> {
         try {
-    
             await this._init() // do the init
             
             await this.getSalt()

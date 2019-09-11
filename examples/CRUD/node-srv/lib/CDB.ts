@@ -13,14 +13,16 @@ export class CDB extends BaseDB implements iDB { // FTS support
    }
 
    async isSetupDone():Promise<boolean> {
+      this.con()
 
       console.log('init')
-      if(this.dbExists())  {
-            // if db exists, connect an exit
-            this.con()
+      let exists = await this.tableExists('TOPIC')
+
+      if(exists)  {
             logger.trace('exists')
          return
       }//fi
+
 
       logger.trace('new')
       this.con()
