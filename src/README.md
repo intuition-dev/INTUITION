@@ -25,6 +25,9 @@ In a future with increasing automation, citizen-developers have become more wide
 
 ### Easy
 
+<img src="https://github.com/intuition-dev/INTUITION/raw/master/src/intu.png" width="100%"/>
+
+
 We have open source low-code with static generation with the ability to add a ‘WebAdmin’ editor to INTUITION.DEV and your application. Once a professional developer writes and sets up Version 1 of the app, end-users can be enabled to maintain the app and possibly write the next version of the app. As the business needs change, the resulting evergreen web app is always aligned to the business.
 
 You can write any and every kind of app, since we generate HTML, javascript an css. Our main language is Pug, if you have not seen Pug before, here is a quick intro to Pug:
