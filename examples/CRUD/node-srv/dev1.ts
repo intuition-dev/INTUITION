@@ -6,7 +6,7 @@ const logger = require('tracer').console()
 const perfy = require('perfy')
 
 
-const cdb = new CDB('.', '/CDB.sqlite')
+const cdb = new CDB(process.cwd(), '/CDB.sqlite')
 
 //cdb.init()
 

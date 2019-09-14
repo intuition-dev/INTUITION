@@ -6,7 +6,7 @@ const perfy = require('perfy')
 import { IDB } from './lib/IDB'
 import { AppLogic } from './lib/AppLogic'
 
-const idb =new IDB('.','/test.sqlite')
+const idb =new IDB(process.cwd(),'/test.sqlite')
 
 idb.isSetupDone()//.then(testIDB) //then(testAppLogic)
 

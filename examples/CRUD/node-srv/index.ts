@@ -7,14 +7,14 @@ const logger = require('tracer').console()
 
 // intu /////////////////////////////////////////
 
-const idb = new IDB('.', '/IDB.sqlite')
+const idb = new IDB(process.cwd(), '/IDB.sqlite')
 
 const mainIApp = new IntuApp(idb, ['*'])
 
 
 async function app() {
    // app ////////////////////////////////////
-   const cdb = new CDB('.', '/CDB.sqlite')
+   const cdb = new CDB(process.cwd(), '/CDB.sqlite')
 
    const setupDone = await cdb.isSetupDone()
    logger.trace('app', setupDone)
