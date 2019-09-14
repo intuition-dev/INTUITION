@@ -40,7 +40,7 @@ async function  runISrv() {
     console.log("TCL: hostIP", hostIP)
 
     // the only place there is DB new is here.
-    const idb = new IDB(__dirname, '/IDB.sqlite')
+    const idb = new IDB('.', '/IDB.sqlite')
 
     const mainEApp = new IntuApp(idb, ['*'])
 
