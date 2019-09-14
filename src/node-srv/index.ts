@@ -40,11 +40,11 @@ async function  runISrv() {
     console.log("TCL: hostIP", hostIP)
 
     // the only place there is DB new is here.
-    const idb = new IDB(Util.intuPath, '/IDB.sqlite')
+    const idb = new IDB(__dirname, '/IDB.sqlite')
 
     const mainEApp = new IntuApp(idb, ['*'])
 
-    let intuPath = Util.intuPath + '/INTU'
+    let intuPath = Util.appPath + '/INTU'
     logger.trace(intuPath)
 
     const setupDone = await idb.isSetupDone()
@@ -65,7 +65,7 @@ async function  runISrv() {
 
         // #3 
         const port: number = 9081
-        mainEApp.serveStatic(Util.intuPath + '/ROOT')
+        mainEApp.serveStatic(Util.appPath + '/ROOT')
         mainEApp.listen(port)
     }//fi
 

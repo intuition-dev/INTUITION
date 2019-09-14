@@ -4,7 +4,7 @@ const Wa_1 = require("mbake/lib/Wa");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const fs = require("fs-extra");
 class Util {
-    static get intuPath() {
+    static get appPath() {
         let appPath = require('require-main-filename')();
         let i = appPath.lastIndexOf('/');
         i = appPath.lastIndexOf('/');
@@ -17,7 +17,7 @@ class Util {
 exports.Util = Util;
 class AppLogic {
     static veri() {
-        return 'v1.9.12';
+        return 'v1.9.14';
     }
     async autoBake(appPath, itemPath, fileName) {
         const meta = new Wa_1.MetaPro(appPath);

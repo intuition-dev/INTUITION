@@ -31,9 +31,9 @@ async function runISrv() {
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
-    const idb = new IDB_1.IDB(AppLogic_2.Util.intuPath, '/IDB.sqlite');
+    const idb = new IDB_1.IDB(__dirname, '/IDB.sqlite');
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*']);
-    let intuPath = AppLogic_2.Util.intuPath + '/INTU';
+    let intuPath = AppLogic_2.Util.appPath + '/INTU';
     logger.trace(intuPath);
     const setupDone = await idb.isSetupDone();
     logger.trace(setupDone);
@@ -50,7 +50,7 @@ async function runISrv() {
         logger.trace('run setup');
         await mainEApp.run(intuPath);
         const port = 9081;
-        mainEApp.serveStatic(AppLogic_2.Util.intuPath + '/ROOT');
+        mainEApp.serveStatic(AppLogic_2.Util.appPath + '/ROOT');
         mainEApp.listen(port);
     }
 }

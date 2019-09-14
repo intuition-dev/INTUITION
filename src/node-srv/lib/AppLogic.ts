@@ -5,7 +5,7 @@ import fs = require('fs-extra')
 
 export class Util  {
 
-    static get intuPath(): string {
+    static get appPath(): string {
         let appPath: string = require('require-main-filename')()
         let i: number = appPath.lastIndexOf('/')
         i = appPath.lastIndexOf('/')
@@ -21,7 +21,7 @@ export class Util  {
 export class AppLogic {
     
     static veri() {
-        return 'v1.9.12'
+        return 'v1.9.14'
     }
     async autoBake(appPath, itemPath, fileName) {
         const meta = new MetaPro(appPath)

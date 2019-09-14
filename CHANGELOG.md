@@ -1,3 +1,5 @@
+#### 1.09.14
+- DB created in current directory
 
 #### 1.09.12
 - release w/ iDB interface
