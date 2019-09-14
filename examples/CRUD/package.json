@@ -11,7 +11,7 @@
   },
   
   "dependencies": {
-    "intu": ">=1.9.14",
+    "intu": ">=1.9.18",
     "sqlite3": ">=4.1.0"
   },
   "devDependencies": {
