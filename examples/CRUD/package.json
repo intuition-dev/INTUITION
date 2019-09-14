@@ -4,12 +4,10 @@
   "description": "CRUD example",
   "private": true,
   "main": "index.js",
-  
   "engines": {
     "node": ">=12.10.0",
     "npm": ">=6.11.3"
   },
-  
   "dependencies": {
     "intu": ">=1.9.18",
     "sqlite3": ">=4.1.0"
