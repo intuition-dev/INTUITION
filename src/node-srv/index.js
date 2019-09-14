@@ -31,7 +31,7 @@ async function runISrv() {
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
-    const idb = new IDB_1.IDB(__dirname, '/IDB.sqlite');
+    const idb = new IDB_1.IDB(process.cwd(), '/IDB.sqlite');
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*']);
     let intuPath = AppLogic_2.Util.appPath + '/INTU';
     logger.trace(intuPath);
