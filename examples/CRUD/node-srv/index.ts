@@ -43,7 +43,7 @@ async function  runISrv() {
    const setupDone = await idb.isSetupDone()
    logger.trace('?', setupDone)
    
-   let intuPath = Util.intuPath + '/node_modules/intu/INTU'
+   let intuPath = Util.appPath + '/node_modules/intu/INTU'
    logger.trace(intuPath)
 
    if (setupDone) {

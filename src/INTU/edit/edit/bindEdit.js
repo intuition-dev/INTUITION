@@ -235,8 +235,8 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
                 window.pathPrefixPdate = "\/";
             }
         }
-
-    });
+    })
+    
     $(window).click(function() {
         $('.publish-date-form').addClass('d-hide');
     });

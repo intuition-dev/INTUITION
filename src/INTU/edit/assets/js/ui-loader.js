@@ -2,7 +2,9 @@
 depp.define({
     'scripts': [  '#jquery', '#DOM'],
 
-    'ui': [ '#scripts',  '#zebraDate', '#pop-custel'],
+    'pop-custelX': ['https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.15/custel/pop/custel/pop-custel.js'],
+
+    'ui': [ '#scripts',  '#zebraDate', '#pop-custelX'],
     
     'codeEdit': [ '#codemirror', '#scripts', '//cdn.jsdelivr.net/npm/codemirror@5.48.4/keymap/sublime.js'],
     'cssBot':'/edit/assets/css/spectreBottom.css',
