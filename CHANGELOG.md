@@ -1,3 +1,6 @@
+#### 1.09.19
+- Bump mbake for CDN cache
+
 #### 1.09.18
 - DB created in current directory
 
