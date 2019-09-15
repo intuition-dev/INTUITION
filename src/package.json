@@ -7,7 +7,7 @@
         "intu": "./node-srv/index.js"
     },
     "scripts": {
-        "preinstall11": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
+        "preinstall11": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use yarn to install, npm is not supported')\""
     },
     "license": "MIT",
     "author": "http://www.INTUITION.DEV",
@@ -24,7 +24,7 @@
     ],
     "engines": {
         "node": ">=10.16.3",
-        "npm": ">=6.10.3"
+        "yarn": ">=1.17.3"
     },
     "dependencies": {
         "bcryptjs": ">=2.4.3",

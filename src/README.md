@@ -48,10 +48,10 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 
 2. Then install the INTUITION.DEV tool:
     ```
-    npm i -g intu
+    yarn global add intu
     intu
     ```
-    or you can use yarn instead of npm anytime.
+    or you can use npm instead of yarn anytime.
 
 3. Setup configurations in the browser window `:9081/setup`
    Remember your admin email and password.
