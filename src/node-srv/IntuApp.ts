@@ -65,7 +65,7 @@ export class IntuApp extends ExpressRPC {
         })
 
         // 2 INTU
-        this.serveStatic(intuPath)
+        this.serveStatic(intuPath,null, null)
 
     }//()
 

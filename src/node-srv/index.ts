@@ -51,21 +51,23 @@ async function  runISrv() {
     logger.trace(setupDone)
     if (setupDone) {
         logger.trace('normal')
+        // 1 and 2
         await mainEApp.run(intuPath)
 
-        // #3
+        // #3 app
         const port: number = await idb.getPort()
         idb.getAppPath().then(appPath => {
-            mainEApp.serveStatic(appPath)
+            mainEApp.serveStatic(appPath, null, null)
             mainEApp.listen(port)
         })
     } else {
         logger.trace('run setup')
+        // 1 and 2
         await mainEApp.run(intuPath)
 
-        // #3 
+        // #3 app
         const port: number = 9081
-        mainEApp.serveStatic(Util.appPath + '/ROOT')
+        mainEApp.serveStatic(Util.appPath + '/ROOT', null, null)
         mainEApp.listen(port)
     }//fi
 

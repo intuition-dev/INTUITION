@@ -43,7 +43,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         this.appInst.get('/iver', (req, res) => {
             return res.send(AppLogic_1.AppLogic.veri);
         });
-        this.serveStatic(intuPath);
+        this.serveStatic(intuPath, null, null);
     }
 }
 exports.IntuApp = IntuApp;

@@ -42,7 +42,7 @@ async function runISrv() {
         await mainEApp.run(intuPath);
         const port = await idb.getPort();
         idb.getAppPath().then(appPath => {
-            mainEApp.serveStatic(appPath);
+            mainEApp.serveStatic(appPath, null, null);
             mainEApp.listen(port);
         });
     }
@@ -50,7 +50,7 @@ async function runISrv() {
         logger.trace('run setup');
         await mainEApp.run(intuPath);
         const port = 9081;
-        mainEApp.serveStatic(AppLogic_2.Util.appPath + '/ROOT');
+        mainEApp.serveStatic(AppLogic_2.Util.appPath + '/ROOT', null, null);
         mainEApp.listen(port);
     }
 }
