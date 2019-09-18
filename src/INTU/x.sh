@@ -1,7 +1,7 @@
 mbake .
 mbake -t .
-mbake-x -c .
+mbakex -c .
 mbake -s admin/assets
 mbake -s edit/assets
 mbake -s setup/assets
-mbake-x -w . -p 3007 -r 9877
+mbakex -w . -p 3007 -r 9877

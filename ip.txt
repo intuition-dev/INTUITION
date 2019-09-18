@@ -1,0 +1,14 @@
+
+Examples and use is MIT.
+
+Except modifying directly these, they are LGPL-3:
+- CLI tool source
+- ViewModel interface and design
+- API that calls baseCMS 
+- SPA router
+- HTTP-RPC
+- MetaCake
+- ToolBelt
+
+Idea is that you would offer bug fixes back to MetaBake.org as Pull Requests so we all get better.
+

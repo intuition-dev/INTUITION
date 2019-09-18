@@ -7,7 +7,7 @@
 - Cake components: https://github.com/metabake/metaCake/tree/master/src
 
 - Intuition WebAdmin, and API: https://github.com/intuition-dev/INTUITION/tree/master/src
-- CLI mbake-x: https://github.com/metabake/mbakeAdvanced/tree/master/mbake-x
+- CLI mbakex: https://github.com/metabake/mbakeAdvanced/tree/master/mbakex
 - CLI: https://github.com/metabake/mBakeCLI/tree/master/src
 
 
