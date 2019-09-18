@@ -67,7 +67,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
     ```
     intu -c
     cd CRUD
-    npm i
+    yarn
     ```
 
 ### Full train-the-trainer training incudes:
