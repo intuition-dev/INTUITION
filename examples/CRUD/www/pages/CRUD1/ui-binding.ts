@@ -35,6 +35,8 @@ async function tab1() {
 
    //encapsulation start
    vm = await CRUDvm.inst()
+   console.log('TTT')
+
    vm._all() // call some method, mostly data
    //encapsulation end
 

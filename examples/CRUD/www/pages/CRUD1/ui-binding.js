@@ -56,6 +56,7 @@ function tab1() {
                     return [4, CRUDvm.inst()];
                 case 1:
                     vm = _a.sent();
+                    console.log('TTT');
                     vm._all();
                     console.log('tabulator', Date.now() - _start);
                     window.table1 = new Tabulator('#table1', {
