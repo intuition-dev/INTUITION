@@ -6,11 +6,7 @@ import { BaseDB } from 'mbake/lib/BaseDB'
 export class SDB extends BaseDB {
 
     async init(): Promise<any> {
-        if (this.dbExists()) {
-            // if db exists, connect an exit
-            this.con()
-            return
-        }//fi
+  
         if (!(this.db)) {
             console.log('no connection made')
             this.con()

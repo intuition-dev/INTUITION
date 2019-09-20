@@ -1,5 +1,5 @@
 
-import { Stripe } from './routes/routes'
+import { Stripe } from './handlers/Handler'
 import { ExpressRPC } from "mbake/lib/Serv"
 import { PaidHook } from './lib/PaidHook';
 import { SDB } from './lib/SDB';

@@ -1,4 +1,4 @@
-import { CrudPgRouter } from './routes/Routers'
+import { CrudPgHandler } from './handlers/Handlers'
 import { IntuApp } from 'intu/node-srv/IntuApp'
 import { IDB } from     'intu/node-srv/lib/IDB'
 import { Util } from 'intu/node-srv/lib/AppLogic'
@@ -20,12 +20,12 @@ async function app() {
    logger.trace('app', setupDone)
    
    //api
-   const cRouter = new CrudPgRouter(cdb)
+   const cRouter = new CrudPgHandler(cdb)
 
    mainIApp.handleRRoute('capi', 'CRUD1Pg', cRouter.route.bind(cRouter))
 
    //www
-   mainIApp.serveStatic('..' + '/www')
+   mainIApp.serveStatic('..' + '/www', null, null)
 
    //catch all
    mainIApp.appInst.all('*', function (req, resp) {

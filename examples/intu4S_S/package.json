@@ -10,12 +10,12 @@
     "yarn": ">=1.17.3"
   },
   "dependencies": {
-    "intu": ">=1.0.21",
+    "intu": ">=1.9.20",
     "sqlite3": ">=4.1.0",
-    "stripe": ">=7.8.0"
+    "stripe": ">=7.9.1"
   },
   "devDependencies": {
-    "@types/node": ">=12.7.2",
-    "pubnub": ">=4.25.0"
+    "@types/node": ">=12.7.5",
+    "pubnub": ">=4.26.0"
   }
 }

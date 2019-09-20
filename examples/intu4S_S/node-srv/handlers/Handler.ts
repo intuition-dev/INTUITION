@@ -49,7 +49,7 @@ export class Stripe extends BaseRPCMethodHandler {
       console.log("TCL: Stripe -> createSession -> session", session)
 
       await this.db.saveSession(session.id, session.payment_intent, address, items_g)
-      this.ret(resp, session);
+      this.ret(resp, session, null, null)
    }
 }
 

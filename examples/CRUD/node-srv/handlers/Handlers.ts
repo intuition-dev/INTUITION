@@ -3,7 +3,7 @@ import { CDB } from '../lib/CDB'
 const logger = require('tracer').console()
 import { BaseRPCMethodHandler, iAuth } from 'mbake/lib/Serv'
 
-export class CrudPgRouter extends BaseRPCMethodHandler {
+export class CrudPgHandler extends BaseRPCMethodHandler {
 
    cdb
 
@@ -14,13 +14,13 @@ export class CrudPgRouter extends BaseRPCMethodHandler {
 
    async selectAll(resp, params, user, pswd) {
       let data = await this.cdb.selectAll()
-      this.ret(resp, data)
+      this.ret(resp, data, null, null)
    }//()
 
    async selectOne(resp, params, user, pswd) {
       let id = params.id
       let data = await this.cdb.selectGUID(id)
-      this.ret(resp, data)
+      this.ret(resp, data, null, null)
    }//()
 
    async insert(resp, params, user, pswd) {
@@ -29,11 +29,11 @@ export class CrudPgRouter extends BaseRPCMethodHandler {
       let topics= params.topics
 
       let data = await this.cdb. insert(guid, name, topics)
-      this.ret(resp, data)
+      this.ret(resp, data, null, null)
    }//()
 
 }//class
 
 module.exports = {
-   CrudPgRouter
+   CrudPgHandler
 }
