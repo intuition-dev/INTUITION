@@ -1,9 +1,9 @@
 
 import { ExpressRPC } from 'mbake/lib/Serv'
 
-import { EditorRoutes } from './routes/editorRoutes'
-import { AdminRoutes } from './routes/adminRoutes'
-import { UploadRoute } from './routes/uploadRoute'
+import { EditorHandler } from './handlers/editorHandler'
+import { AdminHandler } from  './handlers/adminHandler'
+import { UploadHandler } from './handlers/uploadHandler'
 const logger = require('tracer').console()
 
 import { IDB } from './lib/IDB';
@@ -22,7 +22,7 @@ export class IntuApp extends ExpressRPC {
         this.makeInstance(origins)
 
         this.db = db
-        this.uploadRoute = new UploadRoute(this.db)
+        this.uploadRoute = new UploadHandler(this.db)
 
         VersionNag.isCurrent('intu', AppLogic.veri()).then(function (isCurrent_: boolean) {
             try {
@@ -47,11 +47,11 @@ export class IntuApp extends ExpressRPC {
     }//()
 
     async _run(intuPath) {
-        // order of routes: api, all intu apps, Web App
+        // order of Handler: api, all intu apps, Web App
         console.log('running')
         //1 API
-        const ar = new AdminRoutes(this.db)
-        const er = new EditorRoutes(this.db)
+        const ar = new AdminHandler(this.db)
+        const er = new EditorHandler(this.db)
 
         this.handleRRoute('admin', 'admin', ar.route.bind(ar))
         this.handleRRoute('api', 'editors', er.route.bind(er))

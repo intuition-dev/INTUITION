@@ -4,7 +4,7 @@ import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
 import { Email } from 'mbake/lib/Email'
 import { IDB } from '../lib/IDB'
 
-export class SetupRoutes extends BaseRPCMethodHandler {
+export class SetupHandler extends BaseRPCMethodHandler {
 
     db: IDB
     emailJs = new Email()
@@ -31,11 +31,11 @@ export class SetupRoutes extends BaseRPCMethodHandler {
             let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
             this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
         
-            this.ret(resp, 'OK')
+            this.ret(resp, 'OK', null, null)
         } catch (err) {
 
             console.warn(err)
-            this.retErr(resp, err)
+            this.retErr(resp, err, null, null)
         }
      
     

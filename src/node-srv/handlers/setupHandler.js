@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
 const Email_1 = require("mbake/lib/Email");
-class SetupRoutes extends Serv_1.BasePgRouter {
+class SetupHandler extends Serv_1.BaseRPCMethodHandler {
     constructor(db) {
         super();
         this.emailJs = new Email_1.Email();
@@ -20,12 +20,12 @@ class SetupRoutes extends Serv_1.BasePgRouter {
             console.info('db created  ...');
             let msg = 'Hi, your email and password are registered as login credentials for WebAdmin!';
             this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
-            this.ret(resp, 'OK');
+            this.ret(resp, 'OK', null, null);
         }
         catch (err) {
             console.warn(err);
-            this.retErr(resp, err);
+            this.retErr(resp, err, null, null);
         }
     }
 }
-exports.SetupRoutes = SetupRoutes;
+exports.SetupHandler = SetupHandler;

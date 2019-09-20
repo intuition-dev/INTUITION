@@ -1,7 +1,7 @@
 
 import { IDB } from './lib/IDB'
 import { Email } from 'mbake/lib/Email'
-import { SetupRoutes } from './routes/setupRoutes';
+import { SetupHandler } from './handlers/setupHandler';
 import { IntuApp } from './IntuApp'
 
 
@@ -18,7 +18,7 @@ export class Setup {
 
    setup() {
 
-      const sr = new SetupRoutes(this.db)
+      const sr = new SetupHandler(this.db)
       this.app.handleRRoute('setup', 'setup', sr.route.bind(sr) )
 
    }

@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
-const editorRoutes_1 = require("./routes/editorRoutes");
-const adminRoutes_1 = require("./routes/adminRoutes");
-const uploadRoute_1 = require("./routes/uploadRoute");
+const editorHandler_1 = require("./handlers/editorHandler");
+const adminHandler_1 = require("./handlers/adminHandler");
+const uploadHandler_1 = require("./handlers/uploadHandler");
 const logger = require('tracer').console();
 const Setup_1 = require("./Setup");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
@@ -13,7 +13,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         super();
         this.makeInstance(origins);
         this.db = db;
-        this.uploadRoute = new uploadRoute_1.UploadRoute(this.db);
+        this.uploadRoute = new uploadHandler_1.UploadHandler(this.db);
         FileOpsExtra_1.VersionNag.isCurrent('intu', AppLogic_1.AppLogic.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
@@ -35,8 +35,8 @@ class IntuApp extends Serv_1.ExpressRPC {
     }
     async _run(intuPath) {
         console.log('running');
-        const ar = new adminRoutes_1.AdminRoutes(this.db);
-        const er = new editorRoutes_1.EditorRoutes(this.db);
+        const ar = new adminHandler_1.AdminHandler(this.db);
+        const er = new editorHandler_1.EditorHandler(this.db);
         this.handleRRoute('admin', 'admin', ar.route.bind(ar));
         this.handleRRoute('api', 'editors', er.route.bind(er));
         this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute));

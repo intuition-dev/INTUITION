@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
-class UploadRoute {
+class UploadHandler {
     constructor(IDB) {
         this.db = IDB;
     }
@@ -25,4 +25,4 @@ class UploadRoute {
         });
     }
 }
-exports.UploadRoute = UploadRoute;
+exports.UploadHandler = UploadHandler;

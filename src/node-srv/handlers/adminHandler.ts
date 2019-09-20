@@ -2,7 +2,7 @@ import { Email } from 'mbake/lib/Email'
 import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
 import { IDB, AdminAuthX } from '../lib/IDB'
 
-export class AdminRoutes extends BaseRPCMethodHandler {
+export class AdminHandler extends BaseRPCMethodHandler {
 
    emailJs = new Email()
    IDB: IDB
@@ -20,9 +20,9 @@ export class AdminRoutes extends BaseRPCMethodHandler {
       let pswd = Buffer.from(params.admin_pass).toString('base64');
 
       let auth = await this.auth.auth(user,pswd,resp)
-      if(auth != 'OK') this.ret(resp, 'FAIL')
+      if(auth != 'OK') this.ret(resp, 'FAIL', null, null)
 
-      this.ret(resp, 'OK')
+      this.ret(resp, 'OK', null, null)
    }//()
 
 
@@ -33,7 +33,7 @@ export class AdminRoutes extends BaseRPCMethodHandler {
 
       let data = await this.IDB.getConfig();
 
-      this.ret(resp, data);
+      this.ret(resp, data, null, null)
    }//()
       
    async updateConfig(resp, params, user, pswd) {
@@ -60,7 +60,7 @@ export class AdminRoutes extends BaseRPCMethodHandler {
             path: pathToApp,
             port: port,
          });
-         this.ret(resp, data)
+         this.ret(resp, data, null, null)
       }
    } 
       
@@ -76,14 +76,14 @@ export class AdminRoutes extends BaseRPCMethodHandler {
       let msg = 'Your verification code is: ' + code + '<br>Enter your code at ' + enterCodeUrl + '#code' // TODO use IDB template email to CRUD w/ {{code}}
       this.emailJs.send(sendToEmail, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
       
-      this.ret(resp, 'OK')
+      this.ret(resp, 'OK', null, null)
    }//() 
       
    async resetPasswordIfMatch(resp, params, email, password) {
       let adminEmail = Buffer.from(params.admin_email).toString('base64');
       let newPassword = Buffer.from(params.password).toString('base64');
       const result = await this.IDB.resetPasswordAdminIfMatch(adminEmail, params.code, newPassword);
-      this.ret(resp, result)
+      this.ret(resp, result, null, null)
 
    }//()
    
@@ -92,7 +92,7 @@ export class AdminRoutes extends BaseRPCMethodHandler {
       if(auth != 'OK') return
 
       let EditorsJson = await this.IDB.getEditors()
-      this.ret(resp, EditorsJson)
+      this.ret(resp, EditorsJson, null, null)
    } 
       
    /**
@@ -108,7 +108,7 @@ export class AdminRoutes extends BaseRPCMethodHandler {
       let password = params.password;
 
       await this.IDB.addEditor(guid, name, email, password) 
-      this.ret(resp,'OK')
+      this.ret(resp,'OK', null, null)
    }//()
 
    /**
@@ -122,7 +122,7 @@ export class AdminRoutes extends BaseRPCMethodHandler {
       let name = params.name;
       let data = await this.IDB.editEditor(guid, name); 
 
-      this.ret(resp, data);
+      this.ret(resp, data, null, null)
    }
  
    async deleteEditor(resp, params, user, pswd) {
@@ -132,7 +132,7 @@ export class AdminRoutes extends BaseRPCMethodHandler {
       let guid = params.uid;
       await this.IDB.deleteEditor(guid) 
 
-      this.ret(resp,'OK')
+      this.ret(resp,'OK', null, null)
    }//()
 
 }//class

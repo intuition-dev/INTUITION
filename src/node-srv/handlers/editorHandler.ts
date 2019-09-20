@@ -8,7 +8,7 @@ import { AppLogic } from '../lib/AppLogic';
 
 const fs = require('fs-extra')
 
-export class EditorRoutes extends BaseRPCMethodHandler {
+export class EditorHandler extends BaseRPCMethodHandler {
    emailJs = new Email()
 
    db: IDB;
@@ -30,7 +30,7 @@ export class EditorRoutes extends BaseRPCMethodHandler {
       let auth = await this.auth.auth(params.editor_email,pswd,resp)
       if(auth != 'OK') return
 
-      this.ret(resp, 'OK')
+      this.ret(resp, 'OK', null, null)
    }//()
 
    async emailResetPasswordCode(resp, params, email, pswd) {
@@ -46,12 +46,12 @@ export class EditorRoutes extends BaseRPCMethodHandler {
       email = Buffer.from(params.admin_email).toString('base64');
       this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
       
-      this.ret(resp, 'OK')
+      this.ret(resp, 'OK', null, null)
    }//() 
       
    async resetPasswordIfMatch(resp, params, email, password) {
       const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password)
-      this.ret(resp, result)
+      this.ret(resp, result, null, null)
 
    }//()
 
@@ -63,7 +63,7 @@ export class EditorRoutes extends BaseRPCMethodHandler {
       const appPath = await this.db.getAppPath()
 
       const dirs = this.fm.getDirs(appPath)
-      this.ret(resp, dirs)
+      this.ret(resp, dirs, null, null)
    }//()
    
    async getFiles(resp, params, user, pswd) {
@@ -74,7 +74,7 @@ export class EditorRoutes extends BaseRPCMethodHandler {
       let itemPath = '/' + params.itemPath
       const appPath = await this.db.getAppPath()
       const files = this.fm.getFiles(appPath, itemPath)
-      this.ret(resp, files)
+      this.ret(resp, files, null, null)
    }//files
    
    async getFileContent(resp, params, user, pswd) { 
@@ -89,10 +89,10 @@ export class EditorRoutes extends BaseRPCMethodHandler {
          const THIZ = this
          fs.readFile(fileName, 'utf8', (err, data) => {
             if (err) {
-               THIZ.retErr(resp, err)
+               THIZ.retErr(resp, err, null, null)
                return
             }
-            THIZ.ret(resp,data)
+            THIZ.ret(resp,data, null, null)
          })
    }//() 
    
@@ -121,7 +121,7 @@ export class EditorRoutes extends BaseRPCMethodHandler {
       const fileOps = new FileOps(appPath)
       // done saving
       fileOps.write(fileName, content)
-      this.ret(resp,'OK')
+      this.ret(resp,'OK', null, null)
 
    }//()
 
@@ -137,7 +137,7 @@ export class EditorRoutes extends BaseRPCMethodHandler {
       let file = params.itemPath
       const appPath = await this.db.getAppPath()
       let fileName =  itemPath + file
-      this.ret(resp,'OK')
+      this.ret(resp,'OK', null, null)
 
       this.appLogic.autoBake(appPath, itemPath, fileName) 
    }//()
@@ -152,7 +152,7 @@ export class EditorRoutes extends BaseRPCMethodHandler {
       const appPath = await this.db.getAppPath()
 
       await this.appLogic.clone(appPath, itemPath, newItemPath) 
-      this.ret(resp,'OK')
+      this.ret(resp,'OK', null, null)
    } //()
    
    /**
@@ -168,12 +168,12 @@ export class EditorRoutes extends BaseRPCMethodHandler {
       let publish_date:number = params.publish_date
       this.appLogic.setPublishDate(appPath, itemPath, publish_date) 
 
-      this.ret(resp,'OK')
+      this.ret(resp,'OK', null, null)
    }//()
 
 }//
 
 
 module.exports = {
-   EditorRoutes
+   EditorHandler
 }

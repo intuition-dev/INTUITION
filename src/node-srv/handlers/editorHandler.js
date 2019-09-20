@@ -7,7 +7,7 @@ const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const AppLogic_1 = require("../lib/AppLogic");
 const fs = require('fs-extra');
-class EditorRoutes extends Serv_1.BasePgRouter {
+class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     constructor(IDB) {
         super();
         this.emailJs = new Email_1.Email();
@@ -21,7 +21,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         let auth = await this.auth.auth(params.editor_email, pswd, resp);
         if (auth != 'OK')
             return;
-        this.ret(resp, 'OK');
+        this.ret(resp, 'OK', null, null);
     }
     async emailResetPasswordCode(resp, params, email, pswd) {
         const config = await this.db.getConfig();
@@ -32,11 +32,11 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         let msg = 'Enter your code at http://bla.bla ' + code;
         email = Buffer.from(params.admin_email).toString('base64');
         this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
-        this.ret(resp, 'OK');
+        this.ret(resp, 'OK', null, null);
     }
     async resetPasswordIfMatch(resp, params, email, password) {
         const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password);
-        this.ret(resp, result);
+        this.ret(resp, result, null, null);
     }
     async getDirs(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
@@ -45,7 +45,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
             return;
         const appPath = await this.db.getAppPath();
         const dirs = this.fm.getDirs(appPath);
-        this.ret(resp, dirs);
+        this.ret(resp, dirs, null, null);
     }
     async getFiles(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
@@ -55,7 +55,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         let itemPath = '/' + params.itemPath;
         const appPath = await this.db.getAppPath();
         const files = this.fm.getFiles(appPath, itemPath);
-        this.ret(resp, files);
+        this.ret(resp, files, null, null);
     }
     async getFileContent(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
@@ -69,10 +69,10 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         const THIZ = this;
         fs.readFile(fileName, 'utf8', (err, data) => {
             if (err) {
-                THIZ.retErr(resp, err);
+                THIZ.retErr(resp, err, null, null);
                 return;
             }
-            THIZ.ret(resp, data);
+            THIZ.ret(resp, data, null, null);
         });
     }
     async saveFile(resp, params, user, pswd) {
@@ -96,7 +96,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         }
         const fileOps = new FileOpsBase_1.FileOps(appPath);
         fileOps.write(fileName, content);
-        this.ret(resp, 'OK');
+        this.ret(resp, 'OK', null, null);
     }
     async compileCode(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
@@ -107,7 +107,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         let file = params.itemPath;
         const appPath = await this.db.getAppPath();
         let fileName = itemPath + file;
-        this.ret(resp, 'OK');
+        this.ret(resp, 'OK', null, null);
         this.appLogic.autoBake(appPath, itemPath, fileName);
     }
     async cloneItem(resp, params, user, pswd) {
@@ -119,7 +119,7 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         let newItemPath = '/' + params.newItemPath;
         const appPath = await this.db.getAppPath();
         await this.appLogic.clone(appPath, itemPath, newItemPath);
-        this.ret(resp, 'OK');
+        this.ret(resp, 'OK', null, null);
     }
     async setPublishDate(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
@@ -130,10 +130,10 @@ class EditorRoutes extends Serv_1.BasePgRouter {
         const appPath = await this.db.getAppPath();
         let publish_date = params.publish_date;
         this.appLogic.setPublishDate(appPath, itemPath, publish_date);
-        this.ret(resp, 'OK');
+        this.ret(resp, 'OK', null, null);
     }
 }
-exports.EditorRoutes = EditorRoutes;
+exports.EditorHandler = EditorHandler;
 module.exports = {
-    EditorRoutes
+    EditorHandler
 };

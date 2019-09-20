@@ -2,7 +2,7 @@ const fs = require("fs");
 import { IDB } from '../lib/IDB';
 
 
-export class UploadRoute {
+export class UploadHandler {
 
    iauth
    db: IDB;
