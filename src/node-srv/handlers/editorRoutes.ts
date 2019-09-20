@@ -1,6 +1,6 @@
 
 import { Email } from 'mbake/lib/Email';
-import { BasePgRouter } from 'mbake/lib/Serv'
+import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
 import { IDB, EditorAuthX } from '../lib/IDB';
 import { FileMethods } from 'mbake/lib/FileOpsExtra'
 import { FileOps } from 'mbake/lib/FileOpsBase'
@@ -8,7 +8,7 @@ import { AppLogic } from '../lib/AppLogic';
 
 const fs = require('fs-extra')
 
-export class EditorRoutes extends BasePgRouter {
+export class EditorRoutes extends BaseRPCMethodHandler {
    emailJs = new Email()
 
    db: IDB;

@@ -1,8 +1,8 @@
 import { Email } from 'mbake/lib/Email'
-import { BasePgRouter } from 'mbake/lib/Serv'
+import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
 import { IDB, AdminAuthX } from '../lib/IDB'
 
-export class AdminRoutes extends BasePgRouter {
+export class AdminRoutes extends BaseRPCMethodHandler {
 
    emailJs = new Email()
    IDB: IDB

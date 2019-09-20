@@ -1,9 +1,9 @@
 
 import { CDB } from '../lib/CDB'
 const logger = require('tracer').console()
-import { BasePgRouter, iAuth } from 'mbake/lib/Serv'
+import { BaseRPCMethodHandler, iAuth } from 'mbake/lib/Serv'
 
-export class CrudPgRouter extends BasePgRouter {
+export class CrudPgRouter extends BaseRPCMethodHandler {
 
    cdb
 

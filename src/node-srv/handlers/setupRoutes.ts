@@ -1,10 +1,10 @@
 
-import { BasePgRouter } from 'mbake/lib/Serv'
+import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
 
 import { Email } from 'mbake/lib/Email'
 import { IDB } from '../lib/IDB'
 
-export class SetupRoutes extends BasePgRouter {
+export class SetupRoutes extends BaseRPCMethodHandler {
 
     db: IDB
     emailJs = new Email()
