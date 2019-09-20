@@ -11,7 +11,6 @@ import { IDB } from './lib/IDB';
 import { Setup } from './Setup';
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
 import { AppLogic } from './lib/AppLogic';
-import { Util } from './lib/AppLogic';
 
 export class IntuApp extends ExpressRPC {
 
