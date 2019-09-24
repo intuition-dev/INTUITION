@@ -37,8 +37,8 @@ class IntuApp extends Serv_1.ExpressRPC {
         console.log('running');
         const ar = new adminHandler_1.AdminHandler(this.db);
         const er = new editorHandler_1.EditorHandler(this.db);
-        this.handleRRoute('admin', 'admin', ar.route.bind(ar));
-        this.handleRRoute('api', 'editors', er.route.bind(er));
+        this.routeRPC2('admin/admin', 'admin', ar.handleRPC2.bind(ar));
+        this.routeRPC2('api', 'editors', er.handleRPC2.bind(er));
         this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute));
         this.appInst.get('/iver', (req, res) => {
             return res.send(AppLogic_1.AppLogic.veri);

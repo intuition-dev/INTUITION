@@ -1,6 +1,6 @@
 declare var depp: any;
 
-class LoginViewModel extends BaseViewModel  {
+class LoginViewModel extends BaseViewModel {
 
     services: any;
 
@@ -19,7 +19,7 @@ class LoginViewModel extends BaseViewModel  {
 
             if (LoginViewModel._instance) res(LoginViewModel._instance)
 
-            depp.require(['RPC', 'intuAPI'], function () {
+            depp.require(['httpRPC', 'intuAPI'], function () {
                 LoginViewModel._instance = new LoginViewModel(42);
                 LoginViewModel._instance.setup();
                 res(LoginViewModel._instance);
@@ -32,7 +32,7 @@ class LoginViewModel extends BaseViewModel  {
         return this.services.sendVcodEditor(email);
     };
 
-    resetPassEditor(email, code, pass){
+    resetPassEditor(email, code, pass) {
         return this.services.resetPassEditor(email, code, pass);
     };
 

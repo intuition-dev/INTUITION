@@ -30,7 +30,7 @@ class IntuAPI {
     */
    checkEditor(email, pass) {
       let _this = this
-      return this.serviceRPC.invoke('api', 'editors', 'checkEditor', {
+      return this.serviceRPC.invoke2('api', 'editors', 'checkEditor', {
          editor_email: email,
          editor_pass: pass
       })
@@ -49,7 +49,8 @@ class IntuAPI {
    getDirsList() {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'getDirs', {
+      console.log("TCL: IntuAPI -> getDirsList -> pass", pass)
+      return this.serviceRPC.invoke2('api', 'editors', 'getDirs', {
          editor_email: email,
          editor_pass: pass
       });
@@ -62,7 +63,7 @@ class IntuAPI {
    getSubDirsList(id) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'getFiles', {
+      return this.serviceRPC.invoke2('api', 'editors', 'getFiles', {
          itemPath: id,
          editor_email: email,
          editor_pass: pass
@@ -77,7 +78,7 @@ class IntuAPI {
    getFile(id, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'getFileContent', {
+      return this.serviceRPC.invoke2('api', 'editors', 'getFileContent', {
          itemPath: id,
          file: pathPrefix,
          editor_email: email,
@@ -94,7 +95,7 @@ class IntuAPI {
    saveFile(id, md, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'saveFile', {
+      return this.serviceRPC.invoke2('api', 'editors', 'saveFile', {
          itemPath: id,
          file: pathPrefix,
          content: btoa(md),
@@ -112,7 +113,7 @@ class IntuAPI {
    mbakeCompile(id, md, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'compileCode', {
+      return this.serviceRPC.invoke2('api', 'editors', 'compileCode', {
          itemPath: id,
          file: pathPrefix,
          content: btoa(md),
@@ -133,7 +134,7 @@ class IntuAPI {
    clonePage(id, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'cloneItem', {
+      return this.serviceRPC.invoke2('api', 'editors', 'cloneItem', {
          newItemPath: id,
          itemPath: pathPrefix,
          editor_email: email,
@@ -149,7 +150,7 @@ class IntuAPI {
    setPublishDate(publish_date, pathPrefix) {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'setPublishDate', {
+      return this.serviceRPC.invoke2('api', 'editors', 'setPublishDate', {
          publish_date: publish_date,
          itemPath: pathPrefix,
          editor_email: email,
@@ -157,14 +158,14 @@ class IntuAPI {
       });
    }
 
-   getINTUVersion() {}
+   getINTUVersion() { }
 
    /**
     * editor send verification code
     * @param email editor user email, eg: 'example@example.com'
     */
    sendVcodEditor(email) {
-      return this.serviceRPC.invoke('api', 'editors', 'emailResetPasswordCode', { admin_email: email })
+      return this.serviceRPC.invoke2('api', 'editors', 'emailResetPasswordCode', { admin_email: email })
          .then(function () {
             return true;
          })
@@ -177,7 +178,7 @@ class IntuAPI {
     * @param code verification code, eg: '1234'
     */
    resetPassEditor(email, code, pass) {
-      return this.serviceRPC.invoke('api', 'editors', 'resetPasswordIfMatch', {
+      return this.serviceRPC.invoke2('api', 'editors', 'resetPasswordIfMatch', {
          admin_email: email,
          code: code,
          password: pass
@@ -189,9 +190,11 @@ class IntuAPI {
     * @param email user email, eg: 'example@example.com'
     * @param pass user password, eg: '123456'
     */
+
+   // rpc.invoke2('api', 'pageOne', 'multiply', {a:5, b:2})
    checkAdmin(email, pass) {
       let _this = this
-      return this.serviceRPC.invoke('admin', 'admin', 'checkAdmin', {
+      return this.serviceRPC.invoke2('admin/admin', 'admin', 'checkAdmin', {
          admin_email: email,
          admin_pass: pass
       })
@@ -213,7 +216,7 @@ class IntuAPI {
    setupApp(item) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'admin', 'setup-app', {
+      return this.serviceRPC.invoke2('api', 'admin', 'setup-app', {
          item: item,
          admin_email: admin_email,
          admin_pass: admin_pass
@@ -223,8 +226,9 @@ class IntuAPI {
    getEditorsList() {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
+
       console.info("--admin_email:", admin_email)
-      return this.serviceRPC.invoke('admin', 'admin', 'getEditors', {
+      return this.serviceRPC.invoke2('admin/admin', 'admin', 'getEditors', {
          admin_email: admin_email,
          admin_pass: admin_pass
       });
@@ -239,7 +243,7 @@ class IntuAPI {
    addEditor(guid, name, email, password) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('admin', 'admin', 'addEditor', {
+      return this.serviceRPC.invoke2('admin/admin', 'admin', 'addEditor', {
          id: guid,
          name: name,
          email: email,
@@ -255,7 +259,7 @@ class IntuAPI {
     * @param name user name, eg: 'Jane Doe'
     */
    editEditor(uid, name) {
-      return this.serviceRPC.invoke('admin', 'admin', 'editEditor', {
+      return this.serviceRPC.invoke2('admin/admin', 'admin', 'editEditor', {
          name: name,
          uid: uid,
          admin_email: window.sessionStorage.getItem('username'),
@@ -268,7 +272,7 @@ class IntuAPI {
     * @param uid user id, eg: 'I3fE7p5NjtV1Y1m5pWBsZlyi4W62'
     */
    deleteEditor(uid) {
-      return this.serviceRPC.invoke('admin', 'admin', 'deleteEditor', {
+      return this.serviceRPC.invoke2('admin/admin', 'admin', 'deleteEditor', {
          uid: uid,
          admin_email: window.sessionStorage.getItem('username'),
          admin_pass: window.sessionStorage.getItem('password')
@@ -280,7 +284,7 @@ class IntuAPI {
     * @param email admin user email, eg: 'example@example.com'
     */
    sendVcode(email, loginUrl) {
-      return this.serviceRPC.invoke('admin', 'admin', 'emailResetPasswordCode', {
+      return this.serviceRPC.invoke2('admin/admin', 'admin', 'emailResetPasswordCode', {
          admin_email: email,
          loginUrl: loginUrl
       })
@@ -296,7 +300,7 @@ class IntuAPI {
     * @param code verification code, eg: '1234'
     */
    resetPass(email, code, pass) {
-      return this.serviceRPC.invoke('admin', 'admin', 'resetPasswordIfMatch', {
+      return this.serviceRPC.invoke2('admin/admin', 'admin', 'resetPasswordIfMatch', {
          admin_email: email,
          code: code,
          password: pass
@@ -307,7 +311,7 @@ class IntuAPI {
       console.log('get config start')
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('admin', 'admin', 'getConfig', {
+      return this.serviceRPC.invoke2('admin/admin', 'admin', 'getConfig', {
          admin_email: admin_email,
          admin_pass: admin_pass
       });
@@ -321,7 +325,7 @@ class IntuAPI {
    updateConfig(port, path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('admin', 'admin', 'updateConfig', {
+      return this.serviceRPC.invoke2('admin/admin', 'admin', 'updateConfig', {
          admin_email: admin_email,
          admin_pass: admin_pass,
          port: port,
@@ -339,7 +343,7 @@ class IntuAPI {
       var emailjsService_id = serialised.filter(emailjsService_id => emailjsService_id.name == 'service_id')[0].value
       var emailjsTemplate_id = serialised.filter(emailjsTemplate_id => emailjsTemplate_id.name == 'template_id')[0].value
       var emailjsUser_id = serialised.filter(emailjsUser_id => emailjsUser_id.name == 'user_id')[0].value
-      return this.serviceRPC.invoke('setup', 'setup', 'setup', {
+      return this.serviceRPC.invoke2('setup', 'setup', 'setup', {
          email: email,
          password: password,
          emailjsService_id: emailjsService_id,

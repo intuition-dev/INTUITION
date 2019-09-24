@@ -1,7 +1,7 @@
 declare var depp: any;
 
 class EditViewModel extends BaseViewModel {
-    
+
     services: any;
 
     constructor(arg) {
@@ -19,14 +19,14 @@ class EditViewModel extends BaseViewModel {
 
             if (EditViewModel._instance) res(EditViewModel._instance)
 
-            depp.require(['RPC', 'intuAPI'], function () {
+            depp.require(['httpRPC', 'intuAPI'], function () {
                 EditViewModel._instance = new EditViewModel(42);
                 EditViewModel._instance.setup();
                 res(EditViewModel._instance);
             });
         });
     }
-    
+
     getDirsList() {
         return this.services.getDirsList();
     };
@@ -54,5 +54,5 @@ class EditViewModel extends BaseViewModel {
     setPublishDate(date, itemPath) {
         return this.services.setPublishDate(date, itemPath);
     };
-    
+
 }

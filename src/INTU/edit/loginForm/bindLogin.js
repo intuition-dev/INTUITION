@@ -1,5 +1,5 @@
 
-depp.require('scripts', function() {
+depp.require('scripts', function () {
 
     // login form input lables animation
     if ($('input[name="login"]:-webkit-autofill').length > 0) {
@@ -9,14 +9,14 @@ depp.require('scripts', function() {
         $('input[name="password"]').parents('.input-wrap').find('label').addClass('focus');
     }
 
-    $('.login-form input').focus(function() {
+    $('.login-form input').focus(function () {
         var label = $(this).parents('.input-wrap').find('label');
         if ($(this).val() === '') {
             label.addClass('focus');
         }
     });
 
-    $('.login-form input').focusout(function() {
+    $('.login-form input').focusout(function () {
         var label = $(this).parents('.input-wrap').find('label');
         if ($(this).val() === '') {
             label.removeClass('focus');
@@ -26,7 +26,7 @@ depp.require('scripts', function() {
 })//depp
 
 depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
-    
+
     var loginViewModel = await LoginViewModel.inst();
 
     /*
@@ -88,14 +88,14 @@ depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
         });
 
     }
-            
+
 });
 
 
 function sendVcode(email, loginViewModel) {
     if (email !== '') {
         loginViewModel.sendVcodEditor(email)
-            .then(function(result) {
+            .then(function (result) {
                 console.info("--result:", result);
             });
     }
@@ -104,10 +104,10 @@ function sendVcode(email, loginViewModel) {
 function resetPass(email, code, pass, loginViewModel) {
     if (email !== '' && pass !== '' && code !== '') {
         loginViewModel.resetPassEditor(email, code, pass)
-            .then(function(result) {
+            .then(function (result) {
                 if (result) {
                     $('.js-pass-changed-notification').removeClass('d-hide');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('.js-pass-changed-notification').addClass('d-hide');
                         $('.js-login-form, .js-btn-login, [data="reset-password"]').removeClass('d-hide');
                     }, 4000);

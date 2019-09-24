@@ -1,3 +1,4 @@
+
 depp.define({
     'adminViewModel': [
         '../models/AdminViewModel.js'
@@ -8,7 +9,7 @@ depp.require('baseVm');
 depp.require('adminViewModel');
 
 depp.require(['ui', 'scripts', 'setup-page'], async function () {
-    
+
     var adminViewModel = await AdminViewModel.inst();
 
     drawTable(adminViewModel);
@@ -42,7 +43,7 @@ depp.require(['ui', 'scripts', 'setup-page'], async function () {
                 });
         } else {
             $('.notification').removeClass('d-hide').find('.text').text('Please, select user to edit');
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').find('.text').text('');
             }, 2000);
         }
@@ -65,7 +66,7 @@ depp.require(['ui', 'scripts', 'setup-page'], async function () {
 
         } else {
             $('.notification').removeClass('d-hide').find('.text').text('Please, select user to delete');
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').find('.text').text('');
             }, 2000);
         }
@@ -82,7 +83,7 @@ function drawTable(adminViewModel) {
     adminViewModel.getEditorsList()
         .then(editors => {
             console.info("--editors:", editors)
-    
+
             this.table = new Tabulator("#editors-table", {
                 layout: "fitColumns", // fit columns to width of table
                 columns: [ // Define Table Columns
@@ -123,17 +124,17 @@ function save(id, adminViewModel) {
             .then((documentRef) => {
                 $('.notification').removeClass('d-hide').find('.text').text('user was successfully updated');
                 $('.grid-form input').val('');
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.notification').addClass('d-hide').find('.text').text('');
                 }, 4000);
                 // table refresh
                 console.log("Updated", id, name)
                 this.table
                     .updateOrAddData([{ id: id, name: name }])
-                    .then(function() {
+                    .then(function () {
                         console.info('table updated');
                     })
-                    .catch(function(error) {
+                    .catch(function (error) {
                         console.info('unable update table', error);
                     });
             });
@@ -143,7 +144,7 @@ function save(id, adminViewModel) {
             $('.js-add-editor').removeAttr("disabled");
             $('.loader').removeClass('active');
             $('.notification').removeClass('d-hide').find('.text').text('User email and password can\'t be blank');
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').find('.text').text('');
             }, 2000);
             throw new Error("user data is empty");
@@ -156,16 +157,16 @@ function save(id, adminViewModel) {
                 console.info("--documentRef:", documentRef)
                 $('.notification').removeClass('d-hide').find('.text').text('new user was created');
                 $('.grid-form input').val('');
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.notification').addClass('d-hide').find('.text').text('');
                 }, 4000);
                 // table refresh
                 this.table
                     .updateOrAddData([{ id: guid, email: email, name: name }])
-                    .then(function() {
+                    .then(function () {
                         console.info('table updated');
                     })
-                    .catch(function(error) {
+                    .catch(function (error) {
                         console.info('unable update table', error);
                     });
             })
@@ -175,7 +176,7 @@ function save(id, adminViewModel) {
                 }
                 console.info('err: ', err);
                 $('.notification').removeClass('d-hide').addClass('error-msg').find('.text').text('an error occured, user wasn\'t created', err);
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.notification').addClass('d-hide').removeClass('error-msg').find('.text').text('');
                 }, 4000);
             });
@@ -187,19 +188,19 @@ function remove(id, adminViewModel) {
         .then(() => {
             $('.notification').removeClass('d-hide').find('.text').text(' The user was successfully deleted');
             $('.grid-form input').val('');
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').find('.text').text('');
             }, 4000);
             // table refresh
             this.activeRow.delete()
-                .then(function() {
+                .then(function () {
                     console.info('table updated');
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     console.info('unable update table', error);
                 });
         })
-        .catch(function(e) {
+        .catch(function (e) {
             alert('Unable to delete user: ' + e);
         });
 }

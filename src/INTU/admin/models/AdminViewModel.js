@@ -34,6 +34,7 @@ var AdminViewModel = (function (_super) {
         });
     };
     AdminViewModel.prototype.getEditorsList = function () {
+        console.log('getEditorList');
         return this.services.getEditorsList();
     };
     ;

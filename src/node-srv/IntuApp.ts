@@ -1,8 +1,10 @@
 
 import { ExpressRPC } from 'mbake/lib/Serv'
 
+// import { ExpressRPC, iAuth } from './Serv'
+
 import { EditorHandler } from './handlers/editorHandler'
-import { AdminHandler } from  './handlers/adminHandler'
+import { AdminHandler } from './handlers/adminHandler'
 import { UploadHandler } from './handlers/uploadHandler'
 const logger = require('tracer').console()
 
@@ -33,16 +35,16 @@ export class IntuApp extends ExpressRPC {
             }
         })// 
     }//()
-  
+
     async run(intuPath) {
         console.log('setup')
 
-        let isSetupDone:boolean = await this.db.isSetupDone() 
-        if(!isSetupDone) {
+        let isSetupDone: boolean = await this.db.isSetupDone()
+        if (!isSetupDone) {
             const setup = new Setup(this.db, this)
             setup.setup()
         }
-        
+
         this._run(intuPath)
     }//()
 
@@ -53,8 +55,9 @@ export class IntuApp extends ExpressRPC {
         const ar = new AdminHandler(this.db)
         const er = new EditorHandler(this.db)
 
-        this.handleRRoute('admin', 'admin', ar.route.bind(ar))
-        this.handleRRoute('api', 'editors', er.route.bind(er))
+        this.routeRPC2('admin/admin', 'admin', ar.handleRPC2.bind(ar))
+        // this.routeRPC2('admin/getEditors/', 'admin', ar.handleRPC2.bind(ar))
+        this.routeRPC2('api', 'editors', er.handleRPC2.bind(er))
 
         this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
 
@@ -64,7 +67,7 @@ export class IntuApp extends ExpressRPC {
         })
 
         // 2 INTU
-        this.serveStatic(intuPath,null, null)
+        this.serveStatic(intuPath, null, null)
 
     }//()
 

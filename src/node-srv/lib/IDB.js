@@ -111,11 +111,12 @@ class IDB extends BaseDB_1.BaseDB {
         return vcode;
     }
     async authEditor(email, password) {
-        password = Buffer.from(password, 'base64').toString();
+        console.log("TCL: IDB -> password", password);
         const salt = await this.getSalt();
         const hashPassP = bcrypt.hashSync(password, salt);
         const qry = this.db.prepare('SELECT * FROM EDITORS where email =  ?');
         const rows = await this._qry(qry, email);
+        console.log("TCL: IDB -> rows", rows);
         if (rows.length > 0) {
             const row = rows[0];
             const hashPassS = row.hashPass;

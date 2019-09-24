@@ -16,9 +16,11 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         this.db = IDB;
         this.auth = new IDB_1.EditorAuthX(IDB);
     }
-    async checkEditor(resp, params) {
-        let pswd = Buffer.from(params.editor_pass).toString('base64');
-        let auth = await this.auth.auth(params.editor_email, pswd, resp);
+    async checkEditor(resp, params, ent, user, pswd) {
+        console.log("TCL: EditorHandler -> checkEditor -> pswd", pswd);
+        console.log("TCL: EditorHandler -> checkEditor -> params", params);
+        console.log("TCL: EditorHandler -> checkEditor -> pswd", pswd);
+        let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
         this.ret(resp, 'OK', null, null);
@@ -38,9 +40,11 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password);
         this.ret(resp, result, null, null);
     }
-    async getDirs(resp, params, user, pswd) {
-        user = Buffer.from(user, 'base64').toString();
-        let auth = await this.auth.auth(user, pswd, resp);
+    async getDirs(resp, params, ent, user, pswd) {
+        console.log("TCL: EditorHandler -> getDirs -> user", user);
+        console.log("TCL: EditorHandler -> getDirs -> params", params);
+        let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
+        console.log("TCL: EditorHandler -> getDirs -> auth", auth);
         if (auth != 'OK')
             return;
         const appPath = await this.db.getAppPath();
@@ -48,8 +52,9 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         this.ret(resp, dirs, null, null);
     }
     async getFiles(resp, params, user, pswd) {
-        user = Buffer.from(user, 'base64').toString();
-        let auth = await this.auth.auth(user, pswd, resp);
+        console.log("TCL: EditorHandler -> getFiles -> pswd", pswd);
+        console.log("TCL: EditorHandler -> getFiles -> user", user);
+        let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
         let itemPath = '/' + params.itemPath;
@@ -58,8 +63,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         this.ret(resp, files, null, null);
     }
     async getFileContent(resp, params, user, pswd) {
-        user = Buffer.from(user, 'base64').toString();
-        let auth = await this.auth.auth(user, pswd, resp);
+        let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
         let itemPath = '/' + params.file;
@@ -77,7 +81,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     }
     async saveFile(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
-        let auth = await this.auth.auth(user, pswd, resp);
+        let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
         let substring = '/';
@@ -100,7 +104,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     }
     async compileCode(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
-        let auth = await this.auth.auth(user, pswd, resp);
+        let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
         let itemPath = '/' + params.file;
@@ -112,7 +116,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     }
     async cloneItem(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
-        let auth = await this.auth.auth(user, pswd, resp);
+        let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
         let itemPath = '/' + params.itemPath;
@@ -123,7 +127,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     }
     async setPublishDate(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
-        let auth = await this.auth.auth(user, pswd, resp);
+        let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
         let itemPath = '/' + params.itemPath;

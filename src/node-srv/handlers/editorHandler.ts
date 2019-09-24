@@ -1,6 +1,8 @@
 
 import { Email } from 'mbake/lib/Email';
 import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
+
+// import { BaseRPCMethodHandler } from '../Serv'
 import { IDB, EditorAuthX } from '../lib/IDB';
 import { FileMethods } from 'mbake/lib/FileOpsExtra'
 import { FileOps } from 'mbake/lib/FileOpsBase'
@@ -24,92 +26,103 @@ export class EditorHandler extends BaseRPCMethodHandler {
       this.auth = new EditorAuthX(IDB)
    }
 
-   async checkEditor(resp, params) {
-      let pswd = Buffer.from(params.editor_pass).toString('base64');
-      
-      let auth = await this.auth.auth(params.editor_email,pswd,resp)
-      if(auth != 'OK') return
+   async checkEditor(resp, params, ent, user, pswd) {
+      console.log("TCL: EditorHandler -> checkEditor -> pswd", pswd)
+      console.log("TCL: EditorHandler -> checkEditor -> params", params)
+      // pswd = Buffer.from(params.editor_pass).toString('base64');
+      console.log("TCL: EditorHandler -> checkEditor -> pswd", pswd)
+
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      if (auth != 'OK') return
 
       this.ret(resp, 'OK', null, null)
    }//()
 
    async emailResetPasswordCode(resp, params, email, pswd) {
-      const config:any = await this.db.getConfig()
-      let emailjsService_id   = config.emailjsService_id
-      let emailjsTemplate_id  = config.emailjsTemplate_id
-      let emailjsUser_id      = config.emailjsUser_id
-      
+      const config: any = await this.db.getConfig()
+      let emailjsService_id = config.emailjsService_id
+      let emailjsTemplate_id = config.emailjsTemplate_id
+      let emailjsUser_id = config.emailjsUser_id
+
       let code = this.db.getVcodeEditor(params.admin_email)
-      
+
       let msg = 'Enter your code at http://bla.bla ' + code // TODO use IDB template email to CRUD w/ {{code}}
 
       email = Buffer.from(params.admin_email).toString('base64');
-      this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) 
-      
+      this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg)
+
       this.ret(resp, 'OK', null, null)
    }//() 
-      
+
    async resetPasswordIfMatch(resp, params, email, password) {
       const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password)
       this.ret(resp, result, null, null)
 
    }//()
 
-   async getDirs(resp, params, user, pswd) {
-      user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(user,pswd,resp)
-      if(auth != 'OK') return
+   async getDirs(resp, params, ent, user, pswd) {
+      console.log("TCL: EditorHandler -> getDirs -> user", user)
+      console.log("TCL: EditorHandler -> getDirs -> params", params)
+      // user = Buffer.from(params.editor_email).toString('base64');
+      // console.log("TCL: EditorHandler -> getDirs -> user", user)
+      // pswd = Buffer.from(params.editor_pass).toString('base64');
+      // console.log("TCL: EditorHandler -> getDirs -> pswd", pswd)
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      console.log("TCL: EditorHandler -> getDirs -> auth", auth)
+      if (auth != 'OK') return
 
       const appPath = await this.db.getAppPath()
 
       const dirs = this.fm.getDirs(appPath)
       this.ret(resp, dirs, null, null)
    }//()
-   
+
    async getFiles(resp, params, user, pswd) {
-      user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(user,pswd,resp)
-      if(auth != 'OK') return
+      console.log("TCL: EditorHandler -> getFiles -> pswd", pswd)
+      console.log("TCL: EditorHandler -> getFiles -> user", user)
+      // user = Buffer.from(user, 'base64').toString();
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      if (auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
       const appPath = await this.db.getAppPath()
       const files = this.fm.getFiles(appPath, itemPath)
       this.ret(resp, files, null, null)
    }//files
-   
-   async getFileContent(resp, params, user, pswd) { 
-         user = Buffer.from(user, 'base64').toString();
-         let auth = await this.auth.auth(user,pswd,resp)
-         if(auth != 'OK') return
-         let itemPath = '/' + params.file
-         let file = params.itemPath
-         const appPath = await this.db.getAppPath()
-         let fileName = appPath + itemPath + file
 
-         const THIZ = this
-         fs.readFile(fileName, 'utf8', (err, data) => {
-            if (err) {
-               THIZ.retErr(resp, err, null, null)
-               return
-            }
-            THIZ.ret(resp,data, null, null)
-         })
+   async getFileContent(resp, params, user, pswd) {
+      // user = Buffer.from(user, 'base64').toString();
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      if (auth != 'OK') return
+      let itemPath = '/' + params.file
+      let file = params.itemPath
+      const appPath = await this.db.getAppPath()
+      let fileName = appPath + itemPath + file
+
+      const THIZ = this
+      fs.readFile(fileName, 'utf8', (err, data) => {
+         if (err) {
+            THIZ.retErr(resp, err, null, null)
+            return
+         }
+         THIZ.ret(resp, data, null, null)
+      })
    }//() 
-   
-   async saveFile(resp, params, user, pswd) { 
+
+   async saveFile(resp, params, user, pswd) {
       // save and add archived files
       user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(user,pswd,resp)
-      if(auth != 'OK') return
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      if (auth != 'OK') return
 
       let substring = '/';
       let itemPath = '/' + params.file
       let file = params.itemPath
       const appPath = await this.db.getAppPath()
-      let fileName =  itemPath + file;
+      let fileName = itemPath + file;
       let content = params.content;
       content = Buffer.from(content, 'base64');
-      
+
       //back up old
       if (fileName.includes(substring)) {
          let fileName2 = fileName.substr(fileName.lastIndexOf('/'));
@@ -121,7 +134,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       const fileOps = new FileOps(appPath)
       // done saving
       fileOps.write(fileName, content)
-      this.ret(resp,'OK', null, null)
+      this.ret(resp, 'OK', null, null)
 
    }//()
 
@@ -130,45 +143,45 @@ export class EditorHandler extends BaseRPCMethodHandler {
    */
    async compileCode(resp, params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(user,pswd,resp)
-      if(auth != 'OK') return
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      if (auth != 'OK') return
 
       let itemPath = '/' + params.file
       let file = params.itemPath
       const appPath = await this.db.getAppPath()
-      let fileName =  itemPath + file
-      this.ret(resp,'OK', null, null)
+      let fileName = itemPath + file
+      this.ret(resp, 'OK', null, null)
 
-      this.appLogic.autoBake(appPath, itemPath, fileName) 
+      this.appLogic.autoBake(appPath, itemPath, fileName)
    }//()
-   
+
    async cloneItem(resp, params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(user,pswd,resp)
-      if(auth != 'OK') return
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      if (auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
       let newItemPath = '/' + params.newItemPath
       const appPath = await this.db.getAppPath()
 
-      await this.appLogic.clone(appPath, itemPath, newItemPath) 
-      this.ret(resp,'OK', null, null)
+      await this.appLogic.clone(appPath, itemPath, newItemPath)
+      this.ret(resp, 'OK', null, null)
    } //()
-   
+
    /**
     * Publish Date is an INT, linux time GMT
     */
    async setPublishDate(resp, params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(user,pswd,resp)
-      if(auth != 'OK') return
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      if (auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
       const appPath = await this.db.getAppPath()
-      let publish_date:number = params.publish_date
-      this.appLogic.setPublishDate(appPath, itemPath, publish_date) 
+      let publish_date: number = params.publish_date
+      this.appLogic.setPublishDate(appPath, itemPath, publish_date)
 
-      this.ret(resp,'OK', null, null)
+      this.ret(resp, 'OK', null, null)
    }//()
 
 }//

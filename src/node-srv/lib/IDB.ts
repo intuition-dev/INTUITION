@@ -11,15 +11,15 @@ export class IDB extends BaseDB implements iDB {
 
     protected salt
 
-    constructor(path, fn){
+    constructor(path, fn) {
         super(path, fn)
         logger.trace(path, fn)
     }
 
-    async isSetupDone():Promise<boolean> {
+    async isSetupDone(): Promise<boolean> {
         try {
             await this._init() // do the init
-            
+
             await this.getSalt()
 
             const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 
@@ -31,22 +31,22 @@ export class IDB extends BaseDB implements iDB {
             }
             return false
         }
-        catch(e) {
+        catch (e) {
             logger.warn(e)
             return false
         }
     }//()
 
-    
+
     protected async _init(): Promise<boolean> {
         this.con()
 
         // if db exists
         logger.trace(this.path, this.fn)
-    
-        const created:boolean = await this.tableExists('CONFIG')
+
+        const created: boolean = await this.tableExists('CONFIG')
         logger.trace('IDB tables exist', created)
-        if ( created ) {
+        if (created) {
             return true
         }
 
@@ -61,7 +61,7 @@ export class IDB extends BaseDB implements iDB {
         console.log('all tables created')
         return true
 
-        }
+    }
 
     async getSalt() {
         if (this.salt) return this.salt
@@ -112,7 +112,7 @@ export class IDB extends BaseDB implements iDB {
 
     async getAppPath() {
         const config = await this.getConfig()
-        if(!config) throw new Error('no pathToApp in DB')
+        if (!config) throw new Error('no pathToApp in DB')
         return config.pathToApp
     }
 
@@ -138,12 +138,14 @@ export class IDB extends BaseDB implements iDB {
         return vcode
     }//()
 
-    async authEditor(email, password):Promise<boolean> {
-        password = Buffer.from(password, 'base64').toString();
+    async authEditor(email, password): Promise<boolean> {
+        // password = Buffer.from(password).toString('base64');
+        console.log("TCL: IDB -> password", password)
         const salt = await this.getSalt()
         const hashPassP = bcrypt.hashSync(password, salt)
         const qry = this.db.prepare('SELECT * FROM EDITORS where email =  ?')
         const rows = await this._qry(qry, email)
+        console.log("TCL: IDB -> rows", rows)
         if (rows.length > 0) {
             const row = rows[0];
             const hashPassS = row.hashPass;
@@ -152,7 +154,7 @@ export class IDB extends BaseDB implements iDB {
             return false;
         }
     }//()
-    async authAdmin(email, password):Promise<boolean> {
+    async authAdmin(email, password): Promise<boolean> {
         const salt = await this.getSalt()
         const hashPassP = bcrypt.hashSync(password, salt)
         const qry = this.db.prepare('SELECT * FROM ADMIN where email = ?')
@@ -263,7 +265,7 @@ export class EditorAuthX implements iAuth {
             const ok = await this.db.authEditor(user, pswd)
             console.log('editor AUTH status: ', ok)
             if (ok) return resolve('OK')
-            
+
             resolve('FAIL')
         })// pro
     }
@@ -294,7 +296,7 @@ export class AdminAuthX implements iAuth {
             resolve('FAIL')
         })// pro
     }
-    
+
     retErr(resp: any, msg: any) {
         console.log(msg)
         const ret: any = {} // new return

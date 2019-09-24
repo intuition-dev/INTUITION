@@ -26,8 +26,9 @@ class AdminViewModel extends BaseViewModel {
             });
         });
     }
-    
+
     getEditorsList() {
+        console.log('getEditorList')
         return this.services.getEditorsList();
     };
 
