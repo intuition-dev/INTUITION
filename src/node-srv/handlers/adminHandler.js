@@ -9,7 +9,6 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         this.emailJs = new Email_1.Email();
         this.IDB = IDB;
         this.auth = new IDB_1.AdminAuthX(IDB);
-        console.log("TCL: AdminHandler -> constructor -> this", this);
     }
     async checkAdmin(resp, params, ent, user, pswd, token) {
         console.log("TCL: AdminHandler -> checkAdmin -> params", params._parsedUrl);

@@ -13,7 +13,6 @@ export class AdminHandler extends BaseRPCMethodHandler {
       super()
       this.IDB = IDB
       this.auth = new AdminAuthX(IDB)
-      console.log("TCL: AdminHandler -> constructor -> this", this)
 
    }//()
 
