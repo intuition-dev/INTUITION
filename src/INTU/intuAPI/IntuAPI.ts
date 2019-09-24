@@ -227,6 +227,8 @@ class IntuAPI {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
 
+      // Nat, if you release the new toolbelt (follow the release txt) it will use a non min rpc.
+
       console.info("--admin_email:", admin_email)
       return this.serviceRPC.invoke2('admin/admin', 'admin', 'getEditors', {
          admin_email: admin_email,
