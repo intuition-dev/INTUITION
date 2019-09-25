@@ -49,7 +49,6 @@ class IntuAPI {
    getDirsList() {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      console.log("TCL: IntuAPI -> getDirsList -> pass", pass)
       return this.serviceRPC.invoke2('api', 'editors', 'getDirs', {
          editor_email: email,
          editor_pass: pass
@@ -199,7 +198,6 @@ class IntuAPI {
          admin_pass: pass
       })
          .then(function (result) {
-            console.info("--result:", result)
             if (result) {
                _this.serviceRPC.setUser(email, pass);
                return true
@@ -227,9 +225,6 @@ class IntuAPI {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
 
-      // Nat, if you release the new toolbelt (follow the release txt) it will use a non min rpc.
-
-      console.info("--admin_email:", admin_email)
       return this.serviceRPC.invoke2('/admin', 'admin', 'getEditors', {
          admin_email: admin_email,
          admin_pass: admin_pass
@@ -310,7 +305,6 @@ class IntuAPI {
    }
 
    getConfig() {
-      console.log('get config start')
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke2('/admin', 'admin', 'getConfig', {

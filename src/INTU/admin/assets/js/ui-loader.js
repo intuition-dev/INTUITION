@@ -4,7 +4,7 @@ depp.define({
         '#jquery', '#tabulator', '#gridformsJS'
         , '/admin/assets/css/spectreBottom.css'
     ],
-    'httpRPC': ['https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.20/http-rpc+/web/httpRPC.js'],
+    'httpRPC': ['#RPC'],
     'intuAPI': [
         '/intuAPI/IntuAPI.js'
     ],

@@ -55,8 +55,6 @@ export class IntuApp extends ExpressRPC {
         const ar = new AdminHandler(this.db)
         const er = new EditorHandler(this.db)
 
-        // Nat, create a filter(use) to see all routes and info
-        // new release of mbake cli and then intu will also trace handle2()
 
         this.appInst.use(function (req, res, next) {
             console.log("--req.url", req.url)

@@ -2,16 +2,16 @@
 depp.define({
     'scripts': ['#jquery', '#DOM'],
 
-    'pop-custelX': ['https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.20/custel/pop/custel/pop-custel.js'],
+    'pop-custelX': ['https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.21/custel/pop/custel/pop-custel.js'],
 
     'ui': ['#scripts', '#zebraDate', '#pop-custelX'],
 
     'codeEdit': ['#codemirror', '#scripts', '//cdn.jsdelivr.net/npm/codemirror@5.48.4/keymap/sublime.js'],
     'cssBot': '/edit/assets/css/spectreBottom.css',
 
-    'httpRPC': ['https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.20/http-rpc+/web/httpRPC.js'],
+    'httpRPC': ['#RPC'],
     'intuAPI': ['/intuAPI/IntuAPI.js'],
-    'baseVM': ['https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.20/http-rpc+/web/httpRPC.js', '#intuAPI', '/edit/assets/models/BaseViewModel.js',],
+    'baseVM': ['#RPC', '#intuAPI', '/edit/assets/models/BaseViewModel.js',],
     'loginViewModel': ['#baseVM', '/edit/assets/models/LoginViewModel.js'],
     'editViewModel': ['#baseVM', '/edit/assets/models/EditViewModel.js'],
 

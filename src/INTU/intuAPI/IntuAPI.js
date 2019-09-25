@@ -31,7 +31,6 @@ var IntuAPI = (function () {
     IntuAPI.prototype.getDirsList = function () {
         var email = window.sessionStorage.getItem('username');
         var pass = window.sessionStorage.getItem('password');
-        console.log("TCL: IntuAPI -> getDirsList -> pass", pass);
         return this.serviceRPC.invoke2('api', 'editors', 'getDirs', {
             editor_email: email,
             editor_pass: pass
@@ -123,7 +122,6 @@ var IntuAPI = (function () {
             admin_pass: pass
         })
             .then(function (result) {
-            console.info("--result:", result);
             if (result) {
                 _this.serviceRPC.setUser(email, pass);
                 return true;
@@ -145,7 +143,6 @@ var IntuAPI = (function () {
     IntuAPI.prototype.getEditorsList = function () {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
-        console.info("--admin_email:", admin_email);
         return this.serviceRPC.invoke2('/admin', 'admin', 'getEditors', {
             admin_email: admin_email,
             admin_pass: admin_pass
@@ -195,7 +192,6 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.getConfig = function () {
-        console.log('get config start');
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke2('/admin', 'admin', 'getConfig', {
