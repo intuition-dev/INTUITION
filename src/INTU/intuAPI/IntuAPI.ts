@@ -194,7 +194,7 @@ class IntuAPI {
    // rpc.invoke2('api', 'pageOne', 'multiply', {a:5, b:2})
    checkAdmin(email, pass) {
       let _this = this
-      return this.serviceRPC.invoke2('admin/admin', 'admin', 'checkAdmin', {
+      return this.serviceRPC.invoke2('/admin', 'admin', 'checkAdmin', {
          admin_email: email,
          admin_pass: pass
       })
@@ -230,7 +230,7 @@ class IntuAPI {
       // Nat, if you release the new toolbelt (follow the release txt) it will use a non min rpc.
 
       console.info("--admin_email:", admin_email)
-      return this.serviceRPC.invoke2('admin/admin', 'admin', 'getEditors', {
+      return this.serviceRPC.invoke2('/admin', 'admin', 'getEditors', {
          admin_email: admin_email,
          admin_pass: admin_pass
       });
@@ -245,7 +245,7 @@ class IntuAPI {
    addEditor(guid, name, email, password) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke2('admin/admin', 'admin', 'addEditor', {
+      return this.serviceRPC.invoke2('/admin', 'admin', 'addEditor', {
          id: guid,
          name: name,
          email: email,
@@ -261,7 +261,7 @@ class IntuAPI {
     * @param name user name, eg: 'Jane Doe'
     */
    editEditor(uid, name) {
-      return this.serviceRPC.invoke2('admin/admin', 'admin', 'editEditor', {
+      return this.serviceRPC.invoke2('/admin', 'admin', 'editEditor', {
          name: name,
          uid: uid,
          admin_email: window.sessionStorage.getItem('username'),
@@ -274,7 +274,7 @@ class IntuAPI {
     * @param uid user id, eg: 'I3fE7p5NjtV1Y1m5pWBsZlyi4W62'
     */
    deleteEditor(uid) {
-      return this.serviceRPC.invoke2('admin/admin', 'admin', 'deleteEditor', {
+      return this.serviceRPC.invoke2('/admin', 'admin', 'deleteEditor', {
          uid: uid,
          admin_email: window.sessionStorage.getItem('username'),
          admin_pass: window.sessionStorage.getItem('password')
@@ -286,7 +286,7 @@ class IntuAPI {
     * @param email admin user email, eg: 'example@example.com'
     */
    sendVcode(email, loginUrl) {
-      return this.serviceRPC.invoke2('admin/admin', 'admin', 'emailResetPasswordCode', {
+      return this.serviceRPC.invoke2('/admin', 'admin', 'emailResetPasswordCode', {
          admin_email: email,
          loginUrl: loginUrl
       })
@@ -302,7 +302,7 @@ class IntuAPI {
     * @param code verification code, eg: '1234'
     */
    resetPass(email, code, pass) {
-      return this.serviceRPC.invoke2('admin/admin', 'admin', 'resetPasswordIfMatch', {
+      return this.serviceRPC.invoke2('/admin', 'admin', 'resetPasswordIfMatch', {
          admin_email: email,
          code: code,
          password: pass
@@ -313,7 +313,7 @@ class IntuAPI {
       console.log('get config start')
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke2('admin/admin', 'admin', 'getConfig', {
+      return this.serviceRPC.invoke2('/admin', 'admin', 'getConfig', {
          admin_email: admin_email,
          admin_pass: admin_pass
       });
@@ -327,7 +327,7 @@ class IntuAPI {
    updateConfig(port, path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke2('admin/admin', 'admin', 'updateConfig', {
+      return this.serviceRPC.invoke2('/admin', 'admin', 'updateConfig', {
          admin_email: admin_email,
          admin_pass: admin_pass,
          port: port,

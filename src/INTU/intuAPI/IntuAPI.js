@@ -118,7 +118,7 @@ var IntuAPI = (function () {
     };
     IntuAPI.prototype.checkAdmin = function (email, pass) {
         var _this = this;
-        return this.serviceRPC.invoke2('admin/admin', 'admin', 'checkAdmin', {
+        return this.serviceRPC.invoke2('/admin', 'admin', 'checkAdmin', {
             admin_email: email,
             admin_pass: pass
         })
@@ -146,7 +146,7 @@ var IntuAPI = (function () {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
         console.info("--admin_email:", admin_email);
-        return this.serviceRPC.invoke2('admin/admin', 'admin', 'getEditors', {
+        return this.serviceRPC.invoke2('/admin', 'admin', 'getEditors', {
             admin_email: admin_email,
             admin_pass: admin_pass
         });
@@ -154,7 +154,7 @@ var IntuAPI = (function () {
     IntuAPI.prototype.addEditor = function (guid, name, email, password) {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
-        return this.serviceRPC.invoke2('admin/admin', 'admin', 'addEditor', {
+        return this.serviceRPC.invoke2('/admin', 'admin', 'addEditor', {
             id: guid,
             name: name,
             email: email,
@@ -164,7 +164,7 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.editEditor = function (uid, name) {
-        return this.serviceRPC.invoke2('admin/admin', 'admin', 'editEditor', {
+        return this.serviceRPC.invoke2('/admin', 'admin', 'editEditor', {
             name: name,
             uid: uid,
             admin_email: window.sessionStorage.getItem('username'),
@@ -172,14 +172,14 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.deleteEditor = function (uid) {
-        return this.serviceRPC.invoke2('admin/admin', 'admin', 'deleteEditor', {
+        return this.serviceRPC.invoke2('/admin', 'admin', 'deleteEditor', {
             uid: uid,
             admin_email: window.sessionStorage.getItem('username'),
             admin_pass: window.sessionStorage.getItem('password')
         });
     };
     IntuAPI.prototype.sendVcode = function (email, loginUrl) {
-        return this.serviceRPC.invoke2('admin/admin', 'admin', 'emailResetPasswordCode', {
+        return this.serviceRPC.invoke2('/admin', 'admin', 'emailResetPasswordCode', {
             admin_email: email,
             loginUrl: loginUrl
         })
@@ -188,7 +188,7 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.resetPass = function (email, code, pass) {
-        return this.serviceRPC.invoke2('admin/admin', 'admin', 'resetPasswordIfMatch', {
+        return this.serviceRPC.invoke2('/admin', 'admin', 'resetPasswordIfMatch', {
             admin_email: email,
             code: code,
             password: pass
@@ -198,7 +198,7 @@ var IntuAPI = (function () {
         console.log('get config start');
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
-        return this.serviceRPC.invoke2('admin/admin', 'admin', 'getConfig', {
+        return this.serviceRPC.invoke2('/admin', 'admin', 'getConfig', {
             admin_email: admin_email,
             admin_pass: admin_pass
         });
@@ -206,7 +206,7 @@ var IntuAPI = (function () {
     IntuAPI.prototype.updateConfig = function (port, path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
-        return this.serviceRPC.invoke2('admin/admin', 'admin', 'updateConfig', {
+        return this.serviceRPC.invoke2('/admin', 'admin', 'updateConfig', {
             admin_email: admin_email,
             admin_pass: admin_pass,
             port: port,

@@ -58,8 +58,13 @@ export class IntuApp extends ExpressRPC {
         // Nat, create a filter(use) to see all routes and info
         // new release of mbake cli and then intu will also trace handle2()
 
-        this.routeRPC2('admin/admin', 'admin', ar.handleRPC2.bind(ar))
-        
+        this.appInst.use(function (req, res, next) {
+            console.log("--req.url", req.url)
+            next()
+        })
+
+        this.routeRPC2('/admin', 'admin', ar.handleRPC2.bind(ar))
+
         this.routeRPC2('api', 'editors', er.handleRPC2.bind(er))
 
         this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
