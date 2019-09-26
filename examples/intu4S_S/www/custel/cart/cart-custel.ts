@@ -3,7 +3,7 @@ declare var depp
 declare var Mustache
 // we are using 2 different technologies. Mostly Standard Custom Elements. They don't have biding so we use Mustache
 
-depp.require(['poly-custel', 'mustache'], function () { // inside the require
+depp.require(['poly', 'mustache'], function () { // inside the require
    var c2Temp = document.createElement('template')
    c2Temp.innerHTML = `
       {{#items}}
