@@ -6,7 +6,7 @@
   "main": "index.js",
   "author": "",
   "engines": {
-    "node": ">=12.10.0",
+    "node": ">=12.11.0",
     "yarn": ">=1.17.3"
   },
   "dependencies": {
