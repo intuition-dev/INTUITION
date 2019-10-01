@@ -1,0 +1,106 @@
+
+/* nav jbar */
+
+header {
+   background:rgba(1,1,1,0.5);
+   padding-left: 15px;
+   height: 65px;
+   line-height: 65px;
+   box-shadow: -1px 3px 10px #888888;
+   z-index: 10;
+}
+
+#navbar-brand, #navbar-brand * {
+   height: 65px;
+   line-height: 65px;
+}
+
+.white, .white * { color: white !important; }
+
+.padL {
+   padding-left: 15px;
+}
+.pad {
+   padding: 15px;
+}
+
+#navBarCont {
+   margin-top: 10px;
+}
+.bord { /* icons & bars */
+   outline-style: solid;
+   outline-offset: 7px;
+   outline-width: thin;
+   margin-right: 25px;
+   margin-left: 25px ;
+}
+.feather {
+   width: 24px;
+   height: 24px;
+   stroke: currentColor;
+   stroke-width: 2;
+   stroke-linecap: round;
+   stroke-linejoin: round;
+   fill: none;
+ }
+
+/*
+ Nav */
+#navOpen {
+   background-color: #0F3557;
+   width: calc(100vw - 70px);
+   overflow: hidden;
+   margin-left: 25px;
+   position: absolute;
+}
+.flex, .center, .top, .right, .bottom, .left{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.flex {
+   align-content: flex-start;
+}
+.top    { align-items:     flex-start; }
+.right  { justify-content: flex-end;   }
+.bottom { align-items:     flex-end;   }
+.left   { justify-content: flex-start; }
+/* override */
+.edge  { justify-content: space-between;
+   flex-wrap: nowrap;
+}
+.navBarOpen {
+   width: 250px;
+}
+
+/* bar */
+
+/* level 1 */
+.navJBar li > a {
+   color: white;
+   text-decoration: none;
+   background: transparent;
+   font-size: 17px;
+}
+ul.navJBar li {
+   list-style-type: none;
+}
+ul.navJBar a:hover {
+   background: #0F3557;
+   color: white;
+}
+/* level 2 */
+.navJBar li li a {
+   color: black !important;
+   background: white;
+   font-size: 16px;
+}
+.navJBar li li a:hover {
+   background: #0F3557;
+   color: white !important;
+}
+ul {
+   padding: 0;
+}
+/* End Nav
+*/

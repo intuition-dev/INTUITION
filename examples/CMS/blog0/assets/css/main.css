@@ -1,0 +1,30 @@
+
+.pageBack {
+   background-attachment: scroll;
+   min-height: 45vh;
+   background-position: center top;
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+
+* {
+   color: black;
+}
+
+.fBod {
+   font-family: 'Playfair Display', serif;
+}
+
+.circImg {
+   border-radius: 50%;
+   height: 100px;
+   width: 100px;
+}
+.circImgSmall {
+   border-radius: 50%;
+   height: 40px;
+   width: 40px;
+}
+
+

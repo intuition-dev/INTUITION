@@ -1,0 +1,22 @@
+basedir: ../../
+title: Personal Portfolio
+image: 'http://www.shanemielke.com/img/share.jpg'
+author:
+  name: Vic Cekvenich
+  avatar: /assets/img/vic.jpg
+ROOT: '/'
+date_published: '2018-07-21T23:20:57.451Z'
+
+content_text: Mielke is a designer
+external_url: 'http://www.shanemielke.com/'
+publish: true
+tags: designer
+comment: >-
+  Shane Seminole Mielke is an award winning Creative Director Designer Frontend
+  Developer Photographer and Writer with experience in all aspects of web
+  development Former Creative Director at 2Advanced Currently Freelance
+  experimenting with WebGL
+img_w: 540
+img_h: 524
+img_typ: jpg
+img_sz: 50652

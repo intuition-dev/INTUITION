@@ -1,0 +1,104 @@
+
+script(src=ROOT+ 'home/tags/feed-tag.min.js')
+
+.flex.edge.delayShowing
+   .left
+      form#srch-form.grid-form
+         fieldset
+            div(data-row-span='1')
+               div(data-field-span='1')
+                  input#srchFld(type='text')
+      button#srchBut.btn Search
+   .right
+      #pagination-container
+
+feed-tag
+br
+
+style.
+   #srchBut {
+      margin-left: 15px;
+   }
+
+script.
+   const tag = riot.mount('feed-tag')[0] // mount the first tag
+
+   loadjs.ready(['cssJs','feed'], function () {// 'show' page, ex: unhide
+      const srchOptions = {
+         shouldSort: true,
+         threshold: 0.3,
+         maxPatternLength: 64,
+         keys: [
+            "title",
+            "content_text",
+            "comment",
+            "url"
+         ]
+      }//so
+
+      $('#srch-form').disableAutoFill()
+
+      pgContainer =[]
+      pgContCount=-1
+      setupPg(guessShow(), feed)
+      fuse = new Fuse(feed.items, srchOptions)
+
+      $( "#srchBut" ).click(onSrch)
+   })
+
+
+   function setupPg(perPage, feed_) {
+      console.log('PG')
+      pgContCount++
+      console.log('s', pgContCount)
+      pgContainer[pgContCount] = $('#pagination-container')
+
+      pgContainer[pgContCount].pagination({
+         className: 'paginationjs-theme-blue',
+         dataSource: feed_,
+         locator: 'items',
+         pageSize: perPage,
+         autoHidePrevious: true,
+         autoHideNext: true,
+         callback: function(data, pagination) {
+            tag.render(data)
+         }
+      })
+
+   }//()
+
+   function userSzSc() {
+      console.log('resize|scroll')
+      guessShow()
+   }
+
+   function guessShow() {
+      let n = ( $(window).width() * $(window).height()  ) / ( 300 * 400) * .9
+      n = Math.round( n * .7)
+      console.log('g', n)
+      return n
+   }
+
+   function onSrch() {
+      let s = $( "#srchFld" ).val()
+      console.log('srch', s)
+      pgContainer[pgContCount].pagination('disable')
+      pgContainer[pgContCount].pagination('hide')
+      pgContainer[pgContCount].pagination('destroy')
+
+      if(!s || s.length < 1) {
+         setupPg(guessShow(), feed)
+         return
+      }//fi
+
+      //else we search
+      let items = fuse.search(s)
+       if(!items || items.length < 1) {// not found
+         tag.render()
+         return
+      }//fi
+
+      let found = {}
+      found.items = items
+      setupPg(guessShow(), found)
+   }//()

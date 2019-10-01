@@ -1,0 +1,27 @@
+
+style.
+   .pageBack {
+      background-image: url( #{image});
+   }
+
+// https://github.com/markdown-it/markdown-it#usage-examples
+
+-// .norouter is for spa-router to un-trap
+a.norouter(href= external_url, target="_blank" )
+
+   .pageBack
+   .pad
+      h1.fBod #{title}
+
+      img.circImg( src= author.avatar )
+      h3 #{ author.name }
+      h6 #{date_published}
+
+
+      .text-italic #{content_text}
+      .text-italic
+
+         include:metaMDtf comment.md
+ 
+      p #{comment}
+

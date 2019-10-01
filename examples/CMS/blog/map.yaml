@@ -1,0 +1,10 @@
+host: 'https://www.metabake.net'
+
+changefreq: monthly
+
+menu:
+   - Home: /home
+   - Blog: /blog
+   - Forum: /forum
+
+itemsRoot: /blog

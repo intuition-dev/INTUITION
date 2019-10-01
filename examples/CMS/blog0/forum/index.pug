@@ -1,0 +1,12 @@
+extends /layoutBar/layout
+//- App Shell
+
+block main
+
+	include module1
+
+	script.
+		loadjs.ready('style', function () {
+			console.log('page 1 script here')
+		})
+

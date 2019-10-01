@@ -1,0 +1,19 @@
+basedir: ../../
+title: Portfolio
+image: >-
+  http://static1.squarespace.com/static/58b35683579fb3b201723013/t/58b380e1d482e9ff053d433e/1488158948257/logo.png?format=1000w
+author:
+  name: Vic Cekvenich
+  avatar: /assets/img/vic.jpg
+ROOT: '/'
+date_published: '2018-07-21T22:38:16.944Z'
+
+content_text: A designer, re sushi
+external_url: 'https://www.sushiandrobots.com/portfolio'
+publish: true
+tags: dd
+comment: Portfolio blog and personal website for Jina Anne of Sushi  Robots LLC
+img_w: 540
+img_h: 524
+img_typ: jpg
+img_sz: 50652
