@@ -1,3 +1,6 @@
+### 
+- moved Shoping to mbake and put CMS here in intu
+
 #### 1.09.20
 - RPC bump
 

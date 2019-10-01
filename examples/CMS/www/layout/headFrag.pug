@@ -1,0 +1,18 @@
+script.
+   var _start = Date.now()
+   window.ENV = '#{ENV}' //- for comps, but it is also in scope for Pug for ENV logic
+
+title #{title}
+meta(charset='utf-8')
+meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+script(src='https://cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.js')
+
+script(src='https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.23/src/toolBelt.min.js')
+
+style.
+   html { touch-action: manipulation; }
+   .delayShowing { opacity: 0; }
+   .blur { -webkit-filter:blur(2px);filter:blur(2px); }
+
+

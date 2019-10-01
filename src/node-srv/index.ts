@@ -14,7 +14,7 @@ const optionDefinitions = [
     { name: 'help', alias: 'h', type: Boolean },
     { name: 'version', alias: 'v', type: Boolean },
     { name: 'CRUD', alias: 'c', type: Boolean },
-    { name: 'ShopShip', alias: 's', type: Boolean },
+    { name: 'CMS', alias: 's', type: Boolean },
 ]
 
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -22,13 +22,13 @@ console.log(argsParsed)
 
 const cwd: string = process.cwd()
 
-function unzipSS() {
-    new Download('intu4SS', cwd).autoUZ()
-    console.info('Extracted a starter Ship and Shop app')
+function unzipCMS() {
+    new Download('CMS', cwd).autoUZ()
+    console.info('Extracted an example CMS')
 }
 function unzipC() {
     new Download('CRUD', cwd).autoUZ()
-    console.info('Extracted a starter CRUD app')
+    console.info('Extracted an example CRUD app')
 }
 
 async function  runISrv() {
@@ -95,8 +95,8 @@ else if (argsParsed.help)
     help()
 else if (argsParsed.version)
     help()
-else if (argsParsed.ShopShip)
-    unzipSS()
+else if (argsParsed.CMS)
+    unzipCMS()
 else
     runISrv()
 
