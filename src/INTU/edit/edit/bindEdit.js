@@ -4,8 +4,8 @@ var myCodeMirror = null;
 var editViewModel = null;
 
 
-depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
-  
+depp.require(['ui', 'fileUpload', 'editViewModel', 'DOMDelayed'], async function () {
+
     // set the pop comp message
     addEventListener('POP-CUSTEL', function (evt) {
         const msg = evt.detail
@@ -13,13 +13,13 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
         var old = window.myCodeMirror.getValue()
         window.myCodeMirror.setValue(old + msg)
     })//()
-    
-  
+
+
     editViewModel = await EditViewModel.inst();
 
     initUpload();
 
-    $(document).on('click', '.js-view-page', function(e) {
+    $(document).on('click', '.js-view-page', function (e) {
         if ($(this).hasAttribute('disabled')) {
             e.preventDefault();
         }
@@ -29,11 +29,11 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
 
     loadTextarea();
     init(hash, editViewModel);
-    
+
     $('.js-view-page').attr('href', appMount);
 
     // show sub directories
-    $(document).off().on('click', '.blog-item', function(e) {
+    $(document).off().on('click', '.blog-item', function (e) {
 
         e.preventDefault();
         $('.blog-item ul').remove();
@@ -59,7 +59,7 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
     });
 
     // Refresh directiories
-    $(document).on('click', '.icono-sync', function(e) {
+    $(document).on('click', '.icono-sync', function (e) {
         e.preventDefault();
 
         if ($('.blog-item').hasClass('active')) {
@@ -83,7 +83,7 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
     });
 
     // show file contents
-    $(document).on('click', '.blog-item li', function(e) {
+    $(document).on('click', '.blog-item li', function (e) {
         e.preventDefault();
         e.stopPropagation(); // prevent child trigger click on parent
 
@@ -94,7 +94,7 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
     });
 
     // save file
-    $(document).on('click', '.save', function(e) {
+    $(document).on('click', '.save', function (e) {
         e.preventDefault();
         let postId = $('.blog-item.active').find('li.active').text();
         let pathPrefix = $('.blog-item.active').find('span').text();
@@ -112,7 +112,7 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
     ********/
 
     // form show/hide
-    $(document).on('click', '.create-post', function(e) {
+    $(document).on('click', '.create-post', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -125,28 +125,27 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
 
     });
 
-    $(window).click(function() {
+    $(window).click(function () {
         $('.post-name-wrap').addClass('d-hide');
     });
 
-    $('.post-name-wrap').click(function(event) {
+    $('.post-name-wrap').click(function (event) {
         event.stopPropagation();
     });
 
     // clone page form submit
-    $('.post-name-wrap').on('submit', function(e) {
+    $('.post-name-wrap').on('submit', function (e) {
 
         e.preventDefault();
 
         let postId = $(this).find('input').val();
         let pathPrefix = $('.blog-item.active').find('span').text();
 
-
         if (pathPrefix === '') {
 
             $('.notification').removeClass('d-hide').addClass('error-msg').find('.text').text('Please select a page to copy');
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').removeClass('error-msg').find('.text').text('');
             }, 4000);
 
@@ -154,7 +153,7 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
 
             $('.notification').removeClass('d-hide').addClass('error-msg').find('.text').text('Page name can\'t be blank');
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').removeClass('error-msg').find('.text').text('');
             }, 4000);
 
@@ -171,7 +170,7 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
             $('.blog-list-wrap').html('');
 
             refreshDirsOnClone(postId, editViewModel);
-                
+
         }
 
     });
@@ -185,43 +184,43 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
             debug: true,
             autoProceed: false,
             restrictions: {
-              maxFileSize: 1000000,
-              maxNumberOfFiles: 3,
-              minNumberOfFiles: 1,
-              allowedFileTypes: ['image/*', 'video/*']
+                maxFileSize: 1000000,
+                maxNumberOfFiles: 3,
+                minNumberOfFiles: 1,
+                allowedFileTypes: ['image/*', 'video/*']
             }
         })
-        .use(Uppy.Dashboard, {
-            trigger: '.uppy-modal-opener-btn',
-            metaFields: [
-                { id: 'name', name: 'Name', placeholder: 'file name' },
-                { id: 'caption', name: 'Caption', placeholder: 'describe what the image is about' }
-              ],
-              browserBackButtonClose: true
-        })
-        .use(Uppy.XHRUpload, { 
-            endpoint: '/upload' ,
-            formData: true,
-            fieldName: 'sampleFile'
-        })
+            .use(Uppy.Dashboard, {
+                trigger: '.uppy-modal-opener-btn',
+                metaFields: [
+                    { id: 'name', name: 'Name', placeholder: 'file name' },
+                    { id: 'caption', name: 'Caption', placeholder: 'describe what the image is about' }
+                ],
+                browserBackButtonClose: true
+            })
+            .use(Uppy.XHRUpload, {
+                endpoint: '/upload',
+                formData: true,
+                fieldName: 'sampleFile'
+            })
 
         uppy.on('file-added', (file) => {
             uppy.setMeta({
-              'targetDir': '/' + $('.blog-item.active').find('span').text()
+                'targetDir': '/' + $('.blog-item.active').find('span').text()
             })
-          })
-      
+        })
+
         uppy.on('complete', (result) => {
             console.log('Upload complete! Files uploaded:', result.successful)
         })
-   }
+    }
 
     /************ 
     * Set publish date
     ***********/
 
     // toggle form
-    $(document).on('click', '.publish-date', function(e) {
+    $(document).on('click', '.publish-date', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -236,32 +235,32 @@ depp.require([ 'ui', 'fileUpload', 'editViewModel'], async function () {
             }
         }
     })
-    
-    $(window).click(function() {
+
+    $(window).click(function () {
         $('.publish-date-form').addClass('d-hide');
     });
-    $(document).on('click', '.publish-date-form, .Zebra_DatePicker', function(event) {
+    $(document).on('click', '.publish-date-form, .Zebra_DatePicker', function (event) {
         event.stopPropagation();
     });
 
     // set date
-    $('.publish-date-form').on('submit', function(e) {
+    $('.publish-date-form').on('submit', function (e) {
         e.preventDefault();
         let publishDate = $('.publish-date-form input').val();
         if (pathPrefixPdate === '' && !($('.blog-item').hasClass('active'))) {
-            
+
             $('.notification').removeClass('d-hide').addClass('error-msg').find('.text').text('Please select post on the left to set publish date');
-            
-            setTimeout(function() {
+
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').find('.text').text('');
                 $('.publish-date-form input').val('');
             }, 4000);
-            
+
         } else {
 
             if (pathPrefixPdate === '' && ($('.blog-item').hasClass('active'))) {
                 pathPrefixPdate = '/';
-            } 
+            }
 
             if (publishDate !== '') {
 
@@ -297,13 +296,13 @@ function loadTextarea() {
     depp.require('codeEdit', pgInit);
 
 }
-    
+
 function pgInit() {
     _initCodeMirror();
 };
 
 function _initCodeMirror(mode) {
-    
+
     if (window.myCodeMirror !== null) {
 
         window.myCodeMirror.toTextArea();
@@ -311,13 +310,13 @@ function _initCodeMirror(mode) {
     }
     window.myCodeMirror = CodeMirror.fromTextArea(
         document.querySelector('#edit1'), {
-            mode: mode || 'markdown',
-            lineNumbers: true,
-            tabSize: 3,
-            indentWithTabs: false,
-            v11iewportMargin: 'Infinity',
-            lineWrapping: true
-        }
+        mode: mode || 'markdown',
+        lineNumbers: true,
+        tabSize: 3,
+        indentWithTabs: false,
+        v11iewportMargin: 'Infinity',
+        lineWrapping: true
+    }
     )
     window.myCodeMirror.setSize('100%', '100%');
 
@@ -325,10 +324,12 @@ function _initCodeMirror(mode) {
 
 
 function showDirs(hash, editViewModel) {
+    console.log("TCL: showDirs -> editViewModel", editViewModel)
     // render folders list
     let listTemp = '';
     return editViewModel.getDirsList()
         .then(posts => {
+            console.log("TCL: showDirs -> posts", posts)
             if (Array.isArray(posts)) {
                 posts.forEach(el => {
                     listTemp += '<div class="blog-item"><i class="knot"><div></div></i><div class="d-flex"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" version="1.1" width="20px" height="20px"><g id="surface1"><path style=" " d="M 3 2 C 1.34375 2 0 3.34375 0 5 L 0 22 C 0 23.65625 1.34375 25 3 25 L 23 25 C 24.65625 25 26 23.65625 26 22 L 26 8 C 26 6.34375 24.65625 5 23 5 L 11 5 C 11 3.34375 9.65625 2 8 2 Z M 3 7 L 23 7 C 23.550781 7 24 7.449219 24 8 L 24 22 C 24 22.550781 23.550781 23 23 23 L 3 23 C 2.449219 23 2 22.550781 2 22 L 2 8 C 2 7.449219 2.449219 7 3 7 Z "/></g></svg><span>' + el + '</span></div></div>';
@@ -390,7 +391,7 @@ function showSubDirs(id, editViewModel) {
             }
         })
         .then(() => {
-            $('.blog-item li').each(function() {
+            $('.blog-item li').each(function () {
 
                 let fileName = $(this).text();
 
@@ -430,7 +431,7 @@ function saveMd(id, md, pathPrefix, target, editViewModel) {
             $('.loader').removeClass('active');
             $('.notification').removeClass('d-hide').find('.text').text('The content was successfully updated');
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').find('.text').text('');
             }, 2000);
             console.info('saved');
@@ -445,7 +446,7 @@ function saveMd(id, md, pathPrefix, target, editViewModel) {
 
                         $('[data-js="errors"]').removeClass('toast-error d-hide').html(msg);
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             $('[data-js="errors"]').addClass('d-hide toast-error').html('');
                         }, 3000);
 
@@ -477,7 +478,7 @@ function addPost(id, pathPrefix, target) {
 
             $('.notification').removeClass('d-hide').find('.text').text('New post was added, now you can edit the content');
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').find('.text').text('');
             }, 3000);
 
@@ -499,7 +500,7 @@ function uploadFile(input, pathPrefix, target, pathPrefixUpload) {
             $('.file-upload').addClass('d-hide');
             $('.notification').removeClass('d-hide').find('.text').text('The file was successfully uploaded to the folder ' + pathPrefixUpload);
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').find('.text').text('');
                 $('.file-upload input[type="file"]').val('');
             }, 3000);
@@ -516,7 +517,7 @@ function setPublishDate(date, itemPath) {
             $('.publish-date-form').addClass('d-hide');
             $('.notification').removeClass('d-hide').find('.text').text('Publish date was successfully set for post ' + itemPath);
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.notification').addClass('d-hide').find('.text').text('');
             }, 3000);
 
@@ -528,7 +529,7 @@ function refresh(dirActive, fileActive, editViewModel) {
         .then(() => {
             $('.blog-list-wrap').find('.blog-item span:contains(' + dirActive + ')').parents('.blog-item').addClass('active').click().find('ul li:contains(' + fileActive + ')').addClass('active').click();
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.blog-item.active ul li:contains(' + fileActive + ')').addClass('active').click();
                 $('.loader').removeClass('active');
             }, 1000);
@@ -541,7 +542,7 @@ function refreshClosed(editViewModel) {
 }
 
 function refreshTextarea(postId, target, editViewModel) {
-    
+
     let mdFile = '.md';
     let datFile = '.yaml';
     let csvFile = '.csv';
@@ -595,12 +596,12 @@ function refreshDirsOnClone(postId, editViewModel) {
 
             $('.blog-list-wrap').find('.blog-item span:contains(' + postId + ')').parents('.blog-item').addClass('active').click().find('ul li:contains(\'.md\')').addClass('active').click();
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.blog-item.active ul li:contains(\'.md\')').addClass('active').click();
             }, 1000);
 
         });
-        
+
 }
 
 function refreshOnUpload(itemPath, activeFile, editViewModel) {
@@ -609,7 +610,7 @@ function refreshOnUpload(itemPath, activeFile, editViewModel) {
 
             $('.blog-list-wrap').find('.blog-item span:contains(' + itemPath + ')').parents('.blog-item').addClass('active').click().find('ul li:contains(' + activeFile + ')').addClass('active').click();
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.blog-item.active ul li:contains(' + activeFile + ')').addClass('active').click();
             }, 1000);
 
@@ -625,7 +626,7 @@ function refreshOnSetDate(itemPath) {
 
             $('.blog-list-wrap').find('.blog-item span:contains(' + itemPath + ')').parents('.blog-item').addClass('active').click().find('ul li:contains(\'.md\')').addClass('active').click();
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.blog-item.active ul li:contains(\'dat.yaml\')').addClass('active').click();
             }, 1000);
 
