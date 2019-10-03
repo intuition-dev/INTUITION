@@ -339,7 +339,8 @@ class IntuAPI {
       var emailjsService_id = serialised.filter(emailjsService_id => emailjsService_id.name == 'service_id')[0].value
       var emailjsTemplate_id = serialised.filter(emailjsTemplate_id => emailjsTemplate_id.name == 'template_id')[0].value
       var emailjsUser_id = serialised.filter(emailjsUser_id => emailjsUser_id.name == 'user_id')[0].value
-      return this.serviceRPC.invoke2('setup', 'setup', 'setup', {
+
+      return this.serviceRPC.invoke2('/setup', 'setup', 'setup', {
          email: email,
          password: password,
          emailjsService_id: emailjsService_id,

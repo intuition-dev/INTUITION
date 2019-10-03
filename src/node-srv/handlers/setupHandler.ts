@@ -1,6 +1,5 @@
 
 import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
-// import { BaseRPCMethodHandler } from '../Serv'
 import { Email } from 'mbake/lib/Email'
 import { IDB } from '../lib/IDB'
 
@@ -14,9 +13,9 @@ export class SetupHandler extends BaseRPCMethodHandler {
         this.db = db
     }
 
-
     // this could be moved to admin routes, and we remove setup routes
     async setup(resp, params) {
+        console.log("TCL: SetupHandler -> setup -> resp", resp)
         let email = Buffer.from(params.email).toString('base64')
         let password = Buffer.from(params.password).toString('base64')
 

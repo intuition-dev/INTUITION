@@ -9,6 +9,7 @@ class SetupHandler extends Serv_1.BaseRPCMethodHandler {
         this.db = db;
     }
     async setup(resp, params) {
+        console.log("TCL: SetupHandler -> setup -> resp", resp);
         let email = Buffer.from(params.email).toString('base64');
         let password = Buffer.from(params.password).toString('base64');
         let emailjsService_id = params.emailjsService_id;

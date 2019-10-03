@@ -1,6 +1,5 @@
 import { Email } from 'mbake/lib/Email'
 import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
-// import { BaseRPCMethodHandler } from '../Serv'
 import { IDB, AdminAuthX } from '../lib/IDB'
 
 export class AdminHandler extends BaseRPCMethodHandler {
@@ -17,8 +16,6 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }//()
 
    async checkAdmin(resp, params, ent, user, pswd, token) {
-      console.log("TCL: AdminHandler -> checkAdmin -> params", params._parsedUrl)
-      console.log("TCL: AdminHandler -> checkAdmin -> ent", ent)
       let user1 = Buffer.from(params.admin_email).toString('base64');
       let pswd1 = Buffer.from(params.admin_pass).toString('base64');
 
@@ -31,8 +28,6 @@ export class AdminHandler extends BaseRPCMethodHandler {
 
 
    async getConfig(resp, params, ent, user, pswd, token) {
-      console.log("TCL: AdminHandler -> getConfig -> params", params)
-      console.log("TCL: AdminHandler -> getConfig -> ent", ent)
       let user1 = Buffer.from(params.admin_email).toString('base64');
       let pswd1 = Buffer.from(params.admin_pass).toString('base64');
 
@@ -100,8 +95,6 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }//()
 
    async getEditors(resp, params, ent, user, pswd, token) {
-      console.log("TCL: AdminHandler -> getEditors -> params", params)
-      console.log("TCL: AdminHandler -> getEditors -> ent", ent)
       let user1 = Buffer.from(params.admin_email).toString('base64');
       let pswd1 = Buffer.from(params.admin_pass).toString('base64');
 

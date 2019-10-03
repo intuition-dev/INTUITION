@@ -10,7 +10,7 @@ class Setup {
     }
     setup() {
         const sr = new setupHandler_1.SetupHandler(this.db);
-        this.app.routeRPC2('setup', 'setup', sr.handleRPC2.bind(sr));
+        this.app.routeRPC2('/setup', 'setup', sr.handleRPC2.bind(sr));
     }
 }
 exports.Setup = Setup;

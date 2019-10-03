@@ -10,7 +10,7 @@ const logger = require('tracer').console()
 
 import { IDB } from './lib/IDB';
 
-import { Setup } from './Setup';
+import { SetupHandler } from './handlers/SetupHandler';
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
 import { AppLogic } from './lib/AppLogic';
 
@@ -37,12 +37,17 @@ export class IntuApp extends ExpressRPC {
     }//()
 
     async run(intuPath) {
-        console.log('setup')
+        console.log('----setup')
 
+        this.appInst.use(function (req, res, next) {
+            console.log("--req.url", req.url)
+            next()
+        })
         let isSetupDone: boolean = await this.db.isSetupDone()
         if (!isSetupDone) {
-            const setup = new Setup(this.db, this)
-            setup.setup()
+            console.log('can do setup')
+            const sr = new SetupHandler(this.db)
+            this.routeRPC2('/setup', 'setup', sr.handleRPC2.bind(sr))
         }
 
         this._run(intuPath)
@@ -50,20 +55,14 @@ export class IntuApp extends ExpressRPC {
 
     async _run(intuPath) {
         // order of Handler: api, all intu apps, Web App
-        console.log('running')
+        console.log('----running')
         //1 API
         const ar = new AdminHandler(this.db)
         const er = new EditorHandler(this.db)
 
-
-        this.appInst.use(function (req, res, next) {
-            console.log("--req.url", req.url)
-            next()
-        })
-
         this.routeRPC2('/admin', 'admin', ar.handleRPC2.bind(ar))
 
-        this.routeRPC2('api', 'editors', er.handleRPC2.bind(er))
+        this.routeRPC2('/api', 'editors', er.handleRPC2.bind(er))
 
         this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
 

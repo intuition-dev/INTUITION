@@ -11,8 +11,6 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         this.auth = new IDB_1.AdminAuthX(IDB);
     }
     async checkAdmin(resp, params, ent, user, pswd, token) {
-        console.log("TCL: AdminHandler -> checkAdmin -> params", params._parsedUrl);
-        console.log("TCL: AdminHandler -> checkAdmin -> ent", ent);
         let user1 = Buffer.from(params.admin_email).toString('base64');
         let pswd1 = Buffer.from(params.admin_pass).toString('base64');
         let auth = await this.auth.auth(user1, pswd1, resp);
@@ -21,8 +19,6 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         this.ret(resp, 'OK', null, null);
     }
     async getConfig(resp, params, ent, user, pswd, token) {
-        console.log("TCL: AdminHandler -> getConfig -> params", params);
-        console.log("TCL: AdminHandler -> getConfig -> ent", ent);
         let user1 = Buffer.from(params.admin_email).toString('base64');
         let pswd1 = Buffer.from(params.admin_pass).toString('base64');
         let auth = await this.auth.auth(user1, pswd1, resp);
@@ -77,8 +73,6 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         this.ret(resp, result, null, null);
     }
     async getEditors(resp, params, ent, user, pswd, token) {
-        console.log("TCL: AdminHandler -> getEditors -> params", params);
-        console.log("TCL: AdminHandler -> getEditors -> ent", ent);
         let user1 = Buffer.from(params.admin_email).toString('base64');
         let pswd1 = Buffer.from(params.admin_pass).toString('base64');
         let auth = await this.auth.auth(user1, pswd1, resp);

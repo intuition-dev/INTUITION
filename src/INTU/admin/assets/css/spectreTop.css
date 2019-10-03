@@ -302,4 +302,4 @@ a.text-error:visited{color:#ff6003;}
 .text-large{font-size:1.2em;}
 .text-ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .text-clip{overflow:hidden;text-overflow:clip;white-space:nowrap;}
-.text-break{-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;word-break:break-word;word-wrap:break-word;} /* mB v6.09.19 on 2019-09-24T13:29:31.925Z */
+.text-break{-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;word-break:break-word;word-wrap:break-word;} /* mB v6.09.19 on 2019-09-25T11:41:51.097Z */

@@ -5,7 +5,7 @@ const editorHandler_1 = require("./handlers/editorHandler");
 const adminHandler_1 = require("./handlers/adminHandler");
 const uploadHandler_1 = require("./handlers/uploadHandler");
 const logger = require('tracer').console();
-const Setup_1 = require("./Setup");
+const SetupHandler_1 = require("./handlers/SetupHandler");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const AppLogic_1 = require("./lib/AppLogic");
 class IntuApp extends Serv_1.ExpressRPC {
@@ -25,24 +25,25 @@ class IntuApp extends Serv_1.ExpressRPC {
         });
     }
     async run(intuPath) {
-        console.log('setup');
-        let isSetupDone = await this.db.isSetupDone();
-        if (!isSetupDone) {
-            const setup = new Setup_1.Setup(this.db, this);
-            setup.setup();
-        }
-        this._run(intuPath);
-    }
-    async _run(intuPath) {
-        console.log('running');
-        const ar = new adminHandler_1.AdminHandler(this.db);
-        const er = new editorHandler_1.EditorHandler(this.db);
+        console.log('----setup');
         this.appInst.use(function (req, res, next) {
             console.log("--req.url", req.url);
             next();
         });
+        let isSetupDone = await this.db.isSetupDone();
+        if (!isSetupDone) {
+            console.log('can do setup');
+            const sr = new SetupHandler_1.SetupHandler(this.db);
+            this.routeRPC2('/setup/', 'setup', sr.handleRPC2.bind(sr));
+        }
+        this._run(intuPath);
+    }
+    async _run(intuPath) {
+        console.log('----running');
+        const ar = new adminHandler_1.AdminHandler(this.db);
+        const er = new editorHandler_1.EditorHandler(this.db);
         this.routeRPC2('/admin', 'admin', ar.handleRPC2.bind(ar));
-        this.routeRPC2('api', 'editors', er.handleRPC2.bind(er));
+        this.routeRPC2('/api', 'editors', er.handleRPC2.bind(er));
         this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute));
         this.appInst.get('/iver', (req, res) => {
             return res.send(AppLogic_1.AppLogic.veri);

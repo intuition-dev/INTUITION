@@ -218,7 +218,7 @@ var IntuAPI = (function () {
         var emailjsService_id = serialised.filter(function (emailjsService_id) { return emailjsService_id.name == 'service_id'; })[0].value;
         var emailjsTemplate_id = serialised.filter(function (emailjsTemplate_id) { return emailjsTemplate_id.name == 'template_id'; })[0].value;
         var emailjsUser_id = serialised.filter(function (emailjsUser_id) { return emailjsUser_id.name == 'user_id'; })[0].value;
-        return this.serviceRPC.invoke2('setup', 'setup', 'setup', {
+        return this.serviceRPC.invoke2('/setup', 'setup', 'setup', {
             email: email,
             password: password,
             emailjsService_id: emailjsService_id,
