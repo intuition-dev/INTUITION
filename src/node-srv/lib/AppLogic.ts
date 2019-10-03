@@ -3,7 +3,7 @@ import { MetaPro } from 'mbake/lib/Wa';
 import { Dat, FileOps } from 'mbake/lib/FileOpsBase';
 import fs = require('fs-extra')
 
-export class Util  {
+export class Util {
 
     static get appPath(): string {
         let appPath: string = require('require-main-filename')()
@@ -12,16 +12,16 @@ export class Util  {
         appPath = appPath.substr(0, i)
         i = appPath.lastIndexOf('/')
         appPath = appPath.substr(0, i)
-    
+
         return appPath
     }//()
 
 }//class
 
 export class AppLogic {
-    
+
     static veri() {
-        return 'v1.9.20'
+        return 'v1.9.21'
     }
     async autoBake(appPath, itemPath, fileName) {
         const meta = new MetaPro(appPath)
@@ -34,9 +34,9 @@ export class AppLogic {
      * @param itemPath 
      * @param date INT, linuxtime GMT
      */
-    async setPublishDate(appPath, itemPath, date:number) {
-        const dat = new Dat(appPath+itemPath)
-        
+    async setPublishDate(appPath, itemPath, date: number) {
+        const dat = new Dat(appPath + itemPath)
+
         dat.set('publishDate', date)
         await dat.write()
 
@@ -54,20 +54,20 @@ export class AppLogic {
     /**
     Silently archive a file to archive directory in the folder 
      */
-    async archive(appPath, itemPath, fileName)  {
+    async archive(appPath, itemPath, fileName) {
 
-        const oldPath = appPath  + itemPath
-        
-        const targetPath = appPath  + itemPath + '/archive/'
-        if(!fs.existsSync)
+        const oldPath = appPath + itemPath
+
+        const targetPath = appPath + itemPath + '/archive/'
+        if (!fs.existsSync)
             fs.mkdirSync(targetPath)
-        
+
         const fo = new FileOps(appPath)
         const count = fo.count(fileName)
 
-        await fs.copySync(oldPath+fileName, targetPath+fileName+count)
+        await fs.copySync(oldPath + fileName, targetPath + fileName + count)
 
-        return await fs.pathExists(oldPath+fileName, targetPath+fileName+count) ? 'OK' : 'Err'
+        return await fs.pathExists(oldPath + fileName, targetPath + fileName + count) ? 'OK' : 'Err'
     }//()
 
 }//()
