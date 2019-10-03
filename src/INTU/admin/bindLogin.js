@@ -13,7 +13,7 @@ depp.require('baseVm');
 depp.require('loginViewModel');
 
 depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
-    
+    console.log('bindLoging')
     var loginViewModel = await LoginViewModel.inst();
     /*
     * admin login
@@ -54,12 +54,12 @@ depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
 
     // show form to enter code
     var hash = window.location.hash.substring(1);
-    if(hash === 'code') {
+    if (hash === 'code') {
         $('#login-form, #btn-login, [data="reset-password"]').addClass('d-hide');
         $("[name='reset-pass-form-2']").removeClass('d-hide');
     }
 
-    $('#sign-out').off('click').on('click',function (e) {
+    $('#sign-out').off('click').on('click', function (e) {
         signOut();
     });
 
@@ -68,7 +68,7 @@ depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
 
 function login(email, pass, loginViewModel) {
     loginViewModel.checkAdmin(email, pass)
-        .then(function(result) {
+        .then(function (result) {
             console.info("--result:", result)
             if (result) {
                 window.sessionStorage.setItem('username', email);
@@ -94,7 +94,7 @@ function signOut() {
 function sendVcode(email, loginUrl, loginViewModel) {
     if (email !== '') {
         loginViewModel.sendVcode(email, loginUrl)
-            .then(function(result) {
+            .then(function (result) {
                 console.info("--result:", result);
             });
     }
@@ -103,10 +103,10 @@ function sendVcode(email, loginUrl, loginViewModel) {
 function resetPass(email, code, pass, loginViewModel) {
     if (email !== '' && pass !== '' && code !== '') {
         loginViewModel.resetPass(email, code, pass)
-            .then(function(result) {
+            .then(function (result) {
                 if (result) {
                     $('.js-pass-changed-notification').removeClass('d-hide');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('.js-pass-changed-notification').addClass('d-hide');
                         $('.js-login-form, .js-btn-login, [data="reset-password"]').removeClass('d-hide');
                     }, 4000);

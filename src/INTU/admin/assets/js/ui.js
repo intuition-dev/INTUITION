@@ -1,5 +1,4 @@
-depp.require('scripts', function() {
-
+depp.require('scripts', function () {
    // login form input lables animation
    if ($('input[name="login"]:-webkit-autofill').length > 0) {
       $('input[name="login"]').parents('.input-wrap').find('label').addClass('focus');
@@ -8,14 +7,14 @@ depp.require('scripts', function() {
       $('input[name="password"]').parents('.input-wrap').find('label').addClass('focus');
    }
 
-   $('.login-form input').focus(function() {
+   $('.login-form input').focus(function () {
       var label = $(this).parents('.input-wrap').find('label');
       if ($(this).val() === '') {
          label.addClass('focus');
       }
    });
 
-   $('.login-form input').focusout(function() {
+   $('.login-form input').focusout(function () {
       var label = $(this).parents('.input-wrap').find('label');
       if ($(this).val() === '') {
          label.removeClass('focus');
@@ -35,10 +34,10 @@ depp.require('scripts', function() {
       || sesPass === ''
       || sesPass === null) {
 
-         if (window.location.pathname !== '/admin' && window.location.pathname !== '/admin/') {
-            console.info('User is not logged in, redirecting to login page ...');
-            window.location.replace('/admin')
-         }
+      if (window.location.pathname !== '/admin' && window.location.pathname !== '/admin/') {
+         console.info('User is not logged in, redirecting to login page ...');
+         window.location.replace('/admin')
+      }
 
    }
 

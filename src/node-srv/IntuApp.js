@@ -34,7 +34,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         if (!isSetupDone) {
             console.log('can do setup');
             const sr = new SetupHandler_1.SetupHandler(this.db);
-            this.routeRPC2('/setup/', 'setup', sr.handleRPC2.bind(sr));
+            this.routeRPC2('/setup', 'setup', sr.handleRPC2.bind(sr));
         }
         this._run(intuPath);
     }

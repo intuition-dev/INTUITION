@@ -1,10 +1,10 @@
 var responces = [];
 depp.define({
     'scripts': [
-        '#jquery', '#tabulator', '#gridformsJS'
+        '#jquery', '#tabulator-core', '#gridformsJS'
         , '/admin/assets/css/spectreBottom.css'
     ],
-    'httpRPC': ['#RPC'],
+    'httpRPC': ['https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.29/http-rpc+/web/httpRPC.js'],
     'intuAPI': [
         '/intuAPI/IntuAPI.js'
     ],

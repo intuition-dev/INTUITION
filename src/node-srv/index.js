@@ -13,18 +13,18 @@ const optionDefinitions = [
     { name: 'help', alias: 'h', type: Boolean },
     { name: 'version', alias: 'v', type: Boolean },
     { name: 'CRUD', alias: 'c', type: Boolean },
-    { name: 'ShopShip', alias: 's', type: Boolean },
+    { name: 'CMS', alias: 's', type: Boolean },
 ];
 const argsParsed = commandLineArgs(optionDefinitions);
 console.log(argsParsed);
 const cwd = process.cwd();
-function unzipSS() {
-    new FileOpsExtra_1.Download('intu4SS', cwd).autoUZ();
-    console.info('Extracted a starter Ship and Shop app');
+function unzipCMS() {
+    new FileOpsExtra_1.Download('CMS', cwd).autoUZ();
+    console.info('Extracted an example CMS');
 }
 function unzipC() {
     new FileOpsExtra_1.Download('CRUD', cwd).autoUZ();
-    console.info('Extracted a starter CRUD app');
+    console.info('Extracted an example CRUD app');
 }
 async function runISrv() {
     const ip = require('ip');
@@ -71,7 +71,7 @@ else if (argsParsed.help)
     help();
 else if (argsParsed.version)
     help();
-else if (argsParsed.ShopShip)
-    unzipSS();
+else if (argsParsed.CMS)
+    unzipCMS();
 else
     runISrv();

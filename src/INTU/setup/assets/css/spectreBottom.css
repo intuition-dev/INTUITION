@@ -255,4 +255,4 @@ i:hover{color:#1b98f8;}
 .knot:after{content:'';display:block;width:5px;height:1px;right:-5px;top:5px;position:absolute;}
 .i-arrow-right{width:16px;height:4px;margin:15px 9px;box-shadow:inset 0 0 0 2px;transform:translateX(-3px);display:inline-block;vertical-align:middle;position:relative;font-style:normal;color:currentColor;text-align:left;text-indent:-9999px;direction:ltr;transition:all .2s;}
 .i-arrow-right:after,.i-arrow-right:before{content:'';pointer-events:none;}
-.i-arrow-right:before{border-style:solid;border-width:8px 0 8px 8px;border-color:transparent;border-left-color:inherit;left:100%;right:auto;position:absolute;top:50%;transform:translateY(-50%);} /* mB v6.09.19 on 2019-09-25T11:41:53.828Z */
+.i-arrow-right:before{border-style:solid;border-width:8px 0 8px 8px;border-color:transparent;border-left-color:inherit;left:100%;right:auto;position:absolute;top:50%;transform:translateY(-50%);} /* mB v6.09.25 on 2019-10-03T08:50:38.216Z */
