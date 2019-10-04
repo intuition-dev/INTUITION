@@ -1,7 +1,7 @@
 depp.define({
     'scripts': ['#jquery', '/setup/assets/css/spectreBottom.css'],
     'baseVm': ['/setup/models/BaseViewModel.js'],
-    'httpRPC': ['https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.30/http-rpc+/web/httpRPC.js'],
+    'httpRPC': ['https://cdn.jsdelivr.net/gh/intuition-dev/toolBelt@v1.9.31/http-rpc+/web/httpRPC.js'],
     'intuAPI': [
         '/intuAPI/IntuAPI.js'
     ],
