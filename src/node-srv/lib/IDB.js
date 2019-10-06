@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt = require('bcryptjs');
 const fs = require('fs-extra');
 const logger = require('tracer').console();
-const BaseDB_1 = require("mbake/lib/BaseDB");
-class IDB extends BaseDB_1.BaseDB {
+const BaseDBL_1 = require("mbake/lib/BaseDBL");
+class IDB extends BaseDBL_1.BaseDBL {
     constructor(path, fn) {
         super(path, fn);
         logger.trace(path, fn);

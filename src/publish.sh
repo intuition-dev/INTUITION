@@ -1,3 +1,2 @@
-rm -r node_modules
-rm node-srv/IDB.sqlite
+rm node-srv/*.sqlite
 npm publish
