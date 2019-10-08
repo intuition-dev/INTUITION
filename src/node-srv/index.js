@@ -34,7 +34,7 @@ async function runISrv() {
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
     const idb = new IDB_1.IDB(process.cwd(), '/IDB.sqlite');
-    const path_config = __dirname + '/intu-config.yaml';
+    const path_config = process.cwd() + '/intu-config.yaml';
     let configIntu;
     try {
         if (!fs.existsSync(path_config)) {
