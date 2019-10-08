@@ -17,6 +17,11 @@ const optionDefinitions = [
     { name: 'CMS', alias: 's', type: Boolean },
 ]
 
+const yaml = require("js-yaml")
+const fs = require("fs")
+
+let config = yaml.load(fs.readFileSync(__dirname + "/config.yaml"))
+
 const argsParsed = commandLineArgs(optionDefinitions)
 console.log(argsParsed)
 
@@ -31,7 +36,7 @@ function unzipC() {
     console.info('Extracted an example CRUD app')
 }
 
-async function  runISrv() {
+async function runISrv() {
     const ip = require('ip')
     const ipAddres = ip.address()
 
