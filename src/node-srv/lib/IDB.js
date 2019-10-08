@@ -109,20 +109,6 @@ class IDB extends BaseDBL_1.BaseDBL {
             return false;
         }
     }
-    async authAdmin(email, password) {
-        const salt = await this.getSalt();
-        const hashPassP = bcrypt.hashSync(password, salt);
-        const qry = this.db.prepare('SELECT * FROM ADMIN where email = ?');
-        const rows = await this._qry(qry, email);
-        if (rows.length > 0) {
-            const row = rows[0];
-            const hashPassS = row.hashPass;
-            return hashPassP == hashPassS;
-        }
-        else {
-            return false;
-        }
-    }
     async addEditor(guid, name, email, password) {
         const salt = await this.getSalt();
         const hashPass = bcrypt.hashSync(password, salt);
@@ -208,28 +194,3 @@ class EditorAuthX {
     }
 }
 exports.EditorAuthX = EditorAuthX;
-class AdminAuthX {
-    constructor(db) {
-        this.db = db;
-    }
-    async auth(user, pswd, resp, ctx) {
-        return new Promise(async (resolve, reject) => {
-            const ok = await this.db.authAdmin(user, pswd);
-            console.log('admin AUTH status: ', ok);
-            if (ok)
-                return resolve('OK');
-            resolve('FAIL');
-        });
-    }
-    retErr(resp, msg) {
-        console.log(msg);
-        const ret = {};
-        ret.errorLevel = -1;
-        ret.errorMessage = msg;
-        resp.json(ret);
-    }
-}
-exports.AdminAuthX = AdminAuthX;
-module.exports = {
-    IDB, EditorAuthX, AdminAuthX
-};

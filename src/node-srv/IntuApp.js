@@ -7,6 +7,10 @@ const uploadHandler_1 = require("./handlers/uploadHandler");
 const logger = require('tracer').console();
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const AppLogic_1 = require("./lib/AppLogic");
+const yaml = require("js-yaml");
+const fs = require("fs");
+const path_config = __dirname + '/intu-config.yaml';
+const configIntu = yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
 class IntuApp extends Serv_1.ExpressRPC {
     constructor(db, origins) {
         super();
@@ -29,7 +33,7 @@ class IntuApp extends Serv_1.ExpressRPC {
             next();
         });
         console.log('----running');
-        const ar = new adminHandler_1.AdminHandler(this.db);
+        const ar = new adminHandler_1.AdminHandler(this.db, configIntu);
         const er = new editorHandler_1.EditorHandler(this.db);
         this.routeRPC2('/admin', 'admin', ar.handleRPC2.bind(ar));
         this.routeRPC2('/api', 'editors', er.handleRPC2.bind(er));

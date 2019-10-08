@@ -1,37 +1,44 @@
 import { Email } from 'mbake/lib/Email'
 import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
-import { IDB, AdminAuthX } from '../lib/IDB'
+import { IDB } from '../lib/IDB'
 
 export class AdminHandler extends BaseRPCMethodHandler {
 
    emailJs = new Email()
    IDB: IDB
-   auth: AdminAuthX
+   configIntu
 
-   constructor(IDB) {
+   constructor(IDB, configIntu) {
       super()
       this.IDB = IDB
-      this.auth = new AdminAuthX(IDB)
+      this.configIntu = configIntu
 
    }//()
 
+   auth(login, pass) {
+      const user = 'admin'
+      const pswd = this.configIntu.secret
+      if (login == user && pass == pswd) {
+         return 'OK'
+      }
+      return 'FAIL'
+   }
+
    async checkAdmin(resp, params, ent, user, pswd, token) {
-      let user1 = Buffer.from(params.admin_email).toString('base64');
-      let pswd1 = Buffer.from(params.admin_pass).toString('base64');
+      let auth = await this.auth(params.admin_email, params.admin_pass)
 
-      let auth = await this.auth.auth(user1, pswd1, resp)
+      if (auth != 'OK') {
+         this.ret(resp, 'FAIL', null, null)
+      } else {
+         this.ret(resp, 'OK', null, null)
+      }
 
-      if (auth != 'OK') this.ret(resp, 'FAIL', null, null)
-
-      this.ret(resp, 'OK', null, null)
    }//()
 
 
    async getConfig(resp, params, ent, user, pswd, token) {
-      let user1 = Buffer.from(params.admin_email).toString('base64');
-      let pswd1 = Buffer.from(params.admin_pass).toString('base64');
 
-      let auth = await this.auth.auth(user1, pswd1, resp)
+      let auth = await this.auth(params.admin_email, params.admin_pass)
 
       if (auth != 'OK') return
 
@@ -41,10 +48,8 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }//()
 
    async updateConfig(resp, params, ent, user, pswd, token) {
-      let user1 = Buffer.from(params.admin_email).toString('base64');
-      let pswd1 = Buffer.from(params.admin_pass).toString('base64');
 
-      let auth = await this.auth.auth(user1, pswd1, resp)
+      let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
 
       let emailjsService_id = params.emailjsService_id
@@ -95,10 +100,9 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }//()
 
    async getEditors(resp, params, ent, user, pswd, token) {
-      let user1 = Buffer.from(params.admin_email).toString('base64');
-      let pswd1 = Buffer.from(params.admin_pass).toString('base64');
 
-      let auth = await this.auth.auth(user1, pswd1, resp)
+
+      let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
 
       let EditorsJson = await this.IDB.getEditors()
@@ -109,7 +113,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
     *  Needs a guid sent by browsers. There is a getGUID() in toolbelt
     */
    async addEditor(resp, params, ent, user, pswd, token) {
-      let auth = await this.auth.auth(user, pswd, resp)
+      let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
 
       let guid = params.id;
@@ -125,7 +129,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
     *  edit user
     */
    async editEditor(resp, params, ent, user, pswd, token) {
-      let auth = await this.auth.auth(user, pswd, resp)
+      let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
 
       let guid = params.uid;
@@ -136,7 +140,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }
 
    async deleteEditor(resp, params, ent, user, pswd, token) {
-      let auth = await this.auth.auth(user, pswd, resp)
+      let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
 
       let guid = params.uid;

@@ -122,7 +122,8 @@ var IntuAPI = (function () {
             admin_pass: pass
         })
             .then(function (result) {
-            if (result) {
+            console.log("TCL: IntuAPI -> checkAdmin -> result", result);
+            if (result == 'OK') {
                 _this.serviceRPC.setUser(email, pass);
                 return true;
             }

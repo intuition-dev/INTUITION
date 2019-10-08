@@ -12,6 +12,10 @@ import { IDB } from './lib/IDB';
 
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
 import { AppLogic } from './lib/AppLogic';
+const yaml = require("js-yaml")
+const fs = require("fs")
+const path_config = __dirname + '/intu-config.yaml'
+const configIntu = yaml.safeLoad(fs.readFileSync(path_config, 'utf8'))
 
 export class IntuApp extends ExpressRPC {
 
@@ -44,7 +48,7 @@ export class IntuApp extends ExpressRPC {
         // order of Handler: api, all intu apps, Web App
         console.log('----running')
         //1 API
-        const ar = new AdminHandler(this.db)
+        const ar = new AdminHandler(this.db, configIntu)
         const er = new EditorHandler(this.db)
 
         this.routeRPC2('/admin', 'admin', ar.handleRPC2.bind(ar))

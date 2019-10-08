@@ -2,35 +2,45 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Email_1 = require("mbake/lib/Email");
 const Serv_1 = require("mbake/lib/Serv");
-const IDB_1 = require("../lib/IDB");
 class AdminHandler extends Serv_1.BaseRPCMethodHandler {
-    constructor(IDB) {
+    constructor(IDB, configIntu) {
         super();
         this.emailJs = new Email_1.Email();
         this.IDB = IDB;
-        this.auth = new IDB_1.AdminAuthX(IDB);
+        this.configIntu = configIntu;
+    }
+    auth(login, pass) {
+        console.log("TCL: AdminHandler -> auth -> pass", pass);
+        console.log("TCL: AdminHandler -> auth -> login", login);
+        const user = 'admin';
+        const pswd = this.configIntu.secret;
+        console.log("TCL: AdminHandler -> auth -> pswd", pswd);
+        if (login == user && pass == pswd) {
+            console.log('OK');
+            return 'OK';
+        }
+        console.log('FAIL');
+        return 'FAIL';
     }
     async checkAdmin(resp, params, ent, user, pswd, token) {
-        let user1 = Buffer.from(params.admin_email).toString('base64');
-        let pswd1 = Buffer.from(params.admin_pass).toString('base64');
-        let auth = await this.auth.auth(user1, pswd1, resp);
-        if (auth != 'OK')
+        console.log("TCL: AdminHandler -> checkAdmin -> params", params);
+        let auth = await this.auth(params.admin_email, params.admin_pass);
+        if (auth != 'OK') {
             this.ret(resp, 'FAIL', null, null);
-        this.ret(resp, 'OK', null, null);
+        }
+        else {
+            this.ret(resp, 'OK', null, null);
+        }
     }
     async getConfig(resp, params, ent, user, pswd, token) {
-        let user1 = Buffer.from(params.admin_email).toString('base64');
-        let pswd1 = Buffer.from(params.admin_pass).toString('base64');
-        let auth = await this.auth.auth(user1, pswd1, resp);
+        let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
         let data = await this.IDB.getConfig();
         this.ret(resp, data, null, null);
     }
     async updateConfig(resp, params, ent, user, pswd, token) {
-        let user1 = Buffer.from(params.admin_email).toString('base64');
-        let pswd1 = Buffer.from(params.admin_pass).toString('base64');
-        let auth = await this.auth.auth(user1, pswd1, resp);
+        let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
         let emailjsService_id = params.emailjsService_id;
@@ -73,16 +83,14 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         this.ret(resp, result, null, null);
     }
     async getEditors(resp, params, ent, user, pswd, token) {
-        let user1 = Buffer.from(params.admin_email).toString('base64');
-        let pswd1 = Buffer.from(params.admin_pass).toString('base64');
-        let auth = await this.auth.auth(user1, pswd1, resp);
+        let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
         let EditorsJson = await this.IDB.getEditors();
         this.ret(resp, EditorsJson, null, null);
     }
     async addEditor(resp, params, ent, user, pswd, token) {
-        let auth = await this.auth.auth(user, pswd, resp);
+        let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
         let guid = params.id;
@@ -93,7 +101,7 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         this.ret(resp, 'OK', null, null);
     }
     async editEditor(resp, params, ent, user, pswd, token) {
-        let auth = await this.auth.auth(user, pswd, resp);
+        let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
         let guid = params.uid;
@@ -102,7 +110,7 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         this.ret(resp, data, null, null);
     }
     async deleteEditor(resp, params, ent, user, pswd, token) {
-        let auth = await this.auth.auth(user, pswd, resp);
+        let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
         let guid = params.uid;

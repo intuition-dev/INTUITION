@@ -131,20 +131,6 @@ export class IDB extends BaseDBL implements iDBL {
             return false;
         }
     }//()
-    async authAdmin(email, password): Promise<boolean> {
-        const salt = await this.getSalt()
-        const hashPassP = bcrypt.hashSync(password, salt)
-        const qry = this.db.prepare('SELECT * FROM ADMIN where email = ?')
-        const rows = await this._qry(qry, email)
-        if (rows.length > 0) {
-            const row = rows[0]
-            const hashPassS = row.hashPass
-            return hashPassP == hashPassS
-        } else {
-            return false;
-        }
-
-    }//()
 
     /**
      * @param guid You can user ToolBelt's getGUID on browser
@@ -256,33 +242,3 @@ export class EditorAuthX implements iAuth {
     }//()
 
 }//class
-
-export class AdminAuthX implements iAuth {
-    db: IDB
-    constructor(db) {
-        this.db = db
-    }//()
-
-    async auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {
-
-        return new Promise(async (resolve, reject) => {
-            const ok = await this.db.authAdmin(user, pswd)
-            console.log('admin AUTH status: ', ok)
-            if (ok) return resolve('OK')
-
-            resolve('FAIL')
-        })// pro
-    }
-
-    retErr(resp: any, msg: any) {
-        console.log(msg)
-        const ret: any = {} // new return
-        ret.errorLevel = -1
-        ret.errorMessage = msg
-        resp.json(ret)
-    }//()
-}//class
-
-module.exports = {
-    IDB, EditorAuthX, AdminAuthX
-}
