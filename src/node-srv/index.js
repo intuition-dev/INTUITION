@@ -15,6 +15,8 @@ const optionDefinitions = [
     { name: 'CRUD', alias: 'c', type: Boolean },
     { name: 'CMS', alias: 's', type: Boolean },
 ];
+const yaml = require("js-yaml");
+const fs = require("fs");
 const argsParsed = commandLineArgs(optionDefinitions);
 console.log(argsParsed);
 const cwd = process.cwd();
@@ -32,6 +34,25 @@ async function runISrv() {
     const hostIP = 'http://' + ipAddres + ':';
     console.log("TCL: hostIP", hostIP);
     const idb = new IDB_1.IDB(process.cwd(), '/IDB.sqlite');
+    const path_config = __dirname + '/intu-config.yaml';
+    let configIntu;
+    try {
+        if (!fs.existsSync(path_config)) {
+            let conf = {
+                port: 9081,
+                secret: '123456'
+            };
+            await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
+        configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
+    }
+    catch (err) {
+        console.log('cant read the config file', err);
+    }
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*']);
     let intuPath = AppLogic_2.Util.appPath + '/INTU';
     logger.trace(intuPath);
@@ -40,7 +61,7 @@ async function runISrv() {
     if (setupDone) {
         logger.trace('normal');
         await mainEApp.run(intuPath);
-        const port = await idb.getPort();
+        const port = await configIntu.port;
         idb.getAppPath().then(appPath => {
             mainEApp.serveStatic(appPath, null, null);
             mainEApp.listen(port);
@@ -49,7 +70,7 @@ async function runISrv() {
     else {
         logger.trace('run setup');
         await mainEApp.run(intuPath);
-        const port = 9081;
+        const port = configIntu.port;
         mainEApp.serveStatic(AppLogic_2.Util.appPath + '/ROOT', null, null);
         mainEApp.listen(port);
     }

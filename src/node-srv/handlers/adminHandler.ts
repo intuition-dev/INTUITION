@@ -57,7 +57,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
          // if no port specified, default port is:
          port = 9081;
       }
-      let res = await this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
+      let res = await this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp);
       if (res === 'OK') {
          let data = [];
          data.push({

@@ -49,8 +49,7 @@ export class IDB extends BaseDBL implements iDBL {
             return true
         }
 
-        await this._run(this.db.prepare(`CREATE TABLE ADMIN  (email, hashPass, vcode)`)) // single row in table
-        await this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port int)`)) // single row in table
+        await this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp)`)) // single row in table
         await this._run(this.db.prepare(`CREATE TABLE SALT(salt)`))
         await this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`))
         let salt = bcrypt.genSaltSync(10)
@@ -72,23 +71,9 @@ export class IDB extends BaseDBL implements iDBL {
         return this.salt
     }//()
 
-    async setAdmin(email, password, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port: number) {
-        const salt = await this.getSalt()
-        const hashPass = bcrypt.hashSync(password, salt)
-
-        const stmt1 = this.db.prepare(`INSERT INTO ADMIN(email, hashPass) VALUES(?,?)`);
-        this._run(stmt1, email, hashPass);
-
-        const appPath = await fs.realpath(__dirname + '/../../ROOT');
-        logger.trace(appPath)
-
-        const stmt2 = this.db.prepare(`INSERT INTO CONFIG(pathToApp, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port) VALUES('` + appPath + `',?,?,?,?)`);
-        this._run(stmt2, emailjsService_id, emailjsTemplate_id, emailjsUser_id, port);
-    }//()
-
-    async updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port) {
-        const stmt = this.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?, pathToApp=?, port=?`)// single row in table so no need for where
-        const res = await this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
+    async updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp) {
+        const stmt = this.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?, pathToApp=?`)// single row in table so no need for where
+        const res = await this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp);
         return res;
     }
 
@@ -113,13 +98,6 @@ export class IDB extends BaseDBL implements iDBL {
         const config = await this.getConfig()
         if (!config) throw new Error('no pathToApp in DB')
         return config.pathToApp
-    }
-
-    async getPort() {
-        const qry = this.db.prepare('SELECT * FROM CONFIG')
-        const rows = await this._qry(qry)
-        const row = rows[0]
-        return row.port
     }
 
     getVcodeAdmin() {

@@ -6,49 +6,47 @@ const perfy = require('perfy')
 import { IDB } from './lib/IDB'
 import { AppLogic } from './lib/AppLogic'
 
-const idb =new IDB(process.cwd(),'/test.sqlite')
+const idb = new IDB(process.cwd(), '/test.sqlite')
 
 idb.isSetupDone()//.then(testIDB) //then(testAppLogic)
 
 const appLogic = new AppLogic()
 
 async function test(name, f) {
-    perfy.start(name, true)
-    logger.trace(name)
+  perfy.start(name, true)
+  logger.trace(name)
 
-    logger.trace(await f())
+  logger.trace(await f())
 
-    var result = perfy.end(name)
-    console.log('', result.time)
+  var result = perfy.end(name)
+  console.log('', result.time)
 }
 
 async function testIDB() {
-   console.log('testIDB:')
+  console.log('testIDB:')
 
-   await test('getSalt', () => idb.getSalt())
+  await test('getSalt', () => idb.getSalt())
 
-   await test(`setAppPath('appPath')`, () => idb.setAppPath('appPath'))
+  await test(`setAppPath('appPath')`, () => idb.setAppPath('appPath'))
 
-   await test('getAppPath', () => idb.getAppPath())
+  await test('getAppPath', () => idb.getAppPath())
 
-   await test('getPort', () => idb.getPort())
+  await test('getConfig', () => idb.getConfig())
 
-   await test('getConfig', () => idb.getConfig())
+  await test('getVcodeAdmin', () => idb.getVcodeAdmin())
 
-   await test('getVcodeAdmin', () => idb.getVcodeAdmin())
+  await test(`getVcodeEditor('n1@m.com)`, () => idb.getVcodeEditor('n1@m.com'))
 
-   await test(`getVcodeEditor('n1@m.com)`, () => idb.getVcodeEditor('n1@m.com'))
+  var addEditorGuid = uuidv4()
+  await test(`addEditor(${addEditorGuid}, 'Editor${addEditorGuid}', 'e@m.com', '1111'):`, () => idb.addEditor(addEditorGuid, 'Editor2' + addEditorGuid, 'e2@m.com', '1111'))
 
-   var addEditorGuid = uuidv4()
-   await test(`addEditor(${addEditorGuid}, 'Editor${addEditorGuid}', 'e@m.com', '1111'):`, () => idb.addEditor(addEditorGuid, 'Editor2'+addEditorGuid, 'e2@m.com', '1111'))
+  await test('getEditors', () => idb.getEditors())
 
-   await test('getEditors', () => idb.getEditors())
+  await test('deleteEditor', () => idb.deleteEditor(addEditorGuid))
 
-   await test('deleteEditor', () => idb.deleteEditor(addEditorGuid))
+  await test('getEditors2', () => idb.getEditors())
 
-   await test('getEditors2', () => idb.getEditors())
-
-   console.log('//testIDB')
+  console.log('//testIDB')
 }//()
 
 async function testAppLogic() {
@@ -67,8 +65,8 @@ async function testAppLogic() {
 
 // generate uuid for testing purposes
 function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
 }

@@ -10,7 +10,6 @@ const logger = require('tracer').console()
 
 import { IDB } from './lib/IDB';
 
-import { SetupHandler } from './handlers/SetupHandler';
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
 import { AppLogic } from './lib/AppLogic';
 
@@ -37,23 +36,11 @@ export class IntuApp extends ExpressRPC {
     }//()
 
     async run(intuPath) {
-        console.log('----setup')
-
         this.appInst.use(function (req, res, next) {
             console.log("--req.url", req.url)
             next()
         })
-        let isSetupDone: boolean = await this.db.isSetupDone()
-        if (!isSetupDone) {
-            console.log('can do setup')
-            const sr = new SetupHandler(this.db)
-            this.routeRPC2('/setup', 'setup', sr.handleRPC2.bind(sr))
-        }
 
-        this._run(intuPath)
-    }//()
-
-    async _run(intuPath) {
         // order of Handler: api, all intu apps, Web App
         console.log('----running')
         //1 API
@@ -74,7 +61,15 @@ export class IntuApp extends ExpressRPC {
         // 2 INTU
         this.serveStatic(intuPath, null, null)
 
+
+        // let isSetupDone: boolean = await this.db.isSetupDone()
+        // if (!isSetupDone) {
+        //     console.log('can do setup')
+        //     const sr = new SetupHandler(this.db)
+        //     this.routeRPC2('/setup', 'setup', sr.handleRPC2.bind(sr))
+        // }
     }//()
+
 
 }//class
 

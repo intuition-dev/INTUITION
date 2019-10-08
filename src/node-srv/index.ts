@@ -7,6 +7,7 @@ import { Download } from 'mbake/lib/FileOpsExtra';
 import { IntuApp } from './IntuApp'
 import { AppLogic } from './lib/AppLogic';
 import { Util } from './lib/AppLogic';
+
 const logger = require('tracer').console()
 
 const optionDefinitions = [
@@ -19,8 +20,6 @@ const optionDefinitions = [
 
 const yaml = require("js-yaml")
 const fs = require("fs")
-
-let config = yaml.load(fs.readFileSync(__dirname + "/config.yaml"))
 
 const argsParsed = commandLineArgs(optionDefinitions)
 console.log(argsParsed)
@@ -47,6 +46,26 @@ async function runISrv() {
     // the only place there is DB new is here.
     const idb = new IDB(process.cwd(), '/IDB.sqlite')
 
+    //creating/checking intu-config.file
+    const path_config = __dirname + '/intu-config.yaml'
+    let configIntu;
+    try {
+        if (!fs.existsSync(path_config)) {
+            let conf = {
+                port: 9081,
+                secret: '123456'
+            }
+            await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            })
+        }
+        configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'))
+    } catch (err) {
+        console.log('cant read the config file', err)
+    }
+
     const mainEApp = new IntuApp(idb, ['*'])
 
     let intuPath = Util.appPath + '/INTU'
@@ -59,8 +78,8 @@ async function runISrv() {
         // 1 and 2
         await mainEApp.run(intuPath)
 
-        // #3 app
-        const port: number = await idb.getPort()
+        // #3 app get the port from config
+        const port: number = await configIntu.port
         idb.getAppPath().then(appPath => {
             mainEApp.serveStatic(appPath, null, null)
             mainEApp.listen(port)
@@ -71,7 +90,7 @@ async function runISrv() {
         await mainEApp.run(intuPath)
 
         // #3 app
-        const port: number = 9081
+        const port: number = configIntu.port
         mainEApp.serveStatic(Util.appPath + '/ROOT', null, null)
         mainEApp.listen(port)
     }//fi

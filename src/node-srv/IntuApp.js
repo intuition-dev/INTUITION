@@ -5,7 +5,6 @@ const editorHandler_1 = require("./handlers/editorHandler");
 const adminHandler_1 = require("./handlers/adminHandler");
 const uploadHandler_1 = require("./handlers/uploadHandler");
 const logger = require('tracer').console();
-const SetupHandler_1 = require("./handlers/SetupHandler");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const AppLogic_1 = require("./lib/AppLogic");
 class IntuApp extends Serv_1.ExpressRPC {
@@ -25,20 +24,10 @@ class IntuApp extends Serv_1.ExpressRPC {
         });
     }
     async run(intuPath) {
-        console.log('----setup');
         this.appInst.use(function (req, res, next) {
             console.log("--req.url", req.url);
             next();
         });
-        let isSetupDone = await this.db.isSetupDone();
-        if (!isSetupDone) {
-            console.log('can do setup');
-            const sr = new SetupHandler_1.SetupHandler(this.db);
-            this.routeRPC2('/setup', 'setup', sr.handleRPC2.bind(sr));
-        }
-        this._run(intuPath);
-    }
-    async _run(intuPath) {
         console.log('----running');
         const ar = new adminHandler_1.AdminHandler(this.db);
         const er = new editorHandler_1.EditorHandler(this.db);

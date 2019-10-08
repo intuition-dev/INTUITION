@@ -41,7 +41,7 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         if (port === '') {
             port = 9081;
         }
-        let res = await this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp, port);
+        let res = await this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp);
         if (res === 'OK') {
             let data = [];
             data.push({
