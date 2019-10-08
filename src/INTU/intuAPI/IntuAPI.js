@@ -184,13 +184,12 @@ var IntuAPI = (function () {
             admin_pass: admin_pass
         });
     };
-    IntuAPI.prototype.updateConfig = function (port, path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+    IntuAPI.prototype.updateConfig = function (path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke2('/admin', 'admin', 'updateConfig', {
             admin_email: admin_email,
             admin_pass: admin_pass,
-            port: port,
             path: path,
             emailjsService_id: emailjsService_id,
             emailjsTemplate_id: emailjsTemplate_id,
