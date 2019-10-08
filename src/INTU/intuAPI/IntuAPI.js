@@ -176,22 +176,6 @@ var IntuAPI = (function () {
             admin_pass: window.sessionStorage.getItem('password')
         });
     };
-    IntuAPI.prototype.sendVcode = function (email, loginUrl) {
-        return this.serviceRPC.invoke2('/admin', 'admin', 'emailResetPasswordCode', {
-            admin_email: email,
-            loginUrl: loginUrl
-        })
-            .then(function () {
-            return true;
-        });
-    };
-    IntuAPI.prototype.resetPass = function (email, code, pass) {
-        return this.serviceRPC.invoke2('/admin', 'admin', 'resetPasswordIfMatch', {
-            admin_email: email,
-            code: code,
-            password: pass
-        });
-    };
     IntuAPI.prototype.getConfig = function () {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');

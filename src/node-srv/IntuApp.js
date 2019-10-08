@@ -7,16 +7,13 @@ const uploadHandler_1 = require("./handlers/uploadHandler");
 const logger = require('tracer').console();
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const AppLogic_1 = require("./lib/AppLogic");
-const yaml = require("js-yaml");
-const fs = require("fs");
-const path_config = __dirname + '/intu-config.yaml';
-const configIntu = yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
 class IntuApp extends Serv_1.ExpressRPC {
-    constructor(db, origins) {
+    constructor(db, origins, configIntu) {
         super();
         this.makeInstance(origins);
         this.db = db;
         this.uploadRoute = new uploadHandler_1.UploadHandler(this.db);
+        this.configIntu = configIntu;
         FileOpsExtra_1.VersionNag.isCurrent('intu', AppLogic_1.AppLogic.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
@@ -33,7 +30,7 @@ class IntuApp extends Serv_1.ExpressRPC {
             next();
         });
         console.log('----running');
-        const ar = new adminHandler_1.AdminHandler(this.db, configIntu);
+        const ar = new adminHandler_1.AdminHandler(this.db, this.configIntu);
         const er = new editorHandler_1.EditorHandler(this.db);
         this.routeRPC2('/admin', 'admin', ar.handleRPC2.bind(ar));
         this.routeRPC2('/api', 'editors', er.handleRPC2.bind(er));

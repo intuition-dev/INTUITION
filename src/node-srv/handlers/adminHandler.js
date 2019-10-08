@@ -10,20 +10,14 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         this.configIntu = configIntu;
     }
     auth(login, pass) {
-        console.log("TCL: AdminHandler -> auth -> pass", pass);
-        console.log("TCL: AdminHandler -> auth -> login", login);
         const user = 'admin';
         const pswd = this.configIntu.secret;
-        console.log("TCL: AdminHandler -> auth -> pswd", pswd);
         if (login == user && pass == pswd) {
-            console.log('OK');
             return 'OK';
         }
-        console.log('FAIL');
         return 'FAIL';
     }
     async checkAdmin(resp, params, ent, user, pswd, token) {
-        console.log("TCL: AdminHandler -> checkAdmin -> params", params);
         let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK') {
             this.ret(resp, 'FAIL', null, null);
@@ -63,18 +57,6 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
             });
             this.ret(resp, data, null, null);
         }
-    }
-    async emailResetPasswordCode(resp, params, ent, email, pswd) {
-        const config = await this.IDB.getConfig();
-        let emailjsService_id = config.emailjsService_id;
-        let emailjsTemplate_id = config.emailjsTemplate_id;
-        let emailjsUser_id = config.emailjsUser_id;
-        let sendToEmail = Buffer.from(params.admin_email).toString('base64');
-        let enterCodeUrl = params.loginUrl;
-        let code = this.IDB.getVcodeAdmin();
-        let msg = 'Your verification code is: ' + code + '<br>Enter your code at ' + enterCodeUrl + '#code';
-        this.emailJs.send(sendToEmail, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
-        this.ret(resp, 'OK', null, null);
     }
     async resetPasswordIfMatch(resp, params, ent, email, password) {
         let adminEmail = Buffer.from(params.admin_email).toString('base64');

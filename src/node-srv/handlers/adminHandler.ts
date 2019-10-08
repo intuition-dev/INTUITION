@@ -76,21 +76,6 @@ export class AdminHandler extends BaseRPCMethodHandler {
       }
    }
 
-   async emailResetPasswordCode(resp, params, ent, email, pswd) {
-      const config: any = await this.IDB.getConfig()
-      let emailjsService_id = config.emailjsService_id
-      let emailjsTemplate_id = config.emailjsTemplate_id
-      let emailjsUser_id = config.emailjsUser_id
-      let sendToEmail = Buffer.from(params.admin_email).toString('base64');
-      let enterCodeUrl = params.loginUrl;
-
-      let code = this.IDB.getVcodeAdmin();
-      let msg = 'Your verification code is: ' + code + '<br>Enter your code at ' + enterCodeUrl + '#code' // TODO use IDB template email to CRUD w/ {{code}}
-      this.emailJs.send(sendToEmail, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg)
-
-      this.ret(resp, 'OK', null, null)
-   }//() 
-
    async resetPasswordIfMatch(resp, params, ent, email, password) {
       let adminEmail = Buffer.from(params.admin_email).toString('base64');
       let newPassword = Buffer.from(params.password).toString('base64');

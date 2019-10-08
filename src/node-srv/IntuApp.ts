@@ -12,22 +12,20 @@ import { IDB } from './lib/IDB';
 
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
 import { AppLogic } from './lib/AppLogic';
-const yaml = require("js-yaml")
-const fs = require("fs")
-const path_config = __dirname + '/intu-config.yaml'
-const configIntu = yaml.safeLoad(fs.readFileSync(path_config, 'utf8'))
 
 export class IntuApp extends ExpressRPC {
 
     db: IDB
     uploadRoute
+    configIntu
 
-    constructor(db: IDB, origins: Array<string>) {
+    constructor(db: IDB, origins: Array<string>, configIntu) {
         super()
         this.makeInstance(origins)
 
         this.db = db
         this.uploadRoute = new UploadHandler(this.db)
+        this.configIntu = configIntu
 
         VersionNag.isCurrent('intu', AppLogic.veri()).then(function (isCurrent_: boolean) {
             try {
@@ -45,10 +43,11 @@ export class IntuApp extends ExpressRPC {
             next()
         })
 
+        // await this.db.isSetupDone()
         // order of Handler: api, all intu apps, Web App
         console.log('----running')
         //1 API
-        const ar = new AdminHandler(this.db, configIntu)
+        const ar = new AdminHandler(this.db, this.configIntu)
         const er = new EditorHandler(this.db)
 
         this.routeRPC2('/admin', 'admin', ar.handleRPC2.bind(ar))

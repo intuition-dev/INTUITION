@@ -38,6 +38,7 @@ async function runISrv() {
     let configIntu;
     try {
         if (!fs.existsSync(path_config)) {
+            console.log('not exists');
             let conf = {
                 port: 9081,
                 secret: '123456'
@@ -47,13 +48,18 @@ async function runISrv() {
                     console.log(err);
                 }
             });
+            console.log('not exists');
+            configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
         }
-        configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
+        else {
+            console.log('exists');
+            configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
+        }
     }
     catch (err) {
         console.log('cant read the config file', err);
     }
-    const mainEApp = new IntuApp_1.IntuApp(idb, ['*']);
+    const mainEApp = new IntuApp_1.IntuApp(idb, ['*'], configIntu);
     let intuPath = AppLogic_2.Util.appPath + '/INTU';
     logger.trace(intuPath);
     const setupDone = await idb.isSetupDone();

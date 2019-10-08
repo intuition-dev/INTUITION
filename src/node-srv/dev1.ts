@@ -33,8 +33,6 @@ async function testIDB() {
 
   await test('getConfig', () => idb.getConfig())
 
-  await test('getVcodeAdmin', () => idb.getVcodeAdmin())
-
   await test(`getVcodeEditor('n1@m.com)`, () => idb.getVcodeEditor('n1@m.com'))
 
   var addEditorGuid = uuidv4()

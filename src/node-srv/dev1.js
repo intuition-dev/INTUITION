@@ -20,7 +20,6 @@ async function testIDB() {
     await test(`setAppPath('appPath')`, () => idb.setAppPath('appPath'));
     await test('getAppPath', () => idb.getAppPath());
     await test('getConfig', () => idb.getConfig());
-    await test('getVcodeAdmin', () => idb.getVcodeAdmin());
     await test(`getVcodeEditor('n1@m.com)`, () => idb.getVcodeEditor('n1@m.com'));
     var addEditorGuid = uuidv4();
     await test(`addEditor(${addEditorGuid}, 'Editor${addEditorGuid}', 'e@m.com', '1111'):`, () => idb.addEditor(addEditorGuid, 'Editor2' + addEditorGuid, 'e2@m.com', '1111'));

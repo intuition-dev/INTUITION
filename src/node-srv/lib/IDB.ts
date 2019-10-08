@@ -49,12 +49,17 @@ export class IDB extends BaseDBL implements iDBL {
             return true
         }
 
+        const appPath = await fs.realpath(__dirname + '/../../ROOT');
+
         await this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp)`)) // single row in table
         await this._run(this.db.prepare(`CREATE TABLE SALT(salt)`))
         await this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`))
         let salt = bcrypt.genSaltSync(10)
         const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`)
+        const stmt2 = this.db.prepare(`INSERT INTO CONFIG(pathToApp) VALUES('` + appPath + `')`);
+
         await this._run(stmt, salt)
+        await this._run(stmt2)
         await this.getSalt()
         console.log('all tables created')
         return true
@@ -100,13 +105,6 @@ export class IDB extends BaseDBL implements iDBL {
         return config.pathToApp
     }
 
-    getVcodeAdmin() {
-        let vcode = Math.floor(1000 + Math.random() * 9000);
-
-        const stmt = this.db.prepare(`UPDATE ADMIN SET vcode=?`)
-        this._run(stmt, vcode)
-        return vcode
-    }//()
     getVcodeEditor(email) {
         let vcode = Math.floor(1000 + Math.random() * 9000);
 

@@ -90,30 +90,3 @@ function signOut() {
         window.location.replace('/admin');
     }
 }
-
-function sendVcode(email, loginUrl, loginViewModel) {
-    if (email !== '') {
-        loginViewModel.sendVcode(email, loginUrl)
-            .then(function (result) {
-                console.info("--result:", result);
-            });
-    }
-}
-
-function resetPass(email, code, pass, loginViewModel) {
-    if (email !== '' && pass !== '' && code !== '') {
-        loginViewModel.resetPass(email, code, pass)
-            .then(function (result) {
-                if (result) {
-                    $('.js-pass-changed-notification').removeClass('d-hide');
-                    setTimeout(function () {
-                        $('.js-pass-changed-notification').addClass('d-hide');
-                        $('.js-login-form, .js-btn-login, [data="reset-password"]').removeClass('d-hide');
-                    }, 4000);
-                } else {
-                    $('.js-pass-changed-notification-err').removeClass('d-hide');
-                }
-                console.info("--result:", result);
-            })
-    }
-}
