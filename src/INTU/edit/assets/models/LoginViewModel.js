@@ -37,5 +37,13 @@ var LoginViewModel = (function (_super) {
         return this.services.checkEditor(formLogin, formPassw);
     };
     ;
+    LoginViewModel.prototype.sendVcodEditor = function (email) {
+        return this.services.sendVcodEditor(email);
+    };
+    ;
+    LoginViewModel.prototype.resetPassEditor = function (email, code, pass) {
+        return this.services.resetPassEditor(email, code, pass);
+    };
+    ;
     return LoginViewModel;
 }(BaseViewModel));
