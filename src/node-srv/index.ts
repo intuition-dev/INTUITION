@@ -47,7 +47,7 @@ async function runISrv() {
     const idb = new IDB(process.cwd(), '/IDB.sqlite')
 
     //creating/checking intu-config.file
-    const path_config = __dirname + '/intu-config.yaml'
+    const path_config = process.cwd() + '/intu-config.yaml'
     let configIntu;
     try {
         if (!fs.existsSync(path_config)) {

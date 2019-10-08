@@ -1,3 +1,6 @@
+#### 1.10.2
+- fixed config path
+
 #### 1.10.1
 - pass for admin in config
 - remove setup page
