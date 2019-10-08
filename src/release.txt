@@ -1,4 +1,4 @@
 
 When releasing, also update version in CLI repo
-and app file
+and lib/AppLogic
 and changelog

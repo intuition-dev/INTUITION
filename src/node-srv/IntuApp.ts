@@ -64,13 +64,6 @@ export class IntuApp extends ExpressRPC {
         // 2 INTU
         this.serveStatic(intuPath, null, null)
 
-
-        // let isSetupDone: boolean = await this.db.isSetupDone()
-        // if (!isSetupDone) {
-        //     console.log('can do setup')
-        //     const sr = new SetupHandler(this.db)
-        //     this.routeRPC2('/setup', 'setup', sr.handleRPC2.bind(sr))
-        // }
     }//()
 
 

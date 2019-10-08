@@ -1,3 +1,7 @@
+#### 1.10.1
+- pass for admin in config
+- remove setup page
+
 #### 1.10.0
 - mbake bump
 
