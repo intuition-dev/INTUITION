@@ -10,7 +10,7 @@ content_text: >-
 publish: true
 publishOrder: 4
 publishDate: 1519913297
-pretty: true
+pretty: false
 basedir: ../../
 
 
