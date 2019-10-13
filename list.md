@@ -1,7 +1,7 @@
 
 ## List of MetaBake toolsL
 
-- ToolBelt: https://github.com/metabake/mBakeCLI/tree/master/zBrowserServices/toolBelt
+- ToolBelt: https://github.com/metabake/mBakeCLI/tree/master/zBrowserServices/mbToolBelt
 - Http RPC: https://github.com/metabake/mBakeCLI/tree/master/zBrowserServices/http-rpc
 - SPA router: https://github.com/metabake/metaMobile/tree/master/router-src
 - Cake components: https://github.com/metabake/metaCake/tree/master/src

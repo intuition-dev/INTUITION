@@ -8,6 +8,6 @@ https://github.com/intuition-dev/INTUITION/blob/master/src/INTU/intuAPI/IntuAPI.
 then run docs.sh there to update the docs.
 
 Also copy the the produced min.js to here:
-https://github.com/intuition-dev/toolBelt/tree/master/intuAPI
-so that the current version is in the toolBelt.
+https://github.com/intuition-dev/mbToolBelt/tree/master/intuAPI
+so that the current version is in the mbToolBelt.
 
