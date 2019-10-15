@@ -56,9 +56,9 @@ export class AdminHandler extends BaseRPCMethodHandler {
       let emailjsTemplate_id = params.emailjsTemplate_id
       let emailjsUser_id = params.emailjsUser_id
 
-      let res = await this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
+      let res =  this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
       console.log("TCL: AdminHandler -> updateConfig -> res", res)
-      if (res === 'OK') {
+      if (res) {
          let data = [];
          data.push({
             emailjsService_id: emailjsService_id,
@@ -83,8 +83,8 @@ export class AdminHandler extends BaseRPCMethodHandler {
       let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
 
-      let EditorsJson = await this.IDB.getEditors()
-      this.ret(resp, EditorsJson, null, null)
+      let editors = this.IDB.getEditorsAll()
+      this.ret(resp, editors, null, null)
    }
 
    /**

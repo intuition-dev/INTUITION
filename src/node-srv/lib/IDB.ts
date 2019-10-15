@@ -49,7 +49,8 @@ export class IDB extends BaseDBL { //implements iDBL {
 
     updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
        this.write(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?`
-        , emailjsService_id, emailjsTemplate_id, emailjsUser_id);
+        , emailjsService_id, emailjsTemplate_id, emailjsUser_id)
+        return true
     }
 
     getConfig() {

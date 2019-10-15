@@ -63,7 +63,7 @@ async function runISrv() {
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*'], configIntu);
     let intuPath = AppLogic_2.Util.appPath + '/INTU';
     logger.trace(intuPath);
-    const setupDone = await idb.isSetupDone();
+    const setupDone = await idb.isSetupDone2();
     logger.trace(setupDone);
     console.log("TCL: runISrv -> setupDone", setupDone);
     if (setupDone) {

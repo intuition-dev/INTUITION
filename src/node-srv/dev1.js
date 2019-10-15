@@ -5,7 +5,7 @@ const perfy = require('perfy');
 const IDB_1 = require("./lib/IDB");
 const AppLogic_1 = require("./lib/AppLogic");
 const idb = new IDB_1.IDB(process.cwd(), '/test.sqlite');
-idb.isSetupDone();
+idb.isSetupDone2();
 const appLogic = new AppLogic_1.AppLogic();
 async function test(name, f) {
     perfy.start(name, true);
@@ -18,12 +18,12 @@ async function testIDB() {
     console.log('testIDB:');
     await test('getSalt', () => idb.getSalt());
     await test('getConfig', () => idb.getConfig());
-    await test(`getVcodeEditor('n1@m.com)`, () => idb.getVcodeEditor('n1@m.com'));
+    await test(`getVcodeEditor('n1@m.com)`, () => idb.makeVcodeEditor('n1@m.com'));
     var addEditorGuid = uuidv4();
     await test(`addEditor(${addEditorGuid}, 'Editor${addEditorGuid}', 'e@m.com', '1111'):`, () => idb.addEditor(addEditorGuid, 'Editor2' + addEditorGuid, 'e2@m.com', '1111'));
-    await test('getEditors', () => idb.getEditors());
+    await test('getEditors', () => idb.getEditorsAll());
     await test('deleteEditor', () => idb.deleteEditor(addEditorGuid));
-    await test('getEditors2', () => idb.getEditors());
+    await test('getEditors2', () => idb.getEditorsAll());
     console.log('//testIDB');
 }
 async function testAppLogic() {

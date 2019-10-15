@@ -42,8 +42,9 @@ export class EditorHandler extends BaseRPCMethodHandler {
       let emailjsTemplate_id = config.emailjsTemplate_id
       let emailjsUser_id = config.emailjsUser_id
 
-      let code = this.db.getVcodeEditor(params.admin_email)
+      let code = this.db.makeVcodeEditor(params.admin_email)
 
+      // Nat
       let msg = 'Enter your code at http://bla.bla ' + code // TODO use IDB template email to CRUD w/ {{code}}
 
       email = Buffer.from(params.admin_email).toString('base64');

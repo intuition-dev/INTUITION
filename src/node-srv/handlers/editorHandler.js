@@ -28,7 +28,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let emailjsService_id = config.emailjsService_id;
         let emailjsTemplate_id = config.emailjsTemplate_id;
         let emailjsUser_id = config.emailjsUser_id;
-        let code = this.db.getVcodeEditor(params.admin_email);
+        let code = this.db.makeVcodeEditor(params.admin_email);
         let msg = 'Enter your code at http://bla.bla ' + code;
         email = Buffer.from(params.admin_email).toString('base64');
         this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);

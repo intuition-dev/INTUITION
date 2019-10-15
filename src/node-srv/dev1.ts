@@ -8,7 +8,7 @@ import { AppLogic } from './lib/AppLogic'
 
 const idb = new IDB(process.cwd(), '/test.sqlite')
 
-idb.isSetupDone()//.then(testIDB) //then(testAppLogic)
+idb.isSetupDone2()//.then(testIDB) //then(testAppLogic)
 
 const appLogic = new AppLogic()
 
@@ -29,16 +29,16 @@ async function testIDB() {
 
   await test('getConfig', () => idb.getConfig())
 
-  await test(`getVcodeEditor('n1@m.com)`, () => idb.getVcodeEditor('n1@m.com'))
+  await test(`getVcodeEditor('n1@m.com)`, () => idb.makeVcodeEditor('n1@m.com'))
 
   var addEditorGuid = uuidv4()
   await test(`addEditor(${addEditorGuid}, 'Editor${addEditorGuid}', 'e@m.com', '1111'):`, () => idb.addEditor(addEditorGuid, 'Editor2' + addEditorGuid, 'e2@m.com', '1111'))
 
-  await test('getEditors', () => idb.getEditors())
+  await test('getEditors', () => idb.getEditorsAll())
 
   await test('deleteEditor', () => idb.deleteEditor(addEditorGuid))
 
-  await test('getEditors2', () => idb.getEditors())
+  await test('getEditors2', () => idb.getEditorsAll())
 
   console.log('//testIDB')
 }//()
