@@ -49,7 +49,9 @@ export class IDB extends BaseDBL implements iDBL {
             return true
         }
 
-        const appPath = await fs.realpath(__dirname + '/../../ROOT');
+
+        // yeah Nat, this line has to be out of here. for one we use process.cwd(), not __dirname
+        const appPath = fs.realpathsync(__dirname + '/../../ROOT');
 
         await this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp)`)) // single row in table
         await this._run(this.db.prepare(`CREATE TABLE SALT(salt)`))

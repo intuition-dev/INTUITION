@@ -34,7 +34,7 @@ class IDB extends BaseDBL_1.BaseDBL {
         if (created) {
             return true;
         }
-        const appPath = await fs.realpath(__dirname + '/../../ROOT');
+        const appPath = fs.realpathsync(__dirname + '/../../ROOT');
         await this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp)`));
         await this._run(this.db.prepare(`CREATE TABLE SALT(salt)`));
         await this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`));
