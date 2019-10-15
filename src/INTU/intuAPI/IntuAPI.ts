@@ -288,42 +288,18 @@ class IntuAPI {
 
    /**
     * 
-    * @param path 
+    * 
     */
-   updateConfig(path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+   updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
       let admin_email = window.sessionStorage.getItem('username');
       let admin_pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('/admin', 'admin', 'updateConfig', {
          admin_email: admin_email,
          admin_pass: admin_pass,
-         path: path,
          emailjsService_id: emailjsService_id,
          emailjsTemplate_id: emailjsTemplate_id,
          emailjsUser_id: emailjsUser_id
       });
    }
-
-
-   createConfig(serialised) {
-      var email = serialised.filter(email => email.name == 'email')[0].value
-      var password = serialised.filter(password => password.name == 'password')[0].value
-      var emailjsService_id = serialised.filter(emailjsService_id => emailjsService_id.name == 'service_id')[0].value
-      var emailjsTemplate_id = serialised.filter(emailjsTemplate_id => emailjsTemplate_id.name == 'template_id')[0].value
-      var emailjsUser_id = serialised.filter(emailjsUser_id => emailjsUser_id.name == 'user_id')[0].value
-
-      return this.serviceRPC.invoke('/setup', 'setup', 'setup', {
-         email: email,
-         password: password,
-         emailjsService_id: emailjsService_id,
-         emailjsTemplate_id: emailjsTemplate_id,
-         emailjsUser_id: emailjsUser_id,
-      })
-         .then((result) => {
-            console.info('test api: ', result);
-            return result;
-         }).catch((error) => {
-            console.info("--error:", error)
-         })
-   }//()
 
 }//class

@@ -3,10 +3,6 @@ settings-comp
       fieldset
          div(data-row-span='1')
             div(data-field-span='1')
-               label Add Path to existed site or use default one
-               input(type='text', name='path' value="{(typeof this.pathToSite !='undefined') ? this.pathToSite : ''}")
-         div(data-row-span='1')
-            div(data-field-span='1')
                label EmailJS 
                   b service_id 
                      .subtitle it can be found on 'Email Services' tab of your EmailJs account
@@ -26,7 +22,6 @@ settings-comp
          button.btn-custom.btn-primary.mt-2#save-settings Save Settings
    script.
       var _this = this
-      this.pathToSite = opts.pathToSite
       this.emailjsService_id = opts.emailjsService_id
       this.emailjsTemplate_id = opts.emailjsTemplate_id
       this.emailjsUser_id = opts.emailjsUser_id

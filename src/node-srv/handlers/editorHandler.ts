@@ -16,21 +16,19 @@ export class EditorHandler extends BaseRPCMethodHandler {
    db: IDB;
    auth: EditorAuthX
 
+   configIntu
    fm = new FileMethods()
 
    appLogic = new AppLogic()
 
-   constructor(IDB) {
+   constructor(IDB, configIntu) {
       super()
       this.db = IDB
       this.auth = new EditorAuthX(IDB)
+      this.configIntu = configIntu
    }
 
    async checkEditor(resp, params, ent, user, pswd) {
-      console.log("TCL: EditorHandler -> checkEditor -> pswd", pswd)
-      console.log("TCL: EditorHandler -> checkEditor -> params", params)
-      // pswd = Buffer.from(params.editor_pass).toString('base64');
-      console.log("TCL: EditorHandler -> checkEditor -> pswd", pswd)
 
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
       if (auth != 'OK') return
@@ -71,7 +69,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       console.log("TCL: EditorHandler -> getDirs -> auth", auth)
       if (auth != 'OK') return
 
-      const appPath = await this.db.getAppPath()
+      const appPath = this.configIntu.path
 
       const dirs = this.fm.getDirs(appPath)
       this.ret(resp, dirs, null, null)
@@ -85,7 +83,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       if (auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
-      const appPath = await this.db.getAppPath()
+      const appPath = this.configIntu.path
       const files = this.fm.getFiles(appPath, itemPath)
       this.ret(resp, files, null, null)
    }//files
@@ -96,7 +94,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       if (auth != 'OK') return
       let itemPath = '/' + params.file
       let file = params.itemPath
-      const appPath = await this.db.getAppPath()
+      const appPath = this.configIntu.path
       let fileName = appPath + itemPath + file
 
       const THIZ = this
@@ -118,7 +116,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       let substring = '/';
       let itemPath = '/' + params.file
       let file = params.itemPath
-      const appPath = await this.db.getAppPath()
+      const appPath = this.configIntu.path
       let fileName = itemPath + file;
       let content = params.content;
       content = Buffer.from(content, 'base64');
@@ -148,7 +146,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
 
       let itemPath = '/' + params.file
       let file = params.itemPath
-      const appPath = await this.db.getAppPath()
+      const appPath = this.configIntu.path
       let fileName = itemPath + file
       this.ret(resp, 'OK', null, null)
 
@@ -162,7 +160,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
 
       let itemPath = '/' + params.itemPath
       let newItemPath = '/' + params.newItemPath
-      const appPath = await this.db.getAppPath()
+      const appPath = this.configIntu.path
 
       await this.appLogic.clone(appPath, itemPath, newItemPath)
       this.ret(resp, 'OK', null, null)
@@ -177,7 +175,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       if (auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
-      const appPath = await this.db.getAppPath()
+      const appPath = this.configIntu.path
       let publish_date: number = params.publish_date
       this.appLogic.setPublishDate(appPath, itemPath, publish_date)
 

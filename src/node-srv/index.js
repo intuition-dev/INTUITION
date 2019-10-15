@@ -41,7 +41,8 @@ async function runISrv() {
             console.log('not exists');
             let conf = {
                 port: 9081,
-                secret: '123456'
+                secret: '123456',
+                path: process.cwd()
             };
             await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
                 if (err) {
@@ -64,14 +65,15 @@ async function runISrv() {
     logger.trace(intuPath);
     const setupDone = await idb.isSetupDone();
     logger.trace(setupDone);
+    console.log("TCL: runISrv -> setupDone", setupDone);
     if (setupDone) {
         logger.trace('normal');
         await mainEApp.run(intuPath);
         const port = await configIntu.port;
-        idb.getAppPath().then(appPath => {
-            mainEApp.serveStatic(appPath, null, null);
-            mainEApp.listen(port);
-        });
+        const appPath = await configIntu.path;
+        console.log("TCL: runISrv -> appPath", appPath);
+        mainEApp.serveStatic(appPath, null, null);
+        mainEApp.listen(port);
     }
     else {
         logger.trace('run setup');

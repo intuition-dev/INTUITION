@@ -12,8 +12,8 @@ class IntuApp extends Serv_1.ExpressRPC {
         super();
         this.makeInstance(origins);
         this.db = db;
-        this.uploadRoute = new uploadHandler_1.UploadHandler(this.db);
         this.configIntu = configIntu;
+        this.uploadRoute = new uploadHandler_1.UploadHandler(this.db, this.configIntu);
         FileOpsExtra_1.VersionNag.isCurrent('intu', AppLogic_1.AppLogic.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
@@ -31,7 +31,7 @@ class IntuApp extends Serv_1.ExpressRPC {
         });
         console.log('----running');
         const ar = new adminHandler_1.AdminHandler(this.db, this.configIntu);
-        const er = new editorHandler_1.EditorHandler(this.db);
+        const er = new editorHandler_1.EditorHandler(this.db, this.configIntu);
         this.routeRPC('/admin', 'admin', ar.handleRPC.bind(ar));
         this.routeRPC('/api', 'editors', er.handleRPC.bind(er));
         this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute));

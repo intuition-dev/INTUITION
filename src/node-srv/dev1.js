@@ -17,8 +17,6 @@ async function test(name, f) {
 async function testIDB() {
     console.log('testIDB:');
     await test('getSalt', () => idb.getSalt());
-    await test(`setAppPath('appPath')`, () => idb.setAppPath('appPath'));
-    await test('getAppPath', () => idb.getAppPath());
     await test('getConfig', () => idb.getConfig());
     await test(`getVcodeEditor('n1@m.com)`, () => idb.getVcodeEditor('n1@m.com'));
     var addEditorGuid = uuidv4();

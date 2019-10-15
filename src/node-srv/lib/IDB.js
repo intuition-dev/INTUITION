@@ -6,6 +6,7 @@ const logger = require('tracer').console();
 const BaseDBL_1 = require("mbake/lib/BaseDBL");
 class IDB extends BaseDBL_1.BaseDBL {
     constructor(path, fn) {
+        console.log("TCL: IDB -> constructor -> path", path);
         super(path, fn);
         logger.trace(path, fn);
     }
@@ -13,7 +14,7 @@ class IDB extends BaseDBL_1.BaseDBL {
         try {
             await this._init();
             await this.getSalt();
-            const qry = await this.db.prepare('SELECT * FROM CONFIG');
+            const qry = await this.db.prepare('SELECT * FROM SALT');
             const rows = await this._qry(qry);
             logger.trace(rows);
             if (rows && rows.length) {
@@ -34,17 +35,16 @@ class IDB extends BaseDBL_1.BaseDBL {
         if (created) {
             return true;
         }
-        const appPath = fs.realpathsync(__dirname + '/../../ROOT');
-        await this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp)`));
+        await this._run(this.db.prepare(`CREATE TABLE CONFIG (emailjsService_id text, emailjsTemplate_id text, emailjsUser_id text)`));
         await this._run(this.db.prepare(`CREATE TABLE SALT(salt)`));
         await this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`));
         let salt = bcrypt.genSaltSync(10);
-        const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`);
-        const stmt2 = this.db.prepare(`INSERT INTO CONFIG(pathToApp) VALUES('` + appPath + `')`);
+        const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES(?)`);
+        const stmt2 = this.db.prepare(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id) VALUES(?, ? , ?)`);
         await this._run(stmt, salt);
-        await this._run(stmt2);
+        await this._run(stmt2, '', '', '');
         await this.getSalt();
-        console.log('all tables created');
+        console.log('-------------------- all tables created --------------------');
         return true;
     }
     async getSalt() {
@@ -57,9 +57,11 @@ class IDB extends BaseDBL_1.BaseDBL {
         this.salt = row.salt;
         return this.salt;
     }
-    async updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp) {
-        const stmt = this.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?, pathToApp=?`);
-        const res = await this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp);
+    async updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+        const stmt = this.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?`);
+        console.log("TCL: IDB -> updateConfig -> stmt", stmt);
+        const res = await this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id);
+        console.log("TCL: IDB -> updateConfig -> res", res);
         return res;
     }
     async getConfig() {
@@ -72,17 +74,6 @@ class IDB extends BaseDBL_1.BaseDBL {
         else {
             return false;
         }
-    }
-    async setAppPath(pathToApp) {
-        const stmt = this.db.prepare(`UPDATE CONFIG SET pathToApp=? `);
-        const res = await this._run(stmt, pathToApp);
-        return res;
-    }
-    async getAppPath() {
-        const config = await this.getConfig();
-        if (!config)
-            throw new Error('no pathToApp in DB');
-        return config.pathToApp;
     }
     getVcodeEditor(email) {
         let vcode = Math.floor(1000 + Math.random() * 9000);

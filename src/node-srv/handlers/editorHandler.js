@@ -8,18 +8,16 @@ const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const AppLogic_1 = require("../lib/AppLogic");
 const fs = require('fs-extra');
 class EditorHandler extends Serv_1.BaseRPCMethodHandler {
-    constructor(IDB) {
+    constructor(IDB, configIntu) {
         super();
         this.emailJs = new Email_1.Email();
         this.fm = new FileOpsExtra_1.FileMethods();
         this.appLogic = new AppLogic_1.AppLogic();
         this.db = IDB;
         this.auth = new IDB_1.EditorAuthX(IDB);
+        this.configIntu = configIntu;
     }
     async checkEditor(resp, params, ent, user, pswd) {
-        console.log("TCL: EditorHandler -> checkEditor -> pswd", pswd);
-        console.log("TCL: EditorHandler -> checkEditor -> params", params);
-        console.log("TCL: EditorHandler -> checkEditor -> pswd", pswd);
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
@@ -47,7 +45,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         console.log("TCL: EditorHandler -> getDirs -> auth", auth);
         if (auth != 'OK')
             return;
-        const appPath = await this.db.getAppPath();
+        const appPath = this.configIntu.path;
         const dirs = this.fm.getDirs(appPath);
         this.ret(resp, dirs, null, null);
     }
@@ -58,7 +56,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         if (auth != 'OK')
             return;
         let itemPath = '/' + params.itemPath;
-        const appPath = await this.db.getAppPath();
+        const appPath = this.configIntu.path;
         const files = this.fm.getFiles(appPath, itemPath);
         this.ret(resp, files, null, null);
     }
@@ -68,7 +66,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
             return;
         let itemPath = '/' + params.file;
         let file = params.itemPath;
-        const appPath = await this.db.getAppPath();
+        const appPath = this.configIntu.path;
         let fileName = appPath + itemPath + file;
         const THIZ = this;
         fs.readFile(fileName, 'utf8', (err, data) => {
@@ -87,7 +85,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let substring = '/';
         let itemPath = '/' + params.file;
         let file = params.itemPath;
-        const appPath = await this.db.getAppPath();
+        const appPath = this.configIntu.path;
         let fileName = itemPath + file;
         let content = params.content;
         content = Buffer.from(content, 'base64');
@@ -109,7 +107,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
             return;
         let itemPath = '/' + params.file;
         let file = params.itemPath;
-        const appPath = await this.db.getAppPath();
+        const appPath = this.configIntu.path;
         let fileName = itemPath + file;
         this.ret(resp, 'OK', null, null);
         this.appLogic.autoBake(appPath, itemPath, fileName);
@@ -121,7 +119,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
             return;
         let itemPath = '/' + params.itemPath;
         let newItemPath = '/' + params.newItemPath;
-        const appPath = await this.db.getAppPath();
+        const appPath = this.configIntu.path;
         await this.appLogic.clone(appPath, itemPath, newItemPath);
         this.ret(resp, 'OK', null, null);
     }
@@ -131,7 +129,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         if (auth != 'OK')
             return;
         let itemPath = '/' + params.itemPath;
-        const appPath = await this.db.getAppPath();
+        const appPath = this.configIntu.path;
         let publish_date = params.publish_date;
         this.appLogic.setPublishDate(appPath, itemPath, publish_date);
         this.ret(resp, 'OK', null, null);

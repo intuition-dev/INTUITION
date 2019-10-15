@@ -35,8 +35,8 @@ class SettingsViewModel extends BaseViewModel {
         return this.services.getConfig();
     }
 
-    updateConfig(path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
-        return this.services.updateConfig(path, emailjsService_id, emailjsTemplate_id, emailjsUser_id);
+    updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+        return this.services.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
     }
 
 }//class

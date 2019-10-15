@@ -184,36 +184,15 @@ var IntuAPI = (function () {
             admin_pass: admin_pass
         });
     };
-    IntuAPI.prototype.updateConfig = function (path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+    IntuAPI.prototype.updateConfig = function (emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
         var admin_email = window.sessionStorage.getItem('username');
         var admin_pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('/admin', 'admin', 'updateConfig', {
             admin_email: admin_email,
             admin_pass: admin_pass,
-            path: path,
             emailjsService_id: emailjsService_id,
             emailjsTemplate_id: emailjsTemplate_id,
             emailjsUser_id: emailjsUser_id
-        });
-    };
-    IntuAPI.prototype.createConfig = function (serialised) {
-        var email = serialised.filter(function (email) { return email.name == 'email'; })[0].value;
-        var password = serialised.filter(function (password) { return password.name == 'password'; })[0].value;
-        var emailjsService_id = serialised.filter(function (emailjsService_id) { return emailjsService_id.name == 'service_id'; })[0].value;
-        var emailjsTemplate_id = serialised.filter(function (emailjsTemplate_id) { return emailjsTemplate_id.name == 'template_id'; })[0].value;
-        var emailjsUser_id = serialised.filter(function (emailjsUser_id) { return emailjsUser_id.name == 'user_id'; })[0].value;
-        return this.serviceRPC.invoke('/setup', 'setup', 'setup', {
-            email: email,
-            password: password,
-            emailjsService_id: emailjsService_id,
-            emailjsTemplate_id: emailjsTemplate_id,
-            emailjsUser_id: emailjsUser_id,
-        })
-            .then(function (result) {
-            console.info('test api: ', result);
-            return result;
-        }).catch(function (error) {
-            console.info("--error:", error);
         });
     };
     return IntuAPI;

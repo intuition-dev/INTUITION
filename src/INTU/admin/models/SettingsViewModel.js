@@ -39,8 +39,8 @@ var SettingsViewModel = (function (_super) {
     SettingsViewModel.prototype.getConfig = function () {
         return this.services.getConfig();
     };
-    SettingsViewModel.prototype.updateConfig = function (path, emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
-        return this.services.updateConfig(path, emailjsService_id, emailjsTemplate_id, emailjsUser_id);
+    SettingsViewModel.prototype.updateConfig = function (emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+        return this.services.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
     };
     return SettingsViewModel;
 }(BaseViewModel));

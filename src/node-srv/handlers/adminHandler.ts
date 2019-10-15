@@ -55,22 +55,15 @@ export class AdminHandler extends BaseRPCMethodHandler {
       let emailjsService_id = params.emailjsService_id
       let emailjsTemplate_id = params.emailjsTemplate_id
       let emailjsUser_id = params.emailjsUser_id
-      let pathToApp = params.path
-      let port = params.port
 
-      if (port === '') {
-         // if no port specified, default port is:
-         port = 9081;
-      }
-      let res = await this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp);
+      let res = await this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
+      console.log("TCL: AdminHandler -> updateConfig -> res", res)
       if (res === 'OK') {
          let data = [];
          data.push({
             emailjsService_id: emailjsService_id,
             emailjsTemplate_id: emailjsTemplate_id,
             emailjsUser_id: emailjsUser_id,
-            path: pathToApp,
-            port: port,
          });
          this.ret(resp, data, null, null)
       }

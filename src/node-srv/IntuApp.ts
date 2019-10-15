@@ -24,8 +24,8 @@ export class IntuApp extends ExpressRPC {
         this.makeInstance(origins)
 
         this.db = db
-        this.uploadRoute = new UploadHandler(this.db)
         this.configIntu = configIntu
+        this.uploadRoute = new UploadHandler(this.db, this.configIntu)
 
         VersionNag.isCurrent('intu', AppLogic.veri()).then(function (isCurrent_: boolean) {
             try {
@@ -48,7 +48,7 @@ export class IntuApp extends ExpressRPC {
         console.log('----running')
         //1 API
         const ar = new AdminHandler(this.db, this.configIntu)
-        const er = new EditorHandler(this.db)
+        const er = new EditorHandler(this.db, this.configIntu)
 
         this.routeRPC('/admin', 'admin', ar.handleRPC.bind(ar))
 

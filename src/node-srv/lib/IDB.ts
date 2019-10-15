@@ -11,6 +11,7 @@ export class IDB extends BaseDBL implements iDBL {
     protected salt
 
     constructor(path, fn) {
+        console.log("TCL: IDB -> constructor -> path", path)
         super(path, fn)
         logger.trace(path, fn)
     }
@@ -18,13 +19,10 @@ export class IDB extends BaseDBL implements iDBL {
     async isSetupDone(): Promise<boolean> {
         try {
             await this._init() // do the init
-
             await this.getSalt()
-
-            const qry = await this.db.prepare('SELECT * FROM CONFIG')// single row in table so no need for where 
+            const qry = await this.db.prepare('SELECT * FROM SALT')// single row in table so no need for where 
             const rows = await this._qry(qry)
             logger.trace(rows)
-
             if (rows && rows.length) {
                 return true
             }
@@ -49,21 +47,17 @@ export class IDB extends BaseDBL implements iDBL {
             return true
         }
 
-
-        // yeah Nat, this line has to be out of here. for one we use process.cwd(), not __dirname
-        const appPath = fs.realpathsync(__dirname + '/../../ROOT');
-
-        await this._run(this.db.prepare(`CREATE TABLE CONFIG ( emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp)`)) // single row in table
+        await this._run(this.db.prepare(`CREATE TABLE CONFIG (emailjsService_id text, emailjsTemplate_id text, emailjsUser_id text)`)) // single row in table
         await this._run(this.db.prepare(`CREATE TABLE SALT(salt)`))
         await this._run(this.db.prepare(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`))
         let salt = bcrypt.genSaltSync(10)
-        const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES( ?)`)
-        const stmt2 = this.db.prepare(`INSERT INTO CONFIG(pathToApp) VALUES('` + appPath + `')`);
+        const stmt = this.db.prepare(`INSERT INTO SALT(salt) VALUES(?)`)
+        const stmt2 = this.db.prepare(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id) VALUES(?, ? , ?)`)
 
         await this._run(stmt, salt)
-        await this._run(stmt2)
+        await this._run(stmt2, '', '', '')
         await this.getSalt()
-        console.log('all tables created')
+        console.log('-------------------- all tables created --------------------')
         return true
 
     }
@@ -78,9 +72,9 @@ export class IDB extends BaseDBL implements iDBL {
         return this.salt
     }//()
 
-    async updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp) {
-        const stmt = this.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?, pathToApp=?`)// single row in table so no need for where
-        const res = await this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id, pathToApp);
+    async updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+        const stmt = this.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?`)// single row in table so no need for where
+        const res = await this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id);
         return res;
     }
 
@@ -93,18 +87,6 @@ export class IDB extends BaseDBL implements iDBL {
         } else {
             return false
         }
-    }
-
-    async setAppPath(pathToApp) {
-        const stmt = this.db.prepare(`UPDATE CONFIG SET pathToApp=? `)
-        const res = await this._run(stmt, pathToApp)
-        return res
-    }
-
-    async getAppPath() {
-        const config = await this.getConfig()
-        if (!config) throw new Error('no pathToApp in DB')
-        return config.pathToApp
     }
 
     getVcodeEditor(email) {

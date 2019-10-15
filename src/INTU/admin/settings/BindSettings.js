@@ -50,7 +50,6 @@ function getForm(settingsViewModel) {
                 emailjsService_id: result.emailjsService_id,
                 emailjsTemplate_id: result.emailjsTemplate_id,
                 emailjsUser_id: result.emailjsUser_id,
-                pathToSite: result.pathToApp,
                 port: result.port,
                 bindSetup: _this
             })
@@ -69,11 +68,6 @@ function getPort(settingsViewModel) {
 
 //save path and/or port
 function saveConfig(serialize) {
-    var path = serialize.filter(function (ser) {
-        if (ser.name == 'path') {
-            return ser
-        }
-    })[0].value
 
     var emailjsService_id = serialize.filter(function (ser) {
         if (ser.name == 'emailjsService_id') {
@@ -93,11 +87,10 @@ function saveConfig(serialize) {
         }
     })[0].value
 
-    settingsViewModel.updateConfig(path, emailjsService_id, emailjsTemplate_id, emailjsUser_id)
+    settingsViewModel.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id)
         .then(result => {
             //update form
             riot.mount('settings-comp', {
-                pathToSite: result[0].path,
                 bindSetup: this,
                 emailjsService_id: result[0].emailjsService_id,
                 emailjsTemplate_id: result[0].emailjsTemplate_id,

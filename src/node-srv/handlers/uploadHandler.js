@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 class UploadHandler {
-    constructor(IDB) {
+    constructor(IDB, configIntu) {
         this.db = IDB;
+        this.configIntu = configIntu;
     }
     async upload(req, resp) {
         let uploadPath;
@@ -15,7 +16,7 @@ class UploadHandler {
             return resp.status(400).send('No files were uploaded.');
         }
         let sampleFile = req.files.sampleFile;
-        uploadPath = await this.db.getAppPath() + req.fields.targetDir + '/' + sampleFile.name;
+        uploadPath = this.configIntu.path + req.fields.targetDir + '/' + sampleFile.name;
         console.log('sampleFile', sampleFile);
         fs.copyFile(sampleFile.path, uploadPath, (err) => {
             if (err)
