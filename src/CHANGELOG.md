@@ -1,3 +1,6 @@
+#### 1.10.3
+- moved apppath to the intu-config.yaml
+
 #### 1.10.2
 - fixed config path
 

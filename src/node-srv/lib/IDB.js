@@ -59,9 +59,7 @@ class IDB extends BaseDBL_1.BaseDBL {
     }
     async updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
         const stmt = this.db.prepare(`UPDATE CONFIG SET emailjsService_id=?, emailjsTemplate_id=?, emailjsUser_id=?`);
-        console.log("TCL: IDB -> updateConfig -> stmt", stmt);
         const res = await this._run(stmt, emailjsService_id, emailjsTemplate_id, emailjsUser_id);
-        console.log("TCL: IDB -> updateConfig -> res", res);
         return res;
     }
     async getConfig() {
