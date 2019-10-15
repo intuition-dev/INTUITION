@@ -10,7 +10,7 @@ class IDB extends BaseDBL_1.BaseDBL {
         logger.trace(path, fn);
         this.defCon(path, fn);
     }
-    isSetupDone2() {
+    isSetupDone() {
         return this.tableExists('SALT');
     }
     _init() {

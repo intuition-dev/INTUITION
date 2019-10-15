@@ -2672,10 +2672,10 @@ markdown-it@>=10.0.0:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.10.7:
-  version "6.10.7"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.10.7.tgz#d6b1795539ae5b554666b84f030c28a4d3163684"
-  integrity sha512-Key1DFgNEVxO57yHW64V62xlhNMryXfgnkXNTp/1+855++ddej0eBvqGB0N4XNN30MAV/T31rjTPvGe2FGVytg==
+mbake@>=6.10.8:
+  version "6.10.8"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.10.8.tgz#5f88ec9ca1418530c3353dd4fcaca08d914d765e"
+  integrity sha512-foHVsFjJ3VV42827twARxUFWY3bxc5gSUtp2BgbG/CujT4VYVtXkFI+PjcnP6hcbWE0D9Pr4Vp6cuqMEe7dcKw==
   dependencies:
     adm-zip ">=0.4.13"
     autoprefixer ">=9.6.5"

@@ -77,7 +77,7 @@ async function runISrv() {
     let intuPath = Util.appPath + '/INTU'
     logger.trace(intuPath)
 
-    const setupDone = await idb.isSetupDone2()
+    const setupDone = await idb.isSetupDone()
     logger.trace(setupDone)
 
     console.log("TCL: runISrv -> setupDone", setupDone)

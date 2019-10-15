@@ -8,7 +8,7 @@ import { AppLogic } from './lib/AppLogic'
 
 const idb = new IDB(process.cwd(), '/test.sqlite')
 
-idb.isSetupDone2()//.then(testIDB) //then(testAppLogic)
+idb.isSetupDone()//.then(testIDB) //then(testAppLogic)
 
 const appLogic = new AppLogic()
 

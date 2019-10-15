@@ -31,7 +31,7 @@
         "express-fileupload": ">=1.1.5",
         "fs-extra": ">=8.1.0",
         "ip": ">=1.1.5",
-        "mbake": ">=6.10.7",
+        "mbake": ">=6.10.8",
         "require-main-filename": ">=2.0.0",
         "sqlite3": ">=4.1.0"
     },

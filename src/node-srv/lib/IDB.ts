@@ -5,7 +5,7 @@ const logger = require('tracer').console()
 import { BaseDBL, iDBL } from 'mbake/lib/BaseDBL'
 import { iAuth } from 'mbake/lib/Serv'
 
-export class IDB extends BaseDBL { //implements iDBL {
+export class IDB extends BaseDBL implements iDBL {
 
     protected salt
 
@@ -16,7 +16,7 @@ export class IDB extends BaseDBL { //implements iDBL {
         this.defCon(path, fn)
     }
 
-    isSetupDone2():boolean {
+    isSetupDone():boolean {
         return this.tableExists('SALT')
     }//()
 
