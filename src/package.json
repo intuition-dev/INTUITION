@@ -23,19 +23,18 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=12.12.0",
-        "yarn": ">=1.17.3"
+        "nXode": ">=12.12.0",
+        "yXexitarn": ">=1.17.3"
     },
     "dependencies": {
         "bcryptjs": ">=2.4.3",
         "express-fileupload": ">=1.1.5",
         "fs-extra": ">=8.1.0",
         "ip": ">=1.1.5",
-        "mbake": ">=6.10.8",
-        "require-main-filename": ">=2.0.0"
+        "mbake": ">=6.10.9"
     },
     "devDependencies": {
-        "@types/node": "^12.7.12",
+        "@types/node": ">=12.11.1",
         "is": ">=3.3.0",
         "perfy": ">=1.1.5"
     }

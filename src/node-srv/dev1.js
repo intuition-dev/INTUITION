@@ -5,7 +5,7 @@ const perfy = require('perfy');
 const IDB_1 = require("./lib/IDB");
 const AppLogic_1 = require("./lib/AppLogic");
 const idb = new IDB_1.IDB(process.cwd(), '/test.sqlite');
-idb.isSetupDone2();
+idb.isSetupDone();
 const appLogic = new AppLogic_1.AppLogic();
 async function test(name, f) {
     perfy.start(name, true);
