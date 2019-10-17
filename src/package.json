@@ -23,8 +23,7 @@
         "CRUD"
     ],
     "engines": {
-        "nXode": ">=12.12.0",
-        "yXexitarn": ">=1.17.3"
+        "node": ">=12.12.0"
     },
     "dependencies": {
         "bcryptjs": ">=2.4.3",
