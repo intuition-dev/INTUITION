@@ -9,8 +9,7 @@
     "yarn": ">=1.19.0"
   },
   "dependencies": {
-    "intu": ">=1.9.20",
-    "sqlite3": ">=4.1.0"
+    "intu": ">=1.9.20"
   },
   "devDependencies": {
     "@types/node": ">=12.7.5"
