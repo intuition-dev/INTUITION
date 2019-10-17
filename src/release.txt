@@ -2,3 +2,5 @@
 When releasing, also update version in CLI repo
 and lib/AppLogic
 and changelog
+
+Note: if changed node version you may need to do this first:  `yarn global remove intu`
