@@ -57,6 +57,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 Note: if changed node version you may need to do this first:  `yarn global remove intu`
 
 Edit intu-config.yaml to set the admin password, and where your webapp will reside.
+And you have to restart intu.
 
 3. Configure email. You'll need an account on emil
    Remember your admin email and password.
@@ -65,6 +66,8 @@ Edit intu-config.yaml to set the admin password, and where your webapp will resi
 4. URL's
    `:9081/admin` - to add end-users
    `:9081/edit` - to edit site
+
+IMPORTANT: you  must go to admin/settings to configure email.
 
 5. You can edit the small app in ROOT, that you can see at `:9081/`
 
