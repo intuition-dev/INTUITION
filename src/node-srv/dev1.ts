@@ -1,14 +1,15 @@
 // Bus. Layer test
 
-const logger = require('tracer').console()
+var logger = require('tracer').console()
 const perfy = require('perfy')
 
 import { IDB } from './lib/IDB'
 import { AppLogic } from './lib/AppLogic'
 
+
 const idb = new IDB(process.cwd(), '/test.sqlite')
 
-idb.isSetupDone()//.then(testIDB) //then(testAppLogic)
+idb.setupIfNeeded()//.then(testIDB) //then(testAppLogic)
 
 const appLogic = new AppLogic()
 
@@ -19,11 +20,11 @@ async function test(name, f) {
   logger.trace(await f())
 
   var result = perfy.end(name)
-  console.log('', result.time)
+  logger.trace('', result.time)
 }
 
 async function testIDB() {
-  console.log('testIDB:')
+  logger.trace('testIDB:')
 
   await test('getSalt', () => idb.getSalt())
 
@@ -40,11 +41,11 @@ async function testIDB() {
 
   await test('getEditors2', () => idb.getEditorsAll())
 
-  console.log('//testIDB')
+  logger.trace('//testIDB')
 }//()
 
 async function testAppLogic() {
-  console.log('testAppLogic:')
+  logger.trace('testAppLogic:')
 
   await test('autoBake', () => appLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'))
 
@@ -54,7 +55,7 @@ async function testAppLogic() {
 
   await test('archive', () => appLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'))
 
-  console.log('//testAppLogic')
+  logger.trace('//testAppLogic')
 }
 
 // generate uuid for testing purposes

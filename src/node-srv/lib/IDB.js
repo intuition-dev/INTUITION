@@ -10,15 +10,10 @@ class IDB extends BaseDBL_1.BaseDBL {
         logger.trace(path, fn);
         this.defCon(path, fn);
     }
-    isSetupDone() {
-        return this.tableExists('SALT');
-    }
-    _init() {
-        const created = this.tableExists('CONFIG');
-        logger.trace('IDB tables exist', created);
-        if (created) {
-            return true;
-        }
+    setupIfNeeded() {
+        const done = this.tableExists('CONFIG');
+        if (done)
+            return done;
         this.write(`CREATE TABLE CONFIG (emailjsService_id text, emailjsTemplate_id text, emailjsUser_id text)`);
         this.write(`CREATE TABLE SALT(salt)`);
         this.write(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`);

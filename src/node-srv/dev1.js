@@ -1,21 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const logger = require('tracer').console();
+var logger = require('tracer').console();
 const perfy = require('perfy');
 const IDB_1 = require("./lib/IDB");
 const AppLogic_1 = require("./lib/AppLogic");
 const idb = new IDB_1.IDB(process.cwd(), '/test.sqlite');
-idb.isSetupDone();
+idb.setupIfNeeded();
 const appLogic = new AppLogic_1.AppLogic();
 async function test(name, f) {
     perfy.start(name, true);
     logger.trace(name);
     logger.trace(await f());
     var result = perfy.end(name);
-    console.log('', result.time);
+    logger.trace('', result.time);
 }
 async function testIDB() {
-    console.log('testIDB:');
+    logger.trace('testIDB:');
     await test('getSalt', () => idb.getSalt());
     await test('getConfig', () => idb.getConfig());
     await test(`getVcodeEditor('n1@m.com)`, () => idb.makeVcodeEditor('n1@m.com'));
@@ -24,15 +24,15 @@ async function testIDB() {
     await test('getEditors', () => idb.getEditorsAll());
     await test('deleteEditor', () => idb.deleteEditor(addEditorGuid));
     await test('getEditors2', () => idb.getEditorsAll());
-    console.log('//testIDB');
+    logger.trace('//testIDB');
 }
 async function testAppLogic() {
-    console.log('testAppLogic:');
+    logger.trace('testAppLogic:');
     await test('autoBake', () => appLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'));
     await test('setPublishDate', () => appLogic.setPublishDate('/users/vitalii/intu-smpl', '/files', 112233132323));
     await test('clone', () => appLogic.clone('/users/vitalii/intu-smpl', '/files', '/files2'));
     await test('archive', () => appLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'));
-    console.log('//testAppLogic');
+    logger.trace('//testAppLogic');
 }
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {

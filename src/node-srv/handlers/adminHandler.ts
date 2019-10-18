@@ -2,6 +2,8 @@ import { Email } from 'mbake/lib/Email'
 import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
 import { IDB } from '../lib/IDB'
 
+const logger = require('tracer').console()
+
 export class AdminHandler extends BaseRPCMethodHandler {
 
    emailJs = new Email()
@@ -57,7 +59,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
       let emailjsUser_id = params.emailjsUser_id
 
       let res =  this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
-      console.log("TCL: AdminHandler -> updateConfig -> res", res)
+      logger.trace("TCL: AdminHandler -> updateConfig -> res", res)
       if (res) {
          let data = [];
          data.push({

@@ -22,7 +22,7 @@ const yaml = require("js-yaml")
 const fs = require("fs")
 
 const argsParsed = commandLineArgs(optionDefinitions)
-console.log(argsParsed)
+logger.trace(argsParsed)
 
 const cwd: string = process.cwd()
 
@@ -41,7 +41,7 @@ async function runISrv() {
 
     const hostIP = 'http://' + ipAddres + ':'
 
-    console.log("TCL: hostIP", hostIP)
+    logger.trace("TCL: hostIP", hostIP)
 
     // the only place there is DB new is here.
     const idb = new IDB(process.cwd(), '/IDB.sqlite')
@@ -51,28 +51,28 @@ async function runISrv() {
     let configIntu;
     try {
         if (!fs.existsSync(path_config)) {
-            console.log('not exists')
+            logger.trace('not exists')
             let conf = {
                 port: 9081,
                 secret: '123456',
-                path: process.cwd() +'/ROOT'
+                appPath: process.cwd() +'/ROOT'
             }
             await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
                 if (err) {
-                    console.log(err);
+                    logger.trace(err);
                 }
             })
-            console.log('not exists')
+            logger.trace('not exists')
             configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'))
         } else {
-            console.log('exists')
+            logger.trace('exists')
             configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'))
         }
     } catch (err) {
-        console.log('cant read the config file', err)
+        logger.trace('cant read the config file', err)
     }
     const port: number = await configIntu.port
-    const appPath: string = await configIntu.path
+    const appPath: string = await configIntu.appPath
 
     // now start node
     const mainEApp = new IntuApp(idb, ['*'], configIntu)
@@ -83,13 +83,13 @@ async function runISrv() {
     const setupDone = await idb.setupIfNeeded()
     logger.trace(setupDone)
 
-    console.log("TCL: runISrv -> setupDone", setupDone)
+    logger.trace("TCL: runISrv -> setupDone", setupDone)
    logger.trace('normal')
    // api and intu is here
    await mainEApp.run(intuPath)
 
    // app 
-   console.log("TCL: runISrv -> appPath", appPath)
+   logger.trace("TCL: runISrv -> appPath", appPath)
    mainEApp.serveStatic(appPath, null, null)
    mainEApp.listen(port)
 

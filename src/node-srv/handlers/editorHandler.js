@@ -6,6 +6,7 @@ const IDB_1 = require("../lib/IDB");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const AppLogic_1 = require("../lib/AppLogic");
+const logger = require('tracer').console();
 const fs = require('fs-extra');
 class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     constructor(IDB, configIntu) {
@@ -39,10 +40,10 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         this.ret(resp, result, null, null);
     }
     async getDirs(resp, params, ent, user, pswd) {
-        console.log("TCL: EditorHandler -> getDirs -> user", user);
-        console.log("TCL: EditorHandler -> getDirs -> params", params);
+        logger.trace("TCL: EditorHandler -> getDirs -> user", user);
+        logger.trace("TCL: EditorHandler -> getDirs -> params", params);
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
-        console.log("TCL: EditorHandler -> getDirs -> auth", auth);
+        logger.trace("TCL: EditorHandler -> getDirs -> auth", auth);
         if (auth != 'OK')
             return;
         const appPath = this.configIntu.path;
@@ -50,8 +51,8 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         this.ret(resp, dirs, null, null);
     }
     async getFiles(resp, params, user, pswd) {
-        console.log("TCL: EditorHandler -> getFiles -> pswd", pswd);
-        console.log("TCL: EditorHandler -> getFiles -> user", user);
+        logger.trace("TCL: EditorHandler -> getFiles -> pswd", pswd);
+        logger.trace("TCL: EditorHandler -> getFiles -> user", user);
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;

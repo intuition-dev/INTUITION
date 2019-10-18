@@ -8,6 +8,8 @@ import { FileMethods } from 'mbake/lib/FileOpsExtra'
 import { FileOps } from 'mbake/lib/FileOpsBase'
 import { AppLogic } from '../lib/AppLogic';
 
+const logger = require('tracer').console()
+
 const fs = require('fs-extra')
 
 export class EditorHandler extends BaseRPCMethodHandler {
@@ -60,14 +62,14 @@ export class EditorHandler extends BaseRPCMethodHandler {
    }//()
 
    async getDirs(resp, params, ent, user, pswd) {
-      console.log("TCL: EditorHandler -> getDirs -> user", user)
-      console.log("TCL: EditorHandler -> getDirs -> params", params)
+      logger.trace("TCL: EditorHandler -> getDirs -> user", user)
+      logger.trace("TCL: EditorHandler -> getDirs -> params", params)
       // user = Buffer.from(params.editor_email).toString('base64');
-      // console.log("TCL: EditorHandler -> getDirs -> user", user)
+      // logger.trace("TCL: EditorHandler -> getDirs -> user", user)
       // pswd = Buffer.from(params.editor_pass).toString('base64');
-      // console.log("TCL: EditorHandler -> getDirs -> pswd", pswd)
+      // logger.trace("TCL: EditorHandler -> getDirs -> pswd", pswd)
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
-      console.log("TCL: EditorHandler -> getDirs -> auth", auth)
+      logger.trace("TCL: EditorHandler -> getDirs -> auth", auth)
       if (auth != 'OK') return
 
       const appPath = this.configIntu.path
@@ -77,8 +79,8 @@ export class EditorHandler extends BaseRPCMethodHandler {
    }//()
 
    async getFiles(resp, params, user, pswd) {
-      console.log("TCL: EditorHandler -> getFiles -> pswd", pswd)
-      console.log("TCL: EditorHandler -> getFiles -> user", user)
+      logger.trace("TCL: EditorHandler -> getFiles -> pswd", pswd)
+      logger.trace("TCL: EditorHandler -> getFiles -> user", user)
       // user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
       if (auth != 'OK') return

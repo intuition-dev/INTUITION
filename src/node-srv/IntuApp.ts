@@ -30,22 +30,22 @@ export class IntuApp extends ExpressRPC {
         VersionNag.isCurrent('intu', AppLogic.veri()).then(function (isCurrent_: boolean) {
             try {
                 if (!isCurrent_)
-                    console.log('There is a newer version of intu(INTUITION.DEV), please update.')
+                    logger.trace('There is a newer version of intu(INTUITION.DEV), please update.')
             } catch (err) {
-                console.log(err)
+                logger.trace(err)
             }
         })// 
     }//()
 
     async run(intuPath) {
         this.appInst.use(function (req, res, next) {
-            console.log("--req.url", req.url)
+            logger.trace("--req.url", req.url)
             next()
         })
 
         // await this.db.isSetupDone()
         // order of Handler: api, all intu apps, Web App
-        console.log('----running')
+        logger.trace('----running')
         //1 API
         const ar = new AdminHandler(this.db, this.configIntu)
         const er = new EditorHandler(this.db, this.configIntu)

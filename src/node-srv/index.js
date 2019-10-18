@@ -18,7 +18,7 @@ const optionDefinitions = [
 const yaml = require("js-yaml");
 const fs = require("fs");
 const argsParsed = commandLineArgs(optionDefinitions);
-console.log(argsParsed);
+logger.trace(argsParsed);
 const cwd = process.cwd();
 function unzipCMS() {
     new FileOpsExtra_1.Download('CMS', cwd).autoUZ();
@@ -32,56 +32,47 @@ async function runISrv() {
     const ip = require('ip');
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
-    console.log("TCL: hostIP", hostIP);
+    logger.trace("TCL: hostIP", hostIP);
     const idb = new IDB_1.IDB(process.cwd(), '/IDB.sqlite');
     const path_config = process.cwd() + '/intu-config.yaml';
     let configIntu;
     try {
         if (!fs.existsSync(path_config)) {
-            console.log('not exists');
+            logger.trace('not exists');
             let conf = {
                 port: 9081,
                 secret: '123456',
-                path: process.cwd()
+                appPath: process.cwd() + '/ROOT'
             };
             await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
                 if (err) {
-                    console.log(err);
+                    logger.trace(err);
                 }
             });
-            console.log('not exists');
+            logger.trace('not exists');
             configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
         }
         else {
-            console.log('exists');
+            logger.trace('exists');
             configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
         }
     }
     catch (err) {
-        console.log('cant read the config file', err);
+        logger.trace('cant read the config file', err);
     }
+    const port = await configIntu.port;
+    const appPath = await configIntu.appPath;
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*'], configIntu);
     let intuPath = AppLogic_2.Util.appPath + '/INTU';
     logger.trace(intuPath);
-    const setupDone = await idb.isSetupDone();
+    const setupDone = await idb.setupIfNeeded();
     logger.trace(setupDone);
-    console.log("TCL: runISrv -> setupDone", setupDone);
-    if (setupDone) {
-        logger.trace('normal');
-        await mainEApp.run(intuPath);
-        const port = await configIntu.port;
-        const appPath = await configIntu.path;
-        console.log("TCL: runISrv -> appPath", appPath);
-        mainEApp.serveStatic(appPath, null, null);
-        mainEApp.listen(port);
-    }
-    else {
-        logger.trace('run setup');
-        await mainEApp.run(intuPath);
-        const port = configIntu.port;
-        mainEApp.serveStatic(AppLogic_2.Util.appPath + '/ROOT', null, null);
-        mainEApp.listen(port);
-    }
+    logger.trace("TCL: runISrv -> setupDone", setupDone);
+    logger.trace('normal');
+    await mainEApp.run(intuPath);
+    logger.trace("TCL: runISrv -> appPath", appPath);
+    mainEApp.serveStatic(appPath, null, null);
+    mainEApp.listen(port);
 }
 function help() {
     console.info();
@@ -89,7 +80,7 @@ function help() {
     console.info();
     console.info('Usage:');
     console.info(' To run:                                                intu');
-    console.info(' and then open a browser on the specified port. There is small app inROOT');
+    console.info(' and then open a browser on the specified port. There is small app in ROOT');
     console.info();
     console.info('  For starter CRUD app:                                  intu -c');
     console.info('  For an example of an e-commerce (shop and ship) app:   intu -s');

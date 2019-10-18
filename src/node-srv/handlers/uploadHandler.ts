@@ -1,6 +1,8 @@
 const fs = require("fs");
 import { IDB } from '../lib/IDB';
 
+const logger = require('tracer').console()
+
 
 export class UploadHandler {
 
@@ -16,7 +18,7 @@ export class UploadHandler {
    async upload(req, resp) {
 
       let uploadPath;
-      console.log("TCL: UploadRoute -> upload -> req.files", req.files, req.fields.targetDir)
+      logger.trace("TCL: UploadRoute -> upload -> req.files", req.files, req.fields.targetDir)
 
       if (Object.keys(req.files).length == 0) {
          return resp.status(400).send('No files were uploaded.');
@@ -31,11 +33,11 @@ export class UploadHandler {
       uploadPath = this.configIntu.path + req.fields.targetDir + '/' + sampleFile.name;
 
       // Use the mv() method to place the file somewhere on your server
-      console.log('sampleFile', sampleFile)
+      logger.trace('sampleFile', sampleFile)
       fs.copyFile(sampleFile.path, uploadPath, (err) => {
          if (err)
             return resp.status(500).send(err);
-         console.log(sampleFile.name + ' was copied to ' + uploadPath);
+         logger.trace(sampleFile.name + ' was copied to ' + uploadPath);
          resp.send({ status: 'OK' });
       });
    }

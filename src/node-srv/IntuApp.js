@@ -17,19 +17,19 @@ class IntuApp extends Serv_1.ExpressRPC {
         FileOpsExtra_1.VersionNag.isCurrent('intu', AppLogic_1.AppLogic.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
-                    console.log('There is a newer version of intu(INTUITION.DEV), please update.');
+                    logger.trace('There is a newer version of intu(INTUITION.DEV), please update.');
             }
             catch (err) {
-                console.log(err);
+                logger.trace(err);
             }
         });
     }
     async run(intuPath) {
         this.appInst.use(function (req, res, next) {
-            console.log("--req.url", req.url);
+            logger.trace("--req.url", req.url);
             next();
         });
-        console.log('----running');
+        logger.trace('----running');
         const ar = new adminHandler_1.AdminHandler(this.db, this.configIntu);
         const er = new editorHandler_1.EditorHandler(this.db, this.configIntu);
         this.routeRPC('/admin', 'admin', ar.handleRPC.bind(ar));
