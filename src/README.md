@@ -56,8 +56,9 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 
 Note: if changed node version you may need to do this first:  `yarn global remove intu`
 
+Edit intu-config.yaml to set the admin password, and where your webapp will reside.
 
-3. Setup configurations in the browser window `:9081/setup`
+3. Configure email. You'll need an account on emil
    Remember your admin email and password.
    Once you login as admin: add a user
 
