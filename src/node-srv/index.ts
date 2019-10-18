@@ -55,7 +55,7 @@ async function runISrv() {
             let conf = {
                 port: 9081,
                 secret: '123456',
-                path: process.cwd()
+                path: process.cwd() +'/ROOT'
             }
             await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
                 if (err) {
@@ -71,6 +71,9 @@ async function runISrv() {
     } catch (err) {
         console.log('cant read the config file', err)
     }
+    const port: number = await configIntu.port
+    const appPath: string = await configIntu.path
+
 
     const mainEApp = new IntuApp(idb, ['*'], configIntu)
 
@@ -81,27 +84,14 @@ async function runISrv() {
     logger.trace(setupDone)
 
     console.log("TCL: runISrv -> setupDone", setupDone)
-    if (setupDone) {
-        logger.trace('normal')
-        // 1 and 2
-        await mainEApp.run(intuPath)
+   logger.trace('normal')
+   // 1 and 2
+   await mainEApp.run(intuPath)
 
-        // #3 app get the port from config
-        const port: number = await configIntu.port
-        const appPath: string = await configIntu.path
-        console.log("TCL: runISrv -> appPath", appPath)
-        mainEApp.serveStatic(appPath, null, null)
-        mainEApp.listen(port)
-    } else {
-        logger.trace('run setup')
-        // 1 and 2
-        await mainEApp.run(intuPath)
-
-        // #3 app
-        const port: number = configIntu.port
-        mainEApp.serveStatic(Util.appPath + '/ROOT', null, null)
-        mainEApp.listen(port)
-    }//fi
+   // #3 app get the port from config
+   console.log("TCL: runISrv -> appPath", appPath)
+   mainEApp.serveStatic(appPath, null, null)
+   mainEApp.listen(port)
 
 }//()
 
@@ -112,7 +102,7 @@ function help() {
     console.info()
     console.info('Usage:')
     console.info(' To run:                                                intu')
-    console.info(' and then open a browser on the specified port. There is small app inROOT')
+    console.info(' and then open a browser on the specified port. There is small app in ROOT')
     console.info()
 
     console.info('  For starter CRUD app:                                  intu -c')

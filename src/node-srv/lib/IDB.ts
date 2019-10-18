@@ -17,7 +17,7 @@ export class IDB extends BaseDBL implements iDBL {
     }
 
     isSetupDone():boolean {
-        return this.tableExists('SALT')
+        return this.tableExists('CONFIG')
     }//()
 
     protected _init(): boolean {
