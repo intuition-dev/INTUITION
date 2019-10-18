@@ -69,7 +69,7 @@ async function runISrv() {
     logger.trace(setupDone);
     logger.trace("TCL: runISrv -> setupDone", setupDone);
     logger.trace('normal');
-    await mainEApp.run(intuPath);
+    await mainEApp.start(intuPath);
     logger.trace("TCL: runISrv -> appPath", appPath);
     mainEApp.serveStatic(appPath, null, null);
     mainEApp.listen(port);

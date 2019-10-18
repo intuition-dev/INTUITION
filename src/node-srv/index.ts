@@ -35,7 +35,7 @@ function unzipC() {
     console.info('Extracted an example CRUD app')
 }
 
-async function runISrv() {
+async function runInSrv() {
     const ip = require('ip')
     const ipAddres = ip.address()
 
@@ -86,7 +86,7 @@ async function runISrv() {
     logger.trace("TCL: runISrv -> setupDone", setupDone)
    logger.trace('normal')
    // api and intu is here
-   await mainEApp.run(intuPath)
+   mainEApp.start(intuPath)
 
    // app 
    logger.trace("TCL: runISrv -> appPath", appPath)
@@ -120,6 +120,6 @@ else if (argsParsed.version)
 else if (argsParsed.CMS)
     unzipCMS()
 else
-    runISrv()
+    runInSrv()
 
 

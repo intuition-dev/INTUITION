@@ -24,7 +24,7 @@ class IntuApp extends Serv_1.ExpressRPC {
             }
         });
     }
-    async run(intuPath) {
+    start(intuPath) {
         this.appInst.use(function (req, res, next) {
             logger.trace("--req.url", req.url);
             next();

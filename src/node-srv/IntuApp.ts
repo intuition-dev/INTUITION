@@ -37,7 +37,7 @@ export class IntuApp extends ExpressRPC {
         })// 
     }//()
 
-    async run(intuPath) {
+   start(intuPath) {
         this.appInst.use(function (req, res, next) {
             logger.trace("--req.url", req.url)
             next()

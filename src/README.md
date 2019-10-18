@@ -53,7 +53,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
     ```
     or you can use npm instead of yarn anytime.
 
-
+Note: currently node needs to be install via nvm (https://github.com/nvm-sh/nvm)
 Note: if changed node version you may need to do this first:  `yarn global remove intu`
 
 Edit intu-config.yaml to set the admin password, and where your webapp will reside.
