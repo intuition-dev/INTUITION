@@ -74,21 +74,21 @@ async function runISrv() {
     const port: number = await configIntu.port
     const appPath: string = await configIntu.path
 
-
+    // now start node
     const mainEApp = new IntuApp(idb, ['*'], configIntu)
 
     let intuPath = Util.appPath + '/INTU'
     logger.trace(intuPath)
 
-    const setupDone = await idb.isSetupDone()
+    const setupDone = await idb.setupIfNeeded()
     logger.trace(setupDone)
 
     console.log("TCL: runISrv -> setupDone", setupDone)
    logger.trace('normal')
-   // 1 and 2
+   // api and intu is here
    await mainEApp.run(intuPath)
 
-   // #3 app get the port from config
+   // app 
    console.log("TCL: runISrv -> appPath", appPath)
    mainEApp.serveStatic(appPath, null, null)
    mainEApp.listen(port)

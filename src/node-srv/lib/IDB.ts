@@ -5,7 +5,7 @@ const logger = require('tracer').console()
 import { BaseDBL, iDBL } from 'mbake/lib/BaseDBL'
 import { iAuth } from 'mbake/lib/Serv'
 
-export class IDB extends BaseDBL implements iDBL {
+export class IDB extends BaseDBL  {
 
     protected salt
 
@@ -16,27 +16,20 @@ export class IDB extends BaseDBL implements iDBL {
         this.defCon(path, fn)
     }
 
-    isSetupDone():boolean {
-        return this.tableExists('CONFIG')
-    }//()
+    setupIfNeeded():boolean {
+      const done = this.tableExists('CONFIG')
+      if(done) return done
 
-    protected _init(): boolean {
 
-        const created: boolean =  this.tableExists('CONFIG')
-        logger.trace('IDB tables exist', created)
-        if (created) {
-            return true
-        }
-
-        this.write(`CREATE TABLE CONFIG (emailjsService_id text, emailjsTemplate_id text, emailjsUser_id text)`) // single row in table
-        this.write(`CREATE TABLE SALT(salt)`)
-        this.write(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)
-        let salt = bcrypt.genSaltSync(10)
-        this.write(`INSERT INTO SALT(salt) VALUES(?)`, salt)
-        this.write(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id) VALUES(?, ? , ?)`, '', '', '')
-        this.getSalt()
-        logger.trace('-------------------- all tables created --------------------')
-        return true
+      this.write(`CREATE TABLE CONFIG (emailjsService_id text, emailjsTemplate_id text, emailjsUser_id text)`) // single row in table
+      this.write(`CREATE TABLE SALT(salt)`)
+      this.write(`CREATE TABLE EDITORS(guid text, name, email, hashPass, last_login_gmt int, vcode)`)
+      let salt = bcrypt.genSaltSync(10)
+      this.write(`INSERT INTO SALT(salt) VALUES(?)`, salt)
+      this.write(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id) VALUES(?, ? , ?)`, '', '', '')
+      this.getSalt()
+      logger.trace('-------------------- all tables created --------------------')
+      return true
 
     }
 
