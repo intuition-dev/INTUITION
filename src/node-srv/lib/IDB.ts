@@ -2,7 +2,7 @@
 const bcrypt = require('bcryptjs') // to hash passwords
 const logger = require('tracer').console()
 
-import { BaseDBL, iDBL } from 'mbake/lib/BaseDBL'
+import { BaseDBL } from 'mbake/lib/BaseDBL'
 import { iAuth } from 'mbake/lib/Serv'
 
 export class IDB extends BaseDBL  {

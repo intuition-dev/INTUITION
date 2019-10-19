@@ -28,7 +28,7 @@ function unzipC() {
     new FileOpsExtra_1.Download('CRUD', cwd).autoUZ();
     console.info('Extracted an example CRUD app');
 }
-async function runISrv() {
+async function runInSrv() {
     const ip = require('ip');
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
@@ -69,7 +69,7 @@ async function runISrv() {
     logger.trace(setupDone);
     logger.trace("TCL: runISrv -> setupDone", setupDone);
     logger.trace('normal');
-    await mainEApp.start(intuPath);
+    mainEApp.start(intuPath);
     logger.trace("TCL: runISrv -> appPath", appPath);
     mainEApp.serveStatic(appPath, null, null);
     mainEApp.listen(port);
@@ -94,4 +94,4 @@ else if (argsParsed.version)
 else if (argsParsed.CMS)
     unzipCMS();
 else
-    runISrv();
+    runInSrv();
