@@ -30,10 +30,10 @@
         "express-fileupload": ">=1.1.5",
         "fs-extra": ">=8.1.0",
         "ip": ">=1.1.5",
-        "mbake": ">=6.10.11"
+        "mbake": ">=6.10.12"
     },
     "devDependencies": {
-        "@types/node": ">=12.11.1",
+        "@types/node": ">=12.11.2",
         "is": ">=3.3.0",
         "perfy": ">=1.1.5"
     }
