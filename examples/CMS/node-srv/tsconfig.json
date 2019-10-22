@@ -1,26 +1,30 @@
 {
-    "compilerOptions": {
+   "compilerOptions": {
+      "target": "es2018",
 
-        "pretty": false,
-        "listEmittedFiles": true,
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "esModuleInterop" : true,
+      "lib": ["es2018"],
 
-        "module": "commonjs",
-        "target": "ES2017",
-        
-        "moduleResolution": "node",
-        "allowSyntheticDefaultImports": true,
-        
-        "removeComments": true,
-        "outDir": ".",
-        "baseUrl": ".",
-        "paths": {
-            "*": ["node_modules/*"]
-        }, "skipLibCheck": true
-    },
-    "include": [
-        "**/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-       ]
+      "allowSyntheticDefaultImports": true,
+
+      "strictBindCallApply": true,	
+      "noImplicitThis": true,
+
+
+      "removeComments": true,
+      "outDir": ".",
+      "baseUrl": ".",
+      "paths": {
+         "*": ["node_modules/*"]
+      }
+   },
+
+   "include": [
+      "**/*.ts"
+   ],
+   "exclude": [
+      "node_modules"
+   ]
 }
