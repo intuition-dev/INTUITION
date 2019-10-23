@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "CRUD example",
   "private": true,
-  "main": "index.js",
+
   "engines": {
     "node": ">=12.13.0",
     "yarn": ">=1.19.0"
