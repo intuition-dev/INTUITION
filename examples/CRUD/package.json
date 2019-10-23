@@ -5,8 +5,7 @@
   "private": true,
 
   "engines": {
-    "node": ">=12.13.0",
-    "yarn": ">=1.19.0"
+    "node": ">=12.13.0"
   },
   "dependencies": {
     "intu": ">=1.9.20"
