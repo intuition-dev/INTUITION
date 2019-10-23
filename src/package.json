@@ -6,9 +6,7 @@
     "bin": {
         "intu": "./node-srv/index.js"
     },
-    "scripts": {
-        "preinstall11": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use yarn to install, npm is not supported')\""
-    },
+
     "license": "MIT",
     "author": "http://www.INTUITION.DEV",
     "homepage": "http://www.INTUITION.DEV",
