@@ -1,4 +1,8 @@
-#### 1.10.4
+#### 1.10.5
+- pre node 13 bump
+
+
+### 1.10.4
 - moved apppath to the intu-config.yaml
 
 #### 1.10.2
