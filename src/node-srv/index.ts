@@ -8,7 +8,8 @@ import { IntuApp } from './IntuApp'
 import { AppLogic } from './lib/AppLogic';
 import { Util } from './lib/AppLogic';
 
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
@@ -22,7 +23,7 @@ const yaml = require("js-yaml")
 const fs = require("fs")
 
 const argsParsed = commandLineArgs(optionDefinitions)
-logger.trace(argsParsed)
+log.info(argsParsed)
 
 const cwd: string = process.cwd()
 
@@ -41,7 +42,7 @@ async function runInSrv() {
 
     const hostIP = 'http://' + ipAddres + ':'
 
-    logger.trace("TCL: hostIP", hostIP)
+    log.info("TCL: hostIP", hostIP)
 
     // the only place there is DB new is here.
     const idb = new IDB(process.cwd(), '/IDB.sqlite')
@@ -51,7 +52,7 @@ async function runInSrv() {
     let configIntu;
     try {
         if (!fs.existsSync(path_config)) {
-            logger.trace('not exists')
+            log.info('not exists')
             let conf = {
                 port: 9081,
                 secret: '123456',
@@ -59,17 +60,17 @@ async function runInSrv() {
             }
             await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
                 if (err) {
-                    logger.trace(err);
+                    log.info(err);
                 }
             })
-            logger.trace('not exists')
+            log.info('not exists')
             configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'))
         } else {
-            logger.trace('exists')
+            log.info('exists')
             configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'))
         }
     } catch (err) {
-        logger.trace('cant read the config file', err)
+        log.info('cant read the config file', err)
     }
     const port: number = await configIntu.port
     const appPath: string = await configIntu.appPath
@@ -78,18 +79,18 @@ async function runInSrv() {
     const mainEApp = new IntuApp(idb, ['*'], configIntu)
 
     let intuPath = Util.appPath + '/INTU'
-    logger.trace(intuPath)
+    log.info(intuPath)
 
     const setupDone = await idb.setupIfNeeded()
-    logger.trace(setupDone)
+    log.info(setupDone)
 
-    logger.trace("TCL: runISrv -> setupDone", setupDone)
-   logger.trace('normal')
+    log.info("TCL: runISrv -> setupDone", setupDone)
+   log.info('normal')
    // api and intu is here
    mainEApp.start(intuPath)
 
    // app 
-   logger.trace("TCL: runISrv -> appPath", appPath)
+   log.info("TCL: runISrv -> appPath", appPath)
    mainEApp.serveStatic(appPath, null, null)
    mainEApp.listen(port)
 

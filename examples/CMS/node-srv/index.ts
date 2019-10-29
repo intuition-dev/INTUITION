@@ -1,6 +1,7 @@
 import { ExpressRPC } from 'mbake/lib/Serv'
 
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 
 // intu /////////////////////////////////////////
 
@@ -15,7 +16,7 @@ async function app() {
    mainIApp.appInst.all('*', function (req, resp) {
 
       const path = req.path
-      logger.trace('no route', path)
+      log.info('no route', path)
       resp.redirect('/')
    })
 

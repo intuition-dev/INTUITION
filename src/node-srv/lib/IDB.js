@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt = require('bcryptjs');
-const logger = require('tracer').console();
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({ name: "IDB" });
 const BaseDBL_1 = require("mbake/lib/BaseDBL");
 class IDB extends BaseDBL_1.BaseDBL {
     constructor(path, fn) {
-        logger.trace("TCL: IDB -> constructor -> path", path);
+        log.info("TCL: IDB -> constructor -> path", path);
         super();
-        logger.trace(path, fn);
+        log.info(path, fn);
         this.defCon(path, fn);
     }
     setupIfNeeded() {
@@ -21,7 +22,7 @@ class IDB extends BaseDBL_1.BaseDBL {
         this.write(`INSERT INTO SALT(salt) VALUES(?)`, salt);
         this.write(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id) VALUES(?, ? , ?)`, '', '', '');
         this.getSalt();
-        logger.trace('-------------------- all tables created --------------------');
+        log.info('-------------------- all tables created --------------------');
         return true;
     }
     getSalt() {
@@ -45,7 +46,7 @@ class IDB extends BaseDBL_1.BaseDBL {
         return vcode;
     }
     authEditor(email, password) {
-        logger.trace("TCL: IDB -> password", password);
+        log.info("TCL: IDB -> password", password);
         const salt = this.getSalt();
         const hashPassP = bcrypt.hashSync(password, salt);
         const row = this.readOne('SELECT * FROM EDITORS where email =  ?', email);
@@ -96,14 +97,14 @@ class EditorAuthX {
     auth(user, pswd, resp, ctx) {
         return new Promise((resolve, reject) => {
             const ok = this.db.authEditor(user, pswd);
-            logger.trace('editor AUTH status: ', ok);
+            log.info('editor AUTH status: ', ok);
             if (ok)
                 return resolve('OK');
             resolve('FAIL');
         });
     }
     retErr(resp, msg) {
-        logger.trace(msg);
+        log.info(msg);
         const ret = {};
         ret.errorLevel = -1;
         ret.errorMessage = msg;

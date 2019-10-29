@@ -1,7 +1,8 @@
 const fs = require("fs");
 import { IDB } from '../lib/IDB';
 
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 
 
 export class UploadHandler {
@@ -18,7 +19,7 @@ export class UploadHandler {
    async upload(req, resp) {
 
       let uploadPath;
-      logger.trace("TCL: UploadRoute -> upload -> req.files", req.files, req.fields.targetDir)
+      log.info("TCL: UploadRoute -> upload -> req.files", req.files, req.fields.targetDir)
 
       if (Object.keys(req.files).length == 0) {
          return resp.status(400).send('No files were uploaded.');
@@ -33,11 +34,11 @@ export class UploadHandler {
       uploadPath = this.configIntu.path + req.fields.targetDir + '/' + sampleFile.name;
 
       // Use the mv() method to place the file somewhere on your server
-      logger.trace('sampleFile', sampleFile)
+      log.info('sampleFile', sampleFile)
       fs.copyFile(sampleFile.path, uploadPath, (err) => {
          if (err)
             return resp.status(500).send(err);
-         logger.trace(sampleFile.name + ' was copied to ' + uploadPath);
+         log.info(sampleFile.name + ' was copied to ' + uploadPath);
          resp.send({ status: 'OK' });
       });
    }

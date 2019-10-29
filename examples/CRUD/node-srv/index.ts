@@ -3,7 +3,8 @@ import { IntuApp } from 'intu/node-srv/IntuApp'
 import { IDB } from     'intu/node-srv/lib/IDB'
 import { Util } from 'intu/node-srv/lib/AppLogic'
 import { CDB } from './lib/CDB';
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 
 // intu /////////////////////////////////////////
 
@@ -17,7 +18,7 @@ async function app() {
    const cdb = new CDB(process.cwd(), '/CDB.sqlite')
 
    const setupDone = await cdb.isSetupDone()
-   logger.trace('app', setupDone)
+   log.info('app', setupDone)
    
    //api
    const cRouter = new CrudPgHandler(cdb)
@@ -30,7 +31,7 @@ async function app() {
    //catch all
    mainIApp.appInst.all('*', function (req, resp) {
       const path = req.path
-      logger.trace('no route', path)
+      log.info('no route', path)
       resp.json({'No route': path })
    })
 
@@ -41,17 +42,17 @@ async function app() {
 async function  runISrv() {
 
    const setupDone = await idb.isSetupDone()
-   logger.trace('?', setupDone)
+   log.info('?', setupDone)
    
    let intuPath = Util.appPath + '/node_modules/intu/INTU'
-   logger.trace(intuPath)
+   log.info(intuPath)
 
    if (setupDone) {
-       logger.trace('normal')
+       log.info('normal')
        await mainIApp.run(intuPath)
 
    } else {
-       logger.trace('run setup')
+       log.info('run setup')
        await mainIApp.run(intuPath)
    }
    

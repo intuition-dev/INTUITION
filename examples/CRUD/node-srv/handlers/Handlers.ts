@@ -1,6 +1,7 @@
 
 import { CDB } from '../lib/CDB'
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 import { BaseRPCMethodHandler, iAuth } from 'mbake/lib/Serv'
 
 export class CrudPgHandler extends BaseRPCMethodHandler {

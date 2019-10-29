@@ -1,6 +1,7 @@
 
 const bcrypt = require('bcryptjs') // to hash passwords
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "IDB"})
 
 import { BaseDBL } from 'mbake/lib/BaseDBL'
 import { iAuth } from 'mbake/lib/Serv'
@@ -10,9 +11,9 @@ export class IDB extends BaseDBL  {
     protected salt
 
     constructor(path, fn) {
-        logger.trace("TCL: IDB -> constructor -> path", path)
+        log.info("TCL: IDB -> constructor -> path", path)
         super()
-        logger.trace(path, fn)
+        log.info(path, fn)
         this.defCon(path, fn)
     }
 
@@ -28,7 +29,7 @@ export class IDB extends BaseDBL  {
       this.write(`INSERT INTO SALT(salt) VALUES(?)`, salt)
       this.write(`INSERT INTO CONFIG(emailjsService_id, emailjsTemplate_id, emailjsUser_id) VALUES(?, ? , ?)`, '', '', '')
       this.getSalt()
-      logger.trace('-------------------- all tables created --------------------')
+      log.info('-------------------- all tables created --------------------')
       return true
 
     }
@@ -59,7 +60,7 @@ export class IDB extends BaseDBL  {
 
      authEditor(email, password): boolean {
         // password = Buffer.from(password).toString('base64');
-        logger.trace("TCL: IDB -> password", password)
+        log.info("TCL: IDB -> password", password)
         const salt =  this.getSalt()
         const hashPassP = bcrypt.hashSync(password, salt)
         const row = this.readOne('SELECT * FROM EDITORS where email =  ?', email)
@@ -139,7 +140,7 @@ export class EditorAuthX implements iAuth {
      auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {
         return new Promise( (resolve, reject) => {
             const ok =  this.db.authEditor(user, pswd)
-            logger.trace('editor AUTH status: ', ok)
+            log.info('editor AUTH status: ', ok)
             if (ok) return resolve('OK')
 
             resolve('FAIL')
@@ -147,7 +148,7 @@ export class EditorAuthX implements iAuth {
     }
 
     retErr(resp: any, msg: any) {
-        logger.trace(msg)
+        log.info(msg)
         const ret: any = {} // new return
         ret.errorLevel = -1
         ret.errorMessage = msg

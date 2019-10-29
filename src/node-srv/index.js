@@ -7,7 +7,8 @@ const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const IntuApp_1 = require("./IntuApp");
 const AppLogic_1 = require("./lib/AppLogic");
 const AppLogic_2 = require("./lib/AppLogic");
-const logger = require('tracer').console();
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({ name: "class name" });
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
     { name: 'help', alias: 'h', type: Boolean },
@@ -18,7 +19,7 @@ const optionDefinitions = [
 const yaml = require("js-yaml");
 const fs = require("fs");
 const argsParsed = commandLineArgs(optionDefinitions);
-logger.trace(argsParsed);
+log.info(argsParsed);
 const cwd = process.cwd();
 function unzipCMS() {
     new FileOpsExtra_1.Download('CMS', cwd).autoUZ();
@@ -32,13 +33,13 @@ async function runInSrv() {
     const ip = require('ip');
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
-    logger.trace("TCL: hostIP", hostIP);
+    log.info("TCL: hostIP", hostIP);
     const idb = new IDB_1.IDB(process.cwd(), '/IDB.sqlite');
     const path_config = process.cwd() + '/intu-config.yaml';
     let configIntu;
     try {
         if (!fs.existsSync(path_config)) {
-            logger.trace('not exists');
+            log.info('not exists');
             let conf = {
                 port: 9081,
                 secret: '123456',
@@ -46,31 +47,31 @@ async function runInSrv() {
             };
             await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
                 if (err) {
-                    logger.trace(err);
+                    log.info(err);
                 }
             });
-            logger.trace('not exists');
+            log.info('not exists');
             configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
         }
         else {
-            logger.trace('exists');
+            log.info('exists');
             configIntu = await yaml.safeLoad(fs.readFileSync(path_config, 'utf8'));
         }
     }
     catch (err) {
-        logger.trace('cant read the config file', err);
+        log.info('cant read the config file', err);
     }
     const port = await configIntu.port;
     const appPath = await configIntu.appPath;
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*'], configIntu);
     let intuPath = AppLogic_2.Util.appPath + '/INTU';
-    logger.trace(intuPath);
+    log.info(intuPath);
     const setupDone = await idb.setupIfNeeded();
-    logger.trace(setupDone);
-    logger.trace("TCL: runISrv -> setupDone", setupDone);
-    logger.trace('normal');
+    log.info(setupDone);
+    log.info("TCL: runISrv -> setupDone", setupDone);
+    log.info('normal');
     mainEApp.start(intuPath);
-    logger.trace("TCL: runISrv -> appPath", appPath);
+    log.info("TCL: runISrv -> appPath", appPath);
     mainEApp.serveStatic(appPath, null, null);
     mainEApp.listen(port);
 }

@@ -2,7 +2,8 @@
 // Bus. Layer test
 import { CDB } from './lib/CDB'
 const is = require('is')
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 const perfy = require('perfy')
 
 
@@ -17,7 +18,7 @@ async function tst() {
 
    for (let i = 0; i < 10; i++) {
 
-      logger.trace(is.array(await cdb.selectAll()))
+      log.info(is.array(await cdb.selectAll()))
 
    }
 

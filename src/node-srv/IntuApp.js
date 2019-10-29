@@ -4,7 +4,8 @@ const Serv_1 = require("mbake/lib/Serv");
 const editorHandler_1 = require("./handlers/editorHandler");
 const adminHandler_1 = require("./handlers/adminHandler");
 const uploadHandler_1 = require("./handlers/uploadHandler");
-const logger = require('tracer').console();
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({ name: "class name" });
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const AppLogic_1 = require("./lib/AppLogic");
 class IntuApp extends Serv_1.ExpressRPC {
@@ -17,19 +18,19 @@ class IntuApp extends Serv_1.ExpressRPC {
         FileOpsExtra_1.VersionNag.isCurrent('intu', AppLogic_1.AppLogic.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
-                    logger.trace('There is a newer version of intu(INTUITION.DEV), please update.');
+                    log.info('There is a newer version of intu(INTUITION.DEV), please update.');
             }
             catch (err) {
-                logger.trace(err);
+                log.info(err);
             }
         });
     }
     start(intuPath) {
         this.appInst.use(function (req, res, next) {
-            logger.trace("--req.url", req.url);
+            log.info("--req.url", req.url);
             next();
         });
-        logger.trace('----running');
+        log.info('----running');
         const ar = new adminHandler_1.AdminHandler(this.db, this.configIntu);
         const er = new editorHandler_1.EditorHandler(this.db, this.configIntu);
         this.routeRPC('/admin', 'admin', ar.handleRPC.bind(ar));

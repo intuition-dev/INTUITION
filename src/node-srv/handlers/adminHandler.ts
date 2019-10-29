@@ -2,7 +2,8 @@ import { Email } from 'mbake/lib/Email'
 import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
 import { IDB } from '../lib/IDB'
 
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 
 export class AdminHandler extends BaseRPCMethodHandler {
 
@@ -59,7 +60,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
       let emailjsUser_id = params.emailjsUser_id
 
       let res =  this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
-      logger.trace("TCL: AdminHandler -> updateConfig -> res", res)
+      log.info("TCL: AdminHandler -> updateConfig -> res", res)
       if (res) {
          let data = [];
          data.push({

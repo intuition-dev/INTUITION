@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Email_1 = require("mbake/lib/Email");
 const Serv_1 = require("mbake/lib/Serv");
-const logger = require('tracer').console();
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({ name: "class name" });
 class AdminHandler extends Serv_1.BaseRPCMethodHandler {
     constructor(IDB, configIntu) {
         super();
@@ -42,7 +43,7 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         let emailjsTemplate_id = params.emailjsTemplate_id;
         let emailjsUser_id = params.emailjsUser_id;
         let res = this.IDB.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
-        logger.trace("TCL: AdminHandler -> updateConfig -> res", res);
+        log.info("TCL: AdminHandler -> updateConfig -> res", res);
         if (res) {
             let data = [];
             data.push({

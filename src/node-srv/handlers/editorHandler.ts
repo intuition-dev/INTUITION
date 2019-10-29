@@ -8,7 +8,8 @@ import { FileMethods } from 'mbake/lib/FileOpsExtra'
 import { FileOps } from 'mbake/lib/FileOpsBase'
 import { AppLogic } from '../lib/AppLogic';
 
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 
 const fs = require('fs-extra')
 
@@ -62,14 +63,14 @@ export class EditorHandler extends BaseRPCMethodHandler {
    }//()
 
    async getDirs(resp, params, ent, user, pswd) {
-      logger.trace("TCL: EditorHandler -> getDirs -> user", user)
-      logger.trace("TCL: EditorHandler -> getDirs -> params", params)
+      log.info("TCL: EditorHandler -> getDirs -> user", user)
+      log.info("TCL: EditorHandler -> getDirs -> params", params)
       // user = Buffer.from(params.editor_email).toString('base64');
-      // logger.trace("TCL: EditorHandler -> getDirs -> user", user)
+      // log.info("TCL: EditorHandler -> getDirs -> user", user)
       // pswd = Buffer.from(params.editor_pass).toString('base64');
-      // logger.trace("TCL: EditorHandler -> getDirs -> pswd", pswd)
+      // log.info("TCL: EditorHandler -> getDirs -> pswd", pswd)
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
-      logger.trace("TCL: EditorHandler -> getDirs -> auth", auth)
+      log.info("TCL: EditorHandler -> getDirs -> auth", auth)
       if (auth != 'OK') return
 
       const appPath = this.configIntu.path
@@ -79,8 +80,8 @@ export class EditorHandler extends BaseRPCMethodHandler {
    }//()
 
    async getFiles(resp, params, user, pswd) {
-      logger.trace("TCL: EditorHandler -> getFiles -> pswd", pswd)
-      logger.trace("TCL: EditorHandler -> getFiles -> user", user)
+      log.info("TCL: EditorHandler -> getFiles -> pswd", pswd)
+      log.info("TCL: EditorHandler -> getFiles -> user", user)
       // user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
       if (auth != 'OK') return

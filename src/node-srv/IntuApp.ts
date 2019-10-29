@@ -6,7 +6,8 @@ import { ExpressRPC } from 'mbake/lib/Serv'
 import { EditorHandler } from './handlers/editorHandler'
 import { AdminHandler } from './handlers/adminHandler'
 import { UploadHandler } from './handlers/uploadHandler'
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 
 import { IDB } from './lib/IDB';
 
@@ -30,22 +31,22 @@ export class IntuApp extends ExpressRPC {
         VersionNag.isCurrent('intu', AppLogic.veri()).then(function (isCurrent_: boolean) {
             try {
                 if (!isCurrent_)
-                    logger.trace('There is a newer version of intu(INTUITION.DEV), please update.')
+                    log.info('There is a newer version of intu(INTUITION.DEV), please update.')
             } catch (err) {
-                logger.trace(err)
+                log.info(err)
             }
         })// 
     }//()
 
    start(intuPath) {
         this.appInst.use(function (req, res, next) {
-            logger.trace("--req.url", req.url)
+            log.info("--req.url", req.url)
             next()
         })
 
         // await this.db.isSetupDone()
         // order of Handler: api, all intu apps, Web App
-        logger.trace('----running')
+        log.info('----running')
         //1 API
         const ar = new AdminHandler(this.db, this.configIntu)
         const er = new EditorHandler(this.db, this.configIntu)

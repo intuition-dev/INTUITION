@@ -1,6 +1,6 @@
 {
     "name": "intu",
-    "version": "1.10.5",
+    "version": "1.10.7",
     "description": "INTUITION.DEV is the futuristic open source tool for pro developers with 10-fold productivity via automation, low-code, cross-platform, static-generator, and a built-in WebAdmin editor, leveraging JAMstack, w/ Pug and facilitating app maintenance by end-users.",
 
     "bin": {
@@ -26,9 +26,8 @@
     "dependencies": {
         "bcryptjs": ">=2.4.3",
         "express-fileupload": ">=1.1.5",
-        "fs-extra": ">=8.1.0",
         "ip": ">=1.1.5",
-        "mbake": ">=6.10.15"
+        "mbake": ">=6.10.16"
     },
     "devDependencies": {
         "@types/node": ">=12.11.7",

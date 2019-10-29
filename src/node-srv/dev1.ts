@@ -1,6 +1,9 @@
 // Bus. Layer test
 
-var logger = require('tracer').console()
+
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
+
 const perfy = require('perfy')
 
 import { IDB } from './lib/IDB'
@@ -15,16 +18,16 @@ const appLogic = new AppLogic()
 
 async function test(name, f) {
   perfy.start(name, true)
-  logger.trace(name)
+  log.info(name)
 
-  logger.trace(await f())
+  log.info(await f())
 
   var result = perfy.end(name)
-  logger.trace('', result.time)
+  log.info('', result.time)
 }
 
 async function testIDB() {
-  logger.trace('testIDB:')
+  log.info('testIDB:')
 
   await test('getSalt', () => idb.getSalt())
 
@@ -41,11 +44,11 @@ async function testIDB() {
 
   await test('getEditors2', () => idb.getEditorsAll())
 
-  logger.trace('//testIDB')
+  log.info('//testIDB')
 }//()
 
 async function testAppLogic() {
-  logger.trace('testAppLogic:')
+  log.info('testAppLogic:')
 
   await test('autoBake', () => appLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'))
 
@@ -55,7 +58,7 @@ async function testAppLogic() {
 
   await test('archive', () => appLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'))
 
-  logger.trace('//testAppLogic')
+  log.info('//testAppLogic')
 }
 
 // generate uuid for testing purposes

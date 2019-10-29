@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var logger = require('tracer').console();
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({ name: "class name" });
 const perfy = require('perfy');
 const IDB_1 = require("./lib/IDB");
 const AppLogic_1 = require("./lib/AppLogic");
@@ -9,13 +10,13 @@ idb.setupIfNeeded();
 const appLogic = new AppLogic_1.AppLogic();
 async function test(name, f) {
     perfy.start(name, true);
-    logger.trace(name);
-    logger.trace(await f());
+    log.info(name);
+    log.info(await f());
     var result = perfy.end(name);
-    logger.trace('', result.time);
+    log.info('', result.time);
 }
 async function testIDB() {
-    logger.trace('testIDB:');
+    log.info('testIDB:');
     await test('getSalt', () => idb.getSalt());
     await test('getConfig', () => idb.getConfig());
     await test(`getVcodeEditor('n1@m.com)`, () => idb.makeVcodeEditor('n1@m.com'));
@@ -24,15 +25,15 @@ async function testIDB() {
     await test('getEditors', () => idb.getEditorsAll());
     await test('deleteEditor', () => idb.deleteEditor(addEditorGuid));
     await test('getEditors2', () => idb.getEditorsAll());
-    logger.trace('//testIDB');
+    log.info('//testIDB');
 }
 async function testAppLogic() {
-    logger.trace('testAppLogic:');
+    log.info('testAppLogic:');
     await test('autoBake', () => appLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'));
     await test('setPublishDate', () => appLogic.setPublishDate('/users/vitalii/intu-smpl', '/files', 112233132323));
     await test('clone', () => appLogic.clone('/users/vitalii/intu-smpl', '/files', '/files2'));
     await test('archive', () => appLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'));
-    logger.trace('//testAppLogic');
+    log.info('//testAppLogic');
 }
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
