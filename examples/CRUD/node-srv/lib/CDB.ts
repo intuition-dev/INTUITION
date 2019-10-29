@@ -1,7 +1,7 @@
 
 import { BaseDB, iDB } from 'mbake/lib/BaseDB'
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({name: "class name"})
+const log = bunyan.createLogger({src: true, name: "class name"})
 
 /**
  * Example CRUD DB: to discuss topics

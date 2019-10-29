@@ -9,7 +9,7 @@ import { AppLogic } from './lib/AppLogic';
 import { Util } from './lib/AppLogic';
 
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({name: "class name"})
+const log = bunyan.createLogger({src: true, name: "class name"})
 
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
