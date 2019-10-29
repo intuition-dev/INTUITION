@@ -32,6 +32,5 @@
     "devDependencies": {
         "@types/node": ">=12.11.7",
         
-        "perfy": ">=1.1.5"
     }
 }
