@@ -3,7 +3,9 @@ import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
 import { IDB } from '../lib/IDB'
 
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({src: true, name: "admin"})
+const bformat = require('bunyan-format')  
+const formatOut = bformat({ outputMode: 'short' })
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "admin"})
 
 export class AdminHandler extends BaseRPCMethodHandler {
 

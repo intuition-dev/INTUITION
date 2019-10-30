@@ -2,7 +2,9 @@ const fs = require("fs");
 import { IDB } from '../lib/IDB';
 
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({src: true, name: "upload"})
+const bformat = require('bunyan-format')  
+const formatOut = bformat({ outputMode: 'short' })
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "upload"})
 
 
 export class UploadHandler {

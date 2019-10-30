@@ -1,7 +1,9 @@
 
 const bcrypt = require('bcryptjs') // to hash passwords
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({src: true, name: "IDB"})
+const bformat = require('bunyan-format')  
+const formatOut = bformat({ outputMode: 'short' })
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "IDB"})
 
 import { BaseDBL } from 'mbake/lib/BaseDBL'
 import { iAuth } from 'mbake/lib/Serv'

@@ -9,7 +9,9 @@ import { FileOps } from 'mbake/lib/FileOpsBase'
 import { AppLogic } from '../lib/AppLogic';
 
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({src: true, name: "editor"})
+const bformat = require('bunyan-format')  
+const formatOut = bformat({ outputMode: 'short' })
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "editor"})
 
 const fs = require('fs-extra')
 
