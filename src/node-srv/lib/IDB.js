@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt = require('bcryptjs');
 const bunyan = require('bunyan');
-const log = bunyan.createLogger({ name: "IDB" });
+const bformat = require('bunyan-format');
+const formatOut = bformat({ outputMode: 'short' });
+const log = bunyan.createLogger({ src: true, stream: formatOut, name: "IDB" });
 const BaseDBL_1 = require("mbake/lib/BaseDBL");
 class IDB extends BaseDBL_1.BaseDBL {
     constructor(path, fn) {

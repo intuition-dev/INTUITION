@@ -8,7 +8,9 @@ const IntuApp_1 = require("./IntuApp");
 const AppLogic_1 = require("./lib/AppLogic");
 const AppLogic_2 = require("./lib/AppLogic");
 const bunyan = require('bunyan');
-const log = bunyan.createLogger({ name: "class name" });
+const bformat = require('bunyan-format');
+const formatOut = bformat({ outputMode: 'short' });
+const log = bunyan.createLogger({ src: true, stream: formatOut, name: "class name" });
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
     { name: 'help', alias: 'h', type: Boolean },

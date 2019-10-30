@@ -7,7 +7,9 @@ const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const AppLogic_1 = require("../lib/AppLogic");
 const bunyan = require('bunyan');
-const log = bunyan.createLogger({ name: "class name" });
+const bformat = require('bunyan-format');
+const formatOut = bformat({ outputMode: 'short' });
+const log = bunyan.createLogger({ src: true, stream: formatOut, name: "editor" });
 const fs = require('fs-extra');
 class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     constructor(IDB, configIntu) {
