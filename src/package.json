@@ -30,7 +30,7 @@
         "mbake": ">=6.10.19"
     },
     "devDependencies": {
-        "@types/node": ">=12.12.3"
+        "@types/node": ">=12.12.5"
         
     }
 }
