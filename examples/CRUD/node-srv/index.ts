@@ -6,7 +6,7 @@ import { CDB } from './lib/CDB';
 const bunyan = require('bunyan')
 const bformat = require('bunyan-format')  
 const formatOut = bformat({ outputMode: 'short' })
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "class name"})
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "some name"})
 
 // intu /////////////////////////////////////////
 
