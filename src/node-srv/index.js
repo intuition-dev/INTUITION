@@ -45,7 +45,7 @@ async function runInSrv() {
             let conf = {
                 port: 9081,
                 secret: '123456',
-                appPath: process.cwd() + '/ROOT'
+                path: process.cwd() + '/ROOT'
             };
             await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
                 if (err) {
@@ -64,7 +64,7 @@ async function runInSrv() {
         log.info('cant read the config file', err);
     }
     const port = await configIntu.port;
-    const appPath = await configIntu.appPath;
+    const path = await configIntu.path;
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*'], configIntu);
     let intuPath = AppLogic_2.Util.appPath + '/INTU';
     log.info(intuPath);
@@ -73,8 +73,8 @@ async function runInSrv() {
     log.info("TCL: runISrv -> setupDone", setupDone);
     log.info('normal');
     mainEApp.start(intuPath);
-    log.info("TCL: runISrv -> appPath", appPath);
-    mainEApp.serveStatic(appPath, null, null);
+    log.info("TCL: runISrv -> path", path);
+    mainEApp.serveStatic(path, null, null);
     mainEApp.listen(port);
 }
 function help() {

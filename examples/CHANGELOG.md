@@ -1,24 +1,4 @@
-### 1.11.1
-- apppath is now called path
-
-#### 1.10.9
-- pre node 13 bump
-
-#### 1.10.4
-- moved apppath to the intu-config.yaml
-
-#### 1.10.2
-- fixed config path
-
-#### 1.10.1
-- pass for admin in config
-- remove setup page
-
-#### 1.10.0
-- mbake bump
-
-#### 1.09.21
-- RPC bump
+### 
 - moved Shoping to mbake and put CMS here in intu
 
 #### 1.09.20
