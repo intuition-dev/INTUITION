@@ -27,10 +27,10 @@
         "bcryptjs": ">=2.4.3",
         "express-fileupload": ">=1.1.5",
         "ip": ">=1.1.5",
-        "mbake": ">=6.10.19"
+        "mbake": ">=6.11.1"
     },
     "devDependencies": {
-        "@types/node": ">=12.12.5"
+        "@types/node": ">=12.12.6"
         
     }
 }
