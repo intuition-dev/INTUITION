@@ -22,7 +22,7 @@ const optionDefinitions = [
 ]
 
 const yaml = require("js-yaml")
-const fs = require("fs")
+const fs = require("fs-extra")
 
 const argsParsed = commandLineArgs(optionDefinitions)
 log.info(argsParsed)

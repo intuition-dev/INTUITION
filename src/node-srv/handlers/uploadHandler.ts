@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs-extra");
 import { IDB } from '../lib/IDB';
 
 const bunyan = require('bunyan')
