@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
+const fs = require("fs-extra");
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format');
 const formatOut = bformat({ outputMode: 'short' });
