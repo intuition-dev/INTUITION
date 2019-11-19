@@ -1,3 +1,6 @@
+### 1.11.5
+- bump
+
 ### 1.11.4
 - apppath is now called path
 
