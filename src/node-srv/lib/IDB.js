@@ -5,7 +5,7 @@ const bunyan = require('bunyan');
 const bformat = require('bunyan-format');
 const formatOut = bformat({ outputMode: 'short' });
 const log = bunyan.createLogger({ src: true, stream: formatOut, name: "IDB" });
-const BaseDBL_1 = require("mbake/lib/BaseDBL");
+const BaseDBL_1 = require("mbakex/lib/BaseDBL");
 class IDB extends BaseDBL_1.BaseDBL {
     constructor(path, fn) {
         log.info("TCL: IDB -> constructor -> path", path);

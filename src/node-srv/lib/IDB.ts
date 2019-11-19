@@ -5,7 +5,7 @@ const bformat = require('bunyan-format')
 const formatOut = bformat({ outputMode: 'short' })
 const log = bunyan.createLogger({src: true, stream: formatOut, name: "IDB"})
 
-import { BaseDBL } from 'mbake/lib/BaseDBL'
+import { BaseDBL } from 'mbakex/lib/BaseDBL'
 import { iAuth } from 'mbake/lib/Serv'
 
 export class IDB extends BaseDBL  {
