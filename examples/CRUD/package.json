@@ -5,7 +5,7 @@
   "private": true,
 
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=13.1.0"
   },
   "dependencies": {
     "intu": ">=1.9.20"
