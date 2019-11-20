@@ -3,7 +3,7 @@
 import { CDB } from './lib/CDB'
 const is = require('is')
 const bunyan = require('bunyan')
-const bformat = require('bunyan-format')  
+const bformat = require('bunyan-format2')  
 const formatOut = bformat({ outputMode: 'short' })
 const log = bunyan.createLogger({src: true, stream: formatOut, name: "some name"})
 const perfy = require('perfy')

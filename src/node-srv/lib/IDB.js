@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt = require('bcryptjs');
 const bunyan = require('bunyan');
-const bformat = require('bunyan-format');
+const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
 const log = bunyan.createLogger({ src: true, stream: formatOut, name: "IDB" });
 const BaseDBL_1 = require("mbakex/lib/BaseDBL");
