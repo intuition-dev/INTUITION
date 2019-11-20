@@ -24,11 +24,11 @@ const argsParsed = commandLineArgs(optionDefinitions);
 log.info(argsParsed);
 const cwd = process.cwd();
 function unzipCMS() {
-    new FileOpsExtra_1.Download('CMS', cwd).autoUZ();
+    new FileOpsExtra_1.DownloadC('CMS', cwd).autoUZ();
     console.info('Extracted an example CMS');
 }
 function unzipC() {
-    new FileOpsExtra_1.Download('CRUD', cwd).autoUZ();
+    new FileOpsExtra_1.DownloadC('CRUD', cwd).autoUZ();
     console.info('Extracted an example CRUD app');
 }
 async function runInSrv() {

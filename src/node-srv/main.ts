@@ -3,7 +3,7 @@
 
 import commandLineArgs = require('command-line-args')
 import { IDB } from './lib/IDB'
-import { Download } from 'mbake/lib/FileOpsExtra';
+import { DownloadC } from 'mbake/lib/FileOpsExtra';
 import { IntuApp } from './IntuApp'
 import { AppLogic } from './lib/AppLogic';
 import { Util } from './lib/AppLogic';
@@ -30,11 +30,11 @@ log.info(argsParsed)
 const cwd: string = process.cwd()
 
 function unzipCMS() {
-    new Download('CMS', cwd).autoUZ()
+    new DownloadC('CMS', cwd).autoUZ()
     console.info('Extracted an example CMS')
 }
 function unzipC() {
-    new Download('CRUD', cwd).autoUZ()
+    new DownloadC('CRUD', cwd).autoUZ()
     console.info('Extracted an example CRUD app')
 }
 

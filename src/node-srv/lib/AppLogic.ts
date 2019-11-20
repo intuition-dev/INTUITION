@@ -21,7 +21,7 @@ export class Util {
 export class AppLogic {
 
     static veri() {
-        return 'v1.11.7'
+        return 'v1.11.10'
     }
     async autoBake(appPath, itemPath, fileName) {
         const meta = new MetaPro(appPath)
