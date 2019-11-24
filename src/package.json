@@ -29,6 +29,6 @@
         "mbakex": ">=1.11.11"
     },
     "devDependencies": {
-        "@types/node": ">=12.12.11"
+        "@types/node": ">=12.12.12"
     }
 }
