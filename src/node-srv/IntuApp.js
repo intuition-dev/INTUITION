@@ -36,7 +36,6 @@ class IntuApp extends Serv_1.Serv {
         const er = new editorHandler_1.EditorHandler(this.db, this.configIntu);
         this.routeRPC('/admin', ar);
         this.routeRPC('/api', er);
-        Serv_1.Serv._expInst('/upload', this.uploadRoute.upload.bind(this.uploadRoute));
         Serv_1.Serv._expInst.get('/iver', (req, res) => {
             return res.send(AppLogic_1.AppLogic.veri);
         });

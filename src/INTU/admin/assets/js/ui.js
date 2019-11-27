@@ -1,3 +1,6 @@
+
+console.log('ui')
+
 depp.require('scripts', function () {
    // login form input lables animation
    if ($('input[name="login"]:-webkit-autofill').length > 0) {
@@ -41,4 +44,4 @@ depp.require('scripts', function () {
 
    }
 
-});
+})

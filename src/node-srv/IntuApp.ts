@@ -55,7 +55,7 @@ export class IntuApp extends Serv {
 
         this.routeRPC('/api', er )
 
-        Serv._expInst('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
+        //Serv._expInst('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
 
         // get version
         Serv._expInst.get('/iver', (req, res) => {

@@ -1,10 +1,10 @@
-var responces = [];
+
 depp.define({
     'scripts': [
         '#jquery', '#tabulator-core', '#gridformsJS'
-        , '/admin/assets/css/spectreBottom.css'
+        , '/admin/assets/css/spectreBottom.css', '#RPC'
     ],
-    'httpRPC': ['https://cdn.jsdelivr.net/gh/intuition-dev/mbToolBelt@v3.11.15/http-rpc+/web/httpRPC.js'],
+    'httpRPC': ['#RPC'],
     'intuAPI': [
         '/intuAPI/IntuAPI.js'
     ],
@@ -22,4 +22,7 @@ depp.define({
     ]
 });
 
-depp.require(['fonts']);
+console.log('ui')
+depp.require(['ui', 'scripts','fonts'], function() {
+   console.log('ok')
+})
