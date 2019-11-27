@@ -1,4 +1,4 @@
-import { ExpressRPC } from 'mbake/lib/Serv'
+import { Serv } from 'mbake/lib/Serv'
 
 const bunyan = require('bunyan')
 const bformat = require('bunyan-format2')  
@@ -7,8 +7,7 @@ const log = bunyan.createLogger({src: true, stream: formatOut, name: "some name"
 
 // intu /////////////////////////////////////////
 
-const mainIApp = new ExpressRPC()
-mainIApp.makeInstance(['*'])
+const mainIApp = new Serv(['*'])
 
 async function app() {
    //www
