@@ -10,10 +10,9 @@ const formatOut = bformat({ outputMode: 'short' });
 const log = bunyan.createLogger({ src: true, stream: formatOut, name: "some name" });
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const AppLogic_1 = require("./lib/AppLogic");
-class IntuApp extends Serv_1.ExpressRPC {
+class IntuApp extends Serv_1.Serv {
     constructor(db, origins, configIntu) {
-        super();
-        this.makeInstance(origins);
+        super(origins);
         this.db = db;
         this.configIntu = configIntu;
         this.uploadRoute = new uploadHandler_1.UploadHandler(this.db, this.configIntu);
@@ -28,17 +27,17 @@ class IntuApp extends Serv_1.ExpressRPC {
         });
     }
     start(intuPath) {
-        this.appInst.use(function (req, res, next) {
+        Serv_1.Serv._expInst.use(function (req, res, next) {
             log.info("--req.url", req.url);
             next();
         });
         log.info('----running');
         const ar = new adminHandler_1.AdminHandler(this.db, this.configIntu);
         const er = new editorHandler_1.EditorHandler(this.db, this.configIntu);
-        this.routeRPC('/admin', 'admin', ar.handleRPC.bind(ar));
-        this.routeRPC('/api', 'editors', er.handleRPC.bind(er));
-        this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute));
-        this.appInst.get('/iver', (req, res) => {
+        this.routeRPC('/admin', ar);
+        this.routeRPC('/api', er);
+        Serv_1.Serv._expInst('/upload', this.uploadRoute.upload.bind(this.uploadRoute));
+        Serv_1.Serv._expInst.get('/iver', (req, res) => {
             return res.send(AppLogic_1.AppLogic.veri);
         });
         this.serveStatic(intuPath, null, null);

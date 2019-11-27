@@ -1,7 +1,6 @@
 
-import { ExpressRPC } from 'mbake/lib/Serv'
+import { Serv } from 'mbake/lib/Serv'
 
-// import { ExpressRPC, iAuth } from './Serv'
 
 import { EditorHandler } from './handlers/editorHandler'
 import { AdminHandler } from './handlers/adminHandler'
@@ -16,15 +15,14 @@ import { IDB } from './lib/IDB';
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
 import { AppLogic } from './lib/AppLogic';
 
-export class IntuApp extends ExpressRPC {
+export class IntuApp extends Serv {
 
     db: IDB
     uploadRoute
     configIntu
 
     constructor(db: IDB, origins: Array<string>, configIntu) {
-        super()
-        this.makeInstance(origins)
+        super(origins)
 
         this.db = db
         this.configIntu = configIntu
@@ -41,7 +39,7 @@ export class IntuApp extends ExpressRPC {
     }//()
 
    start(intuPath) {
-        this.appInst.use(function (req, res, next) {
+         Serv._expInst.use(function (req, res, next) {
             log.info("--req.url", req.url)
             next()
         })
@@ -53,14 +51,14 @@ export class IntuApp extends ExpressRPC {
         const ar = new AdminHandler(this.db, this.configIntu)
         const er = new EditorHandler(this.db, this.configIntu)
 
-        this.routeRPC('/admin', 'admin', ar.handleRPC.bind(ar))
+        this.routeRPC('/admin', ar)
 
-        this.routeRPC('/api', 'editors', er.handleRPC.bind(er))
+        this.routeRPC('/api', er )
 
-        this.appInst.post('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
+        Serv._expInst('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
 
         // get version
-        this.appInst.get('/iver', (req, res) => {
+        Serv._expInst.get('/iver', (req, res) => {
             return res.send(AppLogic.veri)
         })
 
