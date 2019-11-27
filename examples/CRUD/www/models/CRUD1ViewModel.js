@@ -41,7 +41,7 @@ var CRUDvm = (function () {
         });
     };
     CRUDvm.prototype._all = function () {
-        var prom = this.rpc.invoke('capi', 'CRUD1Pg', 'selectAll', { a: 5, b: 2 });
+        var prom = this.rpc.invoke('capi', { a: 5, b: 2 });
         console.log('***', 'data in flight', Date.now() - _start);
         setTimeout(function () {
             disE1('spin-stop', 'stop');
@@ -54,7 +54,7 @@ var CRUDvm = (function () {
     };
     CRUDvm.prototype.ins = function (name, topics) {
         var guid = getGUID();
-        var prom = this.rpc.invoke('api', 'CRUD1Pg', 'insert', { guid: guid, name: name, topics: topics });
+        var prom = this.rpc.invoke('api',  { guid: guid, name: name, topics: topics });
         prom.then(function (resp) {
             console.log('resp', resp);
         }).catch(function (err) {
