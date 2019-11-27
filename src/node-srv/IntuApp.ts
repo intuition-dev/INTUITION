@@ -1,10 +1,6 @@
 
 import { Serv } from 'mbake/lib/Serv'
 
-
-import { EditorHandler } from './handlers/editorHandler'
-import { AdminHandler } from './handlers/adminHandler'
-import { UploadHandler } from './handlers/uploadHandler'
 const bunyan = require('bunyan')
 const bformat = require('bunyan-format2')  
 const formatOut = bformat({ outputMode: 'short' })
@@ -14,6 +10,10 @@ import { IDB } from './lib/IDB';
 
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
 import { AppLogic } from './lib/AppLogic';
+
+import { EditorHandler } from './handlers/editorHandler'
+import { AdminHandler } from './handlers/adminHandler'
+import { UploadHandler } from './handlers/uploadHandler'
 
 export class IntuApp extends Serv {
 
@@ -51,9 +51,9 @@ export class IntuApp extends Serv {
         const ar = new AdminHandler(this.db, this.configIntu)
         const er = new EditorHandler(this.db, this.configIntu)
 
-        this.routeRPC('/admin', ar)
+        this.routeRPC('adminAPI', ar)
 
-        this.routeRPC('/api', er )
+        this.routeRPC('api', er )
 
         //Serv._expInst('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
 

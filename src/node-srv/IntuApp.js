@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Serv_1 = require("mbake/lib/Serv");
-const editorHandler_1 = require("./handlers/editorHandler");
-const adminHandler_1 = require("./handlers/adminHandler");
-const uploadHandler_1 = require("./handlers/uploadHandler");
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
 const log = bunyan.createLogger({ src: true, stream: formatOut, name: "some name" });
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const AppLogic_1 = require("./lib/AppLogic");
+const editorHandler_1 = require("./handlers/editorHandler");
+const adminHandler_1 = require("./handlers/adminHandler");
+const uploadHandler_1 = require("./handlers/uploadHandler");
 class IntuApp extends Serv_1.Serv {
     constructor(db, origins, configIntu) {
         super(origins);
@@ -34,8 +34,8 @@ class IntuApp extends Serv_1.Serv {
         log.info('----running');
         const ar = new adminHandler_1.AdminHandler(this.db, this.configIntu);
         const er = new editorHandler_1.EditorHandler(this.db, this.configIntu);
-        this.routeRPC('/admin', ar);
-        this.routeRPC('/api', er);
+        this.routeRPC('adminAPI', ar);
+        this.routeRPC('api', er);
         Serv_1.Serv._expInst.get('/iver', (req, res) => {
             return res.send(AppLogic_1.AppLogic.veri);
         });
