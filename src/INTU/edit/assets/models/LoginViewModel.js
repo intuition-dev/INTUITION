@@ -21,6 +21,7 @@ var LoginViewModel = (function (_super) {
     }
     LoginViewModel.prototype.setup = function () {
         this.services = new IntuAPI();
+        this.services.DEBUG = true;
     };
     LoginViewModel.inst = function () {
         return new Promise(function (res, rej) {

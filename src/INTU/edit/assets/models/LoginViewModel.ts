@@ -10,7 +10,8 @@ class LoginViewModel extends BaseViewModel {
     }
 
     setup() {
-        this.services = new IntuAPI();
+        this.services = new IntuAPI()
+        this.services.DEBUG = true
     }
 
     static _instance: LoginViewModel

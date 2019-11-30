@@ -59,6 +59,7 @@ var EditViewModel = (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 this.services = new IntuAPI();
+                this.services.DEBUG = true;
                 return [2];
             });
         });

@@ -11,6 +11,7 @@ class EditViewModel extends BaseViewModel {
 
     async setup() {
         this.services = new IntuAPI();
+        this.services.DEBUG = true
 
       }
 
