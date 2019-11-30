@@ -21,6 +21,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }//()
 
    auth(login, pass) {
+      log.info('admin')
       const user = 'admin'
       const pswd = this.configIntu.secret
       if (login == user && pass == pswd) {
@@ -30,6 +31,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }
 
    async checkAdmin(params) {
+      log.info('checkAdmin')
       let auth = await this.auth(params.admin_email, params.admin_pass)
 
       if (auth != 'OK') {
@@ -41,7 +43,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }//()
 
 
-   async getConfig(params) {
+   async _getConfig(params) {
 
       let auth = await this.auth(params.admin_email, params.admin_pass)
 
@@ -85,7 +87,6 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }//()
 
    async getEditors(params) {
-
 
       let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return

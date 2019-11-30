@@ -35,7 +35,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
 
    async checkEditor(params) {
 
-      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 
       return 'OK'
@@ -66,13 +66,13 @@ export class EditorHandler extends BaseRPCMethodHandler {
    }//()
 
    async getDirs(params) {
-      log.info("TCL: EditorHandler -> getDirs -> user", user)
+      log.info("TCL: EditorHandler -> getDirs -> user")
       log.info("TCL: EditorHandler -> getDirs -> params", params)
       // user = Buffer.from(params.editor_email).toString('base64');
       // log.info("TCL: EditorHandler -> getDirs -> user", user)
       // pswd = Buffer.from(params.editor_pass).toString('base64');
       // log.info("TCL: EditorHandler -> getDirs -> pswd", pswd)
-      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       log.info("TCL: EditorHandler -> getDirs -> auth", auth)
       if (auth != 'OK') return
 
@@ -86,7 +86,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       log.info("TCL: EditorHandler -> getFiles -> pswd", pswd)
       log.info("TCL: EditorHandler -> getFiles -> user", user)
       // user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
@@ -97,7 +97,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
 
    async getFileContent(params, user, pswd) {
       // user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
       let itemPath = '/' + params.file
       let file = params.itemPath
@@ -116,7 +116,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
    async saveFile(params, user, pswd) {
       // save and add archived files
       user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 
       let substring = '/';
@@ -146,7 +146,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
    */
    async compileCode(params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 
       let itemPath = '/' + params.file
@@ -160,7 +160,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
 
    async cloneItem(params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 
       let itemPath = '/' + params.itemPath
@@ -176,7 +176,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
     */
    async setPublishDate(params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
-      let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
+      let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 
       let itemPath = '/' + params.itemPath

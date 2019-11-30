@@ -96,7 +96,7 @@ class EditorAuthX {
     constructor(db) {
         this.db = db;
     }
-    auth(user, pswd, resp, ctx) {
+    auth(user, pswd, ctx) {
         return new Promise((resolve, reject) => {
             const ok = this.db.authEditor(user, pswd);
             log.info('editor AUTH status: ', ok);
@@ -104,13 +104,6 @@ class EditorAuthX {
                 return resolve('OK');
             resolve('FAIL');
         });
-    }
-    retErr(resp, msg) {
-        log.info(msg);
-        const ret = {};
-        ret.errorLevel = -1;
-        ret.errorMessage = msg;
-        resp.json(ret);
     }
 }
 exports.EditorAuthX = EditorAuthX;

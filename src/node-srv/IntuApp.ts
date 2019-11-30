@@ -4,7 +4,7 @@ import { Serv } from 'http-rpc/node-srv/lib/Serv'
 const bunyan = require('bunyan')
 const bformat = require('bunyan-format2')  
 const formatOut = bformat({ outputMode: 'short' })
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "some name"})
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "Intu App"})
 
 import { IDB } from './lib/IDB';
 
@@ -40,7 +40,7 @@ export class IntuApp extends Serv {
 
    start(intuPath) {
          Serv._expInst.use(function (req, res, next) {
-            log.info("--req.url", req.url)
+            log.trace("--req.url", req.url)
             next()
         })
 

@@ -139,7 +139,7 @@ export class EditorAuthX implements iAuth {
         this.db = db
     }//()
 
-     auth(user: string, pswd: string, resp?: any, ctx?: any): Promise<string> {
+     auth(user: string, pswd: string, ctx?: any): Promise<string> {
         return new Promise( (resolve, reject) => {
             const ok =  this.db.authEditor(user, pswd)
             log.info('editor AUTH status: ', ok)
@@ -148,13 +148,5 @@ export class EditorAuthX implements iAuth {
             resolve('FAIL')
         })// pro
     }
-
-    retErr(resp: any, msg: any) {
-        log.info(msg)
-        const ret: any = {} // new return
-        ret.errorLevel = -1
-        ret.errorMessage = msg
-        resp.json(ret)
-    }//()
 
 }//class
