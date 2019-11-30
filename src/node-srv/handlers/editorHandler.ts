@@ -29,8 +29,6 @@ export class EditorHandler extends BaseRPCMethodHandler {
    constructor(IDB, configIntu) {
       super(1)
       
-      this.DEBUG = true
-
       this.db = IDB
       this.auth = new EditorAuthX(IDB)
       this.configIntu = configIntu
@@ -100,7 +98,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
    async getFileContent(params) {
       // user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass)
-      if (auth != 'OK') return
+      if (auth != 'OK') return 'No Auth'
       let itemPath = '/' + params.file
       let file = params.itemPath
       const appPath = this.configIntu.path
@@ -108,14 +106,11 @@ export class EditorHandler extends BaseRPCMethodHandler {
 
       log.info(fileName)
 
-      fs.readFile(fileName, 'utf8', (err, data) => {
-         if (err) {
-            log.error(err)
-            throw err
-         }
-         log.info(data)
-         return data
-      })
+      let data = await fs.readFile(fileName, 'utf8')
+      log.info(data)     
+      return data
+   
+
    }//() 
 
    async saveFile(params) {

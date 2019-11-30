@@ -9,10 +9,10 @@ class EditViewModel extends BaseViewModel {
         if (42 !== arg) throw new Error('use static inst()') // guard!
     }
 
-    setup() {
+    async setup() {
         this.services = new IntuAPI();
-        this.services.DEBUG = true
-    }
+
+      }
 
     static _instance: EditViewModel
     static inst(): Promise<EditViewModel> {

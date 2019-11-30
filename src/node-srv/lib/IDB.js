@@ -48,7 +48,6 @@ class IDB extends BaseDBL_1.BaseDBL {
         return vcode;
     }
     authEditor(email, password) {
-        log.info("TCL: IDB -> password", password);
         const salt = this.getSalt();
         const hashPassP = bcrypt.hashSync(password, salt);
         const row = this.readOne('SELECT * FROM EDITORS where email =  ?', email);
@@ -99,7 +98,6 @@ class EditorAuthX {
     auth(user, pswd, ctx) {
         return new Promise((resolve, reject) => {
             const ok = this.db.authEditor(user, pswd);
-            log.info('editor AUTH status: ', ok);
             if (ok)
                 return resolve('OK');
             resolve('FAIL');

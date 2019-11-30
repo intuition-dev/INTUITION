@@ -1,6 +1,5 @@
 
 depp.define({
-   'RPC2': ['#poly', '#lz-string', 'https://cdn.jsdelivr.net/npm/http-rpc@0.5.1/browser/httpRPC.js'],
 
     'scripts': ['#jquery', '#DOM'],
 
@@ -11,9 +10,9 @@ depp.define({
     'codeEdit': ['#codemirror', '#scripts', '//cdn.jsdelivr.net/npm/codemirror@5.48.4/keymap/sublime.js'],
     'cssBot': '/edit/assets/css/spectreBottom.css',
 
-    'httpRPC': ['#RPC2'],
+    'httpRPC': ['#RPC'],
     'intuAPI': ['/intuAPI/IntuAPI.js'],
-    'baseVM': ['#RPC2', '#intuAPI', '/edit/assets/models/BaseViewModel.js',],
+    'baseVM': ['#RPC', '#intuAPI', '/edit/assets/models/BaseViewModel.js',],
     'loginViewModel': ['#baseVM', '/edit/assets/models/LoginViewModel.js'],
     'editViewModel': ['#baseVM', '/edit/assets/models/EditViewModel.js'],
 

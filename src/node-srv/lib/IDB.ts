@@ -62,7 +62,7 @@ export class IDB extends BaseDBL  {
 
      authEditor(email, password): boolean {
         // password = Buffer.from(password).toString('base64');
-        log.info("TCL: IDB -> password", password)
+        //log.info("TCL: IDB -> password", password)
         const salt =  this.getSalt()
         const hashPassP = bcrypt.hashSync(password, salt)
         const row = this.readOne('SELECT * FROM EDITORS where email =  ?', email)
@@ -142,7 +142,7 @@ export class EditorAuthX implements iAuth {
      auth(user: string, pswd: string, ctx?: any): Promise<string> {
         return new Promise( (resolve, reject) => {
             const ok =  this.db.authEditor(user, pswd)
-            log.info('editor AUTH status: ', ok)
+            //log.info('editor AUTH status: ', ok)
             if (ok) return resolve('OK')
 
             resolve('FAIL')
