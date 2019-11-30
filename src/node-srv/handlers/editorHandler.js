@@ -21,13 +21,13 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         this.auth = new IDB_1.EditorAuthX(IDB);
         this.configIntu = configIntu;
     }
-    async checkEditor(resp, params, ent, user, pswd) {
+    async checkEditor(params) {
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
         return 'OK';
     }
-    async emailResetPasswordCode(resp, params, email, pswd) {
+    async emailResetPasswordCode(params) {
         const config = await this.db.getConfig();
         let emailjsService_id = config.emailjsService_id;
         let emailjsTemplate_id = config.emailjsTemplate_id;
@@ -38,11 +38,11 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
         return 'OK';
     }
-    async resetPasswordIfMatch(resp, params, email, password) {
+    async resetPasswordIfMatch(params, email, password) {
         const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password);
         return result;
     }
-    async getDirs(resp, params, ent, user, pswd) {
+    async getDirs(params) {
         log.info("TCL: EditorHandler -> getDirs -> user", user);
         log.info("TCL: EditorHandler -> getDirs -> params", params);
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
@@ -53,7 +53,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         const dirs = this.fm.getDirs(appPath);
         return dirs;
     }
-    async getFiles(resp, params, user, pswd) {
+    async getFiles(params, user, pswd) {
         log.info("TCL: EditorHandler -> getFiles -> pswd", pswd);
         log.info("TCL: EditorHandler -> getFiles -> user", user);
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
@@ -64,7 +64,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         const files = this.fm.getFiles(appPath, itemPath);
         return files;
     }
-    async getFileContent(resp, params, user, pswd) {
+    async getFileContent(params, user, pswd) {
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
@@ -80,7 +80,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
             return data;
         });
     }
-    async saveFile(resp, params, user, pswd) {
+    async saveFile(params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
@@ -103,7 +103,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         fileOps.write(fileName, content);
         return 'OK';
     }
-    async compileCode(resp, params, user, pswd) {
+    async compileCode(params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
@@ -115,7 +115,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         return 'OK';
         this.appLogic.autoBake(appPath, itemPath, fileName);
     }
-    async cloneItem(resp, params, user, pswd) {
+    async cloneItem(params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
@@ -126,7 +126,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         await this.appLogic.clone(appPath, itemPath, newItemPath);
         return 'OK';
     }
-    async setPublishDate(resp, params, user, pswd) {
+    async setPublishDate(params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')

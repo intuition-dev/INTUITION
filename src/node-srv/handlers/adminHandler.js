@@ -21,7 +21,7 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         }
         return 'FAIL';
     }
-    async checkAdmin(resp, params, ent, user, pswd, token) {
+    async checkAdmin(params) {
         let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK') {
             return 'FAIL';
@@ -30,14 +30,14 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
             return 'OK';
         }
     }
-    async getConfig(resp, params, ent, user, pswd, token) {
+    async getConfig(params) {
         let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
         let data = await this.IDB.getConfig();
         return data;
     }
-    async updateConfig(resp, params, ent, user, pswd, token) {
+    async updateConfig(params) {
         let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
@@ -56,20 +56,20 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
             return data;
         }
     }
-    async resetPasswordIfMatch(resp, params, ent, email, password) {
+    async resetPasswordIfMatch(params) {
         let adminEmail = Buffer.from(params.admin_email).toString('base64');
         let newPassword = Buffer.from(params.password).toString('base64');
         const result = await this.IDB.resetPasswordAdminIfMatch(adminEmail, params.code, newPassword);
         return result;
     }
-    async getEditors(resp, params, ent, user, pswd, token) {
+    async getEditors(params) {
         let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
         let editors = this.IDB.getEditorsAll();
         return editors;
     }
-    async addEditor(resp, params, ent, user, pswd, token) {
+    async addEditor(params) {
         let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
@@ -80,7 +80,7 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         await this.IDB.addEditor(guid, name, email, password);
         return 'OK';
     }
-    async editEditor(resp, params, ent, user, pswd, token) {
+    async editEditor(params) {
         let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;
@@ -89,7 +89,7 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         let data = await this.IDB.editEditor(guid, name);
         return data;
     }
-    async deleteEditor(resp, params, ent, user, pswd, token) {
+    async deleteEditor(params) {
         let auth = await this.auth(params.admin_email, params.admin_pass);
         if (auth != 'OK')
             return;

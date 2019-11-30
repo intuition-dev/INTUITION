@@ -29,7 +29,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
       return 'FAIL'
    }
 
-   async checkAdmin(resp, params, ent, user, pswd, token) {
+   async checkAdmin(params) {
       let auth = await this.auth(params.admin_email, params.admin_pass)
 
       if (auth != 'OK') {
@@ -41,7 +41,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }//()
 
 
-   async getConfig(resp, params, ent, user, pswd, token) {
+   async getConfig(params) {
 
       let auth = await this.auth(params.admin_email, params.admin_pass)
 
@@ -52,7 +52,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
       return data
    }//()
 
-   async updateConfig(resp, params, ent, user, pswd, token) {
+   async updateConfig(params) {
 
       let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
@@ -76,7 +76,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
       }
    }
 
-   async resetPasswordIfMatch(resp, params, ent, email, password) {
+   async resetPasswordIfMatch(params) {
       let adminEmail = Buffer.from(params.admin_email).toString('base64');
       let newPassword = Buffer.from(params.password).toString('base64');
       const result = await this.IDB.resetPasswordAdminIfMatch(adminEmail, params.code, newPassword);
@@ -84,7 +84,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
       return result
    }//()
 
-   async getEditors(resp, params, ent, user, pswd, token) {
+   async getEditors(params) {
 
 
       let auth = await this.auth(params.admin_email, params.admin_pass)
@@ -97,7 +97,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
    /**
     *  Needs a guid sent by browsers. There is a getGUID() in toolbelt
     */
-   async addEditor(resp, params, ent, user, pswd, token) {
+   async addEditor(params) {
       let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
 
@@ -114,7 +114,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
    /**
     *  edit user
     */
-   async editEditor(resp, params, ent, user, pswd, token) {
+   async editEditor(params) {
       let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
 
@@ -125,7 +125,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
       return data
    }
 
-   async deleteEditor(resp, params, ent, user, pswd, token) {
+   async deleteEditor(params) {
       let auth = await this.auth(params.admin_email, params.admin_pass)
       if (auth != 'OK') return
 

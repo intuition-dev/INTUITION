@@ -33,7 +33,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       this.configIntu = configIntu
    }
 
-   async checkEditor(resp, params, ent, user, pswd) {
+   async checkEditor(params) {
 
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
       if (auth != 'OK') return
@@ -41,7 +41,8 @@ export class EditorHandler extends BaseRPCMethodHandler {
       return 'OK'
    }//()
 
-   async emailResetPasswordCode(resp, params, email, pswd) {
+   async emailResetPasswordCode(params) {
+
       const config: any = await this.db.getConfig()
       let emailjsService_id = config.emailjsService_id
       let emailjsTemplate_id = config.emailjsTemplate_id
@@ -52,19 +53,19 @@ export class EditorHandler extends BaseRPCMethodHandler {
       // Nat
       let msg = 'Enter your code at http://bla.bla ' + code // TODO use IDB template email to CRUD w/ {{code}}
 
-      email = Buffer.from(params.admin_email).toString('base64');
+      let email = Buffer.from(params.admin_email).toString('base64');
       this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg)
 
       return 'OK'
    }//() 
 
-   async resetPasswordIfMatch(resp, params, email, password) {
+   async resetPasswordIfMatch(params, email, password) {
       const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password)
       return result
 
    }//()
 
-   async getDirs(resp, params, ent, user, pswd) {
+   async getDirs(params) {
       log.info("TCL: EditorHandler -> getDirs -> user", user)
       log.info("TCL: EditorHandler -> getDirs -> params", params)
       // user = Buffer.from(params.editor_email).toString('base64');
@@ -81,7 +82,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       return dirs
    }//()
 
-   async getFiles(resp, params, user, pswd) {
+   async getFiles(params, user, pswd) {
       log.info("TCL: EditorHandler -> getFiles -> pswd", pswd)
       log.info("TCL: EditorHandler -> getFiles -> user", user)
       // user = Buffer.from(user, 'base64').toString();
@@ -94,7 +95,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       return  files
    }//files
 
-   async getFileContent(resp, params, user, pswd) {
+   async getFileContent(params, user, pswd) {
       // user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
       if (auth != 'OK') return
@@ -112,7 +113,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       })
    }//() 
 
-   async saveFile(resp, params, user, pswd) {
+   async saveFile(params, user, pswd) {
       // save and add archived files
       user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
@@ -143,7 +144,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
    /**
    It is not relay async, it returns than compiles/bakes
    */
-   async compileCode(resp, params, user, pswd) {
+   async compileCode(params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
       if (auth != 'OK') return
@@ -157,7 +158,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       this.appLogic.autoBake(appPath, itemPath, fileName)
    }//()
 
-   async cloneItem(resp, params, user, pswd) {
+   async cloneItem(params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
       if (auth != 'OK') return
@@ -173,7 +174,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
    /**
     * Publish Date is an INT, linux time GMT
     */
-   async setPublishDate(resp, params, user, pswd) {
+   async setPublishDate(params, user, pswd) {
       user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
       if (auth != 'OK') return

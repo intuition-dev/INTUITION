@@ -15,18 +15,18 @@ export class CrudPgHandler extends BaseRPCMethodHandler {
       this.cdb = cdb
    }
 
-   async selectAll(resp, params, user, pswd) {
+   async selectAll(params, user, pswd) {
       let data = await this.cdb.selectAll()
       this.ret(resp, data, null, null)
    }//()
 
-   async selectOne(resp, params, user, pswd) {
+   async selectOne(params, user, pswd) {
       let id = params.id
       let data = await this.cdb.selectGUID(id)
       this.ret(resp, data, null, null)
    }//()
 
-   async insert(resp, params, user, pswd) {
+   async insert(params, user, pswd) {
       let guid = params.guid
       let name= params.name
       let topics= params.topics
