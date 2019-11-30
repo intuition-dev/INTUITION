@@ -13,7 +13,7 @@ const log = bunyan.createLogger({ src: true, stream: formatOut, name: "editor" }
 const fs = require('fs-extra');
 class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     constructor(IDB, configIntu) {
-        super();
+        super(1);
         this.emailJs = new Email_1.Email();
         this.fm = new FileOpsExtra_1.FileMethods();
         this.appLogic = new AppLogic_1.AppLogic();
@@ -25,7 +25,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
         if (auth != 'OK')
             return;
-        this.ret(resp, 'OK', null, null);
+        return 'OK';
     }
     async emailResetPasswordCode(resp, params, email, pswd) {
         const config = await this.db.getConfig();
@@ -36,11 +36,11 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let msg = 'Enter your code at http://bla.bla ' + code;
         email = Buffer.from(params.admin_email).toString('base64');
         this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg);
-        this.ret(resp, 'OK', null, null);
+        return 'OK';
     }
     async resetPasswordIfMatch(resp, params, email, password) {
         const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password);
-        this.ret(resp, result, null, null);
+        return result;
     }
     async getDirs(resp, params, ent, user, pswd) {
         log.info("TCL: EditorHandler -> getDirs -> user", user);
@@ -51,7 +51,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
             return;
         const appPath = this.configIntu.path;
         const dirs = this.fm.getDirs(appPath);
-        this.ret(resp, dirs, null, null);
+        return dirs;
     }
     async getFiles(resp, params, user, pswd) {
         log.info("TCL: EditorHandler -> getFiles -> pswd", pswd);
@@ -62,7 +62,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let itemPath = '/' + params.itemPath;
         const appPath = this.configIntu.path;
         const files = this.fm.getFiles(appPath, itemPath);
-        this.ret(resp, files, null, null);
+        return files;
     }
     async getFileContent(resp, params, user, pswd) {
         let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp);
@@ -75,10 +75,9 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         const THIZ = this;
         fs.readFile(fileName, 'utf8', (err, data) => {
             if (err) {
-                THIZ.retErr(resp, err, null, null);
-                return;
+                throw err;
             }
-            THIZ.ret(resp, data, null, null);
+            return data;
         });
     }
     async saveFile(resp, params, user, pswd) {
@@ -102,7 +101,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         }
         const fileOps = new FileOpsBase_1.FileOps(appPath);
         fileOps.write(fileName, content);
-        this.ret(resp, 'OK', null, null);
+        return 'OK';
     }
     async compileCode(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
@@ -113,7 +112,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let file = params.itemPath;
         const appPath = this.configIntu.path;
         let fileName = itemPath + file;
-        this.ret(resp, 'OK', null, null);
+        return 'OK';
         this.appLogic.autoBake(appPath, itemPath, fileName);
     }
     async cloneItem(resp, params, user, pswd) {
@@ -125,7 +124,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let newItemPath = '/' + params.newItemPath;
         const appPath = this.configIntu.path;
         await this.appLogic.clone(appPath, itemPath, newItemPath);
-        this.ret(resp, 'OK', null, null);
+        return 'OK';
     }
     async setPublishDate(resp, params, user, pswd) {
         user = Buffer.from(user, 'base64').toString();
@@ -136,7 +135,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         const appPath = this.configIntu.path;
         let publish_date = params.publish_date;
         this.appLogic.setPublishDate(appPath, itemPath, publish_date);
-        this.ret(resp, 'OK', null, null);
+        return 'OK';
     }
 }
 exports.EditorHandler = EditorHandler;

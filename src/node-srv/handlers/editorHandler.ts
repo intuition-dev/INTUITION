@@ -27,7 +27,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
    appLogic = new AppLogic()
 
    constructor(IDB, configIntu) {
-      super()
+      super(1)
       this.db = IDB
       this.auth = new EditorAuthX(IDB)
       this.configIntu = configIntu
@@ -38,7 +38,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       let auth = await this.auth.auth(params.editor_email, params.editor_pass, resp)
       if (auth != 'OK') return
 
-      this.ret(resp, 'OK', null, null)
+      return 'OK'
    }//()
 
    async emailResetPasswordCode(resp, params, email, pswd) {
@@ -55,12 +55,12 @@ export class EditorHandler extends BaseRPCMethodHandler {
       email = Buffer.from(params.admin_email).toString('base64');
       this.emailJs.send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg)
 
-      this.ret(resp, 'OK', null, null)
+      return 'OK'
    }//() 
 
    async resetPasswordIfMatch(resp, params, email, password) {
       const result = await this.db.resetPasswordEditorIfMatch(params.admin_email, params.code, params.password)
-      this.ret(resp, result, null, null)
+      return result
 
    }//()
 
@@ -78,7 +78,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       const appPath = this.configIntu.path
 
       const dirs = this.fm.getDirs(appPath)
-      this.ret(resp, dirs, null, null)
+      return dirs
    }//()
 
    async getFiles(resp, params, user, pswd) {
@@ -91,7 +91,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       let itemPath = '/' + params.itemPath
       const appPath = this.configIntu.path
       const files = this.fm.getFiles(appPath, itemPath)
-      this.ret(resp, files, null, null)
+      return  files
    }//files
 
    async getFileContent(resp, params, user, pswd) {
@@ -106,10 +106,9 @@ export class EditorHandler extends BaseRPCMethodHandler {
       const THIZ = this
       fs.readFile(fileName, 'utf8', (err, data) => {
          if (err) {
-            THIZ.retErr(resp, err, null, null)
-            return
+            throw err
          }
-         THIZ.ret(resp, data, null, null)
+         return data
       })
    }//() 
 
@@ -138,8 +137,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       const fileOps = new FileOps(appPath)
       // done saving
       fileOps.write(fileName, content)
-      this.ret(resp, 'OK', null, null)
-
+      return  'OK'
    }//()
 
    /**
@@ -154,7 +152,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       let file = params.itemPath
       const appPath = this.configIntu.path
       let fileName = itemPath + file
-      this.ret(resp, 'OK', null, null)
+      return 'OK'
 
       this.appLogic.autoBake(appPath, itemPath, fileName)
    }//()
@@ -169,7 +167,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       const appPath = this.configIntu.path
 
       await this.appLogic.clone(appPath, itemPath, newItemPath)
-      this.ret(resp, 'OK', null, null)
+      return 'OK'
    } //()
 
    /**
@@ -185,7 +183,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       let publish_date: number = params.publish_date
       this.appLogic.setPublishDate(appPath, itemPath, publish_date)
 
-      this.ret(resp, 'OK', null, null)
+      return 'OK'
    }//()
 
 }//
