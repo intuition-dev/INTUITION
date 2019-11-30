@@ -1,10 +1,12 @@
 
 depp.define({
+   'RPC2': ['#poly', '#lz-string', 'https://cdn.jsdelivr.net/npm/http-rpc@0.5.0/browser/httpRPC.js'],
+
     'scripts': [
         '#jquery', '#tabulator-core', '#gridformsJS'
-        , '/admin/assets/css/spectreBottom.css', '#RPC'
+        , '/admin/assets/css/spectreBottom.css', '#RPC2'
     ],
-    'httpRPC': ['#RPC'],
+    'httpRPC': ['#RPC2'],
     'intuAPI': [
         '/intuAPI/IntuAPI.js'
     ],
