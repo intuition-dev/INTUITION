@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Serv_1 = require("mbake/lib/Serv");
+const Serv_1 = require("http-rpc/node-srv/lib/Serv");
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
