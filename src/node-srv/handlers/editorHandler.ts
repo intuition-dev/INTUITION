@@ -82,9 +82,8 @@ export class EditorHandler extends BaseRPCMethodHandler {
       return dirs
    }//()
 
-   async getFiles(params, user, pswd) {
-      log.info("TCL: EditorHandler -> getFiles -> pswd", pswd)
-      log.info("TCL: EditorHandler -> getFiles -> user", user)
+   async getFiles(params) {
+   
       // user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
@@ -95,7 +94,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
       return  files
    }//files
 
-   async getFileContent(params, user, pswd) {
+   async getFileContent(params) {
       // user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
@@ -113,9 +112,9 @@ export class EditorHandler extends BaseRPCMethodHandler {
       })
    }//() 
 
-   async saveFile(params, user, pswd) {
+   async saveFile(params) {
       // save and add archived files
-      user = Buffer.from(user, 'base64').toString();
+      //user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 
@@ -144,8 +143,8 @@ export class EditorHandler extends BaseRPCMethodHandler {
    /**
    It is not relay async, it returns than compiles/bakes
    */
-   async compileCode(params, user, pswd) {
-      user = Buffer.from(user, 'base64').toString();
+   async compileCode(params) {
+      //user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 
@@ -158,8 +157,8 @@ export class EditorHandler extends BaseRPCMethodHandler {
       this.appLogic.autoBake(appPath, itemPath, fileName)
    }//()
 
-   async cloneItem(params, user, pswd) {
-      user = Buffer.from(user, 'base64').toString();
+   async cloneItem(params) {
+      //user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 
@@ -174,8 +173,8 @@ export class EditorHandler extends BaseRPCMethodHandler {
    /**
     * Publish Date is an INT, linux time GMT
     */
-   async setPublishDate(params, user, pswd) {
-      user = Buffer.from(user, 'base64').toString();
+   async setPublishDate(params) {
+      //user = Buffer.from(user, 'base64').toString();
       let auth = await this.auth.auth(params.editor_email, params.editor_pass)
       if (auth != 'OK') return
 

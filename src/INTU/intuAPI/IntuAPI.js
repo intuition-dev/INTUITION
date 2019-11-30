@@ -31,7 +31,7 @@ var IntuAPI = (function () {
     IntuAPI.prototype.getDirsList = function () {
         var email = window.sessionStorage.getItem('username');
         var pass = window.sessionStorage.getItem('password');
-        return this.serviceRPC.invoke('api', 'editors', 'getDirs', {
+        return this.serviceRPC.invoke('api', 'getDirs', {
             editor_email: email,
             editor_pass: pass
         });

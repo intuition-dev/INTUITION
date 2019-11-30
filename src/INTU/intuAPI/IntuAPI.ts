@@ -49,7 +49,7 @@ class IntuAPI {
    getDirsList() {
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
-      return this.serviceRPC.invoke('api', 'editors', 'getDirs', {
+      return this.serviceRPC.invoke('api', 'getDirs', {
          editor_email: email,
          editor_pass: pass
       });

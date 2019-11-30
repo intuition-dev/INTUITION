@@ -1,4 +1,3 @@
-'use strict';
 
 var myCodeMirror = null;
 var editViewModel = null;

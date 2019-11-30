@@ -1,4 +1,4 @@
 basedir: ../
 
 
-pretty: false
+pretty: true
