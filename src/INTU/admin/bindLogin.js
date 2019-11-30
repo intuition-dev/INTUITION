@@ -22,7 +22,7 @@ depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
         ev.preventDefault()
         let formLogin = $("#login-form input[name='login']").val();
         let formPassw = $("#login-form input[name='password']").val();
-        login(formLogin, formPassw, loginViewModel);
+        login(formLogin, formPassw, loginViewModel)
     });
 
     /*
@@ -61,10 +61,9 @@ depp.require(['ui', 'scripts', 'loginViewModel'], async function () {
 
     $('#sign-out').off('click').on('click', function (e) {
         signOut();
-    });
+    })
 
-});
-
+})
 
 function login(email, pass, loginViewModel) {
     loginViewModel.checkAdmin(email, pass)

@@ -34,16 +34,15 @@ export class AdminHandler extends BaseRPCMethodHandler {
       log.info('checkAdmin')
       let auth = await this.auth(params.admin_email, params.admin_pass)
 
-      if (auth != 'OK') {
+      if (auth != 'OK') 
          return 'FAIL'
-      } else {
+       else 
          return 'OK'
-      }
 
    }//()
 
 
-   async _getConfig(params) {
+   async getConfig(params) {
 
       let auth = await this.auth(params.admin_email, params.admin_pass)
 

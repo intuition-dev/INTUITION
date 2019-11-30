@@ -22,7 +22,7 @@ depp.define({
     ]
 });
 
-console.log('ui')
+console.log('ui-loader')
 depp.require(['ui', 'scripts','fonts'], function() {
-   console.log('ok')
+   console.log('ok ui loader')
 })

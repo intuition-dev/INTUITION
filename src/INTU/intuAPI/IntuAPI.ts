@@ -157,8 +157,6 @@ class IntuAPI {
       });
    }
 
-   getINTUVersion() { }
-
    /**
     * editor send verification code
     * @param email editor user email, eg: 'example@example.com'
@@ -189,8 +187,6 @@ class IntuAPI {
     * @param email user email, eg: 'example@example.com'
     * @param pass user password, eg: '123456'
     */
-
-   // rpc.invoke('api', 'pageOne', 'multiply', {a:5, b:2})
    checkAdmin(email, pass) {
       let _this = this
       return this.serviceRPC.invoke('adminAPI', 'checkAdmin', {
@@ -199,6 +195,7 @@ class IntuAPI {
       })
          .then(function (result) {
             console.log("TCL: IntuAPI -> checkAdmin -> result", result)
+            
             if (result == 'OK') {
                _this.serviceRPC.setUser(email, pass);
                return true

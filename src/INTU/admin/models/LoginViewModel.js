@@ -34,7 +34,10 @@ var LoginViewModel = (function (_super) {
         });
     };
     LoginViewModel.prototype.checkAdmin = function (email, pass) {
-        return this.services.checkAdmin(email, pass);
+        console.log(pass);
+        var ans = this.services.checkAdmin(email, pass);
+        console.log(ans);
+        return ans;
     };
     LoginViewModel.prototype.sendVcode = function (email, loginUrl) {
         return this.services.sendVcode(email, loginUrl);

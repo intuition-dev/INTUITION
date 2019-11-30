@@ -28,7 +28,9 @@ class LoginViewModel extends BaseViewModel {
     }
 
     checkAdmin(email, pass) {
-        return this.services.checkAdmin(email, pass);
+      console.log(pass)
+      var ans = this.services.checkAdmin(email, pass)
+      return ans
     }
 
     sendVcode(email, loginUrl) {

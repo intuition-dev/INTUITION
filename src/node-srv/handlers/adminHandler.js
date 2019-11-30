@@ -14,6 +14,7 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         this.configIntu = configIntu;
     }
     auth(login, pass) {
+        log.info('admin');
         const user = 'admin';
         const pswd = this.configIntu.secret;
         if (login == user && pass == pswd) {
@@ -22,13 +23,12 @@ class AdminHandler extends Serv_1.BaseRPCMethodHandler {
         return 'FAIL';
     }
     async checkAdmin(params) {
+        log.info('checkAdmin');
         let auth = await this.auth(params.admin_email, params.admin_pass);
-        if (auth != 'OK') {
+        if (auth != 'OK')
             return 'FAIL';
-        }
-        else {
+        else
             return 'OK';
-        }
     }
     async getConfig(params) {
         let auth = await this.auth(params.admin_email, params.admin_pass);

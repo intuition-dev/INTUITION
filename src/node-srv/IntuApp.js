@@ -4,7 +4,7 @@ const Serv_1 = require("http-rpc/node-srv/lib/Serv");
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
-const log = bunyan.createLogger({ src: true, stream: formatOut, name: "some name" });
+const log = bunyan.createLogger({ src: true, stream: formatOut, name: "Intu App" });
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const AppLogic_1 = require("./lib/AppLogic");
 const editorHandler_1 = require("./handlers/editorHandler");
@@ -28,7 +28,7 @@ class IntuApp extends Serv_1.Serv {
     }
     start(intuPath) {
         Serv_1.Serv._expInst.use(function (req, res, next) {
-            log.info("--req.url", req.url);
+            log.trace("--req.url", req.url);
             next();
         });
         log.info('----running');
