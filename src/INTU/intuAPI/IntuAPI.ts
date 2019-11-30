@@ -74,7 +74,7 @@ class IntuAPI {
     * @param id file name, eg: '/title.md'
     * @param pathPrefix path to file, eg: 'blog/post-4'
     */
-   getFile(id, pathPrefix) {
+   getFile(id, pathPrefix) { XXX
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
       return this.serviceRPC.invoke('api', 'getFileContent', {

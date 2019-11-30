@@ -408,15 +408,17 @@ function showSubDirs(id, editViewModel) {
 
 function showMd(id, pathPrefix) {
     // render .md file content in textarea
-    editViewModel.getFile(id, pathPrefix)
-        .then(post => {
-            if (post) {
-                window.myCodeMirror.setValue(post);
-            } else {
-                console.info('failed to get file content');
-                window.location = '/edit'
-            }
-        });
+   console.info('md')
+   editViewModel.getFile(id, pathPrefix)
+      .then(post => {
+         console.info(post)
+         if (post) {
+            window.myCodeMirror.setValue(post);
+         } else {
+            console.warn('failed to get file content');
+            window.location = '/edit'
+         }
+      })
 }
 
 function saveMd(id, md, pathPrefix, target, editViewModel) {

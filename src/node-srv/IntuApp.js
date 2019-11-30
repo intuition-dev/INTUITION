@@ -28,7 +28,7 @@ class IntuApp extends Serv_1.Serv {
     }
     start(intuPath) {
         Serv_1.Serv._expInst.use(function (req, res, next) {
-            log.warn("--req.url", req.url);
+            log.trace("--req.url", req.url);
             next();
         });
         log.info('----running');

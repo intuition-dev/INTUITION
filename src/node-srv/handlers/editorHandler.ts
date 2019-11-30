@@ -103,11 +103,14 @@ export class EditorHandler extends BaseRPCMethodHandler {
       const appPath = this.configIntu.path
       let fileName = appPath + itemPath + file
 
-      const THIZ = this
+      log.info(fileName)
+
       fs.readFile(fileName, 'utf8', (err, data) => {
          if (err) {
+            log.error(err)
             throw err
          }
+         log.info(data)
          return data
       })
    }//() 
@@ -152,9 +155,10 @@ export class EditorHandler extends BaseRPCMethodHandler {
       let file = params.itemPath
       const appPath = this.configIntu.path
       let fileName = itemPath + file
+      this.appLogic.autoBake(appPath, itemPath, fileName)
+
       return 'OK'
 
-      this.appLogic.autoBake(appPath, itemPath, fileName)
    }//()
 
    async cloneItem(params) {

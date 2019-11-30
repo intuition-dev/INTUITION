@@ -70,11 +70,13 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let file = params.itemPath;
         const appPath = this.configIntu.path;
         let fileName = appPath + itemPath + file;
-        const THIZ = this;
+        log.warn(fileName);
         fs.readFile(fileName, 'utf8', (err, data) => {
             if (err) {
+                log.error(err);
                 throw err;
             }
+            log.warn(data);
             return data;
         });
     }
@@ -108,8 +110,8 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let file = params.itemPath;
         const appPath = this.configIntu.path;
         let fileName = itemPath + file;
-        return 'OK';
         this.appLogic.autoBake(appPath, itemPath, fileName);
+        return 'OK';
     }
     async cloneItem(params) {
         let auth = await this.auth.auth(params.editor_email, params.editor_pass);
