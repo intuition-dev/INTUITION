@@ -1,5 +1,5 @@
 import { Email } from 'mbake/lib/Email'
-import { BaseRPCMethodHandler } from 'mbake/lib/Serv'
+import { BaseRPCMethodHandler } from 'http-rpc/node-srv/lib/Serv'
 import { IDB } from '../lib/IDB'
 
 const bunyan = require('bunyan')
