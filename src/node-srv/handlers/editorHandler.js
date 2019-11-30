@@ -17,6 +17,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         this.emailJs = new Email_1.Email();
         this.fm = new FileOpsExtra_1.FileMethods();
         this.appLogic = new AppLogic_1.AppLogic();
+        this.DEBUG = true;
         this.db = IDB;
         this.auth = new IDB_1.EditorAuthX(IDB);
         this.configIntu = configIntu;
@@ -70,13 +71,13 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         let file = params.itemPath;
         const appPath = this.configIntu.path;
         let fileName = appPath + itemPath + file;
-        log.warn(fileName);
+        log.info(fileName);
         fs.readFile(fileName, 'utf8', (err, data) => {
             if (err) {
                 log.error(err);
                 throw err;
             }
-            log.warn(data);
+            log.info(data);
             return data;
         });
     }

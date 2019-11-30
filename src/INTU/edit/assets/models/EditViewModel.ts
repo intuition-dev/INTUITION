@@ -11,6 +11,7 @@ class EditViewModel extends BaseViewModel {
 
     setup() {
         this.services = new IntuAPI();
+        this.services.DEBUG = true
     }
 
     static _instance: EditViewModel

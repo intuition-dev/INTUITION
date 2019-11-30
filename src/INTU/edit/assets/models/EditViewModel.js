@@ -21,6 +21,7 @@ var EditViewModel = (function (_super) {
     }
     EditViewModel.prototype.setup = function () {
         this.services = new IntuAPI();
+        this.services.DEBUG = true;
     };
     EditViewModel.inst = function () {
         return new Promise(function (res, rej) {

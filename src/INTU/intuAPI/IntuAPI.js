@@ -46,7 +46,6 @@ var IntuAPI = (function () {
         });
     };
     IntuAPI.prototype.getFile = function (id, pathPrefix) {
-        XXX;
         var email = window.sessionStorage.getItem('username');
         var pass = window.sessionStorage.getItem('password');
         return this.serviceRPC.invoke('api', 'getFileContent', {

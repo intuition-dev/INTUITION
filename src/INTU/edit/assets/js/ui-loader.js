@@ -1,6 +1,6 @@
 
 depp.define({
-   'RPC2': ['#poly', '#lz-string', 'https://cdn.jsdelivr.net/npm/http-rpc@0.5.0/browser/httpRPC.js'],
+   'RPC2': ['#poly', '#lz-string', 'https://cdn.jsdelivr.net/npm/http-rpc@0.5.1/browser/httpRPC.js'],
 
     'scripts': ['#jquery', '#DOM'],
 
