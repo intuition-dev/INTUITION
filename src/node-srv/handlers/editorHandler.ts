@@ -29,7 +29,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
    constructor(IDB, configIntu) {
       super(1)
       
-      this.DEBUG = true
+      //this.DEBUG = true
 
       this.db = IDB
       this.auth = new EditorAuthX(IDB)

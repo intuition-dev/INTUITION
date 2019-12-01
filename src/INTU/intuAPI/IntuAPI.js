@@ -5,7 +5,6 @@ var IntuAPI = (function () {
         var host = window.location.hostname;
         var port = window.location.port;
         this.serviceRPC = new httpRPC(pro, host, port);
-        this.serviceRPC.DEBUG = true;
         var email = window.sessionStorage.getItem('username');
         var pass = window.sessionStorage.getItem('password');
         if (email !== null && pass !== null) {
