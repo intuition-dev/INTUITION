@@ -17,6 +17,9 @@ class IntuAPI {
       var port = window.location.port
 
       this.serviceRPC = new httpRPC(pro, host, port)
+
+      this.serviceRPC.DEBUG = true
+
       let email = window.sessionStorage.getItem('username');
       let pass = window.sessionStorage.getItem('password');
       if (email !== null && pass !== null) {

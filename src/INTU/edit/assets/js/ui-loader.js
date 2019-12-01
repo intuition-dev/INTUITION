@@ -1,9 +1,9 @@
 
-console.log('ui loader')
+console.log('ui loader6')
 
 depp.define({
 
-   'RPC2': ['#poly', '#lz-string', 'https://cdn.jsdelivr.net/npm/http-rpc@0.5.6/browser/httpRPC.js'],
+   'RPC2': ['#poly', '#lz-string', 'https://cdn.jsdelivr.net/npm/http-rpc@0.6.0/browser/httpRPC.js'],
 
     'scripts': ['#jquery', '#DOM'],
 
