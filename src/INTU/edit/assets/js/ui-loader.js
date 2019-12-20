@@ -5,7 +5,7 @@ depp.define({
 
     'scripts': ['#jquery', '#DOM'],
 
-    'pop-custelX': ['https://cdn.jsdelivr.net/gh/intuition-dev/mbToolBelt@v3.11.26/custel/pop/custel/pop-custel.js'],
+    'pop-custelX': ['https://cdn.jsdelivr.net/gh/intuition-dev/mbToolBelt@v3.12.14/custel/pop/custel/pop-custel.js'],
 
     'ui': ['#scripts', '#zebraDate', '#pop-custelX'],
 
