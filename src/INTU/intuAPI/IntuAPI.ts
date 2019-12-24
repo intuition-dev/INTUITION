@@ -1,6 +1,6 @@
 /**
  * 
- * All rights reserved by MetaBake (INTU.DEV), licensed under LGPL 3.0
+ * All rights reserved by MetaBake (INTUITION.DEV), licensed under LGPL 3.0
  *
  */
 

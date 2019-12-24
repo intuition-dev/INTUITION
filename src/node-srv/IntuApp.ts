@@ -31,7 +31,7 @@ export class IntuApp extends Serv {
         VersionNag.isCurrent('intu', AppLogic.veri()).then(function (isCurrent_: boolean) {
             try {
                 if (!isCurrent_)
-                    log.info('There is a newer version of intu(INTU.DEV), please update.')
+                    log.info('There is a newer version of intu(INTUITION.DEV), please update.')
             } catch (err) {
                 log.info(err)
             }

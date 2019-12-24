@@ -27,9 +27,9 @@ All other example apps are listed here: https://github.com/metabake/mBakeCLI/blo
 
 # Links
 - Full Docs: [metabake.github.io/mbCLI](http://metabake.github.io/mbCLI)
-- [INTU.DEV](https://www.INTU.DEV)
+- [INTUITION.DEV](https://www.INTUITION.DEV)
 - [blog.MetaBake.net](http://blog.MetaBake.net)
-- [Github](http://git.INTU.DEV)
+- [Github](http://git.INTUITION.DEV)
 - List of tools: https://github.com/intuition-dev/INTU/blob/master/libs.md
 
 
