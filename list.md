@@ -1,5 +1,5 @@
 
-## List of MetaBake toolsL
+## List of INTUITION toolsL
 
 - ToolBelt: https://github.com/metabake/mBakeCLI/tree/master/zBrowserServices/mbToolBelt
 - Http RPC: https://github.com/metabake/mBakeCLI/tree/master/zBrowserServices/http-rpc

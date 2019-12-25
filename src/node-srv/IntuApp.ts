@@ -1,5 +1,5 @@
 
-import { Serv } from 'http-rpc/node-srv/lib/Serv'
+import { Serv } from 'http-rpc/lib/Serv'
 
 const bunyan = require('bunyan')
 const bformat = require('bunyan-format2')  

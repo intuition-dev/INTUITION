@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// All rights reserved by INTUITION.DEV | Cekvenich, licensed under LGPL 3.0
+// All rights reserved by INTUITION.DEV |  Cekvenich, licensed under LGPL 3.0
 
 import commandLineArgs = require('command-line-args')
 import { IDB } from './lib/IDB'

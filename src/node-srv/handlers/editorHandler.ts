@@ -1,6 +1,6 @@
 
 import { Email } from 'mbake/lib/Email';
-import { BaseRPCMethodHandler } from 'http-rpc/node-srv/lib/Serv'
+import { BaseRPCMethodHandler } from 'http-rpc/lib/Serv'
 
 // import { BaseRPCMethodHandler } from '../Serv'
 import { IDB, EditorAuthX } from '../lib/IDB';

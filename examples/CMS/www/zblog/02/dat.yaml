@@ -2,7 +2,7 @@ basedir: ../../
 title: Personal Portfolio
 image: 'http://www.shanemielke.com/img/share.jpg'
 author:
-  name: Vic Cekvenich
+  name: Vic  Cekvenich
   avatar: /assets/img/vic.jpg
 ROOT: '/'
 date_published: '2018-07-21T23:20:57.451Z'
