@@ -1,6 +1,6 @@
 /**
  * 
- * All rights reserved by INTUITION(INTUITION.DEV), licensed under LGPL 3.0
+ * All rights reserved by CekvenichINTUITION.DEV), licensed under LGPL 3.0
  *
  */
 

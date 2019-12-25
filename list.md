@@ -1,23 +1,23 @@
 
-## List of INTUITION toolsL
+## List of INTUITION  toolsL
 
 - ToolBelt: https://github.com/metabake/mBakeCLI/tree/master/zBrowserServices/mbToolBelt
 - Http RPC: https://github.com/metabake/mBakeCLI/tree/master/zBrowserServices/http-rpc
 - SPA router: https://github.com/metabake/metaMobile/tree/master/router-src
 - Cake components: https://github.com/metabake/metaCake/tree/master/src
 
-- INTU WebAdmin, and API: https://github.com/intuition-dev/INTU/tree/master/src
+- INTU WebAdmin, and API: https://github.com/INTUITION-dev/INTU/tree/master/src
 - CLI mbakex: https://github.com/metabake/mbakeAdvanced/tree/master/mbakex
 - CLI: https://github.com/metabake/mBakeCLI/tree/master/src
 
 
 #### Please star our main project here:
-- https://github.com/intuition-dev/INTU
+- https://github.com/INTUITION-dev/INTU
 
 
 ### Examples
 
-- E-com: https://github.com/intuition-dev/INTU/tree/master/e-com
+- E-com: https://github.com/INTUITION-dev/INTU/tree/master/e-com
 
 All other example apps are listed here: https://github.com/metabake/mBakeCLI/blob/master/docs/versions.yaml
 
@@ -30,7 +30,7 @@ All other example apps are listed here: https://github.com/metabake/mBakeCLI/blo
 - [INTUITION.DEV](https://www.INTUITION.DEV)
 - [blog.MetaBake.net](http://blog.MetaBake.net)
 - [Github](http://git.INTUITION.DEV)
-- List of tools: https://github.com/intuition-dev/INTU/blob/master/libs.md
+- List of tools: https://github.com/INTUITION-dev/INTU/blob/master/libs.md
 
 
 

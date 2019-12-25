@@ -4,7 +4,7 @@
 #### INTUITION.DEV is the futuristic open source tool for pro developers with 10-fold productivity via automation, low-code, cross-platform, static-generator, and a built-in WebAdmin editor, leveraging JAMstack, w/ Pug and facilitating app maintenance by end-users.
 
 #### Please star our main project here:
-- https://github.com/intuition-dev/INTU
+- https://github.com/INTUITION-dev/INTU
 
 ## INTUITION.DEV approach:
 
@@ -25,7 +25,7 @@ In a future with increasing automation, citizen-developers have become more wide
 
 ### Easy
 
-<img src="https://github.com/intuition-dev/INTU/raw/master/src/intu.png" width="100%"/>
+<img src="https://github.com/INTUITION-dev/INTU/raw/master/src/intu.png" width="100%"/>
 
 
 We have open source low-code with static generation with the ability to add a ‘WebAdmin’ editor to INTUITION.DEV and your application. Once a professional developer writes and sets up Version 1 of the app, end-users can be enabled to maintain the app and possibly write the next version of the app. As the business needs change, the resulting evergreen web app is always aligned to the business.
@@ -39,7 +39,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 - [Home Page](https://www.INTUITION.DEV)
 - [Message Board ](http://forum.metabake.net)
 - [Git Repo](http://git.metabake.net)
-- [Slides] (https://github.com/intuition-dev/INTUDocs/blob/master/slides/slides.md)
+- [Slides] (https://github.com/INTUITION-dev/INTUDocs/blob/master/slides/slides.md)
 
 
 ## Installation and Intro
@@ -94,7 +94,7 @@ IMPORTANT: you  must go to admin/settings to configure email.
 - [Home Page](https://www.INTUITION.DEV)
 - [Message Board ](http://forum.metabake.net)
 - [Git Repo](http://git.metabake.net)
-- [Slides] (https://github.com/intuition-dev/INTUDocs/blob/master/slides/slides.md)
+- [Slides] (https://github.com/INTUITION-dev/INTUDocs/blob/master/slides/slides.md)
 
 ## Questions?
 - http://forum.metabake.net
