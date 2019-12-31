@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Email_1 = require("mbake/lib/Email");
-const Serv_1 = require("http-rpc/node-srv/lib/Serv");
+const Serv_1 = require("http-rpc/lib/Serv");
 const IDB_1 = require("../lib/IDB");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
