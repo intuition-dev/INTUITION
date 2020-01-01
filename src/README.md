@@ -33,14 +33,6 @@ We have open source low-code with static generation with the ability to add a â€
 You can write any and every kind of app, since we generate HTML, javascript an css. Our main language is Pug, if you have not seen Pug before, here is a quick intro to Pug:
 - [Click for generic Pug example](http://pug.metabake.net)
 
-### Documentation
-
-- [Docs/Training](http://docs.metabake.net)
-- [Home Page](https://www.INTUITION.DEV)
-- [Message Board ](http://forum.metabake.net)
-- [Git Repo](http://git.metabake.net)
-- [Slides] (https://github.com/INTUITION-dev/INTUDocs/blob/master/slides/slides.md)
-
 
 ## Installation and Intro
 
@@ -54,6 +46,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
     or you can use npm instead of yarn anytime.
 
 Note: currently node needs to be install via nvm (https://github.com/nvm-sh/nvm)
+and you must have Python v2.7 during the install. This is due to a npm upstream dependency.
 Note: if changed node version you may need to do this first:  `yarn global remove intu`
 
 Edit intu-config.yaml to set the admin password, and where your webapp will reside.
@@ -78,23 +71,11 @@ IMPORTANT: you  must go to admin/settings to configure email.
     yarn
     ```
 
-### Full train-the-trainer training incudes:
-- SEO
-- CRUD | ViewModel
-- built in user auth
-- FTS and SQL
-- keyboard driven (F12 Custom Elements In V1.1)
-- cross platform / mobile from single code base
-- lazy loading
-
 
 ### Links
-
-- [Docs/Training](http://docs.metabake.net)
+- [INTUITION Docs](http://intuition-dev.github.io/intuDocs)
 - [Home Page](https://www.INTUITION.DEV)
-- [Message Board ](http://forum.metabake.net)
+- [mbake CLI Docs](http://intuition-dev.github.io/mbCLI)
 - [Git Repo](http://git.metabake.net)
 - [Slides] (https://github.com/INTUITION-dev/INTUDocs/blob/master/slides/slides.md)
 
-## Questions?
-- http://forum.metabake.net
