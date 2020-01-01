@@ -18,7 +18,7 @@ export class Util {
 
 }//class
 
-export class AppLogic {
+export class BusLogic {
 
     static veri() {
         return 'v2.12.3'

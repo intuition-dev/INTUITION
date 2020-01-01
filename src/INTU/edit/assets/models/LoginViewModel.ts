@@ -1,11 +1,11 @@
 declare var depp: any;
+declare var IntuAPI:any;
 
-class LoginViewModel extends BaseViewModel {
+class LoginViewModel  {
 
     services: any;
 
     constructor(arg) {
-        super()
         if (42 !== arg) throw new Error('use static inst()') // guard!
     }
 

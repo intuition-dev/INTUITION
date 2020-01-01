@@ -9,7 +9,7 @@ const log = bunyan.createLogger({src: true, stream: formatOut, name: "Intu App"}
 import { IDB } from './lib/IDB';
 
 import { VersionNag } from 'mbake/lib/FileOpsExtra';
-import { AppLogic } from './lib/AppLogic';
+import { BusLogic } from './lib/BusLogic';
 
 import { EditorHandler } from './handlers/editorHandler'
 import { AdminHandler } from './handlers/adminHandler'
@@ -28,7 +28,7 @@ export class IntuApp extends Serv {
         this.configIntu = configIntu
         this.uploadRoute = new UploadHandler(this.db, this.configIntu)
 
-        VersionNag.isCurrent('intu', AppLogic.veri()).then(function (isCurrent_: boolean) {
+        VersionNag.isCurrent('intu', BusLogic.veri()).then(function (isCurrent_: boolean) {
             try {
                 if (!isCurrent_)
                     log.info('There is a newer version of intu(INTUITION.DEV), please update.')
@@ -59,7 +59,7 @@ export class IntuApp extends Serv {
 
         // get version
         Serv._expInst.get('/iver', (req, res) => {
-            return res.send(AppLogic.veri)
+            return res.send(BusLogic.veri)
         })
 
         // 2 INTU

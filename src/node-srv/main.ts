@@ -5,13 +5,13 @@ import commandLineArgs = require('command-line-args')
 import { IDB } from './lib/IDB'
 import { DownloadC } from 'mbake/lib/FileOpsExtra';
 import { IntuApp } from './IntuApp'
-import { AppLogic } from './lib/AppLogic';
-import { Util } from './lib/AppLogic';
+import { BusLogic } from './lib/BusLogic';
+import { Util } from './lib/BusLogic';
 
 const bunyan = require('bunyan')
 const bformat = require('bunyan-format2')  
 const formatOut = bformat({ outputMode: 'short' })
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "main"})
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "main start"})
 
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
@@ -84,7 +84,7 @@ async function runInSrv() {
     log.info(intuPath)
 
     const setupDone = await idb.setupIfNeeded()
-    log.info(setupDone)
+    log.info('setup', setupDone)
 
     log.info("TCL: runISrv -> setupDone", setupDone)
    log.info('normal')
@@ -93,7 +93,7 @@ async function runInSrv() {
 
    // app 
    log.info("TCL: runISrv -> path", path)
-   mainEApp.serveStatic(path, null, null)
+   mainEApp.serveStatic(path, 60*60*24+1, 60*60*24)
    mainEApp.listen(port)
 
 }//()
@@ -101,7 +101,7 @@ async function runInSrv() {
 
 function help() {
     console.info()
-    console.info('intu version: ' + AppLogic.veri())
+    console.info('intu version: ' + BusLogic.veri())
     console.info()
     console.info('Usage:')
     console.info(' To run:                                                intu')
