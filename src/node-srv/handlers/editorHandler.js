@@ -5,7 +5,7 @@ const Serv_1 = require("http-rpc/lib/Serv");
 const IDB_1 = require("../lib/IDB");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
-const AppLogic_1 = require("../lib/AppLogic");
+const BusLogic_1 = require("../lib/BusLogic");
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
@@ -16,7 +16,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         super(1);
         this.emailJs = new Email_1.Email();
         this.fm = new FileOpsExtra_1.FileMethods();
-        this.appLogic = new AppLogic_1.AppLogic();
+        this.appLogic = new BusLogic_1.BusLogic();
         this.db = IDB;
         this.auth = new IDB_1.EditorAuthX(IDB);
         this.configIntu = configIntu;

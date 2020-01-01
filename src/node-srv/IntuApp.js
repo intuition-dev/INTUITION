@@ -6,7 +6,7 @@ const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
 const log = bunyan.createLogger({ src: true, stream: formatOut, name: "Intu App" });
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
-const AppLogic_1 = require("./lib/AppLogic");
+const BusLogic_1 = require("./lib/BusLogic");
 const editorHandler_1 = require("./handlers/editorHandler");
 const adminHandler_1 = require("./handlers/adminHandler");
 const uploadHandler_1 = require("./handlers/uploadHandler");
@@ -16,7 +16,7 @@ class IntuApp extends Serv_1.Serv {
         this.db = db;
         this.configIntu = configIntu;
         this.uploadRoute = new uploadHandler_1.UploadHandler(this.db, this.configIntu);
-        FileOpsExtra_1.VersionNag.isCurrent('intu', AppLogic_1.AppLogic.veri()).then(function (isCurrent_) {
+        FileOpsExtra_1.VersionNag.isCurrent('intu', BusLogic_1.BusLogic.veri()).then(function (isCurrent_) {
             try {
                 if (!isCurrent_)
                     log.info('There is a newer version of intu(INTUITION.DEV), please update.');
@@ -37,7 +37,7 @@ class IntuApp extends Serv_1.Serv {
         this.routeRPC('adminAPI', ar);
         this.routeRPC('api', er);
         Serv_1.Serv._expInst.get('/iver', (req, res) => {
-            return res.send(AppLogic_1.AppLogic.veri);
+            return res.send(BusLogic_1.BusLogic.veri);
         });
         this.serveStatic(intuPath, null, null);
     }

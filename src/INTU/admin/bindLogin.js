@@ -9,7 +9,6 @@ depp.define({
     ]
 });
 
-depp.require('baseVm');
 depp.require('loginViewModel');
 
 depp.require(['ui', 'scripts', 'loginViewModel'], async function () {

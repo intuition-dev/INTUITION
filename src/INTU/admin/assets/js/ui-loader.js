@@ -8,7 +8,6 @@ depp.define({
     'intuAPI': [
         '/intuAPI/IntuAPI.js'
     ],
-    'baseVm': ['/admin/models/BaseViewModel.js'],
     'ui': [
         '/admin/assets/js/ui.js'
     ],

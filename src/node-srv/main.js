@@ -5,12 +5,12 @@ const commandLineArgs = require("command-line-args");
 const IDB_1 = require("./lib/IDB");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const IntuApp_1 = require("./IntuApp");
-const AppLogic_1 = require("./lib/AppLogic");
-const AppLogic_2 = require("./lib/AppLogic");
+const BusLogic_1 = require("./lib/BusLogic");
+const BusLogic_2 = require("./lib/BusLogic");
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
-const log = bunyan.createLogger({ src: true, stream: formatOut, name: "main" });
+const log = bunyan.createLogger({ src: true, stream: formatOut, name: "main start" });
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
     { name: 'help', alias: 'h', type: Boolean },
@@ -66,20 +66,20 @@ async function runInSrv() {
     const port = await configIntu.port;
     const path = await configIntu.path;
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*'], configIntu);
-    let intuPath = AppLogic_2.Util.appPath + '/INTU';
+    let intuPath = BusLogic_2.Util.appPath + '/INTU';
     log.info(intuPath);
     const setupDone = await idb.setupIfNeeded();
-    log.info(setupDone);
+    log.info('setup', setupDone);
     log.info("TCL: runISrv -> setupDone", setupDone);
     log.info('normal');
     mainEApp.start(intuPath);
     log.info("TCL: runISrv -> path", path);
-    mainEApp.serveStatic(path, null, null);
+    mainEApp.serveStatic(path, 60 * 60 * 24 + 1, 60 * 60 * 24);
     mainEApp.listen(port);
 }
 function help() {
     console.info();
-    console.info('intu version: ' + AppLogic_1.AppLogic.veri());
+    console.info('intu version: ' + BusLogic_1.BusLogic.veri());
     console.info();
     console.info('Usage:');
     console.info(' To run:                                                intu');

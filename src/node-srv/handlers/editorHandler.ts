@@ -6,7 +6,7 @@ import { BaseRPCMethodHandler } from 'http-rpc/lib/Serv'
 import { IDB, EditorAuthX } from '../lib/IDB';
 import { FileMethods } from 'mbake/lib/FileOpsExtra'
 import { FileOps } from 'mbake/lib/FileOpsBase'
-import { AppLogic } from '../lib/AppLogic';
+import { BusLogic } from '../lib/BusLogic';
 
 const bunyan = require('bunyan')
 const bformat = require('bunyan-format2')  
@@ -24,7 +24,7 @@ export class EditorHandler extends BaseRPCMethodHandler {
    configIntu
    fm = new FileMethods()
 
-   appLogic = new AppLogic()
+   appLogic = new BusLogic()
 
    constructor(IDB, configIntu) {
       super(1)

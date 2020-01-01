@@ -6,10 +6,10 @@ const formatOut = bformat({ outputMode: 'short' });
 const log = bunyan.createLogger({ src: true, stream: formatOut, name: "dev" });
 const perfy = require('perfy');
 const IDB_1 = require("./lib/IDB");
-const AppLogic_1 = require("./lib/AppLogic");
+const BusLogic_1 = require("./lib/BusLogic");
 const idb = new IDB_1.IDB(process.cwd(), '/test.sqlite');
 idb.setupIfNeeded();
-const appLogic = new AppLogic_1.AppLogic();
+const bysLogic = new BusLogic_1.BusLogic();
 async function test(name, f) {
     perfy.start(name, true);
     log.info(name);
@@ -31,10 +31,10 @@ async function testIDB() {
 }
 async function testAppLogic() {
     log.info('testAppLogic:');
-    await test('autoBake', () => appLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'));
-    await test('setPublishDate', () => appLogic.setPublishDate('/users/vitalii/intu-smpl', '/files', 112233132323));
-    await test('clone', () => appLogic.clone('/users/vitalii/intu-smpl', '/files', '/files2'));
-    await test('archive', () => appLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'));
+    await test('autoBake', () => bysLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'));
+    await test('setPublishDate', () => bysLogic.setPublishDate('/users/vitalii/intu-smpl', '/files', 112233132323));
+    await test('clone', () => bysLogic.clone('/users/vitalii/intu-smpl', '/files', '/files2'));
+    await test('archive', () => bysLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'));
     log.info('//testAppLogic');
 }
 function uuidv4() {

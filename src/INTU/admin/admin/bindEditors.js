@@ -5,7 +5,6 @@ depp.define({
     ]
 });
 
-depp.require('baseVm');
 depp.require('adminViewModel');
 
 depp.require(['ui', 'scripts', 'setup-page'], async function () {

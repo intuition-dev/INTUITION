@@ -14,7 +14,7 @@ depp.define({
 
     'httpRPC': ['#RPC'],
     'intuAPI': ['/intuAPI/IntuAPI.js'],
-    'baseVM': ['#RPC', '#intuAPI', '/edit/assets/models/BaseViewModel.js',],
+    'baseVM': ['#RPC', '#intuAPI'],
     'loginViewModel': ['#baseVM', '/edit/assets/models/LoginViewModel.js'],
     'editViewModel': ['#baseVM', '/edit/assets/models/EditViewModel.js'],
 

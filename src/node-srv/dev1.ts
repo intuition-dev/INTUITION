@@ -9,14 +9,14 @@ const log = bunyan.createLogger({src: true, stream: formatOut, name: "dev"})
 const perfy = require('perfy')
 
 import { IDB } from './lib/IDB'
-import { AppLogic } from './lib/AppLogic'
+import { BusLogic } from './lib/BusLogic'
 
 
 const idb = new IDB(process.cwd(), '/test.sqlite')
 
 idb.setupIfNeeded()//.then(testIDB) //then(testAppLogic)
 
-const appLogic = new AppLogic()
+const bysLogic = new BusLogic()
 
 async function test(name, f) {
   perfy.start(name, true)
@@ -52,13 +52,13 @@ async function testIDB() {
 async function testAppLogic() {
   log.info('testAppLogic:')
 
-  await test('autoBake', () => appLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'))
+  await test('autoBake', () => bysLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'))
 
-  await test('setPublishDate', () => appLogic.setPublishDate('/users/vitalii/intu-smpl', '/files', 112233132323))
+  await test('setPublishDate', () => bysLogic.setPublishDate('/users/vitalii/intu-smpl', '/files', 112233132323))
 
-  await test('clone', () => appLogic.clone('/users/vitalii/intu-smpl', '/files', '/files2'))
+  await test('clone', () => bysLogic.clone('/users/vitalii/intu-smpl', '/files', '/files2'))
 
-  await test('archive', () => appLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'))
+  await test('archive', () => bysLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'))
 
   log.info('//testAppLogic')
 }
