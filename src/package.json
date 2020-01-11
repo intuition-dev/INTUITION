@@ -20,7 +20,7 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=12.14.0"
+        "node": ">=12.14.1"
     },
     "dependencies": {
         "bcryptjs": ">=2.4.3",
