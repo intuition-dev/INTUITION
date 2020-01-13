@@ -25,11 +25,11 @@
     "dependencies": {
         "bcryptjs": ">=2.4.3",
         "express-fileupload": ">=1.1.6",
-        "http-rpc": ">=1.1.0",
+        "http-rpc": ">=1.1.1",
         "ip": ">=1.1.5",
-        "mbakex": ">=2.12.4"
+        "mbakex": ">=2.12.100"
     },
     "devDependencies": {
-        "@types/node": ">=13.1.2"
+        "@types/node": ">=13.1.6"
     }
 }
