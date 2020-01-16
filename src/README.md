@@ -40,14 +40,15 @@ You can write any and every kind of app, since we generate HTML, javascript an c
 
 2. Then install the INTUITION.DEV tool:
     ```
+    yarn global add node-gyp@latest 
     yarn global add intu
     intu
     ```
-    or you can use npm instead of yarn anytime.
+    You can use npm instead of yarn anytime.
 
+Note: we use a native sqlite driver. It needs gyp, or python v2.7 during install
 Note: currently node needs to be install via nvm (https://github.com/nvm-sh/nvm)
-and you must have Python v2.7 during the install. This is due to a npm upstream dependency.
-Note: if changed node version you may need to do this first:  `yarn global remove intu`
+Note: if changed node version you may need to do this first:  `sudo yarn global remove mbakex`
 
 Edit intu-config.yaml to set the admin password, and where your webapp will reside.
 And you have to restart intu.
