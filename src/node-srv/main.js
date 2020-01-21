@@ -74,7 +74,7 @@ async function runInSrv() {
     log.info('normal');
     mainEApp.start(intuPath);
     log.info("TCL: runISrv -> path", path);
-    mainEApp.serveStatic(path, 60 * 60 * 24 + 1, 60 * 60 * 24);
+    mainEApp.serveStatic(path, 60 * 60 * 1 + 1, 60 * 60 * 1);
     mainEApp.listen(port);
 }
 function help() {

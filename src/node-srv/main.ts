@@ -9,9 +9,9 @@ import { BusLogic } from './lib/BusLogic';
 import { Util } from './lib/BusLogic';
 
 const bunyan = require('bunyan')
-const bformat = require('bunyan-format2')  
+const bformat = require('bunyan-format2')
 const formatOut = bformat({ outputMode: 'short' })
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "main start"})
+const log = bunyan.createLogger({ src: true, stream: formatOut, name: "main start" })
 
 const optionDefinitions = [
     { name: 'intu', defaultOption: true },
@@ -58,7 +58,7 @@ async function runInSrv() {
             let conf = {
                 port: 9081,
                 secret: '123456',
-                path: process.cwd() +'/ROOT'
+                path: process.cwd() + '/ROOT'
             }
             await fs.writeFileSync(path_config, yaml.safeDump(conf), 'utf8', (err) => {
                 if (err) {
@@ -87,14 +87,14 @@ async function runInSrv() {
     log.info('setup', setupDone)
 
     log.info("TCL: runISrv -> setupDone", setupDone)
-   log.info('normal')
-   // api and intu is here
-   mainEApp.start(intuPath)
+    log.info('normal')
+    // api and intu is here
+    mainEApp.start(intuPath)
 
-   // app 
-   log.info("TCL: runISrv -> path", path)
-   mainEApp.serveStatic(path, 60*60*24+1, 60*60*24)
-   mainEApp.listen(port)
+    // app 
+    log.info("TCL: runISrv -> path", path)
+    mainEApp.serveStatic(path, 60 * 60 * 1 + 1, 60 * 60 * 1)
+    mainEApp.listen(port)
 
 }//()
 

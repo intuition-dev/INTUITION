@@ -1,3 +1,6 @@
+### 2.12.101
+- set browser cache for 1 hour
+
 ### 2.12.100
 - new year
 
