@@ -8,3 +8,7 @@ node_modules/
 *.sqlite
 
 intu-config.yaml
+
+pacakge-lock.json
+
+.yarn

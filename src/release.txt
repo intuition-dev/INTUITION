@@ -1,10 +1,12 @@
 changelog
+
 .ts 
 
-Note: if changed node version you may need to do this first:  `yarn global remove intu`
+version
 
 tsc of srv
 
-mbake of intu
-
 .json
+
+Note: if changed node version you may need to do this first:  `npm uninstall -g intu`
+
