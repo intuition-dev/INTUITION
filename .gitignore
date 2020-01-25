@@ -7,3 +7,6 @@ yarn.lock
 
 intu-config.yarml
 *.sqlite
+
+
+.yarn

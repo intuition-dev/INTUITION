@@ -3,9 +3,7 @@
     "preferGlobal": true,
     "version": "2.12.101",
     "description": "INTUITION.DEV is the futuristic open source tool for pro developers with 10-fold productivity via automation, low-code, cross-platform, static-generator, and a built-in WebAdmin editor, leveraging JAMstack, w/ Pug and facilitating app maintenance by end-users.",
-    "bin": {
-        "intu": "./node-srv/main.js"
-    },
+    "bin": "./node-srv/main.js",
     "license": "MIT",
     "author": "http://www.INTUITION.DEV",
     "homepage": "http://www.INTUITION.DEV",
@@ -30,6 +28,6 @@
         "mbakex": ">=2.12.100"
     },
     "devDependencies": {
-        "@types/node": ">=13.1.7"
+        "@types/node": ">=13.5.0"
     }
 }
