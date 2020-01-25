@@ -44,11 +44,14 @@ You can write any and every kind of app, since we generate HTML, javascript an c
     yarn global add intu
     intu
     ```
-    You can use npm instead of yarn anytime.
 
-Note: we use a native sqlite driver. It needs gyp, or python v2.7 during install
-Note: currently node needs to be install via nvm (https://github.com/nvm-sh/nvm)
-Note: if changed node version you may need to do this first:  `sudo yarn global remove mbakex`
+Note: We use a native sqlite driver. It needs `yarn global add node-gyp@latest`, or python v2.7 during install
+
+Notes: 
+- It is best to install node via via nvm (https://github.com/nvm-sh/nvm)
+- If node version changed, you may need to do this first:  `yarn global remove intu`
+- I use yarn > v2.x, but npm should work
+
 
 Edit intu-config.yaml to set the admin password, and where your webapp will reside.
 And you have to restart intu.
