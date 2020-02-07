@@ -26,7 +26,7 @@
         "http-rpc": ">=1.1.2",
         "ip": ">=1.1.5",
         "latest-version": "^5.1.0",
-        "mbakex": ">=2.14.0"
+        "mbakex": ">=2.14.1"
     },
     "devDependencies": {
         "@types/node": ">=13.7.0"
