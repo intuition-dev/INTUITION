@@ -1,4 +1,4 @@
-### 2.14.0
+### 2.14.2
 - set browser cache for 1 hour
 
 ### 2.12.100
