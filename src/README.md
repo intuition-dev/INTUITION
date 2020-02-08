@@ -46,7 +46,7 @@ You can write any and every kind of app, since we generate HTML, javascript an c
     intu
     ```
 
-Note: We use a native sqlite driver. It needs `npm i -g node-gyp@latest`, or python v2.7 during install
+Note: We use a native sqlite driver. It likely needs `npm i -g node-gyp@latest`.
 
 Notes: 
 - It is best to install node via via nvm (https://github.com/nvm-sh/nvm)
