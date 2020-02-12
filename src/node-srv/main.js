@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const commandLineArgs = require("command-line-args");
 const IDB_1 = require("./lib/IDB");
-const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
+const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
 const IntuApp_1 = require("./IntuApp");
 const BusLogic_1 = require("./lib/BusLogic");
 const BusLogic_2 = require("./lib/BusLogic");

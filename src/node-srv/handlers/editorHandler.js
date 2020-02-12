@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Email_1 = require("mbake/lib/Email");
 const Serv_1 = require("http-rpc/lib/Serv");
 const IDB_1 = require("../lib/IDB");
-const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
+const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const BusLogic_1 = require("../lib/BusLogic");
 const bunyan = require('bunyan');

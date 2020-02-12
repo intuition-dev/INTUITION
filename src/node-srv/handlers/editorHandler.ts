@@ -4,7 +4,7 @@ import { BaseRPCMethodHandler } from 'http-rpc/lib/Serv'
 
 // import { BaseRPCMethodHandler } from '../Serv'
 import { IDB, EditorAuthX } from '../lib/IDB';
-import { FileMethods } from 'mbake/lib/FileOpsExtra'
+import { FileMethods } from 'agentg/lib/FileOpsExtra'
 import { FileOps } from 'mbake/lib/FileOpsBase'
 import { BusLogic } from '../lib/BusLogic';
 

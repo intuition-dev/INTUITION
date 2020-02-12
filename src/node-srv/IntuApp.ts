@@ -8,7 +8,7 @@ const log = bunyan.createLogger({src: true, stream: formatOut, name: "Intu App"}
 
 import { IDB } from './lib/IDB';
 
-import { VersionNag } from 'mbake/lib/FileOpsExtra';
+import { VersionNag } from 'agentg/lib/FileOpsExtra';
 import { BusLogic } from './lib/BusLogic';
 
 import { EditorHandler } from './handlers/editorHandler'
