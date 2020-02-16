@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Email_1 = require("mbake/lib/Email");
 const Serv_1 = require("http-rpc/lib/Serv");
 const IDB_1 = require("../lib/IDB");
-const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
+const FileOpsBase_2 = require("mbake/lib/FileOpsBase");
 const BusLogic_1 = require("../lib/BusLogic");
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
@@ -15,7 +15,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     constructor(IDB, configIntu) {
         super(1);
         this.emailJs = new Email_1.Email();
-        this.fm = new FileOpsExtra_1.FileMethods();
+        this.fm = new FileOpsBase_1.FileMethods();
         this.appLogic = new BusLogic_1.BusLogic();
         this.db = IDB;
         this.auth = new IDB_1.EditorAuthX(IDB);
@@ -93,7 +93,7 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
         else {
             this.appLogic.archive(appPath, itemPath, fileName);
         }
-        const fileOps = new FileOpsBase_1.FileOps(appPath);
+        const fileOps = new FileOpsBase_2.FileOps(appPath);
         fileOps.write(fileName, content);
         return 'OK';
     }

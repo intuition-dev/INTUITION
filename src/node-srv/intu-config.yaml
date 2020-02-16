@@ -1,0 +1,3 @@
+port: 9081
+secret: '123456'
+path: /home/vic/Documents/GitHub/INTUITION/src/node-srv/ROOT
