@@ -69,7 +69,3 @@ export class IntuApp extends Serv {
 
 
 }//class
-
-module.exports = {
-    IntuApp
-}

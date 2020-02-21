@@ -192,7 +192,3 @@ export class EditorHandler extends BaseRPCMethodHandler {
 
 }//class
 
-
-module.exports = {
-   EditorHandler
-}
