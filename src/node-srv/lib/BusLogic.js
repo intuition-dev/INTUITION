@@ -17,7 +17,7 @@ class Util {
 exports.Util = Util;
 class BusLogic {
     static veri() {
-        return 'v2.14.15';
+        return 'v8.2.0';
     }
     async autoBake(appPath, itemPath, fileName) {
         const meta = new Wa_1.MetaPro(appPath);

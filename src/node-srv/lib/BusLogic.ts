@@ -21,7 +21,7 @@ export class Util {
 export class BusLogic {
 
     static veri() {
-        return 'v2.14.15'
+        return 'v8.2.0'
     }
     async autoBake(appPath, itemPath, fileName) {
         const meta = new MetaPro(appPath)

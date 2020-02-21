@@ -1,3 +1,6 @@
+### 8.2.0
+- drop es5
+
 ### 2.14.15
 - agentg refactor
 
