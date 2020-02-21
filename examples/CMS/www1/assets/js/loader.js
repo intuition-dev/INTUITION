@@ -1,9 +1,8 @@
-
-$(document).ready(function () {
+$(document).ready(function() {
     // are we running in native app or in a browser?
     window.isphone = false
-    if (document.URL.indexOf("http://") === -1
-        && document.URL.indexOf("https://") === -1) {
+    if (document.URL.indexOf("http://") === -1 &&
+        document.URL.indexOf("https://") === -1) {
         window.isphone = true
     }
 
@@ -22,48 +21,46 @@ if (!window.Promise) {
             '//cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js'
         ]
     });
-} else  {
+} else {
     depp.done('hasPromise');
 }
 
 depp.define({
-    'axios': [
-        '#hasPromise' 
-        , 'https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js'
-    ],
-    'fonts': [
-        '#axios'
-        , 'css!//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Lora:400,400i,700,700i'
-    ],
-    'cssJs': [
-        '#fonts',
-        '/assets/css/spectreBottom.css'
-        
-        , '//cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.min.js'
-        
-        , '//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js'
-        , '//cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
-        
-        , '/assets/js/ui.js'
-    ]
-})//define
+        'axios': [
+            '#hasPromise', 'https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js'
+        ],
+        'fonts': [
+            '#axios', 'css!//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Lora:400,400i,700,700i'
+        ],
+        'cssJs': [
+            '#fonts',
+            '/assets/css/spectreBottom.css'
+
+            , '//cdn.jsdelivr.net/npm/paginationjs@2.1.4/dist/pagination.min.js'
+
+            , '//cdn.jsdelivr.net/npm/zenscroll@4.0.2/zenscroll-min.js', '//cdn.jsdelivr.net/npm/blueimp-load-image@2.19.0/js/load-image.all.min.js'
+
+            , '/assets/js/ui.js'
+        ]
+    }) //define
 
 function onDeviceReady() { // nothing will work before this
     console.info('deviceready!')
 }
 
-function cssLoaded() {// called by the style sheet in layout
+function cssLoaded() { // called by the style sheet in layout
 }
 
 var _scSz = true
+
 function setupUserSzSc() {
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         _scSz = true
     })
-    $(window).resize(function () {
+    $(window).resize(function() {
         _scSz = true
     })
-}//()
+} //()
 
 // usage: ////////////////////////////////////////////////////////////////////
 depp.require(['cssJs'], function() {
@@ -71,7 +68,7 @@ depp.require(['cssJs'], function() {
 
     $('.delayShowing').removeClass('delayShowing'); // show
 
-    setInterval(function () {
+    setInterval(function() {
         if (_scSz) {
             _scSz = false;
             if (typeof userSzSc !== "undefined") userSzSc();
@@ -83,7 +80,8 @@ depp.require(['cssJs'], function() {
 
 // util: /////////////////////////////////////////////////////////////////////
 function getUrlVars() {
-    var vars = [], hash
+    var vars = [],
+        hash
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&')
     for (var i = 0; i < hashes.length; i++) {
         hash = hashes[i].split('=')
@@ -106,11 +104,3 @@ function inView(el) { // is element in viewport
         rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
     )
 }
-
-function disE(evtName, msg) {
-   dispatchEvent(new CustomEvent(evtName, { detail: msg }))
-}
-// eg
-addEventListener('bla', function(evt) {
-   console.info(evt.detail)
-})
