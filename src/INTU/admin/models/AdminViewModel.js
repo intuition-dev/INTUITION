@@ -1,12 +1,12 @@
-var AdminViewModel = (function () {
-    function AdminViewModel(arg) {
+class AdminViewModel {
+    constructor(arg) {
         if (42 !== arg)
             throw new Error('use static inst()');
     }
-    AdminViewModel.prototype.setup = function () {
+    setup() {
         this.services = new IntuAPI();
-    };
-    AdminViewModel.inst = function () {
+    }
+    static inst() {
         return new Promise(function (res, rej) {
             if (AdminViewModel._instance)
                 res(AdminViewModel._instance);
@@ -16,24 +16,23 @@ var AdminViewModel = (function () {
                 res(AdminViewModel._instance);
             });
         });
-    };
-    AdminViewModel.prototype.getEditorsList = function () {
+    }
+    getEditorsList() {
         console.log('getEditorList');
         return this.services.getEditorsList();
-    };
+    }
     ;
-    AdminViewModel.prototype.editEditor = function (id, name) {
+    editEditor(id, name) {
         return this.services.editEditor(id, name);
-    };
+    }
     ;
-    AdminViewModel.prototype.addEditor = function (guid, name, email, password) {
+    addEditor(guid, name, email, password) {
         return this.services.addEditor(guid, name, email, password);
-    };
+    }
     ;
-    AdminViewModel.prototype.deleteEditor = function (id) {
+    deleteEditor(id) {
         return this.services.deleteEditor(id);
-    };
+    }
     ;
-    return AdminViewModel;
-}());
+}
 ;

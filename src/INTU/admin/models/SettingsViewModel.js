@@ -1,12 +1,12 @@
-var SettingsViewModel = (function () {
-    function SettingsViewModel(arg) {
+class SettingsViewModel {
+    constructor(arg) {
         if (42 !== arg)
             throw new Error('use static inst()');
     }
-    SettingsViewModel.prototype.setup = function () {
+    setup() {
         this.services = new IntuAPI();
-    };
-    SettingsViewModel.inst = function () {
+    }
+    static inst() {
         return new Promise(function (res, rej) {
             if (SettingsViewModel._instance)
                 res(SettingsViewModel._instance);
@@ -16,15 +16,14 @@ var SettingsViewModel = (function () {
                 res(SettingsViewModel._instance);
             });
         });
-    };
-    SettingsViewModel.prototype.setupApp = function (item) {
+    }
+    setupApp(item) {
         return this.services.setupApp(item);
-    };
-    SettingsViewModel.prototype.getConfig = function () {
+    }
+    getConfig() {
         return this.services.getConfig();
-    };
-    SettingsViewModel.prototype.updateConfig = function (emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
+    }
+    updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
         return this.services.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
-    };
-    return SettingsViewModel;
-}());
+    }
+}

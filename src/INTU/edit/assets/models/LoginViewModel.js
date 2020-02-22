@@ -1,13 +1,13 @@
-var LoginViewModel = (function () {
-    function LoginViewModel(arg) {
+class LoginViewModel {
+    constructor(arg) {
         if (42 !== arg)
             throw new Error('use static inst()');
     }
-    LoginViewModel.prototype.setup = function () {
+    setup() {
         this.services = new IntuAPI();
         this.services.DEBUG = true;
-    };
-    LoginViewModel.inst = function () {
+    }
+    static inst() {
         return new Promise(function (res, rej) {
             if (LoginViewModel._instance)
                 res(LoginViewModel._instance);
@@ -17,18 +17,17 @@ var LoginViewModel = (function () {
                 res(LoginViewModel._instance);
             });
         });
-    };
-    LoginViewModel.prototype.checkEditor = function (formLogin, formPassw) {
+    }
+    checkEditor(formLogin, formPassw) {
         return this.services.checkEditor(formLogin, formPassw);
-    };
+    }
     ;
-    LoginViewModel.prototype.sendVcodEditor = function (email) {
+    sendVcodEditor(email) {
         return this.services.sendVcodEditor(email);
-    };
+    }
     ;
-    LoginViewModel.prototype.resetPassEditor = function (email, code, pass) {
+    resetPassEditor(email, code, pass) {
         return this.services.resetPassEditor(email, code, pass);
-    };
+    }
     ;
-    return LoginViewModel;
-}());
+}
