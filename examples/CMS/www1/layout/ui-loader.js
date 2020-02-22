@@ -1,9 +1,7 @@
-
-
 toolBeltDefault()
 
-depp.require(['FontsLoaded', 'DOM'], function() {
-   
-   console.log('loaded')
+depp.require([, 'DOM'], function() {
 
-}) 
+    console.log('loaded')
+
+})
