@@ -130,6 +130,3 @@ class EditorHandler extends Serv_1.BaseRPCMethodHandler {
     }
 }
 exports.EditorHandler = EditorHandler;
-module.exports = {
-    EditorHandler
-};

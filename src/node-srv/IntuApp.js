@@ -43,6 +43,3 @@ class IntuApp extends Serv_1.Serv {
     }
 }
 exports.IntuApp = IntuApp;
-module.exports = {
-    IntuApp
-};
