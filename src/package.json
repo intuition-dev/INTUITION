@@ -25,7 +25,7 @@
         "express-fileupload": ">=1.1.6",
         "http-rpc": ">=2.2.0",
         "ip": ">=1.1.5",
-        "mbakex": ">=8.2.4"
+        "mbakex": ">=8.2.5"
     },
     "devDependencies": {
         "@types/node": ">=13.7.4"
