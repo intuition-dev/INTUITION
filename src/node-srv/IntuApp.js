@@ -24,22 +24,28 @@ class IntuApp extends Serv_1.Serv {
             catch (err) {
                 log.info(err);
             }
-        });
-    }
+        }); // 
+    } //()
     start(intuPath) {
         Serv_1.Serv._expInst.use(function (req, res, next) {
             log.trace("--req.url", req.url);
             next();
         });
+        // await this.db.isSetupDone()
+        // order of Handler: api, all intu apps, Web App
         log.info('----running');
+        //1 API
         const ar = new adminHandler_1.AdminHandler(this.db, this.configIntu);
         const er = new editorHandler_1.EditorHandler(this.db, this.configIntu);
         this.routeRPC('adminAPI', ar);
         this.routeRPC('api', er);
+        //Serv._expInst('/upload', this.uploadRoute.upload.bind(this.uploadRoute))
+        // get version
         Serv_1.Serv._expInst.get('/iver', (req, res) => {
             return res.send(BusLogic_1.BusLogic.veri);
         });
+        // 2 INTU
         this.serveStatic(intuPath, null, null);
-    }
-}
+    } //()
+} //class
 exports.IntuApp = IntuApp;

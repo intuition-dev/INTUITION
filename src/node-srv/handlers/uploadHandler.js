@@ -19,8 +19,10 @@ class UploadHandler {
         if (typeof req.fields.targetDir === 'undefined') {
             return resp.status(400).send('No files were uploaded.');
         }
+        // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
         let sampleFile = req.files.sampleFile;
         uploadPath = this.configIntu.path + req.fields.targetDir + '/' + sampleFile.name;
+        // Use the mv() method to place the file somewhere on your server
         log.info('sampleFile', sampleFile);
         fs.copyFile(sampleFile.path, uploadPath, (err) => {
             if (err)
@@ -29,5 +31,5 @@ class UploadHandler {
             resp.send({ status: 'OK' });
         });
     }
-}
+} //class
 exports.UploadHandler = UploadHandler;

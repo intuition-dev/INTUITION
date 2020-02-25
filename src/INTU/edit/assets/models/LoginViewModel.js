@@ -1,7 +1,7 @@
 class LoginViewModel {
     constructor(arg) {
         if (42 !== arg)
-            throw new Error('use static inst()');
+            throw new Error('use static inst()'); // guard!
     }
     setup() {
         this.services = new IntuAPI();

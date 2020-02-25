@@ -1,7 +1,7 @@
 class SettingsViewModel {
     constructor(arg) {
         if (42 !== arg)
-            throw new Error('use static inst()');
+            throw new Error('use static inst()'); // guard!
     }
     setup() {
         this.services = new IntuAPI();
@@ -26,4 +26,4 @@ class SettingsViewModel {
     updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id) {
         return this.services.updateConfig(emailjsService_id, emailjsTemplate_id, emailjsUser_id);
     }
-}
+} //class

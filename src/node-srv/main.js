@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 "use strict";
+// All rights reserved by INTUITION.DEV |  Cekvenich, licensed under LGPL 3.0
 Object.defineProperty(exports, "__esModule", { value: true });
 const commandLineArgs = require("command-line-args");
 const IDB_1 = require("./lib/IDB");
@@ -36,7 +37,9 @@ async function runInSrv() {
     const ipAddres = ip.address();
     const hostIP = 'http://' + ipAddres + ':';
     log.info("TCL: hostIP", hostIP);
+    // the only place there is DB new is here.
     const idb = new IDB_1.IDB(process.cwd(), '/IDB.sqlite');
+    //creating/checking intu-config.file
     const path_config = process.cwd() + '/intu-config.yaml';
     let configIntu;
     try {
@@ -65,6 +68,7 @@ async function runInSrv() {
     }
     const port = await configIntu.port;
     const path = await configIntu.path;
+    // now start node
     const mainEApp = new IntuApp_1.IntuApp(idb, ['*'], configIntu);
     let intuPath = BusLogic_2.Util.appPath + '/INTU';
     log.info(intuPath);
@@ -72,11 +76,13 @@ async function runInSrv() {
     log.info('setup', setupDone);
     log.info("TCL: runISrv -> setupDone", setupDone);
     log.info('normal');
+    // api and intu is here
     mainEApp.start(intuPath);
+    // app 
     log.info("TCL: runISrv -> path", path);
     mainEApp.serveStatic(path, 60 * 60 * 1 + 1, 60 * 60 * 1);
     mainEApp.listen(port);
-}
+} //()
 function help() {
     console.info();
     console.info('intu version: ' + BusLogic_1.BusLogic.veri());
@@ -87,7 +93,8 @@ function help() {
     console.info();
     console.info('  For starter CRUD app:                                  intu -c');
     console.info('  For an example of an e-commerce (shop and ship) app:   intu -s');
-}
+} //()
+// start: /////////////////////////////////////////////////////////////////////////////////////
 if (argsParsed.CRUD)
     unzipC();
 else if (argsParsed.help)

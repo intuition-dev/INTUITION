@@ -1,4 +1,5 @@
 "use strict";
+// Bus. Layer test
 Object.defineProperty(exports, "__esModule", { value: true });
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
@@ -8,7 +9,7 @@ const perfy = require('perfy');
 const IDB_1 = require("./lib/IDB");
 const BusLogic_1 = require("./lib/BusLogic");
 const idb = new IDB_1.IDB(process.cwd(), '/test.sqlite');
-idb.setupIfNeeded();
+idb.setupIfNeeded(); //.then(testIDB) //then(testAppLogic)
 const bysLogic = new BusLogic_1.BusLogic();
 async function test(name, f) {
     perfy.start(name, true);
@@ -28,7 +29,7 @@ async function testIDB() {
     await test('deleteEditor', () => idb.deleteEditor(addEditorGuid));
     await test('getEditors2', () => idb.getEditorsAll());
     log.info('//testIDB');
-}
+} //()
 async function testAppLogic() {
     log.info('testAppLogic:');
     await test('autoBake', () => bysLogic.autoBake('/users/vitalii/intu-smpl', 'files/', 'newItm.md'));
@@ -37,6 +38,7 @@ async function testAppLogic() {
     await test('archive', () => bysLogic.archive('/users/vitalii/intu-smpl', '/files/', 'newItm.md'));
     log.info('//testAppLogic');
 }
+// generate uuid for testing purposes
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
