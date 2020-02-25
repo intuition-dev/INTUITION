@@ -20,7 +20,6 @@ export class IDB extends BaseDBL {
         super()
         log.info(path, fn)
         this.defCon(path, fn)
-        
     }
 
     setupIfNeeded() {
