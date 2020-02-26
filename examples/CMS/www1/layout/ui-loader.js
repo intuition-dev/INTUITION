@@ -1,4 +1,4 @@
-toolBeltDefault()
+
 
 depp.require([, 'DOM'], function() {
 
