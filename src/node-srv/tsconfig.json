@@ -1,13 +1,13 @@
 {
    "compilerOptions": {
-      "target": "es2018",
+      "target": "ES2019",
 
       "module": "commonjs",
       "moduleResolution": "node",
-      "esModuleInterop" : true,
-      "lib": ["es2018"],
+      "esModuleInterop" : false,
+      "lib": ["ES2018"],
 
-      "allowSyntheticDefaultImports": true,
+      "allowSyntheticDefaultImports": false,
 
       "strictBindCallApply": true,	
       "noImplicitThis": true,
