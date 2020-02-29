@@ -95,7 +95,7 @@ export class AdminHandler extends BaseRPCMethodHandler {
    }
 
    /**
-    *  Needs a guid sent by browsers. There is a getGUID() in toolbelt
+    *  Needs a guid sent by browsers. There is a getGUID() 
     */
    async addEditor(params) {
       let auth = await this.auth(params.admin_email, params.admin_pass)

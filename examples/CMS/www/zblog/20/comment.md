@@ -1,1 +1,0 @@
-Mielke is a designer
