@@ -1,9 +1,9 @@
 {
-    "name": "intu",
+    "name": "mbake",
     "preferGlobal": true,
-    "version": "8.2.6",
-    "description": "INTUITION.DEV is the futuristic open source bundler/builder for pro developers with 10-fold productivity via automation, low-code, cross-platform, static-generator, and a built-in WebAdmin editor, leveraging JAMstack, w/ Pug and facilitating app maintenance by end-users.",
-    "bin": "./node-srv/main.js",
+    "version": "8.2.8",
+    "description": "mbake CLI is open source and extensible low-code productivity bundler/builder that leverages Pug and JAMstack.",
+    "bin": "mbake.js",
     "license": "LGPL-3.0-only",
     "author": "http://www.INTUITION.DEV",
     "homepage": "http://www.INTUITION.DEV",
@@ -18,15 +18,52 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=12.16.0"
+        "node": ">=10.16.1"
     },
     "dependencies": {
-        "bcryptjs": ">=2.4.3",
-        "express-fileupload": ">=1.1.6",
-        "ip": ">=1.1.5",
-        "mbakex": ">=8.2.6"
+        "agentg": ">=2.2.8",
+        "autoprefixer": ">=9.7.4",
+        "cheerio": ">=1.0.0-rc.3",
+        "chokidar": ">=3.3.1",
+        "command-line-args": ">=5.1.1",
+        "express": ">=4.17.1",
+        "express-interceptor": ">=1.2.0",
+        "filehound": ">=1.17.4",
+        "find-up": ">=4.1.0",
+        "make-fetch-happen": ">=8.0.2",
+
+        "fs-extra": ">=8.1.0",
+        "html-minifier": ">=4.0.0",
+        "javascript-obfuscator": ">=0.25.2",
+        "js-yaml": ">=3.13.1",
+        "markdown-it": ">=10.0.0",
+        "markdown-it-container": ">=2.0.0",
+        "markdown-it-imsize": ">=2.0.1",
+        "node-fetch": ">=2.6.0",
+        "node-sass": ">=4.13.1",
+        "perfy": ">=1.1.5",
+        "pug": ">=2.0.4",
+        "reload": ">=3.0.4",
+        "strip-css-comments": ">=4.1.0",
+        "superagent": ">=5.2.2",
+        "terser": ">=4.6.4",
+        "typescript": ">=3.8.3",
+        "open": ">=7.0.2",
+        "sqlite3": ">=4.1.1"
     },
+    "browserslist": [
+        "> 3%",
+        "last 2 versions, ",
+        "not dead",
+        "not ie < 14 "
+    ],
     "devDependencies": {
-        "@types/node": ">=13.7.6"
+        "@types/express": ">=4.17.2",
+        "@types/node": ">=13.7.7",
+        "async-limiter": ">=2.0.0",
+        "dompurify": ">=2.0.8",
+        "legit": ">=1.0.7",
+        "lodash": ">=4.17.15",
+        "string-template": ">=1.0.0"
     }
 }

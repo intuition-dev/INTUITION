@@ -1,0 +1,32 @@
+head
+
+body
+    include ../includes/header
+
+    if LOCALE === 'en'
+        h1 Locale is 
+            span.en
+                | #{LOCALE}
+            span    
+                img(src='https://cdn-images-1.medium.com/max/2400/0*o0-6o1W1DKmI5LbX.png', alt="en", width='20px', height='10px')
+        include:metaMD t-en.md
+
+    else if LOCALE === 'ru'
+        h1 Locale is 
+            span.ru
+                | #{LOCALE}
+            span    
+                img(src='https://upload.wikimedia.org/wikipedia/en/archive/f/f3/20120812153730%21Flag_of_Russia.svg', alt="ru", width='20px', height='10px')
+        include:metaMD t-ru.md
+        
+    else if LOCALE === 'de'
+        h1 Locale is 
+            span.de
+                | #{LOCALE}
+            span    
+                img(src='https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png', alt="de", width='20px', height='10px')
+        include:metaMD t-de.md
+
+    hr
+    
+    p Hello, #{key1},  page 1

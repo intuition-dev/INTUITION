@@ -1,3 +1,0 @@
-port: 9081
-secret: '123456'
-path: ./src/ROOT

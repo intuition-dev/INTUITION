@@ -1,0 +1,23 @@
+head
+   include headFrag
+   link(href= '/css/gridforms.css', rel='stylesheet')
+body
+   style.
+      .grid-form > fieldset > legend {
+         margin: 0;
+      }
+
+   form.grid-form#f1
+      fieldset
+        legend Form Section
+        div(data-row-span='2')
+          div(data-field-span='1')
+            label Field 1
+            input(type='text')
+          div(data-field-span='1')
+            label Field 2
+            input(type='text')
+   script.
+      depp.require([ , 'bsDefaultStyle'], function() {
+         console.log('styles', Date.now() - _start)
+      }) 

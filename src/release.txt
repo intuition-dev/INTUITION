@@ -1,12 +1,8 @@
-changelog
+base lib
+pacakge.json
+change notes
+versions
 
-.ts 
-
-version
-
-tsc of srv
-
-.json
-
-Note: if changed node version you may need to do this first:  `npm uninstall -g intu`
+Note: if changed node version you may need to do this first:  `yarn global remove mbake`
+or  /usr/local/share/.config/yarn/global/node_modules
 

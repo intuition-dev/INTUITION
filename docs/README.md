@@ -1,18 +1,15 @@
 
-# MetaBake
+# mbake  CLI
 
 ## 'All my friends KNOW the low-coder'
 
-#### mbake CLI is open source and extensible low-code productivity bundler/builder that leverages Pug and JAMstack.
+#### INTUITION  is open source and extensible low-code productivity bundler/builder for front-end developers.
 
 ## Overview
 
 MetaBake(mbake) provides a bundler/builder for a developer to write cleaner code quicker, with `pug` and livereload out of the box.
 
 You can gradually adopt it while it allows you to develop quicker - and with clean simplicity - Static Websites, Custom Elements, custom CMS/E-Commerce, CRUD and all sorts of dynamic Web Apps.
-
-#### Please star our main project here:
-- https://github.com/INTUITION-dev/INTU
 
 ### Prerequisites
 
@@ -25,11 +22,13 @@ Note: Some of the upstream packages we user are native, so you need to : apt-get
 
 ```sh
    apt-get install build-essential
+   npm i -g npm@next
+   npm i -g node-gyp@latest
+   node-gyp -v
    npm i -g --unsafe-perm=true --allow-root mbake
    mbake -w . /* for a base website */
-   cd website
-   mbake -w . /* to run the watcher livereload */
 ```
+
 
 ## INTUITION  in 4 Minutes
 
@@ -79,6 +78,7 @@ Title
 ```
 
 
+
 So if you write a Markdown file comment.md, it will be included in index.html
 ---
 
@@ -105,7 +105,7 @@ body {
    color: $primary-color;
 }
 ```
-Create file `style.yaml` in assets folder, to compile your scss to css
+Create file `assets.yaml` in assets folder, to compile your scss to css
 
 ```
 css:
@@ -124,7 +124,7 @@ So the structure of asset folder should look something like that:
 assets/
    css/style.css /* this is going to be compiled from style.scss */
    scss/style.scss /* your working area */
-   style.yaml /* with `scss` files that need to be compiled */
+   assets.yaml /* with `scss` files that need to be compiled */
 	...
 ```
 
@@ -142,7 +142,6 @@ and run
 mbake -t .
 ```
 
-
 Lots of time you use .ts to call DB services: such as Google FireStore.
 
 ## Examples - Website
@@ -156,18 +155,48 @@ That will extract an example website in the current folder. ( Obviously you can 
 
 
 
+## CMS/Itemize example
+
+### Itemize (eg CMS)
+
+Lets build a folder called `Items` and in that folder create a blank file `dat_i.yaml,` with nothing there.
+- In the folder called `Items` create folder `Page1` and folder `Page2`. In each page folder create `index.pug` and `dat.yaml`. So you have `Page1` and `Page2` folder under `Items`.
+
+- In each Page's `dat.yaml` add
+```
+title: Page name
+```
+And add a few more key/value words in each dat.yaml, but make each pages values a bit different.
+
+- And now, in the folder `Items` run
+
+```sh
+mbake -i .
+```
+It will create `items.json`. This allows you to fetch that json and search for content, CMS, items, etc.
+
+## INTUITION  FrameWork(FW)/Application Architecture(AA)
+
+There is not much to ours. 
+
 ```sh
 mbake -f .
 ```
 
 This emits a Pug file that you should include in your Pug's layout head section.
-In turn, the included file calls a mbToolBelt.js from a CDN. 
+In turn, the included file calls a 'setup-deffs' js file that defines and show you how to define things you can require later.
 
 
-## Apps
+## Next steps
 
-While you can build websites: you can also build full webapps, eg. CRUD.
+Now that you know mbake foundation, here are some choices for next things to learn in the advanced docs, pick and chose:
 
+- CMS: an admin panel that you can host to can use as is; or as a base to build commercial grade CMS or eCommerce site, including browser plugin.
+- MetaCake: plugin components, makes it easy for designers to write real Web Apps. Developed with RIOTjs, easier than Reactjs (commercial license optional)
+- AMP
+- SPA router: with page transition effects and state machine (needed for cross-platform development)
+- Cross platform development with real single code base development: single code base for Web, AMP, Electron and PhoneGap/Crodova
+- VS code from the Cloud: multiple developers using a browser against same VS Code host in the cloud
 
 **Other examples include:**
 
@@ -177,15 +206,10 @@ While you can build websites: you can also build full webapps, eg. CRUD.
 - Ads example
 
 
-
 # Links
 
-[Advanced Front End w/ Pug](https://github.com/intuition-dev/mbCLI/tree/master/pug)
-
-[mbake CLI Docs](http://intuition-dev.github.io/mbCLI)
-
-[Git Repo](http://git.metabake.net)
-
-[Pug example](http://pug.metabake.net)
-
-[INTUITION.DEV Home Page](https://www.INTUITION.DEV)
+- Full Docs: [docs.INTUITION.DEV](http://docs.INTUITION.DEV)
+- [INTUITION.DEV](https://www.INTUITION.DEV)
+- [blog.MetaBake.net](http://blog.MetaBake.net)
+- [Github](http://git.INTUITION.DEV)
+- Check for the latest version of mbake: [npm.js](http://npmjs.com/package/mbake)

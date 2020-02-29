@@ -2,14 +2,10 @@
 node_modules/
 
 
+*.sh
+*.cmd
+
 .DS_Store
 
-*.sh 
-
-*.sqlite
-
-intu-config.yaml
-
-
-
 .yarn
+
