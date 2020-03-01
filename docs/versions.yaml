@@ -10,7 +10,7 @@ intu:   v8.2.9
 
 headFrag: https://cdn.jsdelivr.net/gh/intuition-dev/mbToolBelt@v8.2.8/src/template/headFrag.pug
 
-pugInto:  https://github.com/INTUITION-dev/mbCLI/raw/master/pug/pugIntro.zip
-CRUD:     https://github.com/intuition-dev/httpRPC/raw/master/back/CRUD/CRUD.zip
+pugInto:  https://github.com/intuition-dev/mbCLI/raw/master/pug/pugIntro.zip
+CRUD:     https://github.com/intuition-dev/httpRPC/raw/master/CRUD/CRUD.zip
 
 
