@@ -47,6 +47,8 @@ function help() {
    console.info()
    console.info('  Download Intro to Pug example:                              mbake --pug ')
 
+   console.info('  For starter CRUD app:                                       mbake -c')
+
    console.info('     Note: . is current directory; or use any path instead of .')
    console.info(' -------------------------------------------------------------')
 
@@ -57,6 +59,7 @@ function help() {
 
    console.info()
 }
+
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
@@ -75,6 +78,8 @@ const optionDefinitions = [
    { name: 'watcher', alias: 'w', type: Boolean },
 
    { name: 'pug', type: Boolean },
+   { name: 'CRUD', alias: 'c', type: Boolean },
+
 ]
 
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -114,6 +119,10 @@ function pugIntro() {
    console.info('Extracted Intro to Pug example')
 }//()
 
+function unzipC() {
+   new DownloadC('CRUD', cwd).autoUZ()
+   console.info('Extracted an example CRUD app')
+}
 
 function bake(arg) {
    let pro: Promise<string> = new MBake().bake(arg, 0)
@@ -160,6 +169,8 @@ else if (argsParsed.frag)
    frag(arg)
 else if (argsParsed.pug)
    pugIntro()
+else if (argsParsed.CRUD)
+   unzipC()
 else if (argsParsed.version)
    version()
 else if (argsParsed.help)

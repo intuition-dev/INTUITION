@@ -1,4 +1,8 @@
 
+### 8.2.9
+- c CRUD
+
+
 ### 8.2.8
 - obfuscate all js
 - need proper ; or it won't work
