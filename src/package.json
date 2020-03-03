@@ -30,7 +30,7 @@
         "express-interceptor": ">=1.2.0",
         "filehound": ">=1.17.4",
         "find-up": ">=4.1.0",
-        "make-fetch-happen": ">=8.0.2",
+        "make-fetch-happen": ">=8.0.3",
 
         "fs-extra": ">=8.1.0",
         "html-minifier": ">=4.0.0",
@@ -46,7 +46,7 @@
         "reload": ">=3.0.4",
         "strip-css-comments": ">=4.1.0",
         "superagent": ">=5.2.2",
-        "terser": ">=4.6.4",
+        "terser": ">=4.6.6",
         "typescript": ">=3.8.3",
         "open": ">=7.0.2",
         "sqlite3": ">=4.1.1"
