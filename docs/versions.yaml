@@ -1,11 +1,11 @@
 
-agentg: v2.2.8
+agentg: v2.2.11
 
-mbake:  v8.2.9
+mbake:  v8.2.11
 
-mbakex: v8.2.10
+mbakex: v8.2.11
 
-intu:   v8.2.9
+intu:   v8.2.11
 
 
 headFrag: https://cdn.jsdelivr.net/gh/intuition-dev/mbToolBelt@v8.2.8/src/template/headFrag.pug
