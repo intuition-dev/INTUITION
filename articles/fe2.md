@@ -71,7 +71,7 @@ One important tool to master is Electron. It allows a path to cross platform dev
 For example: IOS and Android running the same exact code base that is running your Web App.
 But it should be done in two steps:
 1. Port your app to Electron 
-2. Port the Electron app to Adobe PhoneGap at build.phonegap.com.
+2. Port the Electron app to Adobe Cordova at build.Cordova.com.
 
 
 ### Custom Elements
@@ -119,9 +119,9 @@ Instead of html, use Pug (eg: Prepros.io).
 
 1. A hello world Mavo in Pug, the simpler the better (instructor provided)
 2. Port to Electron (instructor provided)
-3. Port to build.PhoneGap
+3. Port to build.Cordova
 
-Email the app file produced by build.PhoneGap to your phone. 
+Email the app file produced by build.Cordova to your phone. 
 
 
 ## Frontend (CSS) frameworks, and naming.

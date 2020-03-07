@@ -195,7 +195,7 @@ Now that you know mbake foundation, here are some choices for next things to lea
 - MetaCake: plugin components, makes it easy for designers to write real Web Apps. Developed with RIOTjs, easier than Reactjs (commercial license optional)
 - AMP
 - SPA router: with page transition effects and state machine (needed for cross-platform development)
-- Cross platform development with real single code base development: single code base for Web, AMP, Electron and PhoneGap/Crodova
+- Cross platform development with real single code base development: single code base for Web, AMP, Electron and Cordova
 - VS code from the Cloud: multiple developers using a browser against same VS Code host in the cloud
 
 **Other examples include:**
