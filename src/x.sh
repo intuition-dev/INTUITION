@@ -2,7 +2,7 @@
 clear
 tsc
 
-node mbake.js -t /home/vic/Documents/GitHub/mbToolBelt/spa-router
+node mbake.js -w /home/vic/Documents/GitHub/intuDesignWork/src/template
 
 # /home/vic/Documents/GitHub/mbToolBelt/src/vendors/defEventBus
 

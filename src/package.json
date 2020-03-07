@@ -31,10 +31,9 @@
         "filehound": ">=1.17.4",
         "find-up": ">=4.1.0",
         "make-fetch-happen": ">=8.0.3",
-
         "fs-extra": ">=8.1.0",
         "html-minifier": ">=4.0.0",
-        "javascript-obfuscator": ">=0.25.2",
+        "javascript-obfuscator": ">=0.25.4",
         "js-yaml": ">=3.13.1",
         "markdown-it": ">=10.0.0",
         "markdown-it-container": ">=2.0.0",
@@ -52,14 +51,12 @@
         "sqlite3": ">=4.1.1"
     },
     "browserslist": [
-        "> 3%",
-        "last 2 versions, ",
-        "not dead",
-        "not ie < 14 "
+        "> 2%",
+        "not ie < 14"
     ],
     "devDependencies": {
-        "@types/express": ">=4.17.2",
-        "@types/node": ">=13.7.7",
+        "@types/express": ">=4.17.3",
+        "@types/node": ">=13.9.0",
         "async-limiter": ">=2.0.0",
         "dompurify": ">=2.0.8",
         "legit": ">=1.0.7",

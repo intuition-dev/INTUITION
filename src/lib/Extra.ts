@@ -207,15 +207,15 @@ export class Sas {
    css(dir): Promise<string> {
       const THIZ = this
       return new Promise(async function (resolve, reject) {
-
          let a
          let fn = dir + '/style.yaml'
+         log.info(fn)
          if (fs.existsSync(fn))
             a = yaml.load(fs.readFileSync(fn))
          else {
             let dir2: string = findUp.sync('style.yaml', { cwd: dir })
             a = yaml.load(fs.readFileSync(dir2))
-            dir = dir2.slice(0, -12)
+            dir = dir2.slice(0, -11)
          }
          log.info(dir)
 
