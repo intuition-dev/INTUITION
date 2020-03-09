@@ -47,7 +47,7 @@
         "superagent": ">=5.2.2",
         "terser": ">=4.6.6",
         "typescript": ">=3.8.3",
-        "open": ">=7.0.2",
+        "open": ">=7.0.3",
         "sqlite3": ">=4.1.1"
     },
     "browserslist": [
