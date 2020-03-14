@@ -23,8 +23,8 @@ Note: Some of the upstream packages we user are native, so you need to : apt-get
 ```sh
    apt-get install build-essential
    npm i -g npm@next
-   npm i -g node-gyp@latest
-   node-gyp -v
+   
+   
    npm i -g --unsafe-perm=true --allow-root mbake
    mbake -w . /* for a base website */
 ```
