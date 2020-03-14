@@ -1,10 +1,8 @@
 "use strict";
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 Object.defineProperty(exports, "__esModule", { value: true });
-const bunyan = require('bunyan');
-const bformat = require('bunyan-format2');
-const formatOut = bformat({ outputMode: 'short' });
-const log = bunyan.createLogger({ src: true, stream: formatOut, name: "file ops b" });
+const terse_b_1 = require("terse-b/terse-b");
+const log = new terse_b_1.TerseB("file ops b");
 const fs = require("fs-extra");
 const yaml = require("js-yaml");
 const FileHound = require("filehound");

@@ -1,10 +1,10 @@
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 
 
+import { TerseB } from "terse-b/terse-b"
 
- 
+const log:any = new TerseB("file ops b")
 
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "file ops b"})
 import fs = require('fs-extra')
 
 import yaml = require('js-yaml')

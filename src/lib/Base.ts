@@ -3,17 +3,16 @@
 
 export class Ver {
    static ver() {
-      return 'v8.3.0'
+      return 'v8.3.2'
    }
    static date(): string {
       return new Date().toISOString()
    }
 }
 
+import { TerseB } from "terse-b/terse-b"
 
- 
-
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "Base"})
+const log:any = new TerseB('base')
 
 const path = require('path')
 import { MinJS } from './Extra'
@@ -82,7 +81,7 @@ export class MBake {
             }
             resolve('OK')
          } catch (err) {
-            log.info(err)
+            log.warn(err)
             reject(err)
          }
       })//pro
@@ -93,7 +92,7 @@ export class MBake {
       let _this = this
       return new Promise(function (resolve, reject) {
          if (!ppath_ || ppath_.length < 1) {
-            log.info('no path_ arg passed')
+            log.warn('no path_ arg passed')
             reject('no path arg passed')
          }
          log.info('ib:', ppath_)
@@ -103,14 +102,14 @@ export class MBake {
             i.itemize()
 
          } catch (err) {
-            log.info(err)
+            log.warn(err)
             reject(err)
          }
 
          _this.bake(ppath_, prod)
             .then(function () { resolve('OK') })
             .catch(function (err) {
-               log.info(err)
+               log.warn(err)
                reject(err)
             })
 
@@ -127,7 +126,7 @@ export class BakeWrk {
       let dir = Dirs.slash(dir_)
 
       this.dir = dir
-      log.info(' processing: ' + this.dir)
+      console.info(' processing: ' + this.dir)
    }
 
    static metaMD(text, options) {//a custom md filter that uses a transformer
@@ -150,7 +149,7 @@ export class BakeWrk {
       let result = Terser.minify(code,  MinJS.CompOptionsTES)
 
       if (result.error) {
-         log.info('Terser error:', result.error)
+         log.warn('Terser error:', result.error)
          return text
       }
       return result.code.replace(/;$/, '')
@@ -192,7 +191,7 @@ export class BakeWrk {
          return
       }
       process.chdir(this.dir)
-      log.info(this.dir)
+      console.info(this.dir)
 
       let dat = new Dat(this.dir)
 
@@ -259,7 +258,7 @@ export class BakeWrk {
 
    do1Locale(locale, combOptions) {
       //extract locale var
-      log.info(locale)
+      console.info(locale)
       let localeProps = {}
       localeProps['LOCALE'] = locale // any let can be access in pug or js  eg window.locale = '#{LOCALE}'
 
@@ -363,12 +362,12 @@ export class JsonFeed {
          this.feed.items.push(y)
 
       } catch (err) {
-         log.info(err)
+         log.warn(err)
       }
    }
 
    itemize(): string {
-      log.info('Itemizing: ' + this.dir)
+      console.info('Itemizing: ' + this.dir)
 
       const rootDir: string = this.dir
       // header file

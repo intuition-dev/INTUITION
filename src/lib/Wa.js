@@ -10,10 +10,8 @@ const chokidar = require("chokidar");
 const reload = require("reload");
 const cheerio = require("cheerio");
 const interceptor = require("express-interceptor");
-const bunyan = require('bunyan');
-const bformat = require('bunyan-format2');
-const formatOut = bformat({ outputMode: 'short' });
-const log = bunyan.createLogger({ src: true, stream: formatOut, name: "WA" });
+const terse_b_1 = require("terse-b/terse-b");
+const log = new terse_b_1.TerseB("WA");
 const opn = require("open");
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////
 class Wa {
@@ -23,7 +21,7 @@ class Wa {
         const mp = new MetaPro(dir);
         let ww = new Watch(mp, dir);
         ww.start(250); // build x ms after saving a file
-        log.info(' Serving on ' + 'http://localhost:' + port);
+        console.info(' Serving on ' + 'http://localhost:' + port);
         log.info(' --------------------------');
         log.info('');
         opn('http://localhost:' + port);

@@ -14,11 +14,10 @@ import stripCssComments = require('strip-css-comments')
 import path = require('path')
 import fs = require('fs-extra')
 import FileHound = require('filehound')
-
-
  
+import { TerseB } from "terse-b/terse-b"
 
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "extra"})
+const log:any = new TerseB( "extra")
 
 import JavaScriptObfuscator = require('javascript-obfuscator')
 import { TInputOptions } from "javascript-obfuscator/src/types/options/TInputOptions"

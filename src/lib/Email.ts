@@ -2,15 +2,14 @@
 
 const superagent = require('superagent');
 
- 
-
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "Email"})
+import { TerseB } from "terse-b/terse-b"
 
 export class Email {
-    
+    log:any = new TerseB(this.constructor.name) 
+
     send(email, emailjsService_id, emailjsTemplate_id, emailjsUser_id, msg) {
         email = Buffer.from(email, 'base64').toString()
-        log.info('email_to: ', email);
+        this.log.info('email_to: ', email);
         superagent.post('https://api.emailjs.com/api/v1.0/email/send', {
                 service_id: emailjsService_id,
                 template_id: emailjsTemplate_id,
@@ -22,10 +21,10 @@ export class Email {
                 }
             })
             .then(res => {
-                log.info('Email has been sent. ')
+                this.log.info('Email has been sent. ')
             })
             .catch(err => {
-                log.info('send mail error: ', err)
+                this.log.warn('send mail error: ', err)
             });
     }//()
     

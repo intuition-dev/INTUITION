@@ -1,6 +1,5 @@
-
  
-
+import { TerseB } from "terse-b/terse-b"
 
 export class BaseDBI {
     log:any = new TerseB(this.constructor.name)

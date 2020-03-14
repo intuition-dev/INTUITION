@@ -1,7 +1,9 @@
+### 8.3.2
+- updated logging
+- added acorn, but that needs to be removed after pug bumps version
 
 ### 8.3.0
 - versions bump
-
 
 ### 8.2.11
 - c CRUD

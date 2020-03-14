@@ -14,9 +14,9 @@ import reload = require('reload')
 import cheerio = require('cheerio')
 import interceptor = require('express-interceptor')
 
- 
+import { TerseB } from "terse-b/terse-b"
 
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "WA"})
+const log:any = new TerseB("WA")
 
 import opn = require('open')
 
@@ -31,7 +31,7 @@ export class Wa {
       
       ww.start(250) // build x ms after saving a file
 
-      log.info(' Serving on ' + 'http://localhost:' + port)
+      console.info(' Serving on ' + 'http://localhost:' + port)
       log.info(' --------------------------')
       log.info('')
       opn('http://localhost:' + port)

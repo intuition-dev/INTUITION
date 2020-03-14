@@ -1,11 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const bunyan = require('bunyan');
-const bformat = require('bunyan-format2');
-const formatOut = bformat({ outputMode: 'short' });
+const terse_b_1 = require("terse-b/terse-b");
 class BaseDBI {
     constructor() {
-        this.log = bunyan.createLogger({ src: true, stream: formatOut, name: this.constructor.name });
+        this.log = new terse_b_1.TerseB(this.constructor.name);
         this.sqlite3 = require('sqlite3').verbose();
     }
     defCon(path, fn) {
