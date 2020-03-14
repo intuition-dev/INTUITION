@@ -3,9 +3,9 @@ agentg: v2.3.3
 
 mbake:  v8.3.2
 
-mbakex: v8.3.0
+mbakex: v8.3.2
 
-intu:   v8.3.0
+intu:   v8.3.2
 
 
 headFrag: https://cdn.jsdelivr.net/gh/intuition-dev/mbToolBelt@v8.2.8/src/template/headFrag.pug

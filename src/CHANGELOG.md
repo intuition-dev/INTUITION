@@ -1,3 +1,6 @@
+
+- started a regular SQLite class, so now we'll have 2.
+
 ### 8.3.2
 - updated logging
 - added acorn, but that needs to be removed after pug bumps version
@@ -134,48 +137,3 @@
 ### 6.07.24
 -  retErr(resp, msg) in Srv to allow returning error
 - also iCheck requires retErr implementation
-
-### 6.07.22
-- just update to readme
-- bug w/ filehound .1 is open
-
-### 6.07.21
-- using jsdeliver CDN in -f
-- moved in FileMethods from intu 
-
-### 6.07.19
-- .ts lib set to: 'dom', 'es5', 'es2015.promise'
-
-### 6.07.12
-- added check that page is passed to RPC
-
-### 6.07.11
-- added BasePgRouter
-
-### 6.07.10
-- added BaseDB
-
-### 6.07.08
-- now has loader in -f
-
-### 6.07.07
-- Remove BasicAuth and add auth interface
-- handleRRoute takes 2 args
-
-### 6.07.03
-- Added listen and  handleRRoute to Srv
-
-### 6.07.02
-- Fix serv static
-- Fix prod clear css
-
-### 6.07.01
--  improve watcher's timeInterceptor to be fast
--  improving server for static handling on single port via instance
-
-### 6.06.28
-- removed skip of index.html and index.pug in Dirs()
-
-### 6.06.26
-- moved spider to mbakex
-

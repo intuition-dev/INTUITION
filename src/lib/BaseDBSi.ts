@@ -1,7 +1,10 @@
  
 import { TerseB } from "terse-b/terse-b"
 
-export class BaseDBI {
+/**
+ * SQLite
+ */
+export class BaseDBSi {
     log:any = new TerseB(this.constructor.name)
 
     static MAXINT:number = 9223372036854775807 
