@@ -1,9 +1,9 @@
-const bunyan = require('bunyan')
-const bformat = require('bunyan-format2')  
-const formatOut = bformat({ outputMode: 'short' })
+
+ 
+
 
 export class BaseDBI {
-    log = bunyan.createLogger({src: true, stream: formatOut, name: this.constructor.name })
+    log:any = new TerseB(this.constructor.name)
 
     static MAXINT:number = 9223372036854775807 
 

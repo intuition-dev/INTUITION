@@ -1,9 +1,9 @@
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 
 
-const bunyan = require('bunyan')
-const bformat = require('bunyan-format2')  
-const formatOut = bformat({ outputMode: 'short' })
+
+ 
+
 const log = bunyan.createLogger({src: true, stream: formatOut, name: "file ops b"})
 import fs = require('fs-extra')
 
