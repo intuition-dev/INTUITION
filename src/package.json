@@ -22,7 +22,7 @@
     },
     "dependencies": {
         "acorn": "^6.4.1",
-        "agentg": ">=2.3.2",
+        "agentg": ">=2.3.3",
         "autoprefixer": ">=9.7.4",
         "cheerio": ">=1.0.0-rc.3",
         "chokidar": ">=3.3.1",
@@ -33,7 +33,7 @@
         "find-up": ">=4.1.0",
         "fs-extra": ">=8.1.0",
         "html-minifier": ">=4.0.0",
-        "javascript-obfuscator": ">=0.25.5",
+        "javascript-obfuscator": ">=0.27.0",
         "js-yaml": ">=3.13.1",
         "make-fetch-happen": ">=8.0.4",
         "markdown-it": ">=10.0.0",
