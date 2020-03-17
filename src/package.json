@@ -1,7 +1,7 @@
 {
     "name": "mbake",
     "preferGlobal": true,
-    "version": "8.3.2",
+    "version": "8.3.4",
     "description": "mbake CLI is open source and extensible low-code productivity bundler/builder that leverages Pug and JAMstack.",
     "bin": "mbake.js",
     "license": "LGPL-3.0-only",
@@ -22,7 +22,7 @@
     },
     "dependencies": {
         "acorn": "^6.4.1",
-        "agentg": ">=2.3.3",
+        "agentg": ">=2.3.4",
         "autoprefixer": ">=9.7.4",
         "cheerio": ">=1.0.0-rc.3",
         "chokidar": ">=3.3.1",
@@ -45,7 +45,6 @@
         "perfy": ">=1.1.5",
         "pug": ">=2.0.4",
         "reload": ">=3.0.4",
-        "sqlite3": ">=4.1.1",
         "strip-css-comments": ">=4.1.0",
         "superagent": ">=5.2.2",
         "terser": ">=4.6.6",

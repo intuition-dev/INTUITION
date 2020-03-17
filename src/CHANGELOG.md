@@ -1,7 +1,5 @@
 
-- started a regular SQLite class, so now we'll have 2.
-
-### 8.3.2
+### 8.3.4
 - updated logging
 - added acorn, but that needs to be removed after pug bumps version
 
