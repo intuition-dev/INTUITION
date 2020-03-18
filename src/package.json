@@ -47,7 +47,7 @@
         "reload": ">=3.0.4",
         "strip-css-comments": ">=4.1.0",
         "superagent": ">=5.2.2",
-        "terser": ">=4.6.6",
+        "terser": ">=4.6.7",
         "typescript": ">=3.8.3"
     },
     "browserslist": [
