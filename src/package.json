@@ -31,7 +31,6 @@
         "express-interceptor": ">=1.2.0",
         "filehound": ">=1.17.4",
         "find-up": ">=4.1.0",
-        "fs-extra": ">=8.1.0",
         "html-minifier": ">=4.0.0",
         "javascript-obfuscator": ">=0.27.2",
         "js-yaml": ">=3.13.1",
