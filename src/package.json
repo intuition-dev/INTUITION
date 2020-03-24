@@ -23,7 +23,7 @@
     "dependencies": {
         "acorn": "^6.4.1",
         "agentg": ">=2.3.4",
-        "autoprefixer": ">=9.7.4",
+        "autoprefixer": ">=9.7.5",
         "cheerio": ">=1.0.0-rc.3",
         "chokidar": ">=3.3.1",
         "command-line-args": ">=5.1.1",
@@ -55,7 +55,7 @@
     ],
     "devDependencies": {
         "@types/express": ">=4.17.3",
-        "@types/node": ">=13.9.1",
+        "@types/node": ">=13.9.3",
         "async-limiter": ">=2.0.0",
         "dompurify": ">=2.0.8",
         "legit": ">=1.0.7",
