@@ -1,16 +1,16 @@
 
-agentg: v2.3.4
+agentg: v2.4.1
 
-mbake:  v8.3.4
+mbake:  v8.4.1
 
-mbakex: v8.3.4
+mbakex: v8.4.1
 
 intu:   v8.3.4
 
 
 headFrag: https://cdn.jsdelivr.net/gh/intuition-dev/mbToolBelt@v8.2.8/src/template/headFrag.pug
 
-pugInto:  https://github.com/intuition-dev/mbCLI/raw/master/pug/pugIntro.zip
-CRUD:     https://github.com/intuition-dev/httpRPC/raw/master/CRUD/CRUD.zip
+pug:  https://intuition-dev.github.io/mbCLI/pug.zip
+CRUD: https://intuition-dev.github.io/mbCLI/#/CRUD.zip
 
 

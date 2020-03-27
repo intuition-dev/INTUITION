@@ -37,7 +37,7 @@ function help() {
     console.info('     also does regular mbake of Pug');
     console.info('  Download fragment to setup the app FW(framework):           mbake -f .');
     console.info();
-    console.info('  Download Intro to Pug example:                              mbake --pug ');
+    console.info('  Download static (Pug) example:                              mbake --pug ');
     console.info('  For starter CRUD app:                                       mbake -c');
     console.info('     Note: . is current directory; or use any path instead of .');
     console.info(' -------------------------------------------------------------');
@@ -89,8 +89,8 @@ if (arg) {
     } // inner
 } //outer
 //  ////////////////////////////////////////////////////////////////////////////////////////////////
-function pugIntro() {
-    new DownloadC('pugInto', __dirname).autoUZ();
+function pug() {
+    new DownloadC('pug', __dirname).autoUZ();
     console.info('Extracted Intro to Pug example');
 } //()
 function unzipC() {
@@ -133,7 +133,7 @@ else if (argsParsed.MinJS)
 else if (argsParsed.frag)
     frag(arg);
 else if (argsParsed.pug)
-    pugIntro();
+    pug();
 else if (argsParsed.CRUD)
     unzipC();
 else if (argsParsed.version)
