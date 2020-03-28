@@ -4,7 +4,7 @@ tsc
 
 DEV=true node mbake.js -w /home/vic/Documents/GitHub/intuDesignWork/src/template
 
-# /home/vic/Documents/GitHub/mbToolBelt/src/vendors/defEventBus
+# /home/vic/Documents/GitHub/mbToolBelt/src/vendors/defEventFlux
 
 # DEV=true node mbake.js -i /Users/code/Documents/GitHub/intuDocs/5625/items
 
