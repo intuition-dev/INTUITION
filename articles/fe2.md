@@ -91,7 +91,7 @@ Lets write a standard (built into browser with no 3rd party libs) custom element
     constructor() {
         super()
 
-        this.sr = this.attachShadow({ mode: 'closed' })
+        this.sr = this.attachShadow({ mode: 'open' })
         this.sr.appendChild(cTemp.content.cloneNode(true))
     }//cons
 
