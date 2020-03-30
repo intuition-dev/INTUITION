@@ -88,7 +88,7 @@ export class MinJS {
          try {
             log.info(fn)
             let code: string = fs.readFileSync(fn).toString('utf8')
-            result = Terser.minify(code, MinJS.CompOptionsTES)
+            result = Terser.minify(code, MinJS.CompOptionsES)
 
             let txt = result.code
 
@@ -105,6 +105,7 @@ export class MinJS {
                txt = ugs.getObfuscatedCode()
 
             } catch (err) {
+               log.error('you may want to use .ts')
                log.error(fn, 'error')
                log.error(err)
                reject(err)
@@ -127,7 +128,7 @@ export class MinJS {
 
    static ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n'
 
-   static CompOptionsTES = { // terser
+   static CompOptionsES = { // terser
       ecma: 2018,
       keep_classnames: true,
       keep_fnames: true,

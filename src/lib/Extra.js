@@ -152,7 +152,7 @@ class MinJS {
 } //class
 exports.MinJS = MinJS;
 MinJS.ver = '// mB ' + Base_1.Ver.ver() + ' on ' + Base_1.Ver.date() + '\r\n';
-MinJS.CompOptionsTES = {
+MinJS.CompOptionsES = {
     ecma: 2018,
     keep_classnames: true,
     keep_fnames: true,
