@@ -1,0 +1,6 @@
+if page.categories
+  .categories
+    p Categories:
+      for category in page.categories.toArray()
+        li
+          a(href=url_for(category.path))= category.name

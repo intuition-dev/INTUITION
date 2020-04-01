@@ -1,0 +1,5 @@
+mixin footerItem(item)
+    a(class="col-lg-2 col-xl-2 col-md-2" href= item.href)=item.name 
+mixin footer(items)
+    each item in items
+        +footerItem(item)

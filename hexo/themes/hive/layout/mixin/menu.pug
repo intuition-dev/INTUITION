@@ -1,0 +1,9 @@
+mixin menuItem(item)
+    a(class="nav-link" href= item.href)= item.name 
+
+mixin menu(items)
+    each item in items
+        .menucon
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    +menuItem(item)

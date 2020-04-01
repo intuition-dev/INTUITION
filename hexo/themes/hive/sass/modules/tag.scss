@@ -1,0 +1,17 @@
+.tags {
+  // background-color: red;
+  height: auto;
+  margin-left: 20px;
+}
+.tags li {
+  list-style: none;
+  display: inline-block;
+  margin: 5px;
+}
+.tags li a {
+  color: inherit;
+  text-decoration: none;
+}
+.tags li:before {
+  content: "#";
+}

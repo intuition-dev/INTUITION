@@ -1,0 +1,16 @@
+extends partial/layout.pug
+block content
+    .container
+        .row
+            include mixin/post.pug
+            +posts()
+block pagination
+    - var prev = page.prev_link
+    - var next = page.next_link
+    .paginator
+        if page.prev
+            a.prev(href=url_for(prev))
+                != __('prev')
+        if page.next
+            a.next(href=url_for(next))
+                != __('next')

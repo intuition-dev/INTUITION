@@ -1,0 +1,36 @@
+name: Hive
+url: https://github.com/Farnaziifz
+  
+theme:
+  favicon: images/favicon.png
+
+# Comment
+# e.g disqus: seansun
+disqus:
+
+# Analytics
+mathjax: false
+google_analytics:
+
+# Copyright Infomation
+copyright:
+  since:
+  name:
+  url:
+
+#theme_config
+menu:
+  - page: home
+    directory: /
+  - page: archive
+    directory: /archives/
+  - page: rss
+    directory: /atom.xml
+  - page: github
+    directory: https://github.com/farnaziifz
+
+footer:
+  - item: contact-us
+    directory: /contact-us
+  - item: about-us
+    directory: /about-us

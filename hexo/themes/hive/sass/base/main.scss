@@ -1,0 +1,19 @@
+*, 
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    width: 500px;
+    height: auto;
+    margin-left: 30%;
+}
+iframe {
+    width: 300px;
+    height: auto;
+    margin-left: 40%;
+    border: 4px solid black;
+
+}

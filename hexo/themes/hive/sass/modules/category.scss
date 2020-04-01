@@ -1,0 +1,23 @@
+.categories {
+  height: auto;
+  margin-left: 20px;
+}
+.categories li {
+  list-style: none;
+  display: inline-block;
+  margin: 5px;
+}
+.categories li a {
+  color: inherit;
+  text-decoration: none;
+}
+.categories li:before {
+  content: "-";
+}
+.category-box:after {
+  content: "";
+  width: 90%;
+  height: 10px;
+  background-color: black;
+  position: relative;
+}
