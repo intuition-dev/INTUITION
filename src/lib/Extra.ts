@@ -39,7 +39,7 @@ export class MinJS {
 
          THIZ.compile(rec, {
             target: ts.ScriptTarget.ES2018,
-            removeComments: false,
+            removeComments: true,
             allowJs: true,
             skipLibCheck: true,
             allowSyntheticDefaultImports: true,

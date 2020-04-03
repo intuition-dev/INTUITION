@@ -4,7 +4,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     static ver() {
-        return 'v8.4.5';
+        return 'v8.4.7';
     }
     static date() {
         return new Date().toISOString();
@@ -120,7 +120,7 @@ class BakeWrk {
     */
     static minify_pg(text, inline) {
         let code = text.match(/^\s*\s*$/) ? '' : text;
-        let result = Terser.minify(code, Extra_1.MinJS.CompOptionsTES);
+        let result = Terser.minify(code, Extra_1.MinJS.CompOptionsES);
         if (result.error) {
             log.warn('Terser error:', result.error);
             return text;

@@ -37,7 +37,7 @@ class MinJS {
                 resolve('OK');
             THIZ.compile(rec, {
                 target: ts.ScriptTarget.ES2018,
-                removeComments: false,
+                removeComments: true,
                 allowJs: true,
                 skipLibCheck: true,
                 allowSyntheticDefaultImports: true,
@@ -82,7 +82,7 @@ class MinJS {
             try {
                 log.info(fn);
                 let code = fs.readFileSync(fn).toString('utf8');
-                result = Terser.minify(code, MinJS.CompOptionsTES);
+                result = Terser.minify(code, MinJS.CompOptionsES);
                 let txt = result.code;
                 txt = txt.replace(/(\r\n\t|\n|\r\t)/gm, '\n');
                 txt = txt.replace(/\n\s*\n/g, '\n');
@@ -95,6 +95,7 @@ class MinJS {
                     txt = ugs.getObfuscatedCode();
                 }
                 catch (err) {
+                    log.error('you may want to use .ts');
                     log.error(fn, 'error');
                     log.error(err);
                     reject(err);

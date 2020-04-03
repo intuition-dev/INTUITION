@@ -3,7 +3,7 @@
 
 export class Ver {
    static ver() {
-      return 'v8.4.5'
+      return 'v8.4.7'
    }
    static date(): string {
       return new Date().toISOString()
@@ -146,7 +146,7 @@ export class BakeWrk {
 
       let code = text.match(/^\s*\s*$/) ? '' : text
 
-      let result = Terser.minify(code,  MinJS.CompOptionsTES)
+      let result = Terser.minify(code,  MinJS.CompOptionsES)
 
       if (result.error) {
          log.warn('Terser error:', result.error)
