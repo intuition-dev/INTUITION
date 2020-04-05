@@ -115,12 +115,12 @@ if (arg) {
 
 //  ////////////////////////////////////////////////////////////////////////////////////////////////
 function pug() {
-   new DownloadC('pug', __dirname).autoUZ()
+   new DownloadC('pug', arg).autoUZ()
    console.info('Extracted Intro to Pug example')
 }//()
 
 function unzipC() {
-   new DownloadC('CRUD', cwd).autoUZ()
+   new DownloadC('CRUD', arg).autoUZ()
    console.info('Extracted an example CRUD app')
 }
 
