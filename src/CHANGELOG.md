@@ -1,5 +1,5 @@
 
-### 8.4.7
+### 8.4.12
 - updated logging
 - added acorn, but that needs to be removed after pug bumps version
 
