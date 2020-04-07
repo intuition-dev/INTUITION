@@ -23,7 +23,7 @@
     "dependencies": {
         "acorn": "^6.4.1",
         "agentg": ">=2.4.12",
-        "autoprefixer": ">=9.7.5",
+        "autoprefixer": ">=9.7.6",
         "cheerio": ">=1.0.0-rc.3",
         "chokidar": ">=3.3.1",
         "command-line-args": ">=5.1.1",
