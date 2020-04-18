@@ -7,7 +7,7 @@
       "esModuleInterop" : true,
       "lib": ["ES2018"],
 
-      "allowSyntheticDefaultImports": false,
+      // "allowSyntheticDefaultImports": true,
 
       "strictBindCallApply": true,	
       "noImplicitThis": true,
