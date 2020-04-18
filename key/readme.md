@@ -1,6 +1,5 @@
 
 
-https://www.katacoda.com/keycloak/courses/keycloak/secure-service
 
 https://github.com/evanshortiss/keycloak-nodejs-quickstart-tutorial
 

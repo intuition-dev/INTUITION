@@ -8,17 +8,12 @@ import {  Serv }  from 'http-rpc/lib/Serv'
 
 const srv = new Serv(['*'], 4 *1024) 
 
-srv.serveStatic('./webApp', 1, 1)
-srv.listen(8081)
-
-// ///
-import express from 'express'
-var app            =       express()
-
-app.get('/red',function(request,response){
+Serv._expInst.get('/red',function(request,response){
 
     response.send('Hello RED')
 })
-app.listen(8080, function() {
-    console.log('8080 red')
-})
+
+srv.serveStatic('./webApp', 1, 1)
+srv.listen(8080)
+
+
