@@ -11,25 +11,6 @@ That will extract an example website in the current folder. ( Obviously you can 
 ---
 It has a README.md in root of the website.
 
-### depp.min.js
-
-Most example Web Apps, including the website, need to load external .js libraries. 
-INTUITION example the use the CDN centric .js loader 'depp': http://github.com/muicss/johnnydepp but you can use any 'loader' lib you like. But learn the default depp.js, since all the examples us that one:
-
-```javascript
-// define dependencies
-depp.define({
-  'jquery': ['/path/to/jquery.js'],
-  'plugin1': ['#jquery', '/path/to/plugin1.js', '/path/to/plugin1.css', '/path/to/plugin1.png'],
-  'plugin2': ['#jquery', '/path/to/plugin2.js', '/path/to/plugin2.css', '/path/to/plugin2.png']
-})
-
-// load dependencies
-depp.require(['plugin1', 'plugin2'], function() {
-  /* plugin1 and plugin2 are ready to be used */
-})
-```
-
 
 You'll find the real loading code in /assets/js/loader.js. 
 
