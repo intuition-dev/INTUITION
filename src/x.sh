@@ -2,4 +2,4 @@
 clear
 tsc
 
-node mbake.js -c /home/vic/Downloads
+node mbake.js 

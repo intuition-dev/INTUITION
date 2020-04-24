@@ -4,7 +4,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Ver {
     static ver() {
-        return 'v8.21';
+        return 'v8.4.22';
     }
     static date() {
         return new Date().toISOString();
