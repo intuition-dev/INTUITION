@@ -41,7 +41,7 @@
         "pug": ">=2.0.4",
         "reload": ">=3.0.4",
         "strip-css-comments": ">=4.1.0",
-        "terser": ">=4.6.12",
+        "terser": ">=4.6.13",
         "typescript": ">=3.8.3"
     },
     "browserslist": [
