@@ -2,9 +2,10 @@
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend any classes!
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.JsonFeed = exports.BakeWrk = exports.MBake = exports.Ver = void 0;
 class Ver {
     static ver() {
-        return 'v8.4.24';
+        return 'v8.5.0';
     }
     static date() {
         return new Date().toISOString();
@@ -101,154 +102,157 @@ class MBake {
     } //()
 } //()
 exports.MBake = MBake;
-class BakeWrk {
-    constructor(dir_) {
-        let dir = Dirs.slash(dir_);
-        this.dir = dir;
-        console.info(' processing: ' + this.dir);
-    }
-    static metaMD(text, options) {
-        log.info(' ', options);
-        return mad.render(text);
-    }
-    /*
-    static marp(text, options) {//a custom md filter that uses a transformer
-       log.info(' ', options)
-       const { html, css } = marpit.render(text)
-       return html
-    }
-    */
-    static minify_pg(text, inline) {
-        let code = text.match(/^\s*\s*$/) ? '' : text;
-        let result = Terser.minify(code, Extra_1.MinJS.CompOptionsES);
-        if (result.error) {
-            log.warn('Terser error:', result.error);
-            return text;
+let BakeWrk = /** @class */ (() => {
+    class BakeWrk {
+        constructor(dir_) {
+            let dir = Dirs.slash(dir_);
+            this.dir = dir;
+            console.info(' processing: ' + this.dir);
         }
-        return result.code.replace(/;$/, '');
-    }
-    //find string indexes
-    static sindexes(source, f) {
-        if (!source)
-            return [];
-        if (!f)
-            return [];
-        let result = [];
-        for (let i = 0; i < source.length; ++i) {
-            if (source.substring(i, i + f.length) == f)
-                result.push(i);
+        static metaMD(text, options) {
+            log.info(' ', options);
+            return mad.render(text);
         }
-        return result;
-    }
-    bake(prod) {
-        let tstFile = this.dir + '/index.pug';
-        if (!fs.existsSync(tstFile)) {
-            return;
+        /*
+        static marp(text, options) {//a custom md filter that uses a transformer
+           log.info(' ', options)
+           const { html, css } = marpit.render(text)
+           return html
         }
-        process.chdir(this.dir);
-        console.info(this.dir);
-        let dat = new FileOpsBase_1.Dat(this.dir);
-        //static data binding with a custom md filter that uses a transformer
-        let options = dat.getAll();
-        options['filters'] = {
-            metaMD: BakeWrk.metaMD,
-        };
-        options['ENV'] = prod;
-        //*GLOBAL yaml
-        const global = options['GLO'];
-        if (global) {
-            const ps = this.dir + '/' + global;
-            const p = path.normalize(ps + '/GLO.yaml');
-            let glo = yaml.load(fs.readFileSync(p));
-            options = Object.assign(glo, options);
-            //log.info(options)
-        } //()
-        if (this.locAll(options)) // if locale, we are not writing here, but in sub folders.
-            return ' ';
-        this.writeFilePg(this.dir + '/index.pug', options, this.dir + '/index.html');
-        //amp
-        if (!fs.existsSync(this.dir + '/m.pug'))
-            return ' ';
-        this.writeFilePg(this.dir + '/m.pug', options, this.dir + '/m.html');
-    } //()
-    // if loc, do locale
-    locAll(options) {
-        if (!options.LOC)
-            return false;
-        let d = options.LOC;
-        d = this.dir + d;
-        let a;
-        let fn = d + '/loc.yaml';
-        if (fs.existsSync(fn))
-            a = yaml.load(fs.readFileSync(fn));
-        else {
-            let dir2 = findUp.sync('loc.yaml', { cwd: d });
-            a = yaml.load(fs.readFileSync(dir2));
-            d = dir2.slice(0, -8);
-        }
-        // found
-        const css = a.loc;
-        const set = new Set(css);
-        log.info(set);
-        let merged = { ...a, ...options }; // es18 spread
-        for (let item of set) {
-            this.do1Locale(item, merged);
-        }
-        //delete 'root' index.html
-        fs.remove(this.dir + '/index.html');
-    } //()
-    do1Locale(locale, combOptions) {
-        //extract locale var
-        console.info(locale);
-        let localeProps = {};
-        localeProps['LOCALE'] = locale; // any let can be access in pug or js  eg window.locale = '#{LOCALE}'
-        for (let key in combOptions)
-            if (key.endsWith('-' + locale)) { //for each key
-                let len = key.length - ('-' + locale).length;
-                let key2 = key.substring(0, len);
-                localeProps[key2] = combOptions[key];
+        */
+        static minify_pg(text, inline) {
+            let code = text.match(/^\s*\s*$/) ? '' : text;
+            let result = Terser.minify(code, Extra_1.MinJS.CompOptionsES);
+            if (result.error) {
+                log.warn('Terser error:', result.error);
+                return text;
             }
-        let locMerged = { ...combOptions, ...localeProps }; // es18 spread
-        log.info(localeProps);
-        // if dir not exists
-        let locDir = this.dir + '/' + locale;
-        log.info(locDir);
-        fs.ensureDirSync(locDir);
-        // if loc.pug exists
-        if (fs.existsSync(locDir + '/loc.pug'))
-            this.writeFilePg(locDir + '/loc.pug', locMerged, locDir + '/index.html');
-        else
-            this.writeFilePg(this.dir + '/index.pug', locMerged, locDir + '/index.html');
-        //amp
-        if (!fs.existsSync(this.dir + '/m.pug'))
-            return ' ';
-        this.writeFilePg(this.dir + '/m.pug', locMerged, locDir + '/m.html');
+            return result.code.replace(/;$/, '');
+        }
+        //find string indexes
+        static sindexes(source, f) {
+            if (!source)
+                return [];
+            if (!f)
+                return [];
+            let result = [];
+            for (let i = 0; i < source.length; ++i) {
+                if (source.substring(i, i + f.length) == f)
+                    result.push(i);
+            }
+            return result;
+        }
+        bake(prod) {
+            let tstFile = this.dir + '/index.pug';
+            if (!fs.existsSync(tstFile)) {
+                return;
+            }
+            process.chdir(this.dir);
+            console.info(this.dir);
+            let dat = new FileOpsBase_1.Dat(this.dir);
+            //static data binding with a custom md filter that uses a transformer
+            let options = dat.getAll();
+            options['filters'] = {
+                metaMD: BakeWrk.metaMD,
+            };
+            options['ENV'] = prod;
+            //*GLOBAL yaml
+            const global = options['GLO'];
+            if (global) {
+                const ps = this.dir + '/' + global;
+                const p = path.normalize(ps + '/GLO.yaml');
+                let glo = yaml.load(fs.readFileSync(p));
+                options = Object.assign(glo, options);
+                //log.info(options)
+            } //()
+            if (this.locAll(options)) // if locale, we are not writing here, but in sub folders.
+                return ' ';
+            this.writeFilePg(this.dir + '/index.pug', options, this.dir + '/index.html');
+            //amp
+            if (!fs.existsSync(this.dir + '/m.pug'))
+                return ' ';
+            this.writeFilePg(this.dir + '/m.pug', options, this.dir + '/m.html');
+        } //()
+        // if loc, do locale
+        locAll(options) {
+            if (!options.LOC)
+                return false;
+            let d = options.LOC;
+            d = this.dir + d;
+            let a;
+            let fn = d + '/loc.yaml';
+            if (fs.existsSync(fn))
+                a = yaml.load(fs.readFileSync(fn));
+            else {
+                let dir2 = findUp.sync('loc.yaml', { cwd: d });
+                a = yaml.load(fs.readFileSync(dir2));
+                d = dir2.slice(0, -8);
+            }
+            // found
+            const css = a.loc;
+            const set = new Set(css);
+            log.info(set);
+            let merged = { ...a, ...options }; // es18 spread
+            for (let item of set) {
+                this.do1Locale(item, merged);
+            }
+            //delete 'root' index.html
+            fs.remove(this.dir + '/index.html');
+        } //()
+        do1Locale(locale, combOptions) {
+            //extract locale var
+            console.info(locale);
+            let localeProps = {};
+            localeProps['LOCALE'] = locale; // any let can be access in pug or js  eg window.locale = '#{LOCALE}'
+            for (let key in combOptions)
+                if (key.endsWith('-' + locale)) { //for each key
+                    let len = key.length - ('-' + locale).length;
+                    let key2 = key.substring(0, len);
+                    localeProps[key2] = combOptions[key];
+                }
+            let locMerged = { ...combOptions, ...localeProps }; // es18 spread
+            log.info(localeProps);
+            // if dir not exists
+            let locDir = this.dir + '/' + locale;
+            log.info(locDir);
+            fs.ensureDirSync(locDir);
+            // if loc.pug exists
+            if (fs.existsSync(locDir + '/loc.pug'))
+                this.writeFilePg(locDir + '/loc.pug', locMerged, locDir + '/index.html');
+            else
+                this.writeFilePg(this.dir + '/index.pug', locMerged, locDir + '/index.html');
+            //amp
+            if (!fs.existsSync(this.dir + '/m.pug'))
+                return ' ';
+            this.writeFilePg(this.dir + '/m.pug', locMerged, locDir + '/m.html');
+        }
+        writeFilePg(source, options, target) {
+            let html = pug.renderFile(source, options);
+            const ver = '<!-- mB ' + Ver.ver() + ' on ' + Ver.date() + ' -->';
+            if (!options['pretty'])
+                html = minify(html, BakeWrk.minifyPg);
+            html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
+            fs.writeFileSync(target, html);
+        }
     }
-    writeFilePg(source, options, target) {
-        let html = pug.renderFile(source, options);
-        const ver = '<!-- mB ' + Ver.ver() + ' on ' + Ver.date() + ' -->';
-        if (!options['pretty'])
-            html = minify(html, BakeWrk.minifyPg);
-        html = html.replace(BakeWrk.ebodyHtml, ver + BakeWrk.ebodyHtml);
-        fs.writeFileSync(target, html);
-    }
-} //class
+    BakeWrk.ebodyHtml = '</body>';
+    BakeWrk.minifyPg = {
+        caseSensitive: true,
+        collapseWhitespace: true,
+        decodeEntities: true,
+        minifyCSS: true,
+        minifyJS: BakeWrk.minify_pg,
+        quoteCharacter: "'",
+        removeComments: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+        sortAttributes: true,
+        sortClassName: true
+    };
+    return BakeWrk;
+})(); //class
 exports.BakeWrk = BakeWrk;
-BakeWrk.ebodyHtml = '</body>';
-BakeWrk.minifyPg = {
-    caseSensitive: true,
-    collapseWhitespace: true,
-    decodeEntities: true,
-    minifyCSS: true,
-    minifyJS: BakeWrk.minify_pg,
-    quoteCharacter: "'",
-    removeComments: true,
-    removeScriptTypeAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-    useShortDoctype: true,
-    sortAttributes: true,
-    sortClassName: true
-};
 class JsonFeed {
     constructor(dir_) {
         let dir = Dirs.slash(dir_);

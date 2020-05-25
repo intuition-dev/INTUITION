@@ -2,6 +2,7 @@
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MDevSrv = exports.MetaPro = exports.Watch = exports.Wa = void 0;
 const Base_1 = require("./Base");
 const Extra_1 = require("./Extra");
 const { Dirs } = require('agentg/lib/FileOpsExtra');
@@ -97,51 +98,54 @@ class Watch {
     } //()
 } //class
 exports.Watch = Watch;
-class MetaPro {
-    constructor(mount) {
-        this.b = new Base_1.MBake();
-        this.mount = mount;
-        log.info('MetaPro', this.mount);
-    }
-    bake(dir) {
-        let folder = this.mount + '/' + dir;
-        log.info(folder);
-        return this.b.bake(folder, 0);
-    }
-    itemize(dir) {
-        return this.b.itemizeNBake(this.mount + '/' + dir, 0);
-    }
-    css(dir) {
-        return new Extra_1.Sas().css(this.mount + '/' + dir);
-    }
-    ts(dir) {
-        const folder = this.mount + '/' + dir;
-        const js = new Extra_1.MinJS();
-        return js.ts(folder);
-    }
-    // when you pass the file name, ex: watch
-    async autoBake(folder__, file) {
-        const folder = Dirs.slash(folder__);
-        const ext = file.split('.').pop();
-        log.info('WATCHED2:', folder, ext);
-        if (ext == 'scss' || ext == 'sass') // css
-            return await this.css(folder);
-        if (ext == 'ts') // ts
-            return await this.ts(folder);
-        if (ext == 'yaml') // bake and itemize
-            return await this.itemize(folder);
-        if (ext == 'md')
-            return await this.bake(folder);
-        if (ext == 'pug') {
-            return await this.bake(folder);
+let MetaPro = /** @class */ (() => {
+    class MetaPro {
+        constructor(mount) {
+            this.b = new Base_1.MBake();
+            this.mount = mount;
+            log.info('MetaPro', this.mount);
         }
-        return ('Cant process ' + ext);
-    } //()
-} //class
+        bake(dir) {
+            let folder = this.mount + '/' + dir;
+            log.info(folder);
+            return this.b.bake(folder, 0);
+        }
+        itemize(dir) {
+            return this.b.itemizeNBake(this.mount + '/' + dir, 0);
+        }
+        css(dir) {
+            return new Extra_1.Sas().css(this.mount + '/' + dir);
+        }
+        ts(dir) {
+            const folder = this.mount + '/' + dir;
+            const js = new Extra_1.MinJS();
+            return js.ts(folder);
+        }
+        // when you pass the file name, ex: watch
+        async autoBake(folder__, file) {
+            const folder = Dirs.slash(folder__);
+            const ext = file.split('.').pop();
+            log.info('WATCHED2:', folder, ext);
+            if (ext == 'scss' || ext == 'sass') // css
+                return await this.css(folder);
+            if (ext == 'ts') // ts
+                return await this.ts(folder);
+            if (ext == 'yaml') // bake and itemize
+                return await this.itemize(folder);
+            if (ext == 'md')
+                return await this.bake(folder);
+            if (ext == 'pug') {
+                return await this.bake(folder);
+            }
+            return ('Cant process ' + ext);
+        } //()
+    }
+    MetaPro.folderProp = 'folder';
+    MetaPro.srcProp = 'src';
+    MetaPro.destProp = 'dest';
+    return MetaPro;
+})(); //class
 exports.MetaPro = MetaPro;
-MetaPro.folderProp = 'folder';
-MetaPro.srcProp = 'src';
-MetaPro.destProp = 'dest';
 // Meta: //////////////////////
 class MDevSrv {
     constructor(dir, port, reloadPort) {
