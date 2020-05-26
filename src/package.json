@@ -41,6 +41,8 @@
         "strip-css-comments": ">=4.1.0",
         "terser": ">=4.7.0",
         "typescript": ">=3.9.3"
+        ,  "minimist": ">=1.2.3"
+
     },
     "browserslist": [
         "> 1%",
@@ -52,8 +54,9 @@
         "dompurify": ">=2.0.11",
         "legit": ">=1.0.8",
         "lodash": ">=4.17.15",
-        "string-template": ">=1.0.0"
-        ,"he": "^1.2.0"
+        "string-template": ">=1.0.0",
+        "he": "^1.2.0"
+        ,  "minimist": ">=1.2.3"
 
     }
 }
