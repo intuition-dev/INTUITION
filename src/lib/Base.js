@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.JsonFeed = exports.BakeWrk = exports.MBake = exports.Ver = void 0;
 class Ver {
     static ver() {
-        return 'v8.5.1';
+        return 'v8.5.2';
     }
     static date() {
         return new Date().toISOString();
