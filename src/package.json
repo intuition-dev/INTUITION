@@ -22,36 +22,36 @@
     },
     "dependencies": {
         "agentg": ">=2.5.1",
-        "autoprefixer": ">=9.8.0",
+        "autoprefixer": ">=9.8.6",
         "cheerio": ">=1.0.0-rc.3",
-        "chokidar": ">=3.4.0",
+        "chokidar": ">=3.4.1",
         "command-line-args": ">=5.1.1",
         "express-interceptor": ">=1.2.0",
         "filehound": ">=1.17.4",
         "find-up": ">=4.1.0",
         "html-minifier": ">=4.0.0",
-        "javascript-obfuscator": ">=1.1.0",
+        "javascript-obfuscator": ">=1.9.0",
         "markdown-it": ">=11.0.0",
         "markdown-it-container": ">=3.0.0",
         "markdown-it-imsize": ">=2.0.1",
         "node-sass": ">=4.14.1",
-        "open": ">=7.0.4",
+        "open": ">=7.1.0",
         "pug": ">=3.0.0",
         "reload": ">=3.1.0",
         "strip-css-comments": ">=4.1.0",
-        "terser": ">=4.8.0",
-        "typescript": ">=3.9.5"
+        "terser": ">=5.0.0",
+        "typescript": ">=3.9.7"
     },
     "browserslist": [
         "> 1%",
         "not ie < 14"
     ],
     "devDependencies": {
-        "@types/express": ">=4.17.6",
-        "@types/node": ">=14.0.13",
-        "dompurify": ">=2.0.11",
+        "@types/express": ">=4.17.7",
+        "@types/node": ">=14.0.27",
+        "dompurify": ">=2.0.12",
         "legit": ">=1.0.8",
-        "lodash": ">=4.17.15",
+        "lodash": ">=4.17.19",
         "string-template": ">=1.0.0",
         "he": "^1.2.0"
     }
