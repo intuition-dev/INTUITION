@@ -148,13 +148,13 @@ export class MinJS {
    }
 
    static getObOptionsXES(): TInputOptions {
-      let t = {
+      let t:TInputOptions = {
          identifierNamesGenerator: 'hexadecimal' // for virus
          , disableConsoleOutput: false // setting to true breaks things
          , target: 'browser' //-no-eval'
 
          , stringArrayThreshold: 1
-         , stringArrayEncoding: 'rc4' // breaks if not
+         , stringArrayEncoding: ['rc4'] // breaks if not
          , splitStrings: true
          , splitStringsChunkLength: 5
 
