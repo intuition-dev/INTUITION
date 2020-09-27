@@ -22,7 +22,7 @@
     },
     "dependencies": {
         "agentg": ">=2.5.2",
-        "autoprefixer": ">=10.0.1",
+        "autoprefixer": "9.8.6",
         "cheerio": ">=1.0.0-rc.3",
         "chokidar": ">=3.4.2",
         "command-line-args": ">=5.1.1",
