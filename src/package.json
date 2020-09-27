@@ -22,7 +22,7 @@
     },
     "dependencies": {
         "agentg": ">=2.5.2",
-        "autoprefixer": ">=10.0.0",
+        "autoprefixer": ">=10.0.1",
         "cheerio": ">=1.0.0-rc.3",
         "chokidar": ">=3.4.2",
         "command-line-args": ">=5.1.1",
@@ -36,7 +36,7 @@
         "markdown-it-imsize": ">=2.0.1",
         "node-sass": ">=4.14.1",
         "open": ">=7.2.1",
-        "postcss": ">=8.0.9",
+        "postcss": "7.0.34",
         "pug": ">=3.0.0",
         "reload": ">=3.1.0",
         "strip-css-comments": ">=4.1.0",
