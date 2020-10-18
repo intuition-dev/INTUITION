@@ -1,14 +1,11 @@
 #!/usr/bin/env node
-"use strict";
 // All rights reserved by INTUITION.DEV |  Cekvenich, licensed under LGPL 3.0
-Object.defineProperty(exports, "__esModule", { value: true });
-const commandLineArgs = require("command-line-args");
-const Base_1 = require("./lib/Base");
-const Extra_1 = require("./lib/Extra");
+import { Ver, MBake } from './lib/Base';
+import { MinJS, Sas } from './lib/Extra';
 const { Dirs } = require('agentg/lib/FileOpsExtra');
-const Wa_1 = require("./lib/Wa");
+import { Wa } from './lib/Wa';
 const { DownloadFrag, VersionNag, DownloadC } = require('agentg/lib/FileOpsExtra');
-VersionNag.isCurrent('mbake', Base_1.Ver.ver()).then(function (isCurrent_) {
+VersionNag.isCurrent('mbake', Ver.ver()).then(function (isCurrent_) {
     try {
         if (!isCurrent_)
             console.log('There is a newer version of mbake CLI, please update.');
@@ -22,11 +19,11 @@ VersionNag.isCurrent('mbake', Base_1.Ver.ver()).then(function (isCurrent_) {
 // imports done /////////////////////////////////////////////
 const cwd = process.cwd();
 function version() {
-    console.info('mbake CLI version: ' + Base_1.Ver.ver());
+    console.info('mbake CLI version: ' + Ver.ver());
 }
 function help() {
     console.info();
-    console.info('mbake CLI version: ' + Base_1.Ver.ver());
+    console.info('mbake CLI version: ' + Ver.ver());
     console.info();
     console.info('Usage:');
     console.info('  To process any_dir Pug to html recursively:                 mbake .');
@@ -100,25 +97,25 @@ function unzipC() {
     console.info('Extracted an example CRUD app');
 }
 function bake(arg) {
-    let pro = new Base_1.MBake().bake(arg, 0);
+    let pro = new MBake().bake(arg, 0);
     pro.then(function (val) {
         console.log(val);
     });
 }
 function itemize(arg) {
-    let pro = new Base_1.MBake().itemizeNBake(arg, 0);
+    let pro = new MBake().itemizeNBake(arg, 0);
     pro.then(function (val) {
         console.log(val);
     });
 }
 function css(arg) {
-    let pro = new Extra_1.Sas().css(arg);
+    let pro = new Sas().css(arg);
     pro.then(function (val) {
         console.log(val);
     });
 }
 function minJS(arg) {
-    let min = new Extra_1.MinJS();
+    let min = new MinJS();
     let pro = min.ts(arg);
     pro.then(function (val) {
         console.log(val);
@@ -143,7 +140,7 @@ else if (argsParsed.version)
 else if (argsParsed.help)
     help();
 else if (argsParsed.watcher)
-    Wa_1.Wa.watch(arg, argsParsed.port, argsParsed['reload-port']);
+    Wa.watch(arg, argsParsed.port, argsParsed['reload-port']);
 else if (!arg)
     help();
 else

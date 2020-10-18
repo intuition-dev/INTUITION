@@ -1,43 +1,11 @@
-"use strict";
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Sas = exports.MinJS = void 0;
-const Base_1 = require("./Base");
-const yaml = require("js-yaml");
-const findUp = require("find-up");
-const sass = require("node-sass");
-const autoprefixer = require("autoprefixer");
-const postcss = require("postcss");
-const stripCssComments = require("strip-css-comments");
-const path = require("path");
-const fs = require("fs-extra");
-const FileHound = require("filehound");
-const terse_b_1 = require("terse-b/terse-b");
-const log = new terse_b_1.TerseB("extra");
-const JavaScriptObfuscator = require("javascript-obfuscator");
-const ts = __importStar(require("typescript"));
+import { Ver } from './Base';
+import { TerseB } from "terse-b/terse-b";
+const log = new TerseB("extra");
+import * as ts from "typescript";
 const Terser = require("terser");
-class MinJS {
+export class MinJS {
     ts(dir) {
         log.info(dir);
         const THIZ = this;
@@ -164,8 +132,7 @@ class MinJS {
         log.info(`status code '${exitCode}'.`);
     } //()
 } //class
-exports.MinJS = MinJS;
-MinJS.ver = '// mB ' + Base_1.Ver.ver() + ' on ' + Base_1.Ver.date() + '\r\n';
+MinJS.ver = '// mB ' + Ver.ver() + ' on ' + Ver.date() + '\r\n';
 MinJS.CompOptionsES = {
     ecma: 2018,
     keep_classnames: true,
@@ -183,7 +150,7 @@ MinJS.CompOptionsES = {
         inline_script: false },
 };
 // //////////////////////////////////////////////////////////////////
-class Sas {
+export class Sas {
     /**
      * @param dir
      * Find style.yaml and process each css in the style.yaml array
@@ -236,7 +203,7 @@ class Sas {
             res = res.replace(/ { /g, '{');
             res = res.replace(/, /g, ',');
             //add ver string
-            const ver = ' /* mB ' + Base_1.Ver.ver() + ' on ' + Base_1.Ver.date() + " */";
+            const ver = ' /* mB ' + Ver.ver() + ' on ' + Ver.date() + " */";
             res = res + ver;
             // write the file
             let filename2 = path.basename(fn2);
@@ -247,4 +214,3 @@ class Sas {
         });
     } //()
 } //class
-exports.Sas = Sas;

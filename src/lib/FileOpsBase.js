@@ -1,14 +1,8 @@
-"use strict";
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.FileMethods = exports.FileOps = exports.Dat = void 0;
-const terse_b_1 = require("terse-b/terse-b");
-const log = new terse_b_1.TerseB("file ops b");
-const fs = require("fs-extra");
-const yaml = require("js-yaml");
-const FileHound = require("filehound");
+import { TerseB } from "terse-b/terse-b";
+const log = new TerseB("file ops b");
 const { Dirs } = require('agentg/lib/FileOpsExtra');
-class Dat {
+export class Dat {
     constructor(path__) {
         let path_ = Dirs.slash(path__);
         this._path = path_;
@@ -54,8 +48,7 @@ class Dat {
         return this.props;
     } //()
 } //class
-exports.Dat = Dat;
-class FileOps {
+export class FileOps {
     constructor(root_) {
         this.root = Dirs.slash(root_);
     }
@@ -100,8 +93,7 @@ class FileOps {
         fs.unlinkSync(file_path);
     }
 } //class
-exports.FileOps = FileOps;
-class FileMethods {
+export class FileMethods {
     // get list of directories
     getDirs(mountPath) {
         let dirs = new Dirs(mountPath);
@@ -122,4 +114,3 @@ class FileMethods {
         }
     }
 }
-exports.FileMethods = FileMethods;

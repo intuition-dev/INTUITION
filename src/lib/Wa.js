@@ -1,21 +1,12 @@
-"use strict";
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MDevSrv = exports.MetaPro = exports.Watch = exports.Wa = void 0;
-const Base_1 = require("./Base");
-const Extra_1 = require("./Extra");
+import { MBake } from './Base';
+import { Sas, MinJS } from './Extra';
 const { Dirs } = require('agentg/lib/FileOpsExtra');
-const express = require("express");
-const chokidar = require("chokidar");
-const reload = require("reload");
-const cheerio = require("cheerio");
-const interceptor = require("express-interceptor");
-const terse_b_1 = require("terse-b/terse-b");
-const log = new terse_b_1.TerseB("WA");
-const opn = require("open");
+import { TerseB } from "terse-b/terse-b";
+const log = new TerseB("WA");
 // watch: /////////////////////////////////////////////////////////////////////////////////////////////////
-class Wa {
+export class Wa {
     static watch(dir, port, reloadPort) {
         port = port || 8090;
         let ss = new MDevSrv(dir, port, reloadPort);
@@ -28,8 +19,7 @@ class Wa {
         opn('http://localhost:' + port);
     } //()
 }
-exports.Wa = Wa;
-class Watch {
+export class Watch {
     constructor(mp_, mount) {
         this.mp = mp_;
         if (mount.endsWith('/.')) {
@@ -97,10 +87,9 @@ class Watch {
         }
     } //()
 } //class
-exports.Watch = Watch;
-class MetaPro {
+export class MetaPro {
     constructor(mount) {
-        this.b = new Base_1.MBake();
+        this.b = new MBake();
         this.mount = mount;
         log.info('MetaPro', this.mount);
     }
@@ -113,11 +102,11 @@ class MetaPro {
         return this.b.itemizeNBake(this.mount + '/' + dir, 0);
     }
     css(dir) {
-        return new Extra_1.Sas().css(this.mount + '/' + dir);
+        return new Sas().css(this.mount + '/' + dir);
     }
     ts(dir) {
         const folder = this.mount + '/' + dir;
-        const js = new Extra_1.MinJS();
+        const js = new MinJS();
         return js.ts(folder);
     }
     // when you pass the file name, ex: watch
@@ -139,12 +128,11 @@ class MetaPro {
         return ('Cant process ' + ext);
     } //()
 } //class
-exports.MetaPro = MetaPro;
 MetaPro.folderProp = 'folder';
 MetaPro.srcProp = 'src';
 MetaPro.destProp = 'dest';
 // Meta: //////////////////////
-class MDevSrv {
+export class MDevSrv {
     constructor(dir, port, reloadPort) {
         let app = express();
         log.info(dir, port);
@@ -179,4 +167,3 @@ class MDevSrv {
         });
     } //()
 } //class
-exports.MDevSrv = MDevSrv;

@@ -1,9 +1,6 @@
-"use strict";
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend any classes!
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.JsonFeed = exports.BakeWrk = exports.MBake = exports.Ver = void 0;
-class Ver {
+export class Ver {
     static ver() {
         return 'v8.5.2';
     }
@@ -11,22 +8,14 @@ class Ver {
         return new Date().toISOString();
     }
 }
-exports.Ver = Ver;
-const terse_b_1 = require("terse-b/terse-b");
-const log = new terse_b_1.TerseB('base');
+import { TerseB } from "terse-b/terse-b";
+const log = new TerseB('base');
 const path = require('path');
-const Extra_1 = require("./Extra");
-const FileOpsBase_1 = require("./FileOpsBase");
+import { MinJS } from './Extra';
+import { Dat } from './FileOpsBase';
 const { Dirs } = require('agentg/lib/FileOpsExtra');
-const fs = require("fs-extra");
-const yaml = require("js-yaml");
-const findUp = require("find-up");
-const pug = require("pug");
 const minify = require('html-minifier').minify;
 const Terser = require("terser");
-// code /////////////////////////////////////////////////////////////////////
-// metaMD Mad
-const markdownItCont = require("markdown-it-container");
 const mad = require('markdown-it')({
     html: true,
     typographer: true,
@@ -45,7 +34,7 @@ mad.use(markdownItCont, 'dynamic', {
         }
     }
 });
-class MBake {
+export class MBake {
     bake(path_, prod) {
         return new Promise(function (resolve, reject) {
             if (!path_ || path_.length < 1) {
@@ -101,8 +90,7 @@ class MBake {
         }); //pro
     } //()
 } //()
-exports.MBake = MBake;
-class BakeWrk {
+export class BakeWrk {
     constructor(dir_) {
         let dir = Dirs.slash(dir_);
         this.dir = dir;
@@ -121,7 +109,7 @@ class BakeWrk {
     */
     static minify_pg(text, inline) {
         let code = text.match(/^\s*\s*$/) ? '' : text;
-        let result = Terser.minify(code, Extra_1.MinJS.CompOptionsES);
+        let result = Terser.minify(code, MinJS.CompOptionsES);
         if (result.error) {
             log.warn('Terser error:', result.error);
             return text;
@@ -148,7 +136,7 @@ class BakeWrk {
         }
         process.chdir(this.dir);
         console.info(this.dir);
-        let dat = new FileOpsBase_1.Dat(this.dir);
+        let dat = new Dat(this.dir);
         //static data binding with a custom md filter that uses a transformer
         let options = dat.getAll();
         options['filters'] = {
@@ -234,7 +222,6 @@ class BakeWrk {
         fs.writeFileSync(target, html);
     }
 } //class
-exports.BakeWrk = BakeWrk;
 BakeWrk.ebodyHtml = '</body>';
 BakeWrk.minifyPg = {
     caseSensitive: true,
@@ -250,7 +237,7 @@ BakeWrk.minifyPg = {
     sortAttributes: true,
     sortClassName: true
 };
-class JsonFeed {
+export class JsonFeed {
     constructor(dir_) {
         let dir = Dirs.slash(dir_);
         let fn = dir + '/dat_i.yaml';
@@ -336,4 +323,3 @@ class JsonFeed {
         delete o['frags'];
     }
 } //class
-exports.JsonFeed = JsonFeed;
